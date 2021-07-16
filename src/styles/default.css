@@ -1,0 +1,899 @@
+ :root {
+  --black: rgba(0,0,0,1);
+  --white: rgba(255,255,255,1);
+  --rose0: rgba(255,241,242,1);
+  --rose1: rgba(255,228,230,1);
+  --rose2: rgba(254,205,211,1);
+  --rose3: rgba(253,164,175,1);
+  --rose4: rgba(251,113,133,1);
+  --rose5: rgba(244,63,94,1);
+  --rose6: rgba(225,29,72,1);
+  --rose7: rgba(190,18,60,1);
+  --rose8: rgba(159,18,57,1);
+  --rose9: rgba(136,19,55,1);
+  --pink0: rgba(253,242,248,1);
+  --pink1: rgba(252,231,243,1);
+  --pink2: rgba(251,207,232,1);
+  --pink3: rgba(249,168,212,1);
+  --pink4: rgba(244,114,182,1);
+  --pink5: rgba(236,72,153,1);
+  --pink6: rgba(219,39,119,1);
+  --pink7: rgba(190,24,93,1);
+  --pink8: rgba(157,23,77,1);
+  --pink9: rgba(131,24,67,1);
+  --fuch0: rgba(253,244,255,1);
+  --fuch1: rgba(250,232,255,1);
+  --fuch2: rgba(245,208,254,1);
+  --fuch3: rgba(240,171,252,1);
+  --fuch4: rgba(232,121,249,1);
+  --fuch5: rgba(217,70,239,1);
+  --fuch6: rgba(192,38,211,1);
+  --fuch7: rgba(162,28,175,1);
+  --fuch8: rgba(134,25,143,1);
+  --fuch9: rgba(112,26,117,1);
+  --purp0: rgba(250,245,255,1);
+  --purp1: rgba(243,232,255,1);
+  --purp2: rgba(233,213,255,1);
+  --purp3: rgba(216,180,254,1);
+  --purp4: rgba(192,132,252,1);
+  --purp5: rgba(168,85,247,1);
+  --purp6: rgba(147,51,234,1);
+  --purp7: rgba(126,34,206,1);
+  --purp8: rgba(107,33,168,1);
+  --purp9: rgba(88,28,135,1);
+  --viol0: rgba(245,243,255,1);
+  --viol1: rgba(237,233,254,1);
+  --viol2: rgba(221,214,254,1);
+  --viol3: rgba(196,181,253,1);
+  --viol4: rgba(167,139,250,1);
+  --viol5: rgba(139,92,246,1);
+  --viol6: rgba(124,58,237,1);
+  --viol7: rgba(109,40,217,1);
+  --viol8: rgba(91,33,182,1);
+  --viol9: rgba(76,29,149,1);
+  --indi0: rgba(238,242,255,1);
+  --indi1: rgba(224,231,255,1);
+  --indi2: rgba(199,210,254,1);
+  --indi3: rgba(165,180,252,1);
+  --indi4: rgba(129,140,248,1);
+  --indi5: rgba(99,102,241,1);
+  --indi6: rgba(79,70,229,1);
+  --indi7: rgba(67,56,202,1);
+  --indi8: rgba(55,48,163,1);
+  --indi9: rgba(49,46,129,1);
+  --blue0: rgba(239,246,255,1);
+  --blue1: rgba(219,234,254,1);
+  --blue2: rgba(191,219,254,1);
+  --blue3: rgba(147,197,253,1);
+  --blue4: rgba(96,165,250,1);
+  --blue5: rgba(59,130,246,1);
+  --blue6: rgba(37,99,235,1);
+  --blue7: rgba(29,78,216,1);
+  --blue8: rgba(30,64,175,1);
+  --blue9: rgba(30,58,138,1);
+  --liBl0: rgba(240,249,255,1);
+  --liBl1: rgba(224,242,254,1);
+  --liBl2: rgba(186,230,253,1);
+  --liBl3: rgba(125,211,252,1);
+  --liBl4: rgba(56,189,248,1);
+  --liBl5: rgba(14,165,233,1);
+  --liBl6: rgba(2,132,199,1);
+  --liBl7: rgba(3,105,161,1);
+  --liBl8: rgba(7,89,133,1);
+  --liBl9: rgba(12,74,110,1);
+  --cyan0: rgba(236,254,255,1);
+  --cyan1: rgba(207,250,254,1);
+  --cyan2: rgba(165,243,252,1);
+  --cyan3: rgba(103,232,249,1);
+  --cyan4: rgba(34,211,238,1);
+  --cyan5: rgba(6,182,212,1);
+  --cyan6: rgba(8,145,178,1);
+  --cyan7: rgba(14,116,144,1);
+  --cyan8: rgba(21,94,117,1);
+  --cyan9: rgba(22,78,99,1);
+  --teal0: rgba(240,253,250,1);
+  --teal1: rgba(204,251,241,1);
+  --teal2: rgba(153,246,228,1);
+  --teal3: rgba(94,234,212,1);
+  --teal4: rgba(45,212,191,1);
+  --teal5: rgba(20,184,166,1);
+  --teal6: rgba(13,148,136,1);
+  --teal7: rgba(15,118,110,1);
+  --teal8: rgba(17,94,89,1);
+  --teal9: rgba(19,78,74,1);
+  --emer0: rgba(236,253,245,1);
+  --emer1: rgba(209,250,229,1);
+  --emer2: rgba(167,243,208,1);
+  --emer3: rgba(110,231,183,1);
+  --emer4: rgba(52,211,153,1);
+  --emer5: rgba(16,185,129,1);
+  --emer6: rgba(5,150,105,1);
+  --emer7: rgba(4,120,87,1);
+  --emer8: rgba(6,95,70,1);
+  --emer9: rgba(6,78,59,1);
+  --gree0: rgba(240,253,244,1);
+  --gree1: rgba(220,252,231,1);
+  --gree2: rgba(187,247,208,1);
+  --gree3: rgba(134,239,172,1);
+  --gree4: rgba(74,222,128,1);
+  --gree5: rgba(34,197,94,1);
+  --gree6: rgba(22,163,74,1);
+  --gree7: rgba(21,128,61,1);
+  --gree8: rgba(22,101,52,1);
+  --gree9: rgba(20,83,45,1);
+  --lime0: rgba(247,254,231,1);
+  --lime1: rgba(236,252,203,1);
+  --lime2: rgba(217,249,157,1);
+  --lime3: rgba(190,242,100,1);
+  --lime4: rgba(163,230,53,1);
+  --lime5: rgba(132,204,22,1);
+  --lime6: rgba(101,163,13,1);
+  --lime7: rgba(77,124,15,1);
+  --lime8: rgba(63,98,18,1);
+  --lime9: rgba(54,83,20,1);
+  --yell0: rgba(254,252,232,1);
+  --yell1: rgba(254,249,195,1);
+  --yell2: rgba(254,240,138,1);
+  --yell3: rgba(253,224,71,1);
+  --yell4: rgba(250,204,21,1);
+  --yell5: rgba(234,179,8,1);
+  --yell6: rgba(202,138,4,1);
+  --yell7: rgba(161,98,7,1);
+  --yell8: rgba(133,77,14,1);
+  --yell9: rgba(113,63,18,1);
+  --ambr0: rgba(255,251,235,1);
+  --ambr1: rgba(254,243,199,1);
+  --ambr2: rgba(253,230,138,1);
+  --ambr3: rgba(252,211,77,1);
+  --ambr4: rgba(251,191,36,1);
+  --ambr5: rgba(245,158,11,1);
+  --ambr6: rgba(217,119,6,1);
+  --ambr7: rgba(180,83,9,1);
+  --ambr8: rgba(146,64,14,1);
+  --ambr9: rgba(120,53,15,1);
+  --oran0: rgba(255,247,237,1);
+  --oran1: rgba(255,237,213,1);
+  --oran2: rgba(254,215,170,1);
+  --oran3: rgba(253,186,116,1);
+  --oran4: rgba(251,146,60,1);
+  --oran5: rgba(249,115,22,1);
+  --oran6: rgba(234,88,12,1);
+  --oran7: rgba(194,65,12,1);
+  --oran8: rgba(154,52,18,1);
+  --oran9: rgba(124,45,18,1);
+  --redd0: rgba(254,242,242,1);
+  --redd1: rgba(254,226,226,1);
+  --redd2: rgba(254,202,202,1);
+  --redd3: rgba(252,165,165,1);
+  --redd4: rgba(248,113,113,1);
+  --redd5: rgba(239,68,68,1);
+  --redd6: rgba(220,38,38,1);
+  --redd7: rgba(185,28,28,1);
+  --redd8: rgba(153,27,27,1);
+  --redd9: rgba(127,29,29,1);
+  --wrmG0: rgba(250,250,249,1);
+  --wrmG1: rgba(245,245,244,1);
+  --wrmG2: rgba(231,229,228,1);
+  --wrmG3: rgba(214,211,209,1);
+  --wrmG4: rgba(168,162,158,1);
+  --wrmG5: rgba(120,113,108,1);
+  --wrmG6: rgba(87,83,78,1);
+  --wrmG7: rgba(68,64,60,1);
+  --wrmG8: rgba(41,37,36,1);
+  --wrmG9: rgba(28,25,23,1);
+  --truG0: rgba(250,250,250,1);
+  --truG1: rgba(245,245,245,1);
+  --truG2: rgba(229,229,229,1);
+  --truG3: rgba(212,212,212,1);
+  --truG4: rgba(163,163,163,1);
+  --truG5: rgba(115,115,115,1);
+  --truG6: rgba(82,82,82,1);
+  --truG7: rgba(64,64,64,1);
+  --truG8: rgba(38,38,38,1);
+  --truG9: rgba(23,23,23,1);
+  --gray0: rgba(250,250,250,1);
+  --gray1: rgba(244,244,245,1);
+  --gray2: rgba(228,228,231,1);
+  --gray3: rgba(212,212,216,1);
+  --gray4: rgba(161,161,170,1);
+  --gray5: rgba(113,113,122,1);
+  --gray6: rgba(82,82,91,1);
+  --gray7: rgba(63,63,70,1); --gray7o75: rgba(63,63,70,.75);
+  --gray8: rgba(39,39,42,1); --gray8o50: rgba(39,39,42,.5);
+  --gray9: rgba(24,24,27,1); --gray9o50: rgba(24,24,27,.5);
+  --colG0: rgba(249,250,251,1);
+  --colG1: rgba(243,244,246,1);
+  --colG2: rgba(229,231,235,1);
+  --colG3: rgba(209,213,219,1);
+  --colG4: rgba(156,163,175,1);
+  --colG5: rgba(107,114,128,1);
+  --colG6: rgba(75,85,99,1);
+  --colG7: rgba(55,65,81,1);
+  --colG8: rgba(31,41,55,1);
+  --colG9: rgba(17,24,39,1);
+  --newG1: rgba(240,243,245,1);
+  --bluG0: rgba(248,250,252,1);
+  --bluG1: rgba(241,245,249,1);
+  --bluG2: rgba(226,232,240,1);
+  --bluG3: rgba(203,213,225,1);
+  --bluG4: rgba(148,163,184,1);
+  --bluG5: rgba(100,116,139,1);
+  --bluG6: rgba(71,85,105,1);
+  --bluG7: rgba(51,65,85,1);
+  --bluG8: rgba(30,41,59,1);
+  --bluG9: rgba(15,23,42,1);
+}
+
+:root {
+  --default-light : var(--colG2);
+  --default :       var(--gray4);
+
+  --physical  : var(--yell6);
+  --ice       : var(--cyan4);
+  --fire      : var(--redd4);
+  --coldfire  : var(--fuch4);
+  --move      : var(--wrmG4);
+  --influence : var(--liBl3);
+  --heal      : var(--lime4);
+  --draw      : var(--indi4);
+
+  --w : var(--colG3);
+  --u : var(--blue4);
+  --r : var(--rose4);
+  --g : var(--emer4);
+  --a : var(--yell3);
+  --b : var(--purp5);
+
+  --bg1 : var(--gray5);
+  --bg2 : var(--gray6);
+  --bg3 : var(--gray7);
+  --bg4 : var(--gray8);
+  --bg5 : var(--gray9);
+
+  --narrator-default : var(--gray4);
+  --narrator-spec    : var(--colG2);
+  --narrator-warn    : var(--yell4);
+  --narrator-todo    : var(--cyan4);
+  --narrator-world   : var(--pink4);
+}
+
+/* RESET
+*/
+
+:root { --rad: 2px; --mar: .5rem; --bdr: 1px; }
+
+/* @font-face {
+  font-family: 'Iosevka ss02';
+  src: url('../assets/fonts/iosevka-ss02-regular.ttf') format('truetype');
+} */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg4);
+  /* overflow: overlay; */
+  height: 100%;
+}
+
+/* div.grid--lobby, */
+div.app-root {
+  /* display: flex;
+  flex-direction: column;
+  flex-grow: 1; */
+  height: 100%;
+}
+
+main.app {
+  /* display: flex;
+  flex-direction: column;
+  flex-grow: 1; */
+  /* height: calc(100% - 50px); */
+  height: 100%;
+}
+
+*, *:before, *:after {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--default-light);
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+button {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  cursor: pointer;
+  border: none;
+}
+
+button:focus { outline: none; }
+
+/* GRID
+*/
+
+.con--head         { grid-area: headr; }
+.con--foot         { grid-area: footr; }
+.con--errormsg     { grid-area: ermsg; }
+
+.con--newlobby     { grid-area: newlo; }
+.con--joinlobby    { grid-area: joinl; }
+
+.con--foyertitle   { grid-area: fyrti; }
+.con--foyerjoin    { grid-area: fyrjo; }
+
+.con--info         { grid-area: info; }
+.con--lobbymembers { grid-area: lmemb; }
+.con--lobbychat    { grid-area: lchat; }
+.con--lobbymain    { grid-area: lmain; }
+.con--lobbycontrols{ grid-area: lctrl; }
+
+.grid--landing,
+.grid--foyer {
+  display: grid;
+  padding: var(--mar);
+  gap: var(--mar);
+  grid-template-columns: 1fr;
+}
+
+.grid--foyer {
+  grid-template-areas:
+    "headr"
+    "fyrjo";
+}
+
+.grid--landing {
+  grid-template-areas:
+    "headr"
+    "newlo"
+    "joinl";
+}
+
+.grid--lobby {
+  display: grid;
+  height: 100%;
+  padding: var(--mar);
+  gap: var(--mar);
+  grid-template-columns: 3fr 1fr;
+  grid-template-areas:
+    "lmain lchat";
+}
+
+.grid--main-nogame {
+  display: grid;
+  width: 100%;
+  gap: var(--mar);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "info info info info"
+    "lmemb lmemb lctrl lctrl"
+    "lmemb lmemb lctrl lctrl";
+}
+
+.con--players { grid-area: play; }
+.con--self { grid-area: self; }
+.con--ghost { grid-area: ghst; }
+.con--board { grid-area: board; }
+.con--gamecontrols { grid-area: gctrl; }
+
+.grid--main-game {
+  display: grid;
+  width: 100%;
+  gap: var(--mar);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "info info info info"
+    "ghst ghst ghst ghst"
+    "play play play play"
+    "self self self self";
+}
+
+/* CONTAINERS
+ */
+
+.container {
+  padding: .5rem;
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: right; */
+  background: var(--bg3);
+  border-radius: var(--rad);
+}
+
+.con--self,
+.con--player,
+.con--ghost {
+  overflow-x: scroll;
+}
+
+.player-info {
+  margin-right: .5rem;
+  /* background-color: var(--bg5); */
+  border-radius: var(--rad);
+  width: 100px;
+  display: flex;
+  flex-flow: wrap;
+  align-content: flex-start;
+}
+
+.player-info * {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+
+.player-info > :not(:first-child) {
+  margin-top: .25rem;
+}
+
+.pg--main {
+  background-color: var(--bg4);
+}
+
+.con--uni-footer {
+  background-color: var(--bg5);
+  height: 100%;
+}
+
+/* BUTTONS
+*/
+
+.btn {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: var(--cyan6);
+  color: var(--white);
+  padding: .15rem .25rem;
+  height: max-content;
+  /* border: 3px solid var(--cyan6); */
+  border-radius: var(--rad);
+  /* margin: .5rem; */
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  background-color: var(--cyan5);
+  /* border: 3px solid var(--cyan5); */
+}
+
+.btn:active {
+  background-color: var(--pink5);
+  /* border: 3px solid var(--pink5); */
+  outline: none;
+}
+
+.btn:focus { outline: none; }
+
+.btn:disabled,
+.btn:hover:disabled,
+.btn:active:disabled {
+  background: var(--colG5);
+  color: var(--colG4);
+  border-color: var(--colG5);
+  cursor: not-allowed;
+}
+
+.btn--keyEvSelector-selected {
+  background-color: var(--redd5);
+}
+
+.btn--keyEvSelector-selected:hover {
+  background-color: var(--redd4);
+}
+
+.btn--chat-temp {
+  margin-left: .5rem
+}
+
+.btn--confirm-key-evidence {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.ready-toggle-wrapper {
+  background-color: var(--bg4);
+  position: relative;
+  display: block;
+  padding: .25rem;
+  height: max-content;
+  border-radius: var(--rad);
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.ccb-wrap {
+  height: 100px;
+  width: 100px;
+  background-color: var(--colG8);
+}
+
+.ccb-wrap.sl {
+  background-color: var(--colG5);
+}
+
+.ccb {
+  background-color: var(--colG5);
+}
+
+.rtw-unchecked {
+  background-color: var(--bg2);
+}
+
+.rtw-checked {
+  background-color: var(--emer5);
+}
+
+.hidden,
+.ready-toggle-wrapper input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.navlink {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--rad);
+  margin: 0;
+}
+
+.navlink:hover {
+  color: var(--cyan4);
+}
+
+.navlink:active {
+  color: var(--pink5);
+  outline: none;
+}
+
+/* FORMS
+ */
+
+.label {
+  margin-right: 0.5rem;
+}
+
+.input,
+.textarea {
+  /* border: 1px solid var(--colG5); */
+  border: none;
+  border-radius: var(--rad);
+  background: var(--bg4);
+  padding: 0.15rem 0.25rem;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  /* border: 1px solid var(--cyan6); */
+}
+
+.join-lobby-inputs-wrapper {
+  display: block;
+}
+
+.btn--join-lobby {
+  display: inline-block;
+}
+
+.new-message-wrapper {
+  margin: 0;
+  width: 100%;
+}
+
+.new-message-form {
+  display: flex;
+}
+
+.new-message-input {
+  margin-right: .5rem;
+  width: 100%;
+}
+
+/* .join-this-lobby-form > * {
+  display: inline-flex;
+}
+
+.join-this-lobby-input {
+  margin-right: .5rem;
+  width: 100%;
+} */
+
+.form--invalid input,
+.form--invalid textarea {
+  border-color: var(--oran4);
+}
+
+/* TITLES
+*/
+
+.title {
+  color: var(--default);
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.app--title {
+  color: var(--ambr3);
+  margin: 5rem;
+}
+
+/* LISTS
+*/
+
+li {
+  list-style: none;
+}
+
+ul.member-list,
+ul.online-list {
+  display: inline-block;
+}
+
+ul.player-list > :not(:first-child),
+ul.member-list > :not(:first-child) {
+  margin-top: .25rem;
+}
+
+li.acc-avail {
+  color: var(--ambr4);
+}
+
+li.acc-spent {
+  color: var(--bg1);
+}
+
+ul.online-list > li,
+ul.member-list > li {
+  border-radius: var(--rad);
+}
+
+li.m-self {
+  color: var(--cyan5);
+}
+
+li.m-other {
+  color: var(--colG3);
+}
+
+li.m-leader::after {
+  content: 'L';
+  color: var(--yell5);
+  font-weight: bold;
+  margin-left: .5rem;
+}
+
+li.m-ready::before {
+  content: 'R';
+  color: var(--emer5);
+  font-weight: bold;
+  margin-right: .5rem;
+}
+
+li.m-notready::before {
+  content: 'R';
+  color: var(--colG5);
+  font-weight: bold;
+  margin-right: .5rem;
+}
+
+/* CHAT
+ */
+
+.con--lobbychat {
+  /* max-height: 300px; */
+  overflow-y: hidden;
+  flex-direction: column;
+  height: 100%;
+}
+
+.chatfeed {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  width: 100%;
+  background-color: var(--bg4);
+  margin-bottom: .5rem;
+  border: .25rem solid var(--bg4);
+  border-radius: var(--rad);
+  min-height: 0;
+  /* height: inherit; */
+  height: calc(100% - 2.15rem);
+  overflow-y: auto;
+}
+
+.chatmessage {
+  margin: 0;
+  padding: .15rem;
+}
+
+.chatmessage > span:not(:first-child) {
+  margin-left: .5rem;
+}
+
+.chatmessage > span:first-child {
+  color: var(--bg1);
+}
+
+.chatmessage > span:nth-child(2) {
+  font-weight: bold;
+}
+
+.chatmessage-other > span:nth-child(2) {
+  color: var(--colG3);
+}
+
+.chatmessage-self > span:nth-child(2) {
+  color: var(--cyan5);
+}
+
+.sysMessage {
+  font-style: italic;
+}
+
+/*MISC
+*/
+
+.con--foot,
+.con--head {
+  text-align: center;
+}
+
+.con--info > :not(:nth-child(1)),
+.con--foot > :not(:nth-child(1)),
+.con--head > :not(:nth-child(1)) {
+  margin-left: .5rem;
+}
+
+.con--info {
+  justify-content: center;
+  align-items: center;
+}
+
+.gameresult {
+  width: 100%;
+  text-align: center;
+  text-justify: center;
+}
+
+.sessinfo {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preload,
+.preload:before {
+  -webkit-transition: none;
+     -moz-transition: none;
+       -o-transition: none;
+          transition: none;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 10;
+}
+
+/* MODAL
+*/
+
+.modal {
+  z-index: 100;
+  position: fixed;
+  top: 22vh;
+  left: 10%;
+  width: 80%;
+  background: var(--bg3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: var(--rad);
+}
+
+.modal__header {
+  width: 100%;
+  padding: 0.5rem 0.25rem;
+  background: var(--oran6);
+  color: white;
+}
+
+.modal__header h2 {
+  margin: 0.5rem;
+}
+
+.modal__content {
+  padding: 1rem 0.5rem;
+}
+
+.modal__footer {
+  padding: 1rem 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    left: calc(50% - 16rem);
+    width: 32rem;
+  }
+}
+
+.modal-enter {
+  transform: translateY(-10rem);
+  opacity: 0;
+}
+
+.modal-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 200ms;
+}
+
+.modal-exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.modal-exit-active {
+  transform: translateY(-10rem);
+  opacity: 0;
+  transition: all 200ms;
+}
+
+/* LOADING
+ */
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+}
+
+.lds-dual-ring:after {
+  content: ' ';
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid var(--cyan2);
+  border-color: var(--cyan2) transparent var(--cyan2) transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+.loading-spinner__overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: var(--bg4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

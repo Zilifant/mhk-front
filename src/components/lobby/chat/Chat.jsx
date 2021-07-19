@@ -4,9 +4,7 @@ import React, {
   useEffect,
 } from 'react';
 import { UserContext } from '../../../context/contexts';
-import { useHttpClient } from '../../../hooks/http-hook';
 import { useChat } from '../../../hooks/chat-hook';
-import ErrorModal from '../../modal/ErrorModal';
 import Container from '../../shared/Container';
 import ChatFeed from './ChatFeed';
 import NewMessage from './NewMessage';
@@ -21,7 +19,6 @@ const Chat = ({ chat }) => {
   // const { socket } = useContext(SocketContext);
   const { myLobby } = useContext(UserContext);
 
-  const { error, clearError } = useHttpClient();
   const {
     newMessage,
     subToChat,
@@ -29,9 +26,6 @@ const Chat = ({ chat }) => {
     messageText,
     setMessageText
   } = useChat(chat);
-
-  // const [messages, setMessages] = useState(chat);
-  // const [messageText, setMessageText] = useState('');
 
   useEffect(() => {
     subToChat();
@@ -44,7 +38,6 @@ const Chat = ({ chat }) => {
 
   return (
     <React.Fragment>
-      <ErrorModal error={error} onClear={clearError} />
       <Container className='lobbychat' parentGrid='lobby'>
         <ChatFeed messages={messages} />
         <NewMessage

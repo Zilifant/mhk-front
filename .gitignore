@@ -7,10 +7,14 @@
 
 # testing
 /coverage
+
+# notes
 /zed
+notes.md
 
 # production
 /build
+build
 
 # misc
 .DS_Store

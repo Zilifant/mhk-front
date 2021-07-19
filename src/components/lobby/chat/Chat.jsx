@@ -35,53 +35,9 @@ const Chat = ({ chat }) => {
 
   useEffect(() => {
     subToChat();
-    // let sysMessage;
-    // const sysMessageBase = {
-    //   sender: 'System',
-    //   createdAt: new Date().toLocaleTimeString()
-    // };
-
-    // socket.current.on('readyUnready', props => {
-    //   const readyState = (props.ready) ? 'ready!' : 'not ready.'
-    //   sysMessage = {
-    //     ...sysMessageBase,
-    //     text: `${props.userId.slice(0,-5)} is ${readyState}`
-    //   };
-    //   setMessages((messages) => [...messages, sysMessage]);
-    // });
-
-    // socket.current.on('userConnected', props => {
-    //   sysMessage = {
-    //     ...sysMessageBase,
-    //     text: `${props.user.id.slice(0,-5)} has joined the lobby.`
-    //   };
-    //   setMessages((messages) => [...messages, sysMessage]);
-    // });
-
-    // socket.current.on('userDisco', props => {
-    //   const textP1 = `${props.discoUserId.slice(0,-5)} has left the lobby.`;
-    //   let text;
-    //   if (!props.newLeaderId) {
-    //     text = textP1;
-    //   } else {
-    //     text = `${textP1} ${props.newLeaderId.slice(0,-5)} is the new Leader.`;
-    //   };
-    //   sysMessage = {
-    //     ...sysMessageBase,
-    //     text
-    //   };
-    //   setMessages((messages) => [...messages, sysMessage]);
-    // });
   }, [subToChat]);
 
-  // useEffect(() => {
-  //   if (socket) socket.current.on('newMessage', message => {
-  //     const incomingMessage = message;
-  //     setMessages((messages) => [...messages, incomingMessage]);
-  //   });
-  // }, [socket]);
-
-  const newMessageSubmitHandler = async event => {
+  const newMessageSubmitHandler = event => {
     event.preventDefault();
     newMessage();
   };
@@ -163,3 +119,48 @@ export default Chat;
 //   );
 //   setMessageText('');
 // } catch (err) { console.log(err); }
+
+    // let sysMessage;
+    // const sysMessageBase = {
+    //   sender: 'System',
+    //   createdAt: new Date().toLocaleTimeString()
+    // };
+
+    // socket.current.on('readyUnready', props => {
+    //   const readyState = (props.ready) ? 'ready!' : 'not ready.'
+    //   sysMessage = {
+    //     ...sysMessageBase,
+    //     text: `${props.userId.slice(0,-5)} is ${readyState}`
+    //   };
+    //   setMessages((messages) => [...messages, sysMessage]);
+    // });
+
+    // socket.current.on('userConnected', props => {
+    //   sysMessage = {
+    //     ...sysMessageBase,
+    //     text: `${props.user.id.slice(0,-5)} has joined the lobby.`
+    //   };
+    //   setMessages((messages) => [...messages, sysMessage]);
+    // });
+
+    // socket.current.on('userDisco', props => {
+    //   const textP1 = `${props.discoUserId.slice(0,-5)} has left the lobby.`;
+    //   let text;
+    //   if (!props.newLeaderId) {
+    //     text = textP1;
+    //   } else {
+    //     text = `${textP1} ${props.newLeaderId.slice(0,-5)} is the new Leader.`;
+    //   };
+    //   sysMessage = {
+    //     ...sysMessageBase,
+    //     text
+    //   };
+    //   setMessages((messages) => [...messages, sysMessage]);
+    // });
+
+      // useEffect(() => {
+  //   if (socket) socket.current.on('newMessage', message => {
+  //     const incomingMessage = message;
+  //     setMessages((messages) => [...messages, incomingMessage]);
+  //   });
+  // }, [socket]);

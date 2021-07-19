@@ -26,37 +26,37 @@ export const useChat = (chat) => {
   };
 
   const subToChat = useCallback(() => {
-    // console.log('subtochat')
+    // console.log('subToChat')
     let sysMessage;
     const sysMessageBase = {
       sender: 'System',
       createdAt: new Date().toLocaleTimeString()
     };
 
-    socket.current.on('readyUnready', props => {
-      const readyState = (props.ready) ? 'ready!' : 'not ready.'
+    socket.current.on('readyUnready', data => {
+      const readyState = (data.ready) ? 'ready!' : 'not ready.'
       sysMessage = {
         ...sysMessageBase,
-        text: `${props.userId.slice(0,-5)} is ${readyState}`
+        text: `${data.userId.slice(0,-5)} is ${readyState}`
       };
       setMessages((messages) => [...messages, sysMessage]);
     });
   
-    socket.current.on('userConnected', props => {
+    socket.current.on('userConnected', data => {
       sysMessage = {
         ...sysMessageBase,
-        text: `${props.user.id.slice(0,-5)} has joined the lobby.`
+        text: `${data.user.id.slice(0,-5)} has joined the lobby.`
       };
       setMessages((messages) => [...messages, sysMessage]);
     });
   
-    socket.current.on('userDisco', props => {
-      const textP1 = `${props.discoUserId.slice(0,-5)} has left the lobby.`;
+    socket.current.on('userDisco', data => {
+      const textP1 = `${data.discoUserId.slice(0,-5)} has left the lobby.`;
       let text;
-      if (!props.newLeaderId) {
+      if (!data.newLeaderId) {
         text = textP1;
       } else {
-        text = `${textP1} ${props.newLeaderId.slice(0,-5)} is the new Leader.`;
+        text = `${textP1} ${data.newLeaderId.slice(0,-5)} is the new Leader.`;
       };
       sysMessage = {
         ...sysMessageBase,

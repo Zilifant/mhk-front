@@ -1,9 +1,9 @@
 import React, {
   useContext,
-  useState,
+  // useState,
   useEffect,
 } from 'react';
-import { UserContext, SocketContext } from '../../../context/contexts';
+import { UserContext } from '../../../context/contexts';
 import { useHttpClient } from '../../../hooks/http-hook';
 import { useChat } from '../../../hooks/chat-hook';
 import ErrorModal from '../../modal/ErrorModal';
@@ -13,71 +13,77 @@ import NewMessage from './NewMessage';
 // import Button from '../ui-elements/Button';
 // import { sysMsgs } from '../../util/utils';
 
-const Chat = ({ lobby: { chat } }) => {
+import '../../../styles/chat.css';
+
+const Chat = ({ chat }) => {
   // console.log('Chat');
 
-  const { error, clearError } = useHttpClient();
+  // const { socket } = useContext(SocketContext);
   const { myLobby } = useContext(UserContext);
-  const { socket } = useContext(SocketContext);
 
-  const { newMessage } = useChat();
+  const { error, clearError } = useHttpClient();
+  const {
+    newMessage,
+    subToChat,
+    messages,
+    messageText,
+    setMessageText
+  } = useChat(chat);
 
-  const [messages, setMessages] = useState(chat);
-  const [messageText, setMessageText] = useState('');
-
-  useEffect(() => {
-    let sysMessage;
-    const sysMessageBase = {
-      sender: 'System',
-      createdAt: new Date().toLocaleTimeString()
-    };
-
-    socket.current.on('readyUnready', props => {
-      const readyState = (props.ready) ? 'ready!' : 'not ready.'
-      sysMessage = {
-        ...sysMessageBase,
-        text: `${props.userId.slice(0,-5)} is ${readyState}`
-      };
-      setMessages((messages) => [...messages, sysMessage]);
-    });
-
-    socket.current.on('userConnected', props => {
-      sysMessage = {
-        ...sysMessageBase,
-        text: `${props.user.id.slice(0,-5)} has joined the lobby.`
-      };
-      setMessages((messages) => [...messages, sysMessage]);
-    });
-
-    socket.current.on('userDisco', props => {
-      const textP1 = `${props.discoUserId.slice(0,-5)} has left the lobby.`;
-      let text;
-      if (!props.newLeaderId) {
-        text = textP1;
-      } else {
-        text = `${textP1} ${props.newLeaderId.slice(0,-5)} is the new Leader.`;
-      };
-      sysMessage = {
-        ...sysMessageBase,
-        text
-      };
-      setMessages((messages) => [...messages, sysMessage]);
-    });
-
-  }, [socket]);
+  // const [messages, setMessages] = useState(chat);
+  // const [messageText, setMessageText] = useState('');
 
   useEffect(() => {
-    if (socket) socket.current.on('newMessage', message => {
-      const incomingMessage = message;
-      setMessages((messages) => [...messages, incomingMessage]);
-    });
-  }, [socket]);
+    subToChat();
+    // let sysMessage;
+    // const sysMessageBase = {
+    //   sender: 'System',
+    //   createdAt: new Date().toLocaleTimeString()
+    // };
+
+    // socket.current.on('readyUnready', props => {
+    //   const readyState = (props.ready) ? 'ready!' : 'not ready.'
+    //   sysMessage = {
+    //     ...sysMessageBase,
+    //     text: `${props.userId.slice(0,-5)} is ${readyState}`
+    //   };
+    //   setMessages((messages) => [...messages, sysMessage]);
+    // });
+
+    // socket.current.on('userConnected', props => {
+    //   sysMessage = {
+    //     ...sysMessageBase,
+    //     text: `${props.user.id.slice(0,-5)} has joined the lobby.`
+    //   };
+    //   setMessages((messages) => [...messages, sysMessage]);
+    // });
+
+    // socket.current.on('userDisco', props => {
+    //   const textP1 = `${props.discoUserId.slice(0,-5)} has left the lobby.`;
+    //   let text;
+    //   if (!props.newLeaderId) {
+    //     text = textP1;
+    //   } else {
+    //     text = `${textP1} ${props.newLeaderId.slice(0,-5)} is the new Leader.`;
+    //   };
+    //   sysMessage = {
+    //     ...sysMessageBase,
+    //     text
+    //   };
+    //   setMessages((messages) => [...messages, sysMessage]);
+    // });
+  }, [subToChat]);
+
+  // useEffect(() => {
+  //   if (socket) socket.current.on('newMessage', message => {
+  //     const incomingMessage = message;
+  //     setMessages((messages) => [...messages, incomingMessage]);
+  //   });
+  // }, [socket]);
 
   const newMessageSubmitHandler = async event => {
     event.preventDefault();
-
-    newMessage(messageText);
-    setMessageText('');
+    newMessage();
   };
 
   return (

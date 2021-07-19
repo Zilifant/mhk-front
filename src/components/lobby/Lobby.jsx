@@ -78,7 +78,7 @@ const Lobby = () => {
               gameResult={gameResult}
               thisPlayer={getThisPlayer(userId, game)}
             />
-            <Chat lobby={loadedLobby} />
+            <Chat chat={loadedLobby.chat} />
           </Grid>
         }
       </React.Fragment>

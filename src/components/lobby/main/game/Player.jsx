@@ -11,7 +11,7 @@ import Hand from './Hand';
 const Player = ({
   stage, hand, role, playerId, accusalSpent, viewAsGhost, keyEv, canAccuse
 }) => {
-  console.log('Player');
+  // console.log('Player');
 
   const {
     selectCard,

@@ -368,6 +368,7 @@ button:focus { outline: none; }
   width: 100%;
   gap: var(--mar);
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: max-content repeat(2, 1fr);
   grid-template-areas:
     "info info info info"
     "lmemb lmemb lctrl lctrl"
@@ -385,6 +386,8 @@ button:focus { outline: none; }
   width: 100%;
   gap: var(--mar);
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, max-content);
+  /* grid-template-rows: max-content max-content repeat(4, minmax(min-content, 1fr)); */
   grid-template-areas:
     "info info info info"
     "ghst ghst ghst ghst"
@@ -761,6 +764,7 @@ li.m-notready::before {
 .con--info {
   justify-content: center;
   align-items: center;
+  height: min-content;
 }
 
 .gameresult {

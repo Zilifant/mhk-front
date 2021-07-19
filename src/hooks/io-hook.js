@@ -37,7 +37,6 @@ export const useIO = () => {
 
       socket.current.on('userDisco', ({ usersOnline, newLeaderId }) => {
         setOnlineUsers(usersOnline);
-        console.log('usersOnline')
         if (newLeaderId) setLeader(newLeaderId);
       });
     };

@@ -37,18 +37,16 @@ const Chat = ({ chat }) => {
   };
 
   return (
-    <React.Fragment>
-      <Container className='lobbychat' parentGrid='lobby'>
-        <ChatFeed messages={messages} />
-        <NewMessage
-          onChange={(e) => setMessageText(e.target.value)}
-          messages={messages}
-          messageText={messageText}
-          myLobby={myLobby}
-          submitHandler={newMessageSubmitHandler}
-        />
-      </Container>
-    </React.Fragment>
+    <Container className='lobbychat' parentGrid='lobby'>
+      <ChatFeed messages={messages} />
+      <NewMessage
+        onChange={(e) => setMessageText(e.target.value)}
+        messages={messages}
+        messageText={messageText}
+        myLobby={myLobby}
+        submitHandler={newMessageSubmitHandler}
+      />
+    </Container>
   );
 };
 

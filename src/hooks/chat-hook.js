@@ -8,7 +8,7 @@ import {
 import { UserContext, SocketContext } from '../context/contexts';
 
 export const useChat = (chat) => {
-  const { userId, myLobby } = useContext(UserContext);
+  const { userId } = useContext(UserContext);
   const { socket } = useContext(SocketContext);
 
   const [messages, setMessages] = useState(chat);
@@ -17,9 +17,7 @@ export const useChat = (chat) => {
   const newMessage = () => {
     socket.current.emit('newMessage', {
       sender: userId,
-      text: messageText,
-      lobby: myLobby,
-      createdAt: new Date().toLocaleTimeString()
+      text: messageText
     });
     setMessageText('');
   };

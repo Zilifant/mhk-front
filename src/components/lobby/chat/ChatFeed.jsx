@@ -20,7 +20,7 @@ const ChatFeed = ({ messages }) => {
       {messages.map((message) => (
         <div ref={scrollRef} key={nanoid()}>
           <ChatMessage
-            self={message.sender === userId}
+            isMine={message.sender === userId}
             message={message}
             // time={message.createdAt}
             // sender={message.sender}

@@ -1,9 +1,9 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 
-const ChatMessage = ({ self, message }) => {
+const ChatMessage = ({ isMine, message }) => {
 
-  const style = self ? 'self' : 'other';
+  const style = isMine ? 'self' : 'other';
 
   if (message.sender === undefined) {
     const renderStyledText = (elements, parentCls='styled-text-wrapper') => (

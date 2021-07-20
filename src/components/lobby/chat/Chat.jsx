@@ -9,14 +9,12 @@ import Container from '../../shared/Container';
 import ChatFeed from './ChatFeed';
 import NewMessage from './NewMessage';
 // import Button from '../ui-elements/Button';
-// import { sysMsgs } from '../../util/utils';
 
 import '../../../styles/chat.css';
 
 const Chat = ({ chat }) => {
   // console.log('Chat');
 
-  // const { socket } = useContext(SocketContext);
   const { myLobby } = useContext(UserContext);
 
   const {
@@ -27,9 +25,7 @@ const Chat = ({ chat }) => {
     setMessageText
   } = useChat(chat);
 
-  useEffect(() => {
-    subToChat();
-  }, [subToChat]);
+  useEffect(() => { subToChat(); }, [subToChat]);
 
   const newMessageSubmitHandler = event => {
     event.preventDefault();

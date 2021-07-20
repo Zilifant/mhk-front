@@ -35,8 +35,8 @@ const Hand = ({
   };
 
   const enabled = () => {
-    if (stage === 1 && myRole === 'Killer' && isMine) return true;
-    if (stage === 2 && !viewAsGhost && !isMine && canAccuse) return true;
+    if (stage === 'Setup' && myRole === 'Killer' && isMine) return true;
+    if (stage !== 'Setup' && !viewAsGhost && !isMine && canAccuse) return true;
     return false;
   };
 

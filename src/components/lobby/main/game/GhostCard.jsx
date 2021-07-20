@@ -8,6 +8,8 @@ const GhostCard = ({
   card, confirmedClues, isMine, currentStage
 }) => {
 
+  // console.log(card);
+
   const {
     selectItem,
     confirmSelection,
@@ -25,7 +27,7 @@ const GhostCard = ({
 
   const checkEnabled = (index) => {
     if (!isMine) return false;
-    if (currentStage === 1) return false;
+    if (currentStage === 'Setup') return false;
     if (card.isLocked) return false;
     if (maxSelected && !selectedItems[index].isSelected) return false;
     return true;

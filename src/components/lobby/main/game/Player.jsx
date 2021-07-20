@@ -27,7 +27,7 @@ const Player = ({
       <div className='player-info'>
         <li>{playerId.slice(0,-5)} ({role[0]})</li>
         <li className={accusalSpent ? 'acc-spent' : 'acc-avail'}>[BADGE]</li>
-        {!viewAsGhost && (stage === 2) && canAccuse && <Button
+        {!viewAsGhost && (stage !== 'Setup') && canAccuse && <Button
           className='confirm-accusation'
           onClick={() => confirmAccusation(playerId, selectedCards)}
           disabled={!twoSelected}

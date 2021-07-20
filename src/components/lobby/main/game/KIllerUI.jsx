@@ -26,7 +26,7 @@ const KillerUI = ({
       <div className='player-info'>
         <li>{userName} ({role[0]})</li>
         <li className={accusalSpent ? 'acc-spent' : 'acc-avail'}>[BADGE]</li>
-        {(stage === 1) && <Button
+        {(stage === 'Setup') && <Button
           className='confirm-key-evidence'
           onClick={() => confirmKeyEvSelection(selectedCards)}
           disabled={!twoSelected}

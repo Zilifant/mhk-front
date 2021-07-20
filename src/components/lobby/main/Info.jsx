@@ -9,9 +9,8 @@ import Container from '../../shared/Container';
 import Button from '../../ui-elements/Button';
 
 const Info = ({
-  startGameHandler, canStart, gameOn, clearGameHandler, roundNum, stage, prevGameResult
+  startGameHandler, nextRoundHandler, canStart, gameOn, clearGameHandler, stage, prevGameResult
 }) => {
-  // console.log('LobbyInfo');
 
   const { userName, myLobby } = useContext(UserContext);
   const { parseGameResult } = useTextParser();
@@ -19,7 +18,7 @@ const Info = ({
   return (
     <Container className="info" parentGrid='main'>
       <div>
-        Name: {userName}, Lobby: {myLobby}, {gameOn && `Stage: ${stage}, Round: ${roundNum}`}
+        Name: {userName}, Lobby: {myLobby}{gameOn && `, Stage: ${stage}`}
       </div>
       {!gameOn &&
         <Button onClick={startGameHandler} disabled={!canStart}>
@@ -29,6 +28,11 @@ const Info = ({
       {gameOn &&
         <Button onClick={clearGameHandler}>
           CLEAR
+        </Button>
+      }
+      {gameOn && (stage === 'Round 1' || stage === 'Round 2') &&
+        <Button onClick={nextRoundHandler}>
+          ROUND
         </Button>
       }
       {!gameOn && prevGameResult &&

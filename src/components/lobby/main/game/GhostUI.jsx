@@ -9,7 +9,6 @@ import GhostCard from './GhostCard';
 const GhostUI = ({
   game: { keyEvidence, confirmedClues, ghostCards, currentStage }
 }) => {
-  // console.log('GhostUI');
 
   return (
     <Container className='self self-ghost' parentGrid='main'>

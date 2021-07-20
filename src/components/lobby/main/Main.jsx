@@ -33,6 +33,10 @@ const Main = ({
     socket.current.emit('clearGame');
   };
 
+  const nextRoundHandler = () => {
+    socket.current.emit('advanceStage');
+  };
+
   const readyHandler = () => {
     socket.current.emit('readyUnready', { userId });
   };
@@ -42,6 +46,7 @@ const Main = ({
       <Grid className={gameOn ? 'main-game' : 'main-nogame'}>
         <Info
           startGameHandler={startGameHandler}
+          nextRoundHandler={nextRoundHandler}
           clearGameHandler={clearGameHandler}
           canStart={canStart}
           gameOn={gameOn}

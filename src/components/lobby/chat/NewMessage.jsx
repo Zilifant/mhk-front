@@ -26,7 +26,7 @@ const NewMessage = ({
         </div>
       }
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default NewMessage
+export default NewMessage;

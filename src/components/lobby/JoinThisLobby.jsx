@@ -44,7 +44,7 @@ const JoinThisLobby = ({ lobbyId }) => {
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
       <Container className='foyerjoin'>
-      {isLoading && <Loading asOverlay />}
+      {isLoading && <Loading asOverlay color='green' />}
       <form className="form join-this-lobby-form" onSubmit={JoinThisLobbySubHandler}>
         <Grid className='join-this-lobby-form'>
           <div className='join-this-lobby-title'>JOIN THIS LOBBY</div>

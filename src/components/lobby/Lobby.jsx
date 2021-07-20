@@ -6,8 +6,9 @@ import React, {
 import { useParams } from 'react-router-dom';
 import { useHttpClient } from '../../hooks/http-hook';
 import { useIO } from '../../hooks/io-hook';
-import { useGameIO } from '../../hooks/game-io-hook';
+import { useGame } from '../../hooks/game-hook';
 import { SocketContext, UserContext } from '../../context/contexts';
+import { getThisPlayer } from '../../util/utils';
 import ErrorModal from '../modal/ErrorModal';
 import Loading from '../shared/Loading';
 import Grid from '../shared/Grid';
@@ -16,27 +17,23 @@ import Chat from './chat/Chat';
 // import Button from '../ui-elements/Button';
 
 const Lobby = () => {
-  // console.log('%cLobby','color:#79f98e');
-
+  console.log('%cLobby','color:#79f98e');
   const { myLobby, userId } = useContext(UserContext);
-
   const lobbyURL = useParams().lobbyURL;
-
   const [loadedLobby, setLoadedLobby] = useState();
-
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { socket } = useIO(); // init socket (useEffect inside hook)
 
-  // init socket; lobby-level subscriptions and state (useEffect inside hook)
-  const { socket, leader, onlineUsers, canStart } = useIO();
-  // game-level subscriptions and state (useEffect outside hook)
-  const { game, setGame, gameOn, setGameOn, gameResult, subToGame } = useGameIO(socket);
-
-  // Dynamic, game-specific data added to user object is not provided by userContext; this gets that data from the game object
-  // TO DO: move this somewhere else
-  function getThisPlayer(userId, game) {
-    if (!game) return undefined;
-    return game.players.find(player => player.id === userId);
-  };
+  // lobby/game subscriptions and state (useEffect outside hook)
+  const {
+    game, setGame,
+    gameOn, setGameOn,
+    subToGame,
+    gameResult,
+    leader,
+    onlineUsers,
+    canStart
+  } = useGame(socket);
 
   useEffect(() => {
     // Probably redundant check that user is in the correct lobby
@@ -45,7 +42,6 @@ const Lobby = () => {
 
   useEffect(() => {
     const fetchLobby = async () => {
-      // console.log('fetchLobby');
       try {
         const resData = await sendRequest(
           `${process.env.REACT_APP_BACKEND_URL}/lobby/${lobbyURL}`
@@ -63,10 +59,10 @@ const Lobby = () => {
   }, [sendRequest, lobbyURL, setGame, setGameOn]);
 
   return (
-    <SocketContext.Provider value={{ socket: socket }}>
+    <SocketContext.Provider value={{ socket }}>
       <React.Fragment>
         <ErrorModal error={error} onClear={clearError} />
-        {isLoading && <Loading asOverlay />}
+        {isLoading && <Loading asOverlay color='orange' />}
         {!isLoading && loadedLobby &&
           <Grid className='lobby'>
             <Main

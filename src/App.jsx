@@ -32,10 +32,10 @@ function App() {
   //   event.preventDefault();
 
   //   try {
-  //     await sendRequest(
+  //     const responseData = await sendRequest(
   //       `${process.env.REACT_APP_BACKEND_URL}/admin/data`
   //     );
-  //     // console.log(responseData);
+  //     console.log(responseData);
   //   } catch (err) { console.log(`Err: ${err}`); };
   // };
 

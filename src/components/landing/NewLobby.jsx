@@ -55,7 +55,7 @@ const NewLobby = () => {
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
       <Container className='newlobby'>
-        {isLoading && <Loading asOverlay />}
+        {isLoading && <Loading asOverlay color='red' />}
         <form className='form new-lobby-form' onSubmit={newLobbySubmitHandler}>
           <Grid className='new-lobby-form'>
             <div className='new-lobby-title'>START NEW LOBBY</div>

@@ -8,7 +8,6 @@ import {
 import { UserContext, SocketContext } from '../context/contexts';
 
 export const useChat = (chat) => {
-  // console.log('Hook: useChat');
   const { userId, myLobby } = useContext(UserContext);
   const { socket } = useContext(SocketContext);
 
@@ -25,44 +24,11 @@ export const useChat = (chat) => {
     setMessageText('');
   };
 
+  // TO DO: useCB necessary?
   const subToChat = useCallback(() => {
-    // console.log('subToChat')
-    let sysMessage;
-    const sysMessageBase = {
-      sender: 'System',
-      createdAt: new Date().toLocaleTimeString()
-    };
 
-    socket.current.on('readyUnready', data => {
-      const readyState = (data.ready) ? 'ready!' : 'not ready.'
-      sysMessage = {
-        ...sysMessageBase,
-        text: `${data.userId.slice(0,-5)} is ${readyState}`
-      };
-      setMessages((messages) => [...messages, sysMessage]);
-    });
-  
-    socket.current.on('userConnected', data => {
-      sysMessage = {
-        ...sysMessageBase,
-        text: `${data.user.id.slice(0,-5)} has joined the lobby.`
-      };
-      setMessages((messages) => [...messages, sysMessage]);
-    });
-  
-    socket.current.on('userDisco', data => {
-      const textP1 = `${data.discoUserId.slice(0,-5)} has left the lobby.`;
-      let text;
-      if (!data.newLeaderId) {
-        text = textP1;
-      } else {
-        text = `${textP1} ${data.newLeaderId.slice(0,-5)} is the new Leader.`;
-      };
-      sysMessage = {
-        ...sysMessageBase,
-        text
-      };
-      setMessages((messages) => [...messages, sysMessage]);
+    socket.current.onAny((e, data) => {
+      if (data.msg) setMessages((messages) => [...messages, data.msg]);
     });
 
     socket.current.on('newMessage', message => {
@@ -71,11 +37,6 @@ export const useChat = (chat) => {
     });
 
   }, [socket]);
-
-  // const subToChat = () => {
-    
-
-  // };
 
   return {
     newMessage,

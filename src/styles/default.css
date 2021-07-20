@@ -358,7 +358,7 @@ button:focus { outline: none; }
   height: 100%;
   padding: var(--mar);
   gap: var(--mar);
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 3fr 2fr;
   grid-template-areas:
     "lmain lchat";
 }
@@ -718,6 +718,7 @@ li.m-notready::before {
   overflow-y: auto;
 }
 
+.announcement-wrapper,
 .chatmessage {
   margin: 0;
   padding: .15rem;
@@ -743,8 +744,20 @@ li.m-notready::before {
   color: var(--cyan5);
 }
 
-.sysMessage {
+.announcement {
+}
+
+.announcement--timestamp {
+  color: var(--bg1);
+}
+
+.announcement--username {
+  font-weight: bold;
+}
+
+.announcement--keyword {
   font-style: italic;
+  color: var(--oran5);
 }
 
 /*MISC
@@ -876,9 +889,27 @@ li.m-notready::before {
   height: 46px;
   margin: 1px;
   border-radius: 50%;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+.lds-dual-ring.blue:after {
   border: 5px solid var(--cyan2);
   border-color: var(--cyan2) transparent var(--cyan2) transparent;
-  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+.lds-dual-ring.green:after {
+  border: 5px solid var(--emer2);
+  border-color: var(--emer2) transparent var(--emer2) transparent;
+}
+
+.lds-dual-ring.orange:after {
+  border: 5px solid var(--oran2);
+  border-color: var(--oran2) transparent var(--oran2) transparent;
+}
+
+.lds-dual-ring.red:after {
+  border: 5px solid var(--redd2);
+  border-color: var(--redd2) transparent var(--redd2) transparent;
 }
 
 .loading-spinner__overlay {

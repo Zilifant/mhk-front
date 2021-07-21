@@ -270,7 +270,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: var(--bg4);
+  background: var(--bg5);
   /* overflow: overlay; */
   height: 100%;
 }
@@ -284,10 +284,11 @@ div.app-root {
 }
 
 main.app {
+  background: var(--bg4);
   /* display: flex;
   flex-direction: column;
   flex-grow: 1; */
-  /* height: calc(100% - 50px); */
+  /* height: calc(100% - 40px); */
   height: 100%;
 }
 
@@ -439,7 +440,7 @@ button:focus { outline: none; }
 
 .con--uni-footer {
   background-color: var(--bg5);
-  height: 100%;
+  /* height: 40px; */
 }
 
 /* BUTTONS
@@ -592,20 +593,6 @@ button:focus { outline: none; }
   display: inline-block;
 }
 
-.new-message-wrapper {
-  margin: 0;
-  width: 100%;
-}
-
-.new-message-form {
-  display: flex;
-}
-
-.new-message-input {
-  margin-right: .5rem;
-  width: 100%;
-}
-
 /* .join-this-lobby-form > * {
   display: inline-flex;
 }
@@ -691,74 +678,6 @@ li.m-notready::before {
   color: var(--colG5);
   font-weight: bold;
   margin-right: .5rem;
-}
-
-/* CHAT
- */
-
-.con--lobbychat {
-  /* max-height: 300px; */
-  overflow-y: hidden;
-  flex-direction: column;
-  height: 100%;
-}
-
-.chatfeed {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-  width: 100%;
-  background-color: var(--bg4);
-  margin-bottom: .5rem;
-  border: .25rem solid var(--bg4);
-  border-radius: var(--rad);
-  min-height: 0;
-  /* height: inherit; */
-  height: calc(100% - 2.15rem);
-  overflow-y: auto;
-}
-
-.announcement-wrapper,
-.chatmessage {
-  margin: 0;
-  padding: .15rem;
-}
-
-.chatmessage > span:not(:first-child) {
-  margin-left: .5rem;
-}
-
-.chatmessage > span:first-child {
-  color: var(--bg1);
-}
-
-.chatmessage > span:nth-child(2) {
-  font-weight: bold;
-}
-
-.chatmessage-other > span:nth-child(2) {
-  color: var(--colG3);
-}
-
-.chatmessage-self > span:nth-child(2) {
-  color: var(--cyan5);
-}
-
-.announcement {
-  /* font-style: italic; */
-}
-
-.announcement--timestamp {
-  color: var(--bg1);
-}
-
-.announcement--username {
-  font-weight: bold;
-}
-
-.announcement--keyword {
-  font-style: italic;
-  color: var(--oran5);
 }
 
 /*MISC

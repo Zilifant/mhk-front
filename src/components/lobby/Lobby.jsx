@@ -17,7 +17,7 @@ import Chat from './chat/Chat';
 // import Button from '../ui-elements/Button';
 
 const Lobby = () => {
-  console.log('%cLobby','color:#79f98e');
+  // console.log('%cLobby','color:#79f98e');
   const { myLobby, userId } = useContext(UserContext);
   const lobbyURL = useParams().lobbyURL;
   const [loadedLobby, setLoadedLobby] = useState();

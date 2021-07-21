@@ -8,7 +8,7 @@ const ChatMessage = ({ isMine, message }) => {
   const renderStyledText = (elements, parentCls='styled-text-wrapper') => (
     <div className={`${parentCls} ${style}`}>
       {elements.map(el => (
-        <span key={nanoid()} className={el.style}>{el.text}</span>
+        <span key={nanoid()} className={el.style}>{el.string}</span>
         ))}
     </div>
   );

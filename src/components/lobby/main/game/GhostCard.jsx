@@ -1,36 +1,45 @@
 import React, {
-  // useState
+  // useState,
+  useContext
 } from 'react';
-import { useItemSelector } from '../../../../hooks/select-hook';
+import { useMultiSelector } from '../../../../hooks/multiselector-hook';
+import { SocketContext } from '../../../../context/contexts';
 import Button from '../../../ui-elements/Button';
 
 const GhostCard = ({
   card, confirmedClues, isMine, currentStage
 }) => {
 
-  // console.log(card);
+  const { socket } = useContext(SocketContext);
+
+  const emitClueChoice = (payload, socket) => socket.current.emit('clueChosen', payload);
 
   const {
     selectItem,
     confirmSelection,
-    maxSelected,
-    selectedItems
-  } = useItemSelector(card.opts);
+    maxReached,
+    selTracker
+  } = useMultiSelector({items: card.opts});
 
   const checkHighlight = (clue) => {
     if (confirmedClues.includes(clue.id)) return 'highlighted';
   };
 
   const checkSelected = (index) => {
-    if (selectedItems[index].isSelected) return 'selected';
+    if (selTracker[index].isSelected) return 'selected';
   };
 
   const checkEnabled = (index) => {
     if (!isMine) return false;
     if (currentStage === 'Setup') return false;
     if (card.isLocked) return false;
-    if (maxSelected && !selectedItems[index].isSelected) return false;
+    if (maxReached && !selTracker[index].isSelected) return false;
     return true;
+  };
+
+  const selectItemHandler = (item) => {
+    const obj = {item: item, cb:[null, null]};
+    return selectItem(obj)
   };
 
   if (!card.isDisplayed) return null;
@@ -47,7 +56,7 @@ const GhostCard = ({
             <button
               className={`gc-clue-btn ${checkHighlight(opt)} ${checkSelected(index)}`}
               disabled={!checkEnabled(index)}
-              onClick={() => selectItem(opt.id)}
+              onClick={() => selectItemHandler(opt.id)}
             >
               {opt.id}
             </button>
@@ -56,8 +65,8 @@ const GhostCard = ({
       </ul>
       {isMine && !card.isLocked && <Button
         className='confirm-clue'
-        onClick={() => confirmSelection(selectedItems)}
-        disabled={!maxSelected}
+        onClick={() => confirmSelection({ cb:[emitClueChoice, socket], resetTracker: true })}
+        disabled={!maxReached}
       >
         Confirm
       </Button>}

@@ -71,13 +71,15 @@ export const useCardSelector = (hand) => {
   };
 };
 
-export const useItemSelector = (items, max = 1) => {
-  // console.log('Hook: useItemSelector');
+export const useItemSelector = ({items, max = 1, instaConfirm}) => {
 
   const { socket } = useContext(SocketContext);
 
   const [maxSelected, setMaxSelected] = useState(false);
   const [selectedItems, setSelectedItems] = useState(initSelection(items))
+
+  // if (instaConfirm && max >= 2) return console.error('useItemSelector Error: `instaConfirm` cannot be <true> if `max` is greater than <1>!')
+  console.log(selectedItems)
 
   const selectItem = (id) => {
     const updSel = selectedItems.map(item => {
@@ -93,6 +95,8 @@ export const useItemSelector = (items, max = 1) => {
 
     setSelectedItems(updSel);
     setMaxSelected(maxSel);
+
+    if (instaConfirm) confirmSelection2(selectedItems);
   };
 
   const confirmSelection = (selItems) => {
@@ -102,6 +106,11 @@ export const useItemSelector = (items, max = 1) => {
     setSelectedItems(initSelection(items));
     setMaxSelected(false);
   };
+
+  const confirmSelection2 = (selItems) => {
+    const selection = reduceSelection(selItems);
+    socket.current.emit('ghostAssigned', selection);
+  }
 
   return {
     selectItem,

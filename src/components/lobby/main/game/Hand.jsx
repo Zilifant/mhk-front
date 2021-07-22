@@ -2,7 +2,6 @@ import React, {
   // useState
 } from 'react';
 import Card from './Card';
-
 import '../../../../styles/cards.css';
 
 const Hand = ({

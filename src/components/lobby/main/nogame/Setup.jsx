@@ -5,7 +5,6 @@ import Container from '../../../shared/Container';
 import Button from '../../../ui-elements/Button';
 
 const Setup = ({ className, readyHandler }) => {
-  // console.log('Setup');
 
   return (
     <Container className={className + 'controls'} parentGrid='main'>

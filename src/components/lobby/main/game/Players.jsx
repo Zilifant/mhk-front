@@ -8,7 +8,7 @@ import Container from '../../../shared/Container';
 import Player from './Player';
 
 const Players = ({
-  stage, players, viewAsGhost, keyEv, canAccuse
+  stage, players, viewAsGhost, keyEv, canAccuse, myRole
 }) => {
   // console.log('Players');
 
@@ -22,6 +22,7 @@ const Players = ({
           if (player.id === userId) return null;
           return (
           <Player
+            myRole={myRole}
             stage={stage}
             key={player.id}
             playerId={player.id}

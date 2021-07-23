@@ -9,7 +9,6 @@ import Hand from './Hand';
 const HunterUI = ({
   thisPlayer: { hand, role, userName, accusalSpent }
 }) => {
-  // console.log('HunterUI');
 
   return (
     <Container className='self self-hunter' parentGrid='main'>
@@ -17,7 +16,11 @@ const HunterUI = ({
         <li>{userName} ({role[0]})</li>
         <li className={accusalSpent ? 'acc-spent' : 'acc-avail'}>[BADGE]</li>
       </ul>
-      <Hand cards={hand} myRole={role} isMine={true} />
+      <Hand
+        myRole={role}
+        type={`hunterUI`}
+        cards={hand}
+      />
     </Container>
   );
 };

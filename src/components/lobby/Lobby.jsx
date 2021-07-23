@@ -30,7 +30,7 @@ const Lobby = () => {
     gameOn, setGameOn,
     subToGame,
     gameResult,
-    leader,
+    leaderId, setLeaderId,
     onlineUsers,
     canStart
   } = useGame(socket);
@@ -47,6 +47,7 @@ const Lobby = () => {
           `${process.env.REACT_APP_BACKEND_URL}/lobby/${lobbyURL}`
         );
         setLoadedLobby(resData.lobby);
+        setLeaderId(resData.lobby.leader)
         // load game info in case a user joins a lobby with a game in progress
         // TO DO: add functionality for case where user is not part of the current game
         if (resData.lobby.gameOn === true) {
@@ -56,7 +57,9 @@ const Lobby = () => {
       } catch (err) { console.log(err); }
     };
     fetchLobby();
-  }, [sendRequest, lobbyURL, setGame, setGameOn]);
+  }, [sendRequest, lobbyURL, setGame, setGameOn, setLeaderId]);
+
+  console.log(leaderId);
 
   return (
     <SocketContext.Provider value={{ socket }}>
@@ -67,12 +70,13 @@ const Lobby = () => {
           <Grid className='lobby'>
             <Main
               gameOn={gameOn}
-              leader={leader}
+              leaderId={leaderId}
               oUsers={onlineUsers}
               canStart={canStart}
               game={game}
               gameResult={gameResult}
               thisPlayer={getThisPlayer(userId, game)}
+              iAmLeader={leaderId === userId}
             />
             <Chat chat={loadedLobby.chat} />
           </Grid>

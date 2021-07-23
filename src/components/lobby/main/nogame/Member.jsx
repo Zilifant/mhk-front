@@ -4,7 +4,7 @@ import Button from '../../../ui-elements/Button';
 // Note: ready/leader indicators R and L created by CSS
 
 const Member = ({
-  sessUserId, memberId, isLeader, isReady, selectItemHandler, isSelected, enabled
+  sessUserId, memberId, isLeader, isReady, socket, selectItemCallback, selectItemHandler, isSelected, isEnabled, iAmLeader, isAssignedGhost
 }) => {
 
   const selfOther = (sessUserId === memberId) ? 'self' : 'other';
@@ -13,22 +13,22 @@ const Member = ({
   // let onOffline = (onlineMembers.some(oM => oM.userId === member)) ? 'online' : 'offline';
 
   return (
-    <>
-      <Button
+    <div className='m-wrapper'>
+      {iAmLeader && <Button
         key={`btn-${memberId}`}
         className={`btn assign-ghost-btn ${selected}`}
-        disabled={!enabled}
-        onClick={() => selectItemHandler(memberId)}
+        disabled={!isEnabled}
+        onClick={() => selectItemHandler(memberId, [null, null], false, [selectItemCallback, socket], false)}
       >
         GHOST
-      </Button>
+      </Button>}
       <li
         className={`m-${selfOther} m-${readyOrNot} ${isLeader && 'm-leader'}`}
         key={memberId}
       >
-        {memberId}
+        {memberId} {isAssignedGhost && <span className='assigned-ghost'>GHOST</span>}
       </li>
-    </>
+    </div>
   );
 };
 

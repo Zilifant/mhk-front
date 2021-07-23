@@ -12,13 +12,13 @@ const GhostCard = ({
 
   const { socket } = useContext(SocketContext);
 
-  const emitClueChoice = (payload, socket) => socket.current.emit('clueChosen', payload);
+  const emitClueChoice = (clue, socket) => socket.current.emit('clueChosen', clue);
 
   const {
-    selectItem,
+    selectItemHandler,
     confirmSelection,
-    maxReached,
-    selTracker
+    amISelected, amIEnabled,
+    maxReached
   } = useMultiSelector({items: card.opts});
 
   const checkHighlight = (clue) => {
@@ -26,21 +26,20 @@ const GhostCard = ({
   };
 
   const checkSelected = (index) => {
-    if (selTracker[index].isSelected) return 'selected';
+    if (amISelected(index)) return 'selected';
   };
 
   const checkEnabled = (index) => {
     if (!isMine) return false;
     if (currentStage === 'Setup') return false;
     if (card.isLocked) return false;
-    if (maxReached && !selTracker[index].isSelected) return false;
-    return true;
+    return amIEnabled(index);
   };
 
-  const selectItemHandler = (item) => {
-    const obj = {item: item, cb:[null, null]};
-    return selectItem(obj)
-  };
+  // const selectItemHandler = (item) => {
+  //   const obj = {item: item, cb:[null, null]};
+  //   return selectItem(obj)
+  // };
 
   if (!card.isDisplayed) return null;
 

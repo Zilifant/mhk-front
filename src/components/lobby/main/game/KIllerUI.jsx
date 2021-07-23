@@ -1,10 +1,11 @@
 import React, {
   // useState,
   // useCallback,
-  // useContext,
+  useContext,
   // useEffect
 } from 'react';
-import { useCardSelector } from '../../../../hooks/select-hook';
+import { useMultiSelector } from '../../../../hooks/multiselector-hook';
+import { SocketContext } from '../../../../context/contexts';
 import Container from '../../../shared/Container';
 import Button from '../../../ui-elements/Button';
 import Hand from './Hand';
@@ -12,14 +13,18 @@ import Hand from './Hand';
 const KillerUI = ({
   thisPlayer: { hand, role, userName, accusalSpent }, stage, keyEv
 }) => {
-  // console.log('KillerUI');
+
+  const { socket } = useContext(SocketContext);
+
+  const emitKeyEvChoice = (keyEv, socket) => socket.current.emit('keyEvidenceChosen', keyEv);
 
   const {
-    selectCard,
-    confirmKeyEvSelection,
-    twoSelected,
-    selectedCards
-  } = useCardSelector(hand);
+    selectItemHandler,
+    confirmSelection,
+    amISelected, amIEnabled,
+    minReached, maxReached,
+    selTracker
+  } = useMultiSelector({items: hand, min: 2, max: 2});
 
   return (
     <Container className='self self-killer' parentGrid='main'>
@@ -28,20 +33,23 @@ const KillerUI = ({
         <li className={accusalSpent ? 'acc-spent' : 'acc-avail'}>[BADGE]</li>
         {(stage === 'Setup') && <Button
           className='confirm-key-evidence'
-          onClick={() => confirmKeyEvSelection(selectedCards)}
-          disabled={!twoSelected}
+          onClick={() => confirmSelection({ cb:[emitKeyEvChoice, socket], resetTracker: true })}
+          disabled={!minReached}
         >
           Confirm
         </Button>}
       </div>
       <Hand
+        myRole={role}
+        type={`killerUI`}
         stage={stage}
         cards={hand}
-        selectedCards={selectedCards}
-        selectCardHandler={selectCard}
-        myRole={role}
+        selectedCards={selTracker}
+        amISelected={amISelected}
+        amIEnabled={amIEnabled}
+        selectCardHandler={selectItemHandler}
         isMine={true}
-        twoSelected={twoSelected}
+        maxReached={maxReached}
         keyEv={keyEv}
       />
     </Container>
@@ -49,11 +57,3 @@ const KillerUI = ({
 };
 
 export default KillerUI;
-
-  // useEffect(() => {
-  //   console.log('keyEvSub');
-  //   socket.current.on('keyEvidenceChosen', () => {
-  //     console.log('clearSelected');
-  //     setSelectedCards(initSelection(hand))
-  //   });
-  // }, [socket, initSelection, hand]);

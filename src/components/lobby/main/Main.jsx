@@ -16,9 +16,8 @@ import HunterUI from './game/HunterUI';
 import KillerUI from './game/KIllerUI';
 
 const Main = ({
-  oUsers, canStart, gameOn, game, thisPlayer, gameResult
+  oUsers, canStart, gameOn, game, thisPlayer, gameResult, leaderId, iAmLeader
 }) => {
-  // console.log('Main');
 
   const { userId } = useContext(UserContext);
   const { socket } = useContext(SocketContext);
@@ -41,6 +40,8 @@ const Main = ({
     socket.current.emit('readyUnready', { userId });
   };
 
+  console.log(iAmLeader);
+
   return (
     <Container className='lobbymain' parentGrid='lobby'>
       <Grid className={gameOn ? 'main-game' : 'main-nogame'}>
@@ -52,6 +53,7 @@ const Main = ({
           gameOn={gameOn}
           roundNum={game && game.roundNum}
           stage={game && game.currentStage}
+          leaderId={leaderId}
           prevGameResult={gameResult}
         />
         {!gameOn &&
@@ -59,8 +61,12 @@ const Main = ({
             <Setup
               className='lobby'
               readyHandler={readyHandler}
+              iAmLeader={iAmLeader}
             />
-            <MemberList onlineUsers={oUsers} />
+            <MemberList
+              onlineUsers={oUsers}
+              iAmLeader={iAmLeader}
+            />
           </React.Fragment>
         }
         {gameOn && game && thisPlayer &&
@@ -76,7 +82,7 @@ const Main = ({
             <Players
               stage={game.currentStage}
               players={game.players}
-              viewAsGhost={thisPlayer.role === 'Ghost'}
+              myRole={thisPlayer.role}
               keyEv={game.keyEvidence}
               canAccuse={!thisPlayer.accusalSpent}
             />

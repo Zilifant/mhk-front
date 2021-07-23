@@ -372,8 +372,8 @@ button:focus { outline: none; }
   grid-template-rows: max-content repeat(2, 1fr);
   grid-template-areas:
     "info info info info"
-    "lmemb lmemb lctrl lctrl"
-    "lmemb lmemb lctrl lctrl";
+    "lmemb lmemb lmemb lctrl"
+    "lmemb lmemb lmemb lctrl";
 }
 
 .con--players { grid-area: play; }
@@ -638,13 +638,13 @@ li {
   list-style: none;
 }
 
-ul.member-list,
+ul.member-list > div > *,
 ul.online-list {
   display: inline-block;
 }
 
 ul.player-list > :not(:first-child),
-ul.member-list > :not(:first-child) {
+ul.member-list > div > :not(:first-child) {
   margin-top: .25rem;
 }
 
@@ -657,7 +657,7 @@ li.acc-spent {
 }
 
 ul.online-list > li,
-ul.member-list > li {
+ul.member-list > div > li {
   border-radius: var(--rad);
 }
 
@@ -688,6 +688,14 @@ li.m-notready::before {
   color: var(--colG5);
   font-weight: bold;
   margin-right: .5rem;
+}
+
+.assigned-ghost {
+  color: var(--pink5);
+}
+
+.ghost-confirm-btn {
+  margin-left: 2rem;
 }
 
 /*MISC

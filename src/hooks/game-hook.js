@@ -11,13 +11,19 @@ export const useGame = (socket) => {
   const [gameOn, setGameOn] = useState(false);
   const [gameResult, setGameResult] = useState();
   const [onlineUsers, setOnlineUsers] = useState([]);
-  const [leader, setLeader] = useState();
+  const [leaderId, setLeaderId] = useState();
   const [canStart, setCanStart] = useState(false);
 
   const subToUserConnected = () => {
     socket.current.on('userConnected', ({ resData: {usersOnline} }) => {
       setOnlineUsers(usersOnline);
       setCanStart(false);
+    });
+  };
+
+  const subToGhostAssigned = () => {
+    socket.current.on('ghostAssigned', ({ resData: {usersOnline} }) => {
+      setOnlineUsers(usersOnline);
     });
   };
 
@@ -31,7 +37,7 @@ export const useGame = (socket) => {
   const subToUserDisco = () => {
     socket.current.on('userDisco', ({ resData: {usersOnline, newLeaderId} }) => {
       setOnlineUsers(usersOnline);
-      if (newLeaderId) setLeader(newLeaderId);
+      if (newLeaderId) setLeaderId(newLeaderId);
     });
   };
 
@@ -102,6 +108,7 @@ export const useGame = (socket) => {
 
   const subToGame = () => {
     subToUserConnected();
+    subToGhostAssigned();
     subToReadyUnready();
     subToUserDisco();
     subToStartGame();
@@ -117,7 +124,8 @@ export const useGame = (socket) => {
     gameOn, setGameOn,
     gameResult,
     subToGame,
-    leader, onlineUsers, canStart
+    leaderId, setLeaderId,
+    onlineUsers, canStart
   };
 };
 

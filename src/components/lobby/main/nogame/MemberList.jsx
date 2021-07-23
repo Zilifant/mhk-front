@@ -1,37 +1,33 @@
 import React, {
-  // useEffect,
+  useEffect,
   // useState,
   useContext
 } from 'react';
-import { UserContext } from '../../../../context/contexts';
+import { UserContext, SocketContext } from '../../../../context/contexts';
 import { useMultiSelector } from '../../../../hooks/multiselector-hook';
 import Container from '../../../shared/Container';
+import Button from '../../../ui-elements/Button';
 import Member from './Member';
 
-const MemberList = ({ onlineUsers }) => {
+const MemberList = ({ onlineUsers, iAmLeader }) => {
 
   const { userId } = useContext(UserContext);
+  const { socket } = useContext(SocketContext);
+
+  const emitGhostAssignment = (userId, socket) => socket.current.emit('ghostAssigned', userId);
 
   const {
-    selectItem,
-    maxReached,
-    selTracker
+    selectItemHandler,
+    amISelected, amIEnabled,
+    updateTracker,
+    selTracker,
+    confirmSelection
   } = useMultiSelector({items: onlineUsers});
 
-  const checkEnabled = (index) => {
-    if (maxReached && !selTracker[index].isSelected) return false;
-    return true;
-  };
-
-  const checkSelected = (index) => {
-    if (!selTracker[index]) return null;
-    return selTracker[index].isSelected
-  };
-
-  const selectItemHandler = (item) => {
-    const obj = {item: item, cb:[null, null]};
-    return selectItem(obj)
-  };
+  useEffect(() => {
+    console.log('%cuseEffect','color:#79f9ae');
+    updateTracker(onlineUsers);
+  }, [onlineUsers]);
 
   return (
     <Container className="lobbymembers" parentGrid='main'>
@@ -43,12 +39,22 @@ const MemberList = ({ onlineUsers }) => {
             sessUserId={userId}
             isLeader={member.isLeader}
             isReady={member.isReady}
+            isAssignedGhost={member.isAssignedToGhost}
+            selectItemCallback={emitGhostAssignment}
+            socket={socket}
             selectItemHandler={selectItemHandler}
-            enabled={checkEnabled(index)}
-            isSelected={checkSelected(index)}
+            isSelected={amISelected(member.id)}
+            isEnabled={amIEnabled(member.id)}
+            iAmLeader={iAmLeader}
           />
         ))}
       </ul>}
+      {iAmLeader && selTracker && <Button
+      className='ghost-confirm-btn'
+        onClick={() => confirmSelection({ cb:[emitGhostAssignment, socket], resetTracker: false })}
+      >
+        Confirm
+      </Button>}
     </Container>
   );
 };

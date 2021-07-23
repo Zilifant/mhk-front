@@ -15,27 +15,23 @@ const initSelTracker = (items) => {
   const initState = items.map(item => {
     return {id: item.id, isSelected: false };
   });
-  console.log(`initSelTracker`)
-  console.log(initState)
   return initState
 };
 
 const extractId = (item) => {
   if (typeof(item) === 'string') return item;
   if ((typeof(item) === 'object') && !!item.id) return item.id;
-  console.error('extractId Error: returning null');
+  console.log('extractId Error: returning null');
   return null;
 };
 
 export const useMultiSelector = ({items, min=1, max=1}) => {
-  console.log('useMultiSelector');
 
   const [minReached, setMinReached] = useState(false);
   const [maxReached, setMaxReached] = useState(false);
   const [selTracker, setSelTracker] = useState(initSelTracker(items));
 
   const updateTracker = useCallback((newitems) => {
-    console.log(`updateTracker`)
     const updItems = initSelTracker(newitems);
     const updTracker = updItems.map(item => {
       const existingItem = selTracker.find(itm => itm.id === item.id);
@@ -97,10 +93,6 @@ export const useMultiSelector = ({items, min=1, max=1}) => {
 
   const confirmSelection = ({cb:[callback, ...args], resetTracker}) => {
     const ids = reduceToIds(selTracker);
-    console.log(`ids:`)
-    console.log(ids)
-    console.log(`args:`)
-    console.log(args)
 
     if (resetTracker) {
       setSelTracker(initSelTracker(items));

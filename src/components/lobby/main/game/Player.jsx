@@ -16,8 +16,6 @@ const Player = ({
   const { socket } = useContext(SocketContext);
 
   const emitAccusation = (accEv, [socket, playerId]) => {
-    console.log(socket);
-    console.log(playerId);
     const accusation = {
       accuserSID: socket.current.id,
       accusedId: playerId,

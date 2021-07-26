@@ -8,9 +8,8 @@ import Container from '../../../shared/Container';
 import Player from './Player';
 
 const Players = ({
-  stage, players, viewAsGhost, keyEv, canAccuse, myRole
+  stage, players, keyEv, canAccuse, myRole, ghostId
 }) => {
-  // console.log('Players');
 
   const { userId } = useContext(UserContext);
 
@@ -26,10 +25,9 @@ const Players = ({
             stage={stage}
             key={player.id}
             playerId={player.id}
-            role={player.role}
+            isGhost={player.id === ghostId}
             accusalSpent={player.accusalSpent}
             hand={player.hand}
-            viewAsGhost={viewAsGhost}
             keyEv={keyEv}
             canAccuse={canAccuse}
           />

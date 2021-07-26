@@ -19,6 +19,8 @@ const Main = ({
   oUsers, canStart, gameOn, game, thisPlayer, gameResult, leaderId, iAmLeader
 }) => {
 
+  console.log(thisPlayer);
+
   const { userId } = useContext(UserContext);
   const { socket } = useContext(SocketContext);
 
@@ -39,8 +41,6 @@ const Main = ({
   const readyHandler = () => {
     socket.current.emit('readyUnready', { userId });
   };
-
-  console.log(iAmLeader);
 
   return (
     <Container className='lobbymain' parentGrid='lobby'>
@@ -75,7 +75,7 @@ const Main = ({
             {thisPlayer.role !== 'Ghost' &&
             <Ghost
               ghost={game.ghost}
-              ghostCards={game.ghostCards}
+              ghostCards={game.cluesDeck}
               confirmedClues={game.confirmedClues}
             />}
 
@@ -83,6 +83,7 @@ const Main = ({
               stage={game.currentStage}
               players={game.players}
               myRole={thisPlayer.role}
+              ghostId={game.ghost.id}
               keyEv={game.keyEvidence}
               canAccuse={!thisPlayer.accusalSpent}
             />

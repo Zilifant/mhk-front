@@ -59,8 +59,6 @@ const Lobby = () => {
     fetchLobby();
   }, [sendRequest, lobbyURL, setGame, setGameOn, setLeaderId]);
 
-  console.log(leaderId);
-
   return (
     <SocketContext.Provider value={{ socket }}>
       <React.Fragment>

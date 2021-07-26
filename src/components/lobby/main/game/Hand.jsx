@@ -44,12 +44,12 @@ const Hand = ({
 
   const checkHighlight = (cardId) => {
     if (myRole === `Hunter`) return false;
-    return keyEv.includes(cardId);
+    if (keyEv) return keyEv.includes(cardId);
   };
 
   return (
     <ul className='hand'>
-    {cards.map((card, index) => (
+    {cards.map((card) => (
       <Card
         className='evidence'
         key={card.id}

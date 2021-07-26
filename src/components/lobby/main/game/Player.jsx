@@ -10,7 +10,7 @@ import Button from '../../../ui-elements/Button';
 import Hand from './Hand';
 
 const Player = ({
-  myRole, stage, hand, role, playerId, accusalSpent, keyEv, canAccuse
+  myRole, stage, hand, isGhost, playerId, accusalSpent, keyEv, canAccuse
 }) => {
 
   const { socket } = useContext(SocketContext);
@@ -32,12 +32,12 @@ const Player = ({
     selTracker
   } = useMultiSelector({items: hand, min: 2, max: 2});
 
-  if (role === 'Ghost') return null;
+  if (isGhost) return null;
 
   return (
     <Container className='player'>
       <div className='player-info'>
-        <li>{playerId.slice(0,-5)} ({role[0]})</li>
+        <li>{playerId.slice(0,-5)}</li>
         <li className={accusalSpent ? 'acc-spent' : 'acc-avail'}>[BADGE]</li>
         {(myRole !== `Ghost`) && (stage !== 'Setup') && canAccuse &&
         <Button

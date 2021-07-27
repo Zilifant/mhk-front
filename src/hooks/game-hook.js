@@ -13,6 +13,15 @@ export const useGame = (socket) => {
   const [onlineUsers, setOnlineUsers] = useState([]);
   const [leaderId, setLeaderId] = useState();
   const [canStart, setCanStart] = useState(false);
+  const [gameSettings, setGameSettings] = useState();
+
+  const subToGameSettings = () => {
+    socket.current.on(
+      'gameSettingsUpdate',
+      ({gameSettings}) => {
+        setGameSettings(gameSettings);
+    })
+  };
 
   const subToUserConnected = () => {
     socket.current.on('userConnected', ({ resData: {usersOnline} }) => {
@@ -107,6 +116,7 @@ export const useGame = (socket) => {
   };
 
   const subToGame = () => {
+    subToGameSettings();
     subToUserConnected();
     subToGhostAssigned();
     subToReadyUnready();
@@ -122,6 +132,7 @@ export const useGame = (socket) => {
   return {
     game, setGame,
     gameOn, setGameOn,
+    gameSettings, setGameSettings,
     gameResult,
     subToGame,
     leaderId, setLeaderId,

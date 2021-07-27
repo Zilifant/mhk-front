@@ -9,7 +9,7 @@ import Container from '../../shared/Container';
 import Button from '../../ui-elements/Button';
 
 const Info = ({
-  startGameHandler, nextRoundHandler, canStart, gameOn, clearGameHandler, stage, prevGameResult
+  startGameHandler, nextRoundHandler, canStart, gameOn, clearGameHandler, stage, prevGameResult, iAmLeader
 }) => {
 
   const { userName, myLobby } = useContext(UserContext);
@@ -20,7 +20,7 @@ const Info = ({
       <div>
         Name: {userName}, Lobby: {myLobby}{gameOn && `, Stage: ${stage}`}
       </div>
-      {!gameOn &&
+      {iAmLeader && !gameOn &&
         <Button onClick={startGameHandler} disabled={!canStart}>
           START
         </Button>

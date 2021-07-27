@@ -414,6 +414,18 @@ button:focus { outline: none; }
   overflow-x: scroll;
 }
 
+.advrole-on {
+  color: var(--emer5);
+}
+
+.advrole-off {
+  color: var(--colG5);
+}
+
+.con--lobbycontrols {
+  display: block;
+}
+
 .player-info {
   margin-right: .5rem;
   /* background-color: var(--bg5); */

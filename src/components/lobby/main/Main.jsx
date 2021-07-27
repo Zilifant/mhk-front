@@ -16,10 +16,16 @@ import HunterUI from './game/HunterUI';
 import KillerUI from './game/KIllerUI';
 
 const Main = ({
-  oUsers, canStart, gameOn, game, thisPlayer, gameResult, leaderId, iAmLeader
+  oUsers,
+  canStart,
+  gameOn,
+  game,
+  thisPlayer,
+  gameResult,
+  leaderId,
+  iAmLeader,
+  gameSettings
 }) => {
-
-  // console.log(thisPlayer);
 
   const { userId } = useContext(UserContext);
   const { socket } = useContext(SocketContext);
@@ -42,8 +48,6 @@ const Main = ({
     socket.current.emit('readyUnready', { userId });
   };
 
-  // console.log(game);
-
   return (
     <Container className='lobbymain' parentGrid='lobby'>
       <Grid className={gameOn ? 'main-game' : 'main-nogame'}>
@@ -56,6 +60,7 @@ const Main = ({
           roundNum={game && game.roundNum}
           stage={game && game.currentStage}
           leaderId={leaderId}
+          iAmLeader={iAmLeader}
           prevGameResult={gameResult}
         />
         {!gameOn &&
@@ -64,6 +69,7 @@ const Main = ({
               className='lobby'
               readyHandler={readyHandler}
               iAmLeader={iAmLeader}
+              gameSettings={gameSettings}
             />
             <MemberList
               onlineUsers={oUsers}

@@ -28,6 +28,7 @@ const Lobby = () => {
   const {
     game, setGame,
     gameOn, setGameOn,
+    gameSettings, setGameSettings,
     subToGame,
     gameResult,
     leaderId, setLeaderId,
@@ -52,7 +53,8 @@ const Lobby = () => {
           { 'Content-Type': 'application/json' },
         );
         setLoadedLobby(resData.lobby);
-        setLeaderId(resData.lobby.leader)
+        setLeaderId(resData.lobby.leader);
+        setGameSettings(resData.lobby.gameSettings);
         // load game info in case a user joins a lobby with a game in progress
         // TO DO: add functionality for case where user is not part of the current game
         if (resData.lobby.gameOn === true) {
@@ -62,20 +64,21 @@ const Lobby = () => {
       } catch (err) { console.log(err); }
     };
     fetchLobby();
-  }, [sendRequest, lobbyURL, userId, setGame, setGameOn, setLeaderId]);
+  }, [sendRequest, lobbyURL, userId, setGame, setGameOn, setLeaderId, setGameSettings]);
 
   return (
     <SocketContext.Provider value={{ socket }}>
       <React.Fragment>
         <ErrorModal error={error} onClear={clearError} />
         {isLoading && <Loading asOverlay color='orange' />}
-        {!isLoading && loadedLobby &&
+        {!isLoading && loadedLobby && gameSettings &&
           <Grid className='lobby'>
             <Main
               gameOn={gameOn}
               leaderId={leaderId}
               oUsers={onlineUsers}
               canStart={canStart}
+              gameSettings={gameSettings}
               game={game}
               gameResult={gameResult}
               thisPlayer={!!game && getThisPlayer(userId, game)}

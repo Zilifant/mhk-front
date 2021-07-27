@@ -44,7 +44,12 @@ const Lobby = () => {
     const fetchLobby = async () => {
       try {
         const resData = await sendRequest(
-          `${process.env.REACT_APP_BACKEND_URL}/lobby/${lobbyURL}`
+          `${process.env.REACT_APP_BACKEND_URL}/lobby/${lobbyURL}`,
+          'POST',
+          JSON.stringify({
+            userId: userId
+          }),
+          { 'Content-Type': 'application/json' },
         );
         setLoadedLobby(resData.lobby);
         setLeaderId(resData.lobby.leader)
@@ -57,7 +62,7 @@ const Lobby = () => {
       } catch (err) { console.log(err); }
     };
     fetchLobby();
-  }, [sendRequest, lobbyURL, setGame, setGameOn, setLeaderId]);
+  }, [sendRequest, lobbyURL, userId, setGame, setGameOn, setLeaderId]);
 
   return (
     <SocketContext.Provider value={{ socket }}>
@@ -73,7 +78,7 @@ const Lobby = () => {
               canStart={canStart}
               game={game}
               gameResult={gameResult}
-              thisPlayer={getThisPlayer(userId, game)}
+              thisPlayer={!!game && getThisPlayer(userId, game)}
               iAmLeader={leaderId === userId}
             />
             <Chat chat={loadedLobby.chat} />

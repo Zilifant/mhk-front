@@ -25,14 +25,14 @@ const MemberList = ({ onlineUsers, iAmLeader }) => {
   } = useMultiSelector({items: onlineUsers});
 
   useEffect(() => {
-    console.log('%cuseEffect','color:#79f9ae');
+    // console.log('%cuseEffect','color:#79f9ae');
     updateTracker(onlineUsers);
   }, [onlineUsers]);
 
   return (
     <Container className="lobbymembers" parentGrid='main'>
       {selTracker && <ul className="member-list">
-        {onlineUsers.map((member, index) => (
+        {onlineUsers.map((member) => (
           <Member
             key={member.id}
             memberId={member.id}

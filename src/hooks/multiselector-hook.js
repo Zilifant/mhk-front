@@ -12,6 +12,7 @@ const reduceToIds = (selTracker) => {
 };
 
 const initSelTracker = (items) => {
+  if (!items) return console.log(`initSelTracker Error: 'items' = ${items}`)
   const initState = items.map(item => {
     return {id: item.id, isSelected: false };
   });

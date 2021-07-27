@@ -5,8 +5,12 @@
 export function getThisPlayer(userId, game) {
   if (!game) return console.log('Err! No game found in getThisPlayer');
   const thisPlayer = game.players.find(player => player.id === userId);
-  if (game.killer.id === userId) thisPlayer.role = `Killer`;
-  if (game.ghost.id === userId) thisPlayer.role = `Ghost`;
-  if (!game.killer) thisPlayer.role = `Hunter`;
+  thisPlayer.role = thisPlayerRole(userId, game);
   return thisPlayer;
+};
+
+function thisPlayerRole(userId, game) {
+  if (game.killer && game.killer.id === userId) return `Killer`;
+  if (game.ghost.id === userId) return `Ghost`;
+  return `Hunter`;
 };

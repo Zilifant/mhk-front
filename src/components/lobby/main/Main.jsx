@@ -19,7 +19,7 @@ const Main = ({
   oUsers, canStart, gameOn, game, thisPlayer, gameResult, leaderId, iAmLeader
 }) => {
 
-  console.log(thisPlayer);
+  // console.log(thisPlayer);
 
   const { userId } = useContext(UserContext);
   const { socket } = useContext(SocketContext);
@@ -41,6 +41,8 @@ const Main = ({
   const readyHandler = () => {
     socket.current.emit('readyUnready', { userId });
   };
+
+  // console.log(game);
 
   return (
     <Container className='lobbymain' parentGrid='lobby'>

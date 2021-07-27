@@ -359,7 +359,7 @@ button:focus { outline: none; }
   height: 100%;
   padding: var(--mar);
   gap: var(--mar);
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 3fr 1fr;
   grid-template-areas:
     "lmain lchat";
 }

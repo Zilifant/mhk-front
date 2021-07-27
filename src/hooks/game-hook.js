@@ -43,7 +43,6 @@ export const useGame = (socket) => {
 
   const subToStartGame = () => {
     socket.current.on('startGame', ({ game }) => {
-      console.log(game)
       setGame(game);
       setGameOn(true);
     });

@@ -10,7 +10,15 @@ import Button from '../../../ui-elements/Button';
 import Hand from './Hand';
 
 const Player = ({
-  myRole, stage, hand, isGhost, playerId, accusalSpent, keyEv, canAccuse
+  myRole,
+  stage,
+  hand,
+  isGhost,
+  isRedTeam,
+  playerId,
+  accusalSpent,
+  keyEv,
+  canAccuse
 }) => {
 
   const { socket } = useContext(SocketContext);
@@ -21,7 +29,7 @@ const Player = ({
       accusedId: playerId,
       accusalEv: accEv
     };
-    socket.current.emit('accusation', accusation)
+    socket.current.emit('accusation', accusation);
   };
 
   const {
@@ -39,7 +47,8 @@ const Player = ({
       <div className='player-info'>
         <li>{playerId.slice(0,-5)}</li>
         <li className={accusalSpent ? 'acc-spent' : 'acc-avail'}>[BADGE]</li>
-        {(myRole !== `Ghost`) && (stage !== 'Setup') && canAccuse &&
+        {(myRole === 'witness') && isRedTeam && <li className='red'>!!!</li>}
+        {(myRole !== 'ghost') && (stage !== 'Setup') && canAccuse &&
         <Button
           className='confirm-accusation'
           onClick={() => confirmSelection({

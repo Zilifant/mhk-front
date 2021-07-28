@@ -80,7 +80,7 @@ const Main = ({
         {gameOn && game && thisPlayer &&
           <React.Fragment>
 
-            {thisPlayer.role !== 'Ghost' &&
+            {thisPlayer.role !== 'ghost' &&
             <Ghost
               ghost={game.ghost}
               ghostCards={game.cluesDeck}
@@ -92,23 +92,26 @@ const Main = ({
               players={game.players}
               myRole={thisPlayer.role}
               ghostId={game.ghost.id}
+              redTeam={game.redTeam}
               keyEv={game.keyEvidence}
               canAccuse={!thisPlayer.accusalSpent}
             />
 
-            {thisPlayer.role === 'Ghost' &&
+            {thisPlayer.role === 'ghost' &&
             <GhostUI
               game={game}
               thisPlayer={thisPlayer}
             />}
 
-            {thisPlayer.role === 'Hunter' &&
+            {(thisPlayer.role === 'hunter'||
+              thisPlayer.role === 'witness' ||
+              thisPlayer.role === 'accomplice') &&
             <HunterUI
               thisPlayer={thisPlayer}
               stage={game.currentStage}
             />}
 
-            {thisPlayer.role === 'Killer' &&
+            {thisPlayer.role === 'killer' &&
             <KillerUI
               thisPlayer={thisPlayer}
               stage={game.currentStage}

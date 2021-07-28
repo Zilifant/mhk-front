@@ -10,7 +10,10 @@ export function getThisPlayer(userId, game) {
 };
 
 function thisPlayerRole(userId, game) {
-  if (game.killer && game.killer.id === userId) return `Killer`;
-  if (game.ghost.id === userId) return `Ghost`;
-  return `Hunter`;
+  if (game.viewingAs) return game.viewingAs;
+  if (game.killer && game.killer.id === userId) return 'killer';
+  if (game.witness && game.witness.id === userId) return 'witness';
+  if (game.accomplice && game.accomplice.id === userId) return 'accomplice';
+  if (game.ghost.id === userId) return 'ghost';
+  return 'hunter';
 };

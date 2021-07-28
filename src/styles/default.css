@@ -422,6 +422,15 @@ button:focus { outline: none; }
   color: var(--colG5);
 }
 
+.red {
+  color: var(--rose5);
+  font-weight: bold;
+  padding: .15rem;
+  background-color: var(--bg5);
+  max-width: max-content;
+  border-radius: var(--rad);
+}
+
 .con--lobbycontrols {
   display: block;
 }

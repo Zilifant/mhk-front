@@ -2,8 +2,7 @@ import React from 'react';
 import Container from '../../../shared/Container';
 import GhostCard from './GhostCard';
 
-const Ghost = ({ ghost, ghostCards, confirmedClues }) => {
-  // console.log('Ghost');
+const Ghost = ({ ghostCards, confirmedClues }) => {
   return (
     <Container className='ghost' parentGrid='main'>
       <ul className='hand'>

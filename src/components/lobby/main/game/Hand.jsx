@@ -8,7 +8,9 @@ const Hand = ({
   myRole, type, stage, cards, keyEv, canAccuse, selectCardHandler, amISelected, amIEnabled
 }) => {
 
-  if ((myRole === 'Hunter') && (type === `hunterUI`)) {
+  if ((myRole === 'hunter' ||
+       myRole === 'witness' ||
+       myRole === 'accomplice') && (type === `hunterUI`)) {
     return (
       <ul className='hand'>
       {cards.map((card) => (
@@ -34,7 +36,7 @@ const Hand = ({
         if (stage !== `Setup`) return false;
         return amIEnabled(i);
       case `otherPlayer`:
-        if (myRole === `Ghost`) return false;
+        if (myRole === 'ghost') return false;
         if (stage === `Setup` || !canAccuse) return false;
         return amIEnabled(i);
       default:
@@ -43,7 +45,7 @@ const Hand = ({
   };
 
   const checkHighlight = (cardId) => {
-    if (myRole === `Hunter`) return false;
+    if (myRole === 'hunter') return false;
     if (keyEv) return keyEv.includes(cardId);
   };
 
@@ -67,15 +69,15 @@ const Hand = ({
 export default Hand;
 
   // const enabled = () => {
-  //   if (stage === 'Setup' && myRole === 'Killer' && isMine) return true;
+  //   if (stage === 'Setup' && myRole === 'killer' && isMine) return true;
   //   if (stage !== 'Setup' && !viewAsGhost && !isMine && canAccuse) return true;
   //   return false;
   // };
 
   // const checkEnabled = () => {
-  //   if (myRole === 'Ghost') return false;
-  //   if (myRole === 'Killer') return disabledForKiller;
-  //   if (myRole === 'Hunter') return disabledForHunter;
+  //   if (myRole === 'ghost') return false;
+  //   if (myRole === 'killer') return disabledForKiller;
+  //   if (myRole === 'hunter') return disabledForHunter;
   // };
 
   // // const disabledForHunter = 
@@ -96,7 +98,7 @@ export default Hand;
   //   };
   // };
 
-  // if (!isMine || (isMine && myRole !== 'Killer')) {
+  // if (!isMine || (isMine && myRole !== 'killer')) {
   //   return (
   //     <ul className='hand'>
   //       {cards.map(card => (
@@ -113,7 +115,7 @@ export default Hand;
   //   );
   // };
 
-  // if (isMine && myRole === 'Killer' && selectedCards) {
+  // if (isMine && myRole === 'killer' && selectedCards) {
   //   return (
   //     <React.Fragment>
   //       <Button

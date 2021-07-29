@@ -13,12 +13,13 @@ const Hand = ({
   canAccuse,
   selectCardHandler,
   amISelected,
-  amIEnabled
+  amIEnabled,
+  isRoundStage
 }) => {
 
-  if ((myRole === 'hunter' ||
-       myRole === 'witness' ||
-       myRole === 'accomplice') && (type === `hunterUI`)) {
+  const rolesWithSimpleHand = ['hunter', 'witness', 'accomplice'];
+
+  if (!isRoundStage || (rolesWithSimpleHand.includes(myRole) && type === 'hunterUI')) {
     return (
       <ul className='hand'>
       {cards.map((card) => (

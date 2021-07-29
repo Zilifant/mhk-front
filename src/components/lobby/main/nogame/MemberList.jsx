@@ -1,12 +1,10 @@
 import React, {
-  useEffect,
+  // useEffect,
   // useState,
   useContext
 } from 'react';
 import { UserContext, SocketContext } from '../../../../context/contexts';
-import { useMultiSelector } from '../../../../hooks/multiselector-hook';
 import Container from '../../../shared/Container';
-import Button from '../../../ui-elements/Button';
 import Member from './Member';
 
 const MemberList = ({ onlineUsers, iAmLeader }) => {
@@ -16,22 +14,9 @@ const MemberList = ({ onlineUsers, iAmLeader }) => {
 
   const emitGhostAssignment = (userId, socket) => socket.current.emit('ghostAssigned', userId);
 
-  const {
-    selectItemHandler,
-    amISelected, amIEnabled,
-    updateTracker,
-    selTracker,
-    confirmSelection
-  } = useMultiSelector({items: onlineUsers});
-
-  useEffect(() => {
-    // console.log('%cuseEffect','color:#79f9ae');
-    updateTracker(onlineUsers);
-  }, [onlineUsers]);
-
   return (
     <Container className="lobbymembers" parentGrid='main'>
-      {selTracker && <ul className="member-list">
+      {<ul className="member-list">
         {onlineUsers.map((member) => (
           <Member
             key={member.id}
@@ -39,22 +24,13 @@ const MemberList = ({ onlineUsers, iAmLeader }) => {
             sessUserId={userId}
             isLeader={member.isLeader}
             isReady={member.isReady}
-            isAssignedGhost={member.isAssignedToGhost}
-            selectItemCallback={emitGhostAssignment}
+            isAssignedToGhost={member.isAssignedToGhost}
             socket={socket}
-            selectItemHandler={selectItemHandler}
-            isSelected={amISelected(member.id)}
-            isEnabled={amIEnabled(member.id)}
+            selectItemHandler={emitGhostAssignment}
             iAmLeader={iAmLeader}
           />
         ))}
       </ul>}
-      {iAmLeader && selTracker && <Button
-      className='ghost-confirm-btn'
-        onClick={() => confirmSelection({ cb:[emitGhostAssignment, socket], resetTracker: false })}
-      >
-        Confirm
-      </Button>}
     </Container>
   );
 };

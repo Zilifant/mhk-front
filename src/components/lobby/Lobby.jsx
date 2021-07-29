@@ -55,18 +55,14 @@ const Lobby = () => {
         setLoadedLobby(resData.lobby);
         setLeaderId(resData.lobby.leader);
         setGameSettings(resData.lobby.gameSettings);
+        setGameOn(resData.lobby.gameOn);
+        setGame(resData.lobby.game);
         // load game info in case a user joins a lobby with a game in progress
         // TO DO: add functionality for case where user is not part of the current game
-        if (resData.lobby.gameOn === true) {
-          setGameOn(resData.lobby.gameOn);
-          setGame(resData.lobby.game);
-        };
       } catch (err) { console.log(err); }
     };
     fetchLobby();
   }, [sendRequest, lobbyURL, userId, setGame, setGameOn, setLeaderId, setGameSettings]);
-
-  if (game) console.log(game);
 
   return (
     <SocketContext.Provider value={{ socket }}>
@@ -83,7 +79,7 @@ const Lobby = () => {
               gameSettings={gameSettings}
               game={game}
               gameResult={gameResult}
-              thisPlayer={!!game && getThisPlayer(userId, game)}
+              thisPlayer={getThisPlayer(userId, game)}
               iAmLeader={leaderId === userId}
             />
             <Chat chat={loadedLobby.chat} />

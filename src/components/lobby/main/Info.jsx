@@ -6,6 +6,7 @@ import React, {
 import { UserContext } from '../../../context/contexts';
 import Container from '../../shared/Container';
 import Button from '../../ui-elements/Button';
+import { useHttpClient } from '../../../hooks/http-hook';
 
 const Info = ({
   startGameHandler,
@@ -17,10 +18,25 @@ const Info = ({
   iAmLeader
 }) => {
 
+  const { sendRequest } = useHttpClient();
+
+  const getDataHandler = async event => {
+    event.preventDefault();
+    try {
+      const responseData = await sendRequest(
+        `${process.env.REACT_APP_BACKEND_URL}/admin/data`
+      );
+      console.log(responseData);
+    } catch (err) { console.log(`GetDataHandler Error: ${err}`); };
+  };
+
   const { userName, myLobby } = useContext(UserContext);
 
   return (
     <Container className="info" parentGrid='main'>
+      <Button onClick={getDataHandler}>
+        DATA
+      </Button>
       <div>
         Name: {userName}, Lobby: {myLobby}{gameOn && `, Stage: ${stage}`}
       </div>

@@ -77,6 +77,7 @@ export const useGame = (socket) => {
 
   const subToGameResolution = () => {
     socket.current.on('resolveGame', ({ game }) => {
+      // console.log('resolveGame')
       setGame(game);
       setGameResult(game.result);
       // switch (game.result.type) {
@@ -90,12 +91,16 @@ export const useGame = (socket) => {
     });
   };
 
-  const subToClearGame = () => socket.current.on('clearGame', clearGame());
-
-  function clearGame() {
+  const subToClearGame = () => {
+    socket.current.on('clearGame', () => {
     setGame(null);
     setGameOn(false);
+    });
   };
+
+  // function clearGame() {
+  //   console.log('clearGame')
+  // };
 
   const subToGame = () => {
     subToGameSettings();

@@ -11,9 +11,6 @@ const Players = ({
   stage, players, keyEv, canAccuse, myRole, ghostId, redTeam
 }) => {
 
-  console.log(myRole);
-  console.log(redTeam);
-
   const { userId } = useContext(UserContext);
   // const { socket } = useContext(SocketContext);
 

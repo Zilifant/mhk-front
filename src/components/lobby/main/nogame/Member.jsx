@@ -4,29 +4,37 @@ import Button from '../../../ui-elements/Button';
 // Note: ready/leader indicators R and L created by CSS
 
 const Member = ({
-  sessUserId, memberId, isLeader, isReady, socket, selectItemCallback, selectItemHandler, isSelected, isEnabled, iAmLeader, isAssignedGhost
+  sessUserId,
+  memberId,
+  isLeader,
+  isReady,
+  socket,
+  selectItemHandler,
+  iAmLeader,
+  isAssignedToGhost
 }) => {
 
-  const selfOther = (sessUserId === memberId) ? 'self' : 'other';
-  const readyOrNot = (isReady) ? 'ready' : 'notready';
-  const selected = isSelected ? 'selected' : 'default';
   // let onOffline = (onlineMembers.some(oM => oM.userId === member)) ? 'online' : 'offline';
+  const self = (sessUserId === memberId) ? 'self' : 'other';
+  const ready = (isReady) ? 'ready' : 'notready';
+  const leader = isLeader ? 'leader' : 'notleader';
+  const ghost = isAssignedToGhost ? 'assigned-ghost' : 'notghost';
 
   return (
     <div className='m-wrapper'>
       {iAmLeader && <Button
         key={`btn-${memberId}`}
-        className={`btn assign-ghost-btn ${selected}`}
-        disabled={!isEnabled}
-        onClick={() => selectItemHandler(memberId, [null, null], false, [selectItemCallback, socket], false)}
+        className={`btn assign-ghost ${ghost}`}
+        disabled={false}
+        onClick={() => selectItemHandler(memberId, socket)}
       >
         GHOST
       </Button>}
       <li
-        className={`m-${selfOther} m-${readyOrNot} ${isLeader && 'm-leader'}`}
+        className={`m-${self} m-${ready} m-${leader} m-${ghost}`}
         key={memberId}
       >
-        {memberId} {isAssignedGhost && <span className='assigned-ghost'>GHOST</span>}
+        {memberId}
       </li>
     </div>
   );

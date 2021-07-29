@@ -45,6 +45,8 @@ const Player = ({
 
   if (isGhost) return null;
 
+  const isRoundStage = ['Round 1','Round 2','Round 3'].includes(stage);
+
   return (
     <Container className='player'>
       <div className='player-info'>
@@ -53,7 +55,7 @@ const Player = ({
         {(myRole === 'witness') && isRedTeam && <li className='red'>!!!</li>}
         {(myRole === 'killer') && isRedTeam && <li className='red'>Accomplice</li>}
         {(myRole === 'accomplice') && isRedTeam && <li className='red'>Killer</li>}
-        {(myRole !== 'ghost') && (stage !== 'Setup') && canAccuse &&
+        {isRoundStage && canAccuse &&
         <Button
           className='confirm-accusation'
           onClick={() => confirmSelection({
@@ -64,10 +66,10 @@ const Player = ({
         >
           ACCUSE
         </Button>}
-        {canAccuse && 
+        {canBeTargeted && 
         <Button
           className='confirm-accusation'
-          onClick={() => confirmTarget(playerId)}
+          onClick={() => confirmTarget(socket, playerId)}
           disabled={false}
         >
           KILL
@@ -84,6 +86,7 @@ const Player = ({
         selectCardHandler={selectItemHandler}
         maxReached={maxReached}
         canAccuse={canAccuse}
+        isRoundStage={isRoundStage}
         keyEv={keyEv}
       />
     </Container>

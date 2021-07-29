@@ -45,7 +45,7 @@ const Player = ({
 
   if (isGhost) return null;
 
-  const isRoundStage = ['Round 1','Round 2','Round 3'].includes(stage);
+  const isRoundStage = stage.type === 'round';
 
   return (
     <Container className='player'>

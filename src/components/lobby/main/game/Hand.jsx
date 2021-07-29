@@ -18,8 +18,9 @@ const Hand = ({
 }) => {
 
   const rolesWithSimpleHand = ['hunter', 'witness', 'accomplice'];
+  const simplehand = rolesWithSimpleHand.includes(myRole) && (type === 'hunterUI')
 
-  if (!isRoundStage || (rolesWithSimpleHand.includes(myRole) && type === 'hunterUI')) {
+  if (simplehand) {
     return (
       <ul className='hand'>
       {cards.map((card) => (
@@ -42,11 +43,11 @@ const Hand = ({
       case `hunterUI`:
         return false;
       case `killerUI`:
-        if (stage !== `Setup`) return false;
+        if (stage.id !== `Setup`) return false;
         return amIEnabled(i);
       case `otherPlayer`:
         if (myRole === 'ghost') return false;
-        if (stage === `Setup` || !canAccuse) return false;
+        if (stage.id === `Setup` || !canAccuse) return false;
         return amIEnabled(i);
       default:
         return console.log(`Err! placeholder`);

@@ -11,7 +11,14 @@ import Button from '../../../ui-elements/Button';
 import Hand from './Hand';
 
 const KillerUI = ({
-  thisPlayer: { hand, role, userName, accusalSpent }, stage, keyEv
+  thisPlayer: {
+    hand,
+    role,
+    userName,
+    accusalSpent
+  },
+  stage,
+  keyEv
 }) => {
 
   const { socket } = useContext(SocketContext);
@@ -31,7 +38,7 @@ const KillerUI = ({
       <div className='player-info'>
         <li>{userName} ({role[0]})</li>
         <li className={accusalSpent ? 'acc-spent' : 'acc-avail'}>[BADGE]</li>
-        {(stage === 'Setup') && <Button
+        {(stage.id === 'Setup') && <Button
           className='confirm-key-evidence'
           onClick={() => confirmSelection({ cb:[emitKeyEvChoice, socket], resetTracker: true })}
           disabled={!minReached}

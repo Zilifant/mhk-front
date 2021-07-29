@@ -228,9 +228,9 @@ ul.hand {
   display: flex;
 }
 
-ul.hand > * {
+/* ul.hand > * {
 
-}
+} */
 
 div.card-wrap--ghost,
 button.card-wrap--evidence {
@@ -239,8 +239,8 @@ button.card-wrap--evidence {
   border-radius: var(--rad);
 }
 
-div.card-wrap--ghost {
-}
+/* div.card-wrap--ghost {
+} */
 
 .gc-title,
 .gc-clue-btn {
@@ -259,6 +259,10 @@ div.card-wrap--ghost {
 
 .card-wrap--ghost.location > .gc-title {
   background-color: var(--emer8);
+}
+
+.card-wrap--ghost.new > .gc-title {
+  background-color: var(--colG6);
 }
 
 .gc-clue {
@@ -299,8 +303,17 @@ div.card-wrap--ghost {
   background-color: var(--lime3);
 }
 
+.btn--gc.replace-card,
 .btn--confirm-clue {
   width: 100%;
+}
+
+.btn--gc.replace-card {
+  background-color: var(--rose8);
+}
+
+.btn--gc.replace-card:hover {
+  background-color: var(--rose7);
 }
 
 button.card-wrap--evidence {

@@ -69,6 +69,12 @@ export const useGame = (socket) => {
     });
   };
 
+  // const subToNewClueCardDrawn = () => {
+  //   socket.current.on('newClueCardDrawn', ({ game }) => {
+  //     setGame(game);
+  //   });
+  // };
+
   const subToWrongAccusation = () => {
     socket.current.on('wrongAccusation', ({ game }) => {
       setGame(game);
@@ -110,6 +116,7 @@ export const useGame = (socket) => {
     subToUserDisco();
     subToStartGame();
     subToAdvStage();
+    // subToNewClueCardDrawn();
     subToClueChosen();
     subToWrongAccusation();
     subToGameResolution();

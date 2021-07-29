@@ -7,12 +7,17 @@ import { SocketContext } from '../../../../context/contexts';
 import Button from '../../../ui-elements/Button';
 
 const GhostCard = ({
-  card, confirmedClues, isMine, currentStage
+  card,
+  confirmedClues,
+  isMine,
+  stage
 }) => {
 
   const { socket } = useContext(SocketContext);
 
   const emitClueChoice = (clue, socket) => socket.current.emit('clueChosen', clue);
+
+  const replaceCard = (cardId, socket) => socket.current.emit('advanceStage', cardId);
 
   const {
     selectItemHandler,
@@ -31,20 +36,17 @@ const GhostCard = ({
 
   const checkEnabled = (index) => {
     if (!isMine) return false;
-    if (currentStage === 'Setup') return false;
+    if (stage.id === 'Setup' || stage.type === 'liminal') return false;
     if (card.isLocked) return false;
     return amIEnabled(index);
   };
 
-  // const selectItemHandler = (item) => {
-  //   const obj = {item: item, cb:[null, null]};
-  //   return selectItem(obj)
-  // };
+  const isNew = card.isNew ? 'new' : 'old';
 
   if (!card.isDisplayed) return null;
 
   return (
-    <div className={`card-wrap--ghost ${card.type}`}>
+    <div className={`card-wrap--ghost ${card.type} ${isNew}`}>
       <div className={'gc-title'}>{card.id}</div>
       <ul>
         {card.opts.map((opt, index) => (
@@ -62,12 +64,19 @@ const GhostCard = ({
           </li>
         ))}
       </ul>
-      {isMine && !card.isLocked && <Button
+      {isMine && !card.isLocked && stage.type !=='liminal' && <Button
         className='confirm-clue'
         onClick={() => confirmSelection({ cb:[emitClueChoice, socket], resetTracker: true })}
         disabled={!maxReached}
       >
         Confirm
+      </Button>}
+      {isMine && stage.type === 'liminal' && card.type === 'clue' && !card.isNew && <Button
+        className='gc replace-card'
+        onClick={() => replaceCard(card.id, socket)}
+        disabled={false}
+      >
+        REPLACE
       </Button>}
     </div>
   );

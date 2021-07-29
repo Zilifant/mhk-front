@@ -6,8 +6,13 @@ import React, {
 import Container from '../../../shared/Container';
 import Hand from './Hand';
 
-const HunterUI = ({
-  thisPlayer: { hand, role, userName, accusalSpent }
+const BasicUI = ({
+  thisPlayer: {
+    hand,
+    role,
+    userName,
+    accusalSpent
+  }
 }) => {
 
   return (
@@ -25,4 +30,4 @@ const HunterUI = ({
   );
 };
 
-export default HunterUI;
+export default BasicUI;

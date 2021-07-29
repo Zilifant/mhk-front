@@ -12,7 +12,7 @@ import Setup from './nogame/Setup';
 import Ghost from './game/Ghost';
 import Players from './game/Players';
 import GhostUI from './game/GhostUI';
-import HunterUI from './game/HunterUI';
+import BasicUI from './game/BasicUI';
 import KillerUI from './game/KIllerUI';
 
 const Main = ({
@@ -109,9 +109,8 @@ const Main = ({
             {(thisPlayer.role === 'hunter'||
               thisPlayer.role === 'witness' ||
               thisPlayer.role === 'accomplice') &&
-            <HunterUI
+            <BasicUI
               thisPlayer={thisPlayer}
-              stage={game.currentStage}
             />}
 
             {thisPlayer.role === 'killer' &&

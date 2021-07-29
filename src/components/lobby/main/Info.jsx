@@ -38,7 +38,7 @@ const Info = ({
         DATA
       </Button>
       <div>
-        Name: {userName}, Lobby: {myLobby}{gameOn && `, Stage: ${stage}`}
+        Name: {userName}, Lobby: {myLobby}{gameOn && `, Stage: ${stage.id}`}
       </div>
       {iAmLeader && !gameOn &&
         <Button onClick={startGameHandler} disabled={!canStart}>
@@ -50,7 +50,7 @@ const Info = ({
           CLEAR
         </Button>
       }
-      {iAmLeader && gameOn && (stage === 'Round 1' || stage === 'Round 2') &&
+      {iAmLeader && gameOn && (stage.id === 'Round 1' || stage.id === 'Round 2') &&
         <Button onClick={nextRoundHandler}>
           ROUND
         </Button>

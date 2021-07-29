@@ -23,7 +23,7 @@ const Players = ({
     return show ? true : null;
   };
 
-  const canBeTargeted = myRole === 'killer' && stage === 'Second Murder';
+  const canBeTargeted = myRole === 'killer' && stage.id === 'Second Murder';
 
   return (
     <Container className="players" parentGrid='main'>

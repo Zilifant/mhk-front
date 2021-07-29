@@ -32,16 +32,19 @@ const Main = ({
 
   // TO DO: restrict this to lobby leader
   const startGameHandler = () => {
-    socket.current.emit('startGame', {settings: 'placeholder settings'});
+    if (iAmLeader) return socket.current.emit('startGame', {settings: 'placeholder'});
+    return console.log('Error: only leader can start game');
   };
 
   // TO DO: restrict this to lobby leader
   const clearGameHandler = () => {
-    socket.current.emit('clearGame');
+    if (iAmLeader) return socket.current.emit('clearGame');
+    return console.log('Error: only leader can clear game');
   };
 
   const nextRoundHandler = () => {
-    socket.current.emit('advanceStage');
+    if (iAmLeader) return socket.current.emit('advanceStage');
+    return console.log('Error: only leader can advance round');
   };
 
   const readyHandler = () => {

@@ -18,10 +18,13 @@ const Player = ({
   playerId,
   accusalSpent,
   keyEv,
-  canAccuse
+  canAccuse,
+  canBeTargeted
 }) => {
 
   const { socket } = useContext(SocketContext);
+
+  const confirmTarget = (socket, targetId) => socket.current.emit('secondMurder', targetId);
 
   const emitAccusation = (accEv, [socket, playerId]) => {
     const accusation = {
@@ -48,6 +51,8 @@ const Player = ({
         <li>{playerId.slice(0,-5)}</li>
         <li className={accusalSpent ? 'acc-spent' : 'acc-avail'}>[BADGE]</li>
         {(myRole === 'witness') && isRedTeam && <li className='red'>!!!</li>}
+        {(myRole === 'killer') && isRedTeam && <li className='red'>Accomplice</li>}
+        {(myRole === 'accomplice') && isRedTeam && <li className='red'>Killer</li>}
         {(myRole !== 'ghost') && (stage !== 'Setup') && canAccuse &&
         <Button
           className='confirm-accusation'
@@ -58,6 +63,14 @@ const Player = ({
           disabled={!minReached}
         >
           ACCUSE
+        </Button>}
+        {canAccuse && 
+        <Button
+          className='confirm-accusation'
+          onClick={() => confirmTarget(playerId)}
+          disabled={false}
+        >
+          KILL
         </Button>}
       </div>
       <Hand

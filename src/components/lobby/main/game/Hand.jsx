@@ -5,7 +5,15 @@ import Card from './Card';
 import '../../../../styles/cards.css';
 
 const Hand = ({
-  myRole, type, stage, cards, keyEv, canAccuse, selectCardHandler, amISelected, amIEnabled
+  myRole,
+  type,
+  stage,
+  cards,
+  keyEv,
+  canAccuse,
+  selectCardHandler,
+  amISelected,
+  amIEnabled
 }) => {
 
   if ((myRole === 'hunter' ||
@@ -40,12 +48,12 @@ const Hand = ({
         if (stage === `Setup` || !canAccuse) return false;
         return amIEnabled(i);
       default:
-        return console.log(`Err! placeholder`)
+        return console.log(`Err! placeholder`);
     };
   };
 
   const checkHighlight = (cardId) => {
-    if (myRole === 'hunter') return false;
+    if (myRole === 'hunter' || myRole === 'witness') return false;
     if (keyEv) return keyEv.includes(cardId);
   };
 

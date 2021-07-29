@@ -4,16 +4,20 @@ import React, {
   // useEffect
 } from 'react';
 import { UserContext } from '../../../context/contexts';
-import { useTextParser } from '../../../hooks/text-parser-hook';
 import Container from '../../shared/Container';
 import Button from '../../ui-elements/Button';
 
 const Info = ({
-  startGameHandler, nextRoundHandler, canStart, gameOn, clearGameHandler, stage, prevGameResult, iAmLeader
+  startGameHandler,
+  nextRoundHandler,
+  canStart,
+  gameOn,
+  clearGameHandler,
+  stage,
+  iAmLeader
 }) => {
 
   const { userName, myLobby } = useContext(UserContext);
-  const { parseGameResult } = useTextParser();
 
   return (
     <Container className="info" parentGrid='main'>
@@ -25,18 +29,15 @@ const Info = ({
           START
         </Button>
       }
-      {gameOn &&
+      {iAmLeader && gameOn &&
         <Button onClick={clearGameHandler}>
           CLEAR
         </Button>
       }
-      {gameOn && (stage === 'Round 1' || stage === 'Round 2') &&
+      {iAmLeader && gameOn && (stage === 'Round 1' || stage === 'Round 2') &&
         <Button onClick={nextRoundHandler}>
           ROUND
         </Button>
-      }
-      {!gameOn && prevGameResult &&
-        <div className='gameresult'>{parseGameResult(prevGameResult)}</div>
       }
     </Container>
   );

@@ -16,11 +16,11 @@ export const useGame = (socket) => {
   const [gameSettings, setGameSettings] = useState();
 
   const subToGameSettings = () => {
-    socket.current.on(
-      'gameSettingsUpdate',
+    socket.current.on('gameSettingsUpdate',
       ({gameSettings}) => {
         setGameSettings(gameSettings);
-    })
+      }
+    );
   };
 
   const subToUserConnected = () => {
@@ -63,12 +63,6 @@ export const useGame = (socket) => {
     });
   };
 
-  const subToKeyEvChosen = () => {
-    socket.current.on('keyEvidenceChosen', ({ game }) => {
-      setGame(game);
-    });
-  };
-
   const subToClueChosen = () => {
     socket.current.on('clueChosen', ({ game }) => {
       setGame(game);
@@ -81,38 +75,26 @@ export const useGame = (socket) => {
     });
   };
 
-  const clearGame = () => {
+  const subToGameResolution = () => {
+    socket.current.on('resolveGame', ({ game }) => {
+      setGame(game);
+      setGameResult(game.result);
+      // switch (game.result.type) {
+      //   case 'red-win': redWin(game); break;
+      //   case 'red-win-timeout': redWinTimeout(game); break;
+      //   case 'red-win-witness_dead': redWinWitnessDead(game); break;
+      //   case 'blue-win': endByLastRound(game); break;
+      //   case 'blue-win-witness_alive': endByLastRound(game); break;
+      //   default: clearGame(); break;
+      // };
+    });
+  };
+
+  const subToClearGame = () => socket.current.on('clearGame', clearGame());
+
+  function clearGame() {
     setGame(null);
     setGameOn(false);
-  };
-
-  const endByAccusation = ({accuserId, killerId, keyEv}) => {
-    clearGame();
-    setGameResult({
-      killerWin: false,
-      accuserId,
-      killerId,
-      keyEv
-    });
-  };
-
-  const endByLastRound = ({killerId, keyEv}) => {
-    clearGame();
-    setGameResult({
-      killerWin: true,
-      killerId,
-      keyEv
-    });
-  };
-
-  const subToGameEnd = () => {
-    socket.current.on('gameEnd', (data) => {
-      switch (data.cause) {
-        case 'accusation': endByAccusation(data); break;
-        case 'lastRound': endByLastRound(data); break;
-        default: clearGame(); break;
-      };
-    });
   };
 
   const subToGame = () => {
@@ -122,11 +104,11 @@ export const useGame = (socket) => {
     subToReadyUnready();
     subToUserDisco();
     subToStartGame();
-    subToGameEnd();
     subToAdvStage();
-    subToKeyEvChosen();
     subToClueChosen();
     subToWrongAccusation();
+    subToGameResolution();
+    subToClearGame();
   };
 
   return {

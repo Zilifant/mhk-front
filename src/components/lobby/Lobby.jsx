@@ -66,7 +66,7 @@ const Lobby = () => {
     fetchLobby();
   }, [sendRequest, lobbyURL, userId, setGame, setGameOn, setLeaderId, setGameSettings]);
 
-  console.log(game);
+  if (game) console.log(game);
 
   return (
     <SocketContext.Provider value={{ socket }}>

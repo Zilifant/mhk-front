@@ -425,7 +425,7 @@ button:focus { outline: none; }
 .red {
   color: var(--rose5);
   font-weight: bold;
-  padding: .15rem;
+  padding: .15rem .25rem;
   background-color: var(--bg5);
   max-width: max-content;
   border-radius: var(--rad);

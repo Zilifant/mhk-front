@@ -14,10 +14,19 @@ const Players = ({
   console.log(myRole);
   console.log(redTeam);
 
-  let rT;
-  if (redTeam) rT = redTeam.map(p => p.id)
-
   const { userId } = useContext(UserContext);
+  // const { socket } = useContext(SocketContext);
+
+  const showAsRedTeam = (redTeam, playerId) => {
+    const extractIds = (arr) => arr.map(obj => obj.id);
+    const canSeeRedTeam = ['witness', 'killer', 'accomplice'];
+    const show = canSeeRedTeam.includes(myRole)
+                 && redTeam
+                 && extractIds(redTeam).includes(playerId);
+    return show ? true : null;
+  };
+
+  const canBeTargeted = myRole === 'killer' && stage === 'Second Murder';
 
   return (
     <Container className="players" parentGrid='main'>
@@ -32,12 +41,12 @@ const Players = ({
             stage={stage}
             key={player.id}
             playerId={player.id}
+            canBeTargeted={canBeTargeted && player.role !== 'accomplice'}
             isGhost={player.id === ghostId}
-            isRedTeam={myRole === 'witness' && redTeam && rT.includes(player.id)}
-            redTeam={redTeam}
+            isRedTeam={showAsRedTeam(redTeam, player.id)}
+            keyEv={keyEv}
             accusalSpent={player.accusalSpent}
             hand={player.hand}
-            keyEv={keyEv}
             canAccuse={canAccuse}
           />
         )})}

@@ -25,13 +25,18 @@ const KillerUI = ({
 
   const emitKeyEvChoice = (keyEv, socket) => socket.current.emit('keyEvidenceChosen', keyEv);
 
+  const ev = hand.evidence
+  const me = hand.means
+  let evme = null
+  if (ev && me) evme = ev.concat(me);
+
   const {
     selectItemHandler,
     confirmSelection,
     amISelected, amIEnabled,
     minReached, maxReached,
     selTracker
-  } = useMultiSelector({items: hand, min: 2, max: 2});
+  } = useMultiSelector({items: evme, min: 2, max: 2});
 
   return (
     <Container className='self self-killer' parentGrid='main'>

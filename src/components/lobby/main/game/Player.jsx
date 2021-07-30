@@ -35,13 +35,22 @@ const Player = ({
     socket.current.emit('accusation', accusation);
   };
 
+  console.log(hand.evidence);
+  console.log(hand.means);
+
+  const ev = hand.evidence
+  const me = hand.means
+  let evme = null
+  if (ev && me) evme = ev.concat(me);
+
   const {
     selectItemHandler,
     confirmSelection,
     amISelected, amIEnabled,
     minReached, maxReached,
     selTracker
-  } = useMultiSelector({items: hand, min: 2, max: 2});
+  } = useMultiSelector({items: evme, min: 2, max: 2});
+  // this can handle multiple groups using an arry or obj
 
   if (isGhost) return null;
 

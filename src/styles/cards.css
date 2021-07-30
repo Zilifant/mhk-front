@@ -233,7 +233,7 @@ ul.hand {
 } */
 
 div.card-wrap--ghost,
-button.card-wrap--evidence {
+button.card-wrap--player {
   display: inline-block;
   background-color: var(--bg4);
   border-radius: var(--rad);
@@ -316,7 +316,7 @@ button.card-wrap--evidence {
   background-color: var(--rose7);
 }
 
-button.card-wrap--evidence {
+button.card-wrap--player {
   width: 75px;
   height: 100px;
   border: 3px solid var(--gray2);
@@ -324,62 +324,65 @@ button.card-wrap--evidence {
 }
 
 div.card-wrap--ghost *,
-button.card-wrap--evidence * {
+button.card-wrap--player * {
   color: var(--gray2);
 }
 
-button.card-wrap--evidence.selected:hover,
-button.card-wrap--evidence:hover {
+button.card-wrap--player.selected:hover,
+button.card-wrap--player:hover {
   border-color: var(--cyan3);
 }
 
-button.card-wrap--evidence.selected:hover *,
-button.card-wrap--evidence:hover * {
+button.card-wrap--player.selected:hover *,
+button.card-wrap--player:hover * {
   color: var(--cyan3);
   fill: var(--cyan3);
 }
 
+.c-wrap-evidence,
+.c-wrap-means,
 div.card-wrap--ghost:not(:first-child),
-button.card-wrap--evidence:not(:first-child) {
+button.card-wrap--player:not(:first-child) {
   margin-left: .5rem;
 }
 
-button.card-wrap--evidence:disabled {
+button.card-wrap--player:disabled {
   border-color: var(--gray4);
   background-color: var(--bg4);
   cursor: auto;
 }
 
-button.card-wrap--evidence:disabled:hover *,
-button.card-wrap--evidence:disabled * {
+button.card-wrap--player:disabled:hover *,
+button.card-wrap--player:disabled * {
   color: var(--gray4);
   fill: var(--gray4);
 }
 
-button.card-wrap--evidence.selected {
+button.card-wrap--player.selected {
   border-color: var(--gray2);
   background: var(--cyan8);
 }
 
-button.card-wrap--evidence:not(:disabled):active {
+button.card-wrap--player:not(:disabled):active {
   border-color: var(--pink5);
 }
 
-button.card-wrap--evidence:not(:disabled):active * {
+button.card-wrap--player:not(:disabled):active * {
   color: var(--pink5);
   fill: var(--pink5);
 }
 
-button.card-wrap--evidence.highlighted {
+button.card-wrap--player.highlighted {
   border-color: var(--oran7);
 }
 
-button.card-wrap--evidence.highlighted:hover *,
-button.card-wrap--evidence.highlighted * {
+button.card-wrap--player.highlighted:hover *,
+button.card-wrap--player.highlighted * {
   color: var(--oran7);
   fill: var(--oran7);
 }
 
+.card-icon--means,
 .card-icon--evidence {
   height: 25px;
   width: 25px;
@@ -387,11 +390,38 @@ button.card-wrap--evidence.highlighted * {
   margin: .25rem auto;
 }
 
+.c-wrap-evidence,
+.c-wrap-means {
+  padding: .25rem;
+  border: 3px solid var(--gray2);
+  border-radius: var(--rad);
+}
+
+.c-wrap-evidence {
+  border-color: rgba(32, 178, 171, 0.76);
+}
+
+.c-wrap-means {
+  border-color: rgba(255, 160, 122, 0.726);
+}
+
+/* div.card-title--means,
+.card-icon--means {
+  color: lightgreen;
+  fill: lightgreen;
+}
+
+div.card-title--evidence,
+.card-icon--evidence {
+  color: violet;
+  fill: violet;
+} */
+
 div.card-title--evidence {
   font-size: 12px;
 }
 
-/* .card-wrap--evidence > * {
+/* .card-wrap--player > * {
   margin: .25rem;
   display: flex;
   justify-content: center;
@@ -399,10 +429,10 @@ div.card-title--evidence {
   text-align: center;
 } */
 
-/* button.card-wrap--evidence.mine {
+/* button.card-wrap--player.mine {
 
 }
 
-button.card-wrap--evidence.other {
+button.card-wrap--player.other {
 
 } */

@@ -14,18 +14,31 @@ const Hand = ({
   selectCardHandler,
   amISelected,
   amIEnabled,
-  isRoundStage
 }) => {
 
   const rolesWithSimpleHand = ['hunter', 'witness', 'accomplice'];
-  const simplehand = rolesWithSimpleHand.includes(myRole) && (type === 'hunterUI')
+  const hasSimpleHand = rolesWithSimpleHand.includes(myRole) && (type === 'hunterUI');
 
-  if (simplehand) {
+  const evCards = cards.evidence;
+  const meCards = cards.means;
+
+  if (hasSimpleHand) {
     return (
       <ul className='hand'>
-      {cards.map((card) => (
+      {evCards.map((card) => (
         <Card
           className='evidence'
+          key={card.id}
+          id={card.id}
+          isHighlighted={false}
+          isSelected={false}
+          isEnabled={false}
+          handleClick={null}
+        />
+      ))}
+      {meCards.map((card) => (
+        <Card
+          className='means'
           key={card.id}
           id={card.id}
           isHighlighted={false}
@@ -47,7 +60,7 @@ const Hand = ({
         return amIEnabled(i);
       case `otherPlayer`:
         if (myRole === 'ghost') return false;
-        if (stage.id === `Setup` || !canAccuse) return false;
+        if (stage.type !== `round` || !canAccuse) return false;
         return amIEnabled(i);
       default:
         return console.log(`Err! placeholder`);
@@ -61,9 +74,20 @@ const Hand = ({
 
   return (
     <ul className='hand'>
-    {cards.map((card) => (
+    {evCards.map((card) => (
       <Card
         className='evidence'
+        key={card.id}
+        id={card.id}
+        isHighlighted={checkHighlight(card.id)}
+        isSelected={amISelected(card.id)}
+        isEnabled={canBeEnabled(card.id)}
+        handleClick={selectCardHandler}
+      />
+    ))}
+    {meCards.map((card) => (
+      <Card
+        className='means'
         key={card.id}
         id={card.id}
         isHighlighted={checkHighlight(card.id)}

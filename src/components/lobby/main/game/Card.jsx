@@ -12,14 +12,16 @@ const Card = ({
   // const mine = isMine ? 'mine' : 'other';
 
   return (
-    <button
-      className={`card-wrap--${className} ${selected} ${highlighted}`}
-      disabled={!isEnabled}
-      onClick={() => handleClick(id)}
-    >
-      <GiDeathSkull className={`card-icon--${className}`} />
-      <div className={`card-title--${className}`}>{id}</div>
-    </button>
+    <div className={`c-wrap-${className}`}>
+      <button
+        className={`card-wrap--player ${className} ${selected} ${highlighted}`}
+        disabled={!isEnabled}
+        onClick={() => handleClick(id)}
+      >
+        <GiDeathSkull className={`card-icon--${className}`} />
+        <div className={`card-title--${className}`}>{id}</div>
+      </button>
+    </div>
   );
 };
 

@@ -8,7 +8,7 @@ import { useMultiSelector } from '../../../../hooks/multiselector-hook';
 import { SocketContext } from '../../../../context/contexts';
 import Container from '../../../shared/Container';
 import Button from '../../../ui-elements/Button';
-import Hand from './Hand';
+import Cards from './Cards';
 
 const KillerUI = ({
   thisPlayer: {
@@ -51,11 +51,26 @@ const KillerUI = ({
           Confirm
         </Button>}
       </div>
-      <Hand
+      <Cards
         myRole={role}
         type={`killerUI`}
+        cardType='evidence'
         stage={stage}
-        cards={hand}
+        cards={hand.evidence}
+        selectedCards={selTracker}
+        amISelected={amISelected}
+        amIEnabled={amIEnabled}
+        selectCardHandler={selectItemHandler}
+        isMine={true}
+        maxReached={maxReached}
+        keyEv={keyEv}
+      />
+      <Cards
+        myRole={role}
+        type={`killerUI`}
+        cardType='means'
+        stage={stage}
+        cards={hand.means}
         selectedCards={selTracker}
         amISelected={amISelected}
         amIEnabled={amIEnabled}

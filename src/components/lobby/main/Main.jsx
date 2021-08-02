@@ -14,6 +14,7 @@ import Players from './game/Players';
 import GhostUI from './game/GhostUI';
 import BasicUI from './game/BasicUI';
 import KillerUI from './game/KIllerUI';
+import Announcer from './Announcer';
 
 const Main = ({
   oUsers,
@@ -24,7 +25,8 @@ const Main = ({
   gameResult,
   leaderId,
   iAmLeader,
-  gameSettings
+  gameSettings,
+  chat
 }) => {
 
   const { userId } = useContext(UserContext);
@@ -54,6 +56,7 @@ const Main = ({
   return (
     <Container className='lobbymain' parentGrid='lobby'>
       <Grid className={gameOn ? 'main-game' : 'main-nogame'}>
+        <Announcer chat={chat} />
         <Info
           startGameHandler={startGameHandler}
           nextRoundHandler={nextRoundHandler}

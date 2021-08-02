@@ -4,27 +4,34 @@ import React, {
   // useEffect
 } from 'react';
 import Container from '../../../shared/Container';
-import Hand from './Hand';
+import Cards from './Cards';
 
 const BasicUI = ({
   thisPlayer: {
     hand,
     role,
     userName,
-    accusalSpent
+    canAccuse
   }
 }) => {
 
   return (
     <Container className='self self-hunter' parentGrid='main'>
       <ul className='player-info'>
-        <li>{userName} ({role[0]})</li>
-        <li className={accusalSpent ? 'acc-spent' : 'acc-avail'}>[BADGE]</li>
+        <li>{userName} ({role[0].toUpperCase()})</li>
+        <li className={canAccuse ? 'acc-avail' : 'acc-spent'}>[BADGE]</li>
       </ul>
-      <Hand
+      <Cards
         myRole={role}
         type={`hunterUI`}
-        cards={hand}
+        cardType='evidence'
+        cards={hand.evidence}
+      />
+      <Cards
+        myRole={role}
+        type={`hunterUI`}
+        cardType='means'
+        cards={hand.means}
       />
     </Container>
   );

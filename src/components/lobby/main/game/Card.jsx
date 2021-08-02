@@ -1,10 +1,15 @@
 import React, {
   // useState
 } from 'react';
-import { GiDeathSkull } from 'react-icons/gi';
+// import { GiDeathSkull } from 'react-icons/gi';
 
 const Card = ({
-  className, id, isHighlighted, isSelected, isEnabled, handleClick
+  className,
+  id,
+  isHighlighted,
+  isSelected,
+  isEnabled,
+  handleClick
 }) => {
 
   const selected = isSelected ? 'selected' : 'default';
@@ -18,7 +23,7 @@ const Card = ({
         disabled={!isEnabled}
         onClick={() => handleClick(id)}
       >
-        <GiDeathSkull className={`card-icon--${className}`} />
+        {/* <GiDeathSkull className={`card-icon--${className}`} /> */}
         <div className={`card-title--${className}`}>{id}</div>
       </button>
     </div>

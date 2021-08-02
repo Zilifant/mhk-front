@@ -7,7 +7,7 @@ import { useMultiSelector } from '../../../../hooks/multiselector-hook';
 import { SocketContext } from '../../../../context/contexts';
 import Container from '../../../shared/Container';
 import Button from '../../../ui-elements/Button';
-import Hand from './Hand';
+import Cards from './Cards';
 
 const Player = ({
   myRole,
@@ -35,9 +35,6 @@ const Player = ({
     socket.current.emit('accusation', accusation);
   };
 
-  console.log(hand.evidence);
-  console.log(hand.means);
-
   const ev = hand.evidence
   const me = hand.means
   let evme = null
@@ -50,7 +47,6 @@ const Player = ({
     minReached, maxReached,
     selTracker
   } = useMultiSelector({items: evme, min: 2, max: 2});
-  // this can handle multiple groups using an arry or obj
 
   if (isGhost) return null;
 
@@ -84,11 +80,27 @@ const Player = ({
           KILL
         </Button>}
       </div>
-      <Hand
+      <Cards
         myRole={myRole}
         type={`otherPlayer`}
+        cardType='evidence'
         stage={stage}
-        cards={hand}
+        cards={hand.evidence}
+        amISelected={amISelected}
+        amIEnabled={amIEnabled}
+        selectedCards={selTracker}
+        selectCardHandler={selectItemHandler}
+        maxReached={maxReached}
+        canAccuse={canAccuse}
+        isRoundStage={isRoundStage}
+        keyEv={keyEv}
+      />
+      <Cards
+        myRole={myRole}
+        type={`otherPlayer`}
+        cardType='means'
+        stage={stage}
+        cards={hand.means}
         amISelected={amISelected}
         amIEnabled={amIEnabled}
         selectedCards={selTracker}

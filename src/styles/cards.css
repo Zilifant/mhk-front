@@ -318,7 +318,7 @@ button.card-wrap--player {
 
 button.card-wrap--player {
   width: 75px;
-  height: 100px;
+  height: 50px;
   border: 3px solid var(--gray2);
   padding: .25rem;
 }

@@ -4,9 +4,10 @@ import React, {
 import Card from './Card';
 import '../../../../styles/cards.css';
 
-const Hand = ({
+const Cards = ({
   myRole,
   type,
+  cardType,
   stage,
   cards,
   keyEv,
@@ -15,6 +16,8 @@ const Hand = ({
   amISelected,
   amIEnabled,
 }) => {
+
+  // const gekv = (obj,val) => Object.keys(obj)[Object.values(obj).indexOf(val)];
 
   const rolesWithSimpleHand = ['hunter', 'witness', 'accomplice'];
   const hasSimpleHand = rolesWithSimpleHand.includes(myRole) && (type === 'hunterUI');
@@ -25,20 +28,9 @@ const Hand = ({
   if (hasSimpleHand) {
     return (
       <ul className='hand'>
-      {evCards.map((card) => (
+      {cards.map((card) => (
         <Card
-          className='evidence'
-          key={card.id}
-          id={card.id}
-          isHighlighted={false}
-          isSelected={false}
-          isEnabled={false}
-          handleClick={null}
-        />
-      ))}
-      {meCards.map((card) => (
-        <Card
-          className='means'
+          className={cardType}
           key={card.id}
           id={card.id}
           isHighlighted={false}
@@ -74,20 +66,9 @@ const Hand = ({
 
   return (
     <ul className='hand'>
-    {evCards.map((card) => (
+    {cards.map((card) => (
       <Card
-        className='evidence'
-        key={card.id}
-        id={card.id}
-        isHighlighted={checkHighlight(card.id)}
-        isSelected={amISelected(card.id)}
-        isEnabled={canBeEnabled(card.id)}
-        handleClick={selectCardHandler}
-      />
-    ))}
-    {meCards.map((card) => (
-      <Card
-        className='means'
+        className={cardType}
         key={card.id}
         id={card.id}
         isHighlighted={checkHighlight(card.id)}
@@ -100,7 +81,7 @@ const Hand = ({
   );
 };
 
-export default Hand;
+export default Cards;
 
   // const enabled = () => {
   //   if (stage === 'Setup' && myRole === 'killer' && isMine) return true;

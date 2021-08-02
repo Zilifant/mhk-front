@@ -13,7 +13,7 @@ import ErrorModal from '../modal/ErrorModal';
 import Loading from '../shared/Loading';
 import Grid from '../shared/Grid';
 import Main from './main/Main';
-import Chat from './chat/Chat';
+// import Chat from './chat/Chat';
 // import Button from '../ui-elements/Button';
 
 const Lobby = () => {
@@ -81,8 +81,9 @@ const Lobby = () => {
               gameResult={gameResult}
               thisPlayer={getThisPlayer(userId, game)}
               iAmLeader={leaderId === userId}
+              chat={loadedLobby.chat}
             />
-            <Chat chat={loadedLobby.chat} />
+            {/* <Chat chat={loadedLobby.chat} /> */}
           </Grid>
         }
       </React.Fragment>

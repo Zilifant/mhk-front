@@ -1,9 +1,9 @@
 import React, {
   // useState,
-  useContext,
+  // useContext,
   // useEffect
 } from 'react';
-import { SocketContext } from '../../../../context/contexts';
+// import { SocketContext } from '../../../../context/contexts';
 import Container from '../../../shared/Container';
 import GhostCard from './GhostCard';
 
@@ -14,14 +14,6 @@ const GhostUI = ({
     currentStage
   }
 }) => {
-
-  const { socket } = useContext(SocketContext);
-
-  const subToDrawNewClueCard = () => {
-    socket.current.on('drawNewClueCard', card => {
-      
-    });
-  };
 
   return (
     <Container className='self self-ghost' parentGrid='main'>

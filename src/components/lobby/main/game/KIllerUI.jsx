@@ -23,12 +23,14 @@ const KillerUI = ({
   const { socket } = useContext(SocketContext);
   const emitKeyEvChoice = (keyEv, socket) => socket.current.emit('keyEvidenceChosen', keyEv);
 
+  const types = Object.keys(hand);
+
   const {
     selTracker,
     minSelected,
     selectHandler,
     submitSelection
-  } = useParallelSelector(['evidence','means']);
+  } = useParallelSelector(types);
 
   return (
     <Container className='self self-killer' parentGrid='main'>
@@ -42,38 +44,31 @@ const KillerUI = ({
         >
           Confirm
         </Button>}
-        {(stage.id === 'Setup') && <Button
-          className='confirm-key-evidence'
-          onClick={() => console.table(selTracker)}
-          disabled={false}
-        >
-          Confirm
-        </Button>}
       </div>
-      <Cards
-        myRole={role}
-        type={`killerUI`}
-        cardType='evidence'
-        stage={stage}
-        cards={hand.evidence}
-        selectedId={selTracker.evidence?.id}
-        selectCardHandler={selectHandler}
-        isMine={true}
-        keyEv={keyEv}
-      />
-      <Cards
-        myRole={role}
-        type={`killerUI`}
-        cardType='means'
-        stage={stage}
-        cards={hand.means}
-        selectedId={selTracker.means?.id}
-        selectCardHandler={selectHandler}
-        isMine={true}
-        keyEv={keyEv}
-      />
+      {types.map((type) => (
+        <Cards
+          myRole={role}
+          type={`killerUI`}
+          cardType={type}
+          key={type}
+          stage={stage}
+          cards={hand[type]}
+          selectedId={selTracker[type]?.id}
+          selectCardHandler={selectHandler}
+          isMine={true}
+          keyEv={keyEv}
+        />
+      ))}
     </Container>
   );
 };
 
 export default KillerUI;
+
+// {(stage.id === 'Setup') && <Button
+// className='confirm-key-evidence'
+// onClick={() => console.table(selTracker)}
+// disabled={false}
+// >
+// Confirm
+// </Button>}

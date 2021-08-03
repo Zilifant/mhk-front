@@ -24,6 +24,8 @@ const Player = ({
 
   const isRoundStage = stage.type === 'round';
 
+  const types = Object.keys(hand);
+
   const { socket } = useContext(SocketContext);
   const { userId } = useContext(UserContext);
   const confirmTarget = (socket, targetId) => socket.current.emit('secondMurder', targetId);
@@ -42,7 +44,7 @@ const Player = ({
     minSelected,
     selectHandler,
     submitSelection
-  } = useParallelSelector(['evidence','means']);
+  } = useParallelSelector(types);
 
   if (isGhost) return null;
 
@@ -71,30 +73,21 @@ const Player = ({
           KILL
         </Button>}
       </div>
-      <Cards
+      {types.map((type) => (
+        <Cards
         myRole={myRole}
         type={`otherPlayer`}
-        cardType='evidence'
+        cardType={type}
+        key={type}
         stage={stage}
-        cards={hand.evidence}
-        selectedId={selTracker.evidence?.id}
+        cards={hand[type]}
+        selectedId={selTracker[type]?.id}
         selectCardHandler={selectHandler}
         canAccuse={canAccuse}
         isRoundStage={isRoundStage}
         keyEv={keyEv}
-      />
-      <Cards
-        myRole={myRole}
-        type={`otherPlayer`}
-        cardType='means'
-        stage={stage}
-        cards={hand.means}
-        selectedId={selTracker.means?.id}
-        selectCardHandler={selectHandler}
-        canAccuse={canAccuse}
-        isRoundStage={isRoundStage}
-        keyEv={keyEv}
-      />
+        />
+      ))}
     </Container>
   )
 };

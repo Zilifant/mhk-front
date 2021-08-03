@@ -15,7 +15,6 @@ const Cards = ({
   selectCardHandler
 }) => {
 
-  // const gekv = (obj,val) => Object.keys(obj)[Object.values(obj).indexOf(val)];
   const rolesWithSimpleHand = ['hunter', 'witness', 'accomplice'];
   const hasSimpleHand = rolesWithSimpleHand.includes(myRole) && (type === 'hunterUI');
 
@@ -37,7 +36,7 @@ const Cards = ({
     );
   };
 
-  console.log(`${cards[0].type} ${selectedId}`);
+  // console.log(`${cards[0].type} ${selectedId}`);
 
   const isEnabled = () => {
     switch (type) {

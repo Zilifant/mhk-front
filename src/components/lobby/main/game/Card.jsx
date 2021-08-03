@@ -13,12 +13,8 @@ const Card = ({
   handleClick
 }) => {
 
-  console.log('card');
-
   const selected = isSelected ? 'selected' : 'default';
   const highlighted = isHighlighted ? 'highlighted' : 'default';
-
-  // console.log(card);
 
   return (
     <div className={`c-wrap-${className}`}>

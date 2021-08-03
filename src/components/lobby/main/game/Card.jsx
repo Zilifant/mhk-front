@@ -4,6 +4,7 @@ import React, {
 // import { GiDeathSkull } from 'react-icons/gi';
 
 const Card = ({
+  card,
   className,
   id,
   isHighlighted,
@@ -12,16 +13,19 @@ const Card = ({
   handleClick
 }) => {
 
+  console.log('card');
+
   const selected = isSelected ? 'selected' : 'default';
   const highlighted = isHighlighted ? 'highlighted' : 'default';
-  // const mine = isMine ? 'mine' : 'other';
+
+  // console.log(card);
 
   return (
     <div className={`c-wrap-${className}`}>
       <button
         className={`card-wrap--player ${className} ${selected} ${highlighted}`}
         disabled={!isEnabled}
-        onClick={() => handleClick(id)}
+        onClick={() => handleClick(card)}
       >
         {/* <GiDeathSkull className={`card-icon--${className}`} /> */}
         <div className={`card-title--${className}`}>{id}</div>

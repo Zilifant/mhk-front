@@ -83,7 +83,7 @@ export const useGame = (socket) => {
 
   const subToGameResolution = () => {
     socket.current.on('resolveGame', ({ game }) => {
-      // console.log('resolveGame')
+      // console.log('resolveGame');
       setGame(game);
       setGameResult(game.result);
       // switch (game.result.type) {
@@ -98,9 +98,11 @@ export const useGame = (socket) => {
   };
 
   const subToClearGame = () => {
-    socket.current.on('clearGame', () => {
-    setGame(null);
-    setGameOn(false);
+    socket.current.on('clearGame', ({ resData: {usersOnline} }) => {
+      setOnlineUsers(usersOnline);
+      setCanStart(false);
+      setGame(null);
+      setGameOn(false);
     });
   };
 

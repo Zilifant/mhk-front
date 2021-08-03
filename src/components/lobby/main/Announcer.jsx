@@ -10,6 +10,8 @@ import '../../../styles/chat.css';
 
 const Announcer = ({chat}) => {
 
+console.log(chat);
+
   const {
     subToChat,
     messages

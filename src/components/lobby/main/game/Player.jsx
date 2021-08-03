@@ -3,8 +3,8 @@ import React, {
   useContext,
   // useEffect
 } from 'react';
-import { useMultiSelector } from '../../../../hooks/multiselector-hook';
-import { SocketContext } from '../../../../context/contexts';
+import { useParallelSelector } from '../../../../hooks/parallel-selector';
+import { SocketContext, UserContext } from '../../../../context/contexts';
 import Container from '../../../shared/Container';
 import Button from '../../../ui-elements/Button';
 import Cards from './Cards';
@@ -22,52 +22,43 @@ const Player = ({
   canBeTargeted
 }) => {
 
+  const isRoundStage = stage.type === 'round';
+
   const { socket } = useContext(SocketContext);
-
+  const { userId } = useContext(UserContext);
   const confirmTarget = (socket, targetId) => socket.current.emit('secondMurder', targetId);
-
-  const emitAccusation = (accEv, [socket, playerId]) => {
+  const emitAccusation = (accEv, socket, playerId) => {
     const accusation = {
       accuserSID: socket.current.id,
+      accuserId: userId,
       accusedId: playerId,
       accusalEv: accEv
     };
     socket.current.emit('accusation', accusation);
   };
 
-  const ev = hand.evidence
-  const me = hand.means
-  let evme = null
-  if (ev && me) evme = ev.concat(me);
-
   const {
-    selectItemHandler,
-    confirmSelection,
-    amISelected, amIEnabled,
-    minReached, maxReached,
-    selTracker
-  } = useMultiSelector({items: evme, min: 2, max: 2});
+    selTracker,
+    minSelected,
+    selectHandler,
+    submitSelection
+  } = useParallelSelector(['evidence','means']);
 
   if (isGhost) return null;
-
-  const isRoundStage = stage.type === 'round';
 
   return (
     <Container className='player'>
       <div className='player-info'>
         <li>{playerId.slice(0,-5)}</li>
-        <li className={accusalSpent ? 'acc-spent' : 'acc-avail'}>[BADGE]</li>
+        <li className={accusalSpent ? 'bdg acc-spent' : 'bdg acc-avail'}>[BADGE]</li>
         {(myRole === 'witness') && isRedTeam && <li className='red'>!!!</li>}
         {(myRole === 'killer') && isRedTeam && <li className='red'>Accomplice</li>}
         {(myRole === 'accomplice') && isRedTeam && <li className='red'>Killer</li>}
-        {isRoundStage && canAccuse &&
+        {myRole !== 'ghost' && isRoundStage && canAccuse &&
         <Button
           className='confirm-accusation'
-          onClick={() => confirmSelection({
-            cb: [emitAccusation, [socket, playerId]],
-            resetTracker: true
-          })}
-          disabled={!minReached}
+          onClick={() => submitSelection({cb:[emitAccusation, socket, playerId], reset:true})}
+          disabled={!minSelected}
         >
           ACCUSE
         </Button>}
@@ -86,11 +77,8 @@ const Player = ({
         cardType='evidence'
         stage={stage}
         cards={hand.evidence}
-        amISelected={amISelected}
-        amIEnabled={amIEnabled}
-        selectedCards={selTracker}
-        selectCardHandler={selectItemHandler}
-        maxReached={maxReached}
+        selectedId={selTracker.evidence?.id}
+        selectCardHandler={selectHandler}
         canAccuse={canAccuse}
         isRoundStage={isRoundStage}
         keyEv={keyEv}
@@ -101,11 +89,8 @@ const Player = ({
         cardType='means'
         stage={stage}
         cards={hand.means}
-        amISelected={amISelected}
-        amIEnabled={amIEnabled}
-        selectedCards={selTracker}
-        selectCardHandler={selectItemHandler}
-        maxReached={maxReached}
+        selectedId={selTracker.means?.id}
+        selectCardHandler={selectHandler}
         canAccuse={canAccuse}
         isRoundStage={isRoundStage}
         keyEv={keyEv}

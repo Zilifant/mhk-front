@@ -1,10 +1,9 @@
 import React, {
   // useState,
-  // useCallback,
   useContext,
   // useEffect
 } from 'react';
-import { useMultiSelector } from '../../../../hooks/multiselector-hook';
+import { useParallelSelector } from '../../../../hooks/parallel-selector';
 import { SocketContext } from '../../../../context/contexts';
 import Container from '../../../shared/Container';
 import Button from '../../../ui-elements/Button';
@@ -22,31 +21,31 @@ const KillerUI = ({
 }) => {
 
   const { socket } = useContext(SocketContext);
-
   const emitKeyEvChoice = (keyEv, socket) => socket.current.emit('keyEvidenceChosen', keyEv);
 
-  const ev = hand.evidence
-  const me = hand.means
-  let evme = null
-  if (ev && me) evme = ev.concat(me);
-
   const {
-    selectItemHandler,
-    confirmSelection,
-    amISelected, amIEnabled,
-    minReached, maxReached,
-    selTracker
-  } = useMultiSelector({items: evme, min: 2, max: 2});
+    selTracker,
+    minSelected,
+    selectHandler,
+    submitSelection
+  } = useParallelSelector(['evidence','means']);
 
   return (
     <Container className='self self-killer' parentGrid='main'>
       <div className='player-info'>
-        <li>{userName} ({role[0]})</li>
+        <li>{userName} ({role[0].toUpperCase()})</li>
         <li className={accusalSpent ? 'acc-spent' : 'acc-avail'}>[BADGE]</li>
         {(stage.id === 'Setup') && <Button
           className='confirm-key-evidence'
-          onClick={() => confirmSelection({ cb:[emitKeyEvChoice, socket], resetTracker: true })}
-          disabled={!minReached}
+          onClick={() => submitSelection({cb:[emitKeyEvChoice, socket], reset:true})}
+          disabled={!minSelected}
+        >
+          Confirm
+        </Button>}
+        {(stage.id === 'Setup') && <Button
+          className='confirm-key-evidence'
+          onClick={() => console.table(selTracker)}
+          disabled={false}
         >
           Confirm
         </Button>}
@@ -57,12 +56,9 @@ const KillerUI = ({
         cardType='evidence'
         stage={stage}
         cards={hand.evidence}
-        selectedCards={selTracker}
-        amISelected={amISelected}
-        amIEnabled={amIEnabled}
-        selectCardHandler={selectItemHandler}
+        selectedId={selTracker.evidence?.id}
+        selectCardHandler={selectHandler}
         isMine={true}
-        maxReached={maxReached}
         keyEv={keyEv}
       />
       <Cards
@@ -71,12 +67,9 @@ const KillerUI = ({
         cardType='means'
         stage={stage}
         cards={hand.means}
-        selectedCards={selTracker}
-        amISelected={amISelected}
-        amIEnabled={amIEnabled}
-        selectCardHandler={selectItemHandler}
+        selectedId={selTracker.means?.id}
+        selectCardHandler={selectHandler}
         isMine={true}
-        maxReached={maxReached}
         keyEv={keyEv}
       />
     </Container>

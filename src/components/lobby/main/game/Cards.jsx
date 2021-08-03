@@ -7,30 +7,24 @@ import '../../../../styles/cards.css';
 const Cards = ({
   myRole,
   type,
-  cardType,
   stage,
   cards,
   keyEv,
   canAccuse,
-  selectCardHandler,
-  amISelected,
-  amIEnabled,
+  selectedId,
+  selectCardHandler
 }) => {
 
   // const gekv = (obj,val) => Object.keys(obj)[Object.values(obj).indexOf(val)];
-
   const rolesWithSimpleHand = ['hunter', 'witness', 'accomplice'];
   const hasSimpleHand = rolesWithSimpleHand.includes(myRole) && (type === 'hunterUI');
-
-  const evCards = cards.evidence;
-  const meCards = cards.means;
 
   if (hasSimpleHand) {
     return (
       <ul className='hand'>
       {cards.map((card) => (
         <Card
-          className={cardType}
+          className={card.type}
           key={card.id}
           id={card.id}
           isHighlighted={false}
@@ -43,23 +37,25 @@ const Cards = ({
     );
   };
 
-  const canBeEnabled = (i) => {
+  console.log(`${cards[0].type} ${selectedId}`);
+
+  const isEnabled = () => {
     switch (type) {
       case `hunterUI`:
         return false;
       case `killerUI`:
         if (stage.id !== `Setup`) return false;
-        return amIEnabled(i);
+        return true;
       case `otherPlayer`:
         if (myRole === 'ghost') return false;
         if (stage.type !== `round` || !canAccuse) return false;
-        return amIEnabled(i);
+        return true;
       default:
         return console.log(`Err! placeholder`);
     };
   };
 
-  const checkHighlight = (cardId) => {
+  const isHighlighted = (cardId) => {
     if (myRole === 'hunter' || myRole === 'witness') return false;
     if (keyEv) return keyEv.includes(cardId);
   };
@@ -68,12 +64,13 @@ const Cards = ({
     <ul className='hand'>
     {cards.map((card) => (
       <Card
-        className={cardType}
+        card={card}
+        className={card.type}
         key={card.id}
         id={card.id}
-        isHighlighted={checkHighlight(card.id)}
-        isSelected={amISelected(card.id)}
-        isEnabled={canBeEnabled(card.id)}
+        isHighlighted={isHighlighted(card.id)}
+        isEnabled={isEnabled(card.id)}
+        isSelected={selectedId === card.id}
         handleClick={selectCardHandler}
       />
     ))}
@@ -82,76 +79,3 @@ const Cards = ({
 };
 
 export default Cards;
-
-  // const enabled = () => {
-  //   if (stage === 'Setup' && myRole === 'killer' && isMine) return true;
-  //   if (stage !== 'Setup' && !viewAsGhost && !isMine && canAccuse) return true;
-  //   return false;
-  // };
-
-  // const checkEnabled = () => {
-  //   if (myRole === 'ghost') return false;
-  //   if (myRole === 'killer') return disabledForKiller;
-  //   if (myRole === 'hunter') return disabledForHunter;
-  // };
-
-  // // const disabledForHunter = 
-
-  // const disabledForKiller = (stage !== 'Setup' && !isMine)
-
-  // const checkEnabled = (index) => {
-  //   if (enabled()) {
-  //     if (!maxReached) {
-  //       return true;
-  //     } else if (selectedCards[index].isSelected) {
-  //       return true
-  //     } else {
-  //       return false;
-  //     };
-  //   } else {
-  //     return false;
-  //   };
-  // };
-
-  // if (!isMine || (isMine && myRole !== 'killer')) {
-  //   return (
-  //     <ul className='hand'>
-  //       {cards.map(card => (
-  //         <Card
-  //           className='evidence'
-  //           dynamic={false}
-  //           key={card.id}
-  //           id={card.id}
-  //           isKeyEvidence={viewAsGhost ? card.isKeyEvidence : false}
-  //           // imgURL={card.imgURL}
-  //         />
-  //       ))}
-  //     </ul>
-  //   );
-  // };
-
-  // if (isMine && myRole === 'killer' && selectedCards) {
-  //   return (
-  //     <React.Fragment>
-  //       <Button
-  //         onClick={() => console.log(selectedCards)}
-  //       >
-  //         SELECTED
-  //       </Button>
-  //       <ul className='hand'>
-  //         {cards.map((card, index) => (
-  //           <Card
-  //             className='evidence'
-  //             dynamic={true}
-  //             key={card.id}
-  //             id={card.id}
-  //             // imgURL={card.imgURL}
-  //             handleClick={selectCardHandler}
-  //             isSelected={selectedCards[index].isSelected}
-  //             twoSelected={twoSelected}
-  //           />
-  //         ))}
-  //       </ul>
-  //     </React.Fragment>
-  //   );
-  // }

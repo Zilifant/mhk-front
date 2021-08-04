@@ -1,23 +1,28 @@
 import React, {
   useContext
 } from 'react';
-import { SocketContext } from '../../../../context/contexts';
+import { UserContext, SocketContext } from '../../../../context/contexts';
+import { useGame } from '../../../../hooks/game-hook';
 import Container from '../../../shared/Container';
 import Button from '../../../ui-elements/Button';
 
 const Setup = ({
-  className, readyHandler, iAmLeader, gameSettings
+  className,
+  iAmLeader,
+  gameSettings,
 }) => {
 
+  const { userId } = useContext(UserContext);
   const { socket } = useContext(SocketContext);
 
-  const toggleHandler = (toggledItem) => {
-    socket.current.emit('toggle', toggledItem);
-  };
+  const {
+    readyHandler,
+    toggleHandler
+  } = useGame(socket);
 
   return (
     <Container className={className + 'controls'} parentGrid='main'>
-      <Button onClick={readyHandler} disabled={false}>
+      <Button onClick={() => readyHandler(userId)} disabled={false}>
         READY
       </Button>
       <div

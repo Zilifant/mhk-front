@@ -3,23 +3,21 @@ import React, {
   useContext,
   // useEffect
 } from 'react';
-import { UserContext } from '../../../context/contexts';
+import { UserContext, SocketContext } from '../../../context/contexts';
 import Container from '../../shared/Container';
 import Button from '../../ui-elements/Button';
 import { useHttpClient } from '../../../hooks/http-hook';
+import { useGame } from '../../../hooks/game-hook';
 
 const Info = ({
-  startGameHandler,
-  nextRoundHandler,
+  lobby,
   canStart,
   gameOn,
-  clearGameHandler,
   stage,
   iAmLeader
 }) => {
 
   const { sendRequest } = useHttpClient();
-
   const getDataHandler = async event => {
     event.preventDefault();
     try {
@@ -31,11 +29,21 @@ const Info = ({
   };
 
   const { userName, myLobby } = useContext(UserContext);
+  const { socket } = useContext(SocketContext);
+
+  const {
+    startGameHandler,
+    clearGameHandler,
+    nextRoundHandler,
+  } = useGame(socket);
 
   return (
     <Container className="info" parentGrid='main'>
       <Button onClick={getDataHandler}>
-        DATA
+        SERVER
+      </Button>
+      <Button onClick={() => console.log(lobby)}>
+        CLIENT
       </Button>
       <div>
         Name: {userName}, Lobby: {myLobby}{gameOn && stage && stage.id && `, Stage: ${stage.id}`}

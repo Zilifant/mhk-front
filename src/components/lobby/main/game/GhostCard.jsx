@@ -2,8 +2,9 @@ import React, {
   // useState,
   useContext
 } from 'react';
-import { useMultiSelector } from '../../../../hooks/multiselector-hook';
 import { SocketContext } from '../../../../context/contexts';
+import { useMultiSelector } from '../../../../hooks/multi-selector';
+import { useGame } from '../../../../hooks/game-hook';
 import Button from '../../../ui-elements/Button';
 
 const GhostCard = ({
@@ -15,9 +16,10 @@ const GhostCard = ({
 
   const { socket } = useContext(SocketContext);
 
-  const emitClueChoice = (clue, socket) => socket.current.emit('clueChosen', clue);
-
-  const replaceCard = (cardId, socket) => socket.current.emit('advanceStage', cardId);
+  const {
+    chooseClueHandler,
+    replaceGhostCardHandler
+  } = useGame(socket);
 
   const {
     selectItemHandler,
@@ -66,14 +68,14 @@ const GhostCard = ({
       </ul>
       {isMine && !card.isLocked && stage.type !=='liminal' && <Button
         className='confirm-clue'
-        onClick={() => confirmSelection({ cb:[emitClueChoice, socket], resetTracker: true })}
+        onClick={() => confirmSelection({ cb:[chooseClueHandler], resetTracker: true })}
         disabled={!maxReached}
       >
         Confirm
       </Button>}
       {isMine && stage.type === 'liminal' && card.type === 'clue' && !card.isNew && <Button
         className='gc replace-card'
-        onClick={() => replaceCard(card.id, socket)}
+        onClick={() => replaceGhostCardHandler(card.id)}
         disabled={false}
       >
         REPLACE

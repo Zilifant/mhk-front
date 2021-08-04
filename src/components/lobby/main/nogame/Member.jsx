@@ -1,40 +1,40 @@
-import React from 'react';
+import React, {
+  useContext
+} from 'react';
 import Button from '../../../ui-elements/Button';
-
-// Note: ready/leader indicators R and L created by CSS
+import { UserContext, SocketContext } from '../../../../context/contexts';
+import { useGame } from '../../../../hooks/game-hook';
 
 const Member = ({
-  sessUserId,
-  memberId,
-  isLeader,
-  isReady,
-  socket,
-  selectItemHandler,
+  member,
   iAmLeader,
-  isAssignedToGhost
 }) => {
 
-  // let onOffline = (onlineMembers.some(oM => oM.userId === member)) ? 'online' : 'offline';
-  const self = (sessUserId === memberId) ? 'self' : 'other';
-  const ready = (isReady) ? 'ready' : 'notready';
-  const leader = isLeader ? 'leader' : 'notleader';
-  const ghost = isAssignedToGhost ? 'assigned-ghost' : 'notghost';
+  const { userId } = useContext(UserContext);
+  const { socket } = useContext(SocketContext);
+
+  const { assignGhostHandler } = useGame(socket);
+
+  const self = userId === member.id ? 'self' : 'other';
+  const ready = member.isReady ? 'ready' : 'notready';
+  const leader = member.isLeader ? 'leader' : 'notleader';
+  const ghost = member.isAssignedToGhost ? 'assigned-ghost' : 'notghost';
 
   return (
     <div className='m-wrapper'>
       {iAmLeader && <Button
-        key={`btn-${memberId}`}
+        key={`btn-${member.id}`}
         className={`btn assign-ghost ${ghost}`}
         disabled={false}
-        onClick={() => selectItemHandler(memberId, socket)}
+        onClick={() => assignGhostHandler(member.id)}
       >
         GHOST
       </Button>}
       <li
         className={`m-${self} m-${ready} m-${leader} m-${ghost}`}
-        key={memberId}
+        key={member.id}
       >
-        {memberId}
+        {member.id}
       </li>
     </div>
   );

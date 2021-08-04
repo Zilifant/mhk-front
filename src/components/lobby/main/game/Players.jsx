@@ -8,11 +8,17 @@ import Container from '../../../shared/Container';
 import Player from './Player';
 
 const Players = ({
-  stage, players, keyEv, canAccuse, myRole, ghostId, redTeam
+  stage,
+  players,
+  keyEv,
+  canAccuse,
+  myRole,
+  ghostId,
+  redTeam,
+  rolesRef
 }) => {
 
   const { userId } = useContext(UserContext);
-  // const { socket } = useContext(SocketContext);
 
   const showAsRedTeam = (redTeam, playerId) => {
     const extractIds = (arr) => arr.map(obj => obj.id);
@@ -29,7 +35,7 @@ const Players = ({
     <Container className="players" parentGrid='main'>
       <ul className="player-list">
         {players && players.map(player => {
-          if (player.role === 'ghost') return null;
+          if (player.id === ghostId) return null;
           if (player.id === userId) return null;
           return (
           <Player
@@ -39,12 +45,12 @@ const Players = ({
             key={player.id}
             playerId={player.id}
             canBeTargeted={canBeTargeted && player.role !== 'accomplice'}
-            isGhost={player.id === ghostId}
             isRedTeam={showAsRedTeam(redTeam, player.id)}
             keyEv={keyEv}
             accusalSpent={player.accusalSpent}
             hand={player.hand}
             canAccuse={canAccuse}
+            rolesRef={rolesRef}
           />
         )})}
       </ul>

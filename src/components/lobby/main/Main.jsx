@@ -1,9 +1,11 @@
 import React, {
   // useState,
   // useEffect,
-  useContext
+  // useContext
 } from 'react';
-import { UserContext, SocketContext } from '../../../context/contexts';
+// import { UserContext, SocketContext } from '../../../context/contexts';
+// import { useGame } from '../../../hooks/game-hook';
+// import { getThisPlayer } from '../../../util/utils';
 import Container from '../../shared/Container';
 import Grid from '../../shared/Grid';
 import Info from './Info';
@@ -17,68 +19,38 @@ import KillerUI from './game/KIllerUI';
 import Announcer from './Announcer';
 
 const Main = ({
-  oUsers,
-  canStart,
+  lobby,
   gameOn,
   game,
   thisPlayer,
-  gameResult,
-  leaderId,
   iAmLeader,
   gameSettings,
   chat
 }) => {
 
-  const { userId } = useContext(UserContext);
-  const { socket } = useContext(SocketContext);
-
-  // TO DO: restrict this to lobby leader
-  const startGameHandler = () => {
-    if (iAmLeader) return socket.current.emit('startGame', {settings: 'placeholder'});
-    return console.log('Error: only leader can start game');
-  };
-
-  // TO DO: restrict this to lobby leader
-  const clearGameHandler = () => {
-    if (iAmLeader) return socket.current.emit('clearGame');
-    return console.log('Error: only leader can clear game');
-  };
-
-  const nextRoundHandler = () => {
-    if (iAmLeader) return socket.current.emit('advanceStage');
-    return console.log('Error: only leader can advance round');
-  };
-
-  const readyHandler = () => {
-    socket.current.emit('readyUnready', { userId });
-  };
+  // const oUsers = !!lobby.onlineUsers ? lobby.onlineUsers() : [];
 
   return (
     <Container className='lobbymain' parentGrid='lobby'>
       <Grid className={gameOn ? 'main-game' : 'main-nogame'}>
         <Announcer chat={chat} />
         <Info
-          startGameHandler={startGameHandler}
-          nextRoundHandler={nextRoundHandler}
-          clearGameHandler={clearGameHandler}
-          canStart={canStart}
+          lobby={lobby}
+          canStart={lobby.canStart()}
           gameOn={gameOn}
           roundNum={game && game.roundNum}
           stage={game && game.currentStage}
-          leaderId={leaderId}
           iAmLeader={iAmLeader}
-          prevGameResult={gameResult}
         />
-        {!gameOn &&
+        {!gameOn && lobby &&
           <React.Fragment>
             <Setup
               className='lobby'
-              readyHandler={readyHandler}
               iAmLeader={iAmLeader}
               gameSettings={gameSettings}
             />
             <MemberList
-              onlineUsers={oUsers}
+              users={lobby.users}
               iAmLeader={iAmLeader}
             />
           </React.Fragment>
@@ -101,6 +73,7 @@ const Main = ({
               redTeam={game.redTeam}
               keyEv={game.keyEvidence}
               canAccuse={!thisPlayer.accusalSpent}
+              rolesRef={game.rolesRef}
             />
 
             {thisPlayer.role === 'ghost' &&

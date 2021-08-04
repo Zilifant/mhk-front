@@ -425,13 +425,22 @@ button:focus { outline: none; }
   color: var(--colG5);
 }
 
-.red {
-  color: var(--rose5);
+.role {
   font-weight: bold;
   padding: .15rem .25rem;
   background-color: var(--bg5);
   max-width: max-content;
   border-radius: var(--rad);
+}
+
+.role.redteam,
+.role.accomplice,
+.role.killer {
+  color: var(--rose5);
+}
+
+.role.witness {
+  color: var(--liBl5);
 }
 
 .con--lobbycontrols {

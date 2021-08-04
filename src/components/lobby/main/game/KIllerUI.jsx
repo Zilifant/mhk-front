@@ -4,6 +4,7 @@ import React, {
   // useEffect
 } from 'react';
 import { useParallelSelector } from '../../../../hooks/parallel-selector';
+import { useGame } from '../../../../hooks/game-hook';
 import { SocketContext } from '../../../../context/contexts';
 import Container from '../../../shared/Container';
 import Button from '../../../ui-elements/Button';
@@ -21,7 +22,6 @@ const KillerUI = ({
 }) => {
 
   const { socket } = useContext(SocketContext);
-  const emitKeyEvChoice = (keyEv, socket) => socket.current.emit('keyEvidenceChosen', keyEv);
 
   const types = Object.keys(hand);
 
@@ -32,14 +32,18 @@ const KillerUI = ({
     submitSelection
   } = useParallelSelector(types);
 
+  const {
+    chooseKeyEvHandler
+  } = useGame(socket);
+
   return (
-    <Container className='self self-killer' parentGrid='main'>
+    <Container className={`self self-${role}`} parentGrid='main'>
       <div className='player-info'>
         <li>{userName} ({role[0].toUpperCase()})</li>
         <li className={accusalSpent ? 'acc-spent' : 'acc-avail'}>[BADGE]</li>
         {(stage.id === 'Setup') && <Button
           className='confirm-key-evidence'
-          onClick={() => submitSelection({cb:[emitKeyEvChoice, socket], reset:true})}
+          onClick={() => submitSelection({cb:[chooseKeyEvHandler], reset:true})}
           disabled={!minSelected}
         >
           Confirm
@@ -48,7 +52,7 @@ const KillerUI = ({
       {types.map((type) => (
         <Cards
           myRole={role}
-          type={`killerUI`}
+          type={`${role}UI`}
           cardType={type}
           key={type}
           stage={stage}

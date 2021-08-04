@@ -4,7 +4,8 @@ import React, {
   // useEffect
 } from 'react';
 import { useParallelSelector } from '../../../../hooks/parallel-selector';
-import { SocketContext, UserContext } from '../../../../context/contexts';
+import { useGame } from '../../../../hooks/game-hook';
+import { SocketContext } from '../../../../context/contexts';
 import Container from '../../../shared/Container';
 import Button from '../../../ui-elements/Button';
 import Cards from './Cards';
@@ -13,31 +14,24 @@ const Player = ({
   myRole,
   stage,
   hand,
-  isGhost,
   isRedTeam,
   playerId,
   accusalSpent,
   keyEv,
   canAccuse,
-  canBeTargeted
+  canBeTargeted,
+  rolesRef
 }) => {
 
-  const isRoundStage = stage.type === 'round';
+  const { socket } = useContext(SocketContext);
 
+  const isRoundStage = stage.type === 'round';
   const types = Object.keys(hand);
 
-  const { socket } = useContext(SocketContext);
-  const { userId } = useContext(UserContext);
-  const confirmTarget = (socket, targetId) => socket.current.emit('secondMurder', targetId);
-  const emitAccusation = (accEv, socket, playerId) => {
-    const accusation = {
-      accuserSID: socket.current.id,
-      accuserId: userId,
-      accusedId: playerId,
-      accusalEv: accEv
-    };
-    socket.current.emit('accusation', accusation);
-  };
+  const {
+    accusationHandler,
+    killWitnessHandler
+  } = useGame(socket);
 
   const {
     selTracker,
@@ -46,20 +40,26 @@ const Player = ({
     submitSelection
   } = useParallelSelector(types);
 
-  if (isGhost) return null;
+  const allRoles = () => {
+    const role = rolesRef.find(entry => entry.user.id === playerId).role
+    return (
+      <li className={`role ${role}`}>{role.toUpperCase()}</li>
+    );
+  };
 
   return (
     <Container className='player'>
       <div className='player-info'>
         <li>{playerId.slice(0,-5)}</li>
         <li className={accusalSpent ? 'bdg acc-spent' : 'bdg acc-avail'}>[BADGE]</li>
-        {(myRole === 'witness') && isRedTeam && <li className='red'>!!!</li>}
-        {(myRole === 'killer') && isRedTeam && <li className='red'>Accomplice</li>}
-        {(myRole === 'accomplice') && isRedTeam && <li className='red'>Killer</li>}
+        {(myRole === 'ghost') && allRoles()}
+        {(myRole === 'witness') && isRedTeam && <li className='role redteam'>!!!</li>}
+        {(myRole === 'killer') && isRedTeam && <li className='role redteam'>ACCOMPLICE</li>}
+        {(myRole === 'accomplice') && isRedTeam && <li className='role redteam'>KILLER</li>}
         {myRole !== 'ghost' && isRoundStage && canAccuse &&
         <Button
           className='confirm-accusation'
-          onClick={() => submitSelection({cb:[emitAccusation, socket, playerId], reset:true})}
+          onClick={() => submitSelection({cb:[accusationHandler], reset:true})}
           disabled={!minSelected}
         >
           ACCUSE
@@ -67,7 +67,7 @@ const Player = ({
         {canBeTargeted && 
         <Button
           className='confirm-accusation'
-          onClick={() => confirmTarget(socket, playerId)}
+          onClick={() => killWitnessHandler(playerId)}
           disabled={false}
         >
           KILL
@@ -75,17 +75,17 @@ const Player = ({
       </div>
       {types.map((type) => (
         <Cards
-        myRole={myRole}
-        type={`otherPlayer`}
-        cardType={type}
-        key={type}
-        stage={stage}
-        cards={hand[type]}
-        selectedId={selTracker[type]?.id}
-        selectCardHandler={selectHandler}
-        canAccuse={canAccuse}
-        isRoundStage={isRoundStage}
-        keyEv={keyEv}
+          myRole={myRole}
+          type={`otherPlayer`}
+          cardType={type}
+          key={type}
+          stage={stage}
+          cards={hand[type]}
+          selectedId={selTracker[type]?.id}
+          selectCardHandler={selectHandler}
+          canAccuse={canAccuse}
+          isRoundStage={isRoundStage}
+          keyEv={keyEv}
         />
       ))}
     </Container>

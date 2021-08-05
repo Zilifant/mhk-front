@@ -15,24 +15,23 @@ const BasicUI = ({
   }
 }) => {
 
+  const types = Object.keys(hand);
+
   return (
     <Container className='self self-hunter' parentGrid='main'>
       <ul className='player-info'>
         <li>{userName} ({role[0].toUpperCase()})</li>
         <li className={canAccuse ? 'acc-avail' : 'acc-spent'}>[BADGE]</li>
       </ul>
-      <Cards
-        myRole={role}
-        type={`hunterUI`}
-        cardType='evidence'
-        cards={hand.evidence}
-      />
-      <Cards
-        myRole={role}
-        type={`hunterUI`}
-        cardType='means'
-        cards={hand.means}
-      />
+      {types.map((type) => (
+        <Cards
+          key={type}
+          myRole={role}
+          type={`${role}UI`}
+          cardType={type}
+          cards={hand[type]}
+        />
+      ))}
     </Container>
   );
 };

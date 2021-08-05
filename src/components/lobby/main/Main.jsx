@@ -20,15 +20,15 @@ import Announcer from './Announcer';
 
 const Main = ({
   lobby,
-  gameOn,
-  game,
   thisPlayer,
   iAmLeader,
-  gameSettings,
-  chat
+  lobby: {
+    gameSettings,
+    gameOn,
+    game,
+    chat,
+  }
 }) => {
-
-  // const oUsers = !!lobby.onlineUsers ? lobby.onlineUsers() : [];
 
   return (
     <Container className='lobbymain' parentGrid='lobby'>
@@ -66,14 +66,9 @@ const Main = ({
             />}
 
             <Players
-              stage={game.currentStage}
-              players={game.players}
+              game={game}
               myRole={thisPlayer.role}
-              ghostId={game.ghost.id}
-              redTeam={game.redTeam}
-              keyEv={game.keyEvidence}
-              canAccuse={!thisPlayer.accusalSpent}
-              rolesRef={game.rolesRef}
+              canIAccuse={thisPlayer.canAccuse}
             />
 
             {thisPlayer.role === 'ghost' &&

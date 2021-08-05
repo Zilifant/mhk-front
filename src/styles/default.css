@@ -293,9 +293,10 @@ main.app {
 }
 
 *, *:before, *:after {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Roboto Condensed', sans-serif;
   font-weight: 500;
   font-size: 14px;
+  letter-spacing: .025rem;
   color: var(--default-light);
   margin: 0;
   padding: 0;
@@ -425,48 +426,6 @@ button:focus { outline: none; }
   color: var(--colG5);
 }
 
-.role {
-  font-weight: bold;
-  padding: .15rem .25rem;
-  background-color: var(--bg5);
-  max-width: max-content;
-  border-radius: var(--rad);
-}
-
-.role.redteam,
-.role.accomplice,
-.role.killer {
-  color: var(--rose5);
-}
-
-.role.witness {
-  color: var(--liBl5);
-}
-
-.con--lobbycontrols {
-  display: block;
-}
-
-.player-info {
-  margin-right: .5rem;
-  /* background-color: var(--bg5); */
-  border-radius: var(--rad);
-  width: 100px;
-  display: flex;
-  flex-flow: wrap;
-  align-content: flex-start;
-}
-
-.player-info * {
-  margin: 0 auto;
-  text-align: center;
-  width: 100%;
-}
-
-.player-info > :not(:first-child) {
-  margin-top: .25rem;
-}
-
 .pg--main {
   background-color: var(--bg4);
 }
@@ -478,6 +437,12 @@ button:focus { outline: none; }
 
 /* BUTTONS
 */
+
+.placeholder {
+  height: 1.3rem;
+  width: 100%;
+  margin: 0;
+}
 
 .btn {
   -webkit-appearance: none;
@@ -734,6 +699,10 @@ li.m-assigned-ghost {
 .con--foot,
 .con--head {
   text-align: center;
+}
+
+.con--lobbycontrols {
+  display: block;
 }
 
 .con--info > :not(:nth-child(1)),

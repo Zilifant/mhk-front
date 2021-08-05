@@ -7,10 +7,11 @@ import '../../../../styles/cards.css';
 const Cards = ({
   myRole,
   type,
+  cardType,
   stage,
   cards,
   keyEv,
-  canAccuse,
+  canIAccuse,
   selectedId,
   selectCardHandler
 }) => {
@@ -20,12 +21,12 @@ const Cards = ({
 
   if (hasSimpleHand) {
     return (
-      <ul className='hand'>
+      <ul className={`c-group ${cardType}`}>
       {cards.map((card) => (
         <Card
-          className={card.type}
           key={card.id}
           id={card.id}
+          className={card.type}
           isHighlighted={false}
           isSelected={false}
           isEnabled={false}
@@ -47,7 +48,7 @@ const Cards = ({
         return true;
       case `otherPlayer`:
         if (myRole === 'ghost') return false;
-        if (stage.type !== `round` || !canAccuse) return false;
+        if (stage.type !== `round` || !canIAccuse) return false;
         return true;
       default:
         return console.log(`Err! placeholder`);
@@ -60,13 +61,13 @@ const Cards = ({
   };
 
   return (
-    <ul className='hand'>
+    <ul className={`c-group ${cardType}`}>
     {cards.map((card) => (
       <Card
-        card={card}
-        className={card.type}
         key={card.id}
         id={card.id}
+        card={card}
+        className={card.type}
         isHighlighted={isHighlighted(card.id)}
         isEnabled={isEnabled(card.id)}
         isSelected={selectedId === card.id}

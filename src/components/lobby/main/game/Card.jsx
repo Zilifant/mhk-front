@@ -1,6 +1,7 @@
 import React, {
   // useState
 } from 'react';
+import { capitalize } from '../../../../util/utils'
 // import { GiDeathSkull } from 'react-icons/gi';
 
 const Card = ({
@@ -17,16 +18,14 @@ const Card = ({
   const highlighted = isHighlighted ? 'highlighted' : 'default';
 
   return (
-    <div className={`c-wrap-${className}`}>
-      <button
-        className={`card-wrap--player ${className} ${selected} ${highlighted}`}
-        disabled={!isEnabled}
-        onClick={() => handleClick(card)}
-      >
-        {/* <GiDeathSkull className={`card-icon--${className}`} /> */}
-        <div className={`card-title--${className}`}>{id}</div>
-      </button>
-    </div>
+    <button
+      className={`card-wrap--player ${className} ${selected} ${highlighted}`}
+      disabled={!isEnabled}
+      onClick={() => handleClick(card)}
+    >
+      {/* <GiDeathSkull className={`card-icon ${className}`} /> */}
+      <div className={`card-title ${className}`}>{capitalize(id)}</div>
+    </button>
   );
 };
 

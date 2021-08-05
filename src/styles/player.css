@@ -224,198 +224,68 @@
   --bluG9: rgba(15,23,42,1);
 }
 
-ul.c-group {
-  display: flex;
+.p-info.username  { grid-area: name; }
+.p-info.badge     { grid-area: badg; }
+.p-info.role      { grid-area: role; }
+.p-info.interact  { grid-area: intr; }
+.c-group.evidence { grid-area: evid; }
+.c-group.means    { grid-area: mean; }
+
+.con--player {
+  display: grid;
+  width: 100%;
+  overflow-x: scroll;
+  gap: var(--mar);
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas:
+    "name evid"
+    "badg evid"
+    "role mean"
+    "intr mean";
 }
 
-/* ul.hand > * {
-
-} */
-
-div.card-wrap--ghost,
-button.card-wrap--player {
-  display: inline-block;
-  background-color: var(--bg4);
+.p-info {
+  background-color: var(--gray6);
+  font-weight: bolder;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
   border-radius: var(--rad);
 }
 
-div.card-wrap--ghost {
-  width: 100px;
+.c-group {
+
 }
 
-.gc-title,
-.gc-clue-btn {
-  padding: .15rem;
+.p-info.role {
+  background-color: var(--bg5);
 }
 
-.gc-title {
-  background-color: var(--bg3);
-  height: 2.75rem;
-  text-align: center;
+.role.redteam,
+.role.accomplice,
+.role.killer {
+  color: var(--rose5);
 }
 
-.card-wrap--ghost.cause > .gc-title {
-  background-color: var(--purp8);
+.role.witness {
+  color: var(--liBl5);
 }
 
-.card-wrap--ghost.location > .gc-title {
-  background-color: var(--emer8);
-}
-
-.card-wrap--ghost.new > .gc-title {
-  background-color: var(--colG6);
-}
-
-.gc-clue {
-  margin: .25rem 0;
-  white-space: nowrap;
-}
-
-.gc-clue-btn {
-  background-color: var(--bluG5);
-  margin: 0 auto;
-  width: 100%;
-}
-
-.gc-clue-btn.selected {
-  background-color: var(--gree5);
-}
-
-.gc-clue-btn:hover,
-.gc-clue-btn.selected:hover {
-  background-color: var(--gree3);
-}
-
-.gc-clue-btn:disabled:hover,
-.gc-clue-btn:disabled {
-  background-color: var(--bluG7);
-  cursor: auto;
-}
-
-.gc-clue-btn.highlighted:disabled:hover,
-.gc-clue-btn.highlighted:disabled,
-.gc-clue-btn.highlighted:hover,
-.gc-clue-btn.highlighted {
-  background-color: var(--oran7);
-  color: var(--gray9);
-}
-
-.gc-clue-btn:not(:disabled):active {
-  background-color: var(--lime3);
-}
-
-.btn--gc.replace-card,
-.btn--confirm-clue {
-  width: 100%;
-}
-
-.btn--gc.replace-card {
-  background-color: var(--rose8);
-}
-
-.btn--gc.replace-card:hover {
-  background-color: var(--rose7);
-}
-
-button.card-wrap--player {
-  width: 75px;
-  height: 85px;
-  border: 3px solid var(--gray2);
-  padding: .25rem;
-}
-
-div.card-wrap--ghost *,
-button.card-wrap--player * {
-  color: var(--gray2);
-}
-
-button.card-wrap--player.selected:hover,
-button.card-wrap--player:hover {
-  border-color: var(--cyan3);
-}
-
-button.card-wrap--player.selected:hover *,
-button.card-wrap--player:hover * {
-  color: var(--cyan3);
-  fill: var(--cyan3);
-}
-
-div.card-wrap--ghost:not(:first-child),
-button.card-wrap--player:not(:first-child) {
-  margin-left: .5rem;
-}
-
-button.card-wrap--player:disabled {
-  border-color: var(--gray4);
-  background-color: var(--bg4);
-  cursor: auto;
-}
-
-button.card-wrap--player:disabled:hover *,
-button.card-wrap--player:disabled * {
-  color: var(--gray4);
-  fill: var(--gray4);
-}
-
-button.card-wrap--player.selected {
-  border-color: var(--gray2);
-  background: var(--cyan8);
-}
-
-button.card-wrap--player:not(:disabled):active {
-  border-color: var(--pink5);
-}
-
-button.card-wrap--player:not(:disabled):active * {
-  color: var(--pink5);
-  fill: var(--pink5);
-}
-
-button.card-wrap--player.highlighted {
-  border-color: var(--oran7);
-}
-
-button.card-wrap--player.highlighted:hover *,
-button.card-wrap--player.highlighted * {
-  color: var(--oran7);
-  fill: var(--oran7);
-}
-
-/* .card-icon {
-  height: 25px;
-  width: 25px;
-  display: block;
-  margin: .25rem auto;
-} */
-
-/* div.card-title--means,
-.card-icon--means {
-  color: lightgreen;
-  fill: lightgreen;
-}
-
-div.card-title--evidence,
-.card-icon--evidence {
-  color: violet;
-  fill: violet;
-} */
-
-div.card-title {
-  /* font-size: 12px; */
-}
-
-/* .card-wrap--player > * {
-  margin: .25rem;
+/* .player-info {
+  background-color: var(--bg5);
+  border-radius: var(--rad);
   display: flex;
-  justify-content: center;
-  justify-items: center;
-  text-align: center;
-} */
-
-/* button.card-wrap--player.mine {
-
+  flex-flow: wrap;
+  align-content: flex-start;
 }
 
-button.card-wrap--player.other {
+.player-info * {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
 
+.player-info > :not(:first-child) {
+  margin-top: .25rem;
 } */

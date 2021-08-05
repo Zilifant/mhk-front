@@ -8,14 +8,16 @@ import Container from '../../../shared/Container';
 import Player from './Player';
 
 const Players = ({
-  stage,
-  players,
-  keyEv,
-  canAccuse,
+  canIAccuse,
   myRole,
-  ghostId,
-  redTeam,
-  rolesRef
+  game: {
+    currentStage,
+    players,
+    redTeam,
+    keyEvidence,
+    rolesRef,
+    ghost
+  }
 }) => {
 
   const { userId } = useContext(UserContext);
@@ -29,27 +31,27 @@ const Players = ({
     return show ? true : null;
   };
 
-  const canBeTargeted = myRole === 'killer' && stage.id === 'Second Murder';
+  const canBeTargeted = myRole === 'killer' && currentStage.id === 'Second Murder';
 
   return (
     <Container className="players" parentGrid='main'>
       <ul className="player-list">
         {players && players.map(player => {
-          if (player.id === ghostId) return null;
+          if (player.id === ghost.id) return null;
           if (player.id === userId) return null;
           return (
           <Player
             player={player}
             myRole={myRole}
-            stage={stage}
+            stage={currentStage}
             key={player.id}
             playerId={player.id}
             canBeTargeted={canBeTargeted && player.role !== 'accomplice'}
             isRedTeam={showAsRedTeam(redTeam, player.id)}
-            keyEv={keyEv}
-            accusalSpent={player.accusalSpent}
+            keyEv={keyEvidence}
+            canTheyAccuse={player.canAccuse}
             hand={player.hand}
-            canAccuse={canAccuse}
+            canIAccuse={canIAccuse}
             rolesRef={rolesRef}
           />
         )})}

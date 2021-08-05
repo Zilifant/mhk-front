@@ -15,7 +15,7 @@ const KillerUI = ({
     hand,
     role,
     userName,
-    accusalSpent
+    canAccuse
   },
   stage,
   keyEv
@@ -40,7 +40,7 @@ const KillerUI = ({
     <Container className={`self self-${role}`} parentGrid='main'>
       <div className='player-info'>
         <li>{userName} ({role[0].toUpperCase()})</li>
-        <li className={accusalSpent ? 'acc-spent' : 'acc-avail'}>[BADGE]</li>
+        <li className={canAccuse ? 'acc-avail' : 'acc-spent'}>[BADGE]</li>
         {(stage.id === 'Setup') && <Button
           className='confirm-key-evidence'
           onClick={() => submitSelection({cb:[chooseKeyEvHandler], reset:true})}

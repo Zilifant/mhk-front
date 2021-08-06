@@ -224,6 +224,17 @@
   --bluG9: rgba(15,23,42,1);
 }
 
+:root {
+  --default-light : var(--colG2);
+  --default :       var(--gray4);
+
+  --bg1 : var(--gray5);
+  --bg2 : var(--gray6);
+  --bg3 : var(--gray7);
+  --bg4 : var(--gray8);
+  --bg5 : var(--gray9);
+}
+
 .p-info.username  { grid-area: name; }
 .p-info.badge     { grid-area: badg; }
 .p-info.role      { grid-area: role; }
@@ -231,45 +242,82 @@
 .c-group.evidence { grid-area: evid; }
 .c-group.means    { grid-area: mean; }
 
+.con--self.player,
 .con--player {
+  background-color: var(--bg4);
   display: grid;
   width: 100%;
-  overflow-x: scroll;
   gap: var(--mar);
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 9rem 1fr;
   grid-template-rows: repeat(4, 1fr);
   grid-template-areas:
-    "name evid"
     "badg evid"
+    "role evid"
+    "role mean"
+    "intr mean";
+}
+
+.con--self.player {
+  background-color: var(--bg4);
+  display: grid;
+  width: 100%;
+  gap: var(--mar);
+  grid-template-columns: 9rem 1fr;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas:
+    "badg evid"
+    "role evid"
     "role mean"
     "intr mean";
 }
 
 .p-info {
-  background-color: var(--gray6);
-  font-weight: bolder;
-  margin: 0 auto;
-  text-align: center;
-  width: 100%;
+  background-color: var(--bg3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
   border-radius: var(--rad);
 }
 
-.c-group {
-
+.p-info .wrapper {
+  text-align: center;
 }
 
-.p-info.role {
-  background-color: var(--bg5);
+.username,
+.p-info.role .wrapper :nth-child(3),
+.con--self .p-info.role .wrapper :nth-child(2) {
+  /* margin: 0 auto;
+  text-align: center;
+  width: 100%; */
+  font-weight: bold;
+  font-size: 1.25rem;
+  letter-spacing: .1rem;
 }
 
-.role.redteam,
-.role.accomplice,
-.role.killer {
-  color: var(--rose5);
+.p-info.role .wrapper > :not(:first-child) {
+  margin-top: .15rem;
 }
 
-.role.witness {
-  color: var(--liBl5);
+.p-info.role .wrapper .redteam,
+.p-info.role .wrapper .killer {
+  color: var(--killer);
+}
+
+.p-info.role .wrapper .accomplice {
+  color: var(--accomp);
+}
+
+.p-info.role .wrapper .witness {
+  color: var(--witnss);
+}
+
+.p-info.role .wrapper .hunter {
+  color: var(--hunter);
+}
+
+.p-info.role .wrapper .mystery {
+  color: var(--mystry);
 }
 
 /* .player-info {
@@ -284,8 +332,4 @@
   margin: 0 auto;
   text-align: center;
   width: 100%;
-}
-
-.player-info > :not(:first-child) {
-  margin-top: .25rem;
 } */

@@ -235,127 +235,102 @@
   --bg5 : var(--gray9);
 }
 
-button.card-wrap--player {
+div.card-wrap--ghost {
   display: inline-block;
+  background-color: var(--bg4);
   border-radius: var(--rad);
-  width: 6rem;
-  height: 6rem;
-  padding: .5rem;
+  width: 8rem;
 }
 
-button.card-wrap--player.evidence:hover,
-button.card-wrap--player.evidence:disabled,
-button.card-wrap--player.evidence {
-  background-color: var(--evdark);
-}
-
-button.card-wrap--player.means:hover,
-button.card-wrap--player.means:disabled,
-button.card-wrap--player.means {
-  background-color: var(--medark);
-}
-
-button.card-wrap--player {
-  opacity: 80%;
-}
-
-button.card-wrap--player.selected:hover,
-button.card-wrap--player:hover {
-  opacity: 100%;
-}
-
-button.card-wrap--player.selected:hover *,
-button.card-wrap--player:hover * {
-  /* color: var(--cyan3);
-  fill: var(--cyan3); */
-}
-
-button.card-wrap--player:not(:first-child) {
+div.card-wrap--ghost:not(:first-child) {
   margin-left: .5rem;
 }
 
-button.card-wrap--player:disabled {
-  /* border-color: var(--gray4); */
-  /* background-color: var(--bg4); */
-  opacity: 60%;
+/* div.card-wrap--ghost * {
+  color: var(--gray2);
+} */
+
+.gc-title,
+.gc-clue-btn {
+  padding: .15rem .5rem;
+  border-radius: var(--rad);
+}
+
+.gc-title {
+  height: 2.75rem;
+  text-align: center;
+}
+
+.card-wrap--ghost.old > .gc-title {
+  background-color: var(--cluold);
+}
+
+.card-wrap--ghost.new > .gc-title {
+  background-color: var(--clunew);
+}
+
+.card-wrap--ghost.cause > .gc-title {
+  background-color: var(--cause);
+}
+
+.card-wrap--ghost.location > .gc-title {
+  background-color: var(--locate);
+}
+
+.gc-clue {
+  margin: .25rem 0;
+  white-space: nowrap;
+}
+
+.gc-clue-btn {
+  background-color: var(--bg2);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.gc-clue-btn.selected {
+  background-color: var(--gree6);
+}
+
+.gc-clue-btn:hover,
+.gc-clue-btn.selected:hover {
+  background-color: var(--gree6);
+}
+
+.gc-clue-btn:disabled:hover,
+.gc-clue-btn:disabled {
+  background-color: var(--bg3);
   cursor: auto;
 }
 
-button.card-wrap--player:disabled:hover *,
-button.card-wrap--player:disabled * {
-  /* color: var(--gray4);
-  fill: var(--gray4); */
+.gc-clue-btn.highlighted:disabled:hover,
+.gc-clue-btn.highlighted:disabled,
+.gc-clue-btn.highlighted:hover,
+.gc-clue-btn.highlighted {
+  background-color: var(--hiligt);
+  color: var(--gray9);
 }
 
-button.card-wrap--player.highlighted,
-button.card-wrap--player.selected {
-  border: .25rem solid;
-  padding: .25rem;
-  opacity: 100%;
+.gc-clue-btn:not(:disabled):active {
+  background-color: var(--gree4);
 }
 
-button.card-wrap--player.evidence.selected {
-  border-color: var(--evligt);
+.gc-conbtn-placeholder,
+.btn--gc.replace-card,
+.btn--gc.confirm-clue {
+  width: 100%;
 }
 
-button.card-wrap--player.means.selected {
-  border-color: var(--meligt);
+.btn--gc.replace-card {
+  background-color: var(--rose8);
 }
 
-button.card-wrap--player:not(:disabled):active {
-  /* border-color: var(--white); */
+.btn--gc.replace-card:hover {
+  background-color: var(--rose7);
 }
 
-button.card-wrap--player:not(:disabled):active * {
-  /* color: var(--pink5);
-  fill: var(--pink5); */
+.gc-conbtn-placeholder {
+  color: var(--bg4);
+  background-color: var(--bg4);
+  padding: .15rem;
 }
-
-button.card-wrap--player.highlighted {
-  border-color: var(--hiligt);
-}
-
-/* button.card-wrap--player.highlighted:hover *,
-button.card-wrap--player.highlighted * {
-  color: var(--oran7);
-  fill: var(--oran7);
-} */
-
-/* .card-icon {
-  height: 25px;
-  width: 25px;
-  display: block;
-  margin: .25rem auto;
-} */
-
-/* div.card-title--means,
-.card-icon--means {
-  color: lightgreen;
-  fill: lightgreen;
-}
-
-div.card-title--evidence,
-.card-icon--evidence {
-  color: violet;
-  fill: violet;
-} */
-
-/* div.card-title {
-  font-size: 12px;
-} */
-
-/* .card-wrap--player > * {
-  margin: .25rem;
-  display: flex;
-  justify-content: center;
-  justify-items: center;
-  text-align: center;
-} */
-
-/* button.card-wrap--player.mine {
-
-}
-
-button.card-wrap--player.other {
-
-} */

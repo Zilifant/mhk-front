@@ -6,6 +6,7 @@ import React, {
 // import { SocketContext } from '../../../../context/contexts';
 import Container from '../../../shared/Container';
 import GhostCard from './GhostCard';
+import '../../../../styles/ghost.css'
 
 const GhostUI = ({
   game: {
@@ -17,7 +18,7 @@ const GhostUI = ({
 
   return (
     <Container className='self self-ghost' parentGrid='main'>
-      <ul className='hand'>
+      <ul className='c-group'>
       {cluesDeck.map((card) => (
         <GhostCard
           key={card.id}

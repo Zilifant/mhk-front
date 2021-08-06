@@ -228,33 +228,27 @@
   --default-light : var(--colG2);
   --default :       var(--gray4);
 
-  --physical  : var(--yell6);
-  --ice       : var(--cyan4);
-  --fire      : var(--redd4);
-  --coldfire  : var(--fuch4);
-  --move      : var(--wrmG4);
-  --influence : var(--liBl3);
-  --heal      : var(--lime4);
-  --draw      : var(--indi4);
-
-  --w : var(--colG3);
-  --u : var(--blue4);
-  --r : var(--rose4);
-  --g : var(--emer4);
-  --a : var(--yell3);
-  --b : var(--purp5);
-
   --bg1 : var(--gray5);
   --bg2 : var(--gray6);
   --bg3 : var(--gray7);
   --bg4 : var(--gray8);
   --bg5 : var(--gray9);
 
-  --narrator-default : var(--gray4);
-  --narrator-spec    : var(--colG2);
-  --narrator-warn    : var(--yell4);
-  --narrator-todo    : var(--cyan4);
-  --narrator-world   : var(--pink4);
+  --evligt : var(--colG5);
+  --evdark : var(--colG6);
+  --meligt : var(--wrmG5);
+  --medark : var(--wrmG6);
+  --hiligt : var(--redd4);
+  --killer : var(--redd4);
+  --accomp : var(--redd3);
+  --hunter : var(--gree4);
+  --witnss : var(--liBl4);
+  --cause  : var(--purp8);
+  --locate : var(--emer8);
+  --cluold : var(--colG7);
+  --clunew : var(--colG6);
+  --badge  : var(--yell4);
+  --mystry : var(--viol4);
 }
 
 /* RESET
@@ -315,6 +309,29 @@ button {
 
 button:focus { outline: none; }
 
+/* SHARED */
+
+.badge {
+  color: var(--ambr2);
+  background-color: var(--yell5);
+  border-top: .33rem solid var(--yell4);
+  border-left: .33rem solid var(--yell4);
+  border-bottom: .33rem solid var(--yell6);
+  border-right: .33rem solid var(--yell6);
+}
+
+.badge.can-accuse {
+  opacity: 100%;
+}
+
+.badge.accusal-spent {
+  opacity: 25%;
+  /* background-color: var(--bg2);
+  border: .5rem solid var(--bg3); */
+}
+
+/* ////////////////////////////////////////// */
+
 /* GRID
 */
 
@@ -359,7 +376,6 @@ button:focus { outline: none; }
 .grid--lobby {
   display: grid;
   height: 100%;
-  padding: var(--mar);
   gap: var(--mar);
   grid-template-columns: 3fr 1fr;
   grid-template-areas:
@@ -405,10 +421,10 @@ button:focus { outline: none; }
 
 .container {
   padding: .5rem;
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex; */
+  /* flex-wrap: wrap; */
   /* justify-content: right; */
-  background: var(--bg3);
+  /* background: var(--bg3); */
   border-radius: var(--rad);
 }
 
@@ -416,6 +432,14 @@ button:focus { outline: none; }
 .con--player,
 .con--ghost {
   overflow-x: scroll;
+}
+
+.con--players {
+  padding: 0;
+}
+
+.con--lobbymain {
+  background: var(--bg3);
 }
 
 .advrole-on {
@@ -633,6 +657,10 @@ button:focus { outline: none; }
 /* LISTS
 */
 
+ul.c-group {
+  display: flex;
+}
+
 li {
   list-style: none;
 }
@@ -645,14 +673,6 @@ ul.online-list {
 ul.player-list > :not(:first-child),
 ul.member-list > div > :not(:first-child) {
   margin-top: .25rem;
-}
-
-li.acc-avail {
-  color: var(--ambr4);
-}
-
-li.acc-spent {
-  color: var(--bg1);
 }
 
 ul.online-list > li,

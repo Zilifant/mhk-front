@@ -41,16 +41,13 @@ const Players = ({
           if (player.id === userId) return null;
           return (
           <Player
+            key={player.id}
             player={player}
             myRole={myRole}
             stage={currentStage}
-            key={player.id}
-            playerId={player.id}
             canBeTargeted={canBeTargeted && player.role !== 'accomplice'}
             isRedTeam={showAsRedTeam(redTeam, player.id)}
             keyEv={keyEvidence}
-            canTheyAccuse={player.canAccuse}
-            hand={player.hand}
             canIAccuse={canIAccuse}
             rolesRef={rolesRef}
           />

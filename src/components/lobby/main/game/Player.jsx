@@ -6,6 +6,7 @@ import React, {
 import { useParallelSelector } from '../../../../hooks/parallel-selector';
 import { useGame } from '../../../../hooks/game-hook';
 import { SocketContext } from '../../../../context/contexts';
+import { badge } from '../../../../util/utils';
 import Container from '../../../shared/Container';
 import Button from '../../../ui-elements/Button';
 import Cards from './Cards';
@@ -14,14 +15,16 @@ import '../../../../styles/player.css';
 const Player = ({
   myRole,
   stage,
-  hand,
   isRedTeam,
-  playerId,
-  canTheyAccuse,
   keyEv,
   canIAccuse,
   canBeTargeted,
-  rolesRef
+  rolesRef,
+  player: {
+    id: playerId,
+    canAccuse: canTheyAccuse,
+    hand,
+  }
 }) => {
 
   const { socket } = useContext(SocketContext);
@@ -42,13 +45,9 @@ const Player = ({
   } = useParallelSelector(types);
 
   const allRoles = () => {
-    const role = rolesRef.find(entry => entry.user.id === playerId).role
-    return (
-      <li className={`p-info role ${role}`}>{role.toUpperCase()}</li>
-    );
+    const role = rolesRef.find(entry => entry.user.id === playerId).role;
+    return [role, role];
   };
-
-  const badge = canTheyAccuse ? 'bdg acc-avail' : 'bdg acc-spent';
 
   const accuseBtn = () => {
     return (
@@ -74,68 +73,43 @@ const Player = ({
     );
   };
 
-  const placeholder = () => {
-    return (
-      <div className='placeholder'></div>
-    );
-  };
-
   const interact = () => {
     if (myRole !== 'ghost' && isRoundStage && canIAccuse) return accuseBtn();
     if (canBeTargeted) return killBtn();
     return null;
   };
 
-  const role = () => {
-    if (myRole === 'ghost') return allRoles();
-    if (myRole === 'hunter') return <li className='p-info role mystery'>???</li>
-    if (isRedTeam) return showRedTeam(myRole);
+  const showRedTeam = (myRole) => {
+    if (myRole === 'witness') return ['redteam', '!!!'];
+    if (myRole === 'killer') return ['accomplice', 'accomplice'];
+    if (myRole === 'accomplice') return ['killer', 'killer'];
     return null;
   };
 
-  const showRedTeam = (myRole) => {
-    if (myRole === 'witness') return <li className='p-info role redteam'>!!!</li>
-    if (myRole === 'killer') return <li className='p-info role redteam'>ACCOMPLICE</li>
-    if (myRole === 'accomplice') return <li className='p-info role redteam'>KILLER</li>
-    return null;
-  };
+  const role = () => {
+    if (myRole === 'ghost') return allRoles();
+    if (myRole === 'hunter') return ['mystery', '???'];
+    if (isRedTeam) return showRedTeam(myRole);
+    return ['hunter', 'hunter'];
+  }
+
+  const [roleClass, roleDisplay] = role();
 
   return (
     <Container className='player'>
-      <li className={`p-info username`}>
-        {playerId.slice(0,-5)}
+      <li className={`p-info badge ${badge(canTheyAccuse)}`}>
+        *** o7 ***
       </li>
-      <li className={`p-info badge ${badge}`}>
-        ***BADGE***
+      <li className={`p-info role ${roleClass}`}>
+        <div className='wrapper'>
+          <div className={`username`}>{playerId.slice(0,-5)}</div>
+          <div className='subtitle'>Their role</div>
+          <div className={roleClass}>{roleDisplay.toUpperCase()}</div>
+        </div>
       </li>
-      {role()}
       <li className={`p-info interact`}>
         {interact()}
       </li>
-      {/* <div className='player-info'>
-        <li>{playerId.slice(0,-5)}</li>
-        <li className={canTheyAccuse ? 'bdg acc-avail' : 'bdg acc-spent'}>[BADGE]</li>
-        {(myRole === 'ghost') && allRoles()}
-        {(myRole === 'witness') && isRedTeam && <li className='role redteam'>!!!</li>}
-        {(myRole === 'killer') && isRedTeam && <li className='role redteam'>ACCOMPLICE</li>}
-        {(myRole === 'accomplice') && isRedTeam && <li className='role redteam'>KILLER</li>}
-        {myRole !== 'ghost' && isRoundStage && canIAccuse &&
-        <Button
-          className='confirm-accusation'
-          onClick={() => submitSelection({cb:[accusationHandler], reset:true})}
-          disabled={!minSelected}
-        >
-          ACCUSE
-        </Button>}
-        {canBeTargeted && 
-        <Button
-          className='confirm-accusation'
-          onClick={() => killWitnessHandler(playerId)}
-          disabled={false}
-        >
-          KILL
-        </Button>}
-      </div> */}
       {types.map((type) => (
         <Cards
           myRole={myRole}

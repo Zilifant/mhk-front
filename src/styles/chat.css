@@ -81,3 +81,16 @@
   margin-right: .5rem;
   width: 100%;
 }
+
+.con--lobbychat.min,
+.con--lobbychat.max {
+  background-color: var(--bg4);
+}
+
+.con--lobbychat.max {
+  width: 20rem;
+}
+
+.btn--toggle-chat {
+  width: 100%;
+}

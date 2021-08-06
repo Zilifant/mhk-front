@@ -30,9 +30,15 @@ const Main = ({
   }
 }) => {
 
+  const gridVariant = () => {
+    return gameOn && thisPlayer.role === 'ghost' ? 'game-ghost'
+         : gameOn ? 'game'
+         : 'nogame'
+  };
+
   return (
     <Container className='lobbymain' parentGrid='lobby'>
-      <Grid className={gameOn ? 'main-game' : 'main-nogame'}>
+      <Grid className={`main-${gridVariant()}`}>
         <Announcer chat={chat} />
         <Info
           lobby={lobby}

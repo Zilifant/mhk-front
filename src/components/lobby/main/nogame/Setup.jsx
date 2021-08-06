@@ -35,14 +35,14 @@ const Setup = ({
       >
         Accomplice
       </div>
-      {iAmLeader && <div>
+      {iAmLeader && <>
         <Button onClick={() => toggleHandler(`witness`)} disabled={false}>
           Witness
         </Button>
         <Button onClick={() => toggleHandler(`accomplice`)} disabled={false}>
           Accomplice
         </Button>
-      </div>}
+      </>}
     </Container>
   );
 };

@@ -4,6 +4,7 @@ import { useUser } from './hooks/user-hook';
 import { UserContext } from './context/contexts';
 import Foyer from './components/lobby/Foyer';
 import Landing from './components/landing/Landing';
+import './styles/colors.css';
 import './styles/default.css';
 
 function App() {

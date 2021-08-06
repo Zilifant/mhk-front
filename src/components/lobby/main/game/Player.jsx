@@ -64,7 +64,7 @@ const Player = ({
   const killBtn = () => {
     return (
       <Button
-        className='confirm-accusation'
+        className='confirm-kill'
         onClick={() => killWitnessHandler(playerId)}
         disabled={false}
       >

@@ -34,7 +34,7 @@ const Member = ({
         className={`m-${self} m-${ready} m-${leader} m-${ghost}`}
         key={member.id}
       >
-        {member.id}
+        {member.userName}
       </li>
     </div>
   );

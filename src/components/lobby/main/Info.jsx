@@ -37,6 +37,14 @@ const Info = ({
     nextRoundHandler,
   } = useGame(socket);
 
+  const showGameStage = gameOn && stage && stage.id;
+  const showStartBtn = iAmLeader && !gameOn;
+  const showClearBtn = iAmLeader && gameOn;
+  const showRoundBtn = iAmLeader
+                    && gameOn
+                    && stage
+                    && (stage.id === 'Round 1' || stage.id === 'Round 2');
+
   return (
     <Container className="info" parentGrid='main'>
       <Button onClick={getDataHandler}>
@@ -45,20 +53,23 @@ const Info = ({
       <Button onClick={() => console.log(lobby)}>
         CLIENT
       </Button>
-      <div>
-        Name: {userName}, Lobby: {myLobby}{gameOn && stage && stage.id && `, Stage: ${stage.id}`}
-      </div>
-      {iAmLeader && !gameOn &&
+      <div>User: {userName}</div>
+      <div>Lobby: {myLobby === 'z' ? 'Splendid-Monolith-3289' : myLobby}</div>
+      {showGameStage &&
+        <div>
+          Game: {stage.id}
+        </div>}
+      {showStartBtn &&
         <Button onClick={startGameHandler} disabled={!canStart}>
           START
         </Button>
       }
-      {iAmLeader && gameOn &&
+      {showClearBtn &&
         <Button onClick={clearGameHandler}>
           CLEAR
         </Button>
       }
-      {iAmLeader && gameOn && stage && (stage.id === 'Round 1' || stage.id === 'Round 2') &&
+      {showRoundBtn &&
         <Button onClick={nextRoundHandler}>
           ROUND
         </Button>

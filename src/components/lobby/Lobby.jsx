@@ -12,7 +12,7 @@ import ErrorModal from '../modal/ErrorModal';
 import Loading from '../shared/Loading';
 import Grid from '../shared/Grid';
 import Main from './main/Main';
-// import Chat from './chat/Chat';
+import Chat from './chat/Chat';
 
 const Lobby = () => {
   // console.log('%cLobby','color:#79f98e');
@@ -61,7 +61,7 @@ const Lobby = () => {
               thisPlayer={getThisPlayer(userId, lobby.game)}
               iAmLeader={lobby.leader === userId}
             />
-            {/* <Chat chat={loadedLobby.chat} /> */}
+            <Chat chat={lobby.chat} min={true}/>
           </Grid>
         }
       </React.Fragment>

@@ -2,7 +2,8 @@
 .new-lobby-form,
 .join-lobby-form,
 .join-this-lobby-form {
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 
 .new-lobby-title { grid-area: newtitl; }
@@ -38,25 +39,25 @@
   display: grid;
   padding: 0;
   gap: .5rem;
-  grid-template-columns: max-content 175px max-content;
+  grid-template-columns: 75px 175px max-content;
 }
 
 .grid--new-lobby-form {
   grid-template-areas:
-    ". newtitl . "
+    "newtitl newtitl newtitl "
     "newlabel newinput newbtn";
 }
 
 .grid--join-this-lobby-form {
   grid-template-areas:
-    ". jtltitl . "
-    ". jtlsubt . "
+    "jtltitl jtltitl jtltitl "
+    "jtlsubt jtlsubt jtlsubt "
     "jtllabel jtlinput jtlbtn";
 }
 
 .grid--join-lobby-form {
   grid-template-areas:
-    ". jnltitl ."
+    "jnltitl jnltitl jnltitl"
     "jnlabel jninput .      "
     "jllabel jlinput jlbtn  ";
 }

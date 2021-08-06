@@ -8,18 +8,22 @@ import { UserContext } from '../../context/contexts';
 import Container from './Container';
 
 const Header = () => {
-  // console.log('Header');
 
-  const { userId, myLobby } = useContext(UserContext);
+  const { userName, userId, myLobby } = useContext(UserContext);
 
   return (
     <Container className="head">
       <NavLink className='navlink' to="/" exact>LANDING</NavLink>
       { userId &&
-        <NavLink className='navlink' to={`/lobby/${myLobby}`} exact>LOBBY</NavLink>
-      }
-      { userId &&
-        <span className='sessinfo'>{`UserId: ${userId} LobbyId: ${myLobby}`}</span>
+        <>
+          <NavLink className='navlink' to={`/lobby/${myLobby}`} exact>LOBBY</NavLink>
+          <span className='sessinfo'>
+            {`User: ${userName}`}
+          </span>
+          <span className='sessinfo'>
+            {`Lobby: ${myLobby === 'z' ? 'Splendid-Monolith-7873' : myLobby}`}
+          </span>
+        </>
       }
     </Container>
   );

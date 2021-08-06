@@ -217,6 +217,15 @@ button:focus { outline: none; }
   overflow-x: scroll;
 }
 
+.con--head,
+.con--foyerjoin,
+.con--joinlobby,
+.con--newlobby {
+  background-color: var(--bg3);
+  width: max-content;
+  min-width: 400px;
+}
+
 .con--self,
 .con--announcer,
 .con--info,
@@ -508,13 +517,7 @@ li.m-assigned-ghost {
   color: var(--pink5);
 }
 
-/*MISC
-*/
-
-.con--foot,
-.con--head {
-  text-align: center;
-}
+/* MISC */
 
 .con--lobbycontrols {
   display: block;
@@ -526,6 +529,7 @@ li.m-assigned-ghost {
   margin-left: .5rem;
 }
 
+.con--head,
 .con--info {
   display: flex;
   justify-content: center;

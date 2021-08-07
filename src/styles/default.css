@@ -226,6 +226,8 @@ button:focus { outline: none; }
   min-width: 400px;
 }
 
+.con--lobbycontrols,
+.con--lobbymembers,
 .con--self,
 .con--announcer,
 .con--info,

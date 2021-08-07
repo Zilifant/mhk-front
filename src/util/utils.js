@@ -3,8 +3,17 @@
 // Dynamic, game-specific data added to user object is not provided by userContext; this gets that data from the game object
 export function getThisPlayer(userId, game) {
   if (!game) return;
-  const thisPlayer = game.players.find(player => player.id === userId);
-  thisPlayer.role = game.viewingAs;;
+
+  let thisPlayer;
+
+  if (game.spectators.some(sp => sp.id === userId)) {
+    thisPlayer = game.spectators.find(sp => sp.id === userId);
+    thisPlayer.role = 'spectator';
+    return thisPlayer;
+  };
+
+  thisPlayer = game.players.find(player => player.id === userId);
+  thisPlayer.role = game.viewingAs;
   return thisPlayer;
 };
 

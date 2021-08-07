@@ -48,7 +48,7 @@ const JoinThisLobby = ({ lobbyId }) => {
       <form className="form join-this-lobby-form" onSubmit={JoinThisLobbySubHandler}>
         <Grid className='join-this-lobby-form'>
           <div className='join-this-lobby-title'>JOIN THIS LOBBY</div>
-          <div className='join-this-lobby-subtitle'>{lobbyId}</div>
+          <div className='join-this-lobby-subtitle'>{lobbyId === 'z' ? 'Splendid-Monolith-8923' : lobbyId}</div>
           <Input
             id="userName"
             element="input"

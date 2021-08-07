@@ -47,7 +47,7 @@ const Cards = ({
         if (stage.id !== `Setup`) return false;
         return true;
       case `otherPlayer`:
-        if (myRole === 'ghost') return false;
+        if (myRole === 'ghost' || myRole === 'spectator') return false;
         if (stage.type !== `round` || !canIAccuse) return false;
         return true;
       default:

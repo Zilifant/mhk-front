@@ -87,7 +87,7 @@ const Player = ({
   };
 
   const role = () => {
-    if (myRole === 'ghost') return allRoles();
+    if (myRole === 'ghost' || myRole === 'spectator') return allRoles();
     if (myRole === 'hunter') return ['mystery', '???'];
     if (isRedTeam) return showRedTeam(myRole);
     return ['hunter', 'hunter'];

@@ -74,6 +74,11 @@ export const useGame = (socket) => {
     socket.current.emit('advanceStage', cardId);
   };
 
+  const giveLeaderHandler = (cardId) => {
+    console.log('giveLeaderHandler');
+    // socket.current.emit('advanceStage', cardId);
+  };
+
   // lobby subs //////////////////////////////
 
   // const subToGameSettings = () => {
@@ -212,6 +217,7 @@ export const useGame = (socket) => {
     killWitnessHandler,
     chooseClueHandler,
     replaceGhostCardHandler,
+    giveLeaderHandler
   };
 };
 

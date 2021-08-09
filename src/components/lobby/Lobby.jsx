@@ -13,6 +13,7 @@ import Loading from '../shared/Loading';
 import Grid from '../shared/Grid';
 import Main from './main/Main';
 import Chat from './chat/Chat';
+import Dev from '../shared/Dev';
 
 const Lobby = () => {
   // console.log('%cLobby','color:#79f98e');
@@ -42,7 +43,8 @@ const Lobby = () => {
 
   useEffect(() => {
     const subToLobby = () => {
-      socket.current.onAny((e, data) => {
+      socket.current.onAny((event, data) => {
+        if (event === 'newMessage') return;
         setLobby({...lobbyMethods, ...data.lobby});
       });
     };
@@ -56,12 +58,13 @@ const Lobby = () => {
         {isLoading && <Loading asOverlay color='orange' />}
         {!isLoading && lobby &&
           <Grid className='lobby'>
+            <Dev lobby={lobby} />
             <Main
               lobby={lobby}
               thisPlayer={getThisPlayer(userId, lobby.game)}
               iAmLeader={lobby.leader === userId}
             />
-            <Chat chat={lobby.chat} min={true}/>
+            <Chat chat={lobby.chat} />
           </Grid>
         }
       </React.Fragment>

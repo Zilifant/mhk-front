@@ -5,6 +5,7 @@ import React, {
 } from 'react';
 import Container from '../../../shared/Container';
 import Member from './Member';
+import '../../../../styles/memberlist.css';
 
 const MemberList = ({ users, iAmLeader }) => {
 

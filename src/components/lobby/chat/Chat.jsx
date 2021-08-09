@@ -1,45 +1,48 @@
 import React, {
   useContext,
   useState,
-  // useEffect,
+  useEffect,
 } from 'react';
 import { UserContext } from '../../../context/contexts';
 import { useChat } from '../../../hooks/chat-hook';
 import Container from '../../shared/Container';
 import ChatFeed from './ChatFeed';
 import NewMessage from './NewMessage';
-// import Button from '../ui-elements/Button';
-
-import '../../../styles/chat.css';
 import Button from '../../ui-elements/Button';
+import { IoChatboxEllipsesSharp } from 'react-icons/io5';
+import '../../../styles/chat.css';
 
-const Chat = ({ chat, min }) => {
+const Chat = ({ chat }) => {
   // console.log('Chat');
 
   const { myLobby } = useContext(UserContext);
 
-  const [minimized, setMinimized] = useState(true);
+  const [minimized, setMinimized] = useState(false);
 
   const minimizeHandler = () => setMinimized(!minimized);
 
   const {
     newMessage,
-    // subToChat,
+    subToChat,
     messages,
     messageText,
     setMessageText
   } = useChat(chat);
 
-  // useEffect(() => { subToChat(); }, [subToChat]);
+  useEffect(() => { subToChat(); }, [subToChat]);
 
-  if (min) return (
+  const MinimizeChatButton = () => (
+    <Button
+      className='minimize-chat'
+      onClick={minimizeHandler}
+    >
+    {minimized ? <IoChatboxEllipsesSharp /> : 'HIDE CHAT'}
+    </Button>
+  );
+
+  if (minimized) return (
     <Container className={`lobbychat ${minimized ? 'min' : 'max'}`} parentGrid='lobby'>
-      <Button
-        className='toggle-chat'
-        onClick={minimizeHandler}
-      >
-        {minimized ? 'SHOW' : 'HIDE'}
-      </Button>
+      <MinimizeChatButton />
     </Container>
   );
 
@@ -50,6 +53,7 @@ const Chat = ({ chat, min }) => {
 
   return (
     <Container className='lobbychat' parentGrid='lobby'>
+      <MinimizeChatButton />
       <ChatFeed messages={messages} />
       <NewMessage
         onChange={(e) => setMessageText(e.target.value)}

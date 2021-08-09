@@ -13,30 +13,34 @@ const Member = ({
   const { userId } = useContext(UserContext);
   const { socket } = useContext(SocketContext);
 
-  const { assignGhostHandler } = useGame(socket);
+  const { readyHandler, assignGhostHandler, giveLeaderHandler } = useGame(socket);
 
   const self = userId === member.id ? 'self' : 'other';
   const ready = member.isReady ? 'ready' : 'notready';
   const leader = member.isLeader ? 'leader' : 'notleader';
-  const ghost = member.isAssignedToGhost ? 'assigned-ghost' : 'notghost';
+  const ghost = member.isAssignedToGhost ? 'ghost' : 'notghost';
 
   return (
-    <div className='m-wrapper'>
-      {iAmLeader && <Button
-        key={`btn-${member.id}`}
-        className={`btn assign-ghost ${ghost}`}
-        disabled={false}
+    <li className={`member-wrapper ${self} ${ready} ${leader} ${ghost}`}>
+      <Button
+        className='member give-leader'
+        disabled={!iAmLeader || userId === member.id}
+        onClick={() => giveLeaderHandler(member.id)}
+      >L</Button>
+      <Button
+        className='member assign-ghost'
+        disabled={!iAmLeader}
         onClick={() => assignGhostHandler(member.id)}
-      >
-        GHOST
-      </Button>}
-      <li
-        className={`m-${self} m-${ready} m-${leader} m-${ghost}`}
-        key={member.id}
-      >
-        {member.userName}
-      </li>
-    </div>
+      >G</Button>
+      <Button
+        className='member ready'
+        disabled={userId !== member.id}
+        onClick={() => readyHandler(userId)}
+      >R</Button>
+      <div
+        className='member name'
+      >{member.userName}</div>
+    </li>
   );
 };
 

@@ -1,0 +1,147 @@
+
+.con--lobbymembers {
+  min-height: 400px;
+  min-width: 210px;
+}
+
+.member-wrapper * {
+  display: inline-block
+}
+
+.member-wrapper:not(:first-child) {
+  margin-top: .5rem;
+}
+
+.member-wrapper :not(:first-child) {
+  margin-left: .5rem;
+}
+
+.member-wrapper button:disabled {
+  background-color: var(--bg4);
+  border-color: var(--bg3);
+  color: var(--bg3);
+}
+
+.member-wrapper button:disabled:hover {
+  background-color: var(--bg4);
+  border-color: var(--bg3);
+  color: var(--bg3);
+}
+
+.member-wrapper button {
+  border: .2rem solid var(--cyan6);
+  font-weight: bold;
+}
+
+.member-wrapper button:hover {
+  border-color: var(--cyan5);
+}
+
+.member-wrapper.leader .give-leader:hover,
+.member-wrapper.leader .give-leader {
+  color: var(--leader);
+  border-color: var(--leader);
+}
+
+.btn--member.give-leader {
+
+}
+
+.btn--member.assign-ghost {
+
+}
+
+.ghost .assign-ghost:disabled:hover,
+.ghost .assign-ghost:disabled {
+  color: var(--ghost);
+  border-color: var(--ghost);
+}
+
+.ghost .assign-ghost:not(:disabled):hover {
+  background-color: var(--ghostli);
+  border-color: var(--ghostli);
+}
+
+.ghost .assign-ghost:not(:disabled) {
+  background-color: var(--ghost);
+  border-color: var(--ghost);
+}
+
+.ready .ready:disabled:hover,
+.ready .ready:disabled {
+  color: var(--ready);
+  border-color: var(--ready);
+}
+
+.ready .ready:not(:disabled):hover {
+  background-color: var(--readyli);
+  border-color: var(--readyli);
+}
+
+.ready .ready:not(:disabled) {
+  background-color: var(--ready);
+  border-color: var(--ready);
+}
+
+.btn--member.ready {
+
+}
+
+.member-wrapper button:active {
+  /* border-color: var(--pink5); */
+}
+
+.btn.assign-ghost:disabled {
+
+}
+
+.btn.assign-ghost.assigned-ghost {
+  background-color: var(--fuch5);
+}
+
+ul.member-list > div > *,
+ul.online-list {
+  display: inline-block;
+}
+
+ul.member-list > div > :not(:first-child) {
+  margin-top: .25rem;
+}
+
+ul.online-list > li,
+ul.member-list > div > li {
+  border-radius: var(--rad);
+}
+
+li.m-self {
+  color: var(--cyan5);
+}
+
+li.m-other {
+  color: var(--colg3);
+}
+
+li.m-leader::after {
+  content: 'L';
+  color: var(--yell5);
+  font-weight: bold;
+  margin-left: .5rem;
+}
+
+li.m-ready::before {
+  content: 'R';
+  color: var(--emer5);
+  font-weight: bold;
+  margin-right: .5rem;
+}
+
+li.m-notready::before {
+  content: 'R';
+  color: var(--colg5);
+  font-weight: bold;
+  margin-right: .5rem;
+}
+
+li.m-assigned-ghost {
+  color: var(--pink5);
+}

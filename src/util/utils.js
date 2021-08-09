@@ -1,6 +1,7 @@
 // Utilities
 
-// Dynamic, game-specific data added to user object is not provided by userContext; this gets that data from the game object
+// Dynamic, game-specific data added to user object is not provided
+// by userContext; this gets that data from the game object
 export function getThisPlayer(userId, game) {
   if (!game) return;
 

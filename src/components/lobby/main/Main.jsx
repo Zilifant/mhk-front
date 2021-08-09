@@ -41,7 +41,6 @@ const Main = ({
       <Grid className={`main-${gridVariant()}`}>
         <Announcer chat={chat} />
         <Info
-          lobby={lobby}
           canStart={lobby.canStart()}
           gameOn={gameOn}
           roundNum={game && game.roundNum}
@@ -54,6 +53,7 @@ const Main = ({
               className='lobby'
               iAmLeader={iAmLeader}
               gameSettings={gameSettings}
+              canStart={lobby.canStart()}
             />
             <MemberList
               users={lobby.users}

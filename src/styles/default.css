@@ -9,21 +9,26 @@
   --bg4 : var(--gray8);
   --bg5 : var(--gray9);
 
-  --evligt : var(--colg5);
-  --evdark : var(--colg6);
-  --meligt : var(--wrmg5);
-  --medark : var(--wrmg6);
-  --hiligt : var(--redd4);
-  --killer : var(--redd4);
-  --accomp : var(--redd3);
-  --hunter : var(--gree4);
-  --witnss : var(--libl4);
-  --cause  : var(--purp8);
-  --locate : var(--emer8);
-  --cluold : var(--colg7);
-  --clunew : var(--colg6);
-  --badge  : var(--yell4);
-  --mystry : var(--viol4);
+  --evligt   : var(--colg5);
+  --evdark   : var(--colg6);
+  --meligt   : var(--wrmg5);
+  --medark   : var(--wrmg6);
+  --hiligt   : var(--redd4);
+  --killer   : var(--redd4);
+  --accomp   : var(--redd3);
+  --hunter   : var(--gree4);
+  --witnss   : var(--libl4);
+  --ghost    : var(--fuch5);
+  --ghostli  : var(--fuch4);
+  --cause    : var(--purp8);
+  --locate   : var(--emer8);
+  --cluold   : var(--colg7);
+  --clunew   : var(--colg6);
+  --badge    : var(--yell4);
+  --mystry   : var(--viol4);
+  --leader   : var(--yell5);
+  --ready    : var(--emer6);
+  --readyli  : var(--emer5);
 }
 
 /* RESET
@@ -120,6 +125,7 @@ button:focus { outline: none; }
 .con--foyertitle   { grid-area: fyrti; }
 .con--foyerjoin    { grid-area: fyrjo; }
 
+.con--dev          { grid-area: dev; }
 .con--announcer    { grid-area: anncr; }
 .con--info         { grid-area: info; }
 .con--lobbymembers { grid-area: lmemb; }
@@ -155,6 +161,7 @@ button:focus { outline: none; }
   gap: var(--mar);
   grid-template-columns: max-content max-content;
   grid-template-areas:
+    "dev dev"
     "lmain lchat";
 }
 
@@ -162,13 +169,12 @@ button:focus { outline: none; }
   display: grid;
   width: 100%;
   gap: var(--mar);
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 1fr;
   /* grid-template-rows: max-content repeat(3, 1fr); */
   grid-template-areas:
-    "anncr anncr anncr anncr"
-    "info info info info"
-    "lmemb lmemb lmemb lctrl"
-    "lmemb lmemb lmemb lctrl";
+    "anncr anncr"
+    "info info"
+    "lmemb lctrl";
 }
 
 .con--players { grid-area: play; }
@@ -226,6 +232,7 @@ button:focus { outline: none; }
   min-width: 400px;
 }
 
+.con--dev,
 .con--lobbycontrols,
 .con--lobbymembers,
 .con--self,
@@ -237,20 +244,24 @@ button:focus { outline: none; }
   width: max-content;
 }
 
+.con--lobbycontrols,
+.con--dev,
+.con--info,
+.con--announcer {
+  width: 100%;
+}
+
+.con--dev :not(:first-child) {
+  margin-left: .5rem;
+}
+
 .con--players {
   padding: 0;
 }
 
+.con--lobbychat,
 .con--lobbymain {
   background: var(--bg3);
-}
-
-.advrole-on {
-  color: var(--emer5);
-}
-
-.advrole-off {
-  color: var(--colg5);
 }
 
 .con--uni-footer {
@@ -287,21 +298,20 @@ button:focus { outline: none; }
 }
 
 .btn:active {
-  background-color: var(--pink5);
+  /* background-color: var(--pink5); */
   /* border: 3px solid var(--pink5); */
   outline: none;
 }
 
 .btn:focus { outline: none; }
 
-.btn.assign-ghost:disabled,
 .btn:disabled,
 .btn:hover:disabled,
 .btn:active:disabled {
   background: var(--colg5);
   color: var(--colg4);
   border-color: var(--colg5);
-  cursor: not-allowed;
+  cursor: default;
 }
 
 .btn--keyEvSelector-selected {
@@ -322,16 +332,6 @@ button:focus { outline: none; }
   margin: 0 auto;
   height: 100%;
   width: 100%;
-}
-
-.btn.assign-ghost {
-  background-color: var(--emer5);
-  margin-right: 1rem;
-  margin-bottom: .25rem;
-}
-
-.btn.assign-ghost.assigned-ghost {
-  background-color: var(--fuch5);
 }
 
 .ready-toggle-wrapper {
@@ -397,8 +397,7 @@ button:focus { outline: none; }
   outline: none;
 }
 
-/* FORMS
- */
+/* FORMS */
 
 .label {
   margin-right: 0.5rem;
@@ -466,64 +465,13 @@ li {
   list-style: none;
 }
 
-ul.member-list > div > *,
-ul.online-list {
-  display: inline-block;
-}
-
 .player-list {
   display: grid;
   gap: .5rem;
   grid-template-columns: min-content min-content;
 }
 
-ul.member-list > div > :not(:first-child) {
-  margin-top: .25rem;
-}
-
-ul.online-list > li,
-ul.member-list > div > li {
-  border-radius: var(--rad);
-}
-
-li.m-self {
-  color: var(--cyan5);
-}
-
-li.m-other {
-  color: var(--colg3);
-}
-
-li.m-leader::after {
-  content: 'L';
-  color: var(--yell5);
-  font-weight: bold;
-  margin-left: .5rem;
-}
-
-li.m-ready::before {
-  content: 'R';
-  color: var(--emer5);
-  font-weight: bold;
-  margin-right: .5rem;
-}
-
-li.m-notready::before {
-  content: 'R';
-  color: var(--colg5);
-  font-weight: bold;
-  margin-right: .5rem;
-}
-
-li.m-assigned-ghost {
-  color: var(--pink5);
-}
-
 /* MISC */
-
-.con--lobbycontrols {
-  display: block;
-}
 
 .con--info > :not(:nth-child(1)),
 .con--foot > :not(:nth-child(1)),

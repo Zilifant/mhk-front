@@ -7,6 +7,12 @@
   height: 100%;
 }
 
+.btn.btn--minimize-chat {
+  margin-bottom: .5rem;
+  display: flex;
+  justify-content: center;
+}
+
 .chatfeed {
   display: flex;
   flex-direction: column;
@@ -18,7 +24,9 @@
   border-radius: var(--rad);
   min-height: 0;
   /* height: inherit; */
-  height: calc(100% - 2.15rem);
+  height: 1fr;
+  max-height: 200px;
+  /* height: calc(100% - 4.15rem); */
   overflow-y: auto;
 }
 
@@ -91,6 +99,6 @@
   width: 20rem;
 }
 
-.btn--toggle-chat {
+.btn--minimize-chat {
   width: 100%;
 }

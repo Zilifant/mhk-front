@@ -1,48 +1,55 @@
 import React, {
   useContext
 } from 'react';
-import { UserContext, SocketContext } from '../../../../context/contexts';
+import { SocketContext } from '../../../../context/contexts';
 import { useGame } from '../../../../hooks/game-hook';
 import Container from '../../../shared/Container';
 import Button from '../../../ui-elements/Button';
+import '../../../../styles/setup.css';
 
 const Setup = ({
   className,
   iAmLeader,
   gameSettings,
+  canStart,
 }) => {
 
-  const { userId } = useContext(UserContext);
   const { socket } = useContext(SocketContext);
 
   const {
-    readyHandler,
+    startGameHandler,
     toggleHandler
   } = useGame(socket);
 
+  const leaderUI = () => (<>
+    <Button
+      className={`advrole ${gameSettings.hasWitness ? 'on' : 'off'}`}
+      onClick={() => toggleHandler(`witness`)}
+      disabled={false}
+    >Witness</Button>
+    <Button
+      className={`advrole ${gameSettings.hasAccomplice ? 'on' : 'off'}`}
+      onClick={() => toggleHandler(`accomplice`)}
+      disabled={false}
+    >Accomplice</Button>
+    <Button
+      onClick={startGameHandler}
+      disabled={!canStart}
+    >Start</Button>
+  </>);
+
+  const basicUI = () => (<>
+    <div
+      className={`advrole ${gameSettings.hasWitness ? 'on' : 'off'}`}
+    >WITNESS</div>
+    <div
+      className={`advrole ${gameSettings.hasAccomplice ? 'on' : 'off'}`}
+    >ACCOMPLICE</div>
+  </>);
+
   return (
     <Container className={className + 'controls'} parentGrid='main'>
-      <Button onClick={() => readyHandler(userId)} disabled={false}>
-        READY
-      </Button>
-      <div
-        className={gameSettings.hasWitness ? 'advrole-on' : 'advrole-off'}
-      >
-        Witness
-      </div>
-      <div
-        className={gameSettings.hasAccomplice ? 'advrole-on' : 'advrole-off'}
-      >
-        Accomplice
-      </div>
-      {iAmLeader && <>
-        <Button onClick={() => toggleHandler(`witness`)} disabled={false}>
-          Witness
-        </Button>
-        <Button onClick={() => toggleHandler(`accomplice`)} disabled={false}>
-          Accomplice
-        </Button>
-      </>}
+      {iAmLeader ? leaderUI() : basicUI()}
     </Container>
   );
 };

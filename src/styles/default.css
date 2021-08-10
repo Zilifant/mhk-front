@@ -305,7 +305,7 @@ button:focus { outline: none; }
   background-color: var(--cyan6);
   color: var(--white);
   padding: .15rem .25rem;
-  height: max-content;
+  /* height: max-content; */
   /* border: 3px solid var(--cyan6); */
   border-radius: var(--rad);
   /* margin: .5rem; */

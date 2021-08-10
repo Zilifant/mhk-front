@@ -38,7 +38,7 @@ export const useGame = (socket) => {
   };
 
   const readyHandler = (userId) => {
-    socket.current.emit('readyUnready', { userId });
+    socket.current.emit('readyUnready', userId);
   };
 
   const toggleHandler = (toggledItem) => {
@@ -74,9 +74,8 @@ export const useGame = (socket) => {
     socket.current.emit('advanceStage', cardId);
   };
 
-  const giveLeaderHandler = (cardId) => {
-    console.log('giveLeaderHandler');
-    // socket.current.emit('advanceStage', cardId);
+  const giveLeaderHandler = (newLeaderId) => {
+    socket.current.emit('giveLeadership', newLeaderId);
   };
 
   // lobby subs //////////////////////////////

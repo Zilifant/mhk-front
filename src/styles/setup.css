@@ -21,8 +21,9 @@
 
 .btn--advrole {
   display: block;
+  border: .2rem solid var(--cyan6);
   /* font-weight: bold; */
-  width: 100px;
+  min-width: 100px;
 }
 
 .btn--advrole.on {

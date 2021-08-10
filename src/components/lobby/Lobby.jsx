@@ -57,7 +57,7 @@ const Lobby = () => {
         <ErrorModal error={error} onClear={clearError} />
         {isLoading && <Loading asOverlay color='orange' />}
         {!isLoading && lobby &&
-          <Grid className='lobby'>
+          <Grid className={`lobby-${!!lobby.game ? 'game' : 'nogame'}`}>
             <Dev lobby={lobby} />
             <Main
               lobby={lobby}

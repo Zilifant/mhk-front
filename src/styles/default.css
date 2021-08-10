@@ -47,6 +47,7 @@ html, body {
   background: var(--bg5);
   /* overflow: overlay; */
   /* height: 100%; */
+  /* overflow: hidden; */
 }
 
 /* div.grid--lobby, */
@@ -57,6 +58,7 @@ div.app-root {
   margin: 0 auto;
   width: max-content;
   height: 100%;
+  /* overflow: hidden; */
 }
 
 main.app {
@@ -66,6 +68,7 @@ main.app {
   flex-direction: column;
   flex-grow: 1; */
   /* height: calc(100% - 40px); */
+  /* overflow: hidden; */
   height: 100%;
 }
 
@@ -154,12 +157,24 @@ button:focus { outline: none; }
     "joinl";
 }
 
-.grid--lobby {
+.grid--lobby-nogame {
   display: grid;
-  height: 100%;
+  /* height: 100%; */
+  /* overflow: hidden; */
   /* width: max-content; */
   gap: var(--mar);
   grid-template-columns: max-content max-content;
+  grid-template-rows: max-content 500px;
+  grid-template-areas:
+    "dev dev"
+    "lmain lchat";
+}
+
+.grid--lobby-game {
+  display: grid;
+  gap: var(--mar);
+  grid-template-columns: max-content max-content;
+  grid-template-rows: max-content max-content;
   grid-template-areas:
     "dev dev"
     "lmain lchat";
@@ -245,6 +260,7 @@ button:focus { outline: none; }
 }
 
 .con--lobbycontrols,
+.con--lobbymembers,
 .con--dev,
 .con--info,
 .con--announcer {
@@ -262,6 +278,10 @@ button:focus { outline: none; }
 .con--lobbychat,
 .con--lobbymain {
   background: var(--bg3);
+}
+
+.con--lobbymain {
+  min-width: 500px;
 }
 
 .con--uni-footer {

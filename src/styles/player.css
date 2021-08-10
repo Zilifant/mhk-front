@@ -11,7 +11,7 @@
   background-color: var(--bg4);
   display: grid;
   gap: var(--mar);
-  grid-template-columns: 9rem 1fr;
+  grid-template-columns: 7rem 1fr;
   grid-template-rows: repeat(4, 1fr);
   grid-template-areas:
     "badg evid"

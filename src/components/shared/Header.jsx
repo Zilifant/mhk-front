@@ -21,7 +21,7 @@ const Header = () => {
             {`User: ${userName}`}
           </span>
           <span className='sessinfo'>
-            {`Lobby: ${myLobby === 'z' ? 'Splendid-Monolith-7873' : myLobby}`}
+            {`Lobby: ${myLobby === 'z' ? 'splendid-monolith-7873' : myLobby}`}
           </span>
         </>
       }

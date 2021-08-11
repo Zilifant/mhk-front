@@ -25,14 +25,17 @@ export const useChat = (chat) => {
   // TO DO: useCB necessary?
   const subToChat = useCallback(() => {
 
-    socket.current.onAny((e, data) => {
-      if (data.msg) setMessages((messages) => [...messages, data.msg]);
-    });
-
-    socket.current.on('newMessage', message => {
-      const incomingMessage = message;
-      setMessages((messages) => [...messages, incomingMessage]);
-    });
+    const sub2Chat = () => {
+      socket.current.onAny((e, data) => {
+        if (data.msg) setMessages((messages) => [...messages, data.msg]);
+      });
+  
+      socket.current.on('newMessage', message => {
+        const incomingMessage = message;
+        setMessages((messages) => [...messages, incomingMessage]);
+      });
+    };
+    sub2Chat();
 
   }, [socket]);
 

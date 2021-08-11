@@ -19,7 +19,7 @@ const Announcer = ({chat}) => {
 
   return (
     <Container className='announcer' parentGrid='main'>
-      <ChatMessage message={messages[messages.length-1]}/>
+      <ChatMessage message={!!messages[0] && messages[messages.length-1]}/>
     </Container>
   );
 };

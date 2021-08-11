@@ -16,7 +16,7 @@ import Chat from './chat/Chat';
 import Dev from '../shared/Dev';
 
 const Lobby = () => {
-  // console.log('%cLobby','color:#79f98e');
+  console.log('%cLobby','color:#79f98e');
   const lobbyURL = useParams().lobbyURL;
   const { myLobby, userId } = useContext(UserContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();

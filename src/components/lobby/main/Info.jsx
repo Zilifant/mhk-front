@@ -32,7 +32,7 @@ const Info = ({
   return (
     <Container className="info" parentGrid='main'>
       <div>User: {userName}</div>
-      <div>Lobby: {myLobby === 'z' ? 'Splendid-Monolith-3289' : myLobby}</div>
+      <div>Lobby: {myLobby === 'z' ? 'splendid-monolith-3289' : myLobby}</div>
       {showGameStage &&
         <div>
           Game: {stage.id}

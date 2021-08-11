@@ -1,70 +1,69 @@
 import React, {
-  // useContext,
-  // useState,
-  // useEffect,
+  useContext,
+  useState,
+  useEffect,
 } from 'react';
-// import { UserContext } from '../../../context/contexts';
-// import { useChat } from '../../../hooks/chat-hook';
+import { UserContext } from '../../../context/contexts';
+import { useChat } from '../../../hooks/chat-hook';
 import Container from '../../shared/Container';
-// import ChatFeed from './ChatFeed';
-// import NewMessage from './NewMessage';
+import ChatFeed from './ChatFeed';
+import NewMessage from './NewMessage';
 import Button from '../../ui-elements/Button';
 // import { IoChatboxEllipsesSharp } from 'react-icons/io5';
 import '../../../styles/chat.css';
 
 const Chat = ({ chat }) => {
-  // console.log('Chat');
 
-  // const { myLobby } = useContext(UserContext);
+  // const minimized = true;
+  const { myLobby } = useContext(UserContext);
 
-  const minimized = true;
-  // const [minimized, setMinimized] = useState(false);
+  const [minimized, setMinimized] = useState(false);
 
-  // const minimizeHandler = () => setMinimized(!minimized);
+  const minimizeHandler = () => setMinimized(!minimized);
 
-  // const {
-  //   newMessage,
-  //   subToChat,
-  //   messages,
-  //   messageText,
-  //   setMessageText
-  // } = useChat(chat);
+  const {
+    newMessage,
+    subToChat,
+    messages,
+    messageText,
+    setMessageText
+  } = useChat(chat);
 
-  // useEffect(() => { subToChat(); }, [subToChat]);
+  useEffect(() => { subToChat(); }, [subToChat]);
 
   const MinimizeChatButton = () => (
     <Button
       className='minimize-chat'
-      // onClick={minimizeHandler}
+      onClick={minimizeHandler}
     >
-    {minimized ? 'C' : 'HIDE CHAT'}
+    {minimized ? 'CHAT' : 'HIDE CHAT'}
     </Button>
   );
 
   if (minimized) return (
-    <Container className={`lobbychat ${minimized ? 'min' : 'max'}`} parentGrid='lobby'>
+    <Container className={`lobbychat min`} parentGrid='lobby'>
       <MinimizeChatButton />
     </Container>
   );
 
-  // const newMessageSubmitHandler = event => {
-  //   event.preventDefault();
-  //   newMessage();
-  // };
+  const newMessageSubmitHandler = event => {
+    event.preventDefault();
+    newMessage();
+  };
 
-  // return (
-  //   <Container className='lobbychat' parentGrid='lobby'>
-  //     <MinimizeChatButton />
-  //     <ChatFeed messages={messages} />
-  //     <NewMessage
-  //       onChange={(e) => setMessageText(e.target.value)}
-  //       messages={messages}
-  //       messageText={messageText}
-  //       myLobby={myLobby}
-  //       submitHandler={newMessageSubmitHandler}
-  //     />
-  //   </Container>
-  // );
+  return (
+    <Container className='lobbychat' parentGrid='lobby'>
+      <MinimizeChatButton />
+      <ChatFeed messages={messages} />
+      <NewMessage
+        onChange={(e) => setMessageText(e.target.value)}
+        messages={messages}
+        messageText={messageText}
+        myLobby={myLobby}
+        submitHandler={newMessageSubmitHandler}
+      />
+    </Container>
+  );
 };
 
 export default Chat;

@@ -46,15 +46,16 @@ html, body {
   padding: 0;
   background: var(--bg5);
   /* overflow: overlay; */
-  /* height: 100%; */
+  height: 100%;
   /* overflow: hidden; */
 }
 
 /* div.grid--lobby, */
 div.app-root {
-  /* display: flex;
-  flex-direction: column;
-  flex-grow: 1; */
+  display: flex;
+  flex-flow: column;
+  /* flex-direction: column; */
+  /* flex-grow: 1; */
   margin: 0 auto;
   width: max-content;
   height: 100%;
@@ -62,14 +63,19 @@ div.app-root {
 }
 
 main.app {
-  background: var(--bg5);
+  /* background: var(--colg8); */
   margin: var(--mar);
-  /* display: flex;
-  flex-direction: column;
-  flex-grow: 1; */
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  max-height: calc(100% - (var(--mar)*2));
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* flex-grow: 1; */
   /* height: calc(100% - 40px); */
   /* overflow: hidden; */
-  height: 100%;
+  /* height: 100%; */
 }
 
 *, *:before, *:after {
@@ -128,7 +134,7 @@ button:focus { outline: none; }
 .con--foyertitle   { grid-area: fyrti; }
 .con--foyerjoin    { grid-area: fyrjo; }
 
-.con--dev          { grid-area: dev; }
+.con--dev          { grid-area: devui; }
 .con--announcer    { grid-area: anncr; }
 .con--info         { grid-area: info; }
 .con--memberlist   { grid-area: lmemb; }
@@ -139,14 +145,13 @@ button:focus { outline: none; }
 .grid--landing,
 .grid--foyer {
   display: grid;
-  padding: var(--mar);
   gap: var(--mar);
+  height: max-content;
   grid-template-columns: 1fr;
 }
 
 .grid--foyer {
   grid-template-areas:
-    "headr"
     "fyrjo";
 }
 
@@ -159,37 +164,36 @@ button:focus { outline: none; }
 
 .grid--lobby-nogame {
   display: grid;
-  /* height: 100%; */
-  /* overflow: hidden; */
-  /* width: max-content; */
   gap: var(--mar);
+  height: 100%;
   grid-template-columns: max-content max-content;
-  grid-template-rows: max-content 500px;
+  grid-template-rows: max-content 1fr;
   grid-template-areas:
-    "dev dev"
-    "lmain lchat";
+    "lmain lchat"
+    "devui devui";
 }
 
 .grid--lobby-game {
   display: grid;
   gap: var(--mar);
+  height: 100%;
   grid-template-columns: max-content max-content;
-  grid-template-rows: max-content max-content;
+  grid-template-rows: max-content 1fr;
   grid-template-areas:
-    "dev dev"
-    "lmain lchat";
+    "lmain lchat"
+    "devui devui";
 }
 
 .grid--main-nogame {
   display: grid;
+  gap: var(--mar);
   /* width: 100%; */
   height: 100%;
-  gap: var(--mar);
   grid-template-columns: max-content 1fr;
   grid-template-rows: max-content max-content 1fr;
   grid-template-areas:
     "anncr anncr"
-    "info info"
+    "info  info"
     "lmemb lctrl";
 }
 
@@ -202,8 +206,8 @@ button:focus { outline: none; }
 .grid--main-game-ghost,
 .grid--main-game {
   display: grid;
-  width: 100%;
   gap: var(--mar);
+  width: 100%;
   grid-template-columns: repeat(4, 1fr);
 }
 
@@ -260,13 +264,18 @@ button:focus { outline: none; }
   width: max-content;
 }
 
-.con--dev,
 .con--info,
 .con--announcer {
   width: 100%;
 }
 
-.con--dev :not(:first-child) {
+.con--dev {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.con--dev div :not(:first-child) {
   margin-left: .5rem;
 }
 

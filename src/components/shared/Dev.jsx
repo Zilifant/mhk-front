@@ -22,12 +22,14 @@ const Dev = ({ lobby }) => {
 
   return (
     <Container className="dev" parentGrid='main'>
-      <Button onClick={getDataHandler}>
-        SERVER
-      </Button>
-      <Button onClick={() => console.log(lobby)}>
-        CLIENT
-      </Button>
+      <div>
+        <Button onClick={getDataHandler}>
+          SERVER
+        </Button>
+        <Button onClick={() => console.log(lobby)}>
+          CLIENT
+        </Button>
+      </div>
     </Container>
   );
 };

@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <Container className="head">
-      <NavLink className='navlink' to="/" exact>LANDING</NavLink>
+      <NavLink className='navlink' to="/" exact>MHK</NavLink>
       { userId &&
         <>
           <NavLink className='navlink' to={`/lobby/${myLobby}`} exact>LOBBY</NavLink>

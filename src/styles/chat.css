@@ -1,12 +1,16 @@
 /* CHAT */
 
 .con--lobbychat {
-  /* display: flex; */
-  /* max-height: 300px; */
+  display: flex;
   overflow: hidden;
   flex-direction: column;
   height: 100%;
-  max-width: 250px;
+  width: 16rem;
+}
+
+.con--lobbychat.min {
+  width: max-content;
+  background-color: var(--bg4);
 }
 
 .btn.btn--minimize-chat {
@@ -89,18 +93,5 @@
 
 .new-message-input {
   margin-right: .5rem;
-  width: 100%;
-}
-
-.con--lobbychat.min,
-.con--lobbychat.max {
-  background-color: var(--bg4);
-}
-
-.con--lobbychat.max {
-  width: 20rem;
-}
-
-.btn--minimize-chat {
   width: 100%;
 }

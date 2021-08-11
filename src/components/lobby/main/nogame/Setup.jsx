@@ -12,6 +12,7 @@ const Setup = ({
   iAmLeader,
   gameSettings,
   canStart,
+  startGameText,
 }) => {
 
   const { socket } = useContext(SocketContext);
@@ -23,19 +24,33 @@ const Setup = ({
 
   const leaderUI = () => (<>
     <Button
-      className={`advrole ${gameSettings.hasWitness ? 'on' : 'off'}`}
-      onClick={() => toggleHandler(`witness`)}
-      disabled={false}
-    >Witness</Button>
-    <Button
-      className={`advrole ${gameSettings.hasAccomplice ? 'on' : 'off'}`}
-      onClick={() => toggleHandler(`accomplice`)}
-      disabled={false}
-    >Accomplice</Button>
-    <Button
       onClick={startGameHandler}
       disabled={!canStart}
-    >Start</Button>
+    >Start Game</Button>
+    <div className='advrole-wrapper'>
+      <Button
+        className={`advrole ${gameSettings.hasWitness ? 'on' : 'off'}`}
+        onClick={() => toggleHandler(`witness`)}
+        disabled={false}
+      >
+        {gameSettings.hasWitness ? 'Y' : 'X'}
+      </Button>
+      <div
+        className={`advrole ${gameSettings.hasWitness ? 'on' : 'off'}`}
+      >WITNESS</div>
+    </div>
+    <div className='advrole-wrapper'>
+      <Button
+        className={`advrole ${gameSettings.hasAccomplice ? 'on' : 'off'}`}
+        onClick={() => toggleHandler(`accomplice`)}
+        disabled={false}
+      >
+        {gameSettings.hasAccomplice ? 'Y' : 'X'}
+      </Button>
+          <div
+        className={`advrole ${gameSettings.hasAccomplice ? 'on' : 'off'}`}
+      >ACCOMPLICE</div>
+    </div>
   </>);
 
   const basicUI = () => (<>
@@ -49,6 +64,7 @@ const Setup = ({
 
   return (
     <Container className={className + 'controls'} parentGrid='main'>
+      <div className='start-game-text'>{startGameText}</div>
       {iAmLeader ? leaderUI() : basicUI()}
     </Container>
   );

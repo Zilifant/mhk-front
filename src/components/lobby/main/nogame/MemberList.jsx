@@ -10,8 +10,8 @@ import '../../../../styles/memberlist.css';
 const MemberList = ({ users, iAmLeader }) => {
 
   return (
-    <Container className="lobbymembers" parentGrid='main'>
-      {<ul className="member-list">
+    <Container className="memberlist" parentGrid='main'>
+      {<ul className="memberlist">
         {users.map((member) => {
           if (!member.isOnline) return null;
           return (

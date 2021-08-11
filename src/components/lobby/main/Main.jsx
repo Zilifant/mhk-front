@@ -54,6 +54,7 @@ const Main = ({
               iAmLeader={iAmLeader}
               gameSettings={gameSettings}
               canStart={lobby.canStart()}
+              startGameText={lobby.startGameText(iAmLeader)}
             />
             <MemberList
               users={lobby.users}

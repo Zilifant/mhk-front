@@ -1,5 +1,8 @@
 // Utilities
 
+const MIN_PLAYER_COUNT = 3,
+      MIN_PLAYER_COUNT_FOR_ADV_ROLES = 4;
+
 // Dynamic, game-specific data added to user object is not provided
 // by userContext; this gets that data from the game object
 export function getThisPlayer(userId, game) {
@@ -35,8 +38,26 @@ export const lobbyMethods = {
   usersReady() {
     return this.users.filter(u => u.isReady === true);
   },
+  canUseAdvRoles() {
+    return this.numOnline() >= MIN_PLAYER_COUNT_FOR_ADV_ROLES;
+  },
+  minPlayersOnline() {
+    return this.numOnline() >= MIN_PLAYER_COUNT;
+  },
+  minPlayersReady() {
+    return this.numReady() >= MIN_PLAYER_COUNT;
+  },
+  allPlayersReady() {
+    return this.numReady() === this.numOnline();
+  },
   canStart() {
-    return (this.numReady() >= 3) && (this.numReady() === this.numOnline());
+    return (this.minPlayersOnline()) && (this.allPlayersReady());
+  },
+  startGameText(iAmLeader) {
+    return !this.minPlayersOnline() ? 'Waiting for more players to join.'
+         : !this.allPlayersReady() ? 'Waiting for all players to be ready.'
+         : iAmLeader ? 'Ready to start the game.'
+         : 'Waiting for the leader to start the game.'
   }
 };
 

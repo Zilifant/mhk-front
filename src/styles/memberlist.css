@@ -1,9 +1,10 @@
 
-.con--lobbymembers {
+.con--memberlist {
+  /* width: 10rem; */
   /* height: 100%; */
   /* min-height: 400px; */
-  /* min-width: 210px; */
-  /* width: 100%; */
+  min-width: 13.25rem;
+  /* width: 20rem; */
 }
 
 .member-wrapper * {
@@ -101,49 +102,16 @@
   background-color: var(--fuch5);
 }
 
-ul.member-list > div > *,
+ul.memberlist > div > *,
 ul.online-list {
   display: inline-block;
 }
 
-ul.member-list > div > :not(:first-child) {
+ul.memberlist > div > :not(:first-child) {
   margin-top: .25rem;
 }
 
 ul.online-list > li,
-ul.member-list > div > li {
+ul.memberlist > div > li {
   border-radius: var(--rad);
-}
-
-li.m-self {
-  color: var(--cyan5);
-}
-
-li.m-other {
-  color: var(--colg3);
-}
-
-li.m-leader::after {
-  content: 'L';
-  color: var(--yell5);
-  font-weight: bold;
-  margin-left: .5rem;
-}
-
-li.m-ready::before {
-  content: 'R';
-  color: var(--emer5);
-  font-weight: bold;
-  margin-right: .5rem;
-}
-
-li.m-notready::before {
-  content: 'R';
-  color: var(--colg5);
-  font-weight: bold;
-  margin-right: .5rem;
-}
-
-li.m-assigned-ghost {
-  color: var(--pink5);
 }

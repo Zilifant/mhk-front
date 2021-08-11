@@ -62,7 +62,7 @@ const JoinLobby = () => {
               type='text'
               label='Your Name'
               placeholder='Name'
-              validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(10)]}
+              validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(8)]}
               errorText='Please enter a name.'
               onInput={inputHandler}
               noInvalidStyle={true}

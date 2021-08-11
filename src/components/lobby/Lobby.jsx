@@ -35,7 +35,6 @@ const Lobby = () => {
           { 'Content-Type': 'application/json' },
         );
         setLobby({...lobbyMethods, ...resData.lobby});
-        // TO DO: add case when user not part of current game
       } catch (err) { console.log(err); }
     };
     fetchLobby();

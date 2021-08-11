@@ -51,10 +51,14 @@ button.card-wrap--player:disabled * {
   fill: var(--gray4); */
 }
 
-button.card-wrap--player.highlighted,
+/* button.card-wrap--player.highlighted, */
 button.card-wrap--player.selected {
   border: .25rem solid;
   padding: .25rem;
+  opacity: 100%;
+}
+
+button.card-wrap--player.highlighted {
   opacity: 100%;
 }
 
@@ -75,8 +79,9 @@ button.card-wrap--player:not(:disabled):active * {
   fill: var(--pink5); */
 }
 
-button.card-wrap--player.highlighted {
-  border-color: var(--hiligt);
+button.card-wrap--player.highlighted .card-title {
+  color: var(--hiligt);
+  font-weight: bold;
 }
 
 /* button.card-wrap--player.highlighted:hover *,

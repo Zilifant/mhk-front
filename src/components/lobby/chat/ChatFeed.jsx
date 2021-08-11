@@ -12,7 +12,7 @@ const ChatFeed = ({ messages }) => {
   const scrollRef = useRef();
 
   useEffect(() => {
-    scrollRef.current?.scrollIntoView({behavior: "smooth", block: "nearest", inline: "end"});
+    scrollRef.current?.scrollIntoView({behavior: "smooth", block: "nearest", inline: "nearest"});
   }, [messages]);
 
   return (

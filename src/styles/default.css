@@ -167,7 +167,7 @@ button:focus { outline: none; }
   gap: var(--mar);
   height: 100%;
   grid-template-columns: max-content max-content;
-  grid-template-rows: max-content 1fr;
+  grid-template-rows: 1fr max-content;
   grid-template-areas:
     "lmain lchat"
     "devui devui";
@@ -178,7 +178,7 @@ button:focus { outline: none; }
   gap: var(--mar);
   height: 100%;
   grid-template-columns: max-content max-content;
-  grid-template-rows: max-content 1fr;
+  grid-template-rows: 1fr max-content;
   grid-template-areas:
     "lmain lchat"
     "devui devui";
@@ -208,6 +208,7 @@ button:focus { outline: none; }
   display: grid;
   gap: var(--mar);
   width: 100%;
+  height: 100%;
   grid-template-columns: repeat(4, 1fr);
 }
 

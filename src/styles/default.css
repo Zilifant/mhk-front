@@ -257,6 +257,21 @@ main.app {
   /* height: 40px; */
 }
 
+.con--info.game > :not(:nth-child(1)),
+.con--foot > :not(:nth-child(1)),
+.con--head > :not(:nth-child(1)) {
+  margin-left: .5rem;
+}
+
+.con--head,
+.con--announcer,
+.con--info.game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: min-content;
+}
+
 /* BUTTONS */
 
 .placeholder {
@@ -399,22 +414,7 @@ main.app {
   border-color: var(--oran4);
 }
 
-/* TITLES
-*/
-
-.title {
-  color: var(--default);
-  text-align: center;
-  margin-bottom: 0;
-}
-
-.app--title {
-  color: var(--ambr3);
-  margin: 5rem;
-}
-
-/* LISTS
-*/
+/* LISTS */
 
 ul.c-group {
   display: flex;
@@ -427,20 +427,6 @@ ul.c-group {
 }
 
 /* MISC */
-
-.con--info > :not(:nth-child(1)),
-.con--foot > :not(:nth-child(1)),
-.con--head > :not(:nth-child(1)) {
-  margin-left: .5rem;
-}
-
-.con--head,
-.con--info {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: min-content;
-}
 
 .gameresult {
   width: 100%;
@@ -473,8 +459,7 @@ ul.c-group {
   z-index: 10;
 }
 
-/* MODAL
-*/
+/* MODAL */
 
 .modal {
   z-index: 100;
@@ -489,7 +474,7 @@ ul.c-group {
 
 .modal__header {
   width: 100%;
-  padding: 0.5rem 0.25rem;
+  /* padding: 0.5rem 0.25rem; */
   background: var(--oran6);
   color: white;
 }

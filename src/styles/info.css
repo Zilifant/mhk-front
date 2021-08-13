@@ -1,0 +1,46 @@
+
+.con--info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg4);
+  width: 100%;
+}
+
+.con--info.nogame {
+  flex-direction: column;
+}
+
+.con--info.nogame > :not(:first-child) {
+  margin-top: .25rem;
+}
+
+.con--info.nogame .info-lobbyid {
+  text-transform: uppercase;
+  font-size: large;
+}
+
+.con--info.nogame .info-lobbyurl {
+  --fgc: var(--colg4);
+  --bgc: var(--gray7o50);
+  padding: .15rem .25rem .25rem .25rem;
+  border-radius: 4px;
+  border: 1px solid var(--fgc);
+  color: var(--fgc);
+  background-color: var(--bgc);
+  font-weight: lighter;
+}
+
+.con--info.nogame .info-lobbyurl:hover {
+  --fgc: var(--cyan4);
+  border: 1px solid var(--fgc);
+  color: var(--fgc);
+}
+
+.con--info.game > :not(:first-child) {
+  margin-left: .5rem;
+}
+
+.con--info.game {
+  height: min-content;
+}

@@ -8,7 +8,7 @@ import ChatMessage from '../chat/ChatMessage';
 
 import '../../../styles/chat.css';
 
-const Announcer = ({chat}) => {
+const Announcer = ({ chat }) => {
 
   const {
     subToChat,

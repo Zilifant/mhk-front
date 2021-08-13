@@ -37,7 +37,7 @@ const Info = ({
 
   const url = () => {
     if (process.env.REACT_APP_FRONTEND_URL) {
-      return `${process.env.REACT_APP_FRONTEND_URL}/lobby/}${lobbyId}`;
+      return `${(process.env.REACT_APP_FRONTEND_URL).slice(8)}/lobby/${lobbyId}`;
     }
     return `www.mhkgame.com/lobby/${lobbyId}`;
   };

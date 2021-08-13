@@ -1,81 +1,45 @@
 
 :root {
-  --default-light : var(--colg2);
-  --default :       var(--gray4);
+  --default-light: var(--colg2);
+  --default:       var(--gray4);
 
-  --bg1 : var(--gray5);
-  --bg2 : var(--gray6);
-  --bg3 : var(--gray7);
-  --bg4 : var(--gray8);
-  --bg5 : var(--gray9);
+  --bg1: var(--gray5);
+  --bg2: var(--gray6);
+  --bg3: var(--gray7);
+  --bg4: var(--gray8);
+  --bg5: var(--gray9);
 
-  --evligt   : var(--colg5);
-  --evdark   : var(--colg6);
-  --meligt   : var(--wrmg5);
-  --medark   : var(--wrmg6);
-  --hiligt   : var(--redd4);
-  --killer   : var(--redd4);
-  --accomp   : var(--redd3);
-  --hunter   : var(--gree4);
-  --witnss   : var(--libl4);
-  --ghost    : var(--fuch5);
-  --ghostli  : var(--fuch4);
-  --cause    : var(--purp8);
-  --locate   : var(--emer8);
-  --cluold   : var(--colg7);
-  --clunew   : var(--colg6);
-  --badge    : var(--yell4);
-  --mystry   : var(--viol4);
-  --leader   : var(--yell5);
-  --ready    : var(--emer6);
-  --readyli  : var(--emer5);
+  --evligt:  var(--colg5);
+  --evdark:  var(--colg6);
+  --meligt:  var(--wrmg5);
+  --medark:  var(--wrmg6);
+  --hiligt:  var(--redd4);
+  --killer:  var(--redd4);
+  --accomp:  var(--redd3);
+  --hunter:  var(--gree4);
+  --witnss:  var(--libl4);
+  --ghost:   var(--fuch5);
+  --ghostli: var(--fuch4);
+  --cause:   var(--purp8);
+  --locate:  var(--emer8);
+  --cluold:  var(--colg7);
+  --clunew:  var(--colg6);
+  --badge:   var(--yell4);
+  --mystry:  var(--viol4);
+  --leader:  var(--yell5);
+  --ready:   var(--emer6);
+  --readyli: var(--emer5);
 }
-
-/* RESET
-*/
 
 :root { --rad: 2px; --mar: .5rem; --bdr: 1px; }
 
-/* @font-face {
-  font-family: 'Iosevka ss02';
-  src: url('../assets/fonts/iosevka-ss02-regular.ttf') format('truetype');
-} */
+/* RESET */
 
 html, body {
   margin: 0;
   padding: 0;
   background: var(--bg5);
-  /* overflow: overlay; */
   height: 100%;
-  /* overflow: hidden; */
-}
-
-/* div.grid--lobby, */
-div.app-root {
-  display: flex;
-  flex-flow: column;
-  /* flex-direction: column; */
-  /* flex-grow: 1; */
-  margin: 0 auto;
-  width: max-content;
-  height: 100%;
-  /* overflow: hidden; */
-}
-
-main.app {
-  /* background: var(--colg8); */
-  margin: var(--mar);
-  display: flex;
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: auto;
-  max-height: calc(100% - (var(--mar)*2));
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* flex-grow: 1; */
-  /* height: calc(100% - 40px); */
-  /* overflow: hidden; */
-  /* height: 100%; */
 }
 
 *, *:before, *:after {
@@ -86,6 +50,7 @@ main.app {
   color: var(--default-light);
   margin: 0;
   padding: 0;
+  list-style: none;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
@@ -100,6 +65,23 @@ button {
 }
 
 button:focus { outline: none; }
+
+div.app-root {
+  display: flex;
+  flex-flow: column;
+  margin: 0 auto;
+  width: max-content;
+  height: 100%;
+}
+
+main.app {
+  margin: var(--mar);
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  max-height: calc(100% - (var(--mar)*2));
+}
 
 /* SHARED */
 
@@ -340,34 +322,6 @@ button:focus { outline: none; }
   width: 100%;
 }
 
-.ready-toggle-wrapper {
-  background-color: var(--bg4);
-  position: relative;
-  display: block;
-  padding: .25rem;
-  height: max-content;
-  border-radius: var(--rad);
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-
-.ccb-wrap {
-  height: 100px;
-  width: 100px;
-  background-color: var(--colg8);
-}
-
-.ccb-wrap.sl {
-  background-color: var(--colg5);
-}
-
-.ccb {
-  background-color: var(--colg5);
-}
-
 .rtw-unchecked {
   background-color: var(--bg2);
 }
@@ -376,8 +330,7 @@ button:focus { outline: none; }
   background-color: var(--emer5);
 }
 
-.hidden,
-.ready-toggle-wrapper input {
+.hidden {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -465,10 +418,6 @@ button:focus { outline: none; }
 
 ul.c-group {
   display: flex;
-}
-
-li {
-  list-style: none;
 }
 
 .player-list {

@@ -3,11 +3,6 @@ import React, {
   // useEffect,
   // useContext
 } from 'react';
-// import { UserContext, SocketContext } from '../../../context/contexts';
-// import { useGame } from '../../../hooks/game-hook';
-// import { getThisPlayer } from '../../../util/utils';
-import Container from '../../shared/Container';
-import Grid from '../../shared/Grid';
 import Info from './Info';
 import MemberList from './nogame/MemberList';
 import Setup from './nogame/Setup';

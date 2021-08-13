@@ -8,7 +8,6 @@ import Button from '../../../ui-elements/Button';
 import '../../../../styles/setup.css';
 
 const Setup = ({
-  className,
   iAmLeader,
   gameSettings,
   canStart,
@@ -63,8 +62,15 @@ const Setup = ({
   </>);
 
   return (
-    <Container className={className + 'controls'}>
-      <div className='start-game-text'>{startGameText}</div>
+    <Container className={'setup'}>
+      <div className='start-game-text'>
+        {startGameText}
+      </div>
+      {/* <div>Ghost: 
+        <span className='advrole ghost'>
+          {gameSettings.assignedToGhost || 'RANDOM'}
+        </span>
+      </div> */}
       {iAmLeader ? leaderUI() : basicUI()}
     </Container>
   );

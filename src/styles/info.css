@@ -3,7 +3,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--bg4);
   width: 100%;
 }
 

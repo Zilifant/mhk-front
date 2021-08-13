@@ -120,8 +120,7 @@ main.app {
 .con--info         { grid-area: info; }
 .con--memberlist   { grid-area: list; }
 .con--lobbychat    { grid-area: chat; }
-.con--lobbymain    { grid-area: main; }
-.con--lobbycontrols{ grid-area: setu; }
+.con--setup        { grid-area: setu; }
 .con--dev          { grid-area: devu; }
 
 .con--players      { grid-area: play; }
@@ -152,13 +151,14 @@ main.app {
   display: grid;
   gap: var(--mar);
   height: 100%;
-  grid-template-columns: max-content 1fr max-content;
-  grid-template-rows: max-content max-content 1fr max-content;
+  grid-template-columns: 600px max-content;
+  grid-template-rows: repeat(3, max-content) 1fr max-content;
   grid-template-areas:
-    "anno anno chat"
-    "info info chat"
-    "list setu chat"
-    "devu devu devu";
+    "anno chat"
+    "info chat"
+    "setu chat"
+    "list chat"
+    "devu devu";
 }
 
 .grid--lobby-game-ghost,
@@ -213,7 +213,6 @@ main.app {
 }
 
 .con--dev,
-.con--lobbycontrols,
 .con--memberlist,
 .con--self,
 .con--announcer,

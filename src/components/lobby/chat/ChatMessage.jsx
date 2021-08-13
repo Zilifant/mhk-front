@@ -13,7 +13,7 @@ const ChatMessage = ({ isMine, message }) => {
     </div>
   );
 
-  if (message) return renderStyledText(message, 'announcement-wrapper');
+  if (message) return renderStyledText(message, 'msg-wrapper');
   return null;
 };
 

@@ -1,14 +1,14 @@
 
-.con--lobbycontrols {
-  min-width: 100%;
-  /* display: flex;
+.con--setup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: auto; */
+  width: 100%;
+  background-color: var(--bg4);
 }
 
-.con--lobbycontrols > :not(:first-child) {
+.con--setup > :not(:first-child) {
   margin-top: .5rem;
 }
 
@@ -30,6 +30,12 @@
   font-weight: bold;
   width: 100px;
   text-align: center;
+}
+
+.advrole.ghost {
+  width: max-content;
+  border-color: var(--ghost);
+  color: var(--ghost);
 }
 
 .btn--advrole {

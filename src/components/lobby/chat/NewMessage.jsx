@@ -1,5 +1,10 @@
 import React from 'react';
 import Button from '../../ui-elements/Button';
+import {
+  validate,
+  VALIDATOR_REQUIRE,
+  VALIDATOR_MAXLENGTH
+} from '../../../util/validators';
 
 const NewMessage = ({
   myLobby, onChange, messageText, submitHandler
@@ -17,7 +22,9 @@ const NewMessage = ({
               value={messageText}
             ></input>
             <Button
-              disabled={!messageText}
+              disabled={!validate(messageText,
+                [VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(280)]
+              )}
               onClick={submitHandler}
             >
               Send

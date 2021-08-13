@@ -38,7 +38,6 @@ const Main = ({
       {!gameOn && lobby &&
         <React.Fragment>
           <Setup
-            className='lobby'
             iAmLeader={iAmLeader}
             gameSettings={gameSettings}
             canStart={lobby.canStart()}

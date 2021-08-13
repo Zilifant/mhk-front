@@ -30,7 +30,7 @@ const Info = ({
                     && (stage.id === 'Round 1' || stage.id === 'Round 2');
 
   return (
-    <Container className="info" parentGrid='main'>
+    <Container className="info">
       <div>User: {userName}</div>
       <div>Lobby: {myLobby === 'z' ? 'splendid-monolith-3289' : myLobby}</div>
       {showGameStage &&

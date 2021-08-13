@@ -34,7 +34,7 @@ const Players = ({
   const canBeTargeted = myRole === 'killer' && currentStage.id === 'Second Murder';
 
   return (
-    <Container className="players" parentGrid='main'>
+    <Container className="players">
       <ul className="player-list">
         {players && players.map(player => {
           if (player.id === ghost.id) return null;

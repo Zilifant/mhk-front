@@ -5,7 +5,7 @@ import '../../../../styles/ghost.css'
 
 const Ghost = ({ ghostCards, confirmedClues }) => {
   return (
-    <Container className='ghost' parentGrid='main'>
+    <Container className='ghost'>
       <ul className='hand'>
         {ghostCards.map((card) => (
         <GhostCard

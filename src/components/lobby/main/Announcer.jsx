@@ -18,7 +18,7 @@ const Announcer = ({chat}) => {
   useEffect(() => { subToChat(); }, [subToChat]);
 
   return (
-    <Container className='announcer' parentGrid='main'>
+    <Container className='announcer'>
       <ChatMessage message={!!messages[0] && messages[messages.length-1]}/>
     </Container>
   );

@@ -50,13 +50,20 @@ const Lobby = () => {
   if (lobbyURL === myLobby) subToLobby();
   }, [ socket, lobbyURL, myLobby, setLobby ]);
 
+  const thisPlayer = lobby && getThisPlayer(userId, lobby.game);
+  const gridVariant = () => {
+    return lobby.gameOn && thisPlayer.role === 'ghost' ? 'game-ghost'
+         : lobby.gameOn ? 'game'
+         : 'nogame'
+  };
+
   return (
     <SocketContext.Provider value={{ socket }}>
       <React.Fragment>
         <ErrorModal error={error} onClear={clearError} />
         {isLoading && <Loading asOverlay color='orange' />}
         {!isLoading && lobby &&
-            <Grid className={`lobby-${!!lobby.game ? 'game' : 'nogame'}`}>
+            <Grid className={`lobby-${gridVariant()}`}>
               <Main
                 lobby={lobby}
                 thisPlayer={getThisPlayer(userId, lobby.game)}

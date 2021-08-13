@@ -30,78 +30,70 @@ const Main = ({
   }
 }) => {
 
-  const gridVariant = () => {
-    return gameOn && thisPlayer.role === 'ghost' ? 'game-ghost'
-         : gameOn ? 'game'
-         : 'nogame'
-  };
-
   return (
-    <Container className='lobbymain' parentGrid='lobby'>
-      <Grid className={`main-${gridVariant()}`}>
-        <Announcer chat={chat} />
-        <Info
-          canStart={lobby.canStart()}
-          gameOn={gameOn}
-          roundNum={game && game.roundNum}
-          stage={game && game.currentStage}
-          iAmLeader={iAmLeader}
-        />
-        {!gameOn && lobby &&
-          <React.Fragment>
-            <Setup
-              className='lobby'
-              iAmLeader={iAmLeader}
-              gameSettings={gameSettings}
-              canStart={lobby.canStart()}
-              startGameText={lobby.startGameText(iAmLeader)}
-            />
-            <MemberList
-              users={lobby.users}
-              iAmLeader={iAmLeader}
-            />
-          </React.Fragment>
-        }
-        {gameOn && game && thisPlayer &&
-          <React.Fragment>
+    <>
+      <Announcer chat={chat} />
+      <Info
+        canStart={lobby.canStart()}
+        gameOn={gameOn}
+        roundNum={game && game.roundNum}
+        stage={game && game.currentStage}
+        iAmLeader={iAmLeader}
+      />
+      {!gameOn && lobby &&
+        <React.Fragment>
+          <Setup
+            className='lobby'
+            iAmLeader={iAmLeader}
+            gameSettings={gameSettings}
+            canStart={lobby.canStart()}
+            startGameText={lobby.startGameText(iAmLeader)}
+          />
+          <MemberList
+            users={lobby.users}
+            iAmLeader={iAmLeader}
+          />
+        </React.Fragment>
+      }
+      {gameOn && game && thisPlayer &&
+        <React.Fragment>
 
-            {thisPlayer.role !== 'ghost' &&
-            <Ghost
-              ghost={game.ghost}
-              ghostCards={game.cluesDeck}
-              confirmedClues={game.confirmedClues}
-            />}
+          {thisPlayer.role !== 'ghost' &&
+          <Ghost
+            ghost={game.ghost}
+            ghostCards={game.cluesDeck}
+            confirmedClues={game.confirmedClues}
+          />}
 
-            <Players
-              game={game}
-              myRole={thisPlayer.role}
-              canIAccuse={thisPlayer.canAccuse}
-            />
+          <Players
+            game={game}
+            myRole={thisPlayer.role}
+            canIAccuse={thisPlayer.canAccuse}
+          />
 
-            {thisPlayer.role === 'ghost' &&
-            <GhostUI
-              game={game}
-              thisPlayer={thisPlayer}
-            />}
+          {thisPlayer.role === 'ghost' &&
+          <GhostUI
+            game={game}
+            thisPlayer={thisPlayer}
+          />}
 
-            {(thisPlayer.role === 'hunter'||
-              thisPlayer.role === 'witness' ||
-              thisPlayer.role === 'accomplice') &&
-            <BasicUI
-              thisPlayer={thisPlayer}
-            />}
+          {(thisPlayer.role === 'hunter'||
+            thisPlayer.role === 'witness' ||
+            thisPlayer.role === 'accomplice') &&
+          <BasicUI
+            thisPlayer={thisPlayer}
+          />}
 
-            {thisPlayer.role === 'killer' &&
-            <KillerUI
-              thisPlayer={thisPlayer}
-              stage={game.currentStage}
-              keyEv={game.keyEvidence}
-            />}
+          {thisPlayer.role === 'killer' &&
+          <KillerUI
+            thisPlayer={thisPlayer}
+            stage={game.currentStage}
+            keyEv={game.keyEvidence}
+          />}
 
-          </React.Fragment>
-        }
-      </Grid>
-    </Container>
+        </React.Fragment>
+      }
+    </>
   );
 };
 

@@ -55,7 +55,7 @@ const KillerUI = ({
   };
 
   return (
-    <Container className={`self player`} parentGrid='main'>
+    <Container className={`self player`}>
       {/* <li className={`p-info username`}>
         {id.slice(0,-5)}
       </li> */}

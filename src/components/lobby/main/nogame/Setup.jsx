@@ -63,7 +63,7 @@ const Setup = ({
   </>);
 
   return (
-    <Container className={className + 'controls'} parentGrid='main'>
+    <Container className={className + 'controls'}>
       <div className='start-game-text'>{startGameText}</div>
       {iAmLeader ? leaderUI() : basicUI()}
     </Container>

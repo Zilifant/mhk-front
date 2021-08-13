@@ -17,7 +17,7 @@ const GhostUI = ({
 }) => {
 
   return (
-    <Container className='self self-ghost' parentGrid='main'>
+    <Container className='self self-ghost'>
       <ul className='c-group'>
       {cluesDeck.map((card) => (
         <GhostCard

@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Container = ({ className, parentGrid, children }) => {
+const Container = ({ className, children }) => {
   return (
-    <div className={`container pg--${parentGrid} con--${className || 'default'}`}>
+    <div className={`container con--${className || 'default'}`}>
       {children}
     </div>
   );

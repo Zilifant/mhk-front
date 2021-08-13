@@ -124,23 +124,27 @@ button:focus { outline: none; }
 
 /* GRID */
 
-.con--head         { grid-area: headr; }
-.con--foot         { grid-area: footr; }
-.con--errormsg     { grid-area: ermsg; }
+.con--head         { grid-area: head; }
+.con--foot         { grid-area: foot; }
+.con--errormsg     { grid-area: errr; }
 
-.con--newlobby     { grid-area: newlo; }
-.con--joinlobby    { grid-area: joinl; }
+.con--newlobby     { grid-area: newl; }
+.con--joinlobby    { grid-area: join; }
 
-.con--foyertitle   { grid-area: fyrti; }
-.con--foyerjoin    { grid-area: fyrjo; }
+.con--foyertitle   { grid-area: fyrt; }
+.con--foyerjoin    { grid-area: fyrj; }
 
-.con--dev          { grid-area: devui; }
-.con--announcer    { grid-area: anncr; }
+.con--announcer    { grid-area: anno; }
 .con--info         { grid-area: info; }
-.con--memberlist   { grid-area: lmemb; }
-.con--lobbychat    { grid-area: lchat; }
-.con--lobbymain    { grid-area: lmain; }
-.con--lobbycontrols{ grid-area: lctrl; }
+.con--memberlist   { grid-area: list; }
+.con--lobbychat    { grid-area: chat; }
+.con--lobbymain    { grid-area: main; }
+.con--lobbycontrols{ grid-area: setu; }
+.con--dev          { grid-area: devu; }
+
+.con--players      { grid-area: play; }
+.con--ghost        { grid-area: ghst; }
+.con--self         { grid-area: self; }
 
 .grid--landing,
 .grid--foyer {
@@ -152,83 +156,56 @@ button:focus { outline: none; }
 
 .grid--foyer {
   grid-template-areas:
-    "fyrjo";
+    "fyrj";
 }
 
 .grid--landing {
   grid-template-areas:
-    "headr"
-    "newlo"
-    "joinl";
+    "head"
+    "newl"
+    "join";
 }
 
 .grid--lobby-nogame {
   display: grid;
   gap: var(--mar);
   height: 100%;
-  grid-template-columns: max-content max-content;
-  grid-template-rows: 1fr max-content;
+  grid-template-columns: max-content 1fr max-content;
+  grid-template-rows: max-content max-content 1fr max-content;
   grid-template-areas:
-    "lmain lchat"
-    "devui devui";
+    "anno anno chat"
+    "info info chat"
+    "list setu chat"
+    "devu devu devu";
 }
 
+.grid--lobby-game-ghost,
 .grid--lobby-game {
   display: grid;
   gap: var(--mar);
   height: 100%;
-  grid-template-columns: max-content max-content;
-  grid-template-rows: 1fr max-content;
+  grid-template-columns: 1fr max-content;
+}
+
+.grid--lobby-game {
+  grid-template-rows: repeat(6, max-content);
   grid-template-areas:
-    "lmain lchat"
-    "devui devui";
+    "anno chat"
+    "info chat"
+    "ghst chat"
+    "play chat"
+    "self chat"
+    "devu devu";
 }
 
-.grid--main-nogame {
-  display: grid;
-  gap: var(--mar);
-  /* width: 100%; */
-  height: 100%;
-  grid-template-columns: max-content 1fr;
-  grid-template-rows: max-content max-content 1fr;
-  grid-template-areas:
-    "anncr anncr"
-    "info  info"
-    "lmemb lctrl";
-}
-
-.con--players { grid-area: play; }
-.con--self { grid-area: self; }
-.con--ghost { grid-area: ghst; }
-.con--board { grid-area: board; }
-.con--gamecontrols { grid-area: gctrl; }
-
-.grid--main-game-ghost,
-.grid--main-game {
-  display: grid;
-  gap: var(--mar);
-  width: 100%;
-  height: 100%;
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.grid--main-game {
+.grid--lobby-game-ghost {
   grid-template-rows: repeat(5, max-content);
   grid-template-areas:
-    "anncr anncr anncr anncr"
-    "info info info info"
-    "ghst ghst ghst ghst"
-    "play play play play"
-    "self self self self";
-}
-
-.grid--main-game-ghost {
-  grid-template-rows: repeat(4, max-content);
-  grid-template-areas:
-    "anncr anncr anncr anncr"
-    "info info info info"
-    "play play play play"
-    "self self self self";
+    "anno chat"
+    "info chat"
+    "play chat"
+    "self chat"
+    "devu devu";
 }
 
 /* CONTAINERS */

@@ -41,7 +41,7 @@ const Chat = ({ chat }) => {
   );
 
   if (minimized) return (
-    <Container className={`lobbychat min`} parentGrid='lobby'>
+    <Container className={`lobbychat min`}>
       <MinimizeChatButton />
     </Container>
   );
@@ -52,7 +52,7 @@ const Chat = ({ chat }) => {
   };
 
   return (
-    <Container className='lobbychat' parentGrid='lobby'>
+    <Container className='lobbychat'>
       <MinimizeChatButton />
       <ChatFeed messages={messages} />
       <NewMessage

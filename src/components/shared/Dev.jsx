@@ -21,7 +21,7 @@ const Dev = ({ lobby }) => {
   };
 
   return (
-    <Container className="dev" parentGrid='main'>
+    <Container className="dev">
       <div>
         <Button onClick={getDataHandler}>
           SERVER

@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useForm } from '../../hooks/form-hook';
 import { useHttpClient } from '../../hooks/http-hook';
 import { VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH } from '../../util/validators';
+import { MAX_NAME_LEN } from '../../util/utils';
 import { UserContext } from '../../context/contexts';
 import Input from '../ui-elements/Input';
 import Button from '../ui-elements/Button';
@@ -65,7 +66,7 @@ const NewLobby = () => {
               type='text'
               label='Your Name'
               placeholder='Name'
-              validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(8)]}
+              validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(MAX_NAME_LEN)]}
               errorText='Please enter a name.'
               onInput={inputHandler}
               noInvalidStyle={true}

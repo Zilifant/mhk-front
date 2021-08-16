@@ -1,6 +1,11 @@
 
 .con--memberlist {
-  min-width: 100%;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--bg4);
 }
 
 .member-wrapper * {
@@ -18,11 +23,15 @@
 
 .member-wrapper .name {
   font-size: large;
+  background-color: var(--bg5);
+  padding: .15rem 0;
+  border-radius: var(--rad);
+  width: calc(140px + 1rem);
+  text-align: center;
 }
 
 .member-wrapper.self .name {
   color: var(--cyan5);
-  font-weight: bold;
 }
 
 .member-wrapper button:disabled {

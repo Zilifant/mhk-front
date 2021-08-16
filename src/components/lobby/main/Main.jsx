@@ -40,6 +40,7 @@ const Main = ({
           <Setup
             iAmLeader={iAmLeader}
             gameSettings={gameSettings}
+            lobby={lobby}
             canStart={lobby.canStart()}
             startGameText={lobby.startGameText(iAmLeader)}
           />

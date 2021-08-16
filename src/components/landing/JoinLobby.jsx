@@ -4,6 +4,7 @@ import { useForm } from '../../hooks/form-hook';
 import { UserContext } from '../../context/contexts';
 import { useHttpClient } from '../../hooks/http-hook';
 import { VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH } from '../../util/validators';
+import { MAX_NAME_LEN } from '../../util/utils';
 import ErrorModal from '../modal/ErrorModal';
 import Loading from '../shared/Loading';
 import Grid from '../shared/Grid';
@@ -62,7 +63,7 @@ const JoinLobby = () => {
               type='text'
               label='Your Name'
               placeholder='Name'
-              validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(8)]}
+              validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(MAX_NAME_LEN)]}
               errorText='Please enter a name.'
               onInput={inputHandler}
               noInvalidStyle={true}

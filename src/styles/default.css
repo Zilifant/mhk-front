@@ -151,7 +151,7 @@ main.app {
   display: grid;
   gap: var(--mar);
   height: 100%;
-  grid-template-columns: 600px max-content;
+  grid-template-columns: 500px max-content;
   grid-template-rows: repeat(3, max-content) 1fr max-content;
   grid-template-areas:
     "anno chat"
@@ -213,7 +213,6 @@ main.app {
 }
 
 .con--dev,
-.con--memberlist,
 .con--self,
 .con--announcer,
 .con--info,

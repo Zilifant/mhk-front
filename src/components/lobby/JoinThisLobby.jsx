@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useForm } from '../../hooks/form-hook';
 import { useHttpClient } from '../../hooks/http-hook';
 import { VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH } from '../../util/validators';
+import { MAX_NAME_LEN } from '../../util/utils';
 import Input from '../ui-elements/Input';
 import ErrorModal from '../modal/ErrorModal';
 import Button from '../ui-elements/Button';
@@ -55,7 +56,7 @@ const JoinThisLobby = ({ lobbyId }) => {
             type="text"
             label="Your Name"
             placeholder="Name"
-            validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(8)]}
+            validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(MAX_NAME_LEN)]}
             errorText="Please enter a name."
             onInput={inputHandler}
             noInvalidStyle={true}

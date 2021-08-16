@@ -1,4 +1,5 @@
 
+section.section-wrapper,
 .con--setup {
   display: flex;
   justify-content: center;
@@ -9,7 +10,27 @@
 }
 
 .con--setup > :not(:first-child) {
+  margin-top: 1rem;
+}
+
+section.section-wrapper > :not(:first-child) {
   margin-top: .5rem;
+}
+
+.text {
+  display: flex;
+  margin: auto;
+  align-items:center;
+  justify-content:center;
+  text-align: center;
+  height: calc(32px + .5rem);
+  width: 100%;
+  border-radius: var(--rad);
+  background-color: var(--bg5);
+}
+
+.text p {
+  margin: .25rem .25rem;
 }
 
 .advrole-wrapper * {

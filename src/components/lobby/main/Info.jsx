@@ -35,11 +35,11 @@ const Info = ({
 
   const lobbyId = myLobby === 'z' ? 'splendid-monolith-3289' : myLobby;
 
-  const url = () => {
-    return process.env.NODE_ENV === 'development'
-      ? `mhkgame.com/lobby/${lobbyId}`
-      : `${(process.env.REACT_APP_FRONTEND_URL).slice(9)}/lobby/${lobbyId}`;
-  };
+  // const url = () => {
+  //   return process.env.NODE_ENV === 'development'
+  //     ? `mhkgame.com/lobby/${lobbyId}`
+  //     : `${(process.env.REACT_APP_FRONTEND_URL).slice(9)}/lobby/${lobbyId}`;
+  // };
 
   const showGameStage = stage && stage.id;
   const showClearBtn = iAmLeader;
@@ -54,9 +54,9 @@ const Info = ({
       </div>
       <button
         className='info-lobbyurl'
-        onClick={() => textToClipboard(url())}
+        onClick={() => textToClipboard(`${(process.env.REACT_APP_FRONTEND_URL).slice(9)}/lobby/${lobbyId}`)}
       >
-        {url()}
+        {`${(process.env.REACT_APP_FRONTEND_URL).slice(9)}/lobby/${lobbyId}`}
       </button>
     </Container>
   );

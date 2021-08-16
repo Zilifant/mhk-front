@@ -70,7 +70,7 @@ const Lobby = () => {
                 iAmLeader={lobby.leader === userId}
               />
               <Chat chat={lobby.chat} />
-              <Dev lobby={lobby} />
+              {lobby.id === 'z' && <Dev lobby={lobby} />}
             </Grid>
         }
       </React.Fragment>

@@ -36,10 +36,9 @@ const Info = ({
   const lobbyId = myLobby === 'z' ? 'splendid-monolith-3289' : myLobby;
 
   const url = () => {
-    if (process.env.REACT_APP_FRONTEND_URL) {
-      return `${(process.env.REACT_APP_FRONTEND_URL).slice(8)}/lobby/${lobbyId}`;
-    }
-    return `www.mhkgame.com/lobby/${lobbyId}`;
+    return process.env.NODE_ENV !== 'development'
+      ? `${(process.env.REACT_APP_FRONTEND_URL).slice(8)}/lobby/${lobbyId}`
+      : `${(process.env.REACT_APP_FRONTEND_URL).slice(7)}/lobby/${lobbyId}`;
   };
 
   const showGameStage = stage && stage.id;

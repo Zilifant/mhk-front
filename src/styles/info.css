@@ -4,17 +4,24 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  background-color: var(--bg4);
 }
 
 .con--info.nogame {
   flex-direction: column;
 }
 
+.con--info.game {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .con--info.nogame > :not(:first-child) {
   margin-top: .25rem;
 }
 
-.con--info.nogame .info-lobbyid {
+.game-stage,
+.con--info .info-lobbyid {
   text-transform: uppercase;
   font-size: large;
 }
@@ -42,4 +49,8 @@
 
 .con--info.game {
   height: min-content;
+}
+
+.game-control-buttons > :not(:first-child) {
+  margin-left: .5rem;
 }

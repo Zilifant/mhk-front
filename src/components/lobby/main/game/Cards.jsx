@@ -44,7 +44,7 @@ const Cards = ({
       case `hunterUI`:
         return false;
       case `killerUI`:
-        if (stage.id !== `Setup`) return false;
+        if (stage.id !== `setup`) return false;
         return true;
       case `otherPlayer`:
         if (myRole === 'ghost' || myRole === 'spectator') return false;

@@ -45,7 +45,7 @@ const Info = ({
   const showClearBtn = iAmLeader;
   const showRoundBtn = iAmLeader
                     && stage
-                    && (stage.id === 'Round 1' || stage.id === 'Round 2');
+                    && (stage.id === 'round-1' || stage.id === 'round-2');
 
   if (!gameOn) return (
     <Container className="info nogame">
@@ -63,21 +63,23 @@ const Info = ({
 
   return (
     <Container className="info game">
-      <div>Lobby: {myLobby === 'z' ? 'splendid-monolith-3289' : myLobby}</div>
+      <div className='info-lobbyid'>{myLobby === 'z' ? 'splendid-monolith-3289' : myLobby}</div>
+      <div className='game-control-buttons'>
+        {showRoundBtn &&
+          <Button onClick={nextRoundHandler}>
+            NEXT ROUND
+          </Button>
+        }
+        {showClearBtn &&
+          <Button onClick={clearGameHandler}>
+            CLEAR GAME
+          </Button>
+        }
+      </div>
       {showGameStage &&
-        <div>
-          Game: {stage.id}
-        </div>}
-      {showClearBtn &&
-        <Button onClick={clearGameHandler}>
-          CLEAR
-        </Button>
-      }
-      {showRoundBtn &&
-        <Button onClick={nextRoundHandler}>
-          ROUND
-        </Button>
-      }
+      <div className='game-stage'>
+        {stage.display}
+      </div>}
     </Container>
   );
 };

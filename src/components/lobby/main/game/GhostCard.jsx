@@ -38,7 +38,7 @@ const GhostCard = ({
 
   const checkEnabled = (index) => {
     if (!isMine) return false;
-    if (stage.id === 'Setup' || stage.type === 'liminal') return false;
+    if (stage.id === 'setup' || stage.type === 'liminal') return false;
     if (card.isLocked) return false;
     return amIEnabled(index);
   };

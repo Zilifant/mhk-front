@@ -50,7 +50,7 @@ const KillerUI = ({
   };
 
   const interact = () => {
-    if (stage.id === 'Setup') return keyEvBtn();
+    if (stage.id === 'setup') return keyEvBtn();
     return null;
   };
 

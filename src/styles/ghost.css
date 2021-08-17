@@ -14,6 +14,7 @@ div.card-wrap--ghost:not(:first-child) {
   color: var(--gray2);
 } */
 
+.gc-back,
 .gc-title,
 .gc-clue-btn {
   padding: .15rem .5rem;
@@ -94,8 +95,32 @@ div.card-wrap--ghost:not(:first-child) {
   background-color: var(--rose7);
 }
 
+.card-wrap--ghost.back {
+  display: grid;
+  grid-template-rows: 1fr max-content;
+}
+
+.gc-back {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--bg3);
+}
+
 .gc-conbtn-placeholder {
   color: var(--bg4);
   background-color: var(--bg4);
   padding: .15rem;
+}
+
+.gc-back-icon {
+  height: 50px;
+  width: 50px;
+  display: block;
+  margin: .25rem auto;
+}
+
+.gc-back-text {
+  font-size: large;
+  text-align: center;
 }

@@ -15,7 +15,7 @@ const Info = ({
   iAmLeader
 }) => {
 
-  const { myLobby } = useContext(UserContext);
+  const { myLobby, userName } = useContext(UserContext);
   const { socket } = useContext(SocketContext);
 
   const {
@@ -63,7 +63,10 @@ const Info = ({
 
   return (
     <Container className="info game">
-      <div className='info-lobbyid'>{myLobby === 'z' ? 'splendid-monolith-3289' : myLobby}</div>
+      {showGameStage &&
+      <div className='game-stage'>
+        {stage.display}
+      </div>}
       <div className='game-control-buttons'>
         {showRoundBtn &&
           <Button onClick={nextRoundHandler}>
@@ -76,10 +79,9 @@ const Info = ({
           </Button>
         }
       </div>
-      {showGameStage &&
-      <div className='game-stage'>
-        {stage.display}
-      </div>}
+      <div className='info-lobbyid'>
+        {userName} / {myLobby === 'z' ? 'splendid-monolith-3289' : myLobby}
+      </div>
     </Container>
   );
 };

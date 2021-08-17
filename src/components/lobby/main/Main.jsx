@@ -8,7 +8,6 @@ import MemberList from './nogame/MemberList';
 import Setup from './nogame/Setup';
 import Ghost from './game/Ghost';
 import Players from './game/Players';
-import GhostUI from './game/GhostUI';
 import BasicUI from './game/BasicUI';
 import KillerUI from './game/KIllerUI';
 import Announcer from './Announcer';
@@ -55,9 +54,7 @@ const Main = ({
 
           {thisPlayer.role !== 'ghost' &&
           <Ghost
-            ghost={game.ghost}
-            ghostCards={game.cluesDeck}
-            confirmedClues={game.confirmedClues}
+            game={game}
           />}
 
           <Players
@@ -67,9 +64,9 @@ const Main = ({
           />
 
           {thisPlayer.role === 'ghost' &&
-          <GhostUI
+          <Ghost
+            isGhostUI={true}
             game={game}
-            thisPlayer={thisPlayer}
           />}
 
           {(thisPlayer.role === 'hunter'||

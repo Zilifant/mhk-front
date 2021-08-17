@@ -20,10 +20,14 @@
   margin-top: .25rem;
 }
 
-.game-stage,
+.con--info .game-stage,
 .con--info .info-lobbyid {
   text-transform: uppercase;
   font-size: large;
+}
+
+.con--info.game .info-lobbyid {
+  color: var(--bg1)
 }
 
 .con--info.nogame .info-lobbyurl {
@@ -43,12 +47,26 @@
   color: var(--fgc);
 }
 
+.con--info.game {
+  height: min-content;
+}
+
+.con--info.game > * {
+  /* background-color: var(--bg5); */
+  width: 100%;
+}
+
 .con--info.game > :not(:first-child) {
   margin-left: .5rem;
 }
 
-.con--info.game {
-  height: min-content;
+.con--info.game > :nth-child(2) {
+  display: flex;
+  justify-content: center;
+}
+
+.con--info.game > :last-child {
+  text-align: right;
 }
 
 .game-control-buttons > :not(:first-child) {

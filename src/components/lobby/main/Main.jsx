@@ -11,6 +11,7 @@ import Players from './game/Players';
 import BasicUI from './game/BasicUI';
 import KillerUI from './game/KIllerUI';
 import Announcer from './Announcer';
+import Timer from './game/Timer';
 
 const Main = ({
   lobby,
@@ -56,6 +57,8 @@ const Main = ({
           <Ghost
             game={game}
           />}
+
+          <Timer />
 
           <Players
             game={game}

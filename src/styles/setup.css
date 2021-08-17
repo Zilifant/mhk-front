@@ -93,3 +93,20 @@ section.section-wrapper > :not(:first-child) {
   border-color: var(--bg3);
   background-color: var(--bg4);
 }
+
+.timer-buttons > button {
+  display: inline-block;
+  width: 3rem;
+}
+
+.timer-buttons :not(:first-child) {
+  margin-left: .5rem;
+}
+
+.btn--timer.selected {
+  background-color: var(--yell5);
+}
+
+.btn--timer.selected:hover {
+  background-color: var(--yell4);
+}

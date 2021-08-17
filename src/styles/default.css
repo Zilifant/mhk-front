@@ -126,6 +126,7 @@ main.app {
 .con--players      { grid-area: play; }
 .con--ghost        { grid-area: ghst; }
 .con--self         { grid-area: self; }
+.con--timer        { grid-area: time; }
 
 .grid--landing,
 .grid--foyer {
@@ -166,28 +167,28 @@ main.app {
   display: grid;
   gap: var(--mar);
   height: 100%;
-  grid-template-columns: 1fr max-content;
+  grid-template-columns: max-content 1fr max-content;
 }
 
 .grid--lobby-game {
   grid-template-rows: repeat(3, max-content) 1fr repeat(2, max-content);
   grid-template-areas:
-    "anno chat"
-    "info chat"
-    "ghst chat"
-    "play chat"
-    "self chat"
-    "devu devu";
+    "anno anno chat"
+    "info info chat"
+    "ghst time chat"
+    "play play chat"
+    "self self chat"
+    "devu devu devu";
 }
 
 .grid--lobby-game-ghost {
   grid-template-rows: repeat(2, max-content) 1fr repeat(2, max-content);
   grid-template-areas:
-    "anno chat"
-    "info chat"
-    "play chat"
-    "self chat"
-    "devu devu";
+    "anno anno chat"
+    "info info chat"
+    "play play chat"
+    "self time chat"
+    "devu devu devu";
 }
 
 /* CONTAINERS */

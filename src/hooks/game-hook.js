@@ -45,6 +45,10 @@ export const useGame = (socket) => {
     socket.current.emit('toggle', toggledItem);
   };
 
+  const chooseTimerHandler = (duration) => {
+    socket.current.emit('chooseTimer', duration);
+  }
+
   const assignGhostHandler = (userId) => {
     socket.current.emit('ghostAssigned', userId);
   };
@@ -210,6 +214,7 @@ export const useGame = (socket) => {
     nextRoundHandler,
     readyHandler,
     toggleHandler,
+    chooseTimerHandler,
     assignGhostHandler,
     chooseKeyEvHandler,
     accusationHandler,

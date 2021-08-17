@@ -24,12 +24,16 @@ const Chat = ({ chat }) => {
   const {
     newMessage,
     subToChat,
+    subToAnnounce,
     messages,
     messageText,
     setMessageText
   } = useChat(chat);
 
-  useEffect(() => { subToChat(); }, [subToChat]);
+  useEffect(() => {
+    subToChat();
+    subToAnnounce();
+  }, [subToChat, subToAnnounce]);
 
   const MinimizeChatButton = () => (
     <Button

@@ -1,21 +1,12 @@
-import React from 'react';
-import { nanoid } from 'nanoid';
+// import React from 'react';
+import { parseAndRender, renderStyledText } from '../../../util/styled-text';
 
-const ChatMessage = ({ isMine, message, type }) => {
+const ChatMessage = ({ isMine, message }) => {
 
   const style = isMine ? 'self' : 'other';
 
-  const renderStyledText = (elements) => (
-    <div className={`${elements[0].metaData || 'none'} msg-wrapper ${style}`}>
-      {elements.map((el, i) => {
-        if (i === 0) return null;
-        return <span key={nanoid()} className={el.style}>{el.string}</span>
-      })}
-    </div>
-  );
-
-  // if (type === 'announcer' && message[0].metaData === 'user-message') return null;
-  if (message) return renderStyledText(message);
+  if (message.type === 'ghostAssigned') return parseAndRender(message, `msg-wrapper ${style}`)
+  if (message) return renderStyledText(message, `msg-wrapper ${style}`);
   return null;
 };
 

@@ -11,15 +11,15 @@ import '../../../styles/chat.css';
 const Announcer = ({ chat }) => {
 
   const {
-    subToChat,
+    subToAnnounce,
     messages
   } = useChat(chat);
 
-  useEffect(() => { subToChat(); }, [subToChat]);
+  useEffect(() => { subToAnnounce(); }, [subToAnnounce]);
 
   return (
     <Container className='announcer'>
-      <ChatMessage type='announcer' message={!!messages[0] && messages[messages.length-1]}/>
+      <ChatMessage type='announcer' message={messages[messages.length-1]}/>
     </Container>
   );
 };

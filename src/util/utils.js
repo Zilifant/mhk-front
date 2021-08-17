@@ -4,6 +4,14 @@ export const MIN_PLAYER_COUNT = 3,
              MIN_PLAYER_COUNT_FOR_ADV_ROLES = 4,
              MAX_NAME_LEN = 10;
 
+export const GAME_OUTCOMES = {
+  redwin: 'Killer wins! The Hunters used their last accusation.',
+  redwintimeout: 'Killer wins! The Hunters ran out of time.',
+  redwinwitnessdead: 'Killers win! The Witness is dead.',
+  bluewin: 'Hunters and Ghost win!',
+  bluewinwitnessalive: 'Hunters and Ghost win! The Witness survived.'
+};
+
 // Dynamic, game-specific data added to user object is not provided
 // by userContext; this gets that data from the game object
 export function getThisPlayer(userId, game) {

@@ -170,7 +170,7 @@ main.app {
 }
 
 .grid--lobby-game {
-  grid-template-rows: repeat(6, max-content);
+  grid-template-rows: repeat(3, max-content) 1fr repeat(2, max-content);
   grid-template-areas:
     "anno chat"
     "info chat"
@@ -181,7 +181,7 @@ main.app {
 }
 
 .grid--lobby-game-ghost {
-  grid-template-rows: repeat(5, max-content);
+  grid-template-rows: repeat(2, max-content) 1fr repeat(2, max-content);
   grid-template-areas:
     "anno chat"
     "info chat"

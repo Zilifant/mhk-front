@@ -31,8 +31,7 @@ export const useChat = (chat) => {
       // });
   
       socket.current.on('newMessage', message => {
-        const incomingMessage = message;
-        setMessages((messages) => [...messages, incomingMessage]);
+        setMessages((messages) => [...messages, message]);
       });
     };
     sub2Chat();

@@ -41,9 +41,10 @@ const Lobby = () => {
   }, [ sendRequest, setLobby, lobbyURL, userId ]);
 
   useEffect(() => {
+    const ignoredEvents = ['newMessage', 'tick', 'lastTick', 'clear'];
     const subToLobby = () => {
       socket.current.onAny((event, data) => {
-        if (event === 'newMessage') return;
+        if (ignoredEvents.includes(event)) return;
         setLobby({...lobbyMethods, ...data.lobby});
       });
     };

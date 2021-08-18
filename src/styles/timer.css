@@ -5,3 +5,21 @@
   background-color: var(--bg4);
 }
 
+.time-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.time-wrap p {
+  text-align: center;
+}
+
+.time-digits {
+  font-size: xx-large;
+}
+
+.time-digits.zero {
+  color: var(--killer);
+}

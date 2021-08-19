@@ -62,6 +62,7 @@ button {
           appearance: none;
   cursor: pointer;
   border: none;
+  transition: 0.2s;
 }
 
 button:focus { outline: none; }

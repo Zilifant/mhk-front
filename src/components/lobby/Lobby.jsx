@@ -3,7 +3,7 @@ import React, {
   useState,
   useContext
 } from 'react';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import { useHttpClient } from '../../hooks/http-hook';
 import { useIO } from '../../hooks/io-hook';
 import { SocketContext, UserContext } from '../../context/contexts';
@@ -17,7 +17,7 @@ import Dev from '../shared/Dev';
 
 const Lobby = () => {
   console.log('%cLobby','color:#79f98e');
-  const lobbyURL = useParams().lobbyURL;
+  // const lobbyURL = useParams().lobbyURL;
   const { myLobby, userId } = useContext(UserContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const { socket } = useIO(); // init socket (useEffect inside hook)
@@ -27,7 +27,7 @@ const Lobby = () => {
     const fetchLobby = async () => {
       try {
         const resData = await sendRequest(
-          `${process.env.REACT_APP_BACKEND_URL}/lobby/${lobbyURL}`,
+          `${process.env.REACT_APP_BACKEND_URL}/lobby/${myLobby}`,
           'POST',
           JSON.stringify({
             userId: userId
@@ -38,7 +38,7 @@ const Lobby = () => {
       } catch (err) { console.log(err); }
     };
     fetchLobby();
-  }, [ sendRequest, setLobby, lobbyURL, userId ]);
+  }, [ sendRequest, setLobby, userId, myLobby ]);
 
   useEffect(() => {
     const subToLobby = () => {
@@ -46,8 +46,8 @@ const Lobby = () => {
         setLobby({...lobbyMethods, ...lobby});
       });
     };
-  if (lobbyURL === myLobby) subToLobby();
-  }, [ socket, lobbyURL, myLobby, setLobby ]);
+  subToLobby();
+  }, [ socket, myLobby, setLobby ]);
 
   const thisPlayer = lobby && getThisPlayer(userId, lobby.game);
   const gridVariant = () => {

@@ -48,7 +48,7 @@ const NewLobby = () => {
         leaderOf: responseData.user.myLobby
       });
       // 'forward' user to route of lobby
-      history.push('/lobby/' + responseData.user.myLobby);
+      history.push('/lobby');
     } catch (err) { console.log(err); }
   }
 

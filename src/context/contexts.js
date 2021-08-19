@@ -6,7 +6,8 @@ export const UserContext = React.createContext({
   myLobby: null,
   isLeader: false,
   checkMyLobby: () => {},
-  updateUserCtx: () => {}
+  updateUserCtx: () => {},
+  checked: false
 });
 
 export const SocketContext = React.createContext({

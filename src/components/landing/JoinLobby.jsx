@@ -54,7 +54,7 @@ const JoinLobby = () => {
         myLobby: responseData.user.myLobby,
       });
       // 'forward' user to route of lobby
-      history.push('/lobby/' + responseData.user.myLobby);
+      history.push('/' + responseData.user.myLobby);
     } catch (err) { console.log(err); };
   };
 

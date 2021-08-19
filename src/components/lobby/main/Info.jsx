@@ -54,9 +54,9 @@ const Info = ({
       </div>
       <button
         className='info-lobbyurl'
-        onClick={() => textToClipboard(`mhk-front.herokuapp.com/lobby/${lobbyId}`)}
+        onClick={() => textToClipboard(`mhk-front.herokuapp.com/${lobbyId}`)}
       >
-        {`mhk-front.herokuapp.com/lobby/${lobbyId}`}
+        {`mhk-front.herokuapp.com/${lobbyId}`}
       </button>
     </Container>
   );

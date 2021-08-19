@@ -26,12 +26,8 @@ export const useChat = (chat) => {
   const subToChat = useCallback(() => {
 
     const sub2Chat = () => {
-      // socket.current.onAny((e, data) => {
-      //   if (data.msg) setMessages((messages) => [...messages, data.msg]);
-      // });
-  
-      socket.current.on('newMessage', message => {
-        setMessages((messages) => [...messages, message]);
+      socket.current.on('newMessage', msg => {
+        setMessages((messages) => [...messages, msg]);
       });
     };
     sub2Chat();
@@ -41,9 +37,9 @@ export const useChat = (chat) => {
   const subToAnnounce = useCallback(() => {
 
     const sub2Announce = () => {
-      socket.current.onAny((e, data) => {
-        if (data.msgData) return setMessages((messages) => [...messages, data.msgData]);
-        if (data.msg) setMessages((messages) => [...messages, data.msg]);
+      socket.current.on('updateLobby', ({ msg }) => {
+        if (msg) return setMessages((messages) => [...messages, msg]);
+        return console.log(`no msg`);
       });
     };
     sub2Announce();

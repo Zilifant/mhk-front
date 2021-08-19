@@ -1,5 +1,13 @@
 // Utilities
 
+export const randomName = () => {
+  const names = [
+    'nemo','cassandra','olivia','ragnar','brand','hera','violet','dagney','baldur','sigurd','rhialto','corwin','bethany','zane','athena','dane','fili','kili','gloin','chang','sandor','gerrard','freya','zanzel','madeline','camilla','arronax'
+  ];
+  const name = names[Math.floor(Math.random()*names.length)];
+  return name[0].toUpperCase()+name.slice(1);
+};
+
 export const MIN_PLAYER_COUNT = 3,
              MIN_PLAYER_COUNT_FOR_ADV_ROLES = 4,
              MAX_NAME_LEN = 10;

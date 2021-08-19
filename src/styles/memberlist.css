@@ -31,7 +31,8 @@
 }
 
 .member-wrapper.self .name {
-  color: var(--cyan5);
+  /* color: var(--cyan5); */
+  background-color: var(--bg3);
 }
 
 .member-wrapper button:disabled {

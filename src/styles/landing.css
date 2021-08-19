@@ -24,6 +24,7 @@
 .join-lobby-lobbyid-label { grid-area: jllabel; }
 .join-lobby-lobbyid-input { grid-area: jlinput; }
 .btn--join-lobby          { grid-area: jlbtn; }
+.btn--join-devlobby       { grid-area: jdbtn; }
 
 .new-lobby-title,
 .join-lobby-title,
@@ -58,7 +59,7 @@
 .grid--join-lobby-form {
   grid-template-areas:
     "jnltitl jnltitl jnltitl"
-    "jnlabel jninput .      "
+    "jnlabel jninput jdbtn  "
     "jllabel jlinput jlbtn  ";
 }
 
@@ -78,3 +79,7 @@
   margin-right: 0;
 }
 
+button.btn--join-devlobby {
+  width: 100%;
+  margin-top: .5rem;
+}

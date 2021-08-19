@@ -4,7 +4,7 @@ import { useForm } from '../../hooks/form-hook';
 import { UserContext } from '../../context/contexts';
 import { useHttpClient } from '../../hooks/http-hook';
 import { VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH } from '../../util/validators';
-import { MAX_NAME_LEN } from '../../util/utils';
+import { MAX_NAME_LEN, randomName } from '../../util/utils';
 import ErrorModal from '../modal/ErrorModal';
 import Loading from '../shared/Loading';
 import Grid from '../shared/Grid';
@@ -23,9 +23,21 @@ const JoinLobby = () => {
     }, false
   );
 
+  function joinLobbyData(dev) {
+    const prodData = {
+      userName: formState.inputs.userName.value,
+      lobbyURL: formState.inputs.lobbyURL.value
+    };
+    const devData = {
+      userName: randomName(),
+      lobbyURL: 'z'
+    };
+    return JSON.stringify(dev ? devData : prodData); 
+  }
+
   const history = useHistory();
 
-  const joinLobbySubHandler = async event => {
+  const joinLobbySubHandler = async (event, dev) => {
     // console.log('joinLobbySubHandler');
     event.preventDefault();
 
@@ -33,10 +45,7 @@ const JoinLobby = () => {
       const responseData = await sendRequest(
         `${process.env.REACT_APP_BACKEND_URL}/user/new`,
         'POST',
-        JSON.stringify({
-          userName: formState.inputs.userName.value,
-          lobbyURL: formState.inputs.lobbyURL.value
-        }),
+        joinLobbyData(dev),
         { 'Content-Type': 'application/json' },
       );
       updateUserCtx({
@@ -87,6 +96,13 @@ const JoinLobby = () => {
             </Button>
           </Grid>
         </form>
+        <Button
+          disabled={false}
+          className='join-devlobby'
+          onClick={(e) => joinLobbySubHandler(e, true)}
+        >
+          DEV
+        </Button>
       </Container>
     </React.Fragment>
   );

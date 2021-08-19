@@ -16,10 +16,20 @@
   text-align: center;
 }
 
-.time-digits {
+.colon,
+.digits {
   font-size: xx-large;
 }
 
-.time-digits.zero {
+.colon {
+  font-weight: bold;
+}
+
+.digits {
+  font-family: 'Roboto Mono', sans-serif;
+  font-weight: normal;
+}
+
+.time-digits.zero span {
   color: var(--killer);
 }

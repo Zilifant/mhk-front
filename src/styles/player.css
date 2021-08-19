@@ -12,7 +12,7 @@
   display: grid;
   gap: var(--mar);
   grid-template-columns: 7rem 1fr;
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: 1fr max-content max-content 1fr;
   grid-template-areas:
     "badg evid"
     "role evid"
@@ -27,6 +27,11 @@
   align-items: center;
   font-weight: bold;
   border-radius: var(--rad);
+}
+
+.p-info:nth-child(2) {
+  padding: .25rem;
+  min-height: 68px;
 }
 
 .p-info .wrapper {

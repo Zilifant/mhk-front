@@ -7,14 +7,13 @@ import Input from '../ui-elements/Input';
 import ErrorModal from '../modal/ErrorModal';
 import Button from '../ui-elements/Button';
 import { UserContext } from '../../context/contexts';
-import Loading from '../shared/Loading';
+// import Loading from '../shared/Loading';
 import Grid from '../shared/Grid';
 import Container from '../shared/Container';
 
 const JoinThisLobby = ({ lobbyId }) => {
-  // console.log('JoinThisLobby');
   const { updateUserCtx } = useContext(UserContext);
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { error, sendRequest, clearError } = useHttpClient();
   const [formState, inputHandler] = useForm(
     { userName: { value: '', isValid: false } }, false
   );
@@ -45,7 +44,7 @@ const JoinThisLobby = ({ lobbyId }) => {
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
       <Container className='foyerjoin'>
-      {isLoading && <Loading asOverlay color='green' />}
+      {/* {isLoading && <Loading asOverlay color='green' />} */}
       <form className="form join-this-lobby-form" onSubmit={JoinThisLobbySubHandler}>
         <Grid className='join-this-lobby-form'>
           <div className='join-this-lobby-title'>JOIN THIS LOBBY</div>

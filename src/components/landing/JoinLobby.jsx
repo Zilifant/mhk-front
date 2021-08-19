@@ -6,7 +6,7 @@ import { useHttpClient } from '../../hooks/http-hook';
 import { VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH } from '../../util/validators';
 import { MAX_NAME_LEN, randomName } from '../../util/utils';
 import ErrorModal from '../modal/ErrorModal';
-import Loading from '../shared/Loading';
+// import Loading from '../shared/Loading';
 import Grid from '../shared/Grid';
 import Container from '../shared/Container';
 import Input from '../ui-elements/Input';
@@ -15,7 +15,7 @@ import Button from '../ui-elements/Button';
 const JoinLobby = () => {
   // console.log('JoinLobby');
   const { updateUserCtx } = useContext(UserContext);
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { error, sendRequest, clearError } = useHttpClient();
   const [formState, inputHandler] = useForm(
     {
       userName: { value: '', isValid: false },
@@ -62,7 +62,7 @@ const JoinLobby = () => {
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
       <Container className='joinlobby'>
-        {isLoading && <Loading asOverlay color='blue' />}
+        {/* {isLoading && <Loading asOverlay color='blue' />} */}
         <form className='form join-lobby-form' onSubmit={joinLobbySubHandler}>
           <Grid className='join-lobby-form'>
             <div className='join-lobby-title'>JOIN LOBBY</div>

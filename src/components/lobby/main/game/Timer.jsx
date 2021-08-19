@@ -9,7 +9,6 @@ import { SocketContext } from '../../../../context/contexts';
 // import Button from '../../../ui-elements/Button';
 
 const Timer = ({
-  // settings,
   settings: {on}
 }) => {
 

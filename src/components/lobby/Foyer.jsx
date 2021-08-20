@@ -18,29 +18,25 @@ const Foyer = () => {
 
   const genURL = lobbyURL === 'lobby';
 
-  console.log(lobbyURL);
-  console.log(myLobby);
-  console.log(checked);
+  if (checked) {
 
-  if (checked && genURL && !myLobby) {
-    history.push('/');
-    return null;
-  }
+    if (genURL && !myLobby) {
+      history.push('/');
+      return null;
+    };
 
-  function uniqURL(lobbyURL) {
-    return checkMyLobby(lobbyURL);
-  }
+    if (genURL && myLobby) return (<Lobby />);
 
-  function genericURL(myLobby) {
-    if (myLobby) return true;
-    return false
-  }
+    if (!genURL) {
 
-  const inMyLobby = genURL ? genericURL(myLobby) : uniqURL(lobbyURL);
+      if (checkMyLobby(lobbyURL)) {
+        history.push('/lobby');
+        return null;
+      }
 
-  console.log(`inMyLobby: ${inMyLobby}`);
+    }
 
-  if (inMyLobby) return (<Lobby />)
+  };
 
   return (
     <Grid className='foyer'>

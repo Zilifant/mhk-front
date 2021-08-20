@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useForm } from '../../hooks/form-hook';
 import { useHttpClient } from '../../hooks/http-hook';
 import { VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH } from '../../util/validators';
@@ -13,6 +14,7 @@ import Container from '../shared/Container';
 
 const JoinThisLobby = ({ lobbyId }) => {
   const { updateUserCtx } = useContext(UserContext);
+  const history = useHistory();
   const { error, sendRequest, clearError } = useHttpClient();
   const [formState, inputHandler] = useForm(
     { userName: { value: '', isValid: false } }, false
@@ -37,6 +39,7 @@ const JoinThisLobby = ({ lobbyId }) => {
         userName: responseData.user.userName,
         myLobby: responseData.user.myLobby
       });
+      history.push('/lobby');
     } catch (err) { console.log(err); };
   };
 
@@ -48,7 +51,7 @@ const JoinThisLobby = ({ lobbyId }) => {
       <form className="form join-this-lobby-form" onSubmit={JoinThisLobbySubHandler}>
         <Grid className='join-this-lobby-form'>
           <div className='join-this-lobby-title'>JOIN THIS LOBBY</div>
-          <div className='join-this-lobby-subtitle'>{lobbyId === 'z' ? 'splendid-monolith-8923' : lobbyId}</div>
+          <div className='join-this-lobby-subtitle'>{lobbyId === 'z' ? 'SPLENDID-MONOLITH-8923' : lobbyId.toUpperCase()}</div>
           <Input
             id="userName"
             element="input"

@@ -1,5 +1,5 @@
 import React, {
-  // useState,
+  useState,
   useContext,
   // useEffect
 } from 'react';
@@ -31,7 +31,20 @@ const Info = ({
     document.execCommand('copy');
     document.body.removeChild(dummy);
     alert('Lobby URL copied.');
-}
+  }
+
+  const [lobbyIdHidden, setLobbyIdHidden] = useState(true);
+
+  const hideLobbyIdHandler = () => setLobbyIdHidden(!lobbyIdHidden);
+
+  const HideLobbyIdButton = () => (
+    <Button
+      className='hide-lobbyid'
+      onClick={hideLobbyIdHandler}
+    >
+    {lobbyIdHidden ? 'SHOW LOBBY-ID' : 'HIDE LOBBY-ID'}
+    </Button>
+  );
 
   const lobbyId = myLobby === 'z' ? 'splendid-monolith-3289' : myLobby;
 
@@ -49,15 +62,18 @@ const Info = ({
 
   if (!gameOn) return (
     <Container className="info nogame">
-      <div className='info-lobbyid'>
-        {lobbyId}
-      </div>
-      <button
-        className='info-lobbyurl'
-        onClick={() => textToClipboard(`mhk-front.herokuapp.com/${lobbyId}`)}
-      >
-        {`mhk-front.herokuapp.com/${lobbyId}`}
-      </button>
+      <HideLobbyIdButton />
+      {!lobbyIdHidden && <>
+        <div className='info-lobbyid'>
+          {lobbyId}
+        </div>
+        <button
+          className='info-lobbyurl'
+          onClick={() => textToClipboard(`mhk-front.herokuapp.com/${lobbyId}`)}
+        >
+          {`mhk-front.herokuapp.com/${lobbyId}`}
+        </button>
+      </>}
     </Container>
   );
 
@@ -80,7 +96,7 @@ const Info = ({
         }
       </div>
       <div className='info-lobbyid'>
-        {userName} / {myLobby === 'z' ? 'splendid-monolith-3289' : myLobby}
+        {userName}
       </div>
     </Container>
   );

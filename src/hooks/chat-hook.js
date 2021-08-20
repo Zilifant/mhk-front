@@ -16,7 +16,7 @@ export const useChat = (chat) => {
 
   const newMessage = () => {
     socket.current.emit('newMessage', {
-      sender: userId,
+      senderId: userId,
       text: messageText
     });
     setMessageText('');

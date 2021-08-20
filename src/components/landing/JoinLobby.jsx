@@ -51,10 +51,10 @@ const JoinLobby = () => {
       updateUserCtx({
         userId: responseData.user.id,
         userName: responseData.user.userName,
-        myLobby: responseData.user.myLobby,
+        myLobby: responseData.user.myLobby
       });
       // 'forward' user to route of lobby
-      history.push('/' + responseData.user.myLobby);
+      history.push('/lobby');
     } catch (err) { console.log(err); };
   };
 

@@ -70,9 +70,8 @@ const meta = 'announce';
 
 const announce = (() => {
 
-  const welcome = (time, lobby) => {
-    const lobbyId = lobby === 'z' ? 'splendid-monolith-9978' : lobby
-    const str = `_t_${time} ^_m_Welcome to ^_k_${lobbyId.toUpperCase()}^.`;
+  const welcome = (time) => {
+    const str = `_t_${time} ^_m_Welcome.`;
     return parseSMD({str, meta});
   }
 

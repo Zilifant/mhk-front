@@ -24,6 +24,54 @@
 .con--info .info-lobbyid {
   text-transform: uppercase;
   font-size: large;
+  text-align: center;
+}
+
+.lobbyid-wrap {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 230px 1fr;
+  gap: .5rem;
+}
+
+.hidebutton-wrap {
+  align-self: center;
+  justify-self: right;
+}
+
+/* .hidebutton-wrap > * {
+  display: inline-block;
+} */
+
+/* button.btn--hide-lobbyid {
+  padding: 0;
+  padding-left: .25rem;
+  height: 16px;
+  border-radius: 0;
+  font-size: x-small;
+} */
+
+.hidebutton-wrap svg {
+  height: 16px;
+  width: 72px;
+}
+
+.hidebutton-wrap a {
+  fill: var(--cyan6);
+}
+
+.hidebutton-wrap a:hover {
+  fill: var(--cyan5);
+}
+
+.hidebutton-wrap svg a text {
+  font-size: 3rem;
+  fill: #FFFFFF;
+}
+
+.info-lobbyid,
+.info-lobbyurl span:nth-child(2) {
+  /* font-family: 'Roboto Mono', monospace; */
 }
 
 .con--info.game .info-lobbyid {
@@ -36,9 +84,19 @@
   padding: .15rem .25rem .25rem .25rem;
   border-radius: 4px;
   border: 1px solid var(--fgc);
-  color: var(--fgc);
   background-color: var(--bgc);
+}
+
+.info-lobbyurl span {
+  --fgc: var(--colg4);
+  color: var(--fgc);
   font-weight: lighter;
+  transition: 0.2s;
+}
+
+.info-lobbyurl:hover span {
+  --fgc: var(--cyan4);
+  color: var(--fgc);
 }
 
 .con--info.nogame .info-lobbyurl:hover {

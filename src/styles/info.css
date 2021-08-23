@@ -34,72 +34,33 @@
   gap: .5rem;
 }
 
-.hidebutton-wrap {
+.lobbyid-wrap * {
   align-self: center;
-  justify-self: right;
 }
 
-/* .hidebutton-wrap > * {
-  display: inline-block;
-} */
-
-/* button.btn--hide-lobbyid {
-  padding: 0;
-  padding-left: .25rem;
-  height: 16px;
-  border-radius: 0;
+.lobbyid-wrap button {
   font-size: x-small;
-} */
-
-.hidebutton-wrap svg {
-  height: 16px;
-  width: 72px;
+  height: max-content;
 }
 
-.hidebutton-wrap a {
-  fill: var(--cyan6);
-}
-
-.hidebutton-wrap a:hover {
-  fill: var(--cyan5);
-}
-
-.hidebutton-wrap svg a text {
-  font-size: 3rem;
-  fill: #FFFFFF;
-}
-
-.info-lobbyid,
-.info-lobbyurl span:nth-child(2) {
-  /* font-family: 'Roboto Mono', monospace; */
+button.btn--hidelobbyid {
+  justify-self: end;
 }
 
 .con--info.game .info-lobbyid {
   color: var(--bg1)
 }
 
-.con--info.nogame .info-lobbyurl {
+.con--info.nogame button.btn--copyurl {
   --fgc: var(--colg4);
   --bgc: var(--gray7o50);
-  padding: .15rem .25rem .25rem .25rem;
-  border-radius: 4px;
   border: 1px solid var(--fgc);
+  color: var(--fgc);
   background-color: var(--bgc);
+  justify-self: start;
 }
 
-.info-lobbyurl span {
-  --fgc: var(--colg4);
-  color: var(--fgc);
-  font-weight: lighter;
-  transition: 0.2s;
-}
-
-.info-lobbyurl:hover span {
-  --fgc: var(--cyan4);
-  color: var(--fgc);
-}
-
-.con--info.nogame .info-lobbyurl:hover {
+.con--info.nogame button.btn--copyurl:hover {
   --fgc: var(--cyan4);
   border: 1px solid var(--fgc);
   color: var(--fgc);
@@ -130,3 +91,53 @@
 .game-control-buttons > :not(:first-child) {
   margin-left: .5rem;
 }
+
+/* .hidebutton-wrap svg {
+  height: 16px;
+  width: 72px;
+}
+
+.hidebutton-wrap a {
+  fill: var(--cyan6);
+}
+
+.hidebutton-wrap a:hover {
+  fill: var(--cyan5);
+}
+
+.hidebutton-wrap svg a text {
+  font-size: 3rem;
+  fill: #FFFFFF;
+} */
+
+/* .info-lobbyid,
+.info-lobbyurl span:nth-child(2) {
+  font-family: 'Roboto Mono', monospace;
+} */
+
+/* .con--info.nogame button.btn--copyurl {
+  --fgc: var(--colg4);
+  --bgc: var(--gray7o50);
+  padding: .15rem .25rem .25rem .25rem;
+  border-radius: 4px;
+  border: 1px solid var(--fgc);
+  background-color: var(--bgc);
+}
+
+button.btn--copyurl {
+  --fgc: var(--colg4);
+  color: var(--fgc);
+  font-weight: lighter;
+  transition: 0.2s;
+}
+
+button.btn--copyurl:hover {
+  --fgc: var(--cyan4);
+  color: var(--fgc);
+}
+
+.con--info.nogame button.btn--copyurl:hover {
+  --fgc: var(--cyan4);
+  border: 1px solid var(--fgc);
+  color: var(--fgc);
+} */

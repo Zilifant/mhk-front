@@ -37,24 +37,23 @@ const Info = ({
 
   const hideLobbyIdHandler = () => setLobbyIdHidden(!lobbyIdHidden);
 
-  const HideLobbyIdButton = () => (
-    <div className='hidebutton-wrap'>
-      <svg viewBox="0 0 324 67">
-        <a href='#' onClick={hideLobbyIdHandler}>
-          <path d="M302.5,3.333c-1.574,-2.098 -4.044,-3.333 -6.667,-3.333c-32.311,0 -242.805,0 -287.5,0c-4.602,0 -8.333,3.731 -8.333,8.333c0,12.809 0,37.192 -0,50c0,4.603 3.731,8.334 8.333,8.334c44.695,-0 255.189,-0 287.5,-0c2.623,-0 5.093,-1.235 6.667,-3.334c5.011,-6.68 16.182,-21.576 20.625,-27.5c1.111,-1.481 1.111,-3.518 0,-5c-4.443,-5.924 -15.614,-20.819 -20.625,-27.5Z"/>
-          <text
-            x='150'
-            y='37'
-            text-anchor='middle'
-            alignment-baseline='middle'
-          >
-            {lobbyIdHidden ? 'SHOW LOBBY-ID' : 'HIDE LOBBY-ID'}
-          </text>
-        </a>
-      </svg>
-    </div>
-
-  );
+  // const HideLobbyIdButton = () => (
+  //   <div className='hidebutton-wrap'>
+  //     <svg viewBox="0 0 324 67">
+  //       <a href='#' onClick={hideLobbyIdHandler}>
+  //         <path d="M302.5,3.333c-1.574,-2.098 -4.044,-3.333 -6.667,-3.333c-32.311,0 -242.805,0 -287.5,0c-4.602,0 -8.333,3.731 -8.333,8.333c0,12.809 0,37.192 -0,50c0,4.603 3.731,8.334 8.333,8.334c44.695,-0 255.189,-0 287.5,-0c2.623,-0 5.093,-1.235 6.667,-3.334c5.011,-6.68 16.182,-21.576 20.625,-27.5c1.111,-1.481 1.111,-3.518 0,-5c-4.443,-5.924 -15.614,-20.819 -20.625,-27.5Z"/>
+  //         <text
+  //           x='150'
+  //           y='37'
+  //           text-anchor='middle'
+  //           alignment-baseline='middle'
+  //         >
+  //           {lobbyIdHidden ? 'SHOW LOBBY-ID' : 'HIDE LOBBY-ID'}
+  //         </text>
+  //       </a>
+  //     </svg>
+  //   </div>
+  // );
 
   const lobbyId = myLobby === 'z' ? 'weathered-waterfall-3289' : myLobby;
 
@@ -78,17 +77,23 @@ const Info = ({
   if (!gameOn) return (
     <Container className="info nogame">
       <div className='lobbyid-wrap'>
-        <HideLobbyIdButton />
+        <Button
+          className='hidelobbyid'
+          onClick={hideLobbyIdHandler}
+        >
+          {lobbyIdHidden ? 'SHOW LOBBY NAME' : 'HIDE LOBBY NAME'}
+        </Button>
         <div className='info-lobbyid'>
           {renderLobbyId(lobbyIdHidden, lobbyId)}
         </div>
+        <Button
+          className='copyurl'
+          onClick={() => textToClipboard(`mhk-front.herokuapp.com/${lobbyId}`)}
+        >
+          COPY LOBBY URL
+          {/* <span>mhk-front.herokuapp.com/</span><span>{renderLobbyId(lobbyIdHidden, lobbyId)}</span> */}
+        </Button>
       </div>
-      <button
-        className='info-lobbyurl'
-        onClick={() => textToClipboard(`mhk-front.herokuapp.com/${lobbyId}`)}
-      >
-        <span>mhk-front.herokuapp.com/</span><span>{renderLobbyId(lobbyIdHidden, lobbyId)}</span>
-      </button>
     </Container>
   );
 

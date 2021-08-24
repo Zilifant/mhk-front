@@ -25,12 +25,17 @@
 .con--info .info-lobbyid {
   text-transform: uppercase;
   font-size: large;
-  text-align: center;
 }
+
+.con--info .game-stage {
+  text-align: start;
+}
+
 
 .con--info.nogame .lobbyid-wrap .info-lobbyid {
   background-color: var(--bg4);
   justify-self: center;
+  text-align: center;
   width: 240px;
   padding: .15rem 0;
   border-radius: var(--rad);

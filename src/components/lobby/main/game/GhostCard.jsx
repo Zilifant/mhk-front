@@ -88,7 +88,7 @@ const GhostCard = ({
           >
             <button
               className={`gc-clue-btn ${checkHighlight(opt)} ${checkSelected(index)}`}
-              disabled={!checkEnabled(index)}
+              disabled={!checkEnabled(opt.id)}
               onClick={() => selectItemHandler(opt.id)}
             >
               {opt.id}

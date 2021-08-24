@@ -17,12 +17,6 @@ function App() {
   const { user, checkMyLobby, updateUserCtx } = useUser();
   const { isLoading, sendRequest } = useHttpClient();
 
-  // const [cc, setCc] = useState(false);
-
-  // let cc = useRef();
-  // cc.current = false;
-  // console.log(cc);
-
   useEffect(() => {
     console.log('UserHook: fetchSess');
     const checkCookie = async () => {

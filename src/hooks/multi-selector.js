@@ -117,12 +117,14 @@ export const useMultiSelector = ({items, min=1, max=1}) => {
   };
 
   const amISelected = (i) => {
-    if (!i) return console.log(`Err! i is falsy`);
+    console.log(i);
+    if (!i && i !== 0) return console.log(`Err! i is falsy`);
     if (selTracker.length === 0) return console.log(`Err! selTracker empty`);
     return (typeof(i) === 'string') ? checkById(i) : checkByIndex(i);
   };
 
   const amIEnabled = (i) => {
+    console.log(i);
     if (maxReached && !amISelected(i)) return false;
     return true;
   };

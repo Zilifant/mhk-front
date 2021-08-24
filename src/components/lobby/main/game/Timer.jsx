@@ -23,9 +23,13 @@ const Timer = ({
   useEffect(() => {
     // const s = socket.current;
     let mounted = true;
+    console.log('mounted');
     const subToTimer = (mounted) => {
       if (mounted) {
-        socket.current.on('tick', (time) => setTimer(time));
+        socket.current.on('tick', (time) => {
+          setTimer(time)
+          console.log(time);
+        });
         socket.current.on('clear', () => setTimer(inactiveDisplay));
       }
     };

@@ -17,12 +17,11 @@ const Setup = ({
   const { socket } = useContext(SocketContext);
 
   const [timer, setTimer] = useState({
-    isOn: false,
     minReached: true,
     maxReached: false,
-    min: 1,
+    min: 0,
     max: 5,
-    val: 1
+    val: 0
   });
 
   const {
@@ -37,27 +36,19 @@ const Setup = ({
       ...{
         val: ++timer.val,
         minReached: false,
-        isOn: true
       }});
 
     if (timer.val === timer.max) setTimer({...timer, ...{maxReached: true}});
-    const duration = !timer.isOn ? 'off' : timer.val;
+    const duration = !timer.val ? 'off' : timer.val;
     return chooseTimerHandler(duration);
   };
 
   function dec() {
     if (timer.val > timer.min) setTimer({...timer, ...{val: --timer.val, maxReached: false}});
     if (timer.val === timer.min) setTimer({...timer, ...{minReached: true}});
-    const duration = !timer.isOn ? 'off' : timer.val;
+    const duration = !timer.val ? 'off' : timer.val;
     return chooseTimerHandler(duration);
   };
-
-  function offOn() {
-    setTimer({...timer, ...{isOn: !timer.isOn}});
-    const duration = timer.isOn ? 'off' : timer.val;
-    console.log(duration);
-    return chooseTimerHandler(duration);
-  }
 
   const advRolesLeader = () => (<>
     <div className='advrole-wrapper'>
@@ -96,30 +87,26 @@ const Setup = ({
   </>);
 
   const timerLeader = () => (
-    <div className='timer-wrap'>
+    <div className='timer-wrap leader'>
       <div className='timer title'>Round Timer</div>
-      <Button
-        className={`timer toggle ${timer.isOn ? 'on' : 'off'}`}
-        onClick={offOn}
-        disabled={false}
-      >{timer.isOn ? 'X' : 'O'}</Button>
       <Button
         className='timer dec'
         onClick={dec}
-        disabled={timer.minReached || !timer.isOn}
+        disabled={timer.minReached}
       >-</Button>
-      <div className={`timer value ${timer.isOn ? 'on' : 'off'}`}>{`0${timer.val}:00`}</div>
+      {timer.val !== 0 && <div className={`timer value on`}>{`${timer.val}:00`}</div>}
+      {timer.val === 0 && <div className={`timer value off`}>{'OFF'}</div>}
       <Button
         className='timer inc'
         onClick={inc}
-        disabled={timer.maxReached || !timer.isOn}
+        disabled={timer.maxReached}
       >+</Button>
     </div>
   );
 
   const timerBasic = () => (
-    <div className='timer value'>
-      <p>Round Timer: {gameSettings.timer.on ? `${gameSettings.timer.duration} Minutes` : 'OFF'}</p>
+    <div className='timer-wrap'>
+      <p>Round Timer: {gameSettings.timer.on ? `${timer.val}:00` : 'OFF'}</p>
     </div>
   );
 

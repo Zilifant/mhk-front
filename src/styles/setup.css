@@ -139,12 +139,13 @@
   text-align: center;
   align-items: center;
   justify-content: center;
-  /* justify-self: center; */
-
+  height: 100%;
 }
 
 .timer.value {
-  background-color: var(--bg3);
+  /* background-color: var(--bg3); */
+  padding: 0;
+  width: 26px;
 }
 
 .btn--timer.toggle.on {
@@ -161,16 +162,24 @@
 .timer.inc { grid-area: in; }
 .timer.toggle { grid-area: to; }
 
-.timer-wrap {
+.timer-wrap.leader {
   width: max-content;
-  padding: .25rem;
-  background-color: var(--bg4);
   border-radius: var(--rad);
   display: grid;
   gap: .25rem;
   grid-template-columns: 25px max-content 25px;
   grid-template-rows: max-content max-content;
   grid-template-areas:
-    'ti ti to'
+    'ti ti ti'
     'de va in';
+}
+
+.timer-wrap {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  /* background-color: var(--bg4); */
+
 }

@@ -39,7 +39,6 @@ export const useChat = (chat) => {
     const sub2Announce = () => {
       socket.current.on('updateLobby', ({ msg }) => {
         if (msg) return setMessages((messages) => [...messages, msg]);
-        return console.log(`no msg`);
       });
     };
     sub2Announce();

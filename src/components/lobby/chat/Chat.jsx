@@ -9,7 +9,7 @@ import Container from '../../shared/Container';
 import ChatFeed from './ChatFeed';
 import NewMessage from './NewMessage';
 import Button from '../../ui-elements/Button';
-// import { IoChatboxEllipsesSharp } from 'react-icons/io5';
+// import { HiChat } from 'react-icons/hi';
 import '../../../styles/chat.css';
 
 const Chat = ({ chat }) => {
@@ -40,7 +40,7 @@ const Chat = ({ chat }) => {
       className='minimize-chat'
       onClick={minimizeHandler}
     >
-    {minimized ? 'CHAT' : 'HIDE CHAT'}
+    {minimized ? 'CHAT' : 'HIDE'}
     </Button>
   );
 

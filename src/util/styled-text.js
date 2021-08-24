@@ -3,7 +3,8 @@
 import { GAME_OUTCOMES } from '../util/utils';
 
 export const renderStyledText = (elements, componentWrapperStyle) => {
-  const wrapperStyleFromMeta = elements[0].metaData || 'none';
+  const wrapperStyleFromMeta = elements[0].wrapperStyle || 'none';
+  // const timestamp = elements[0].timestamp;
   const wrapperStyleFromComponent = componentWrapperStyle || 'none';
 
   return (
@@ -20,7 +21,6 @@ function parseSMDString({str, meta}, opts) {
   const defStyle = opts.default || 'default';
   const st = opts.splitTextOn || '^';
   const sc = opts.splitClsOn || '_';
-  const metaData = { metaData: meta }
 
   const createStyleObj = (string, style = defStyle) => {
     return { string, style }
@@ -42,7 +42,7 @@ function parseSMDString({str, meta}, opts) {
 
     return createStyleObj(a[1], a[0]);
   });
-  return [metaData, ...result];
+  return [meta, ...result];
 };
 
 const SMDopts = {
@@ -66,7 +66,11 @@ export const parseAndRender = ({type, args, time}, componentWrapperStyle) => {
 };
 
 const name = (userId) => userId.slice(0,-5);
-const meta = 'announce';
+
+const meta = {
+  wrapperStyle: 'announce',
+  timestamp: false
+};
 
 const announce = (() => {
 
@@ -77,7 +81,10 @@ const announce = (() => {
 
   const userMessage = (time, user, text) => {
     const str = `_t_${time} ^_u_${name(user)}^_m_: ${text}`;
-    const meta = 'user-message'
+    const meta = {
+      wrapperStyle: 'user-message',
+      timestamp: true
+    };
     return parseSMD({str, meta});
   };
 

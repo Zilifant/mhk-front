@@ -6,6 +6,7 @@ import { SocketContext } from '../../../../context/contexts';
 import { useGame } from '../../../../hooks/game-hook';
 import Container from '../../../shared/Container';
 import Button from '../../../ui-elements/Button';
+import { GoArrowLeft, GoArrowRight } from 'react-icons/go';
 import '../../../../styles/setup.css';
 
 const Setup = ({
@@ -93,14 +94,14 @@ const Setup = ({
         className='timer dec'
         onClick={dec}
         disabled={timer.minReached}
-      >-</Button>
+      ><GoArrowLeft/></Button>
       {timer.val !== 0 && <div className={`timer value on`}>{`${timer.val}:00`}</div>}
       {timer.val === 0 && <div className={`timer value off`}>{'OFF'}</div>}
       <Button
         className='timer inc'
         onClick={inc}
         disabled={timer.maxReached}
-      >+</Button>
+      ><GoArrowRight/></Button>
     </div>
   );
 

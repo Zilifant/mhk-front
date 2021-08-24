@@ -167,7 +167,7 @@
   border-radius: var(--rad);
   display: grid;
   gap: .25rem;
-  grid-template-columns: 25px max-content 25px;
+  grid-template-columns: 1fr max-content 1fr;
   grid-template-rows: max-content max-content;
   grid-template-areas:
     'ti ti ti'
@@ -181,5 +181,25 @@
   justify-content: center;
   align-items: center;
   /* background-color: var(--bg4); */
+}
 
+.btn--timer.dec,
+.btn--timer.inc {
+  height: 20px;
+  width: 20px;
+  align-self: center;
+}
+
+.btn--timer.dec {
+  justify-self: start;
+}
+
+.btn--timer.inc {
+  justify-self: end;
+}
+
+.btn--timer.dec svg,
+.btn--timer.inc svg {
+  height: 100%;
+  width: 100%;
 }

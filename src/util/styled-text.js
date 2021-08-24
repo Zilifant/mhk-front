@@ -2,22 +2,19 @@
 
 import { GAME_OUTCOMES } from '../util/utils';
 
-export const renderStyledText = (elements, componentWrapperStyle) => {
-  const wrapperStyleFromMeta = elements[0].wrapperStyle || 'none';
-  // const timestamp = elements[0].timestamp;
-  const wrapperStyleFromComponent = componentWrapperStyle || 'none';
+const renderStyledText = (elements, meta) => {
 
   return (
-    <div className={`${wrapperStyleFromMeta} ${wrapperStyleFromComponent}`}>
+    <div className={meta.wrapper || 'none'}>
       {elements.map((el, i) => {
-        if (i === 0) return null;
+        if (!meta.timestamp && i === 0) return null;
         return <span key={i} className={el.style}>{el.string}</span>
       })}
     </div>
   )
 }
 
-function parseSMDString({str, meta}, opts) {
+function parseSMDString({str}, opts) {
   const defStyle = opts.default || 'default';
   const st = opts.splitTextOn || '^';
   const sc = opts.splitClsOn || '_';
@@ -42,7 +39,7 @@ function parseSMDString({str, meta}, opts) {
 
     return createStyleObj(a[1], a[0]);
   });
-  return [meta, ...result];
+  return result;
 };
 
 const SMDopts = {
@@ -57,72 +54,63 @@ const SMDopts = {
   ]
 };
 
-const parseSMD = ({str, meta}) => {
-  return parseSMDString({str, meta}, SMDopts);
+const parseSMD = ({str}) => {
+  return parseSMDString({str}, SMDopts);
 };
 
-export const parseAndRender = ({type, args, time}, componentWrapperStyle) => {
-  return renderStyledText(announce[type](time, ...args), componentWrapperStyle);
+export const parseAndRender = ({type, time, args}, meta) => {
+  return renderStyledText(strings[type](time, ...args), meta);
 };
 
 const name = (userId) => userId.slice(0,-5);
 
-const meta = {
-  wrapperStyle: 'announce',
-  timestamp: false
-};
-
-const announce = (() => {
+const strings = (() => {
 
   const welcome = (time) => {
     const str = `_t_${time} ^_m_Welcome.`;
-    return parseSMD({str, meta});
+    return parseSMD({str});
   }
 
   const userMessage = (time, user, text) => {
     const str = `_t_${time} ^_u_${name(user)}^_m_: ${text}`;
-    const meta = {
-      wrapperStyle: 'user-message',
-      timestamp: true
-    };
-    return parseSMD({str, meta});
+    return parseSMD({str});
   };
 
   const join = (time, user) => {
     const str = `_t_${time} ^_u_${name(user)}^ joined.`;
-    return parseSMD({str, meta});
+    return parseSMD({str});
   };
 
   const leave = (time, user, newLeader) => {
     let str;
     !!newLeader ? str = `_t_${time} ^_u_${name(user)}^ left; ^_u_${name(newLeader)}^ is the new leader.`
                 : str = `_t_${time} ^_u_${name(user)}^ left.`;
-    return parseSMD({str, meta});
+    return parseSMD({str});
   };
 
   const ready = (time, user, ready) => {
     const str = `_t_${time} ^_u_${name(user)}^ is ${ready ? 'ready' : 'not ready'}.`;
-    return parseSMD({str, meta});
+    return parseSMD({str});
   };
 
   const newLeader = (time, user) => {
     const str = `_t_${time} ^_u_${name(user)}^ is the new leader.`;
-    return parseSMD({str, meta});
+    return parseSMD({str});
   };
 
   const accusation = (time, { accuser, accusee, evidence: [ev1, ev2] }) => {
     const str = `_t_${time} ^_u_${name(accuser)}^ accuses ^_u_${name(accusee)}^ with evidence: ^_k_${ev1}^ and ^_k_${ev2}^.`;
-    return parseSMD({str, meta});
+    return parseSMD({str});
   };
 
   const accusationWrong = (time, accuser) => {
     const str = `_t_${time} ^_u_${name(accuser)}^ is wrong.`;
-    return parseSMD({str, meta});
+    return parseSMD({str});
   };
 
   const accusationRight = (time, accuser, accusee) => {
     const str = `_t_${time} ^_u_${name(accuser)}^ is correct! ^_u_${name(accusee)}^ is the Killer.`;
-    return parseSMD({str, meta});
+    return parseSMD({str});
   };
 
   const advanceTo = (time, stage) => {
@@ -154,29 +142,29 @@ const announce = (() => {
         break;
       default: break;
     }
-    return parseSMD({str, meta});
+    return parseSMD({str});
   };
 
   const clearGame = (time) => {
     const str = `_t_${time} ^The lobby leader ended the game.`;
-    return parseSMD({str, meta});
+    return parseSMD({str});
   };
 
   const clueChosen = (time, clue) => {
     const str = `_t_${time} ^The Ghost has chosen a clue: ^_k_${clue}^.`;
-    return parseSMD({str, meta});
+    return parseSMD({str});
   };
 
   const ghostAssigned = (time, userId, unAssign) => {
     let str;
     unAssign ? str = `_t_${time} ^Ghost unassigned.`
              : str = `_t_${time} ^_u_${name(userId)}^ is assigned to Ghost.`;
-    return parseSMD({str, meta});
+    return parseSMD({str});
   };
 
   const resolveGame = (time, result) => {
     const str = `_t_${time} ^Result: ^_k_${GAME_OUTCOMES[result]}`;
-    return parseSMD({str, meta});
+    return parseSMD({str});
   };
 
   return {

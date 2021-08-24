@@ -31,7 +31,7 @@
   --readyli: var(--emer5);
 }
 
-:root { --rad: 2px; --mar: .5rem; --bdr: 1px; }
+:root { --rad: 1px; --mar: .5rem; --bdr: 1px; }
 
 /* RESET */
 

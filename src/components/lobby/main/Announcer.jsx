@@ -19,7 +19,10 @@ const Announcer = ({ chat }) => {
 
   return (
     <Container className='announcer'>
-      <ChatMessage type='announcer' message={messages[messages.length-1]}/>
+      <ChatMessage
+        parent='announcer'
+        message={messages[messages.length-1]}
+      />
     </Container>
   );
 };

@@ -27,6 +27,7 @@ const ChatFeed = ({ messages }) => {
           ref={scrollRef}
           key={nanoid()}>
           <ChatMessage
+            parent='chatfeed'
             message={message}
             isMine={message.senderId === userId}
           />

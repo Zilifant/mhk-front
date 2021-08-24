@@ -1,22 +1,46 @@
 
+.stbtn { grid-area: stbtn; }
+.sttxt { grid-area: sttxt; }
+.ghost { grid-area: ghost; }
+.wabtn { grid-area: wabtn; }
+.watxt { grid-area: watxt; }
+.titxt { grid-area: titxt; }
+.tibtn { grid-area: tibtn; }
 
+.container.con--setup.leader {
+  display: grid;
+  padding: 0;
+  gap: .5rem;
+  grid-template-columns: max-content 1fr max-content;
+  grid-template-areas: 
+    'stbtn sttxt timer'
+    'ghost ghost ghost'
+    'wabtn watxt watxt';
+}
 
-section.section-wrapper,
-.con--setup {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
+.container.con--setup.notleader {
+  display: grid;
+  padding: 0;
+  gap: .5rem;
+  grid-template-columns: max-content 1fr max-content;
+  grid-template-areas: 
+    'sttxt sttxt timer'
+    'ghost ghost ghost'
+    'wabtn watxt watxt';
+}
+
+.setup-section {
+  border-radius: var(--rad);
+}
+
+.setup-section.txt {
   background-color: var(--bg4);
+  padding: .25rem;
 }
 
-.con--setup > :not(:first-child) {
-  margin-top: 1rem;
-}
-
-section.section-wrapper > :not(:first-child) {
-  margin-top: .5rem;
+.stbtn button {
+  height: 100%;
+  width: 100%;
 }
 
 .text {
@@ -28,7 +52,6 @@ section.section-wrapper > :not(:first-child) {
   height: calc(32px + .5rem);
   width: 100%;
   border-radius: var(--rad);
-  background-color: var(--bg5);
 }
 
 .text p {
@@ -41,6 +64,10 @@ section.section-wrapper > :not(:first-child) {
 
 .advrole-wrapper :first-child {
   margin-right: .5rem;
+}
+
+.setup-section.wabtn > :nth-child(2) {
+  margin-top: .5rem;
 }
 
 .advrole {
@@ -57,6 +84,7 @@ section.section-wrapper > :not(:first-child) {
 
 .advrole.ghost {
   width: max-content;
+  display: inline-block;
   border-color: var(--ghost);
   color: var(--ghost);
 }
@@ -96,19 +124,53 @@ section.section-wrapper > :not(:first-child) {
   background-color: var(--bg4);
 }
 
-.timer-buttons > button {
-  display: inline-block;
-  width: 3rem;
-}
-
-.timer-buttons :not(:first-child) {
-  margin-left: .5rem;
-}
-
 .btn--timer.selected {
   background-color: var(--yell5);
 }
 
 .btn--timer.selected:hover {
   background-color: var(--yell4);
+}
+
+.timer.title,
+.timer.value {
+  border-radius: var(--rad);
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  /* justify-self: center; */
+
+}
+
+.timer.value {
+  background-color: var(--bg3);
+}
+
+.btn--timer.toggle.on {
+  background-color: var(--emer5);
+}
+
+.btn--timer.toggle.off {
+  background-color: var(--killer);
+}
+
+.timer.title { grid-area: ti; }
+.timer.value { grid-area: va; }
+.timer.dec { grid-area: de; }
+.timer.inc { grid-area: in; }
+.timer.toggle { grid-area: to; }
+
+.timer-wrap {
+  width: max-content;
+  padding: .25rem;
+  background-color: var(--bg4);
+  border-radius: var(--rad);
+  display: grid;
+  gap: .25rem;
+  grid-template-columns: 25px max-content 25px;
+  grid-template-rows: max-content max-content;
+  grid-template-areas:
+    'ti ti to'
+    'de va in';
 }

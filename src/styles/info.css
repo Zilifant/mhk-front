@@ -71,16 +71,21 @@
 
 button.btn--copyurl,
 button.btn--hidelobbyid {
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; */
   height: 25px;
   width: 25px;
   justify-self: end;
-  padding: .15rem;
+  padding: 0;
 }
 
 .btn--copyurl svg,
 .btn--hidelobbyid svg {
-  height: 100%;
-  width: 100%;
+  margin: 2.5px;
+  height: 20px;
+  width: 20px;
 }
 
 .con--info.game .info-lobbyid {

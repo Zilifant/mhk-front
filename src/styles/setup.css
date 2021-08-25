@@ -156,10 +156,10 @@
   background-color: var(--killer);
 }
 
-.timer.title { grid-area: ti; }
-.timer.value { grid-area: va; }
-.timer.dec { grid-area: de; }
-.timer.inc { grid-area: in; }
+.timer.title  { grid-area: ti; }
+.timer.value  { grid-area: va; }
+.timer.dec    { grid-area: de; }
+.timer.inc    { grid-area: in; }
 .timer.toggle { grid-area: to; }
 
 .timer-wrap.leader {
@@ -180,6 +180,7 @@
   width: 100%;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   /* background-color: var(--bg4); */
 }
 

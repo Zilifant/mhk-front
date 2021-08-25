@@ -22,7 +22,7 @@ const Setup = ({
     maxReached: false,
     min: 0,
     max: 5,
-    val: 0
+    val: gameSettings.timer.duration
   });
 
   const {
@@ -40,15 +40,13 @@ const Setup = ({
       }});
 
     if (timer.val === timer.max) setTimer({...timer, ...{maxReached: true}});
-    const duration = !timer.val ? 'off' : timer.val;
-    return chooseTimerHandler(duration);
+    return chooseTimerHandler(timer.val);
   };
 
   function dec() {
     if (timer.val > timer.min) setTimer({...timer, ...{val: --timer.val, maxReached: false}});
     if (timer.val === timer.min) setTimer({...timer, ...{minReached: true}});
-    const duration = !timer.val ? 'off' : timer.val;
-    return chooseTimerHandler(duration);
+    return chooseTimerHandler(timer.val);
   };
 
   const advRolesLeader = () => (<>
@@ -107,7 +105,8 @@ const Setup = ({
 
   const timerBasic = () => (
     <div className='timer-wrap'>
-      <p>Round Timer: {gameSettings.timer.on ? `${timer.val}:00` : 'OFF'}</p>
+      <div>Round Timer</div>
+      <div>{gameSettings.timer.on ? `${gameSettings.timer.duration}:00` : 'OFF'}</div>
     </div>
   );
 

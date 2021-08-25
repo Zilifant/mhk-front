@@ -22,6 +22,7 @@ const Lobby = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const { socket } = useIO(); // init socket (useEffect inside hook)
   const [ lobby, setLobby ] = useState();
+  const [joinConfirmed, setJoinConfirmed] = useState(false);
 
   useEffect(() => {
     const fetchLobby = async () => {
@@ -42,12 +43,15 @@ const Lobby = () => {
 
   useEffect(() => {
     const subToLobby = () => {
-      socket.current.on('updateLobby', ({ lobby }) => {
+      socket.current.on('updateLobby', ({ lobby, data }) => {
         setLobby({...lobbyMethods, ...lobby});
+        if (data?.event === 'userConnected' && data?.user.id === userId) {
+          setJoinConfirmed(true);
+        }
       });
     };
   subToLobby();
-  }, [ socket, myLobby, setLobby ]);
+  }, [ socket, myLobby, setLobby, joinConfirmed, setJoinConfirmed, userId ]);
 
   const thisPlayer = lobby && getThisPlayer(userId, lobby.game);
   const gridVariant = () => {
@@ -57,20 +61,33 @@ const Lobby = () => {
   };
 
   return (
-    <SocketContext.Provider value={{ socket }}>
+    <SocketContext.Provider value={{ socket: socket }}>
       <React.Fragment>
         <ErrorModal error={error} onClear={clearError} />
-        {isLoading && <Loading asOverlay color='orange' />}
-        {!isLoading && lobby &&
-            <Grid className={`lobby-${gridVariant()}`}>
-              <Main
-                lobby={lobby}
-                thisPlayer={getThisPlayer(userId, lobby.game)}
-                iAmLeader={lobby.leader === userId}
-              />
-              <Chat chat={lobby.chat} />
-              {lobby.id === 'z' && <Dev lobby={lobby} />}
-            </Grid>
+        {isLoading &&
+          <Loading
+            asOverlay
+            color='orange'
+            text='Fetching lobby...'
+          />
+        }
+        {!isLoading && !joinConfirmed &&
+          <Loading
+            asOverlay
+            color='blue'
+            text='Connecting to IO...'
+          />
+        }
+        {!isLoading && lobby && joinConfirmed &&
+          <Grid className={`lobby-${gridVariant()}`}>
+            <Main
+              lobby={lobby}
+              thisPlayer={getThisPlayer(userId, lobby.game)}
+              iAmLeader={lobby.leader === userId}
+            />
+            <Chat chat={lobby.chat} />
+            {lobby.id === 'z' && <Dev lobby={lobby} />}
+          </Grid>
         }
       </React.Fragment>
     </SocketContext.Provider>

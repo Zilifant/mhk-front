@@ -517,8 +517,19 @@ ul.c-group {
   transition: all 200ms;
 }
 
-/* LOADING
- */
+/* LOADING */
+
+.loading-text {
+  font-size: x-large;
+}
+
+.loading-text.blue {
+  color: var(--cyan3);
+}
+
+.loading-text.orange {
+  color: var(--oran3);
+}
 
 .lds-dual-ring {
   display: inline-block;

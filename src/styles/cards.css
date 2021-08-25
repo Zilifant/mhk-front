@@ -2,21 +2,24 @@
 button.card-wrap--player {
   display: inline-block;
   border-radius: var(--rad);
+  border: .25rem solid;
+  padding: .25rem;
   width: 6rem;
   /* height: 4rem; */
-  padding: .5rem;
 }
 
 button.card-wrap--player.evidence:hover,
 button.card-wrap--player.evidence:disabled,
 button.card-wrap--player.evidence {
   background-color: var(--evdark);
+  border-color: var(--evdark);
 }
 
 button.card-wrap--player.means:hover,
 button.card-wrap--player.means:disabled,
 button.card-wrap--player.means {
   background-color: var(--medark);
+  border-color: var(--medark);
 }
 
 button.card-wrap--player {

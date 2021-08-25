@@ -46,6 +46,4 @@ const Modal = props => {
   );
 };
 
-// `...props` Forwards props recieved by Modal to ModalOverlay, the internal component
-
 export default Modal;

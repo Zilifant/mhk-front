@@ -9,10 +9,13 @@ import '../../../../styles/memberlist.css';
 
 const MemberList = ({ users, iAmLeader }) => {
 
+  // sort by connection time; most recent user at end of list
+  const sortedUsers = users.sort((a, b) => a.connectionTime - b.connectionTime)
+
   return (
     <Container className="memberlist">
       {<ul className="memberlist">
-        {users.map((member) => {
+        {sortedUsers.map((member) => {
           if (!member.isOnline) return null;
           return (
             <Member

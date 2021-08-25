@@ -49,7 +49,7 @@ const GhostCard = ({
     return (
       <Button
         className='gc confirm-clue'
-        onClick={() => confirmSelection({ cb:[chooseClueHandler], resetTracker: true })}
+        onClick={() => confirmSelection({ cb:[chooseClueHandler], resetTracker: false })}
         disabled={!maxReached}
       >
         Confirm

@@ -17,11 +17,13 @@ const Announcer = ({ chat }) => {
 
   useEffect(() => { subToAnnounce(); }, [subToAnnounce]);
 
+  const announcement = messages.filter(m => m.type !== 'userMessage').slice(-1)[0];
+
   return (
     <Container className='announcer'>
       <ChatMessage
         parent='announcer'
-        message={messages[messages.length-1]}
+        message={announcement}
       />
     </Container>
   );

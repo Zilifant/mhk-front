@@ -53,7 +53,7 @@ const Player = ({
     return (
       <Button
         className='confirm-accusation'
-        onClick={() => submitSelection({cb:[accusationHandler], reset:true})}
+        onClick={() => submitSelection({cb:[accusationHandler, playerId], reset:true})}
         disabled={!minSelected}
       >
         ACCUSE

@@ -67,7 +67,7 @@ const name = (userId) => userId.slice(0,-5);
 const strings = (() => {
 
   const welcome = (time) => {
-    const str = `_t_${time} ^_m_Welcome.`;
+    const str = `_t_${time} ^_m_Welcome to MHK.`;
     return parseSMD({str});
   }
 
@@ -146,7 +146,7 @@ const strings = (() => {
   };
 
   const clearGame = (time) => {
-    const str = `_t_${time} ^The lobby leader ended the game.`;
+    const str = `_t_${time} ^The lobby leader cleared the game.`;
     return parseSMD({str});
   };
 

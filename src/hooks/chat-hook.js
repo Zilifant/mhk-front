@@ -34,10 +34,24 @@ export const useChat = (chat) => {
 
   }, [socket]);
 
+  const lastAnnouncement = () => {
+    const last = messages.filter(m => m.type !== 'userMessage').slice(-1)[0];
+    const welcome = {
+      time: new Date().toLocaleTimeString().slice(0,-6),
+      type: 'welcome',
+      args: [],
+      senderId: 'app'
+    };
+    return last ? last : welcome;
+  };
+
   const subToAnnounce = useCallback(() => {
 
     const sub2Announce = () => {
       socket.current.on('updateLobby', ({ msg }) => {
+        if (msg) return setMessages((messages) => [...messages, msg]);
+      });
+      socket.current.on('announcement', ({ msg }) => {
         if (msg) return setMessages((messages) => [...messages, msg]);
       });
     };
@@ -49,6 +63,7 @@ export const useChat = (chat) => {
     newMessage,
     subToChat,
     subToAnnounce,
+    lastAnnouncement,
     messages,
     messageText,
     setMessageText

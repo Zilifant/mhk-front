@@ -567,16 +567,24 @@ ul.c-group {
   border-color: var(--redd2) transparent var(--redd2) transparent;
 }
 
-.loading-spinner__overlay {
+.overlay {
   height: 100%;
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  background: var(--bg4);
   display: flex;
   justify-content: center;
   align-items: center;
+  background: var(--bg5);
+  /* opacity: 75%; */
+  /* animation: darken 5s linear infinite; */
+}
+
+@keyframes darken {
+  0% { opacity: 0%; }
+  50% { opacity: 90%; }
+  100% { opacity: 0%; }
 }
 
 @keyframes lds-dual-ring {

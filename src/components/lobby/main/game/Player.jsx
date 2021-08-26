@@ -23,6 +23,7 @@ const Player = ({
   player: {
     id: playerId,
     canAccuse: canTheyAccuse,
+    isOnline,
     hand,
   }
 }) => {
@@ -31,6 +32,7 @@ const Player = ({
 
   const isRoundStage = stage.type === 'round';
   const types = Object.keys(hand);
+  const connectionStatus = isOnline ? 'online' : 'offline';
 
   const {
     accusationHandler,
@@ -102,7 +104,10 @@ const Player = ({
       </li>
       <li className={`p-info role ${roleClass}`}>
         <div className='wrapper'>
-          <div className={`username`}>{playerId.slice(0,-5)}</div>
+          <div>
+            {/* <span className={`indicator ${connectionStatus}`}></span> */}
+            <span className={`username ${connectionStatus}`}>{playerId.slice(0,-5)}</span>
+          </div>
           <div className='subtitle'>Their role</div>
           <div className={roleClass}>{roleDisplay.toUpperCase()}</div>
         </div>

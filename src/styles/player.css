@@ -43,6 +43,20 @@
   letter-spacing: .1rem;
 }
 
+.username.offline {
+  color: var(--bg1);
+}
+
+/* .indicator {
+  display: inline-block;
+  vertical-align: middle;
+  background-color: var(--emer3);
+  margin: .25rem;
+  height: .5rem;
+  width: .5rem;
+  border-radius: 50%;
+} */
+
 .p-info.role .wrapper :nth-child(3),
 .con--self .p-info.role .wrapper :nth-child(2) {
   /* margin: 0 auto;

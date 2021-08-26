@@ -176,12 +176,13 @@
 
 .timer-wrap {
   display: flex;
-  height: 100%;
-  width: 100%;
+  /* height: 100%; */
+  /* width: 100%; */
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* background-color: var(--bg4); */
+  background-color: var(--bg4);
+  padding: .25rem;
 }
 
 .btn--timer.dec,

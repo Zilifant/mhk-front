@@ -1,12 +1,11 @@
 import React, {
-  useContext,
-  useState
+  useContext
 } from 'react';
 import { SocketContext } from '../../../../context/contexts';
 import { useGame } from '../../../../hooks/game-hook';
 import Container from '../../../shared/Container';
 import Button from '../../../ui-elements/Button';
-import { GoArrowLeft, GoArrowRight } from 'react-icons/go';
+import TimerSetup from './TimerSetup';
 import '../../../../styles/setup.css';
 
 const Setup = ({
@@ -17,37 +16,11 @@ const Setup = ({
 
   const { socket } = useContext(SocketContext);
 
-  const [timer, setTimer] = useState({
-    minReached: true,
-    maxReached: false,
-    min: 0,
-    max: 5,
-    val: gameSettings.timer.duration
-  });
-
   const {
     startGameHandler,
     toggleHandler,
     chooseTimerHandler,
   } = useGame(socket);
-
-  function inc() {
-    if (timer.val < timer.max) setTimer({
-      ...timer,
-      ...{
-        val: ++timer.val,
-        minReached: false,
-      }});
-
-    if (timer.val === timer.max) setTimer({...timer, ...{maxReached: true}});
-    return chooseTimerHandler(timer.val);
-  };
-
-  function dec() {
-    if (timer.val > timer.min) setTimer({...timer, ...{val: --timer.val, maxReached: false}});
-    if (timer.val === timer.min) setTimer({...timer, ...{minReached: true}});
-    return chooseTimerHandler(timer.val);
-  };
 
   const advRolesLeader = () => (<>
     <div className='advrole-wrapper'>
@@ -85,31 +58,6 @@ const Setup = ({
     >ACCOMPLICE</div>
   </>);
 
-  const timerLeader = () => (
-    <div className='timer-wrap leader'>
-      <div className='timer title'>Round Timer</div>
-      <Button
-        className='timer dec'
-        onClick={dec}
-        disabled={timer.minReached}
-      ><GoArrowLeft/></Button>
-      {timer.val !== 0 && <div className={`timer value on`}>{`${timer.val}:00`}</div>}
-      {timer.val === 0 && <div className={`timer value off`}>{'OFF'}</div>}
-      <Button
-        className='timer inc'
-        onClick={inc}
-        disabled={timer.maxReached}
-      ><GoArrowRight/></Button>
-    </div>
-  );
-
-  const timerBasic = () => (
-    <div className='timer-wrap'>
-      <div>Round Timer</div>
-      <div>{gameSettings.timer.on ? `${gameSettings.timer.duration}:00` : 'OFF'}</div>
-    </div>
-  );
-
   return (
     <Container className={`setup ${iAmLeader ? 'leader' : 'notleader'}`}>
 
@@ -139,7 +87,11 @@ const Setup = ({
       </div>
 
       <div className='setup-section timer'>
-        {iAmLeader ? timerLeader() : timerBasic()}
+        <TimerSetup
+          iAmLeader={iAmLeader}
+          gameSettings={gameSettings}
+          chooseTimerHandler={chooseTimerHandler}
+        />
       </div>
 
     </Container>

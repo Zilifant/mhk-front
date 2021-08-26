@@ -48,9 +48,6 @@ const Main = ({
             users={lobby.users}
             iAmLeader={iAmLeader}
           />
-          {/* <Timer
-            onn={true}
-          /> */}
         </React.Fragment>
       }
       {gameOn && game && thisPlayer &&

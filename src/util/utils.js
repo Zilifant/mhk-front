@@ -2,7 +2,7 @@
 
 export const randomName = () => {
   const names = [
-    'nemo','cassandra','olivia','ragnar','brand','hera','violet','dagney','baldur','sigurd','rhialto','corwin','bethany','zane','athena','dane','fili','kili','gloin','chang','sandor','gerrard','freya','zanzel','madeline','camilla','arronax'
+    'nemo','cassandra','olivia','ragnar','brand','hera','violet','dagney','baldur','sigurd','rhialto','corwin','bethany','zane','athena','dane','meladius','darius','gloin','chang','sandor','gerrard','freya','zanzel','madeline','camilla','arronax', 'balthazar', 'calypso', 'agamemnon', 'darwin', 'diedre'
   ];
   const name = names[Math.floor(Math.random()*names.length)];
   return name[0].toUpperCase()+name.slice(1);
@@ -13,11 +13,14 @@ export const MIN_PLAYER_COUNT = 3,
              MAX_NAME_LEN = 10;
 
 export const GAME_OUTCOMES = {
-  redwin: 'Killer wins! The Hunters used their last accusation.',
-  redwintimeout: 'Killer wins! The Hunters ran out of time.',
-  redwinwitnessdead: 'Killers win! The Witness is dead.',
-  bluewin: 'Hunters and Ghost win!',
-  bluewinwitnessalive: 'Hunters and Ghost win! The Witness survived.'
+  redwin: 'The Killer wins! The Hunters used their last accusation.',
+  redwin_accomplice: 'The Killer and the Accomplice win! The Hunters used their last accusation.',
+  redwintimeout: 'The Killer wins! The Hunters ran out of time.',
+  redwintimeout_accomplice: 'The Killer and the Accomplice win! The Hunters ran out of time.',
+  redwinwitnessdead: 'The Killer wins! The Witness is dead.',
+  redwinwitnessdead_accomplice: 'The Killer and the Accomplice win! The Witness is dead.',
+  bluewin: 'The Hunters and the Ghost win!',
+  bluewinwitnessalive: 'The Hunters and the Ghost win! The Witness survived.'
 };
 
 // Dynamic, game-specific data added to user object is not provided
@@ -60,7 +63,7 @@ const text = {
   WARN_WITNESS: 'Warning: Using only the Witness may make the game more difficult for the Killer.',
   WARN_ACCOMPLICE: 'Warning: Using only the Accomplice may make the game more difficult for the Hunters and Ghost.',
   NOTE_ENABLE_ADVROLES(iAmLeader) {
-    return `${iAmLeader ? 'You' : 'The leader'} may choose a enable the advanced roles.`
+    return `${iAmLeader ? 'You' : 'The leader'} may choose to enable one or both advanced roles.`
   },
 }
 

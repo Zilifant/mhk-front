@@ -16,6 +16,8 @@ const Setup = ({
 
   const { socket } = useContext(SocketContext);
 
+  const tttext = 'At least 5 players are needed to use the Witness and Accomplice roles (6 or more players are recommended). For the best experience, use both the Witness and the Accomplice, or neither.'
+
   const {
     startGameHandler,
     toggleHandler,
@@ -77,8 +79,9 @@ const Setup = ({
         <p>{lobby.text.NOTE_CHOOSE_GHOST(iAmLeader)} Ghost: <span className='advrole ghost'>{gameSettings.assignedToGhost?.slice(0,-5) || 'RANDOM'}</span></p>
       </div>
 
-      <div className='setup-section wabtn'>
+      <div className='setup-section wabtn tooltip'>
         {iAmLeader ? advRolesLeader() : advRolesBasic()}
+        <span className='tooltiptext'>{tttext}</span>
       </div>
 
       <div className='setup-section watxt txt'>

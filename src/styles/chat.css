@@ -41,6 +41,14 @@
   margin: .15rem .5rem;
 }
 
+.chatfeed > :first-child {
+  margin-top: .25rem;
+}
+
+.chatfeed > :last-child {
+  margin-bottom: .25rem;
+}
+
 .announcement {
   font-style: italic;
 }
@@ -75,26 +83,6 @@
   width: 100%;
 }
 
-/* .chatmessage {
-  padding: .15rem;
+.msg-in-announcer span {
+  font-size: large;
 }
-
-.chatmessage > span:not(:first-child) {
-  margin-left: .5rem;
-}
-
-.chatmessage > span:first-child {
-  color: var(--bg1);
-}
-
-.chatmessage > span:nth-child(2) {
-  font-weight: bold;
-}
-
-.chatmessage-other > span:nth-child(2) {
-  color: var(--colG3);
-}
-
-.chatmessage-self > span:nth-child(2) {
-  color: var(--cyan5);
-} */

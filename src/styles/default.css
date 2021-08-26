@@ -31,7 +31,7 @@
   --readyli: var(--emer5);
 }
 
-:root { --rad: 1px; --mar: .5rem; --bdr: 1px; }
+:root { --rad: 1px; --mar: .5rem; --gap: .5rem; --bdr: 1px; }
 
 /* RESET */
 
@@ -132,7 +132,7 @@ main.app {
 .grid--landing,
 .grid--foyer {
   display: grid;
-  gap: var(--mar);
+  gap: var(--gap);
   height: max-content;
   grid-template-columns: 1fr;
 }
@@ -149,10 +149,16 @@ main.app {
     "join";
 }
 
-.grid--lobby-nogame {
+.grid--lobby-nogame,
+.grid--lobby-game-ghost,
+.grid--lobby-game {
   display: grid;
-  gap: var(--mar);
+  gap: var(--gap);
   height: 100%;
+}
+
+.grid--lobby-nogame {
+  gap: var(--gap);
   grid-template-columns: 600px max-content;
   grid-template-rows: repeat(3, max-content) 1fr max-content;
   grid-template-areas:
@@ -165,9 +171,6 @@ main.app {
 
 .grid--lobby-game-ghost,
 .grid--lobby-game {
-  display: grid;
-  gap: var(--mar);
-  height: 100%;
   grid-template-columns: max-content 1fr max-content;
 }
 
@@ -268,6 +271,51 @@ main.app {
   align-items: center;
   height: min-content;
 }
+
+/* TOOLTIPS */
+
+.tooltip {
+  position: relative;
+  /* display: inline-block; */
+}
+
+.tooltip .tooltiptext {
+  display: flex;
+  visibility: hidden;
+  height: max-content;
+  width: max-content;
+  max-width: 300px;
+  background-color: var(--bg5);
+  border-radius: 1px;
+  padding: .5rem;
+  border: 2px solid var(--bg1);
+  position: absolute;
+  z-index: 1;
+  /* bottom: 50%; */
+  top: 0;
+  left: calc(100% + var(--gap));
+  /* margin-left: -75px; */
+  opacity: 0;
+  transition: opacity 0.1s;
+  cursor: default
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* 
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+} */
 
 /* BUTTONS */
 

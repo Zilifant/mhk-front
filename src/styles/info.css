@@ -3,8 +3,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  /* width: 100%; */
   padding: 0;
+  margin: .5rem 0;
   /* background-color: var(--bg4); */
 }
 
@@ -15,6 +16,8 @@
 .con--info.game {
   flex-direction: row;
   justify-content: space-between;
+  background-color: var(--bg4);
+  padding: .25rem;
 }
 
 .con--info.nogame > :not(:first-child) {

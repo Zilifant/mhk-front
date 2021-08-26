@@ -35,7 +35,11 @@
 
 .setup-section.txt {
   background-color: var(--bg4);
-  padding: .25rem;
+  padding: .5rem;
+}
+
+.setup-section.txt p {
+  font-size: large;
 }
 
 .stbtn button {
@@ -80,6 +84,7 @@
   font-weight: bold;
   width: 100px;
   text-align: center;
+  cursor: default;
 }
 
 .advrole.ghost {

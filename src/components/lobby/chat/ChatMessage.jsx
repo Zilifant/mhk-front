@@ -7,6 +7,8 @@ const ChatMessage = ({ parent, message, isMine }) => {
 
   const meta = {
     wrapper: `msg-wrapper msg-in-${parent} ${style}`,
+    parent: parent,
+    isAnno: message.senderId === 'app',
     timestamp: parent === 'chatfeed' ? true : false
   };
 

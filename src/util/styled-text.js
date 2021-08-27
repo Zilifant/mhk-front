@@ -3,6 +3,7 @@
 import { GAME_OUTCOMES } from '../util/utils';
 
 export function parseAndRender({type, time, args}, meta) {
+  if (meta.parent === 'chatfeed') return renderStyledBlock(strings[type](time, ...args), meta);
   return renderStyledText(strings[type](time, ...args), meta);
 };
 
@@ -13,6 +14,25 @@ function renderStyledText(elements, meta) {
         if (!meta.timestamp && i === 0) return null;
         return <span key={i} className={el.style}>{el.string}</span>
       })}
+    </div>
+  );
+};
+
+function renderStyledBlock(elements, meta) {
+
+  const [style, content] = meta.isAnno
+    ? [elements[0].style, elements[0].string]
+    : [elements[0].style, elements[0].string];
+
+  return (
+    <div className={meta.wrapper || 'none'}>
+      <div className={style}>{content}</div>
+      <div className={'styled-block-text'}>
+        {elements.map((el, i) => {
+          if (i === 0) return null;
+          return <span key={i} className={el.style}>{el.string}</span>
+        })}
+      </div>
     </div>
   );
 };
@@ -53,13 +73,16 @@ const SMDopts = {
     {abb: 'm', classname: 'string--usermessage'},
     {abb: 't', classname: 'string--timestamp'},
     {abb: 'u', classname: 'string--username'},
-    {abb: 'k', classname: 'string--keyword'}
+    {abb: 'k', classname: 'string--keyword'},
+    {abb: 'p', classname: 'string--punctuation'},
   ]
 };
 
 const parseSMD = ({str}) => parseSMDString({str}, SMDopts);
 
 const name = (userId) => userId.slice(0,-5);
+
+const cls = 'string--username '
 
 const strings = (() => {
 
@@ -84,45 +107,45 @@ const strings = (() => {
     return parseSMD({str});
   };
 
-  const userMessage = (time, user, text) => {
-    const str = `_t_${time} ^_u_${name(user)}^_m_: ${text}`;
+  const userMessage = (time, [id, col], text) => {
+    const str = `_t_${time} ^_${cls+col}_${name(id)}^_p_: ^_m_${text}`;
     return parseSMD({str});
   };
 
-  const join = (time, user) => {
-    const str = `_t_${time} ^_u_${name(user)}^ joined.`;
+  const join = (time, [id, col]) => {
+    const str = `_t_${time} ^_${cls+col}_${name(id)}^ joined.`;
     return parseSMD({str});
   };
 
-  const leave = (time, user, newLeader) => {
+  const leave = (time, [id, col], [leaderId, leaderCol]) => {
     let str;
-    !!newLeader ? str = `_t_${time} ^_u_${name(user)}^ left; ^_u_${name(newLeader)}^ is the new leader.`
-                : str = `_t_${time} ^_u_${name(user)}^ left.`;
+    !!leaderId ? str = `_t_${time} ^_${cls+col}_${name(id)}^ left. ^_${cls+leaderCol}_${name(leaderId)}^ is the new leader.`
+                : str = `_t_${time} ^_${cls+col}_${name(id)}^ left.`;
     return parseSMD({str});
   };
 
-  const ready = (time, user, ready) => {
-    const str = `_t_${time} ^_u_${name(user)}^ is ${ready ? 'ready' : 'not ready'}.`;
+  const ready = (time, [id, col], ready) => {
+    const str = `_t_${time} ^_${cls+col}_${name(id)}^ is ${ready ? 'ready' : 'not ready'}.`;
     return parseSMD({str});
   };
 
-  const newLeader = (time, user) => {
-    const str = `_t_${time} ^_u_${name(user)}^ is the new leader.`;
+  const newLeader = (time, [id, col]) => {
+    const str = `_t_${time} ^_${cls+col}_${name(id)}^ is the new leader.`;
     return parseSMD({str});
   };
 
-  const accusation = (time, { accuser, accusee, evidence: [ev1, ev2] }) => {
-    const str = `_t_${time} ^_u_${name(accuser)}^ accuses ^_u_${name(accusee)}^ with evidence: ^_k_${ev1}^ and ^_k_${ev2}^.`;
+  const accusation = (time, { accuser: [rId, rCol], accusee: [eId, eCol], evidence: [ev1, ev2] }) => {
+    const str = `_t_${time} ^_${cls+rCol}_${name(rId)}^ accuses ^_${cls+eCol}_${name(eId)}^ with evidence: ^_k_${ev1}^ and ^_k_${ev2}^.`;
     return parseSMD({str});
   };
 
-  const accusationWrong = (time, accuser) => {
-    const str = `_t_${time} ^_u_${name(accuser)}^ is wrong.`;
+  const accusationWrong = (time, [id, col]) => {
+    const str = `_t_${time} ^_${cls+col}_${name(id)}^ is wrong.`;
     return parseSMD({str});
   };
 
-  const accusationRight = (time, accuser, accusee) => {
-    const str = `_t_${time} ^_u_${name(accuser)}^ is correct! ^_u_${name(accusee)}^ is the Killer.`;
+  const accusationRight = (time, [rId, rCol], [eId, eCol]) => {
+    const str = `_t_${time} ^_${cls+rCol}_${name(rId)}^ is correct! ^_${cls+eCol}_${name(eId)}^ is the Killer.`;
     return parseSMD({str});
   };
 
@@ -164,14 +187,14 @@ const strings = (() => {
   };
 
   const clueChosen = (time, clue) => {
-    const str = `_t_${time} ^Clue chosen: ^_k_${clue}^.`;
+    const str = `_t_${time} ^Clue chosen, ^_k_${clue}^.`;
     return parseSMD({str});
   };
 
-  const ghostAssigned = (time, userId, unAssign) => {
+  const ghostAssigned = (time, [id, col], unAssign) => {
     let str;
     unAssign ? str = `_t_${time} ^Ghost unassigned.`
-             : str = `_t_${time} ^_u_${name(userId)}^ is assigned to Ghost.`;
+             : str = `_t_${time} ^_${cls+col}_${name(id)}^ is assigned to Ghost.`;
     return parseSMD({str});
   };
 

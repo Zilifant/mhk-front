@@ -38,7 +38,7 @@ const Member = ({
         onClick={() => readyHandler(userId)}
       >R</Button>
       <div
-        className='member name'
+        className={`member name ${member.color.id}`}
       >{member.userName}</div>
     </li>
   );

@@ -1,7 +1,7 @@
 
 :root {
   --default-light: var(--colg2);
-  --default:       var(--gray4);
+  --default:       var(--gray3);
 
   --bg1: var(--gray5);
   --bg2: var(--gray6);
@@ -636,4 +636,69 @@ ul.c-group {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/* .default.member.name, */
+.default.string--username {
+  color: var(--colg4);
+}
+
+/* .red.member.name, */
+.red.string--username {
+  color: var(--redd4);
+}
+
+/* .blue.member.name, */
+.blue.string--username {
+  color: var(--blue4);
+}
+
+/* .green.member.name, */
+.green.string--username {
+  color: var(--lime4);
+}
+
+/* .yellow.member.name, */
+.yellow.string--username {
+  color: var(--yell4);
+}
+
+/* .orange.member.name, */
+.orange.string--username {
+  color: var(--oran4);
+}
+
+/* .purple.member.name, */
+.purple.string--username {
+  color: var(--fuch4);
+}
+
+/* .pink.member.name, */
+.pink.string--username {
+  color: var(--pink4);
+}
+
+/* .cyan.member.name, */
+.cyan.string--username {
+  color: var(--cyan4);
+}
+
+/* .emerald.member.name, */
+.emerald.string--username {
+  color: var(--emer4);
+}
+
+/* .violet.member.name, */
+.violet.string--username {
+  color: var(--viol4);
+}
+
+/* .rose.member.name, */
+.rose.string--username {
+  color: var(--rose4);
+}
+
+/* .amber.member.name, */
+.amber.string--username {
+  color: var(--ambr4);
 }

@@ -38,7 +38,7 @@
 }
 
 .chatfeed .msg-wrapper {
-  margin: .15rem .5rem;
+  margin: .25rem .5rem;
 }
 
 .chatfeed > :first-child {
@@ -50,8 +50,21 @@
 }
 
 .string {
-  font-style: italic;
+  /* font-style: italic; */
+  color: var(--default);
 }
+
+.string--timestamp,
+.string--arrow {
+  /* min-width: 26px; */
+  text-align: end;
+}
+
+/* .string--timestamp.anno+*::before {
+  content: '-->';
+  color: var(--emer3);
+  margin-right: .25rem;
+} */
 
 .string--usermessage {
   font-style: normal;
@@ -59,14 +72,28 @@
 
 .string--timestamp {
   color: var(--bg1);
+  /* font-weight: lighter; */
+}
+
+.string--arrow {
+  color: var(--emer3);
+  font-weight: normal;
+}
+
+.string--punctuation {
+  color: var(--default);
+  font-weight: bold;
 }
 
 .string--username {
   font-weight: bold;
+  letter-spacing: .025rem;
 }
 
 .string--keyword {
-  color: var(--white);
+  color: var(--default);
+  font-weight: bold;
+  letter-spacing: .025rem;
 }
 
 .new-message-wrapper {
@@ -83,54 +110,14 @@
   width: 100%;
 }
 
-.default .msg-wrapper .string--username {
-  color: var(--colg5);
+.msg-in-chatfeed {
+  display: flex;
 }
 
-.red .msg-wrapper .string--username {
-  color: var(--redd5);
+.msg-in-chatfeed div {
+  display: inline;
 }
 
-.blue .msg-wrapper .string--username {
-  color: var(--blue5);
-}
-
-.green .msg-wrapper .string--username {
-  color: var(--lime4);
-}
-
-.yellow .msg-wrapper .string--username {
-  color: var(--yell5);
-}
-
-.orange .msg-wrapper .string--username {
-  color: var(--oran5);
-}
-
-.purple .msg-wrapper .string--username {
-  color: var(--purp5);
-}
-
-.pink .msg-wrapper .string--username {
-  color: var(--pink5);
-}
-
-.cyan .msg-wrapper .string--username {
-  color: var(--cyan5);
-}
-
-.emerald .msg-wrapper .string--username {
-  color: var(--emer4);
-}
-
-.violet .msg-wrapper .string--username {
-  color: var(--viol5);
-}
-
-.rose .msg-wrapper .string--username {
-  color: var(--rose4);
-}
-
-.amber .msg-wrapper .string--username {
-  color: var(--ambr5);
+.styled-block-text:nth-child(2) {
+  margin-left: .5rem;
 }

@@ -27,7 +27,11 @@ const Main = ({
 
   return (
     <>
-      <Announcer chat={chat} />
+      <Announcer
+        chat={chat}
+        iAmLeader={iAmLeader}
+        lobby={lobby}
+      />
       <Info
         canStart={lobby.canStart()}
         gameOn={gameOn}
@@ -74,7 +78,7 @@ const Main = ({
             game={game}
           />}
 
-          {(thisPlayer.role === 'hunter'||
+          {(thisPlayer.role === 'hunter' ||
             thisPlayer.role === 'witness' ||
             thisPlayer.role === 'accomplice') &&
           <BasicUI

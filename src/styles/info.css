@@ -24,13 +24,13 @@
   margin-top: .25rem;
 }
 
-.con--info .game-stage,
+.con--info .info-gamestage,
 .con--info .info-lobbyid {
   text-transform: uppercase;
   font-size: large;
 }
 
-.con--info .game-stage {
+.con--info .info-gamestage {
   text-align: start;
 }
 
@@ -104,11 +104,11 @@ button.btn--hidelobbyid {
   justify-self: start;
 }
 
-.con--info.nogame button.btn--copyurl:hover {
-  /* --fgc: var(--cyan4);
+/* .con--info.nogame button.btn--copyurl:hover {
+  --fgc: var(--cyan4);
   border: 1px solid var(--fgc);
-  color: var(--fgc); */
-}
+  color: var(--fgc);
+} */
 
 .con--info.game {
   height: min-content;

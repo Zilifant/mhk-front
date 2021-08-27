@@ -72,7 +72,7 @@ const Setup = ({
       </div>}
 
       <div className='setup-section sttxt txt'>
-        <p>{lobby.startGameText(iAmLeader)}</p>
+        {/* <p>{lobby.startGameText(iAmLeader)}</p> */}
       </div>
 
       <div className='setup-section ghost txt'>

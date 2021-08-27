@@ -2,8 +2,11 @@
 
 import { GAME_OUTCOMES } from '../util/utils';
 
-const renderStyledText = (elements, meta) => {
+export function parseAndRender({type, time, args}, meta) {
+  return renderStyledText(strings[type](time, ...args), meta);
+};
 
+function renderStyledText(elements, meta) {
   return (
     <div className={meta.wrapper || 'none'}>
       {elements.map((el, i) => {
@@ -11,8 +14,8 @@ const renderStyledText = (elements, meta) => {
         return <span key={i} className={el.style}>{el.string}</span>
       })}
     </div>
-  )
-}
+  );
+};
 
 function parseSMDString({str}, opts) {
   const defStyle = opts.default || 'default';
@@ -45,31 +48,41 @@ function parseSMDString({str}, opts) {
 const SMDopts = {
   splitTextOn: '^',
   splitClsOn: '_',
-  default: 'announcement',
+  default: 'string',
   abbr: [
-    {abb: 'm', classname: 'announcement--usermessage'},
-    {abb: 't', classname: 'announcement--timestamp'},
-    {abb: 'u', classname: 'announcement--username'},
-    {abb: 'k', classname: 'announcement--keyword'}
+    {abb: 'm', classname: 'string--usermessage'},
+    {abb: 't', classname: 'string--timestamp'},
+    {abb: 'u', classname: 'string--username'},
+    {abb: 'k', classname: 'string--keyword'}
   ]
 };
 
-const parseSMD = ({str}) => {
-  return parseSMDString({str}, SMDopts);
-};
-
-export const parseAndRender = ({type, time, args}, meta) => {
-  return renderStyledText(strings[type](time, ...args), meta);
-};
+const parseSMD = ({str}) => parseSMDString({str}, SMDopts);
 
 const name = (userId) => userId.slice(0,-5);
 
 const strings = (() => {
 
+  const waitingForJoin = (time) => {
+    const str = `_t_${time} ^Waiting for more players...`;
+    return parseSMD({str});
+  };
+
+  const waitingForReady = (time) => {
+    const str = `_t_${time} ^Waiting for everyone to be ready...`;
+    return parseSMD({str});
+  };
+
+  const waitingForStart = (time, iAmLeader) => {
+    let str;
+    iAmLeader ? str = `_t_${time} ^Ready to start...` : str = `_t_${time} ^Waiting for the leader to start...`
+    return parseSMD({str});
+  };
+
   const welcome = (time) => {
     const str = `_t_${time} ^_m_Welcome to MHK.`;
     return parseSMD({str});
-  }
+  };
 
   const userMessage = (time, user, text) => {
     const str = `_t_${time} ^_u_${name(user)}^_m_: ${text}`;
@@ -120,13 +133,13 @@ const strings = (() => {
         str = `_t_${time} ^Game started. Waiting for the Killer to select key evidence...`;
         break;
       case 'round-1':
-        str = `_t_${time} ^The Killer has chosen key evidence. ^_k_${stage.display}^ started.`;
+        str = `_t_${time} ^Key evidence chosen. ^_k_${stage.display}^ started...`;
         break;
       case 'round-2-start':
         str = `_t_${time} ^Starting ^_k_${stage.display}^. Waiting for the Ghost to choose a new scene...`;
         break;
       case 'round-2':
-        str = `_t_${time} ^The Ghost has selected a new scene. ^_k_${stage.display}^ started.`;
+        str = `_t_${time} ^New scene chosen. ^_k_${stage.display}^ started...`;
         break;
       case 'round-3-start':
         str = `_t_${time} ^Starting ^_k_${stage.display}^. Waiting for the Ghost to choose a new scene...`;
@@ -151,7 +164,7 @@ const strings = (() => {
   };
 
   const clueChosen = (time, clue) => {
-    const str = `_t_${time} ^The Ghost has chosen a clue: ^_k_${clue}^.`;
+    const str = `_t_${time} ^Clue chosen: ^_k_${clue}^.`;
     return parseSMD({str});
   };
 
@@ -163,11 +176,12 @@ const strings = (() => {
   };
 
   const resolveGame = (time, result) => {
-    const str = `_t_${time} ^Result: ^_k_${GAME_OUTCOMES[result]}`;
+    const str = `_t_${time} ^_k_${GAME_OUTCOMES[result]}`;
     return parseSMD({str});
   };
 
   return {
+    waitingForJoin, waitingForReady, waitingForStart,
     userMessage,
     welcome,
     join, leave, ready,

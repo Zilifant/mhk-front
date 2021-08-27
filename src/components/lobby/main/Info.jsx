@@ -38,7 +38,7 @@ const Info = ({
 
   const hideLobbyIdHandler = () => setLobbyIdHidden(!lobbyIdHidden);
 
-  const lobbyId = myLobby === 'z' ? 'dark-pond-3289' : myLobby;
+  const lobbyId = myLobby === 'z' ? 'dark-monolith-3289' : myLobby;
 
   const showGameStage = stage && stage.id;
   const showClearBtn = iAmLeader;
@@ -72,9 +72,9 @@ const Info = ({
   );
 
   return (
-    <Container className="info game">
+    <Container className='info game'>
       {showGameStage &&
-      <div className='game-stage'>
+      <div className='info-gamestage'>
         {stage.display}
       </div>}
       <div className='game-control-buttons'>

@@ -65,7 +65,7 @@ const text = {
   NOTE_ENABLE_ADVROLES(iAmLeader) {
     return `${iAmLeader ? 'You' : 'The leader'} may choose to enable one or both advanced roles.`
   },
-}
+};
 
 export const lobbyMethods = {
   text,
@@ -97,9 +97,9 @@ export const lobbyMethods = {
     return (this.minPlayersOnline()) && (this.allPlayersReady());
   },
   startGameText(iAmLeader) {
-    return !this.minPlayersOnline() ? this.text.WAIT_PLAYERS_JOIN
-         : !this.allPlayersReady() ? this.text.WAIT_PLAYERS_READY
-         : this.text.WAIT_START_GAME(iAmLeader);
+    return !this.minPlayersOnline() ? ['waitingForJoin',[]]
+         : !this.allPlayersReady() ? ['waitingForReady',[]]
+         : ['waitingForStart',[iAmLeader]];
   },
   advRolesEnText(iAmLeader) {
     return !this.canUseAdvRoles() ? this.text.NOTE_MIN_ADVROLES

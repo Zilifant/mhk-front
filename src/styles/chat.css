@@ -49,23 +49,23 @@
   margin-bottom: .25rem;
 }
 
-.announcement {
+.string {
   font-style: italic;
 }
 
-.announcement--usermessage {
+.string--usermessage {
   font-style: normal;
 }
 
-.announcement--timestamp {
+.string--timestamp {
   color: var(--bg1);
 }
 
-.announcement--username {
+.string--username {
   font-weight: bold;
 }
 
-.announcement--keyword {
+.string--keyword {
   color: var(--white);
 }
 
@@ -81,8 +81,4 @@
 .new-message-input {
   margin-right: .5rem;
   width: 100%;
-}
-
-.msg-in-announcer span {
-  font-size: large;
 }

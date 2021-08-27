@@ -219,15 +219,10 @@ main.app {
 
 .con--dev,
 .con--self,
-.con--announcer,
 .con--ghost,
 .con--player {
   background-color: var(--bg4);
   width: max-content;
-}
-
-.con--announcer {
-  width: 100%;
 }
 
 .con--dev {
@@ -264,8 +259,7 @@ main.app {
   margin-left: .5rem;
 }
 
-.con--head,
-.con--announcer {
+.con--head {
   display: flex;
   justify-content: center;
   align-items: center;

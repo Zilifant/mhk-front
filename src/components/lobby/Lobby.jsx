@@ -85,7 +85,10 @@ const Lobby = () => {
               thisPlayer={getThisPlayer(userId, lobby.game)}
               iAmLeader={lobby.leader === userId}
             />
-            <Chat chat={lobby.chat} />
+            <Chat
+              chat={lobby.chat}
+              users={lobby.users}
+            />
             {lobby.id === 'z' && <Dev lobby={lobby} />}
           </Grid>
         }

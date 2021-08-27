@@ -5,12 +5,12 @@
   align-items: center;
   /* width: 100%; */
   padding: 0;
-  margin: .5rem 0;
   /* background-color: var(--bg4); */
 }
 
 .con--info.nogame {
   flex-direction: column;
+  margin: .5rem 0;
 }
 
 .con--info.game {
@@ -33,7 +33,6 @@
 .con--info .info-gamestage {
   text-align: start;
 }
-
 
 .con--info.nogame .lobbyid-wrap .info-lobbyid {
   background-color: var(--bg4);

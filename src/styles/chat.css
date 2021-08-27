@@ -82,3 +82,55 @@
   margin-right: .5rem;
   width: 100%;
 }
+
+.default .msg-wrapper .string--username {
+  color: var(--colg5);
+}
+
+.red .msg-wrapper .string--username {
+  color: var(--redd5);
+}
+
+.blue .msg-wrapper .string--username {
+  color: var(--blue5);
+}
+
+.green .msg-wrapper .string--username {
+  color: var(--lime4);
+}
+
+.yellow .msg-wrapper .string--username {
+  color: var(--yell5);
+}
+
+.orange .msg-wrapper .string--username {
+  color: var(--oran5);
+}
+
+.purple .msg-wrapper .string--username {
+  color: var(--purp5);
+}
+
+.pink .msg-wrapper .string--username {
+  color: var(--pink5);
+}
+
+.cyan .msg-wrapper .string--username {
+  color: var(--cyan5);
+}
+
+.emerald .msg-wrapper .string--username {
+  color: var(--emer4);
+}
+
+.violet .msg-wrapper .string--username {
+  color: var(--viol5);
+}
+
+.rose .msg-wrapper .string--username {
+  color: var(--rose4);
+}
+
+.amber .msg-wrapper .string--username {
+  color: var(--ambr5);
+}

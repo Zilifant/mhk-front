@@ -75,7 +75,7 @@ const strings = (() => {
 
   const waitingForStart = (time, iAmLeader) => {
     let str;
-    iAmLeader ? str = `_t_${time} ^Ready to start...` : str = `_t_${time} ^Waiting for the leader to start...`
+    iAmLeader ? str = `_t_${time} ^Ready to start...` : str = `_t_${time} ^Waiting for the leader to start the game...`
     return parseSMD({str});
   };
 

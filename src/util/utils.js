@@ -2,7 +2,7 @@
 
 export const randomName = () => {
   const names = [
-    'nemo','cassandra','olivia','ragnar','brand','hera','violet','dagney','baldur','sigurd','rhialto','corwin','bethany','zane','athena','dane','meladius','darius','gloin','chang','sandor','gerrard','freya','zanzel','madeline','camilla','arronax', 'balthazar', 'calypso', 'agamemnon', 'darwin', 'diedre'
+    'nemo','cassandra','olivia','ragnar','brand','hera','violet','dagny','baldur','sigurd','rhialto','corwin','bethany','zane','athena','dane','meladius','darius','gloin','chang','sandor','gerrard','freya','zanzel','madeline','camilla','arronax', 'balthazar', 'calypso', 'agamemnon', 'darwin', 'diedre'
   ];
   const name = names[Math.floor(Math.random()*names.length)];
   return name[0].toUpperCase()+name.slice(1);

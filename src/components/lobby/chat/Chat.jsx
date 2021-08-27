@@ -12,7 +12,7 @@ import Button from '../../ui-elements/Button';
 // import { HiChat } from 'react-icons/hi';
 import '../../../styles/chat.css';
 
-const Chat = ({ chat }) => {
+const Chat = ({ chat, users }) => {
 
   // const minimized = true;
   const { myLobby } = useContext(UserContext);
@@ -58,7 +58,7 @@ const Chat = ({ chat }) => {
   return (
     <Container className='lobbychat'>
       <MinimizeChatButton />
-      <ChatFeed messages={messages} />
+      <ChatFeed messages={messages} users={users} />
       <NewMessage
         onChange={(e) => setMessageText(e.target.value)}
         messages={messages}

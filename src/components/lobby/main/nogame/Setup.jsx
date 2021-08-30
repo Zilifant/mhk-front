@@ -76,7 +76,7 @@ const Setup = ({
       </div>
 
       <div className='setup-section ghost txt'>
-        <p>{lobby.text.NOTE_CHOOSE_GHOST(iAmLeader)} Ghost: <span className='advrole ghost'>{gameSettings.assignedToGhost?.slice(0,-5) || 'RANDOM'}</span></p>
+        <p>Ghost: <span className='advrole ghost'>{gameSettings.assignedToGhost?.slice(0,-5) || 'RANDOM'}</span></p>
       </div>
 
       <div className='setup-section wabtn tooltip'>

@@ -14,7 +14,7 @@ const MemberList = ({ users, iAmLeader }) => {
 
   return (
     <Container className="memberlist">
-      {<ul className="memberlist">
+      <ul className="memberlist">
         {sortedUsers.map((member) => {
           if (!member.isOnline) return null;
           return (
@@ -25,7 +25,7 @@ const MemberList = ({ users, iAmLeader }) => {
             />
           )
         })}
-      </ul>}
+      </ul>
     </Container>
   );
 };

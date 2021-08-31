@@ -1,35 +1,13 @@
 
-.start { grid-area: start; }
-.sttxt { grid-area: sttxt; }
-.ghost { grid-area: ghost; }
-.roles { grid-area: roles; }
-.watxt { grid-area: watxt; }
-.titxt { grid-area: titxt; }
-.tibtn { grid-area: tibtn; }
-
 .container.con--setup {
   display: flex;
   justify-content: center;
-  /* background-color: var(--bg3); */
-  /* padding: 0; */
-  /* gap: .5rem;
-  grid-template-columns: max-content max-content max-content;
-  grid-template-areas: 
-    'start roles timer'; */
+  background-color: var(--bg4);
 }
 
 .container.con--setup > :not(:first-child) {
   margin-left: .5rem;
 }
-
-/* .container.con--setup.notleader {
-  display: grid;
-  padding: 0;
-  gap: .5rem;
-  grid-template-columns: max-content 1fr max-content;
-  grid-template-areas: 
-    'start roles timer';
-} */
 
 .setup-section {
   border-radius: var(--rad);
@@ -65,15 +43,7 @@
   margin: .25rem .25rem;
 }
 
-.advrole-wrapper * {
-  display: inline-block;
-}
-
-.advrole-wrapper :first-child {
-  margin-right: .5rem;
-}
-
-.setup-section.roles > :nth-child(2) {
+.advrole-wrapper :not(:first-child) {
   margin-top: .5rem;
 }
 
@@ -98,10 +68,9 @@
 }
 
 .btn--advrole {
-  /* display: block; */
+  display: block;
   border: .2rem solid var(--cyan6);
-  /* font-weight: bold; */
-  min-width: 1.5rem;
+  width: 100px;
 }
 
 .btn--advrole.on {
@@ -125,7 +94,6 @@
   background-color: var(--bg4)
 }
 
-/* .btn--advrole.off, */
 .advrole.off {
   color: var(--bg3);
   border-color: var(--bg3);
@@ -184,6 +152,7 @@
 
 .timer-wrap {
   display: flex;
+  border-radius: var(--rad);
   height: 100%;
   justify-content: center;
   align-items: center;

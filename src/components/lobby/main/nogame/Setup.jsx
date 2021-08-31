@@ -24,69 +24,52 @@ const Setup = ({
     chooseTimerHandler,
   } = useGame(socket);
 
-  const advRolesLeader = () => (<>
-    <div className='advrole-wrapper'>
-      <Button
-        className={`advrole ${gameSettings.hasWitness ? 'on' : 'off'}`}
-        onClick={() => toggleHandler(`witness`)}
-        disabled={!lobby.canUseAdvRoles()}
-      >
-        {gameSettings.hasWitness ? 'Y' : 'X'}
-      </Button>
-      <div
-        className={`advrole ${gameSettings.hasWitness ? 'on' : 'off'}`}
-      >WITNESS</div>
-    </div>
-    <div className='advrole-wrapper'>
-      <Button
-        className={`advrole ${gameSettings.hasAccomplice ? 'on' : 'off'}`}
-        onClick={() => toggleHandler(`accomplice`)}
-        disabled={!lobby.canUseAdvRoles()}
-      >
-        {gameSettings.hasAccomplice ? 'Y' : 'X'}
-      </Button>
-      <div
-        className={`advrole ${gameSettings.hasAccomplice ? 'on' : 'off'}`}
-      >ACCOMPLICE</div>
-    </div>
-  </>);
+  const advRoles = [
+    {id: 'witness', active: gameSettings.hasWitness},
+    {id: 'accomplice', active: gameSettings.hasAccomplice}
+  ];
 
-  const advRolesBasic = () => (<>
-    <div
-      className={`advrole ${gameSettings.hasWitness ? 'on' : 'off'}`}
-    >WITNESS</div>
-    <div
-      className={`advrole ${gameSettings.hasAccomplice ? 'on' : 'off'}`}
-    >ACCOMPLICE</div>
-  </>);
+  const advRolesLeader = () => (
+    <div className='advrole-wrapper'>
+      {advRoles.map(role => (
+        <Button
+          className={`advrole ${role.active ? 'on' : 'off'}`}
+          onClick={() => toggleHandler(role.id)}
+          disabled={!lobby.canUseAdvRoles()}
+        >
+          {role.id}
+        </Button>
+      ))}
+    </div>
+  );
+
+  const advRolesBasic = () => (
+    <div className='advrole-wrapper'>
+      {advRoles.map(role => (
+        <div
+          className={`advrole ${role.active ? 'on' : 'off'}`}
+        >
+          {role.id}
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <Container className={`setup ${iAmLeader ? 'leader' : 'notleader'}`}>
 
+      {iAmLeader &&
       <div className='setup-section start'>
-        {iAmLeader && <Button
+        <Button
           onClick={startGameHandler}
           disabled={!lobby.canStart()}
-        >Start Game</Button>}
-      </div>
-
-      {/* <div className='setup-section sttxt txt'> */}
-        {/* <p>{lobby.startGameText(iAmLeader)}</p> */}
-      {/* </div> */}
-
-      {/* <div className='setup-section ghost txt'>
-        <p>Ghost: <span className='advrole ghost'>{gameSettings.assignedToGhost?.slice(0,-5) || 'RANDOM'}</span></p>
-      </div> */}
+        >Start Game</Button>
+      </div>}
 
       <div className='setup-section roles tooltip'>
         {iAmLeader ? advRolesLeader() : advRolesBasic()}
         <span className='tooltiptext'>{tttext}</span>
       </div>
-
-      {/* <div className='setup-section watxt txt'>
-        <p>{lobby.advRolesRecText()}</p>
-        <p>{lobby.advRolesEnText(iAmLeader)}</p>
-      </div> */}
 
       <div className='setup-section timer'>
         <TimerSetup

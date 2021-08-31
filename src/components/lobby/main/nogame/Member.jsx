@@ -5,6 +5,7 @@ import React, {
 import { UserContext, SocketContext } from '../../../../context/contexts';
 import { useGame } from '../../../../hooks/game-hook';
 import { RiVipCrown2Fill } from 'react-icons/ri';
+import { FaGhost } from 'react-icons/fa';
 
 const Member = ({
   member,
@@ -63,7 +64,7 @@ const Member = ({
         className={`member btn_assign-ghost ${ghost}`}
         onClick={() => assignGhostHandler(member.id)}
       >
-        ghost
+        <FaGhost/>
       </button>
 
     </li>
@@ -92,7 +93,7 @@ const Member = ({
       </div>}
 
       <div className={`member ghost-icon ${ghost}`}>
-        ghost
+        <FaGhost/>
       </div>
 
     </li>

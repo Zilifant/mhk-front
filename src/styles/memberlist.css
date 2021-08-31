@@ -10,7 +10,7 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
-  background-color: var(--bg4);
+  /* background-color: var(--bg4); */
 }
 
 ul.memberlist > :not(:first-child) {
@@ -28,11 +28,17 @@ ul.memberlist > :not(:first-child) {
 }
 
 .member.name {
-  width: calc(140px + 1rem);
+  width: calc(200px);
   padding: .15rem 0;
   border: .2rem solid;
   font-size: large;
   text-align: center;
+}
+
+button.member,
+div.member {
+  display: flex;
+  justify-content: center;
 }
 
 .member.name.ml-self {
@@ -72,12 +78,13 @@ button.btn_ready.ml-self.ml-ready:hover {
   visibility: hidden;
 }
 
-button.btn_assign-ghost,
-.member.ghost-icon.ml-ghost {
+/* button.btn_assign-ghost, */
+/* .member.ghost-icon.ml-ghost {
   padding: .15rem .25rem;
   border: .2rem solid;
   text-transform: uppercase;
-}
+  display: block;
+} */
 
 .member.ghost-icon.ml-ghost {
   color: var(--ghost);
@@ -87,9 +94,13 @@ button.btn_assign-ghost,
   cursor: default;
 }
 
-/* button.btn_assign-ghost {
+.member.ghost-icon.ml-ghost svg {
+  fill: var(--ghost);
+}
 
-} */
+button.btn_assign-ghost {
+  text-align: center;
+}
 
 button.btn_assign-ghost.ml-notghost {
   background-color: var(--bg-btn);
@@ -111,12 +122,14 @@ button.btn_assign-ghost.ml-ghost:hover {
   border-color: var(--ghostli);
 }
 
+.member.ghost-icon.ml-ghost,
+button.btn_assign-ghost,
 .member.leader-icon,
 button.btn_give-leader {
   border: .2rem solid;
-  height: 100%;
+  /* height: 100%; */
   justify-self: end;
-  background-color: var(--bg4);
+  background-color: var(--bg5);
 }
 
 .member.leader-icon.ml-leader {
@@ -136,6 +149,7 @@ button.btn_give-leader {
   height: 20px;
   width: 20px;
 }
+
 
 button.btn_give-leader svg {
   fill: var(--bg1);

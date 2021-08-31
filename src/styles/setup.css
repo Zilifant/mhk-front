@@ -1,33 +1,35 @@
 
-.stbtn { grid-area: stbtn; }
+.start { grid-area: start; }
 .sttxt { grid-area: sttxt; }
 .ghost { grid-area: ghost; }
-.wabtn { grid-area: wabtn; }
+.roles { grid-area: roles; }
 .watxt { grid-area: watxt; }
 .titxt { grid-area: titxt; }
 .tibtn { grid-area: tibtn; }
 
-.container.con--setup.leader {
-  display: grid;
-  padding: 0;
-  gap: .5rem;
-  grid-template-columns: max-content 1fr max-content;
+.container.con--setup {
+  display: flex;
+  justify-content: center;
+  /* background-color: var(--bg3); */
+  /* padding: 0; */
+  /* gap: .5rem;
+  grid-template-columns: max-content max-content max-content;
   grid-template-areas: 
-    'stbtn sttxt timer'
-    'ghost ghost ghost'
-    'wabtn watxt watxt';
+    'start roles timer'; */
 }
 
-.container.con--setup.notleader {
+.container.con--setup > :not(:first-child) {
+  margin-left: .5rem;
+}
+
+/* .container.con--setup.notleader {
   display: grid;
   padding: 0;
   gap: .5rem;
   grid-template-columns: max-content 1fr max-content;
   grid-template-areas: 
-    'sttxt sttxt timer'
-    'ghost ghost ghost'
-    'wabtn watxt watxt';
-}
+    'start roles timer';
+} */
 
 .setup-section {
   border-radius: var(--rad);
@@ -42,7 +44,8 @@
   font-size: large;
 }
 
-.stbtn button {
+.start div,
+.start button {
   height: 100%;
   width: 100%;
 }
@@ -70,7 +73,7 @@
   margin-right: .5rem;
 }
 
-.setup-section.wabtn > :nth-child(2) {
+.setup-section.roles > :nth-child(2) {
   margin-top: .5rem;
 }
 
@@ -173,7 +176,7 @@
   display: grid;
   gap: .25rem;
   grid-template-columns: 1fr max-content 1fr;
-  grid-template-rows: max-content max-content;
+  grid-template-rows: max-content 1fr;
   grid-template-areas:
     'ti ti ti'
     'de va in';
@@ -181,18 +184,18 @@
 
 .timer-wrap {
   display: flex;
-  /* height: 100%; */
-  /* width: 100%; */
+  height: 100%;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   background-color: var(--bg4);
   padding: .25rem;
+  border: .2rem solid var(--bg3);
 }
 
 .btn--timer.dec,
 .btn--timer.inc {
-  height: 20px;
+  height: 100%;
   width: 20px;
   align-self: center;
 }

@@ -63,31 +63,30 @@ const Setup = ({
   return (
     <Container className={`setup ${iAmLeader ? 'leader' : 'notleader'}`}>
 
-      {iAmLeader &&
-      <div className='setup-section stbtn'>
-        <Button
+      <div className='setup-section start'>
+        {iAmLeader && <Button
           onClick={startGameHandler}
           disabled={!lobby.canStart()}
-        >Start Game</Button>
-      </div>}
+        >Start Game</Button>}
+      </div>
 
-      <div className='setup-section sttxt txt'>
+      {/* <div className='setup-section sttxt txt'> */}
         {/* <p>{lobby.startGameText(iAmLeader)}</p> */}
-      </div>
+      {/* </div> */}
 
-      <div className='setup-section ghost txt'>
+      {/* <div className='setup-section ghost txt'>
         <p>Ghost: <span className='advrole ghost'>{gameSettings.assignedToGhost?.slice(0,-5) || 'RANDOM'}</span></p>
-      </div>
+      </div> */}
 
-      <div className='setup-section wabtn tooltip'>
+      <div className='setup-section roles tooltip'>
         {iAmLeader ? advRolesLeader() : advRolesBasic()}
         <span className='tooltiptext'>{tttext}</span>
       </div>
 
-      <div className='setup-section watxt txt'>
+      {/* <div className='setup-section watxt txt'>
         <p>{lobby.advRolesRecText()}</p>
         <p>{lobby.advRolesEnText(iAmLeader)}</p>
-      </div>
+      </div> */}
 
       <div className='setup-section timer'>
         <TimerSetup

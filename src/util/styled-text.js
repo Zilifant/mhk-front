@@ -187,7 +187,7 @@ const strings = (() => {
   };
 
   const clueChosen = (time, clue) => {
-    const str = `_t_${time} ^Clue chosen, ^_k_${clue}^.`;
+    const str = `_t_${time} ^Clue chosen: ^_k_${clue}^.`;
     return parseSMD({str});
   };
 

@@ -2,6 +2,7 @@ import React, {
   useContext
 } from 'react';
 // import Button from '../../../ui-elements/Button';
+import Tooltip from '../../../shared/Tooltip';
 import { UserContext, SocketContext } from '../../../../context/contexts';
 import { useGame } from '../../../../hooks/game-hook';
 import { RiVipCrown2Fill } from 'react-icons/ri';
@@ -40,12 +41,15 @@ const Member = ({
 
   const leaderViewOther = () => (<>
 
-    <button
-      className={`member btn_give-leader`}
-      onClick={() => giveLeaderHandler(member.id)}
-    >
-      <RiVipCrown2Fill/>
-    </button>
+    <div className='tooltip single right'>
+      <button
+        className={`member btn_give-leader`}
+        onClick={() => giveLeaderHandler(member.id)}
+      >
+        <RiVipCrown2Fill/>
+      </button>
+      <Tooltip tip='transferLeader' />
+    </div>
 
     <div
       className={`member name ${self} ${ready} ${leader}`}
@@ -60,12 +64,15 @@ const Member = ({
 
       {isSelf ? leaderViewSelf() : leaderViewOther()}
 
-      <button
-        className={`member btn_assign-ghost ${ghost}`}
-        onClick={() => assignGhostHandler(member.id)}
-      >
-        <FaGhost/>
-      </button>
+      <div className='tooltip single left'>
+        <button
+          className={`member btn_assign-ghost ${ghost}`}
+          onClick={() => assignGhostHandler(member.id)}
+        >
+          <FaGhost/>
+        </button>
+        <Tooltip tip='assignGhost' />
+      </div>
 
     </li>
   );

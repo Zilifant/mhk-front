@@ -45,10 +45,6 @@ export function capitalize(str) {
   return str.replace(/\b([a-zÁ-ú])/g, (w) => w.charAt(0).toUpperCase() + w.slice(1));
 };
 
-export const tooltip = {
-  advRoles: 'At least ^_k_5 players^ are needed to use the ^_k_Witness^ and ^_k_Accomplice^ roles.<(6 or more players are recommended.)<For the most balanced game, use both roles (or neither).<>f>Using only the ^_k_Witness^ may make the game harder for the ^_k_Killer^.<>f>Using only the ^_k_Accomplice^ may make things harder for the ^_k_Hunters^ and the ^_k_Ghost^.'
-};
-
 const text = {
   WAIT_PLAYERS_JOIN: 'Waiting for more players to join. At least 4 players are needed to start. (5 or more players are recommended.)',
   NOTE_MIN_PLAYERS: 'At least 4 players are needed to start.',
@@ -62,7 +58,6 @@ const text = {
     return `${iAmLeader ? 'You' : 'The leader'} may choose a player to be the Ghost or let the role be assigned randomly.`
   },
   NOTE_MIN_ADVROLES: 'At least 5 players are needed to use the Witness and Accomplice roles. (6 or more players are recommended.)',
-  // NOTE_REC_ADVROLES: '(6 or more players are recommended.)',
   NOTE_REC_ADVROLES: 'For the best experience, use both the Witness and the Accomplice, or neither.',
   WARN_WITNESS: 'Warning: Using only the Witness may make the game more difficult for the Killer.',
   WARN_ACCOMPLICE: 'Warning: Using only the Accomplice may make the game more difficult for the Hunters and Ghost.',
@@ -109,14 +104,10 @@ export const lobbyMethods = {
     return !this.canUseAdvRoles() ? this.text.NOTE_MIN_ADVROLES
          : this.text.NOTE_ENABLE_ADVROLES(iAmLeader);
   },
-  advRolesRecText() {
-    const hasBothOrNeither = (this.gameSettings.hasWitness && this.gameSettings.hasAccomplice) || (!this.gameSettings.hasWitness && !this.gameSettings.hasAccomplice)
-    return hasBothOrNeither ? this.text.NOTE_REC_ADVROLES
-         : this.gameSettings.hasWitness ? this.text.WARN_WITNESS
-         : this.text.WARN_ACCOMPLICE;
-  }
 };
 
 export const badge = (canAccuse) => canAccuse ? 'can-accuse' : 'accusal-spent';
 
 export const article = (role) => role === 'hunter' ? 'a' : 'the';
+
+export const name = (userId) => userId.slice(0,-5);

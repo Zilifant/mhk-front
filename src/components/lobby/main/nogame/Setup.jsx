@@ -6,10 +6,8 @@ import { useGame } from '../../../../hooks/game-hook';
 import Container from '../../../shared/Container';
 import Button from '../../../ui-elements/Button';
 import TimerSetup from './TimerSetup';
+import Tooltip from '../../../shared/Tooltip';
 import '../../../../styles/setup.css';
-
-import { tooltip } from '../../../../util/utils';
-import { parseSMDLines, renderStyledLines } from '../../../../util/styled-text';
 
 const Setup = ({
   lobby,
@@ -18,8 +16,6 @@ const Setup = ({
 }) => {
 
   const { socket } = useContext(SocketContext);
-
-  // const tttext = 'At least 5 players are needed to use the Witness and Accomplice roles (6 or more players are recommended). For the best experience, use both the Witness and the Accomplice, or neither.'
 
   const {
     startGameHandler,
@@ -64,24 +60,26 @@ const Setup = ({
     <Container className={`setup ${iAmLeader ? 'leader' : 'notleader'}`}>
 
       {iAmLeader &&
-      <div className='setup-section start'>
+      <div className='setup-section start tooltip right'>
         <Button
           onClick={startGameHandler}
           disabled={!lobby.canStart()}
         >Start Game</Button>
+        <Tooltip tip='waitMorePlayers' />
       </div>}
 
-      <div className='setup-section roles tooltip'>
+      <div className='setup-section roles tooltip left'>
         {iAmLeader ? advRolesLeader() : advRolesBasic()}
-          {renderStyledLines(parseSMDLines({lines: tooltip.advRoles}), {wrapper: 'tooltiptext'})}
+        <Tooltip tip='advRoles' />
       </div>
 
-      <div className='setup-section timer'>
+      <div className='setup-section timer tooltip left'>
         <TimerSetup
           iAmLeader={iAmLeader}
           gameSettings={gameSettings}
           chooseTimerHandler={chooseTimerHandler}
         />
+        <Tooltip tip='timerSetup' />
       </div>
 
     </Container>

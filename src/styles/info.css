@@ -41,7 +41,7 @@
   width: 240px;
   padding: .15rem 0;
   border-radius: var(--rad);
-  border: 1px solid var(--bg1);
+  border: var(--bdr2) solid var(--bg1);
 }
 
 .info-lobbyid.obscured {
@@ -51,35 +51,19 @@
 
 .lobbyid-wrap {
   display: grid;
-  width: 100%;
-  grid-template-columns: 1fr max-content 1fr;
   gap: .5rem;
+  grid-template-columns: 1fr max-content 1fr;
 }
 
 .lobbyid-wrap * {
   align-self: center;
 }
 
-.copyurl-wrap {
-  display: flex;
-  align-items: center;
-}
-
-.copyurl-label {
-  margin-left: .5rem;
-  font-size: larger;
-  color: var(--bg2);
-}
-
 button.btn--copyurl,
 button.btn--hidelobbyid {
-  /* display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column; */
-  height: 25px;
-  width: 25px;
+  display: flex;
   justify-self: end;
+  border: var(--bdr2) solid var(--cyan6);
   padding: 0;
 }
 
@@ -95,26 +79,21 @@ button.btn--hidelobbyid {
 }
 
 .con--info.nogame button.btn--copyurl {
-  /* --fgc: var(--colg4);
-  --bgc: var(--gray7o50);
-  border: 1px solid var(--fgc);
-  color: var(--fgc);
-  background-color: var(--bgc); */
   justify-self: start;
 }
 
-/* .con--info.nogame button.btn--copyurl:hover {
-  --fgc: var(--cyan4);
-  border: 1px solid var(--fgc);
+button.btn--copyurl:hover,
+button.btn--hidelobbyid:hover {
+  --fgc: var(--cyan5);
+  border-color: var(--fgc);
   color: var(--fgc);
-} */
+}
 
 .con--info.game {
   height: min-content;
 }
 
 .con--info.game > * {
-  /* background-color: var(--bg5); */
   width: 100%;
 }
 

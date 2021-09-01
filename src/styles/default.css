@@ -31,7 +31,13 @@
   --readyli: var(--emer5);
 }
 
-:root { --rad: 1px; --mar: .5rem; --gap: .5rem; --bdr: 1px; }
+:root {
+  --rad: 1px;
+  --mar: .5rem;
+  --gap: .5rem;
+  --bdr: 1px;
+  --bdr2: .2rem;
+}
 
 /* RESET */
 
@@ -277,22 +283,33 @@ main.app {
   display: flex;
   flex-direction: column;
   visibility: hidden;
-  height: max-content;
+  min-height: 100%;
+  justify-content: center;
   width: max-content;
   max-width: 400px;
   background-color: var(--bg5);
-  border-radius: calc(var(--rad)*4);
-  padding: .75rem;
+  border-radius: var(--rad);
+  padding: .5rem .5rem;
   border: 2px solid var(--bg1);
   position: absolute;
   z-index: 1;
-  /* bottom: 50%; */
-  top: 0;
-  left: calc(100% + var(--gap));
-  /* margin-left: -75px; */
   opacity: 0;
   transition: opacity 0.1s;
   cursor: default
+}
+
+.tooltip.single .tooltiptext {
+  padding: 0 .5rem;
+}
+
+.tooltip.left .tooltiptext {
+  top: 0;
+  left: calc(100% + var(--gap));
+}
+
+.tooltip.right .tooltiptext {
+  top: 0;
+  right: calc(100% + var(--gap));
 }
 
 .tooltiptext span {
@@ -300,12 +317,17 @@ main.app {
   font-size: larger;
 }
 
-.tooltiptext .line--faded span {
+.tooltiptext .faded span {
   color: var(--bg1);
 }
 
+.emphasize {
+  font-weight: bold;
+  /* font-style: italic; */
+}
+
 .tooltiptext :not(:first-child) {
-  margin-top: .5rem;
+  margin-top: .25rem;
 }
 
 .tooltip:hover .tooltiptext {

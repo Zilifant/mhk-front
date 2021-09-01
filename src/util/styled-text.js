@@ -1,14 +1,14 @@
 // styled text
 
-import { GAME_OUTCOMES } from '../util/utils';
+import { GAME_OUTCOMES, name } from '../util/utils';
 // import { nanoid } from 'nanoid';
 
-export function parseAndRender({type, time, args}, meta) {
+export function parseAndRender({type, time, args}, meta = {}) {
   if (meta.parent === 'chatfeed') return renderStyledBlock(strings[type](time, ...args), meta);
-  return renderStyledText(strings[type](time, ...args), meta);
+  return renderStyledString(strings[type](time, ...args), meta);
 };
 
-function renderStyledText(elements, meta) {
+function renderStyledString(elements, meta = {}) {
   return (
     <div className={meta.wrapper || 'none'}>
       {elements.map((el, i) => {
@@ -19,11 +19,10 @@ function renderStyledText(elements, meta) {
   );
 };
 
-export function renderStyledLines(lines, meta={}) {
+export function renderStyledLines(lines, meta = {}) {
   return (
     <div className={meta.wrapper || 'none'}>
     {lines.map((li, i) => {
-      console.log(li);
       return (
         <div key={i} className={li.style}>
         {li.strings.map((str, i) => {
@@ -40,7 +39,7 @@ export function renderStyledLines(lines, meta={}) {
   );
 };
 
-function renderStyledBlock(elements, meta) {
+function renderStyledBlock(elements, meta = {}) {
 
   const [style, content] = meta.isAnno
     ? [elements[0].style, elements[0].string]
@@ -59,7 +58,7 @@ function renderStyledBlock(elements, meta) {
   );
 };
 
-function parseSMD({str, opts, multiLine}) {
+function parseSMD({str, opts = SMDopts, multiLine}) {
   let defStyle, sS, sC;
 
   if (multiLine) {
@@ -119,79 +118,87 @@ const SMDopts = {
     {abb: 'u', classname: 'string--username'},
     {abb: 'k', classname: 'string--keyword'},
     {abb: 'p', classname: 'string--punctuation'},
-    {abb: 'f', classname: 'line--faded'}
+    {abb: 'f', classname: 'faded'},
+    {abb: 'e', classname: 'emphasize'},
   ]
 };
 
-const parseSMDString = ({str}) => parseSMD({str: str, opts: SMDopts, multiLine: false});
-
-const name = (userId) => userId.slice(0,-5);
-
-const cls = 'string--username '
+export function parseSMDLines({lines}) {
+  const plines = parseSMD({str: lines, multiLine: true});
+  const splines = plines.map(line => {
+    return {
+      strings: parseSMD({str: line.string, multiLine: false}),
+      style: line.style
+    };
+  });
+  return splines;
+};
 
 const strings = (() => {
 
+  const cls = 'string--username '
+
   const waitingForJoin = (time) => {
     const str = `_t_${time} ^Waiting for more players...`;
-    return parseSMDString({str});
+    return parseSMD({str: str, multiLine: false});
   };
 
   const waitingForReady = (time) => {
     const str = `_t_${time} ^Waiting for everyone to be ready...`;
-    return parseSMDString({str});
+    return parseSMD({str: str, multiLine: false});
   };
 
   const waitingForStart = (time, iAmLeader) => {
     let str;
     iAmLeader ? str = `_t_${time} ^Ready to start...` : str = `_t_${time} ^Waiting for the leader to start the game...`
-    return parseSMDString({str});
+    return parseSMD({str: str, multiLine: false});
   };
 
   const welcome = (time) => {
     const str = `_t_${time} ^_m_Welcome to MHK.`;
-    return parseSMDString({str});
+    return parseSMD({str: str, multiLine: false});
   };
 
   const userMessage = (time, [id, col], text) => {
     const str = `_t_${time} ^_${cls+col}_${name(id)}^_p_: ^_m_${text}`;
-    return parseSMDString({str});
+    return parseSMD({str: str, multiLine: false});
   };
 
   const join = (time, [id, col]) => {
     const str = `_t_${time} ^_${cls+col}_${name(id)}^ joined.`;
-    return parseSMDString({str});
+    return parseSMD({str: str, multiLine: false});
   };
 
   const leave = (time, [id, col], [leaderId, leaderCol]) => {
     let str;
     !!leaderId ? str = `_t_${time} ^_${cls+col}_${name(id)}^ left. ^_${cls+leaderCol}_${name(leaderId)}^ is the new leader.`
                 : str = `_t_${time} ^_${cls+col}_${name(id)}^ left.`;
-    return parseSMDString({str});
+    return parseSMD({str: str, multiLine: false});
   };
 
   const ready = (time, [id, col], ready) => {
     const str = `_t_${time} ^_${cls+col}_${name(id)}^ is ${ready ? 'ready' : 'not ready'}.`;
-    return parseSMDString({str});
+    return parseSMD({str: str, multiLine: false});
   };
 
   const newLeader = (time, [id, col]) => {
     const str = `_t_${time} ^_${cls+col}_${name(id)}^ is the new leader.`;
-    return parseSMDString({str});
+    return parseSMD({str: str, multiLine: false});
   };
 
   const accusation = (time, { accuser: [rId, rCol], accusee: [eId, eCol], evidence: [ev1, ev2] }) => {
     const str = `_t_${time} ^_${cls+rCol}_${name(rId)}^ accuses ^_${cls+eCol}_${name(eId)}^ with evidence: ^_k_${ev1}^ and ^_k_${ev2}^.`;
-    return parseSMDString({str});
+    return parseSMD({str: str, multiLine: false});
   };
 
   const accusationWrong = (time, [id, col]) => {
     const str = `_t_${time} ^_${cls+col}_${name(id)}'s^ accusation is wrong. The round continues...`;
-    return parseSMDString({str});
+    return parseSMD({str: str, multiLine: false});
   };
 
   const accusationRight = (time, [rId, rCol], [eId, eCol]) => {
     const str = `_t_${time} ^_${cls+rCol}_${name(rId)}^ is correct! ^_${cls+eCol}_${name(eId)}^ is the Killer.`;
-    return parseSMDString({str});
+    return parseSMD({str: str, multiLine: false});
   };
 
   const advanceTo = (time, stage) => {
@@ -223,29 +230,29 @@ const strings = (() => {
         break;
       default: break;
     }
-    return parseSMDString({str});
+    return parseSMD({str: str, multiLine: false});
   };
 
   const clearGame = (time) => {
     const str = `_t_${time} ^Game cleared.`;
-    return parseSMDString({str});
+    return parseSMD({str: str, multiLine: false});
   };
 
   const clueChosen = (time, clue) => {
     const str = `_t_${time} ^Clue chosen: ^_k_${clue}^.`;
-    return parseSMDString({str});
+    return parseSMD({str: str, multiLine: false});
   };
 
   const ghostAssigned = (time, [id, col], unAssign) => {
     let str;
     unAssign ? str = `_t_${time} ^Ghost unassigned.`
              : str = `_t_${time} ^_${cls+col}_${name(id)}^ is assigned to Ghost.`;
-    return parseSMDString({str});
+    return parseSMD({str: str, multiLine: false});
   };
 
   const resolveGame = (time, result) => {
     const str = `_t_${time} ^_k_${GAME_OUTCOMES[result]}`;
-    return parseSMDString({str});
+    return parseSMD({str: str, multiLine: false});
   };
 
   return {
@@ -261,17 +268,3 @@ const strings = (() => {
     accusation, accusationRight, accusationWrong
   };
 })();
-
-// export const parseSMDLines = ({lines}) => parseSMD({str: lines, opts: SMDopts, multiLine: true});
-
-
-export function parseSMDLines({lines}) {
-  const plines = parseSMD({str: lines, opts: SMDopts, multiLine: true});
-  const splines = plines.map(line => {
-    return {
-      strings: parseSMDString({str: line.string}),
-      style: line.style
-    };
-  });
-  return splines;
-};

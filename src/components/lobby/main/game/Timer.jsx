@@ -6,7 +6,6 @@ import React, {
 import Container from '../../../shared/Container';
 import '../../../../styles/timer.css';
 import { SocketContext } from '../../../../context/contexts';
-// import Button from '../../../ui-elements/Button';
 
 const Timer = ({
   settings: {on}
@@ -21,7 +20,6 @@ const Timer = ({
   // console.log(settings);
 
   useEffect(() => {
-    // const s = socket.current;
     let mounted = true;
     console.log('mounted');
     const subToTimer = (mounted) => {
@@ -37,26 +35,17 @@ const Timer = ({
   return () => mounted = false;
   }, [socket, setTimer]);
 
-  // const pauseHandler = () => {
-  //   return socket.current.emit('pauseTimer');
-  // };
-
   const formattedTimer = () => (
     <p className={`time-digits ${timer === '00:00' && 'zero'}`}>
       <span className='digits'>{timer.substr(0,2)}</span>
       <span className='colon'>:</span>
       <span className='digits'>{timer.substr(3,2)}</span>
     </p>
-  )
+  );
 
   const displayOn = () => (
     <div className='time-wrap'>
       {formattedTimer()}
-      {/* <div className='timer-pause-button'>
-        <Button
-          onClick={pauseHandler}
-        >PAUSE</Button>
-      </div> */}
     </div>
   );
 
@@ -68,7 +57,7 @@ const Timer = ({
     <Container className='timer'>
       {on ? displayOn() : displayOff()}
     </Container>
-  )
-}
+  );
+};
 
-export default Timer
+export default Timer;

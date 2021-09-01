@@ -1,7 +1,13 @@
-// import React from 'react';
+// import { useState } from 'react';
 import { parseAndRender } from '../../../util/styled-text';
 
-const ChatMessage = ({ parent, message, isMine }) => {
+const ChatMessage = ({
+  type,
+  parent,
+  message,
+  isMine,
+  vanish
+}) => {
 
   const style = isMine ? 'self' : 'other';
 

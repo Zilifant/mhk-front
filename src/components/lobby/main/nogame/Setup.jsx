@@ -8,6 +8,9 @@ import Button from '../../../ui-elements/Button';
 import TimerSetup from './TimerSetup';
 import '../../../../styles/setup.css';
 
+import { tooltip } from '../../../../util/utils';
+import { parseSMDLines, renderStyledLines } from '../../../../util/styled-text';
+
 const Setup = ({
   lobby,
   iAmLeader,
@@ -16,7 +19,7 @@ const Setup = ({
 
   const { socket } = useContext(SocketContext);
 
-  const tttext = 'At least 5 players are needed to use the Witness and Accomplice roles (6 or more players are recommended). For the best experience, use both the Witness and the Accomplice, or neither.'
+  // const tttext = 'At least 5 players are needed to use the Witness and Accomplice roles (6 or more players are recommended). For the best experience, use both the Witness and the Accomplice, or neither.'
 
   const {
     startGameHandler,
@@ -31,8 +34,9 @@ const Setup = ({
 
   const advRolesLeader = () => (
     <div className='advrole-wrapper'>
-      {advRoles.map(role => (
+      {advRoles.map((role, i) => (
         <Button
+          key={i}
           className={`advrole ${role.active ? 'on' : 'off'}`}
           onClick={() => toggleHandler(role.id)}
           disabled={!lobby.canUseAdvRoles()}
@@ -45,8 +49,9 @@ const Setup = ({
 
   const advRolesBasic = () => (
     <div className='advrole-wrapper'>
-      {advRoles.map(role => (
+      {advRoles.map((role, i) => (
         <div
+          key={i}
           className={`advrole ${role.active ? 'on' : 'off'}`}
         >
           {role.id}
@@ -68,7 +73,7 @@ const Setup = ({
 
       <div className='setup-section roles tooltip'>
         {iAmLeader ? advRolesLeader() : advRolesBasic()}
-        <span className='tooltiptext'>{tttext}</span>
+          {renderStyledLines(parseSMDLines({lines: tooltip.advRoles}), {wrapper: 'tooltiptext'})}
       </div>
 
       <div className='setup-section timer'>

@@ -9,10 +9,11 @@ import ChatMessage from '../chat/ChatMessage';
 import '../../../styles/announcer.css';
 import '../../../styles/chat.css';
 
-function msg(type, args, senderId = 'app') {
+function msg(type, args, isInGame, senderId = 'app') {
   return {
     time: new Date().toLocaleTimeString().slice(0,-6),
     type,
+    isInGame,
     args,
     senderId,
   }
@@ -26,24 +27,36 @@ const Announcer = ({
 
   const {
     subToAnnounce,
-    lastAnnouncement
+    lastAnnouncement,
+    lastGameAnnouncement
   } = useChat(chat);
 
   useEffect(() => { subToAnnounce(); }, [subToAnnounce]);
 
   const [type, args] = lobby.startGameText(iAmLeader);
 
+  if (lobby.gameOn) return (
+    <Container className='announcer game'>
+      <ChatMessage
+        type='announcement'
+        parent='announcer'
+        message={lastGameAnnouncement()}
+      />
+    </Container>
+  );
+
   return (
-    <Container className='announcer'>
+    <Container className='announcer nogame'>
       <ChatMessage
         type='status'
         parent='announcer'
-        message={msg(type, args)}
+        message={msg(type, args, false)}
       />
       <ChatMessage
         type='announcement'
         parent='announcer'
         message={lastAnnouncement()}
+        vanish={true}
       />
     </Container>
   );

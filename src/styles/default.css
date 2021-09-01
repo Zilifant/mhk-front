@@ -275,13 +275,14 @@ main.app {
 
 .tooltip .tooltiptext {
   display: flex;
+  flex-direction: column;
   visibility: hidden;
   height: max-content;
   width: max-content;
-  max-width: 300px;
+  max-width: 400px;
   background-color: var(--bg5);
-  border-radius: 1px;
-  padding: .5rem;
+  border-radius: calc(var(--rad)*4);
+  padding: .75rem;
   border: 2px solid var(--bg1);
   position: absolute;
   z-index: 1;
@@ -292,6 +293,19 @@ main.app {
   opacity: 0;
   transition: opacity 0.1s;
   cursor: default
+}
+
+.tooltiptext span {
+  line-height: 1.5rem;
+  font-size: larger;
+}
+
+.tooltiptext .line--faded span {
+  color: var(--bg1);
+}
+
+.tooltiptext :not(:first-child) {
+  margin-top: .5rem;
 }
 
 .tooltip:hover .tooltiptext {

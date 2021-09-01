@@ -45,6 +45,10 @@ export const useChat = (chat) => {
     return last ? last : welcome;
   };
 
+  const lastGameAnnouncement = () => {
+    return messages.filter(m => !!m.isInGame).slice(-1)[0];
+  };
+
   const subToAnnounce = useCallback(() => {
 
     const sub2Announce = () => {
@@ -64,6 +68,7 @@ export const useChat = (chat) => {
     subToChat,
     subToAnnounce,
     lastAnnouncement,
+    lastGameAnnouncement,
     messages,
     messageText,
     setMessageText

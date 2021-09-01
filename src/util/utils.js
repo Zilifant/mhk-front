@@ -45,10 +45,14 @@ export function capitalize(str) {
   return str.replace(/\b([a-zÁ-ú])/g, (w) => w.charAt(0).toUpperCase() + w.slice(1));
 };
 
+export const tooltip = {
+  advRoles: 'At least ^_k_5 players^ are needed to use the ^_k_Witness^ and ^_k_Accomplice^ roles.<(6 or more players are recommended.)<For the most balanced game, use both roles (or neither).<>f>Using only the ^_k_Witness^ may make the game harder for the ^_k_Killer^.<>f>Using only the ^_k_Accomplice^ may make things harder for the ^_k_Hunters^ and the ^_k_Ghost^.'
+};
+
 const text = {
   WAIT_PLAYERS_JOIN: 'Waiting for more players to join. At least 4 players are needed to start. (5 or more players are recommended.)',
-  // NOTE_MIN_PLAYERS: 'At least 4 players are needed to start.',
-  // NOTE_REC_PLAYERS: '(5 or more players are recommended.)',
+  NOTE_MIN_PLAYERS: 'At least 4 players are needed to start.',
+  NOTE_REC_PLAYERS: '(5 or more players are recommended.)',
   LOBBY_FULL: 'The lobby is full.',
   WAIT_PLAYERS_READY: 'Waiting for all players to be ready.',
   WAIT_START_GAME(iAmLeader) {

@@ -4,7 +4,14 @@
   width: 100%;
 
   display: flex;
+}
+
+.con--announcer.nogame {
   justify-content: space-between;
+}
+
+.con--announcer.game {
+  justify-content: center;
 }
 
 .msg-in-announcer span {

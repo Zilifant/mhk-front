@@ -73,12 +73,6 @@ const Member = ({
           onClick={() => assignGhostHandler(member.id)}
           enabled={true}
         />
-        {/* <button
-          className={`member btn_assign-ghost ${ghost}`}
-          onClick={() => assignGhostHandler(member.id)}
-        >
-          <FaGhost/>
-        </button> */}
         <Tooltip tip='assignGhost' />
       </div>
 

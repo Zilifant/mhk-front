@@ -12,18 +12,21 @@
   overflow: hidden;
 }
 
-.svg-btn:hover svg {
-  fill: var(--cyan4);
-  transition: 0.3s;
-}
-
 .svg-btn svg {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  stroke-linejoin: round;
+  stroke-miterlimit: 2;
   margin: 0;
   fill: var(--cyan5);
   transition: 0.3s;
 }
 
+.svg-btn:hover svg {
+  fill: var(--cyan4);
+  transition: 0.3s;
+}
+
 .svg-btn.btn_assign-ghost {
   background-color: var(--bg4);
-  width: 70%;
 }

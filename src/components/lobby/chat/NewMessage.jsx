@@ -3,7 +3,8 @@ import Button from '../../ui-elements/Button';
 import {
   validate,
   VALIDATOR_REQUIRE,
-  VALIDATOR_MAXLENGTH
+  VALIDATOR_MAXLENGTH,
+  VALIDATOR_BANNED_CHARS
 } from '../../../util/validators';
 
 const NewMessage = ({
@@ -23,7 +24,11 @@ const NewMessage = ({
             ></input>
             <Button
               disabled={!validate(messageText,
-                [VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(280)]
+                [
+                  VALIDATOR_REQUIRE(),
+                  VALIDATOR_MAXLENGTH(280),
+                  VALIDATOR_BANNED_CHARS(['^','_','<','>'])
+                ]
               )}
               onClick={submitHandler}
             >

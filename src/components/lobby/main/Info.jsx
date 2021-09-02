@@ -7,7 +7,7 @@ import { UserContext, SocketContext } from '../../../context/contexts';
 import Container from '../../shared/Container';
 import Button from '../../ui-elements/Button';
 import { useGame } from '../../../hooks/game-hook';
-import { GoEye, GoEyeClosed, GoLinkExternal } from 'react-icons/go';
+import { GoEye, GoEyeClosed } from 'react-icons/go';
 import Tooltip from '../../shared/Tooltip';
 import SVGButton from '../../ui-elements/SVGButton';
 import '../../../styles/info.css';
@@ -41,7 +41,7 @@ const Info = ({
 
   const hideLobbyIdHandler = () => setLobbyIdHidden(!lobbyIdHidden);
 
-  const lobbyId = myLobby === 'z' ? 'dark-monolith-3289' : myLobby;
+  const lobbyId = myLobby === 'z' ? 'Splendid-Monolith-7659' : myLobby;
 
   const showGameStage = stage && stage.id;
   const showClearBtn = iAmLeader;
@@ -62,7 +62,7 @@ const Info = ({
           <Tooltip tip='hideShowName' />
         </div>
         <div className={`info-lobbyid ${lobbyIdHidden ? 'obscured' : 'visible'}`}>
-          {lobbyIdHidden ? 'lobby name hidden' : lobbyId}
+          {lobbyIdHidden ? 'lobby name hidden' : <div className='debug'>lobbyId</div>}
         </div>
         <div className='tooltip single left'>
           <SVGButton

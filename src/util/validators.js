@@ -6,6 +6,7 @@ const VALIDATOR_TYPE_MAX = 'MAX';
 const VALIDATOR_TYPE_EMAIL = 'EMAIL';
 const VALIDATOR_TYPE_FILE = 'FILE';
 const VALIDATOR_TYPE_LETTERS_ONLY = 'LETTERS';
+const VALIDATOR_TYPE_BANNED_CHARS = 'BANNED';
 
 export const VALIDATOR_REQUIRE = () => ({ type: VALIDATOR_TYPE_REQUIRE });
 export const VALIDATOR_FILE = () => ({ type: VALIDATOR_TYPE_FILE });
@@ -22,6 +23,11 @@ export const VALIDATOR_MAX = val => ({ type: VALIDATOR_TYPE_MAX, val: val });
 export const VALIDATOR_EMAIL = () => ({ type: VALIDATOR_TYPE_EMAIL });
 
 export const VALIDATOR_LETTERS_ONLY = () => ({ type: VALIDATOR_TYPE_LETTERS_ONLY });
+
+export const VALIDATOR_BANNED_CHARS = val => ({
+  type: VALIDATOR_TYPE_BANNED_CHARS,
+  val: val
+});
 
 export const validate = (value, validators) => {
   let isValid = true;
@@ -46,6 +52,9 @@ export const validate = (value, validators) => {
     }
     if (validator.type === VALIDATOR_TYPE_LETTERS_ONLY) {
       isValid = isValid && /^[A-Za-zÀ-ÖØ-öø-ÿ]+$/.test(value);
+    }
+    if (validator.type === VALIDATOR_TYPE_BANNED_CHARS) {
+      isValid = isValid && !validator.val.some(ch => value.includes(ch));
     }
   }
   return isValid;

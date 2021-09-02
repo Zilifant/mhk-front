@@ -46,7 +46,10 @@ export const useChat = (chat) => {
   };
 
   const lastGameAnnouncement = () => {
-    return messages.filter(m => !!m.isInGame).slice(-1)[0];
+    const lga = messages.filter(m => !!m.isInGame).slice(-1)[0];
+    if (!!lga) return lga;
+    console.log('no last game anno');
+    return 'error';
   };
 
   const subToAnnounce = useCallback(() => {

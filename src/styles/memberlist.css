@@ -1,6 +1,6 @@
 :root {
-  --bg-btn: var(--cyan6);
-  --bg-btnli: var(--cyan5);
+  --bg-btn: var(--cyan5);
+  --bg-btnli: var(--cyan4);
   --bg-other: var(--bg5);
   --bg-self: var(--bg-btn);
 }
@@ -98,29 +98,21 @@ button.btn_ready.ml-self.ml-ready:hover {
   fill: var(--ghost);
 }
 
-/* button.btn_assign-ghost {
-  text-align: center;
+button.btn_assign-ghost.ml-notghost svg {
+  fill: var(--bg-btn);
 }
 
-button.btn_assign-ghost.ml-notghost {
-  background-color: var(--bg-btn);
-  border-color: var(--bg-btn);
+button.btn_assign-ghost.ml-ghost svg {
+  fill: var(--ghost);
 }
 
-button.btn_assign-ghost.ml-ghost {
-  background-color: var(--ghost);
-  border-color: var(--ghost);
+button.btn_assign-ghost.ml-notghost:hover svg {
+  fill: var(--bg-btnli);
 }
 
-button.btn_assign-ghost.ml-notghost:hover {
-  background-color: var(--bg-btnli);
-  border-color: var(--bg-btnli);
-} */
-
-/* button.btn_assign-ghost.ml-ghost:hover {
-  background-color: var(--ghostli);
-  border-color: var(--ghostli);
-} */
+button.btn_assign-ghost.ml-ghost:hover svg {
+  fill: var(--ghostli);
+}
 
 .member.ghost-icon.ml-ghost,
 /* button.btn_assign-ghost, */

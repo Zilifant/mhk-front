@@ -276,7 +276,6 @@ main.app {
 
 .tooltip {
   position: relative;
-  /* display: inline-block; */
 }
 
 .tooltip .tooltiptext {
@@ -736,5 +735,10 @@ ul.c-group {
 
 /* .amber.member.name, */
 .amber.string--username {
-  color: var(--ambr4);
+  color: var(--ambr5);
+}
+
+.debug {
+  height: 500px;
+  background-color: yellow;
 }

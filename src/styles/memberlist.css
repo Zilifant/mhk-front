@@ -5,16 +5,22 @@
   --bg-self: var(--bg-btn);
 }
 
-.con--memberlist {
+.container.con--memberlist {
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 100%;
-  background-color: var(--bg4);
+  /* padding: 0; */
+  /* width: 100%; */
+  /* background-color: var(--bg4); */
 }
 
 ul.memberlist > :not(:first-child) {
   margin-top: .5rem;
+}
+
+.memberlist {
+  /* padding: .5rem; */
+  background-color: var(--bg4);
 }
 
 .con--memberlist * {
@@ -23,7 +29,7 @@ ul.memberlist > :not(:first-child) {
 
 .member-grid {
   display: grid;
-  gap: .5rem;
+  gap: var(--gap);
   grid-template-columns: 1fr max-content 1fr;
 }
 

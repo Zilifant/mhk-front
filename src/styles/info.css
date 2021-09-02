@@ -3,14 +3,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: 100%; */
-  padding: 0;
   /* background-color: var(--bg4); */
+  /* padding: 0; */
 }
 
 .con--info.nogame {
   flex-direction: column;
-  margin: .5rem 0;
 }
 
 .con--info.game {
@@ -35,13 +33,14 @@
 }
 
 .con--info.nogame .lobbyid-wrap .info-lobbyid {
-  background-color: var(--bg4);
+  background-color: var(--bg5);
   justify-self: center;
   text-align: center;
-  width: 240px;
+  font-size: x-large;
+  width: 300px;
   padding: .15rem 0;
   border-radius: var(--rad);
-  border: var(--bdr2) solid var(--bg1);
+  /* border: var(--bdr2) solid var(--bg1); */
 }
 
 .info-lobbyid.obscured {

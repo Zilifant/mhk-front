@@ -165,6 +165,7 @@ main.app {
 
 .grid--lobby-nogame {
   gap: var(--gap);
+  /* row-gap: 1rem; */
   grid-template-columns: 600px max-content;
   grid-template-rows: repeat(3, max-content) 1fr max-content;
   grid-template-areas:
@@ -206,6 +207,14 @@ main.app {
 .container {
   padding: .5rem;
   border-radius: var(--rad);
+}
+
+/* .con--announcer, */
+.con--setup,
+.con--info,
+.con--memberlist {
+  background-color: var(--bg4);
+  padding: 1rem;
 }
 
 .con--self,

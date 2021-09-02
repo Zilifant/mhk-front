@@ -1,46 +1,42 @@
 
 .container.con--setup {
   display: flex;
-  justify-content: center;
-  background-color: var(--bg4);
+  flex-direction: column;
+  align-items: center;
+  /* background-color: var(--bg4); */
+  /* padding: 0; */
 }
 
-.container.con--setup > :not(:first-child) {
-  margin-left: .5rem;
+.settings > :not(:first-child) {
+  margin-left: 1rem;
 }
 
 .setup-section {
   border-radius: var(--rad);
-}
-
-.setup-section.txt {
-  background-color: var(--bg4);
-  padding: .5rem;
-}
-
-.setup-section.txt p {
-  font-size: large;
-}
-
-.start div,
-.start button {
-  height: 100%;
-  width: 100%;
-}
-
-.text {
   display: flex;
-  margin: auto;
-  align-items:center;
-  justify-content:center;
-  text-align: center;
-  height: calc(32px + .5rem);
-  width: 100%;
-  border-radius: var(--rad);
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg5);
+  border: var(--bdr2) solid var(--bg3);
+  padding: .5rem 0;
+  width: 180px;
 }
 
-.text p {
-  margin: .25rem .25rem;
+.start button {
+  font-size: x-large;
+  padding: .5rem;
+  margin-bottom: 1rem;
+}
+
+.settings {
+  display: flex;
+  flex-direction: row;
+}
+
+.settings-title {
+  font-size: large;
+  text-transform: uppercase;
+  margin-bottom: .5rem;
 }
 
 .advrole-wrapper :not(:first-child) {
@@ -108,7 +104,6 @@
   background-color: var(--yell4);
 }
 
-.timer.title,
 .timer.value {
   border-radius: var(--rad);
   display: flex;
@@ -116,56 +111,44 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  font-size: x-large;
+  padding: 0 .25rem;
+  background-color: var(--bg4);
+  min-width: 65px;
+  border: var(--bdr2) solid var(--bg1);
 }
 
-.timer.value {
-  /* background-color: var(--bg3); */
-  padding: 0;
-  width: 26px;
-}
-
-.btn--timer.toggle.on {
-  background-color: var(--emer5);
-}
-
-.btn--timer.toggle.off {
-  background-color: var(--killer);
-}
-
-.timer.title  { grid-area: ti; }
 .timer.value  { grid-area: va; }
 .timer.dec    { grid-area: de; }
 .timer.inc    { grid-area: in; }
-.timer.toggle { grid-area: to; }
 
-.timer-wrap.leader {
-  width: max-content;
+.timer-wrap {
+  /* width: max-content; */
   border-radius: var(--rad);
   display: grid;
-  gap: .25rem;
-  grid-template-columns: 1fr max-content 1fr;
-  grid-template-rows: max-content 1fr;
+  gap: .5rem;
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-rows: max-content; */
   grid-template-areas:
-    'ti ti ti'
     'de va in';
 }
 
-.timer-wrap {
+/* .timer-wrap {
   display: flex;
   border-radius: var(--rad);
-  height: 100%;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  background-color: var(--bg4);
-  padding: .25rem;
-  border: .2rem solid var(--bg1);
-}
+  flex-direction: column; */
+  /* background-color: var(--bg5); */
+  /* padding: .5rem; */
+  /* border: .2rem solid var(--bg1); */
+/* } */
 
-.btn--timer.dec,
+/* .btn--timer.dec,
 .btn--timer.inc {
-  height: 100%;
-  width: 20px;
+  --dim: 100%;
+  height: var(--dim);
+  width: var(--dim);
   align-self: center;
 }
 
@@ -181,4 +164,4 @@
 .btn--timer.inc svg {
   height: 100%;
   width: 100%;
-}
+} */

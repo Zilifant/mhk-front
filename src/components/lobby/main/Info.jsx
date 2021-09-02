@@ -8,8 +8,10 @@ import Container from '../../shared/Container';
 import Button from '../../ui-elements/Button';
 import { useGame } from '../../../hooks/game-hook';
 import { GoEye, GoEyeClosed, GoLinkExternal } from 'react-icons/go';
-import '../../../styles/info.css';
 import Tooltip from '../../shared/Tooltip';
+import SVGButton from '../../ui-elements/SVGButton';
+import '../../../styles/info.css';
+import '../../../styles/buttons.css';
 
 const Info = ({
   gameOn,
@@ -48,7 +50,7 @@ const Info = ({
                     && (stage.id === 'round-1' || stage.id === 'round-2');
 
   if (!gameOn) return (
-    <Container className="info nogame">
+    <Container className='info nogame'>
       <div className='lobbyid-wrap'>
         <div className='tooltip single right'>
           <Button
@@ -63,12 +65,12 @@ const Info = ({
           {lobbyIdHidden ? 'lobby name hidden' : lobbyId}
         </div>
         <div className='tooltip single left'>
-          <Button
+          <SVGButton
             className='copyurl'
+            icon='copy'
             onClick={() => textToClipboard(`mhk-front.herokuapp.com/${lobbyId}`)}
-          >
-            <GoLinkExternal/>
-          </Button>
+            enabled={true}
+          />
           <Tooltip tip='copyUrl' />
         </div>
       </div>

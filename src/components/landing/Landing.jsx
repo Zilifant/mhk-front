@@ -6,6 +6,8 @@ import JoinLobby from './JoinLobby';
 
 import '../../styles/landing.css';
 
+import '../../assets/shapes/copy.svg';
+
 const Landing = () => {
   // console.log('%cLanding','color:#f579f9');
   return (

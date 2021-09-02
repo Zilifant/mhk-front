@@ -1,0 +1,29 @@
+/* BUTTONS */
+
+
+/* SVG BUTTONS */
+
+.svg-btn {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg5);
+  border-radius: var(--rad);
+  overflow: hidden;
+}
+
+.svg-btn:hover svg {
+  fill: var(--cyan4);
+  transition: 0.3s;
+}
+
+.svg-btn svg {
+  margin: 0;
+  fill: var(--cyan5);
+  transition: 0.3s;
+}
+
+.svg-btn.btn_assign-ghost {
+  background-color: var(--bg4);
+  width: 70%;
+}

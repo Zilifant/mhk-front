@@ -98,7 +98,7 @@ button.btn_ready.ml-self.ml-ready:hover {
   fill: var(--ghost);
 }
 
-button.btn_assign-ghost {
+/* button.btn_assign-ghost {
   text-align: center;
 }
 
@@ -115,15 +115,15 @@ button.btn_assign-ghost.ml-ghost {
 button.btn_assign-ghost.ml-notghost:hover {
   background-color: var(--bg-btnli);
   border-color: var(--bg-btnli);
-}
+} */
 
-button.btn_assign-ghost.ml-ghost:hover {
+/* button.btn_assign-ghost.ml-ghost:hover {
   background-color: var(--ghostli);
   border-color: var(--ghostli);
-}
+} */
 
 .member.ghost-icon.ml-ghost,
-button.btn_assign-ghost,
+/* button.btn_assign-ghost, */
 .member.leader-icon,
 button.btn_give-leader {
   border: .2rem solid;

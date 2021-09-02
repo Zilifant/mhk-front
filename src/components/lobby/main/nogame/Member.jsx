@@ -7,6 +7,8 @@ import { UserContext, SocketContext } from '../../../../context/contexts';
 import { useGame } from '../../../../hooks/game-hook';
 import { RiVipCrown2Fill } from 'react-icons/ri';
 import { FaGhost } from 'react-icons/fa';
+import SVGButton from '../../../ui-elements/SVGButton';
+import '../../../../styles/buttons.css';
 
 const Member = ({
   member,
@@ -65,12 +67,18 @@ const Member = ({
       {isSelf ? leaderViewSelf() : leaderViewOther()}
 
       <div className='tooltip single left'>
-        <button
+        <SVGButton
+          className={`btn_assign-ghost ${ghost}`}
+          icon='ghost'
+          onClick={() => assignGhostHandler(member.id)}
+          enabled={true}
+        />
+        {/* <button
           className={`member btn_assign-ghost ${ghost}`}
           onClick={() => assignGhostHandler(member.id)}
         >
           <FaGhost/>
-        </button>
+        </button> */}
         <Tooltip tip='assignGhost' />
       </div>
 

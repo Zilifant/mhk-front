@@ -159,7 +159,7 @@
   flex-direction: column;
   background-color: var(--bg4);
   padding: .25rem;
-  border: .2rem solid var(--bg3);
+  border: .2rem solid var(--bg1);
 }
 
 .btn--timer.dec,

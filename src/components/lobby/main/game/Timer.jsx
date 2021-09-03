@@ -4,8 +4,10 @@ import React, {
   useEffect
 } from 'react';
 import Container from '../../../shared/Container';
-import '../../../../styles/timer.css';
+import SVGButton from '../../../ui-elements/SVGButton';
 import { SocketContext } from '../../../../context/contexts';
+import '../../../../styles/timer.css';
+import '../../../../styles/buttons.css';
 
 const Timer = ({
   settings: {on}
@@ -50,7 +52,13 @@ const Timer = ({
   );
 
   const displayOff = () => (
-    <div className='time-wrap'></div>
+    <div className='time-wrap'>
+      <SVGButton
+        className='hourglass'
+        icon='hourglass'
+        disabled={false}
+      />
+    </div>
   );
 
   return (

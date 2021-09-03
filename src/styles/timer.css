@@ -33,3 +33,11 @@
 .time-digits.zero span {
   color: var(--killer);
 }
+
+.svg-btn.hourglass {
+  height: max-content;
+  width: 150%;
+  position: relative;
+  left: -25%;
+  background: none;
+}

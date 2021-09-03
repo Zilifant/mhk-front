@@ -42,7 +42,7 @@ export const useChat = (chat) => {
       args: [],
       senderId: 'app'
     };
-    return last ? last : welcome;
+    return !!last ? last : welcome;
   };
 
   const lastGameAnnouncement = () => {

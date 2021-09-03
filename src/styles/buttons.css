@@ -51,3 +51,15 @@
 .svg-btn.btn_assign-ghost {
   background-color: var(--bg4);
 }
+
+.svg-btn.hourglass svg {
+  fill: var(--bg1);
+}
+
+.svg-btn path.hourglass {
+  fill: wheat;
+}
+
+.svg-btn path.sand {
+  fill: var(--bg3);
+}

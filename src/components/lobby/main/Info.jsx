@@ -61,8 +61,8 @@ const Info = ({
           <Tooltip tip='hideShowName' />
         </div>
         <div className={`info-lobbyid ${lobbyIdHidden ? 'obscured' : 'visible'}`}>
-          {lobbyIdHidden ? 'lobby name hidden' : lobbyId}
-          {/* {lobbyIdHidden ? 'lobby name hidden' : <div className='debug'>lobbyId</div>} */}
+          {/* {lobbyIdHidden ? 'lobby name hidden' : lobbyId} */}
+          {lobbyIdHidden ? 'lobby name hidden' : <div className='debug'>lobbyId</div>}
         </div>
         <div className='tooltip single left'>
           <SVGButton

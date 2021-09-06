@@ -84,7 +84,7 @@ const Member = ({
     <li className='member-grid'>
 
       {isSelf && <button
-        className={`member btn_ready name ${self} ${ready} ${leader}`}
+        className={`thfi member btn_ready name ${self} ${ready} ${leader}`}
         onClick={() => readyHandler(userId)}
       >
         <div className='name-grid'>
@@ -99,7 +99,7 @@ const Member = ({
       </button>}
 
       {!isSelf && <div
-        className={`member wrapper name ${self} ${ready} ${leader}`}
+        className={`thfi member wrapper name ${self} ${ready} ${leader}`}
       >
         <div className='name-grid'>
           <div className="leader_tooltip tooltip single right">
@@ -122,35 +122,6 @@ const Member = ({
     </li>
   );
 
-  // return (
-  //   <li className={`member-wrapper ${self} ${ready} ${leader} ${ghost}`}>
-  //     <Button
-  //       className='member give-leader'
-  //       disabled={!iAmLeader || userId === member.id}
-  //       onClick={() => giveLeaderHandler(member.id)}
-  //     >L</Button>
-  //     <Button
-  //       className='member assign-ghost'
-  //       disabled={!iAmLeader}
-  //       onClick={() => assignGhostHandler(member.id)}
-  //     >G</Button>
-  //     <Button
-  //       className='member ready'
-  //       disabled={userId !== member.id}
-  //       onClick={() => readyHandler(userId)}
-  //     >R</Button>
-  //     <Button
-  //       className='member name'
-  //       disabled={userId !== member.id}
-  //       onClick={() => readyHandler(userId)}
-  //     >
-  //       <div className={`member name-grid`}>
-  //         <div className='leader-icon'>{leader === 'leader' && <RiVipCrown2Fill/>}</div>
-  //         <div className='name'>{member.userName}</div>
-  //       </div>
-  //     </Button>
-  //   </li>
-  // );
 };
 
 export default Member;

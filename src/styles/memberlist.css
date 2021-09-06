@@ -14,17 +14,12 @@
   /* background-color: var(--bg4); */
 }
 
+.container.con--memberlist * {
+  border-radius: var(--rad);
+}
+
 ul.memberlist > :not(:first-child) {
   margin-top: .5rem;
-}
-
-.memberlist {
-  /* padding: .5rem; */
-  background-color: var(--bg4);
-}
-
-.con--memberlist * {
-  border-radius: var(--rad);
 }
 
 .member.wrapper.name { grid-area: name; }
@@ -48,6 +43,10 @@ ul.memberlist > :not(:first-child) {
 .leader_tooltip {
   justify-self: end;
   align-self: center;
+}
+
+.thfi {
+  max-height: 35px;
 }
 
 .name-grid {

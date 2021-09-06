@@ -297,17 +297,13 @@ main.app {
   max-width: 400px;
   background-color: var(--bg5);
   border-radius: var(--rad);
-  padding: .5rem .5rem;
+  padding: .5rem;
   border: 2px solid var(--bg1);
   position: absolute;
   z-index: 1;
   opacity: 0;
   transition: opacity 0.1s;
   cursor: default
-}
-
-.tooltip.single .tooltiptext {
-  padding: 0 .5rem;
 }
 
 .tooltip.left .tooltiptext {

@@ -96,26 +96,21 @@
   background-color: var(--bg4);
 }
 
-.btn--timer.selected {
-  background-color: var(--yell5);
-}
-
-.btn--timer.selected:hover {
-  background-color: var(--yell4);
-}
-
 .timer.value {
   border-radius: var(--rad);
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
-  height: 100%;
   font-size: x-large;
-  padding: 0 .25rem;
+  padding: 0;
   background-color: var(--bg4);
-  min-width: 65px;
   border: var(--bdr2) solid var(--bg1);
+  cursor: default;
+}
+
+.timer.value.off {
+  color: var(--bg1);
 }
 
 .timer.value  { grid-area: va; }
@@ -123,45 +118,19 @@
 .timer.inc    { grid-area: in; }
 
 .timer-wrap {
-  /* width: max-content; */
   border-radius: var(--rad);
   display: grid;
   gap: .5rem;
-  grid-template-columns: repeat(3, 1fr);
-  /* grid-template-rows: max-content; */
+  grid-template-columns: 33.59px 55px 33.59px;
   grid-template-areas:
     'de va in';
 }
 
-/* .timer-wrap {
-  display: flex;
-  border-radius: var(--rad);
-  justify-content: center;
-  align-items: center;
-  flex-direction: column; */
-  /* background-color: var(--bg5); */
-  /* padding: .5rem; */
-  /* border: .2rem solid var(--bg1); */
-/* } */
-
-/* .btn--timer.dec,
-.btn--timer.inc {
-  --dim: 100%;
-  height: var(--dim);
-  width: var(--dim);
-  align-self: center;
+.svg-btn:disabled svg {
+  fill: var(--bg1);
+  cursor: default;
 }
 
-.btn--timer.dec {
-  justify-self: start;
+.timer-wrap.notleader .svg-btn svg {
+  fill: var(--bg2);
 }
-
-.btn--timer.inc {
-  justify-self: end;
-}
-
-.btn--timer.dec svg,
-.btn--timer.inc svg {
-  height: 100%;
-  width: 100%;
-} */

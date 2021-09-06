@@ -76,7 +76,7 @@ const Setup = ({
             <Tooltip tip='advRoles' />
           </div>
         </div>
-  
+
         <div className='setup-section'>
           <div className='settings-title'>Round Timer</div>
           <div className='settings-content timer tooltip left'>

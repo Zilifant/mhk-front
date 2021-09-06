@@ -1,10 +1,8 @@
 import React, {
   useState
 } from 'react';
-// import Button from '../../../ui-elements/Button';
-// import { GoArrowLeft, GoArrowRight } from 'react-icons/go';
 import '../../../../styles/setup.css';
-import '../../../../styles/buttons.css';
+import '../../../../styles/svgs.css';
 import SVGButton from '../../../ui-elements/SVGButton';
 
 const TimerSetup = ({
@@ -47,11 +45,6 @@ const TimerSetup = ({
         icon='minus'
         disabled={!iAmLeader || timer.minReached}
       />
-      {/* <Button
-        className='timer dec'
-        onClick={dec}
-        disabled={timer.minReached}
-      ><GoArrowLeft/></Button> */}
       {timer.val !== 0 && <div className={`timer value on`}>{`${timer.val}:00`}</div>}
       {timer.val === 0 && <div className={`timer value off`}>{'OFF'}</div>}
       <SVGButton
@@ -60,28 +53,8 @@ const TimerSetup = ({
         icon='plus'
         disabled={!iAmLeader || timer.maxReached}
       />
-      {/* <Button
-        className='timer inc'
-        onClick={inc}
-        disabled={!iAmLeader || timer.maxReached}
-      ><GoArrowRight/></Button> */}
     </div>
   );
-
-  // const timerBasic = () => (
-  //   <div className='timer-wrap leader'>
-  //   <div
-  //     className='timer dec'
-  //   ><GoArrowLeft/></div>
-  //   <div>{gameSettings.timer.on ? `${gameSettings.timer.duration}:00` : 'OFF'}</div>
-  //   <div
-  //     className='timer inc'
-  //   ><GoArrowRight/></div>
-  // </div>
-  //   // <div className='timer-wrap'>
-  //   //   <div>{gameSettings.timer.on ? `${gameSettings.timer.duration}:00` : 'OFF'}</div>
-  //   // </div>
-  // );
 
   return timerLeader();
 };

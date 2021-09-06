@@ -7,7 +7,7 @@ import Container from '../../../shared/Container';
 import SVGButton from '../../../ui-elements/SVGButton';
 import { SocketContext } from '../../../../context/contexts';
 import '../../../../styles/timer.css';
-import '../../../../styles/buttons.css';
+import '../../../../styles/svgs.css';
 
 const Timer = ({
   settings: {on}

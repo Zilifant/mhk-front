@@ -1,7 +1,4 @@
-/* BUTTONS */
-
-
-/* SVG BUTTONS */
+/* SVGS */
 
 .svg-btn {
   display: flex;
@@ -12,6 +9,32 @@
   overflow: hidden;
 }
 
+.svg-icon {
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg4);
+  border-radius: var(--rad);
+  overflow: hidden;
+}
+
+.svg-icon svg {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  stroke-linejoin: round;
+  stroke-miterlimit: 2;
+  margin: 0;
+}
+
+/* .svg-btn.crown {
+  height: max-content;
+  width: max-content;
+}
+
+.svg-btn.crown svg {
+  min-height: 100%;
+} */
+
+.svg-icon rect,
 .svg-btn rect {
   fill: none;
 }
@@ -23,7 +46,10 @@
   stroke-miterlimit: 2;
   margin: 0;
   fill: var(--cyan5);
-  transition: 0.3s;
+  transition: 0.1s;
+  /* min-height: 30.59px; */
+  /* height: 100%; */
+  /* width: 100%; */
 }
 
 .svg-btn svg.imported {
@@ -32,24 +58,13 @@
   min-height: 30.59px;
 }
 
-.svg-btn.timer {
-  height: 100%;
-  width: 100%;
-  min-height: 30.59px;
-}
-
 .svg-btn svg.imported.copy {
-  /* min-height: 25px; */
   width: 90%;
 }
 
 .svg-btn:hover svg {
   fill: var(--cyan4);
-  transition: 0.3s;
-}
-
-.svg-btn.btn_assign-ghost {
-  background-color: var(--bg4);
+  transition: 0.1s;
 }
 
 .svg-btn.hourglass svg {

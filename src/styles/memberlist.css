@@ -27,24 +27,49 @@ ul.memberlist > :not(:first-child) {
   border-radius: var(--rad);
 }
 
+.member.wrapper.name { grid-area: name; }
+.member.btn_ready.name { grid-area: name; }
+.member.ghost-icon { grid-area: ghost; }
+.assign_ghost_tooltip { grid-area: ghost; }
+
 .member-grid {
+  height: 35px;
   display: grid;
   gap: var(--gap);
   grid-template-columns: 1fr max-content 1fr;
+  grid-template-areas:
+    '. name ghost';
+}
+
+.name-grid div.leader_tooltip { grid-area: leader; }
+.name-grid div.name { grid-area: username; }
+
+.not-leader-view,
+.leader_tooltip {
+  justify-self: end;
+  align-self: center;
+}
+
+.name-grid {
+  display: grid;
+  height: 35px;
+  gap: var(--gap);
+  grid-template-columns: 1fr max-content 1fr;
+  grid-template-rows: 35px;
+  grid-template-areas:
+    'leader username .';
 }
 
 .member.name {
-  width: calc(200px);
-  padding: .15rem 0;
-  border: .2rem solid;
-  font-size: large;
-  text-align: center;
+  width: 200px;
+  /* padding: .15rem 0; */
+  /* border: .2rem solid; */
 }
 
-button.member,
-div.member {
-  display: flex;
-  justify-content: center;
+.name-grid div.name {
+  font-size: x-large;
+  text-align: center;
+  align-self: center;
 }
 
 .member.name.ml-self {
@@ -78,19 +103,13 @@ button.btn_ready.ml-self.ml-ready:hover {
 .member.name.ml-other {
   background-color: var(--bg-other);
   border-color: var(--bg-other);
+  cursor: default;
 }
 
+.not-leader-view.ml-notleader,
 .member.ghost-icon.ml-notghost {
   visibility: hidden;
 }
-
-/* button.btn_assign-ghost, */
-/* .member.ghost-icon.ml-ghost {
-  padding: .15rem .25rem;
-  border: .2rem solid;
-  text-transform: uppercase;
-  display: block;
-} */
 
 .member.ghost-icon.ml-ghost {
   color: var(--ghost);
@@ -98,6 +117,39 @@ button.btn_ready.ml-self.ml-ready:hover {
   background-color: var(--bg4);
   font-weight: bold;
   cursor: default;
+}
+
+.svg-icon.ghost,
+.svg-btn.btn_assign-ghost {
+  background-color: var(--bg4);
+}
+
+.svg-icon.ghost,
+.svg-icon.crown {
+  background-color: inherit;
+}
+
+.svg-btn.crown {
+  display: block;
+}
+
+.svg-btn.crown svg {
+  height: 18px;
+  fill: var(--bg3);
+}
+
+.svg-btn.crown:hover svg {
+  fill: var(--leader);
+}
+
+.svg-icon.crown svg {
+  height: 18px;
+  fill: var(--leader);
+}
+
+.svg-icon.ghost svg,
+.svg-btn.btn_assign-ghost svg {
+  height: 35px;
 }
 
 .member.ghost-icon.ml-ghost svg {
@@ -120,11 +172,11 @@ button.btn_assign-ghost.ml-ghost:hover svg {
   fill: var(--ghostli);
 }
 
-.member.ghost-icon.ml-ghost,
+/* .member.ghost-icon.ml-ghost, */
 /* button.btn_assign-ghost, */
 .member.leader-icon,
 button.btn_give-leader {
-  border: .2rem solid;
+  /* border: .2rem solid; */
   /* height: 100%; */
   justify-self: end;
   background-color: var(--bg5);
@@ -142,14 +194,14 @@ button.btn_give-leader {
   visibility: hidden;
 }
 
-.member svg {
+/* .member svg {
   margin: 2.5px;
   height: 20px;
   width: 20px;
-}
+} */
 
 
-button.btn_give-leader svg {
+/* button.btn_give-leader svg {
   fill: var(--bg1);
 }
 
@@ -163,7 +215,7 @@ button.btn_give-leader:hover svg {
 
 .member.leader-icon.ml-leader svg {
   fill: var(--leader);
-}
+} */
 
 /* .member-wrapper * {
   display: inline-block;

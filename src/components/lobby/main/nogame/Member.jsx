@@ -1,14 +1,12 @@
 import React, {
   useContext
 } from 'react';
-// import Button from '../../../ui-elements/Button';
 import Tooltip from '../../../shared/Tooltip';
+import SVGButton from '../../../ui-elements/SVGButton';
+import SVGIcon from '../../../ui-elements/SVGIcon';
 import { UserContext, SocketContext } from '../../../../context/contexts';
 import { useGame } from '../../../../hooks/game-hook';
-import { RiVipCrown2Fill } from 'react-icons/ri';
-import { FaGhost } from 'react-icons/fa';
-import SVGButton from '../../../ui-elements/SVGButton';
-import '../../../../styles/buttons.css';
+import '../../../../styles/svgs.css';
 
 const Member = ({
   member,
@@ -26,52 +24,53 @@ const Member = ({
   const leader = member.isLeader ? 'ml-leader' : 'ml-notleader';
   const ghost = member.isAssignedToGhost ? 'ml-ghost' : 'ml-notghost';
 
-  const leaderViewSelf = () => (<>
-
-    <div className={`member leader-icon ${leader}`}>
-      <RiVipCrown2Fill/>
-    </div>
+  const leaderViewSelf = () => (
 
     <button
       className={`member btn_ready name ${self} ${ready} ${leader}`}
       onClick={() => readyHandler(userId)}
     >
-      {member.userName}
+      <div className='name-grid'>
+        <div className="leader_tooltip tooltip single right">
+          <SVGIcon icon='crown' />
+          <Tooltip tip='youAreLeader' />
+        </div>
+        <div className='name'>{member.userName}</div>
+      </div>
     </button>
 
-  </>);
+  );
 
-  const leaderViewOther = () => (<>
+  const leaderViewOther = () => (
 
-    <div className='tooltip single right'>
-      <button
-        className={`member btn_give-leader`}
-        onClick={() => giveLeaderHandler(member.id)}
-      >
-        <RiVipCrown2Fill/>
-      </button>
-      <Tooltip tip='transferLeader' />
+    <div className={`member wrapper name ${self} ${ready} ${leader}`}>
+      <div className='name-grid'>
+        <div className="leader_tooltip tooltip single right">
+          <SVGButton
+            className='member btn_give-leader'
+            icon='crown'
+            onClick={() => giveLeaderHandler(member.id)}
+            disabled={false}
+          />
+          <Tooltip tip='transferLeader' />
+        </div>
+        <div className={`name ${self} ${ready} ${leader}`}>{member.userName}</div>
+      </div>
     </div>
 
-    <div
-      className={`member name ${self} ${ready} ${leader}`}
-    >
-      {member.userName}
-    </div>
-
-  </>);
+  );
 
   const leaderView = () => (
     <li className='member-grid'>
 
       {isSelf ? leaderViewSelf() : leaderViewOther()}
 
-      <div className='tooltip single left'>
+      <div className='assign_ghost_tooltip tooltip single left'>
         <SVGButton
           className={`btn_assign-ghost ${ghost}`}
           icon='ghost'
           onClick={() => assignGhostHandler(member.id)}
-          enabled={true}
+          disabled={false}
         />
         <Tooltip tip='assignGhost' />
       </div>
@@ -84,25 +83,40 @@ const Member = ({
   return (
     <li className='member-grid'>
 
-      <div className={`member leader-icon ${leader}`}>
-        <RiVipCrown2Fill/>
-      </div>
-
       {isSelf && <button
         className={`member btn_ready name ${self} ${ready} ${leader}`}
         onClick={() => readyHandler(userId)}
       >
-        {member.userName}
+        <div className='name-grid'>
+          <div className="leader_tooltip tooltip single right">
+            <SVGIcon
+              icon='crown'
+              className={`not-leader-view ${leader}`}
+            />
+          </div>
+          <div className='name'>{member.userName}</div>
+        </div>
       </button>}
 
       {!isSelf && <div
-        className={`member name ${self} ${ready} ${leader}`}
+        className={`member wrapper name ${self} ${ready} ${leader}`}
       >
-        {member.userName}
-      </div>}
+        <div className='name-grid'>
+          <div className="leader_tooltip tooltip single right">
+            <SVGIcon
+              icon='crown'
+              className={`not-leader-view ${leader}`}
+            />
+            </div>
+            <div className='name'>{member.userName}</div>
+          </div>
+        </div>}
 
       <div className={`member ghost-icon ${ghost}`}>
-        <FaGhost/>
+        <SVGIcon
+          className={`${ghost}`}
+          icon='ghost'
+        />
       </div>
 
     </li>

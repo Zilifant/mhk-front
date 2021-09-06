@@ -4,7 +4,9 @@
   display: flex;
   height: 100%;
   width: 100%;
-  background-color: var(--bg4);
+  max-height: 50px;
+  max-width: 50px;
+  background-color: inherit;
   border-radius: var(--rad);
   overflow: hidden;
 }
@@ -12,7 +14,9 @@
 .svg-icon {
   height: 100%;
   width: 100%;
-  background-color: var(--bg4);
+  max-height: 50px;
+  max-width: 50px;
+  background-color: inherit;
   border-radius: var(--rad);
   overflow: hidden;
 }
@@ -23,16 +27,8 @@
   stroke-linejoin: round;
   stroke-miterlimit: 2;
   margin: 0;
+  fill: var(--default);
 }
-
-/* .svg-btn.crown {
-  height: max-content;
-  width: max-content;
-}
-
-.svg-btn.crown svg {
-  min-height: 100%;
-} */
 
 .svg-icon rect,
 .svg-btn rect {
@@ -45,11 +41,8 @@
   stroke-linejoin: round;
   stroke-miterlimit: 2;
   margin: 0;
-  fill: var(--cyan5);
+  fill: var(--libl6);
   transition: 0.1s;
-  /* min-height: 30.59px; */
-  /* height: 100%; */
-  /* width: 100%; */
 }
 
 .svg-btn svg.imported {
@@ -63,7 +56,7 @@
 }
 
 .svg-btn:hover svg {
-  fill: var(--cyan4);
+  fill: var(--libl5);
   transition: 0.1s;
 }
 

@@ -11,6 +11,7 @@ import Foyer from './components/lobby/Foyer';
 import Landing from './components/landing/Landing';
 import './styles/colors.css';
 import './styles/default.css';
+import './styles/svgs.css';
 
 function App() {
   console.log('%cApp','color:#79e6f9');

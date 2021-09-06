@@ -6,7 +6,6 @@ import SVGButton from '../../../ui-elements/SVGButton';
 import SVGIcon from '../../../ui-elements/SVGIcon';
 import { UserContext, SocketContext } from '../../../../context/contexts';
 import { useGame } from '../../../../hooks/game-hook';
-import '../../../../styles/svgs.css';
 
 const Member = ({
   member,
@@ -24,101 +23,71 @@ const Member = ({
   const leader = member.isLeader ? 'ml-leader' : 'ml-notleader';
   const ghost = member.isAssignedToGhost ? 'ml-ghost' : 'ml-notghost';
 
-  const leaderViewSelf = () => (
+  const LeaderIcon = () => {
 
-    <button
-      className={`member btn_ready name ${self} ${ready} ${leader}`}
-      onClick={() => readyHandler(userId)}
-    >
-      <div className='name-grid'>
-        <div className="leader_tooltip tooltip single right">
-          <SVGIcon icon='crown' />
-          <Tooltip tip='youAreLeader' />
-        </div>
-        <div className='name'>{member.userName}</div>
-      </div>
-    </button>
+    if (!iAmLeader || (iAmLeader && isSelf)) return (
+      <SVGIcon
+        icon='crown'
+        className={leader}
+      />
+    );
 
-  );
-
-  const leaderViewOther = () => (
-
-    <div className={`member wrapper name ${self} ${ready} ${leader}`}>
-      <div className='name-grid'>
-        <div className="leader_tooltip tooltip single right">
-          <SVGButton
-            className='member btn_give-leader'
-            icon='crown'
-            onClick={() => giveLeaderHandler(member.id)}
-            disabled={false}
-          />
-          <Tooltip tip='transferLeader' />
-        </div>
-        <div className={`name ${self} ${ready} ${leader}`}>{member.userName}</div>
-      </div>
-    </div>
-
-  );
-
-  const leaderView = () => (
-    <li className='member-grid'>
-
-      {isSelf ? leaderViewSelf() : leaderViewOther()}
-
-      <div className='assign_ghost_tooltip tooltip single left'>
+    if (iAmLeader && !isSelf) return (
+      <div className='tooltip right'>
         <SVGButton
-          className={`btn_assign-ghost ${ghost}`}
+          icon='crown'
+          className='transfer-leader'
+          onClick={() => giveLeaderHandler(member.id)}
+          disabled={false}
+        />
+        <Tooltip tip='transferLeader' />
+      </div>
+    );
+  }
+
+  const GhostIcon = () => {
+
+    if (!iAmLeader) return (
+      <SVGIcon
+        icon='ghost'
+        className={ghost}
+      />
+    );
+
+    if (iAmLeader) return (
+      <div className='tooltip left'>
+        <SVGButton
           icon='ghost'
+          className={`assign-ghost ${ghost}`}
           onClick={() => assignGhostHandler(member.id)}
           disabled={false}
         />
         <Tooltip tip='assignGhost' />
       </div>
+    );
 
-    </li>
-  );
+  };
 
-  if (iAmLeader) return leaderView();
+  const ReadyToggle = () => {
+
+    if (!isSelf) return null;
+
+    return (
+      <SVGButton
+        icon={member.isReady ? 'minus' : 'plus'}
+        className={`ready-toggle ${ready}`}
+        onClick={() => readyHandler(userId)}
+      />
+    );
+
+  };
 
   return (
-    <li className='member-grid'>
-
-      {isSelf && <button
-        className={`thfi member btn_ready name ${self} ${ready} ${leader}`}
-        onClick={() => readyHandler(userId)}
-      >
-        <div className='name-grid'>
-          <div className="leader_tooltip tooltip single right">
-            <SVGIcon
-              icon='crown'
-              className={`not-leader-view ${leader}`}
-            />
-          </div>
-          <div className='name'>{member.userName}</div>
-        </div>
-      </button>}
-
-      {!isSelf && <div
-        className={`thfi member wrapper name ${self} ${ready} ${leader}`}
-      >
-        <div className='name-grid'>
-          <div className="leader_tooltip tooltip single right">
-            <SVGIcon
-              icon='crown'
-              className={`not-leader-view ${leader}`}
-            />
-            </div>
-            <div className='name'>{member.userName}</div>
-          </div>
-        </div>}
-
-      <div className={`member ghost-icon ${ghost}`}>
-        <SVGIcon
-          className={`${ghost}`}
-          icon='ghost'
-        />
-      </div>
-
+    <li className={`member_grid ${ready} ${self}`}>
+      <div className="leader_icon">{LeaderIcon()}</div>
+      <div className="member_name">{member.userName}</div>
+      <div className="ghost_icon">{GhostIcon()}</div>
+      <div className="ready_toggle">{ReadyToggle()}</div>
     </li>
   );
 

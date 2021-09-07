@@ -7,7 +7,6 @@
   max-height: 50px;
   max-width: 50px;
   background-color: inherit;
-  border-radius: var(--rad);
   overflow: hidden;
 }
 
@@ -17,7 +16,6 @@
   max-height: 50px;
   max-width: 50px;
   background-color: inherit;
-  border-radius: var(--rad);
   overflow: hidden;
 }
 
@@ -57,7 +55,7 @@
 
 .svg-btn:hover svg {
   fill: var(--libl5);
-  transition: 0.1s;
+  /* transition: 0.1s; */
 }
 
 .svg-btn.hourglass svg {

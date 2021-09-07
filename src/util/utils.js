@@ -2,6 +2,7 @@
 
 export const randomName = () => {
   const names = [
+    // 'MMMMMMMMMM',
     'nemo','cassandra','olivia','ragnar','brand','hera','violet','dagny','baldur','sigurd','rhialto','corwin','bethany','zane','athena','dane','meladius','darius','gloin','chang','sandor','gerrard','freya','zanzel','madeline','camilla','arronax', 'balthazar', 'calypso', 'agamemnon', 'darwin', 'diedre'
   ];
   const name = names[Math.floor(Math.random()*names.length)];

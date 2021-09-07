@@ -83,10 +83,12 @@ const Member = ({
   };
 
   return (
-    <li className={`member_grid ${ready} ${self}`}>
-      <div className="leader_icon">{LeaderIcon()}</div>
-      <div className="member_name">{member.userName}</div>
-      <div className="ghost_icon">{GhostIcon()}</div>
+    <li className='ready_grid'>
+      <div className={`member_grid ${ready} ${self}`}>
+        <div className="ghost_icon">{GhostIcon()}</div>
+        <div className="leader_icon">{LeaderIcon()}</div>
+        <div className="member_name">{member.userName}</div>
+      </div>
       <div className="ready_toggle">{ReadyToggle()}</div>
     </li>
   );

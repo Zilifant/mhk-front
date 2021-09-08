@@ -1,5 +1,6 @@
 
 import { parseSMDLines, renderStyledLines } from '../../util/styled-text';
+import '../../styles/tooltips.css';
 
 const tooltips = {
   waitMorePlayers: 'At least ^_k_4^ players are needed to start.<^_k_5^ or more are recommended.',
@@ -12,12 +13,19 @@ const tooltips = {
   hideShowName: 'Hide/show lobby name',
 };
 
-function renderTooltip(tip) {
+function renderTooltip(tip, side) {
   if (!tooltips[tip]) return null;
   const parsedTip = parseSMDLines({lines: tooltips[tip]});
-  return renderStyledLines(parsedTip, {wrapper: 'tooltiptext'});
+  return (<>
+    {renderStyledLines(parsedTip, {wrapper: `ttip ${side}`})}
+    <i></i>
+  </>);
+  // return renderStyledLines(parsedTip, {wrapper: `ttip ${side}`});
 };
 
-const Tooltip = ({tip}) => renderTooltip(tip);
+const Tooltip = ({
+  tip,
+  side
+}) => renderTooltip(tip, side);
 
 export default Tooltip;

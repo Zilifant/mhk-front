@@ -22,9 +22,12 @@
   width: 180px;
 }
 
-.start button {
+.btn--startgame {
   font-size: x-large;
   padding: .5rem;
+}
+
+.ttip-parent.startgame {
   margin-bottom: 1rem;
 }
 

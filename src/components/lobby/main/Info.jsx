@@ -11,6 +11,7 @@ import Tooltip from '../../shared/Tooltip';
 import SVGButton from '../../ui-elements/SVGButton';
 import '../../../styles/info.css';
 import '../../../styles/svgs.css';
+import '../../../styles/tooltips.css';
 
 const Info = ({
   gameOn,
@@ -51,26 +52,26 @@ const Info = ({
   if (!gameOn) return (
     <Container className='info nogame'>
       <div className='lobbyid-wrap'>
-        <div className='tooltip single right'>
+        <div className='ttip-parent'>
           <SVGButton
             className='hidelobbyid'
             icon={lobbyIdHidden ? 'show' : 'hide'}
             onClick={hideLobbyIdHandler}
             disabled={false}
           />
-          <Tooltip tip='hideShowName' />
+          <Tooltip tip='hideShowName' side='bottom' />
         </div>
         <div className={`info-lobbyid ${lobbyIdHidden ? 'obscured' : 'visible'}`}>
           {lobbyIdHidden ? 'lobby name hidden' : lobbyId}
         </div>
-        <div className='tooltip single left'>
+        <div className='ttip-parent'>
           <SVGButton
             className='copyurl'
             icon='copy'
             onClick={() => textToClipboard(`mhk-front.herokuapp.com/${lobbyId}`)}
             disabled={false}
           />
-          <Tooltip tip='copyUrl' />
+          <Tooltip tip='copyUrl' side='bottom' />
         </div>
       </div>
     </Container>

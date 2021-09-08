@@ -33,14 +33,14 @@ const Member = ({
     );
 
     if (iAmLeader && !isSelf) return (
-      <div className='tooltip right'>
+      <div className='ttip-parent'>
         <SVGButton
           icon='crown'
           className='transfer-leader'
           onClick={() => giveLeaderHandler(member.id)}
           disabled={false}
         />
-        <Tooltip tip='transferLeader' />
+        <Tooltip tip='transferLeader' side='bottom' />
       </div>
     );
   }
@@ -55,14 +55,14 @@ const Member = ({
     );
 
     if (iAmLeader) return (
-      <div className='tooltip left'>
+      <div className='ttip-parent'>
         <SVGButton
           icon='ghost'
           className={`assign-ghost ${ghost}`}
           onClick={() => assignGhostHandler(member.id)}
           disabled={false}
         />
-        <Tooltip tip='assignGhost' />
+        <Tooltip tip='assignGhost' side='bottom' />
       </div>
     );
 

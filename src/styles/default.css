@@ -274,7 +274,7 @@ main.app {
 
 /* TOOLTIPS */
 
-.tooltip {
+/* .tooltip {
   position: relative;
 }
 
@@ -307,28 +307,10 @@ main.app {
   right: calc(100% + var(--gap));
 }
 
-.tooltiptext span {
-  line-height: 1.5rem;
-  font-size: larger;
-}
-
-.tooltiptext .faded span {
-  color: var(--bg1);
-}
-
-.emphasize {
-  font-weight: bold;
-  /* font-style: italic; */
-}
-
-.tooltiptext :not(:first-child) {
-  margin-top: .25rem;
-}
-
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
-}
+} */
 
 /* 
 .tooltip .tooltiptext::after {
@@ -341,6 +323,11 @@ main.app {
   border-style: solid;
   border-color: #555 transparent transparent transparent;
 } */
+
+.emphasize {
+  font-weight: bold;
+  /* font-style: italic; */
+}
 
 /* BUTTONS */
 

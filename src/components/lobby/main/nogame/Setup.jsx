@@ -60,32 +60,33 @@ const Setup = ({
     <Container className={`setup ${iAmLeader ? 'leader' : 'notleader'}`}>
 
       {iAmLeader &&
-      <div className='start tooltip left'>
+      <div className='startgame ttip-parent'>
         <Button
+          className='startgame'
           onClick={startGameHandler}
           disabled={!lobby.canStart()}
         >Start Game</Button>
-        <Tooltip tip='waitMorePlayers' />
+        <Tooltip tip='waitMorePlayers' side='top' />
       </div>}
 
       <div className='settings'>
         <div className='setup-section'>
           <div className='settings-title'>Advanced Roles</div>
-          <div className='settings-content roles tooltip right'>
+          <div className='settings-content roles ttip-parent'>
             {iAmLeader ? advRolesLeader() : advRolesBasic()}
-            <Tooltip tip='advRoles' />
+            <Tooltip tip='advRoles' side='bottom' />
           </div>
         </div>
 
         <div className='setup-section'>
           <div className='settings-title'>Round Timer</div>
-          <div className='settings-content timer tooltip left'>
+          <div className='settings-content timer ttip-parent'>
             <TimerSetup
               iAmLeader={iAmLeader}
               gameSettings={gameSettings}
               chooseTimerHandler={chooseTimerHandler}
             />
-            <Tooltip tip='timerSetup' />
+            <Tooltip tip='timerSetup' side='bottom' />
           </div>
         </div>
       </div>

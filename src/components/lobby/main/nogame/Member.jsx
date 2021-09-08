@@ -85,7 +85,7 @@ const Member = ({
       // </button>
       <SVGButton
         // icon={member.isReady ? 'minus' : 'plus'}
-        icon='check'
+        icon='rSq'
         className={`ready-toggle ${ready}`}
         onClick={() => readyHandler(userId)}
       />

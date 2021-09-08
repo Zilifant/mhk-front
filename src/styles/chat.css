@@ -19,6 +19,12 @@
   justify-content: center;
 }
 
+.svg-btn.minimize-chat {
+  width: 20px;
+  height: 20px;
+  margin-bottom: .5rem;
+}
+
 .chatfeed {
   display: flex;
   flex-direction: column;

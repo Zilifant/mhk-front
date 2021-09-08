@@ -8,8 +8,7 @@ import { useChat } from '../../../hooks/chat-hook';
 import Container from '../../shared/Container';
 import ChatFeed from './ChatFeed';
 import NewMessage from './NewMessage';
-import Button from '../../ui-elements/Button';
-// import { HiChat } from 'react-icons/hi';
+import SVGButton from '../../ui-elements/SVGButton';
 import '../../../styles/chat.css';
 
 const Chat = ({ chat, users }) => {
@@ -36,12 +35,11 @@ const Chat = ({ chat, users }) => {
   }, [subToChat, subToAnnounce]);
 
   const MinimizeChatButton = () => (
-    <Button
+    <SVGButton
+      icon='chat'
       className='minimize-chat'
       onClick={minimizeHandler}
-    >
-    {minimized ? 'CHAT' : 'HIDE'}
-    </Button>
+    />
   );
 
   if (minimized) return (

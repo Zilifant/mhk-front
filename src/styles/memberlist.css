@@ -50,7 +50,7 @@ div.member_grid.ml-self > .member_name {
 }
 
 div.member_grid.ml-notready {
-  border-color: var(--bg1);
+  border-color: var(--bg2);
 }
 
 div.member_grid.ml-ready {
@@ -109,18 +109,26 @@ div.member_grid:hover > .ghost_icon .svg-btn.assign-ghost.ml-notghost svg {
   fill: var(--ghostli);
 } */
 
-.svg-btn.ready-toggle.ml-ready svg {
-  fill: var(--ready);
+.svg-btn.ready-toggle {
+  border-radius: var(--rad);
 }
 
-.svg-btn.ready-toggle.ml-notready svg {
-  fill: var(--bg1);
-}
-
-.svg-btn.ready-toggle.ml-ready:hover svg {
+.svg-btn.ready-toggle svg .letter {
   fill: var(--default);
 }
 
-.svg-btn.ready-toggle.ml-notready:hover svg {
+.svg-btn.ready-toggle.ml-ready svg .background {
+  fill: var(--ready);
+}
+
+.svg-btn.ready-toggle.ml-notready svg .background {
+  fill: var(--bg2);
+}
+
+.svg-btn.ready-toggle.ml-ready:hover svg .background {
   fill: var(--readyli);
+}
+
+.svg-btn.ready-toggle.ml-notready:hover svg .background {
+  fill: var(--bg1);
 }

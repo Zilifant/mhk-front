@@ -39,8 +39,7 @@
   stroke-linejoin: round;
   stroke-miterlimit: 2;
   margin: 0;
-  fill: var(--libl6);
-  /* transition: 0.1s; */
+  fill: var(--default);
 }
 
 .svg-btn svg.imported {
@@ -54,6 +53,5 @@
 }
 
 .svg-btn:hover svg {
-  fill: var(--libl5);
-  /* transition: 0.1s; */
+  fill: var(--white);
 }

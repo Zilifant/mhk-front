@@ -111,6 +111,9 @@ div.member_grid:hover > .ghost_icon .svg-btn.assign-ghost.ml-notghost svg {
 
 .svg-btn.ready-toggle {
   border-radius: var(--rad);
+  /* max-height: 100%;
+  justify-self: center;
+  align-self: center; */
 }
 
 .svg-btn.ready-toggle svg .letter {

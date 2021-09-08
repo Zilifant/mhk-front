@@ -254,15 +254,6 @@ main.app {
   padding: 0;
 }
 
-.con--lobbychat,
-.con--lobbymain {
-  background: var(--bg3);
-}
-
-.con--lobbymain {
-  min-width: 500px;
-}
-
 .con--uni-footer {
   background-color: var(--bg5);
   /* height: 40px; */
@@ -404,10 +395,6 @@ main.app {
   background-color: var(--redd4);
 }
 
-.btn--chat-temp {
-  margin-left: .5rem
-}
-
 .btn--confirm-kill,
 .btn--confirm-accusation,
 .btn--confirm-key-evidence {
@@ -458,17 +445,19 @@ main.app {
 
 .input,
 .textarea {
-  /* border: 1px solid var(--colg5); */
   border: none;
   border-radius: var(--rad);
-  background: var(--bg4);
-  padding: 0.15rem 0.25rem;
+  background: var(--bg5);
+  padding: 0.25rem;
+}
+
+::placeholder {
+  color: var(--bg2);
 }
 
 .input:focus,
 .textarea:focus {
   outline: none;
-  /* border: 1px solid var(--cyan6); */
 }
 
 .join-lobby-inputs-wrapper {

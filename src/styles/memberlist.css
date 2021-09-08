@@ -50,11 +50,11 @@ div.member_grid.ml-self > .member_name {
 }
 
 div.member_grid.ml-notready {
-  border-color: var(--ready);
+  border-color: var(--bg1);
 }
 
 div.member_grid.ml-ready {
-  border-color: var(--bg1);
+  border-color: var(--ready);
 }
 
 div.member_name {
@@ -91,23 +91,30 @@ div.leader_icon {
 }
 
 .svg-btn.assign-ghost.ml-notghost svg {
-  fill: var(--default);
-}
-
-.svg-btn.assign-ghost.ml-ghost:hover svg {
-  fill: var(--ghostli);
-}
-
-.svg-btn.assign-ghost.ml-notghost:hover svg {
-  fill: var(--ghostli);
-}
-
-.svg-btn.ready-toggle.ml-ready svg {
   fill: var(--bg1);
 }
 
-.svg-btn.ready-toggle.ml-notready svg {
+div.member_grid:hover > .leader_icon .svg-btn.transfer-leader svg {
+  fill: var(--leader);
+  transition: 0;
+}
+
+div.member_grid:hover > .ghost_icon .svg-btn.assign-ghost.ml-notghost svg {
+  fill: var(--ghost);
+  transition: 0;
+}
+
+/* .svg-btn.assign-ghost.ml-notghost:active svg,
+.svg-btn.assign-ghost.ml-ghost:active svg {
+  fill: var(--ghostli);
+} */
+
+.svg-btn.ready-toggle.ml-ready svg {
   fill: var(--ready);
+}
+
+.svg-btn.ready-toggle.ml-notready svg {
+  fill: var(--bg1);
 }
 
 .svg-btn.ready-toggle.ml-ready:hover svg {

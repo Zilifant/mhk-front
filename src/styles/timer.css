@@ -34,10 +34,43 @@
   color: var(--killer);
 }
 
-.svg-btn.hourglass {
+.svg-icon.hourglass svg {
+  fill: var(--bg1);
+}
+
+.svg-icon path.glass {
+  fill: var(--default);
+}
+
+.svg-icon path.sand {
+  fill: var(--viol5);
+}
+
+.svg-icon.hourglass {
+  display: flex;
   height: max-content;
-  width: 150%;
-  position: relative;
-  left: -25%;
+  /* max-height: none;
+  max-width: none; */
+  /* width: 150%; */
+  /* position: relative; */
+  /* left: -25%; */
   background: none;
+}
+
+.time-wrap * {
+  border-radius: var(--rad);
+  display: flex;
+  flex-grow: 1;
+}
+
+.time-wrap :not(:first-child) {
+  margin-top: .5rem;
+}
+
+.time-wrap .show {
+  background-color: var(--ready);
+}
+
+.time-wrap .hide {
+  visibility: hidden;
 }

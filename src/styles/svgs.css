@@ -13,8 +13,8 @@
 .svg-icon {
   height: 100%;
   width: 100%;
-  max-height: 50px;
-  max-width: 50px;
+  /* max-height: 50px;
+  max-width: 50px; */
   background-color: inherit;
   overflow: hidden;
 }
@@ -40,7 +40,7 @@
   stroke-miterlimit: 2;
   margin: 0;
   fill: var(--libl6);
-  transition: 0.1s;
+  /* transition: 0.1s; */
 }
 
 .svg-btn svg.imported {
@@ -56,16 +56,4 @@
 .svg-btn:hover svg {
   fill: var(--libl5);
   /* transition: 0.1s; */
-}
-
-.svg-btn.hourglass svg {
-  fill: var(--bg1);
-}
-
-.svg-btn path.hourglass {
-  fill: wheat;
-}
-
-.svg-btn path.sand {
-  fill: var(--bg3);
 }

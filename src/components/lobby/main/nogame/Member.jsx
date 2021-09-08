@@ -73,8 +73,19 @@ const Member = ({
     if (!isSelf) return null;
 
     return (
+      // <button
+      //   className='ready-toggle-btn'
+      //   onClick={() => readyHandler(userId)}
+      //   disabled={false}
+      // >
+      //   <SVGIcon
+      //     icon='check'
+      //     className={`ready-toggle ${ready}`}
+      //   />
+      // </button>
       <SVGButton
-        icon={member.isReady ? 'minus' : 'plus'}
+        // icon={member.isReady ? 'minus' : 'plus'}
+        icon='check'
         className={`ready-toggle ${ready}`}
         onClick={() => readyHandler(userId)}
       />

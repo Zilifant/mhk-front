@@ -133,7 +133,7 @@ main.app {
   height: 100%;
 }
 
-.grid--lobby-nogame {
+.grid--lobby-nogame.chat {
   gap: var(--gap);
   grid-template-columns: 600px max-content;
   grid-template-rows: repeat(3, max-content) 1fr max-content;
@@ -145,12 +145,24 @@ main.app {
     "devu devu";
 }
 
+.grid--lobby-nogame.nochat {
+  gap: var(--gap);
+  grid-template-columns: 600px max-content;
+  grid-template-rows: repeat(3, max-content) 1fr max-content;
+  grid-template-areas:
+    "anno chat"
+    "info info"
+    "setu setu"
+    "list list"
+    "devu devu";
+}
+
 .grid--lobby-game-ghost,
 .grid--lobby-game {
   grid-template-columns: max-content 1fr max-content;
 }
 
-.grid--lobby-game {
+.grid--lobby-game.chat {
   grid-template-rows: repeat(3, max-content) 1fr repeat(2, max-content);
   grid-template-areas:
     "anno anno chat"
@@ -161,13 +173,34 @@ main.app {
     "devu devu devu";
 }
 
-.grid--lobby-game-ghost {
+.grid--lobby-game-ghost.chat {
   grid-template-rows: repeat(2, max-content) 1fr repeat(2, max-content);
   grid-template-areas:
     "anno anno chat"
     "info info chat"
-    "play play chat"
     "self time chat"
+    "play play chat"
+    "devu devu devu";
+}
+
+.grid--lobby-game.nochat {
+  grid-template-rows: repeat(3, max-content) 1fr repeat(2, max-content);
+  grid-template-areas:
+    "anno anno chat"
+    "info info info"
+    "ghst time time"
+    "play play play"
+    "self self self"
+    "devu devu devu";
+}
+
+.grid--lobby-game-ghost.nochat {
+  grid-template-rows: repeat(2, max-content) 1fr repeat(2, max-content);
+  grid-template-areas:
+    "anno anno chat"
+    "info info info"
+    "self time time"
+    "play play play"
     "devu devu devu";
 }
 

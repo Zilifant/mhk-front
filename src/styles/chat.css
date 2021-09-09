@@ -11,19 +11,12 @@
 
 .con--lobbychat.min {
   width: max-content;
-  background-color: var(--bg4);
-}
-
-.btn.btn--minimize-chat {
-  margin-bottom: .5rem;
-  display: flex;
-  justify-content: center;
 }
 
 .svg-btn.minimize-chat {
   width: 20px;
   height: 20px;
-  margin-bottom: .5rem;
+  /* margin-bottom: .5rem; */
 }
 
 .chatfeed {
@@ -31,7 +24,7 @@
   flex-direction: column;
   flex: 1 1 auto;
   background-color: var(--bg5);
-  margin-bottom: .5rem;
+  margin: .5rem 0;
   border-radius: var(--rad);
   min-height: 0;
   height: calc(100% - 4rem);
@@ -57,21 +50,13 @@
 }
 
 .string {
-  /* font-style: italic; */
   color: var(--default);
 }
 
 .string--timestamp,
 .string--arrow {
-  /* min-width: 26px; */
   text-align: end;
 }
-
-/* .string--timestamp.anno+*::before {
-  content: '-->';
-  color: var(--emer3);
-  margin-right: .25rem;
-} */
 
 .string--usermessage {
   font-style: normal;
@@ -79,7 +64,6 @@
 
 .string--timestamp {
   color: var(--bg2);
-  /* font-weight: lighter; */
 }
 
 .string--arrow {

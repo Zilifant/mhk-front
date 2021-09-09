@@ -24,6 +24,10 @@ const Lobby = () => {
   const [ lobby, setLobby ] = useState();
   const [joinConfirmed, setJoinConfirmed] = useState(false);
 
+  const [chatMinimized, setChatMinimized] = useState(false);
+  const minimizeChatHandler = () => setChatMinimized(!chatMinimized);
+  const showChat = chatMinimized ? 'nochat' : 'chat';
+
   useEffect(() => {
     const fetchLobby = async () => {
       try {
@@ -54,6 +58,7 @@ const Lobby = () => {
   }, [ socket, myLobby, setLobby, joinConfirmed, setJoinConfirmed, userId ]);
 
   const thisPlayer = lobby && getThisPlayer(userId, lobby.game);
+
   const gridVariant = () => {
     return lobby.gameOn && thisPlayer.role === 'ghost' ? 'game-ghost'
          : lobby.gameOn ? 'game'
@@ -79,7 +84,7 @@ const Lobby = () => {
           />
         }
         {!isLoading && lobby && joinConfirmed &&
-          <Grid className={`lobby-${gridVariant()}`}>
+          <Grid className={`lobby-${gridVariant()} ${showChat}`}>
             <Main
               lobby={lobby}
               thisPlayer={getThisPlayer(userId, lobby.game)}
@@ -88,6 +93,8 @@ const Lobby = () => {
             <Chat
               chat={lobby.chat}
               users={lobby.users}
+              minimizeChatHandler={minimizeChatHandler}
+              minimized={chatMinimized}
             />
             {lobby.id === 'z' && <Dev lobby={lobby} />}
           </Grid>

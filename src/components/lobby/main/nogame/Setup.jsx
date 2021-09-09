@@ -66,7 +66,7 @@ const Setup = ({
           onClick={startGameHandler}
           disabled={!lobby.canStart()}
         >Start Game</Button>
-        <Tooltip tip='waitMorePlayers' side='top' />
+        <Tooltip tip='waitMorePlayers' side='bottom' />
       </div>}
 
       <div className='settings'>

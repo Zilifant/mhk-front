@@ -1,6 +1,6 @@
 import React, {
   useContext,
-  useState,
+  // useState,
   useEffect,
 } from 'react';
 import { UserContext } from '../../../context/contexts';
@@ -11,14 +11,15 @@ import NewMessage from './NewMessage';
 import SVGButton from '../../ui-elements/SVGButton';
 import '../../../styles/chat.css';
 
-const Chat = ({ chat, users }) => {
+const Chat = ({
+  chat,
+  users,
+  minimizeChatHandler,
+  minimized
+}) => {
 
   // const minimized = true;
   const { myLobby } = useContext(UserContext);
-
-  const [minimized, setMinimized] = useState(false);
-
-  const minimizeHandler = () => setMinimized(!minimized);
 
   const {
     newMessage,
@@ -38,14 +39,8 @@ const Chat = ({ chat, users }) => {
     <SVGButton
       icon='chat'
       className='minimize-chat'
-      onClick={minimizeHandler}
+      onClick={minimizeChatHandler}
     />
-  );
-
-  if (minimized) return (
-    <Container className={`lobbychat min`}>
-      <MinimizeChatButton />
-    </Container>
   );
 
   const newMessageSubmitHandler = event => {
@@ -53,8 +48,14 @@ const Chat = ({ chat, users }) => {
     newMessage();
   };
 
+  if (minimized) return (
+    <Container className={`lobbychat min`}>
+      <MinimizeChatButton />
+    </Container>
+  );
+
   return (
-    <Container className='lobbychat'>
+    <Container className={`lobbychat`}>
       <MinimizeChatButton />
       <ChatFeed messages={messages} users={users} />
       <NewMessage
@@ -66,6 +67,7 @@ const Chat = ({ chat, users }) => {
       />
     </Container>
   );
+
 };
 
 export default Chat;

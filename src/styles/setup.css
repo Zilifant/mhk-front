@@ -22,9 +22,9 @@
   width: 180px;
 }
 
-.btn--startgame {
+button.btn--startgame {
   font-size: x-large;
-  padding: .5rem;
+  padding: .5rem 1rem;
 }
 
 .ttip-parent.startgame {

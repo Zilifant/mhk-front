@@ -83,7 +83,7 @@ const Setup = ({
           <div className='settings-content timer ttip-parent'>
             <TimerSetup
               iAmLeader={iAmLeader}
-              gameSettings={gameSettings}
+              settings={gameSettings.timer}
               chooseTimerHandler={chooseTimerHandler}
             />
             <Tooltip tip='timerSetup' side='bottom' />

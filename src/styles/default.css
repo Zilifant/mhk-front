@@ -174,7 +174,7 @@ main.app {
 }
 
 .grid--lobby-game-ghost.chat {
-  grid-template-rows: repeat(2, max-content) 1fr repeat(2, max-content);
+  grid-template-rows: repeat(3, max-content) 1fr max-content;
   grid-template-areas:
     "anno anno chat"
     "info info chat"
@@ -195,7 +195,7 @@ main.app {
 }
 
 .grid--lobby-game-ghost.nochat {
-  grid-template-rows: repeat(2, max-content) 1fr repeat(2, max-content);
+  grid-template-rows: repeat(3, max-content) 1fr max-content;
   grid-template-areas:
     "anno anno chat"
     "info info info"

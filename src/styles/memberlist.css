@@ -76,8 +76,9 @@ div.leader_icon {
   fill: var(--leader);
 }
 
+.svg-btn.assign-ghost.ml-notghost svg,
 .svg-btn.transfer-leader svg {
-  fill: var(--bg1);
+  fill: var(--bg4);
 }
 
 .svg-icon.ghost.ml-ghost svg,
@@ -88,10 +89,6 @@ div.leader_icon {
 .svg-icon.crown.ml-notleader,
 .svg-icon.ghost.ml-notghost {
   visibility: hidden;
-}
-
-.svg-btn.assign-ghost.ml-notghost svg {
-  fill: var(--bg1);
 }
 
 div.member_grid:hover > .leader_icon .svg-btn.transfer-leader svg {

@@ -64,7 +64,7 @@ const Main = ({
 
           <Timer
             settings={game.settings.timer}
-            timerIsRunning={game.timer.running}
+            timerIsRunning={game.timerIsRunning}
           />
 
           <Players

@@ -24,7 +24,7 @@ const Lobby = () => {
   const [ lobby, setLobby ] = useState();
   const [joinConfirmed, setJoinConfirmed] = useState(false);
 
-  const [chatMinimized, setChatMinimized] = useState(false);
+  const [chatMinimized, setChatMinimized] = useState(true);
   const minimizeChatHandler = () => setChatMinimized(!chatMinimized);
   const showChat = chatMinimized ? 'nochat' : 'chat';
 

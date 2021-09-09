@@ -1,4 +1,33 @@
 
+.con--head         { grid-area: head; }
+.con--foot         { grid-area: foot; }
+
+.con--newlobby     { grid-area: newl; }
+.con--joinlobby    { grid-area: join; }
+
+.con--foyertitle   { grid-area: fyrt; }
+.con--foyerjoin    { grid-area: fyrj; }
+
+.grid--landing,
+.grid--foyer {
+  display: grid;
+  gap: var(--gap);
+  height: max-content;
+  grid-template-columns: 1fr;
+}
+
+.grid--foyer {
+  grid-template-areas:
+    "fyrj";
+}
+
+.grid--landing {
+  grid-template-areas:
+    "head"
+    "newl"
+    "join";
+}
+
 .new-lobby-form,
 .join-lobby-form,
 .join-this-lobby-form {
@@ -79,7 +108,38 @@
   margin-right: 0;
 }
 
+.btn--join-lobby {
+  display: inline-block;
+}
+
 button.btn--join-devlobby {
   width: 100%;
   margin-top: .5rem;
+}
+
+.con--head,
+.con--foyerjoin,
+.con--joinlobby,
+.con--newlobby {
+  background-color: var(--bg3);
+  width: max-content;
+  min-width: 400px;
+}
+
+.con--head > :not(:first-child) {
+  margin-left: .5rem;
+}
+
+.con--head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: min-content;
+}
+
+input.new-lobby-input,
+input.join-this-lobby-input,
+input.join-lobby-username-input,
+input.join-lobby-lobbyid-input {
+  background-color: var(--bg4);
 }

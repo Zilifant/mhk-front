@@ -9,11 +9,9 @@ import Input from '../ui-elements/Input';
 import Button from '../ui-elements/Button';
 import Container from '../shared/Container';
 import ErrorModal from '../modal/ErrorModal';
-// import Loading from '../shared/Loading';
 import Grid from '../shared/Grid';
 
 const NewLobby = () => {
-  // console.log('NewLobby');
   const { updateUserCtx } = useContext(UserContext);
   const { error, sendRequest, clearError } = useHttpClient();
 
@@ -56,7 +54,6 @@ const NewLobby = () => {
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
       <Container className='newlobby'>
-        {/* {isLoading && <Loading asOverlay color='red' />} */}
         <form className='form new-lobby-form' onSubmit={newLobbySubmitHandler}>
           <Grid className='new-lobby-form'>
             <div className='new-lobby-title'>START NEW LOBBY</div>

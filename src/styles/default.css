@@ -113,16 +113,6 @@ main.app {
 
 /* GRID */
 
-.con--head         { grid-area: head; }
-.con--foot         { grid-area: foot; }
-.con--errormsg     { grid-area: errr; }
-
-.con--newlobby     { grid-area: newl; }
-.con--joinlobby    { grid-area: join; }
-
-.con--foyertitle   { grid-area: fyrt; }
-.con--foyerjoin    { grid-area: fyrj; }
-
 .con--announcer    { grid-area: anno; }
 .con--info         { grid-area: info; }
 .con--memberlist   { grid-area: list; }
@@ -135,26 +125,6 @@ main.app {
 .con--self         { grid-area: self; }
 .con--timer        { grid-area: time; }
 
-.grid--landing,
-.grid--foyer {
-  display: grid;
-  gap: var(--gap);
-  height: max-content;
-  grid-template-columns: 1fr;
-}
-
-.grid--foyer {
-  grid-template-areas:
-    "fyrj";
-}
-
-.grid--landing {
-  grid-template-areas:
-    "head"
-    "newl"
-    "join";
-}
-
 .grid--lobby-nogame,
 .grid--lobby-game-ghost,
 .grid--lobby-game {
@@ -165,7 +135,6 @@ main.app {
 
 .grid--lobby-nogame {
   gap: var(--gap);
-  /* row-gap: 1rem; */
   grid-template-columns: 600px max-content;
   grid-template-rows: repeat(3, max-content) 1fr max-content;
   grid-template-areas:
@@ -209,7 +178,6 @@ main.app {
   border-radius: var(--rad);
 }
 
-/* .con--announcer, */
 .con--setup,
 .con--info,
 .con--memberlist {
@@ -221,15 +189,6 @@ main.app {
 .con--player,
 .con--ghost {
   overflow-x: scroll;
-}
-
-.con--head,
-.con--foyerjoin,
-.con--joinlobby,
-.con--newlobby {
-  background-color: var(--bg3);
-  width: max-content;
-  min-width: 400px;
 }
 
 .con--dev,
@@ -259,70 +218,9 @@ main.app {
   /* height: 40px; */
 }
 
-.con--info.game > :not(:nth-child(1)),
-.con--foot > :not(:nth-child(1)),
-.con--head > :not(:nth-child(1)) {
+.con--info.game > :not(:nth-child(1)) {
   margin-left: .5rem;
 }
-
-.con--head {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: min-content;
-}
-
-/* TOOLTIPS */
-
-/* .tooltip {
-  position: relative;
-}
-
-.tooltip .tooltiptext {
-  display: flex;
-  flex-direction: column;
-  visibility: hidden;
-  min-height: 100%;
-  justify-content: center;
-  width: max-content;
-  max-width: 400px;
-  background-color: var(--bg5);
-  border-radius: var(--rad);
-  padding: .5rem;
-  border: 2px solid var(--bg1);
-  position: absolute;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.1s;
-  cursor: default
-}
-
-.tooltip.left .tooltiptext {
-  top: 0;
-  left: calc(100% + var(--gap));
-}
-
-.tooltip.right .tooltiptext {
-  top: 0;
-  right: calc(100% + var(--gap));
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-} */
-
-/* 
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
-} */
 
 .emphasize {
   font-weight: bold;
@@ -450,19 +348,6 @@ main.app {
 .join-lobby-inputs-wrapper {
   display: block;
 }
-
-.btn--join-lobby {
-  display: inline-block;
-}
-
-/* .join-this-lobby-form > * {
-  display: inline-flex;
-}
-
-.join-this-lobby-input {
-  margin-right: .5rem;
-  width: 100%;
-} */
 
 .form--invalid input,
 .form--invalid textarea {

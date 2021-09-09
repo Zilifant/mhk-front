@@ -101,6 +101,7 @@
   color: var(--default);
   font-weight: bold;
   letter-spacing: .025rem;
+  text-transform: capitalize;
 }
 
 .new-message-wrapper {

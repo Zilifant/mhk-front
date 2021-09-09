@@ -64,13 +64,24 @@
 }
 
 .time-wrap :not(:first-child) {
-  margin-top: .5rem;
+  margin-top: .33rem;
 }
 
-.time-wrap .show {
+.time-wrap.running .show {
   background-color: var(--ready);
 }
 
+.time-wrap.notrunning *,
 .time-wrap .hide {
-  visibility: hidden;
+  background-color: var(--bg3);
+  opacity: 50%;
+}
+
+.time-wrap.running .timebar-3.show,
+.time-wrap.running .timebar-2.show {
+  background-color: var(--badge);
+}
+
+.time-wrap.running .timebar-1.show {
+  background-color: var(--killer);
 }

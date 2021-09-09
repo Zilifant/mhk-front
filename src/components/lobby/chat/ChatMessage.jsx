@@ -9,6 +9,8 @@ const ChatMessage = ({
   vanish
 }) => {
 
+  if (!message) return null;
+
   const style = isMine ? 'self' : 'other';
 
   const meta = {
@@ -18,8 +20,7 @@ const ChatMessage = ({
     timestamp: parent === 'chatfeed' ? true : false
   };
 
-  if (message) return parseAndRender(message, meta);
-  return null;
+  return parseAndRender(message, meta);
 };
 
 export default ChatMessage;

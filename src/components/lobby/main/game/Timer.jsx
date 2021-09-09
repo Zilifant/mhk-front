@@ -13,7 +13,8 @@ const Timer = ({
   settings: {
     on,
     duration
-  }
+  },
+  timerIsRunning
 }) => {
 
   const { socket } = useContext(SocketContext);
@@ -67,25 +68,19 @@ const Timer = ({
 
   };
 
-  const displayOn = () => (
-    <div className='time-wrap'>
-      {barsTimer()}
-      {/* {formattedTimer()} */}
-    </div>
-  );
-
-  const displayOff = () => (
-    <div className='time-wrap'>
-      {/* <SVGIcon
-        className='hourglass'
-        icon='hg'
-      /> */}
-    </div>
-  );
+  const displayOn = () => {
+    const style = timerIsRunning ? 'running' : 'notrunning'
+    return (
+      <div className={`time-wrap ${style}`}>
+        {barsTimer()}
+        {/* {formattedTimer()} */}
+      </div>
+    );
+  };
 
   return (
     <Container className='timer'>
-      {on ? displayOn() : displayOff()}
+      {on ? displayOn() : <div className='time-wrap'/>}
     </Container>
   );
 };

@@ -50,7 +50,7 @@ const Announcer = ({
       <ChatMessage
         type='status'
         parent='announcer'
-        message={msg(type, [args], false)}
+        message={msg(type, args, false)}
       />
       <ChatMessage
         type='announcement'

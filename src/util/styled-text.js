@@ -64,7 +64,7 @@ function parseSMD({str, opts = SMDopts, multiLine}) {
   if (multiLine) {
     defStyle = opts.defaultLine || 'default';
     sS = opts.splitLineOn || '<';
-    sC = opts.splitClsOn || '>';
+    sC = opts.splitLineClsOn || '>';
   } else {
     defStyle = opts.defaultString || 'default';
     sS = opts.splitStrOn || '^';
@@ -251,7 +251,7 @@ const strings = (() => {
   };
 
   const resolveGame = (time, result) => {
-    const str = `_t_${time} ^_k_${GAME_OUTCOMES[result]}`;
+    const str = `_t_${time} ^_m_${GAME_OUTCOMES[result]}`;
     return parseSMD({str: str, multiLine: false});
   };
 

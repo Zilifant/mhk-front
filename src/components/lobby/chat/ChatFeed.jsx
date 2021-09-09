@@ -23,7 +23,6 @@ const ChatFeed = ({ messages, users }) => {
   function getColorId(message) {
     if (message.senderId === 'app') return 'default';
     const color = users.find(u => u.id === message.senderId).color;
-    console.log(color.id);
     if (color) return color.id;
     console.log('error null-color');
     return 'null-color';

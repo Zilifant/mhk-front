@@ -28,12 +28,11 @@ const Timer = ({
 
   useEffect(() => {
     let mounted = true;
-    console.log('mounted');
+    console.log('timer mounted');
     const subToTimer = (mounted) => {
       if (mounted) {
         socket.current.on('tenSec', (tenSec) => {
           setTenSec(tenSec);
-          console.log(tenSec);
         });
         // socket.current.on('tick', (time) => {
         //   setTimer(time)

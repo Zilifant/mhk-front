@@ -19,7 +19,7 @@ const Timer = ({
 
   const { socket } = useContext(SocketContext);
 
-  const inactiveDisplay = 'XX:XX';
+  // const inactiveDisplay = 'XX:XX';
 
   // const [timer, setTimer] = useState(inactiveDisplay);
   const [tenSec, setTenSec] = useState(duration * 6);
@@ -38,7 +38,8 @@ const Timer = ({
         //   setTimer(time)
         //   console.log(time);
         // });
-        socket.current.on('clear', () => setTenSec(inactiveDisplay));
+        // socket.current.on('clear', () => setTenSec(inactiveDisplay));
+        socket.current.on('clear', () => setTenSec(0));
       }
     };
   subToTimer(mounted);
@@ -79,7 +80,7 @@ const Timer = ({
 
   return (
     <Container className='timer'>
-      {on ? displayOn() : <div className='time-wrap'/>}
+      {on ? displayOn() : <div className='time-wrap-off'/>}
     </Container>
   );
 };

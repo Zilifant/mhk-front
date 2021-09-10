@@ -1,25 +1,42 @@
 
+:root {
+  --ev-light: var(--colg5);
+  --ev:       var(--colg6);
+  --ev-dark:  var(--colg7);
+
+  --me-light: var(--wrmg5);
+  --me:       var(--wrmg6);
+  --me-dark:  var(--wrmg7);
+
+  --bdr-size: .33rem;
+}
+
 button.card-wrap--player {
   display: inline-block;
   border-radius: var(--rad);
   border: .25rem solid;
   padding: .25rem;
   width: 6rem;
-  /* height: 4rem; */
 }
 
 button.card-wrap--player.evidence:hover,
 button.card-wrap--player.evidence:disabled,
 button.card-wrap--player.evidence {
-  background-color: var(--evdark);
-  border-color: var(--evdark);
+  background-color: var(--ev);
+  border-top: var(--bdr-size) solid var(--ev-light);
+  border-left: var(--bdr-size) solid var(--ev-light);
+  border-bottom: var(--bdr-size) solid var(--ev-dark);
+  border-right: var(--bdr-size) solid var(--ev-dark);
 }
 
 button.card-wrap--player.means:hover,
 button.card-wrap--player.means:disabled,
 button.card-wrap--player.means {
-  background-color: var(--medark);
-  border-color: var(--medark);
+  background-color: var(--me);
+  border-top: var(--bdr-size) solid var(--me-light);
+  border-left: var(--bdr-size) solid var(--me-light);
+  border-bottom: var(--bdr-size) solid var(--me-dark);
+  border-right: var(--bdr-size) solid var(--me-dark);
 }
 
 button.card-wrap--player {
@@ -66,11 +83,17 @@ button.card-wrap--player.highlighted {
 }
 
 button.card-wrap--player.evidence.selected {
-  border-color: var(--evligt);
+  border-top: var(--bdr-size) solid var(--ev-dark);
+  border-left: var(--bdr-size) solid var(--ev-dark);
+  border-bottom: var(--bdr-size) solid var(--ev-light);
+  border-right: var(--bdr-size) solid var(--ev-light);
 }
 
 button.card-wrap--player.means.selected {
-  border-color: var(--meligt);
+  border-top: var(--bdr-size) solid var(--me-dark);
+  border-left: var(--bdr-size) solid var(--me-dark);
+  border-bottom: var(--bdr-size) solid var(--me-light);
+  border-right: var(--bdr-size) solid var(--me-light);
 }
 
 button.card-wrap--player:not(:disabled):active {

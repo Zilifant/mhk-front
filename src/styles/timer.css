@@ -59,6 +59,13 @@
   background: none;
 }
 
+.time-wrap-off {
+  border-radius: var(--rad);
+  background-color: var(--bg4);
+  height: 100%;
+  width: 100%;
+}
+
 .time-wrap * {
   border-radius: var(--rad);
   display: flex;

@@ -36,9 +36,17 @@ const GhostCard = ({
     if (amISelected(index)) return 'selected';
   };
 
+  const checkEnabledByStage = () => {
+    const disabledStageTypes = ['liminal', 'setup'];
+    const disabledStageIds = ['second-murder'];
+    if (disabledStageTypes.includes(stage.type)) return true;
+    if (disabledStageIds.includes(stage.id)) return true;
+    return false;
+  }
+
   const checkEnabled = (index) => {
     if (!isMine) return false;
-    if (stage.id === 'setup' || stage.type === 'liminal') return false;
+    if (checkEnabledByStage()) return false;
     if (card.isLocked) return false;
     return amIEnabled(index);
   };
@@ -72,7 +80,7 @@ const GhostCard = ({
   const confirmBtns = () => {
     if (stage.type !== 'liminal' && !card.isLocked) return confirmClueBtn();
     if (stage.type === 'liminal' && card.type === 'clue' && !card.isNew) return replaceCardBtn();
-    return <div className='gc-conbtn-placeholder'>placeholder</div>
+    return <div className='gc-conbtn-placeholder'>-</div>
   };
 
   if (!card.isDisplayed) return null;

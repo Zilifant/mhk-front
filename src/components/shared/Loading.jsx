@@ -1,11 +1,15 @@
 import React from 'react';
 
-const Loading = props => {
-  console.log(props.text);
+const Loading = ({
+  content,
+  color,
+  overlay,
+  suspenseful,
+}) => {
+  console.log(content);
   return (
-    <div className={`loading ${props.asOverlay && 'overlay'}`}>
-      {/* <div className={`lds-dual-ring ${props.color}`}></div> */}
-      <div className={`loading-text ${props.color}`}>{props.text}</div>
+    <div className={`loading ${overlay && 'overlay'} ${suspenseful && 'suspenseful'}`}>
+      <div className={`loading-content ${color}`}>{content}</div>
     </div>
   );
 };

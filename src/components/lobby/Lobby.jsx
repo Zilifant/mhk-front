@@ -55,7 +55,14 @@ const Lobby = () => {
       });
     };
   subToLobby();
-  }, [ socket, myLobby, setLobby, joinConfirmed, setJoinConfirmed, userId ]);
+  }, [
+    socket,
+    myLobby,
+    setLobby,
+    joinConfirmed,
+    setJoinConfirmed,
+    userId
+  ]);
 
   const thisPlayer = lobby && getThisPlayer(userId, lobby.game);
 
@@ -71,16 +78,24 @@ const Lobby = () => {
         <ErrorModal error={error} onClear={clearError} />
         {isLoading &&
           <Loading
-            asOverlay
+            overlay
             color='orange'
-            text='Fetching lobby...'
+            content='Fetching lobby...'
           />
         }
         {!isLoading && !joinConfirmed &&
           <Loading
-            asOverlay
+            overlay
             color='blue'
-            text='Connecting to IO...'
+            content='Connecting to IO...'
+          />
+        }
+        {!isLoading && lobby && lobby.game?.isResolvingAccusal &&
+          <Loading
+            overlay
+            suspenseful
+            color='purple'
+            content='Investigating...'
           />
         }
         {!isLoading && lobby && joinConfirmed &&

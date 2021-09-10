@@ -16,43 +16,49 @@ const Timer = ({
   },
   timerIsRunning
 }) => {
+  console.log('%cTimer','color:#f20ffe');
 
   const { socket } = useContext(SocketContext);
 
-  // const inactiveDisplay = 'XX:XX';
-
-  // const [timer, setTimer] = useState(inactiveDisplay);
   const [tenSec, setTenSec] = useState(duration * 6);
-
-  // console.log(settings);
 
   useEffect(() => {
     let mounted = true;
     console.log('timer mounted');
+
     const subToTimer = (mounted) => {
       if (mounted) {
+        socket.current.on('timerStarted', () => {
+          setTenSec(duration * 6);
+          console.log('timer started');
+        });
         socket.current.on('tenSec', (tenSec) => {
           setTenSec(tenSec);
+          console.log(tenSec);
         });
-        // socket.current.on('tick', (time) => {
-        //   setTimer(time)
-        //   console.log(time);
-        // });
-        // socket.current.on('clear', () => setTenSec(inactiveDisplay));
-        socket.current.on('clear', () => setTenSec(0));
+        socket.current.on('timeUp', (tenSec) => {
+          setTenSec(tenSec);
+          console.log('time is up');
+        });
+        socket.current.on('clear', () => {
+          console.log('timer cleared')
+          setTenSec(0);
+        });
       }
     };
-  subToTimer(mounted);
-  return () => mounted = false;
-  }, [socket, setTenSec]);
 
-  // const formattedTimer = () => (
-  //   <p className={`time-digits ${timer === '00:00' && 'zero'}`}>
-  //     <span className='digits'>{timer.substr(0,2)}</span>
-  //     <span className='colon'>:</span>
-  //     <span className='digits'>{timer.substr(3,2)}</span>
-  //   </p>
-  // );
+    subToTimer(mounted);
+
+    return () => {
+      mounted = false;
+      socket.current.off('timerStarted');
+      socket.current.off('tenSec');
+      socket.current.off('timeUp');
+      socket.current.off('clear');
+      console.log('timer unmounted');
+    };
+
+  }, [socket, setTenSec]);
 
   const barsTimer = () => {
     const num = duration * 6;
@@ -86,3 +92,35 @@ const Timer = ({
 };
 
 export default Timer;
+
+// const inactiveDisplay = 'XX:XX';
+// const [timer, setTimer] = useState(inactiveDisplay);
+
+// useEffect(() => {
+//   let mounted = true;
+//   console.log('timer mounted');
+//   const subToTimer = (mounted) => {
+//     if (mounted) {
+//       socket.current.on('tick', (time) => {
+//         setTimer(time)
+//         console.log(time);
+//       });
+//       socket.current.on('clear', () => setTimer(inactiveDisplay));
+//     }
+//   };
+// subToTimer(mounted);
+// return () => {
+//   mounted = false;
+//   socket.current.off('tick');
+//   socket.current.off('clear');
+//   console.log('timer unmounted');
+// }
+// }, [socket, setTimer]);
+
+// const formattedTimer = () => (
+//   <p className={`time-digits ${timer === '00:00' && 'zero'}`}>
+//     <span className='digits'>{timer.substr(0,2)}</span>
+//     <span className='colon'>:</span>
+//     <span className='digits'>{timer.substr(3,2)}</span>
+//   </p>
+// );

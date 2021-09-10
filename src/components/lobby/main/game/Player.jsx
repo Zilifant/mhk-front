@@ -97,6 +97,12 @@ const Player = ({
 
   const [roleClass, roleDisplay] = role();
 
+  // for case where player had selected cards of a player
+  // other than the one they accused; if player has already
+  // used their accusation, show all cards as unselected by
+  // ignoring contents of selTracker
+  const getSelectedId = (type) => canIAccuse ? selTracker[type]?.id : null;
+
   return (
     <Container className='player'>
       <li className={`p-info badge ${badge(canTheyAccuse)}`}>
@@ -123,7 +129,7 @@ const Player = ({
           key={type}
           stage={stage}
           cards={hand[type]}
-          selectedId={selTracker[type]?.id}
+          selectedId={getSelectedId(type)}
           selectCardHandler={selectHandler}
           canIAccuse={canIAccuse}
           isRoundStage={isRoundStage}

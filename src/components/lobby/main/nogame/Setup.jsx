@@ -28,7 +28,7 @@ const Setup = ({
     {id: 'accomplice', active: gameSettings.hasAccomplice}
   ];
 
-  const advRolesLeader = () => (
+  const AdvRolesLeader = () => (
     <div className='advrole-wrapper'>
       {advRoles.map((role, i) => (
         <Button
@@ -43,7 +43,7 @@ const Setup = ({
     </div>
   );
 
-  const advRolesBasic = () => (
+  const AdvRolesBasic = () => (
     <div className='advrole-wrapper'>
       {advRoles.map((role, i) => (
         <div
@@ -73,7 +73,7 @@ const Setup = ({
         <div className='setup-section'>
           <div className='settings-title'>Advanced Roles</div>
           <div className='settings-content roles ttip-parent'>
-            {iAmLeader ? advRolesLeader() : advRolesBasic()}
+            {iAmLeader ? <AdvRolesLeader /> : <AdvRolesBasic />}
             <Tooltip tip='advRoles' side='bottom' />
           </div>
         </div>

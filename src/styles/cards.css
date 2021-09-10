@@ -40,7 +40,7 @@ button.card-wrap--player.means {
 }
 
 button.card-wrap--player {
-  opacity: 80%;
+  /* opacity: 80%; */
 }
 
 button.card-wrap--player.selected:hover,
@@ -50,8 +50,8 @@ button.card-wrap--player:hover {
 
 button.card-wrap--player.selected:hover *,
 button.card-wrap--player:hover * {
-  /* color: var(--cyan3);
-  fill: var(--cyan3); */
+  color: var(--white);
+  fill: var(--white);
 }
 
 button.card-wrap--player:not(:first-child) {
@@ -60,15 +60,14 @@ button.card-wrap--player:not(:first-child) {
 
 button.card-wrap--player:disabled {
   /* border-color: var(--gray4); */
-  /* background-color: var(--bg4); */
-  opacity: 60%;
+  /* opacity: 60%; */
   cursor: auto;
 }
 
 button.card-wrap--player:disabled:hover *,
 button.card-wrap--player:disabled * {
-  /* color: var(--gray4);
-  fill: var(--gray4); */
+  color: var(--gray4);
+  fill: var(--gray4);
 }
 
 /* button.card-wrap--player.highlighted, */

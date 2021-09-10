@@ -25,10 +25,7 @@ const Ghost = ({
           <div className='gc-back-text'>MHK</div>
         </div>
       </div>
-      {isGhostUI &&
-      <div className='gc-conbtn-placeholder'>
-        invisibletext
-      </div>}
+      {isGhostUI && <div className='gc-conbtn-placeholder'>-</div>}
     </div>
   )
 

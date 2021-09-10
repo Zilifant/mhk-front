@@ -37,8 +37,6 @@ const Cards = ({
     );
   };
 
-  // console.log(`${cards[0].type} ${selectedId}`);
-
   const isEnabled = () => {
     switch (type) {
       case `hunterUI`:

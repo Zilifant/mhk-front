@@ -87,6 +87,10 @@ div.card-wrap--ghost:not(:first-child) {
   width: 100%;
 }
 
+.gc-conbtn-placeholder {
+  cursor: default;
+}
+
 .btn--gc.replace-card {
   background-color: var(--rose8);
 }

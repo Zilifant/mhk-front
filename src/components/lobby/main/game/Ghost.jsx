@@ -2,7 +2,7 @@ import React from 'react';
 import Container from '../../../shared/Container';
 import GhostCard from './GhostCard';
 import { GiDeathSkull } from 'react-icons/gi';
-import '../../../../styles/ghost.css';
+import '../../../../styles/ghost.scss';
 // import SVGIcon from '../../../ui-elements/SVGIcon';
 
 const Ghost = ({

@@ -1,0 +1,152 @@
+// ghost
+
+@import './colors.scss';
+
+$fg1: $gray1;
+$fg2: $gray2;
+$fg3: $gray3;
+$bg1: $gray5;
+$bg2: $gray6;
+$bg3: $gray7;
+$bg4: $gray8;
+$bg5: $gray9;
+
+$bdr-width: .33rem;
+
+$clue-btn-bg: $bg2;
+$clue-btn-sel-bg: $emer6;
+$clue-btn-dis-bg: $bg3;
+$clue-btn-hil-bg: $libl6;
+
+$confirm-btn-bg: $cyan6;
+$confirm-btn-dis-bg: $bg3;
+
+$replace-btn-bg: $rose7;
+
+div.card-wrap--ghost {
+  display: inline-block;
+  background-color: $bg4;
+  border-radius: var(--rad);
+  width: 8rem;
+  &:not(:first-child) {
+    margin-left: .5rem;
+  }
+}
+
+.gc-back,
+.gc-title,
+.gc-clue-btn {
+  padding: .15rem .5rem;
+  border-radius: var(--rad);
+}
+
+.gc-title {
+  height: 2.75rem;
+  text-align: center;
+}
+
+.card-wrap--ghost {
+  &.old .gc-title {
+    background-color: var(--cluold);
+  }
+
+  &.new .gc-title {
+    background-color: var(--clunew);
+  }
+
+  &.cause .gc-title {
+    background-color: var(--cause);
+  }
+
+  &.location .gc-title {
+    background-color: var(--locate);
+  }
+
+  &.back {
+    display: grid;
+    grid-template-rows: 1fr max-content;
+  }
+}
+
+.gc-clue {
+  margin: .25rem 0 0;
+  white-space: nowrap;
+}
+
+.gc-clue-btn {
+  margin: 0 auto;
+  width: 100%;
+  color: $fg3;
+  @include three-d-btn($clue-btn-bg);
+
+  &.selected {
+    color: $fg1;
+    @include three-d-btn($clue-btn-sel-bg);
+  }
+
+  &:disabled {
+    cursor: auto;
+    @include three-d-btn($clue-btn-dis-bg);
+    &:not(.highlighted) {
+      color: darken($fg3, 30%);
+    }
+  }
+
+  // order matters: highlighted after disabled
+  &.highlighted {
+    color: $fg1;
+    @include three-d-btn($clue-btn-hil-bg);
+  }
+}
+
+button.btn--gc {
+  margin-top: .25rem;
+  width: 100%;
+
+  &.confirm-clue {
+    @include three-d-btn($confirm-btn-bg);
+    &:disabled {
+      cursor: auto;
+      color: darken($fg3, 30%);
+      @include three-d-btn($confirm-btn-dis-bg);
+    }
+  }
+
+  &.replace-card {
+    @include three-d-btn($replace-btn-bg);
+  }
+}
+
+.gc-back,
+.gc-title {
+  cursor: default;
+}
+
+.gc-back {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: $bg3;
+}
+
+.gc-back-icon {
+  height: 50px;
+  width: 50px;
+  display: block;
+  margin: .25rem auto;
+}
+
+.gc-back-text {
+  font-size: large;
+  text-align: center;
+}
+
+.gc-conbtn-placeholder {
+  margin-top: .25rem;
+  width: 100%;
+  color: $bg4;
+  background-color: $bg4;
+  border: $bdr-width solid $bg4;
+  padding: .15rem;
+  cursor: default;
+}

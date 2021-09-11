@@ -2,7 +2,7 @@ import React, {
   // useState
 } from 'react';
 import Card from './Card';
-import '../../../../styles/cards.css';
+import '../../../../styles/cards.scss';
 
 const Cards = ({
   myRole,

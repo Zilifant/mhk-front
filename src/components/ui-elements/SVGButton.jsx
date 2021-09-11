@@ -1,6 +1,6 @@
 import React from 'react';
 import { svg } from '../../util/svgs';
-import '../../styles/svgs.css';
+import '../../styles/svgs.scss';
 
 const SVGButton = ({
   className,

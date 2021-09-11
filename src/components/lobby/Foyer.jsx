@@ -5,7 +5,7 @@ import JoinThisLobby from './JoinThisLobby';
 import Lobby from './Lobby';
 import Grid from '../shared/Grid';
 
-import '../../styles/landing.css';
+import '../../styles/landing.scss';
 
 // Handles cases where users arrive directly at a lobby's URL
 // If user has correct session data, Lobby is loaded, else JoinThisLobby is loaded

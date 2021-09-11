@@ -9,7 +9,7 @@ import Container from '../../shared/Container';
 import ChatFeed from './ChatFeed';
 import NewMessage from './NewMessage';
 import SVGButton from '../../ui-elements/SVGButton';
-import '../../../styles/chat.css';
+import '../../../styles/chat.scss';
 
 const Chat = ({
   chat,

@@ -9,9 +9,10 @@ import { useHttpClient } from './hooks/http-hook';
 import { UserContext } from './context/contexts';
 import Foyer from './components/lobby/Foyer';
 import Landing from './components/landing/Landing';
-import './styles/colors.css';
-import './styles/default.css';
-import './styles/svgs.css';
+import './styles/colors.scss';
+import './styles/mixins.scss';
+import './styles/core.scss';
+import './styles/svgs.scss';
 
 function App() {
   console.log('%cApp','color:#79e6f9');

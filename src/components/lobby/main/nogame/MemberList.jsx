@@ -5,7 +5,7 @@ import React, {
 } from 'react';
 import Container from '../../../shared/Container';
 import Member from './Member';
-import '../../../../styles/memberlist.css';
+import '../../../../styles/memberlist.scss';
 
 const MemberList = ({ users, iAmLeader }) => {
 

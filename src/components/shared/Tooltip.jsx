@@ -1,6 +1,6 @@
 
 import { parseSMDLines, renderStyledLines } from '../../util/styled-text';
-import '../../styles/tooltips.css';
+import '../../styles/tooltips.scss';
 
 const tooltips = {
   waitMorePlayers: 'At least ^_k_4^ players are needed to start.<^_k_5^ or more are recommended.',

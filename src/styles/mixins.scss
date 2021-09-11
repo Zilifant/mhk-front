@@ -1,0 +1,62 @@
+// mixins and variables
+
+@import './colors.scss';
+
+@mixin three-d-btn($col) {
+  background-color: $col;
+  border-top: $bdr-width solid lighten($col, 8%);
+  border-left: $bdr-width solid lighten($col, 8%);
+  border-bottom: $bdr-width solid darken($col, 8%);
+  border-right: $bdr-width solid darken($col, 8%);
+
+  &:not(:disabled):hover {
+    color: $white;
+  }
+
+  &:not(:disabled):active {
+    @include three-d-btn-down($col);
+  }
+}
+
+@mixin three-d-btn-down($col) {
+  background-color: darken($col, 2%);
+  border-top: $bdr-width solid darken($col, 8%);
+  border-left: $bdr-width solid darken($col, 8%);
+  border-bottom: $bdr-width solid lighten($col, 8%);
+  border-right: $bdr-width solid lighten($col, 8%);
+}
+
+@mixin z($weight) {
+  font-weight: $weight;
+}
+
+@mixin a($weight) {
+  text-rendering: geometricPrecision;
+  font-weight: $weight;
+}
+
+@mixin b($weight) {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: $weight;
+}
+
+@mixin c($weight) {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: $weight;
+}
+
+@mixin d($weight) {
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: $weight;
+}
+
+@mixin e($weight) {
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: $weight;
+}

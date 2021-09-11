@@ -10,7 +10,7 @@ import { badge } from '../../../../util/utils';
 import Container from '../../../shared/Container';
 import Button from '../../../ui-elements/Button';
 import Cards from './Cards';
-import '../../../../styles/player.css';
+import '../../../../styles/player.scss';
 
 const Player = ({
   myRole,

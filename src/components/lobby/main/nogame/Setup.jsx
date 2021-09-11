@@ -7,7 +7,7 @@ import Container from '../../../shared/Container';
 import Button from '../../../ui-elements/Button';
 import TimerSetup from './TimerSetup';
 import Tooltip from '../../../shared/Tooltip';
-import '../../../../styles/setup.css';
+import '../../../../styles/setup.scss';
 
 const Setup = ({
   lobby,

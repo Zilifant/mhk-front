@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from 'react';
 
 import { validate } from '../../util/validators';
-// import '../styles/Input.css';
+// import '../styles/Input.scss';
 
 // `useReducer` to manage more complex state; we pass it an action, it modifies the state depending on the action passed (the reducer function is how it modifies it) and then returns the state and re-renders stuff
 // here defined outside the component because it does not depend on any component inputs

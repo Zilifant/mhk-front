@@ -5,8 +5,8 @@ import React, {
 } from 'react';
 import Container from '../../../shared/Container';
 import { SocketContext } from '../../../../context/contexts';
-import '../../../../styles/timer.css';
-import '../../../../styles/svgs.css';
+import '../../../../styles/timer.scss';
+import '../../../../styles/svgs.scss';
 // import SVGIcon from '../../../ui-elements/SVGIcon';
 
 const Timer = ({

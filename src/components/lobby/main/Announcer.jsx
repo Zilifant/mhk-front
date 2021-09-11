@@ -6,8 +6,8 @@ import { useChat } from '../../../hooks/chat-hook';
 import Container from '../../shared/Container';
 import ChatMessage from '../chat/ChatMessage';
 
-import '../../../styles/announcer.css';
-import '../../../styles/chat.css';
+import '../../../styles/announcer.scss';
+import '../../../styles/chat.scss';
 
 function msg(type, args, isInGame, senderId = 'app') {
   return {

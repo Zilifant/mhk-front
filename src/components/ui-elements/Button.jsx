@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import styles from '../styles/Button.module.css';
-// import '../styles/Button.css'
+// import styles from '../styles/Button.module.scss';
+// import '../styles/Button.scss'
 
 const Button = props => {
   if (props.href) {
@@ -46,7 +46,7 @@ export default Button;
 // import { Link } from 'react-router-dom';
 // import styled from 'styled-components';
 
-// // import '../styles/Button.css';
+// // import '../styles/Button.scss';
 
 // // tagged template-literal, standard javascript
 // // `button` is a method on the `styled` object that will return a new component with the style provided in the backticks

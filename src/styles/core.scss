@@ -1,4 +1,7 @@
 
+@import './colors.scss';
+@import './mixins.scss';
+
 :root {
   --default-light: var(--colg2);
   --default:       var(--gray3);
@@ -45,8 +48,8 @@ html, body {
 }
 
 *, *:before, *:after {
+  @include z(500);
   font-family: 'Roboto Condensed', sans-serif;
-  font-weight: 500;
   font-size: 14px;
   letter-spacing: .025rem;
   color: var(--default);
@@ -84,26 +87,6 @@ main.app {
   flex-shrink: 1;
   flex-basis: auto;
   max-height: calc(100% - (var(--mar)*2));
-}
-
-/* SHARED */
-
-.badge {
-  color: var(--ambr2);
-  background-color: var(--yell5);
-  border-top: .33rem solid var(--yell4);
-  border-left: .33rem solid var(--yell4);
-  border-bottom: .33rem solid var(--yell6);
-  border-right: .33rem solid var(--yell6);
-}
-
-.badge.accusal-spent {
-  color: var(--ambr5);
-  background-color: var(--yell7);
-  border-top: .33rem solid var(--yell6);
-  border-left: .33rem solid var(--yell6);
-  border-bottom: .33rem solid var(--yell8);
-  border-right: .33rem solid var(--yell8);
 }
 
 /* ////////////////////////////////////////// */

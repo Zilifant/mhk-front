@@ -7,7 +7,7 @@ import React, {
 import { badge, article } from '../../../../util/utils';
 import Container from '../../../shared/Container';
 import Cards from './Cards';
-import '../../../../styles/player.css';
+import '../../../../styles/player.scss';
 
 const BasicUI = ({
   thisPlayer: {

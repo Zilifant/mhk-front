@@ -9,9 +9,9 @@ import Button from '../../ui-elements/Button';
 import { useGame } from '../../../hooks/game-hook';
 import Tooltip from '../../shared/Tooltip';
 import SVGButton from '../../ui-elements/SVGButton';
-import '../../../styles/info.css';
-import '../../../styles/svgs.css';
-import '../../../styles/tooltips.css';
+import '../../../styles/info.scss';
+import '../../../styles/svgs.scss';
+import '../../../styles/tooltips.scss';
 
 const Info = ({
   gameOn,

@@ -38,6 +38,17 @@
   text-align: center;
 }
 
+.badge {
+  padding: .15rem;
+  color: var(--ambr2);
+  background-color: var(--yell5);
+}
+
+.badge.accusal-spent {
+  color: var(--ambr5);
+  background-color: var(--yell7);
+}
+
 .username {
   font-size: 1.25rem;
   letter-spacing: .1rem;

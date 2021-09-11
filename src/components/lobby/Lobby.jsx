@@ -22,7 +22,7 @@ const Lobby = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const { socket } = useIO(); // init socket (useEffect inside hook)
   const [ lobby, setLobby ] = useState();
-  const [joinConfirmed, setJoinConfirmed] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
 
   const [chatMinimized, setChatMinimized] = useState(true);
   const minimizeChatHandler = () => setChatMinimized(!chatMinimized);
@@ -50,7 +50,8 @@ const Lobby = () => {
       socket.current.on('updateLobby', ({ lobby, data }) => {
         setLobby({...lobbyMethods, ...lobby});
         if (data?.event === 'userConnected' && data?.user.id === userId) {
-          setJoinConfirmed(true);
+          console.log('connected');
+          setIsConnected(true);
         }
       });
     };
@@ -59,8 +60,8 @@ const Lobby = () => {
     socket,
     myLobby,
     setLobby,
-    joinConfirmed,
-    setJoinConfirmed,
+    isConnected,
+    setIsConnected,
     userId
   ]);
 
@@ -83,7 +84,7 @@ const Lobby = () => {
             content='Fetching lobby...'
           />
         }
-        {!isLoading && !joinConfirmed &&
+        {lobby && !isConnected &&
           <Loading
             overlay
             color='blue'
@@ -98,7 +99,7 @@ const Lobby = () => {
             content='Investigating...'
           />
         }
-        {!isLoading && lobby && joinConfirmed &&
+        {!isLoading && lobby && isConnected &&
           <Grid className={`lobby-${gridVariant()} ${showChat}`}>
             <Main
               lobby={lobby}

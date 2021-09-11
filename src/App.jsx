@@ -9,7 +9,7 @@ import { useHttpClient } from './hooks/http-hook';
 import { UserContext } from './context/contexts';
 import Foyer from './components/lobby/Foyer';
 import Landing from './components/landing/Landing';
-import './styles/colors.scss';
+import './styles/colors.css';
 import './styles/mixins.scss';
 import './styles/core.scss';
 import './styles/svgs.scss';

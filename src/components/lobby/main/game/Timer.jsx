@@ -23,24 +23,25 @@ const Timer = ({
   const [tenSec, setTenSec] = useState(duration * 6);
 
   useEffect(() => {
-    let mounted = true;
     console.log('timer mounted');
+    let mounted = true;
+    const s = socket.current;
 
     const subToTimer = (mounted) => {
       if (mounted) {
-        socket.current.on('timerStarted', () => {
+        s.on('timerStarted', () => {
           setTenSec(duration * 6);
           console.log('timer started');
         });
-        socket.current.on('tenSec', (tenSec) => {
+        s.on('tenSec', (tenSec) => {
           setTenSec(tenSec);
           console.log(tenSec);
         });
-        socket.current.on('timeUp', (tenSec) => {
+        s.on('timeUp', (tenSec) => {
           setTenSec(tenSec);
           console.log('time is up');
         });
-        socket.current.on('clear', () => {
+        s.on('clear', () => {
           console.log('timer cleared')
           setTenSec(0);
         });
@@ -51,14 +52,14 @@ const Timer = ({
 
     return () => {
       mounted = false;
-      socket.current.off('timerStarted');
-      socket.current.off('tenSec');
-      socket.current.off('timeUp');
-      socket.current.off('clear');
+      s.off('timerStarted');
+      s.off('tenSec');
+      s.off('timeUp');
+      s.off('clear');
       console.log('timer unmounted');
     };
 
-  }, [socket, setTenSec]);
+  }, [socket, setTenSec, duration]);
 
   const barsTimer = () => {
     const num = duration * 6;

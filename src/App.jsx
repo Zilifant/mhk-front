@@ -43,7 +43,7 @@ function App() {
       <Route path='/' exact>
         <Landing />
       </Route>
-      <Route path='/:lobbyURL' exact>
+      <Route path='/:lobbyURL'>
         <Foyer />
       </Route>
       <Route path='/lobby' exact>

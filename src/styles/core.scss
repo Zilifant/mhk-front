@@ -116,24 +116,22 @@ main.app {
 .grid--lobby-nogame {
   grid-template-columns: 600px max-content;
   grid-template-rows: repeat(3, max-content) 1fr max-content;
-}
-
-.grid--lobby-nogame.chat {
-  grid-template-areas:
-    "anno chat"
-    "info chat"
-    "setu chat"
-    "list chat"
-    "devu devu";
-}
-
-.grid--lobby-nogame.nochat {
-  grid-template-areas:
-    "anno chat"
-    "info info"
-    "setu setu"
-    "list list"
-    "devu devu";
+  &.chat {
+    grid-template-areas:
+      "anno chat"
+      "info chat"
+      "setu chat"
+      "list chat"
+      "devu devu";
+  }
+  &.nochat {
+    grid-template-areas:
+      "anno chat"
+      "info info"
+      "setu setu"
+      "list list"
+      "devu devu";
+  }
 }
 
 .grid--lobby-game-ghost,
@@ -585,40 +583,4 @@ ul.c-group {
 /* .amber.member.name, */
 .amber.string--username {
   color: var(--ambr5);
-}
-
-.lds-dual-ring {
-  display: inline-block;
-  width: 64px;
-  height: 64px;
-}
-
-.lds-dual-ring:after {
-  content: ' ';
-  display: block;
-  width: 46px;
-  height: 46px;
-  margin: 1px;
-  border-radius: 50%;
-  animation: lds-dual-ring 1.2s linear infinite;
-}
-
-.lds-dual-ring.blue:after {
-  border: 5px solid var(--cyan2);
-  border-color: var(--cyan2) transparent var(--cyan2) transparent;
-}
-
-.lds-dual-ring.green:after {
-  border: 5px solid var(--emer2);
-  border-color: var(--emer2) transparent var(--emer2) transparent;
-}
-
-.lds-dual-ring.orange:after {
-  border: 5px solid var(--oran2);
-  border-color: var(--oran2) transparent var(--oran2) transparent;
-}
-
-.lds-dual-ring.red:after {
-  border: 5px solid var(--redd2);
-  border-color: var(--redd2) transparent var(--redd2) transparent;
 }

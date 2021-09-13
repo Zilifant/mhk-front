@@ -6,7 +6,7 @@ const Loading = ({
   overlay,
   suspenseful,
 }) => {
-  console.log(content);
+  // console.log(content);
   return (
     <div className={`loading ${overlay && 'overlay'} ${suspenseful && 'suspenseful'}`}>
       <div className={`loading-content ${color}`}>{content}</div>

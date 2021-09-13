@@ -11,25 +11,31 @@ import '../../styles/landing.scss';
 // If user has correct session data, Lobby is loaded, else JoinThisLobby is loaded
 
 const Foyer = () => {
+  // console.log('foyer');
 
   const { checkMyLobby, myLobby, checked } = useContext(UserContext);
   const lobbyURL = useParams().lobbyURL;
   const history = useHistory();
 
-  const genURL = lobbyURL === 'lobby';
+  const isGenericURL = lobbyURL === 'lobby';
 
   if (checked) {
 
-    if (genURL && !myLobby) {
+    if (isGenericURL && !myLobby) {
       history.push('/');
       return null;
     };
 
-    if (genURL && myLobby) return (<Lobby />);
+    if (isGenericURL && myLobby) {
+      // console.log('generic and mylobby');
+      return <Lobby />;
+    }
 
-    if (!genURL) {
+    if (!isGenericURL) {
 
       if (checkMyLobby(lobbyURL)) {
+        // console.log('unique and mylobby');
+        // return <Lobby />
         history.push('/lobby');
         return null;
       }

@@ -16,7 +16,7 @@ const Header = () => {
       <NavLink className='navlink' to="/" exact>MHK</NavLink>
       { userId &&
         <>
-          <NavLink className='navlink' to={`/${myLobby}`} exact>LOBBY</NavLink>
+          <NavLink className='navlink' to='/lobby' exact>LOBBY</NavLink>
           <span className='sessinfo'>
             {`User: ${userName}`}
           </span>

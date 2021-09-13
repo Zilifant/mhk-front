@@ -2,12 +2,12 @@
 
 @import './colors.scss';
 
-@mixin three-d-btn($col) {
+@mixin three-d-btn($col: $cyan6, $ct: 8%) {
   background-color: $col;
-  border-top: $bdr-width solid lighten($col, 8%);
-  border-left: $bdr-width solid lighten($col, 8%);
-  border-bottom: $bdr-width solid darken($col, 8%);
-  border-right: $bdr-width solid darken($col, 8%);
+  border-top: $bdr-width solid lighten($col, $ct);
+  border-left: $bdr-width solid lighten($col, $ct);
+  border-bottom: $bdr-width solid darken($col, $ct);
+  border-right: $bdr-width solid darken($col, $ct);
 
   &:not(:disabled):hover {
     color: $white;
@@ -18,12 +18,12 @@
   }
 }
 
-@mixin three-d-btn-down($col) {
+@mixin three-d-btn-down($col, $ct: 8%) {
   background-color: darken($col, 2%);
-  border-top: $bdr-width solid darken($col, 8%);
-  border-left: $bdr-width solid darken($col, 8%);
-  border-bottom: $bdr-width solid lighten($col, 8%);
-  border-right: $bdr-width solid lighten($col, 8%);
+  border-top: $bdr-width solid darken($col, $ct);
+  border-left: $bdr-width solid darken($col, $ct);
+  border-bottom: $bdr-width solid lighten($col, $ct);
+  border-right: $bdr-width solid lighten($col, $ct);
 }
 
 @mixin z($weight) {

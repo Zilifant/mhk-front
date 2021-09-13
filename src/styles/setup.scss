@@ -1,3 +1,9 @@
+// setup
+
+@import './colors.scss';
+@import './mixins.scss';
+
+$bdr-width: .33rem;
 
 .container.con--setup {
   display: flex;
@@ -22,9 +28,17 @@
   width: 180px;
 }
 
-button.btn--startgame {
+button.startgame {
   font-size: x-large;
+  text-transform: uppercase;
   padding: .5rem 1rem;
+  @include three-d-btn();
+
+  &:disabled {
+    cursor: auto;
+    color: darken($fg3, 30%);
+    @include three-d-btn($bg3);
+  }
 }
 
 .ttip-parent.startgame {
@@ -57,6 +71,26 @@ button.btn--startgame {
   width: 100px;
   text-align: center;
   cursor: default;
+}
+
+.advrolebtn {
+  display: block;
+  width: 100px;
+  text-transform: uppercase;
+  @include three-d-btn($cyan6);
+
+  &.selected {
+    color: $fg2;
+    @include three-d-btn($emer6);
+  }
+
+  &:disabled {
+    cursor: auto;
+    @include three-d-btn($bg3);
+    &:not(.highlighted) {
+      color: darken($fg3, 30%);
+    }
+  }
 }
 
 .advrole.ghost {

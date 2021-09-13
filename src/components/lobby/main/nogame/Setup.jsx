@@ -4,7 +4,6 @@ import React, {
 import { SocketContext } from '../../../../context/contexts';
 import { useGame } from '../../../../hooks/game-hook';
 import Container from '../../../shared/Container';
-import Button from '../../../ui-elements/Button';
 import TimerSetup from './TimerSetup';
 import Tooltip from '../../../shared/Tooltip';
 import '../../../../styles/setup.scss';
@@ -31,14 +30,14 @@ const Setup = ({
   const AdvRolesLeader = () => (
     <div className='advrole-wrapper'>
       {advRoles.map((role, i) => (
-        <Button
+        <button
           key={i}
-          className={`advrole ${role.active ? 'on' : 'off'}`}
+          className={`advrolebtn ${role.active && 'selected'}`}
           onClick={() => toggleHandler(role.id)}
           disabled={!lobby.canUseAdvRoles()}
         >
           {role.id}
-        </Button>
+        </button>
       ))}
     </div>
   );
@@ -61,11 +60,11 @@ const Setup = ({
 
       {iAmLeader &&
       <div className='startgame ttip-parent'>
-        <Button
+        <button
           className='startgame'
           onClick={startGameHandler}
           disabled={!lobby.canStart()}
-        >Start Game</Button>
+        >Start Game</button>
         <Tooltip tip='waitMorePlayers' side='bottom' />
       </div>}
 

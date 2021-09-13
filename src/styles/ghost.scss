@@ -12,21 +12,30 @@ $bg3: $gray7;
 $bg4: $gray8;
 $bg5: $gray9;
 
-$bdr-width: .33rem;
+$bdr-width: .25rem;
+
+$clue-bg: $bg4;
 
 $clue-btn-bg: $bg2;
 $clue-btn-sel-bg: $emer6;
 $clue-btn-dis-bg: $bg3;
-$clue-btn-hil-bg: $libl6;
+$clue-btn-lck-bg: $bg4;
+$clue-btn-hil-bg: $colg6;
 
 $confirm-btn-bg: $cyan6;
 $confirm-btn-dis-bg: $bg3;
 
 $replace-btn-bg: $rose7;
 
+.container.con--self.gh,
+.container.con--ghost {
+  background-color: $clue-bg;
+  width: max-content;
+}
+
 div.card-wrap--ghost {
   display: inline-block;
-  background-color: $bg4;
+  background-color: $clue-bg;
   border-radius: var(--rad);
   width: 8rem;
   &:not(:first-child) {
@@ -42,8 +51,13 @@ div.card-wrap--ghost {
 }
 
 .gc-title {
+  display: flex;
   height: 2.75rem;
   text-align: center;
+  text-transform: uppercase;
+  margin-bottom: .5rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-wrap--ghost {
@@ -71,6 +85,7 @@ div.card-wrap--ghost {
 
 .gc-clue {
   margin: .25rem 0 0;
+  // margin: 0;
   white-space: nowrap;
 }
 
@@ -78,30 +93,34 @@ div.card-wrap--ghost {
   margin: 0 auto;
   width: 100%;
   color: $fg3;
-  @include three-d-btn($clue-btn-bg);
+  @include three-d-btn($clue-btn-bg, 12%);
 
   &.selected {
     color: $fg1;
-    @include three-d-btn($clue-btn-sel-bg);
+    @include three-d-btn($clue-btn-sel-bg, 12%);
   }
 
   &:disabled {
     cursor: auto;
-    @include three-d-btn($clue-btn-dis-bg);
+    @include three-d-btn($clue-btn-dis-bg, 10%);
     &:not(.highlighted) {
       color: darken($fg3, 30%);
+      &.locked {
+        color: darken($fg3, 50%);
+        @include three-d-btn($clue-btn-lck-bg, 5%);
+      }
     }
   }
 
   // order matters: highlighted after disabled
   &.highlighted {
     color: $fg1;
-    @include three-d-btn($clue-btn-hil-bg);
+    @include three-d-btn($clue-btn-hil-bg, 20%);
   }
 }
 
 button.btn--gc {
-  margin-top: .25rem;
+  margin-top: .5rem;
   width: 100%;
 
   &.confirm-clue {
@@ -143,11 +162,11 @@ button.btn--gc {
 }
 
 .gc-conbtn-placeholder {
-  margin-top: .25rem;
+  margin-top: .5rem;
   width: 100%;
-  color: $bg4;
-  background-color: $bg4;
-  border: $bdr-width solid $bg4;
+  color: $clue-bg;
+  background-color: $clue-bg;
+  border: $bdr-width solid $clue-bg;
   padding: .15rem;
   cursor: default;
 }

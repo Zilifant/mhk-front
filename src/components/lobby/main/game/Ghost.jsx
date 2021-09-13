@@ -30,7 +30,7 @@ const Ghost = ({
   )
 
   return (
-    <Container className={isGhostUI ? 'self' : 'ghost'}>
+    <Container className={isGhostUI ? 'self gh' : 'ghost'}>
       <ul className='c-group'>
         {cluesDeck.map((card) => (
         <GhostCard

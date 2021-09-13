@@ -51,7 +51,8 @@ const GhostCard = ({
     return amIEnabled(index);
   };
 
-  const isNew = card.isNew ? 'new' : 'old';
+  const newCard = card.isNew ? 'new' : 'old';
+  const lockedCard = card.isLocked ? 'locked' : 'unlocked';
 
   const confirmClueBtn = () => {
     return (
@@ -60,7 +61,7 @@ const GhostCard = ({
         onClick={() => confirmSelection({ cb:[chooseClueHandler], resetTracker: false })}
         disabled={!maxReached}
       >
-        Confirm
+        confirm
       </Button>
     );
   };
@@ -72,7 +73,7 @@ const GhostCard = ({
         onClick={() => replaceGhostCardHandler(card.id)}
         disabled={false}
       >
-        REPLACE
+        replace
       </Button>
     );
   };
@@ -86,8 +87,8 @@ const GhostCard = ({
   if (!card.isDisplayed) return null;
 
   return (
-    <div className={`card-wrap--ghost ${card.type} ${isNew}`}>
-      <div className={'gc-title'}>{card.id}</div>
+    <div className={`card-wrap--ghost ${card.type} ${newCard}`}>
+      <div className={'gc-title'}><h3>{card.id}</h3></div>
       <ul>
         {card.opts.map((opt, index) => (
           <li
@@ -95,7 +96,7 @@ const GhostCard = ({
             className='gc-clue'
           >
             <button
-              className={`gc-clue-btn ${checkHighlight(opt)} ${checkSelected(index)}`}
+              className={`gc-clue-btn ${checkHighlight(opt)} ${checkSelected(index)} ${lockedCard}`}
               disabled={!checkEnabled(opt.id)}
               onClick={() => selectItemHandler(opt.id)}
             >

@@ -11,6 +11,7 @@
   --bg3: var(--gray7);
   --bg4: var(--gray8);
   --bg5: var(--gray9);
+  --bg6: black;
 
   --hiligt:  var(--redd4);
   --killer:  var(--redd4);
@@ -19,7 +20,7 @@
   --witnss:  var(--libl4);
   --ghost:   var(--fuch5);
   --ghostli: var(--fuch4);
-  --cause:   var(--purp8);
+  --cause:   var(--fuch7);
   --locate:  var(--emer8);
   --cluold:  var(--colg7);
   --clunew:  var(--colg6);
@@ -72,6 +73,16 @@ button {
 
 button:focus { outline: none; }
 
+/* ////////////////////////////////////////// */
+
+// body { 
+//   background: url('../assets/images/alley-bg.jpg') no-repeat center center fixed;
+//   -webkit-background-size: cover;
+//      -moz-background-size: cover;
+//        -o-background-size: cover;
+//           background-size: cover;
+// }
+
 div.app-root {
   display: flex;
   flex-flow: column;
@@ -88,8 +99,6 @@ main.app {
   flex-basis: auto;
   max-height: calc(100% - (var(--mar)*2));
 }
-
-/* ////////////////////////////////////////// */
 
 /* GRID */
 
@@ -199,11 +208,11 @@ main.app {
 .con--player,
 .con--ghost {
   overflow-x: scroll;
+  // border: 1px solid $bg1;
 }
 
 .con--dev,
 .con--self,
-.con--ghost,
 .con--player {
   background-color: var(--bg4);
   width: max-content;
@@ -223,11 +232,6 @@ main.app {
   padding: 0;
 }
 
-.con--uni-footer {
-  background-color: var(--bg5);
-  /* height: 40px; */
-}
-
 .con--info.game > :not(:nth-child(1)) {
   margin-left: .5rem;
 }
@@ -243,59 +247,6 @@ main.app {
   height: 1.3rem;
   width: 100%;
   margin: 0;
-}
-
-.btn {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  background-color: var(--cyan6);
-  color: var(--white);
-  padding: .15rem .25rem;
-  /* height: max-content; */
-  /* border: 3px solid var(--cyan6); */
-  border-radius: var(--rad);
-  /* margin: .5rem; */
-  margin: 0;
-  text-transform: uppercase;
-}
-
-.btn:hover {
-  background-color: var(--cyan5);
-  /* border: 3px solid var(--cyan5); */
-}
-
-.btn:active {
-  /* background-color: var(--pink5); */
-  /* border: 3px solid var(--pink5); */
-  outline: none;
-}
-
-.btn:focus { outline: none; }
-
-.btn:disabled,
-.btn:hover:disabled,
-.btn:active:disabled {
-  background: var(--colg5);
-  color: var(--colg4);
-  border-color: var(--colg5);
-  cursor: default;
-}
-
-.btn--keyEvSelector-selected {
-  background-color: var(--redd5);
-}
-
-.btn--keyEvSelector-selected:hover {
-  background-color: var(--redd4);
-}
-
-.btn--confirm-kill,
-.btn--confirm-accusation,
-.btn--confirm-key-evidence {
-  margin: 0 auto;
-  height: 100%;
-  width: 100%;
 }
 
 .rtw-unchecked {

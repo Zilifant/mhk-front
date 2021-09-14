@@ -83,12 +83,19 @@ const Member = ({
       //     className={`ready-toggle ${ready}`}
       //   />
       // </button>
-      <SVGButton
-        // icon={member.isReady ? 'minus' : 'plus'}
-        icon='rSq'
-        className={`ready-toggle ${ready}`}
+      <button
+        className={`ready-toggle-btn ${ready}`}
         onClick={() => readyHandler(userId)}
-      />
+        disabled={false}
+      >
+        ready
+      </button>
+      // <SVGButton
+      //   // icon={member.isReady ? 'minus' : 'plus'}
+      //   icon='rSq'
+      //   className={`ready-toggle ${ready}`}
+      //   onClick={() => readyHandler(userId)}
+      // />
     );
 
   };

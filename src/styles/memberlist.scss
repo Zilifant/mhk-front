@@ -1,3 +1,9 @@
+// memberlist & members
+
+@import './colors.scss';
+@import './mixins.scss';
+
+$bdr-width: .33rem;
 
 .container.con--memberlist {
   display: flex;
@@ -93,12 +99,10 @@ div.leader_icon {
 
 div.member_grid:hover > .leader_icon .svg-btn.transfer-leader svg {
   fill: var(--leader);
-  transition: 0;
 }
 
 div.member_grid:hover > .ghost_icon .svg-btn.assign-ghost.ml-notghost svg {
   fill: var(--ghost);
-  transition: 0;
 }
 
 /* .svg-btn.assign-ghost.ml-notghost:active svg,
@@ -131,4 +135,39 @@ div.member_grid:hover > .ghost_icon .svg-btn.assign-ghost.ml-notghost svg {
 
 .svg-btn.ready-toggle.ml-notready:hover svg .background {
   fill: var(--bg1);
+}
+
+.ready_toggle {
+  align-self: center;
+}
+
+.ready-toggle-wrap {
+  display: flex;
+  align-items: center;
+}
+
+button.ready-toggle-btn {
+  display: block;
+  text-transform: uppercase;
+  padding: .15rem .25rem;
+  // height: 18px;
+  // width: 18px;
+  &.ml-ready {
+    @include three-d-btn($ready);
+  }
+  &.ml-notready {
+    @include three-d-btn($redd5);
+  }
+  // &::after {
+  //   content: 'READY';
+  //   font-size: x-large;
+  //   position: relative;
+  //   left: calc(100% + .83rem);
+  // }
+}
+
+.ready-toggle-label {
+  margin-left: .5rem;
+  font-size: x-large;
+  text-transform: uppercase;
 }

@@ -21,7 +21,7 @@ const TimerSetup = ({
   const timerLeader = () => (
     <div className={`timer-wrap ${iAmLeader ? 'leader' : 'notleader'}`}>
       <SVGButton
-        className='timer dec'
+        className='timer dec three-d'
         onClick={() => chooseTimerHandler(--duration)}
         icon='minus'
         disabled={!iAmLeader || minReached}
@@ -29,7 +29,7 @@ const TimerSetup = ({
       {duration !== 0 && <div className={`timer value on`}>{`${duration}:00`}</div>}
       {duration === 0 && <div className={`timer value off`}>{'OFF'}</div>}
       <SVGButton
-        className='timer inc'
+        className='timer inc three-d'
         onClick={() => chooseTimerHandler(++duration)}
         icon='plus'
         disabled={!iAmLeader || maxReached}

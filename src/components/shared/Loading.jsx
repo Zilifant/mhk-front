@@ -9,7 +9,7 @@ const Loading = ({
   // console.log(content);
   return (
     <div className={`loading ${overlay && 'overlay'} ${suspenseful && 'suspenseful'}`}>
-      <div className={`loading-content ${color}`}>{content}</div>
+      <div className={`loading-content rotator ${color}`}>{content}</div>
     </div>
   );
 };

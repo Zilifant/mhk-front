@@ -423,18 +423,27 @@ ul.c-group {
 
 /* LOADING */
 
+.loading-content::before,
 .loading-content {
-  font-size: x-large;
+  font-size: 30pt;
 }
 
+.loading-content::before {
+  position: relative;
+  bottom: .5rem;
+}
+
+.loading-content.blue::before,
 .loading-content.blue {
   color: var(--cyan3);
 }
 
+.loading-content.orange::before,
 .loading-content.orange {
   color: var(--oran3);
 }
 
+.loading-content.purple::before,
 .loading-content.purple {
   color: var(--fuch4);
 }
@@ -449,6 +458,7 @@ ul.c-group {
   justify-content: center;
   align-items: center;
   background: var(--bg5);
+  z-index: 1;
 }
 
 .suspenseful {
@@ -462,13 +472,31 @@ ul.c-group {
   100% { opacity: 0%; }
 }
 
-@keyframes lds-dual-ring {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.rotator:before {
+  animation-name: code-rotator;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  content: '';
+}
+
+@keyframes code-rotator {
+    0% { content: '⠁'; }
+    6% { content: '⠉'; }
+   12% { content: '⠙'; }
+   18% { content: '⠹'; }
+   25% { content: '⢹'; }
+   31% { content: '⣹'; }
+   37% { content: '⣽'; }
+   43% { content: '⣿'; }
+   50% { content: '⣾'; }
+   56% { content: '⣶'; }
+   62% { content: '⣦'; }
+   68% { content: '⣆'; }
+   75% { content: '⡆'; }
+   81% { content: '⠆'; }
+   87% { content: '⠂'; }
+   93% { content: '⠀'; }
+  100% { content: '⠁'; }
 }
 
 /* .default.member.name, */

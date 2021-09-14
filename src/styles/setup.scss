@@ -163,11 +163,18 @@ button.startgame {
     'de va in';
 }
 
-.svg-btn:disabled svg {
-  fill: var(--bg1);
-  cursor: default;
-}
-
 .timer-wrap.notleader .svg-btn svg {
   fill: var(--bg2);
+}
+
+.svg-btn.timer.three-d {
+  padding: .25rem;
+  @include three-d-btn($cyan6);
+  &:disabled {
+    cursor: default;
+    @include three-d-btn($bg3);
+  }
+  &:disabled svg {
+    fill: var(--bg1);
+  }
 }

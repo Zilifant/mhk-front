@@ -5,6 +5,7 @@ export const UserContext = React.createContext({
   userName: null,
   myLobby: null,
   isLeader: false,
+  isStreamer: true,
   checkMyLobby: () => {},
   updateUserCtx: () => {},
   checked: false

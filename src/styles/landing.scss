@@ -25,7 +25,8 @@
   grid-template-areas:
     "head"
     "newl"
-    "join";
+    "join"
+    'jdbtn';
 }
 
 .new-lobby-form,
@@ -34,6 +35,8 @@
   display: flex;
   justify-content: center;
 }
+
+.btn--streaming-mode { grid-area: stream }
 
 .new-lobby-title { grid-area: newtitl; }
 .new-lobby-label { grid-area: newlabel; }
@@ -69,27 +72,27 @@
   display: grid;
   padding: 0;
   gap: .5rem;
-  grid-template-columns: 75px 175px max-content;
+  grid-template-columns: 75px 175px max-content max-content;
 }
 
 .grid--new-lobby-form {
   grid-template-areas:
-    "newtitl newtitl newtitl "
-    "newlabel newinput newbtn";
+    "newtitl newtitl newtitl newtitl"
+    "newlabel newinput newbtn stream";
 }
 
 .grid--join-this-lobby-form {
   grid-template-areas:
-    "jtltitl jtltitl jtltitl "
-    "jtlsubt jtlsubt jtlsubt "
-    "jtllabel jtlinput jtlbtn";
+    "jtltitl jtltitl jtltitl jtltitl"
+    "jtlsubt jtlsubt jtlsubt ."
+    "jtllabel jtlinput jtlbtn stream";
 }
 
 .grid--join-lobby-form {
   grid-template-areas:
-    "jnltitl jnltitl jnltitl"
-    "jnlabel jninput jdbtn  "
-    "jllabel jlinput jlbtn  ";
+    "jnltitl jnltitl jnltitl jnltitl"
+    "jnlabel jninput jdbtn ."
+    "jllabel jlinput jlbtn stream";
 }
 
 .grid--new-lobby-form *,
@@ -100,6 +103,7 @@
   display: flex;
   align-items: center;
 }
+
 .grid--new-lobby-form label,
 .grid--join-lobby-form label,
 .grid--join-this-lobby-form label {
@@ -113,8 +117,12 @@
 }
 
 button.btn--join-devlobby {
-  width: 100%;
+  width: 50px;
   margin-top: .5rem;
+}
+
+button.btn--streaming-mode.on {
+  background-color: var(--ready);
 }
 
 .con--head,
@@ -123,7 +131,7 @@ button.btn--join-devlobby {
 .con--newlobby {
   background-color: var(--bg3);
   width: max-content;
-  min-width: 400px;
+  min-width: 500px;
 }
 
 .con--head > :not(:first-child) {

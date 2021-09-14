@@ -1,4 +1,7 @@
-import React, { useContext } from 'react';
+import React, {
+  useContext,
+  useState
+} from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from '../../hooks/form-hook';
 import { useHttpClient } from '../../hooks/http-hook';
@@ -14,6 +17,7 @@ import Grid from '../shared/Grid';
 const NewLobby = () => {
   const { updateUserCtx } = useContext(UserContext);
   const { error, sendRequest, clearError } = useHttpClient();
+  const [isStreamer, setIsStreamer] = useState(false);
 
   const [formState, inputHandler] = useForm(
     {
@@ -35,6 +39,7 @@ const NewLobby = () => {
         'POST',
         JSON.stringify({
           userName: formState.inputs.userName.value,
+          isStreamer
         }),
         { 'Content-Type': 'application/json' },
       );
@@ -63,7 +68,11 @@ const NewLobby = () => {
               type='text'
               label='Your Name'
               placeholder='Name'
-              validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(MAX_NAME_LEN), VALIDATOR_LETTERS_ONLY()]}
+              validators={[
+                VALIDATOR_REQUIRE(),
+                VALIDATOR_MAXLENGTH(MAX_NAME_LEN),
+                VALIDATOR_LETTERS_ONLY()
+              ]}
               errorText='Please enter a name.'
               onInput={inputHandler}
               noInvalidStyle={true}
@@ -78,6 +87,13 @@ const NewLobby = () => {
             </Button>
           </Grid>
         </form>
+        <Button
+          disabled={false}
+          className={`streaming-mode ${isStreamer && 'on'}`}
+          onClick={() => setIsStreamer(!isStreamer)}
+        >
+          STREAMING
+        </Button>
       </Container>
     </React.Fragment>
   );

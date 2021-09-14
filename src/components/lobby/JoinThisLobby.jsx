@@ -2,26 +2,28 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from '../../hooks/form-hook';
 import { useHttpClient } from '../../hooks/http-hook';
+import { UserContext } from '../../context/contexts';
 import { VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH, VALIDATOR_LETTERS_ONLY } from '../../util/validators';
 import { MAX_NAME_LEN } from '../../util/utils';
-import Input from '../ui-elements/Input';
 import ErrorModal from '../modal/ErrorModal';
-import Button from '../ui-elements/Button';
-import { UserContext } from '../../context/contexts';
-// import Loading from '../shared/Loading';
 import Grid from '../shared/Grid';
 import Container from '../shared/Container';
+import Input from '../ui-elements/Input';
+import Button from '../ui-elements/Button';
 
 const JoinThisLobby = ({ lobbyId }) => {
   const { updateUserCtx } = useContext(UserContext);
   const history = useHistory();
   const { error, sendRequest, clearError } = useHttpClient();
+
+  const atALobby = !!lobbyId;
+  console.log(atALobby);
+
   const [formState, inputHandler] = useForm(
     { userName: { value: '', isValid: false } }, false
   );
 
   const JoinThisLobbySubHandler = async event => {
-    // console.log('JoinThisLobbySubHandler');
     event.preventDefault();
 
     try {
@@ -39,6 +41,7 @@ const JoinThisLobby = ({ lobbyId }) => {
         userName: responseData.user.userName,
         myLobby: responseData.user.myLobby
       });
+      // 'forward' user to route of lobby
       history.push('/lobby');
     } catch (err) { console.log(err); };
   };
@@ -47,7 +50,6 @@ const JoinThisLobby = ({ lobbyId }) => {
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
       <Container className='foyerjoin'>
-      {/* {isLoading && <Loading asOverlay color='green' />} */}
       <form className="form join-this-lobby-form" onSubmit={JoinThisLobbySubHandler}>
         <Grid className='join-this-lobby-form'>
           <div className='join-this-lobby-title'>JOIN THIS LOBBY</div>
@@ -58,7 +60,11 @@ const JoinThisLobby = ({ lobbyId }) => {
             type="text"
             label="Your Name"
             placeholder="Name"
-            validators={[VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(MAX_NAME_LEN), VALIDATOR_LETTERS_ONLY()]}
+            validators={[
+              VALIDATOR_REQUIRE(),
+              VALIDATOR_MAXLENGTH(MAX_NAME_LEN),
+              VALIDATOR_LETTERS_ONLY()
+            ]}
             errorText="Please enter a name."
             onInput={inputHandler}
             noInvalidStyle={true}

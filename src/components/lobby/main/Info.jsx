@@ -19,7 +19,7 @@ const Info = ({
   iAmLeader
 }) => {
 
-  const { myLobby, userName } = useContext(UserContext);
+  const { myLobby, userName, isStreamer } = useContext(UserContext);
   const { socket } = useContext(SocketContext);
 
   const {
@@ -37,7 +37,7 @@ const Info = ({
     alert('Lobby URL copied.');
   }
 
-  const [lobbyIdHidden, setLobbyIdHidden] = useState(true);
+  const [lobbyIdHidden, setLobbyIdHidden] = useState(isStreamer);
 
   const hideLobbyIdHandler = () => setLobbyIdHidden(!lobbyIdHidden);
 

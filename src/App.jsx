@@ -18,6 +18,8 @@ function App() {
   console.log('%cApp','color:#79e6f9');
   const { user, checkMyLobby, updateUserCtx } = useUser();
   const { isLoading, sendRequest } = useHttpClient();
+  // const [lobbyId, setLobbyId] = useState();
+  // const [isMyLobby, setIsMyLobby] = useState();
 
   useEffect(() => {
     console.log('UserHook: fetchSess');
@@ -29,8 +31,10 @@ function App() {
         updateUserCtx({
           userId: responseData.user?.id,
           userName: responseData.user?.userName,
-          myLobby: responseData.user?.myLobby
+          myLobby: responseData.user?.myLobby,
+          isStreamer: responseData.user?.isStreamer
         });
+        // setLobbyId(responseData.user?.myLobby);
       } catch (err) { console.log(err); };
     };
     checkCookie();
@@ -49,6 +53,9 @@ function App() {
       <Route path='/lobby' exact>
         <Foyer />
       </Route>
+      <Route path='/join' exact>
+        <Foyer />
+      </Route>
       <Redirect to='/' />
     </Switch>
   );
@@ -59,6 +66,7 @@ function App() {
       userName: user.userName,
       myLobby: user.myLobby,
       isLeader: user.isLeader,
+      isStreamer: user.isStreamer,
       checkMyLobby: checkMyLobby,
       updateUserCtx: updateUserCtx,
       checked: user.checked

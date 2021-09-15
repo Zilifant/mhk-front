@@ -1,18 +1,29 @@
-import React from 'react';
-import Grid from '../shared/Grid';
-import Header from '../shared/Header';
+import React, {
+  useContext
+} from 'react';
+import { UserContext } from '../../context/contexts';
+import Header from './Header';
+import ReturnToLobby from './ReturnToLobby';
 import NewLobby from './NewLobby';
 import JoinLobby from './JoinLobby';
 import '../../styles/landing.scss';
 
 const Landing = () => {
   // console.log('%cLanding','color:#f579f9');
+
+  const { userId, userName, myLobby } = useContext(UserContext);
+
   return (
-    <Grid className='landing'>
-      <Header className='landing' />
+    <div className='landing'>
+      <Header />
+      {userId && <ReturnToLobby
+        userId={userId}
+        userName={userName}
+        myLobby={myLobby}
+      />}
       <NewLobby />
       <JoinLobby />
-    </Grid>
+    </div>
   );
 };
 

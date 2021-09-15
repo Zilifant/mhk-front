@@ -1,35 +1,27 @@
 import React, {
   // useState,
-  useContext,
+  // useContext,
   // useEffect
 } from 'react';
 import { NavLink } from 'react-router-dom';
-import { UserContext } from '../../context/contexts';
-import Container from './Container';
 
-const Header = () => {
+import Container from '../shared/Container';
 
-  const { userName, userId, myLobby } = useContext(UserContext);
+const ReturnToLobby = ({userName}) => {
 
   return (
-    <Container className="head">
-      <NavLink className='navlink' to="/" exact>MHK</NavLink>
-      { userId &&
-        <>
-          <NavLink className='navlink' to='/lobby' exact>LOBBY</NavLink>
-          <span className='sessinfo'>
-            {`User: ${userName}`}
-          </span>
-          <span className='sessinfo'>
-            {`Lobby: ${myLobby === 'z' ? 'splendid-monolith-7873' : myLobby}`}
-          </span>
-        </>
-      }
+    <Container className="returntolobby">
+      <NavLink className='return-link' to='/lobby' exact>
+        return to your lobby
+      </NavLink>
+      <span className='return-username'>
+        {userName}
+      </span>
     </Container>
   );
 };
 
-export default Header;
+export default ReturnToLobby;
 
 // Context.Consumer alternative to context hook; uses a child that is an anon function that takes context data as param and returns the sub-components/elements that will need the context data
 

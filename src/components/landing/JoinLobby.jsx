@@ -6,13 +6,21 @@ import { useHistory } from 'react-router-dom';
 import { useForm } from '../../hooks/form-hook';
 import { useHttpClient } from '../../hooks/http-hook';
 import { UserContext } from '../../context/contexts';
-import { VALIDATOR_REQUIRE, VALIDATOR_MAXLENGTH, VALIDATOR_LETTERS_ONLY } from '../../util/validators';
+import {
+  VALIDATOR_REQUIRE,
+  VALIDATOR_MAXLENGTH,
+  VALIDATOR_LETTERS_ONLY
+} from '../../util/validators';
 import { MAX_NAME_LEN, randomName } from '../../util/utils';
 import ErrorModal from '../modal/ErrorModal';
 import Grid from '../shared/Grid';
 import Container from '../shared/Container';
 import Input from '../ui-elements/Input';
+import Tooltip from '../shared/Tooltip';
 import Button from '../ui-elements/Button';
+// import SVGButton from '../ui-elements/SVGButton';
+import '../../styles/info.scss';
+import '../../styles/svgs.scss';
 
 const JoinLobby = ({ lobbyId }) => {
   const { updateUserCtx } = useContext(UserContext);
@@ -65,47 +73,78 @@ const JoinLobby = ({ lobbyId }) => {
         myLobby: responseData.user.myLobby,
         isStreamer: responseData.user.isStreamer
       });
-      // 'forward' user to route of lobby
-      history.push('/lobby');
+      history.push('/lobby'); // forward user to route of lobby
     } catch (err) { console.log(err); };
   };
+
+  // const [lobbyIdHidden, setLobbyIdHidden] = useState(true);
+
+  // const hideLobbyIdHandler = () => setLobbyIdHidden(!lobbyIdHidden);
+
+  // let lid;
+  // if (lobbyId) lid = lobbyId === 'z' ? 'SPLENDID-MONOLITH-8923' : lobbyId.toUpperCase()
+
+  // const HiddenURL = () => (
+  //   <div className='lobbyid-wrap'>
+  //     <div className='ttip-parent'>
+  //       <SVGButton
+  //         className='hidelobbyid'
+  //         icon={lobbyIdHidden ? 'show' : 'hide'}
+  //         onClick={hideLobbyIdHandler}
+  //         disabled={false}
+  //       />
+  //       <Tooltip tip='hideShowName' side='left' />
+  //     </div>
+  //     <div className={`info-lobbyid ${lobbyIdHidden ? 'obscured' : 'visible'}`}>
+  //       {lobbyIdHidden ? 'lobby name hidden' : lid}
+  //     </div>
+  //   </div>
+  // )
 
   if (lobbyId) return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
       <Container className='foyerjoin'>
-      <form className="form join-this-lobby-form" onSubmit={joinLobbySubHandler}>
-        <Grid className='join-this-lobby-form'>
-          <div className='join-this-lobby-title'>JOIN THIS LOBBY</div>
-          <div className='join-this-lobby-subtitle'>{lobbyId === 'z' ? 'SPLENDID-MONOLITH-8923' : lobbyId.toUpperCase()}</div>
-          <Input
-            id="userName"
-            element="input"
-            type="text"
-            label="Your Name"
-            placeholder="Name"
-            validators={[
-              VALIDATOR_REQUIRE(),
-              VALIDATOR_MAXLENGTH(MAX_NAME_LEN),
-              VALIDATOR_LETTERS_ONLY()
-            ]}
-            errorText="Please enter a name."
-            onInput={inputHandler}
-            noInvalidStyle={true}
-            className="join-this-lobby"
-          />
-          <Button type="submit" disabled={!formState.isValid} className='join-this-lobby'>
-            SUBMIT
-          </Button>
-        </Grid>
-      </form>
-      <Button
-        disabled={false}
-        className={`streaming-mode ${isStreamer && 'on'}`}
-        onClick={() => setIsStreamer(!isStreamer)}
-      >
-        STREAMING
-      </Button>
+        <div className='landing-forms-wrapper'>
+          {/* <HiddenURL /> */}
+          <form className="form join-this-lobby-form" onSubmit={joinLobbySubHandler}>
+            <Grid className='join-this-lobby-form'>
+              <div className='join-this-lobby-title'>JOIN THIS LOBBY</div>
+              <Input
+                id="userName"
+                element="input"
+                type="text"
+                label="Your Name"
+                placeholder="Name"
+                validators={[
+                  VALIDATOR_REQUIRE(),
+                  VALIDATOR_MAXLENGTH(MAX_NAME_LEN),
+                  VALIDATOR_LETTERS_ONLY()
+                ]}
+                errorText="Please enter a name."
+                onInput={inputHandler}
+                noInvalidStyle={true}
+                className="join-this-lobby"
+              />
+              <button type="submit" disabled={!formState.isValid} className='join-this-lobby-btn'>
+                SUBMIT
+              </button>
+            </Grid>
+          </form>
+          <div className='streaming-mode-wrapper'>
+            <span className='streaming-mode-label'>
+              streaming mode
+            </span>
+            <div className='streaming-mode ttip-parent'>
+              <button
+                disabled={false}
+                className={`streaming-mode-btn ${isStreamer && 'on'}`}
+                onClick={() => setIsStreamer(!isStreamer)}
+              />
+              <Tooltip tip='streamingMode' side='bottom' />
+            </div>
+          </div>
+        </div>
       </Container>
     </React.Fragment>
   );
@@ -114,50 +153,58 @@ const JoinLobby = ({ lobbyId }) => {
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
       <Container className='joinlobby'>
-        <form className='form join-lobby-form' onSubmit={joinLobbySubHandler}>
-          <Grid className='join-lobby-form'>
-            <div className='join-lobby-title'>JOIN LOBBY</div>
-            <Input
-              id='userName'
-              element='input'
-              type='text'
-              label='Your Name'
-              placeholder='Name'
-              validators={[
-                VALIDATOR_REQUIRE(),
-                VALIDATOR_MAXLENGTH(MAX_NAME_LEN),
-                VALIDATOR_LETTERS_ONLY()
-              ]}
-              errorText='Please enter a name.'
-              onInput={inputHandler}
-              noInvalidStyle={true}
-              className='join-lobby-username'
-            />
-            <Input
-              id='lobbyURL'
-              element='input'
-              type='text'
-              label='Lobby Name'
-              placeholder='mellow-earth-4321'
-              initialValue=''
-              validators={[VALIDATOR_REQUIRE()]}
-              errorText='Please enter a valid lobby ID.'
-              onInput={inputHandler}
-              noInvalidStyle={true}
-              className='join-lobby-lobbyid'
-            />
-            <Button type='submit' disabled={!formState.isValid} className='join-lobby'>
-              SUBMIT
-            </Button>
-          </Grid>
-        </form>
-        <Button
-          disabled={false}
-          className={`streaming-mode ${isStreamer && 'on'}`}
-          onClick={() => setIsStreamer(!isStreamer)}
-        >
-          STREAMING
-        </Button>
+        <div className='landing-forms-wrapper'>
+          <form className='form join-lobby-form' onSubmit={joinLobbySubHandler}>
+            <Grid className='join-lobby-form'>
+              <div className='join-lobby-title'>JOIN LOBBY</div>
+              <Input
+                id='userName'
+                element='input'
+                type='text'
+                label='Your Name'
+                placeholder='Name'
+                validators={[
+                  VALIDATOR_REQUIRE(),
+                  VALIDATOR_MAXLENGTH(MAX_NAME_LEN),
+                  VALIDATOR_LETTERS_ONLY()
+                ]}
+                errorText='Please enter a name.'
+                onInput={inputHandler}
+                noInvalidStyle={true}
+                className='join-lobby-username'
+              />
+              <Input
+                id='lobbyURL'
+                element='input'
+                type='text'
+                label='Lobby Name'
+                placeholder='mellow-earth-4321'
+                initialValue=''
+                validators={[VALIDATOR_REQUIRE()]}
+                errorText='Please enter a valid lobby ID.'
+                onInput={inputHandler}
+                noInvalidStyle={true}
+                className='join-lobby-lobbyid'
+              />
+              <button type='submit' disabled={!formState.isValid} className='join-lobby-btn'>
+                SUBMIT
+              </button>
+            </Grid>
+          </form>
+          <div className='streaming-mode-wrapper'>
+            <span className='streaming-mode-label'>
+              streaming mode
+            </span>
+            <div className='streaming-mode ttip-parent'>
+              <button
+                disabled={false}
+                className={`streaming-mode-btn ${isStreamer && 'on'}`}
+                onClick={() => setIsStreamer(!isStreamer)}
+              />
+              <Tooltip tip='streamingMode' side='bottom' />
+            </div>
+          </div>
+        </div>
       </Container>
       <Button
         disabled={false}

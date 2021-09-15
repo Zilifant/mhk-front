@@ -1,33 +1,9 @@
+// landing
 
-.con--head         { grid-area: head; }
-.con--foot         { grid-area: foot; }
+@import './colors.scss';
+@import './mixins.scss';
 
-.con--newlobby     { grid-area: newl; }
-.con--joinlobby    { grid-area: join; }
-
-.con--foyertitle   { grid-area: fyrt; }
-.con--foyerjoin    { grid-area: fyrj; }
-
-.grid--landing,
-.grid--foyer {
-  display: grid;
-  gap: var(--gap);
-  height: max-content;
-  grid-template-columns: 1fr;
-}
-
-.grid--foyer {
-  grid-template-areas:
-    "fyrj";
-}
-
-.grid--landing {
-  grid-template-areas:
-    "head"
-    "newl"
-    "join"
-    'jdbtn';
-}
+$bdr-width: .33rem;
 
 .new-lobby-form,
 .join-lobby-form,
@@ -41,13 +17,13 @@
 .new-lobby-title { grid-area: newtitl; }
 .new-lobby-label { grid-area: newlabel; }
 .new-lobby-input { grid-area: newinput; }
-.btn--new-lobby  { grid-area: newbtn; }
+.new-lobby-btn  { grid-area: newbtn; }
 
 .join-this-lobby-title    { grid-area: jtltitl; }
 .join-this-lobby-subtitle { grid-area: jtlsubt; }
 .join-this-lobby-label    { grid-area: jtllabel; }
 .join-this-lobby-input    { grid-area: jtlinput; }
-.btn--join-this-lobby     { grid-area: jtlbtn; }
+.join-this-lobby-btn     { grid-area: jtlbtn; }
 
 .join-lobby-title          { grid-area: jnltitl; }
 .join-lobby-username-label { grid-area: jnlabel; }
@@ -55,7 +31,7 @@
 
 .join-lobby-lobbyid-label { grid-area: jllabel; }
 .join-lobby-lobbyid-input { grid-area: jlinput; }
-.btn--join-lobby          { grid-area: jlbtn; }
+.join-lobby-btn          { grid-area: jlbtn; }
 .btn--join-devlobby       { grid-area: jdbtn; }
 
 .new-lobby-title,
@@ -63,7 +39,7 @@
 .join-this-lobby-title,
 .join-this-lobby-subtitle {
   justify-content: center;
-  font-weight: bold;
+  font-size: large;
 }
 
 .grid--new-lobby-form,
@@ -72,34 +48,32 @@
   display: grid;
   padding: 0;
   gap: .5rem;
-  grid-template-columns: 75px 175px max-content max-content;
+  grid-template-columns: 75px 175px max-content;
 }
 
 .grid--new-lobby-form {
   grid-template-areas:
-    "newtitl newtitl newtitl newtitl"
-    "newlabel newinput newbtn stream";
+    "newtitl newtitl newtitl"
+    "newlabel newinput newbtn";
 }
 
 .grid--join-this-lobby-form {
   grid-template-areas:
-    "jtltitl jtltitl jtltitl jtltitl"
-    "jtlsubt jtlsubt jtlsubt ."
-    "jtllabel jtlinput jtlbtn stream";
+    "jtltitl jtltitl jtltitl"
+    "jtllabel jtlinput jtlbtn";
 }
 
 .grid--join-lobby-form {
   grid-template-areas:
-    "jnltitl jnltitl jnltitl jnltitl"
-    "jnlabel jninput jdbtn ."
-    "jllabel jlinput jlbtn stream";
+    "jnltitl jnltitl jnltitl"
+    "jnlabel jninput jdbtn"
+    "jllabel jlinput jlbtn";
 }
 
 .grid--new-lobby-form *,
 .grid--join-lobby-form *,
 .grid--join-this-lobby-form * {
   margin: 0;
-  padding: .15rem, .25rem;
   display: flex;
   align-items: center;
 }
@@ -127,15 +101,12 @@ button.btn--streaming-mode.on {
 
 .con--head,
 .con--foyerjoin,
+.con--returntolobby,
 .con--joinlobby,
 .con--newlobby {
   background-color: var(--bg3);
-  width: max-content;
-  min-width: 500px;
-}
-
-.con--head > :not(:first-child) {
-  margin-left: .5rem;
+  // width: max-content;
+  width: 100%;
 }
 
 .con--head {
@@ -150,4 +121,81 @@ input.join-this-lobby-input,
 input.join-lobby-username-input,
 input.join-lobby-lobbyid-input {
   background-color: var(--bg4);
+  min-height: 30px;
+}
+
+.landing > :not(:first-child) {
+  margin-top: .5rem;
+}
+
+.landing-title {
+  font-size: xx-large;
+}
+
+.con--returntolobby {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg4);
+  & > * {
+    font-size: large;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  & > .return-link {
+    color: $cyan4;
+    &:hover {
+      color: $cyan3;
+    }
+    &:active {
+      color: white;
+    }
+  }
+}
+
+.landing-forms-wrapper {
+  width: max-content;
+  margin: 0 auto;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  & > :not(:first-child) {
+    margin-top: .5rem;
+  }
+}
+
+.streaming-mode-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  & > .streaming-mode-label {
+    // font-size: large;
+    text-transform: uppercase;
+    margin-right: .5rem;
+  }
+}
+
+.streaming-mode-btn {
+  height: 1.5rem;
+  width: 1.5rem;
+  @include three-d-btn($rose8);
+  &.on {
+    @include three-d-btn($ready);
+  }
+}
+
+.new-lobby-btn,
+.join-lobby-btn,
+.join-this-lobby-btn {
+  display: block;
+  padding: .15rem .25rem;
+  text-transform: uppercase;
+  @include three-d-btn($cyan6);
+
+  &:disabled {
+    cursor: auto;
+    color: darken($fg3, 30%);
+    @include three-d-btn($bg3);
+  }
 }

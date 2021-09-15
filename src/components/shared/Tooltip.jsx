@@ -11,6 +11,7 @@ const tooltips = {
   transferLeader: 'Transfer ^_k_leadership^ to this user.',
   copyUrl: 'Copy lobby URL',
   hideShowName: 'Hide/show lobby name',
+  streamingMode: 'When ^_k_Streaming Mode^ is active, the Lobby\'s ID and URL will be hidden by default.'
 };
 
 function renderTooltip(tip, side) {
@@ -18,7 +19,7 @@ function renderTooltip(tip, side) {
   const parsedTip = parseSMDLines({lines: tooltips[tip]});
   return (<>
     {renderStyledLines(parsedTip, {wrapper: `ttip ${side}`})}
-    <i></i>
+    <i className='arrow'></i>
   </>);
   // return renderStyledLines(parsedTip, {wrapper: `ttip ${side}`});
 };

@@ -12,6 +12,7 @@ import Landing from './components/landing/Landing';
 import './styles/colors.css';
 import './styles/mixins.scss';
 import './styles/core.scss';
+import './styles/animations.scss';
 import './styles/svgs.scss';
 
 function App() {

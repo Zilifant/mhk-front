@@ -50,7 +50,7 @@ html, body {
 
 *, *:before, *:after {
   @include z(500);
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Roboto Condensed', fantasy;
   font-size: 14px;
   letter-spacing: .025rem;
   color: var(--default);

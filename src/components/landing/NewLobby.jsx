@@ -48,6 +48,7 @@ const NewLobby = () => {
         userName: responseData.user.userName,
         myLobby: responseData.user.myLobby,
         isLeader: true,
+        isStreamer: responseData.user.isStreamer,
         leaderOf: responseData.user.myLobby
       });
       // 'forward' user to route of lobby

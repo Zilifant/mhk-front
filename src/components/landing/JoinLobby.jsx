@@ -62,7 +62,8 @@ const JoinLobby = ({ lobbyId }) => {
       updateUserCtx({
         userId: responseData.user.id,
         userName: responseData.user.userName,
-        myLobby: responseData.user.myLobby
+        myLobby: responseData.user.myLobby,
+        isStreamer: responseData.user.isStreamer
       });
       // 'forward' user to route of lobby
       history.push('/lobby');

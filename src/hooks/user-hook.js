@@ -13,20 +13,29 @@ export const useUser = () => {
     userName: null,
     myLobby: null,
     isLeader: false,
+    isStreamer: true,
     leaderOf: null,
     checked: false
   });
 
-  const updateUserCtx = useCallback(({ userId, userName, myLobby, isLeader, leaderOf }) => {
+  const updateUserCtx = useCallback(({
+    userId,
+    userName,
+    myLobby,
+    isLeader,
+    isStreamer,
+    leaderOf
+  }) => {
     // console.log('UserHook: updateUserCtx');
     setUser({
       userId: userId,
       userName: userName,
       myLobby: myLobby,
       isLeader: !!isLeader,
+      isStreamer: isStreamer,
       leaderOf: leaderOf,
       checked: true
-    })
+    });
   }, []);
 
   // verifies that user did not somehow load a different lobby than the one they created/joined.

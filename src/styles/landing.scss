@@ -3,8 +3,6 @@
 @import './colors.scss';
 @import './mixins.scss';
 
-$bdr-width: .33rem;
-
 .new-lobby-form,
 .join-lobby-form,
 .join-this-lobby-form {
@@ -48,7 +46,7 @@ $bdr-width: .33rem;
   display: grid;
   padding: 0;
   gap: .5rem;
-  grid-template-columns: 75px 175px max-content;
+  grid-template-columns: 87px 175px max-content;
 }
 
 .grid--new-lobby-form {
@@ -105,7 +103,6 @@ button.btn--streaming-mode.on {
 .con--joinlobby,
 .con--newlobby {
   background-color: var(--bg3);
-  // width: max-content;
   width: 100%;
 }
 
@@ -177,11 +174,11 @@ input.join-lobby-lobbyid-input {
 }
 
 .streaming-mode-btn {
-  height: 1.5rem;
-  width: 1.5rem;
-  @include three-d-btn($rose8);
+  border-radius: 50%;
+  @include square(1.5rem);
+  @include three-d-btn($rose9, 15%, 15%, .15rem);
   &.on {
-    @include three-d-btn($ready);
+    @include three-d-btn($ready, 15%, 15%, .15rem);
   }
 }
 

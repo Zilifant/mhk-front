@@ -169,10 +169,11 @@ button.startgame {
 
 .svg-btn.timer.three-d {
   padding: .25rem;
-  @include three-d-btn($cyan6);
+  border-radius: $rad;
+  @include three-d-btn($bdr-wid: .25rem);
   &:disabled {
     cursor: default;
-    @include three-d-btn($bg3);
+    @include three-d-btn($col: $bg3, $bdr-wid: .25rem);
   }
   &:disabled svg {
     fill: var(--bg1);

@@ -2,28 +2,42 @@
 
 @import './colors.scss';
 
-@mixin three-d-btn($col: $cyan6, $ct: 8%) {
-  background-color: $col;
-  border-top: $bdr-width solid lighten($col, $ct);
-  border-left: $bdr-width solid lighten($col, $ct);
-  border-bottom: $bdr-width solid darken($col, $ct);
-  border-right: $bdr-width solid darken($col, $ct);
+$rad:  1px;
+$mar:  0.5rem;
+$gap:  0.5rem;
+$bdr:  1px;
 
-  &:not(:disabled):hover {
+@mixin square($size: max-content) {
+  height: $size;
+  width: $size;
+}
+
+@mixin three-d-btn($col: $cyan6, $li-by: 8%, $dk-by: 8%, $bdr-wid: .33rem) {
+  $col-li: lighten($col, $li-by);
+  $col-dk: darken($col, $dk-by);
+  background-color: $col;
+  border-width: $bdr-wid;
+  border-style: solid;
+  border-color: $col-li $col-dk $col-dk $col-li;
+
+  &:not(:disabled):not(:active):hover {
+    $exli-by: 3%;
     color: $white;
+    background-color: lighten($col, $exli-by);
+    border-color: lighten($col-li, $exli-by) lighten($col-dk, $exli-by) lighten($col-dk, $exli-by) lighten($col-li, $exli-by);
   }
 
   &:not(:disabled):active {
-    @include three-d-btn-down($col);
+    @include three-d-btn-down($col, $li-by, $dk-by, $bdr-wid);
   }
 }
 
-@mixin three-d-btn-down($col, $ct: 8%) {
+@mixin three-d-btn-down($col: $cyan6, $li-by: 8%, $dk-by: 8%, $bdr-wid: .33rem) {
   background-color: darken($col, 2%);
-  border-top: $bdr-width solid darken($col, $ct);
-  border-left: $bdr-width solid darken($col, $ct);
-  border-bottom: $bdr-width solid lighten($col, $ct);
-  border-right: $bdr-width solid lighten($col, $ct);
+  border-top: $bdr-wid solid darken($col, $dk-by);
+  border-left: $bdr-wid solid darken($col, $dk-by);
+  border-bottom: $bdr-wid solid lighten($col, $li-by);
+  border-right: $bdr-wid solid lighten($col, $li-by);
 }
 
 @mixin z($weight) {

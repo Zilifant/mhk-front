@@ -37,7 +37,7 @@ const GhostCard = ({
   };
 
   const checkEnabledByStage = () => {
-    const disabledStageTypes = ['liminal', 'setup'];
+    const disabledStageTypes = ['liminal', 'setup', 'postgame'];
     const disabledStageIds = ['second-murder'];
     if (disabledStageTypes.includes(stage.type)) return true;
     if (disabledStageIds.includes(stage.id)) return true;

@@ -2,7 +2,7 @@
 @import './colors.scss';
 @import './mixins.scss';
 
-$pt: 10%;
+$pt: 8%;
 $wd: .25rem;
 $dpt: 5%;
 
@@ -36,7 +36,7 @@ button.card-wrap--player {
       }
     }
     &.highlighted {
-      @include three-d-btn($hig, $pt, $pt, $wd);
+      @include three-d-btn($hig, 15%, 15%, $wd);
     }
   }
 
@@ -54,7 +54,7 @@ button.card-wrap--player {
       }
     }
     &.highlighted {
-      @include three-d-btn($hig, $pt, $pt, $wd);
+      @include three-d-btn($hig, 15%, 15%, $wd);
     }
   }
 }

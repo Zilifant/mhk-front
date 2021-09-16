@@ -1,4 +1,7 @@
 
+@import './colors.scss';
+@import './mixins.scss';
+
 .container.con--info {
   display: flex;
   justify-content: center;
@@ -15,7 +18,7 @@
   flex-direction: row;
   justify-content: space-between;
   background-color: var(--bg4);
-  padding: .25rem;
+  padding: .5rem;
 }
 
 .con--info.nogame > :not(:first-child) {

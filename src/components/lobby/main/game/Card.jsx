@@ -23,8 +23,9 @@ const Card = ({
       disabled={!isEnabled}
       onClick={() => handleClick(card)}
     >
+      {capitalize(id)}
       {/* <GiDeathSkull className={`card-icon ${className}`} /> */}
-      <div className={`card-title ${className}`}>{capitalize(id)}</div>
+      {/* <div className={`card-title ${className}`}>{capitalize(id)}</div> */}
     </button>
   );
 };

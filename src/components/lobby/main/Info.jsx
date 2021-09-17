@@ -5,7 +5,6 @@ import React, {
 } from 'react';
 import { UserContext, SocketContext } from '../../../context/contexts';
 import Container from '../../shared/Container';
-import Button from '../../ui-elements/Button';
 import { useGame } from '../../../hooks/game-hook';
 import Tooltip from '../../shared/Tooltip';
 import SVGButton from '../../ui-elements/SVGButton';
@@ -80,24 +79,30 @@ const Info = ({
   return (
     <Container className='info game'>
       {showGameStage &&
-      <div className='info-gamestage'>
+      <div className='info gamestage'>
         {stage.display}
       </div>}
-      <div className='game-control-buttons'>
-        {showRoundBtn &&
-          <Button onClick={nextRoundHandler}>
-            NEXT ROUND
-          </Button>
-        }
-        {showClearBtn &&
-          <Button onClick={clearGameHandler}>
-            CLEAR GAME
-          </Button>
-        }
-      </div>
-      <div className='info-lobbyid'>
+      <div className='info user-name'>
         {userName}
       </div>
+      {iAmLeader && <div className='game-control-buttons'>
+        {showRoundBtn &&
+          <button
+            className='game-control nextround'
+            onClick={nextRoundHandler}
+          >
+            NEXT ROUND
+          </button>
+        }
+        {showClearBtn &&
+          <button
+            className='game-control cleargame'
+            onClick={clearGameHandler}
+          >
+            CLEAR GAME
+          </button>
+        }
+      </div>}
     </Container>
   );
 };

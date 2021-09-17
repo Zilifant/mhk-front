@@ -1,7 +1,7 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 
-export const useHttpClient = () => {
-  // console.log('Hook: useHttp');
+export const useHttpClient = (caller) => {
+  console.log(`HOOK: useHttpClient (${caller || '?'})`);
   const [isLoading, setIsLoading] = useState(false); // loading state
   const [error, setError] = useState(undefined); // error state
 
@@ -18,7 +18,7 @@ export const useHttpClient = () => {
     headers = {}
   ) => {
 
-    // console.log('HttpHook: sendRequest');
+    console.log(`HOOK: CB: sendRequest (${caller || '?'})`);
     // console.log(url.slice(21) + ' | ' + method + ' | ' + body + ' | ' + headers);
 
     setIsLoading(true); // to enable loading indicator in UX
@@ -28,7 +28,7 @@ export const useHttpClient = () => {
 
     try {
       // forward the params to `fetch`
-      // console.log('HttpHook: Awaiting response...');
+      console.log('awaiting response...');
       const response = await fetch(url, {
         method: method, // could be just `method`
         body,
@@ -39,7 +39,7 @@ export const useHttpClient = () => {
       // console.log(response);
 
       const responseData = await response.json(); // should be the data
-      // console.log(responseData);
+      console.log(responseData);
 
       // if request was successful, filter out the specific AbortController for this request; we don't try to cancel a request that already completed
       activeHttpRequests.current = activeHttpRequests.current.filter(
@@ -63,7 +63,7 @@ export const useHttpClient = () => {
       // throw error, so that the component using this hook knows that something went wrong and to not continue
       throw err;
     }
-  }, []);
+  }, [caller]);
 
   const clearError = () => {
     setError(null);

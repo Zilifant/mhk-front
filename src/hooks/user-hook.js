@@ -7,7 +7,7 @@ import {
 
 export const useUser = () => {
   // console.log('Hook: useUser');
-  // const { sendRequest } = useHttpClient();
+  // const { sendRequest } = useHttpClient('user-hook');
   const [user, setUser] = useState({
     userId: null,
     userName: null,

@@ -9,7 +9,7 @@ import { useHttpClient } from '../../hooks/http-hook';
 
 const Dev = ({ lobby }) => {
 
-  const { sendRequest } = useHttpClient();
+  const { sendRequest } = useHttpClient('Dev');
   const getDataHandler = async event => {
     event.preventDefault();
     try {

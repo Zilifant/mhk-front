@@ -19,7 +19,7 @@ const Lobby = () => {
   console.log('%cLobby','color:#79f98e');
   // const lobbyURL = useParams().lobbyURL;
   const { myLobby, userId } = useContext(UserContext);
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const { isLoading, error, sendRequest, clearError } = useHttpClient('Lobby');
   const { socket } = useIO(); // init socket (useEffect inside hook)
   const [ lobby, setLobby ] = useState();
   const [isConnected, setIsConnected] = useState(false);
@@ -28,7 +28,10 @@ const Lobby = () => {
   const minimizeChatHandler = () => setChatMinimized(!chatMinimized);
   const showChat = chatMinimized ? 'nochat' : 'chat';
 
+  console.log(`Connected: ${isConnected}, Loading: ${isLoading}, Lobby: ${!!lobby}`);
+
   useEffect(() => {
+    console.log('UE: fetchLobby');
     const fetchLobby = async () => {
       try {
         const resData = await sendRequest(
@@ -46,11 +49,13 @@ const Lobby = () => {
   }, [ sendRequest, setLobby, userId, myLobby ]);
 
   useEffect(() => {
+    console.log('UE: subToLobby');
     const subToLobby = () => {
       socket.current.on('updateLobby', ({ lobby, data }) => {
         setLobby({...lobbyMethods, ...lobby});
+        console.log('lobby updated');
         if (data?.event === 'userConnected' && data?.user.id === userId) {
-          console.log('connected');
+          console.log('user connected');
           setIsConnected(true);
         }
       });

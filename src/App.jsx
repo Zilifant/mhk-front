@@ -18,12 +18,12 @@ import './styles/svgs.scss';
 function App() {
   console.log('%cApp','color:#79e6f9');
   const { user, checkMyLobby, updateUserCtx } = useUser();
-  const { isLoading, sendRequest } = useHttpClient();
+  const { isLoading, sendRequest } = useHttpClient('App');
   // const [lobbyId, setLobbyId] = useState();
   // const [isMyLobby, setIsMyLobby] = useState();
 
   useEffect(() => {
-    console.log('UserHook: fetchSess');
+    console.log('UE: checkCookie');
     const checkCookie = async () => {
       try {
         const responseData = await sendRequest(

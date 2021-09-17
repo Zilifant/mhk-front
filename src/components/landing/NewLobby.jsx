@@ -21,7 +21,7 @@ import Grid from '../shared/Grid';
 
 const NewLobby = () => {
   const { updateUserCtx } = useContext(UserContext);
-  const { error, sendRequest, clearError } = useHttpClient();
+  const { error, sendRequest, clearError } = useHttpClient('NewLobby');
   const [isStreamer, setIsStreamer] = useState(false);
 
   const [formState, inputHandler] = useForm(

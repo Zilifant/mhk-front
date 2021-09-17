@@ -25,7 +25,7 @@ import '../../styles/svgs.scss';
 const JoinLobby = ({ lobbyId }) => {
   const { updateUserCtx } = useContext(UserContext);
   const history = useHistory();
-  const { error, sendRequest, clearError } = useHttpClient();
+  const { error, sendRequest, clearError } = useHttpClient('JoinLobby');
   const [isStreamer, setIsStreamer] = useState(false);
 
   function joinLobbyData(dev) {

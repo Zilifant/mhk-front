@@ -170,3 +170,22 @@
    93% { content: '⣉'; }
   100% { content: '⠉'; }
 }
+
+.falling-dots:before {
+  animation-name: falling-dots;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  content: '';
+}
+
+@keyframes falling-dots {
+    0% { content: '⡠'; }
+   12% { content: '⡡'; }
+   25% { content: '⡢'; }
+   37% { content: '⡣'; }
+   50% { content: '⡦'; }
+   62% { content: '⣎'; }
+   75% { content: '⡖'; }
+   87% { content: '⡔'; }
+  100% { content: '⡠'; }
+}

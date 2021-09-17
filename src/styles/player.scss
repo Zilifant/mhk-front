@@ -1,4 +1,7 @@
 
+@import './colors.scss';
+@import './mixins.scss';
+
 .p-info.username  { grid-area: name; }
 .p-info.badge     { grid-area: badg; }
 .p-info.role      { grid-area: role; }
@@ -8,11 +11,11 @@
 
 .con--self.player,
 .con--player {
-  background-color: var(--bg4);
+  background-color: $bg4;
   display: grid;
-  gap: var(--mar);
+  gap: $mar;
   grid-template-columns: 7rem 1fr;
-  grid-template-rows: 1fr max-content max-content 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-areas:
     "badg evid"
     "role evid"
@@ -21,12 +24,12 @@
 }
 
 .p-info {
-  background-color: var(--bg3);
+  background-color: $bg3;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  border-radius: var(--rad);
+  border-radius: $rad;
 }
 
 .p-info:nth-child(2) {
@@ -40,13 +43,13 @@
 
 .badge {
   padding: .15rem;
-  color: var(--ambr2);
-  background-color: var(--yell5);
+  color: $ambr2;
+  background-color: $yell5;
 }
 
 .badge.accusal-spent {
-  color: var(--ambr5);
-  background-color: var(--yell7);
+  color: $ambr5;
+  background-color: $yell7;
 }
 
 .username {
@@ -55,13 +58,13 @@
 }
 
 .username.offline {
-  color: var(--bg1);
+  color: $bg1;
 }
 
 /* .indicator {
   display: inline-block;
   vertical-align: middle;
-  background-color: var(--emer3);
+  background-color: $emer3;
   margin: .25rem;
   height: .5rem;
   width: .5rem;
@@ -84,28 +87,28 @@
 
 .p-info.role .wrapper .redteam,
 .p-info.role .wrapper .killer {
-  color: var(--killer);
+  color: $killer;
 }
 
 .p-info.role .wrapper .accomplice {
-  color: var(--accomp);
+  color: $accomp;
 }
 
 .p-info.role .wrapper .witness {
-  color: var(--witnss);
+  color: $witnss;
 }
 
 .p-info.role .wrapper .hunter {
-  color: var(--hunter);
+  color: $hunter;
 }
 
 .p-info.role .wrapper .mystery {
-  color: var(--mystry);
+  color: $mystry;
 }
 
 /* .player-info {
-  background-color: var(--bg5);
-  border-radius: var(--rad);
+  background-color: $bg5;
+  border-radius: $rad;
   display: flex;
   flex-flow: wrap;
   align-content: flex-start;

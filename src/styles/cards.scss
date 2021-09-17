@@ -11,6 +11,7 @@ button.card-wrap--player {
   border-radius: var(--rad);
   padding: .25rem;
   width: 6rem;
+  min-height: 65px;
 
   &:disabled {
     cursor: auto;

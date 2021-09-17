@@ -3,6 +3,10 @@
 @import './colors.css';
 @import './mixins.scss';
 
+$confirm-btn-bg: $cyan6;
+$confirm-btn-dis-bg: $bg3;
+$confirm-kill-bg: $redd8;
+
 .btn {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -34,18 +38,22 @@
   cursor: default;
 }
 
-.btn--keyEvSelector-selected {
-  background-color: var(--redd5);
-}
-
-.btn--keyEvSelector-selected:hover {
-  background-color: var(--redd4);
-}
-
 .btn--confirm-kill,
 .btn--confirm-accusation,
 .btn--confirm-key-evidence {
   margin: 0 auto;
   height: 100%;
   width: 100%;
+}
+
+button.btn.three-d {
+  @include three-d-btn($confirm-btn-bg, 8%, 8%, $wd);
+  &:disabled {
+    cursor: auto;
+    color: darken($fg3, 30%);
+    @include three-d-btn($confirm-btn-dis-bg, 8%, 8%, $wd);
+  }
+  &.btn--confirm-kill {
+    @include three-d-btn($confirm-kill-bg, 8%, 8%, $wd);
+  }
 }

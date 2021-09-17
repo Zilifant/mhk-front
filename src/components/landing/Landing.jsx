@@ -1,5 +1,5 @@
 import React, {
-  useContext
+  useContext,
 } from 'react';
 import { UserContext } from '../../context/contexts';
 import Header from './Header';

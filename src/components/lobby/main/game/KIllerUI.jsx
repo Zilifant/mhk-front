@@ -40,7 +40,7 @@ const KillerUI = ({
   const keyEvBtn = () => {
     return (
       <Button
-        className='confirm-key-evidence'
+        className='confirm-key-evidence three-d'
         onClick={() => submitSelection({cb:[chooseKeyEvHandler], reset:true})}
         disabled={!minSelected}
       >

@@ -189,3 +189,18 @@
    87% { content: '⡔'; }
   100% { content: '⡠'; }
 }
+
+.spinning-dots:before {
+  animation-name: spinning-dots;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  content: '';
+}
+
+@keyframes spinning-dots {
+    0% { content: '⋮'; }
+   25% { content: '⋱'; }
+   50% { content: '⋯'; }
+   75% { content: '⋰'; }
+  100% { content: '⋮'; }
+}

@@ -54,7 +54,7 @@ const Player = ({
   const accuseBtn = () => {
     return (
       <Button
-        className='confirm-accusation'
+        className='confirm-accusation three-d'
         onClick={() => submitSelection({cb:[accusationHandler, playerId], reset:true})}
         disabled={!minSelected}
       >
@@ -66,7 +66,7 @@ const Player = ({
   const killBtn = () => {
     return (
       <Button
-        className='confirm-kill'
+        className='confirm-kill three-d'
         onClick={() => killWitnessHandler(playerId)}
         disabled={false}
       >

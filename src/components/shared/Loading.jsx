@@ -7,7 +7,7 @@ const Loading = ({
   spinner,
   suspenseful,
 }) => {
-  console.log(content);
+  // console.log(content);
 
   const spin = spinner || 'falling-dots'
 

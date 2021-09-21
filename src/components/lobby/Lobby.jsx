@@ -3,7 +3,6 @@ import React, {
   useState,
   useContext
 } from 'react';
-// import { useParams } from 'react-router-dom';
 import { useHttpClient } from '../../hooks/http-hook';
 import { useIO } from '../../hooks/io-hook';
 import { SocketContext, UserContext } from '../../context/contexts';
@@ -17,18 +16,19 @@ import Dev from '../shared/Dev';
 
 const Lobby = () => {
   console.log('%cLobby','color:#79f98e');
-  // const lobbyURL = useParams().lobbyURL;
   const { myLobby, userId } = useContext(UserContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient('Lobby');
-  const { socket } = useIO(); // init socket (useEffect inside hook)
-  const [ lobby, setLobby ] = useState();
+  const { socket } = useIO();
+  const [lobby, setLobby] = useState();
+  const [isFetched, setIsFetched] = useState(false);
+  const [isSubbed, setIsSubbed] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
 
   const [chatMinimized, setChatMinimized] = useState(true);
   const minimizeChatHandler = () => setChatMinimized(!chatMinimized);
   const showChat = chatMinimized ? 'nochat' : 'chat';
 
-  console.log(`Connected: ${isConnected}, Loading: ${isLoading}, Lobby: ${!!lobby}`);
+  console.log(`Connected: ${isConnected}, Loading: ${isLoading}, Fetched: ${isFetched}`);
 
   useEffect(() => {
     console.log('UE: fetchLobby');
@@ -43,31 +43,64 @@ const Lobby = () => {
           { 'Content-Type': 'application/json' },
         );
         setLobby({...lobbyMethods, ...resData.lobby});
+        setIsFetched(true);
+        console.log('lobby fetched');
       } catch (err) { console.log(err); }
     };
     fetchLobby();
-  }, [ sendRequest, setLobby, userId, myLobby ]);
+  }, [
+    sendRequest,
+    userId,
+    myLobby,
+    setLobby,
+    setIsFetched,
+  ]);
 
   useEffect(() => {
-    console.log('UE: subToLobby');
+    // console.log('UE: subToLobby');
     const subToLobby = () => {
       socket.current.on('updateLobby', ({ lobby, data }) => {
         setLobby({...lobbyMethods, ...lobby});
         console.log('lobby updated');
+
         if (data?.event === 'userConnected' && data?.user.id === userId) {
-          console.log('user connected');
           setIsConnected(true);
-        }
+          console.log('connected');
+        };
+
       });
+      setIsSubbed(true);
+      console.log('subbed');
     };
-  subToLobby();
+
+    if (socket && isFetched) subToLobby()
+
   }, [
     socket,
+    userId,
     myLobby,
+    isFetched,
     setLobby,
-    isConnected,
+    setIsSubbed,
     setIsConnected,
-    userId
+  ]);
+
+  useEffect(() => {
+    // console.log('UE: connectToLobby');
+    const connectToLobby = () => {
+      socket.current.emit('connectToLobby', {
+        userId: userId,
+        lobbyId: myLobby,
+      });
+    };
+
+    if (isSubbed) connectToLobby();
+
+  }, [
+    socket,
+    userId,
+    myLobby,
+    isSubbed
   ]);
 
   const thisPlayer = lobby && getThisPlayer(userId, lobby.game);

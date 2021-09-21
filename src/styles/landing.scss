@@ -94,7 +94,7 @@ button.btn--join-devlobby {
 }
 
 button.btn--streaming-mode.on {
-  background-color: var(--ready);
+  background-color: $ready;
 }
 
 .con--head,
@@ -102,22 +102,24 @@ button.btn--streaming-mode.on {
 .con--returntolobby,
 .con--joinlobby,
 .con--newlobby {
-  background-color: var(--bg3);
+  background-color: $bg3;
   width: 100%;
 }
 
 .con--head {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   height: min-content;
+  background-color: $bg4;
 }
 
 input.new-lobby-input,
 input.join-this-lobby-input,
 input.join-lobby-username-input,
 input.join-lobby-lobbyid-input {
-  background-color: var(--bg4);
+  background-color: $bg4;
   min-height: 30px;
 }
 
@@ -129,12 +131,26 @@ input.join-lobby-lobbyid-input {
   font-size: xx-large;
 }
 
+.showrules-btn {
+  background-color: inherit;
+  margin-top: .25rem;
+  text-transform: uppercase;
+  font-size: large;
+  color: $cyan4;
+  &:hover {
+    color: $cyan3;
+  }
+  &:active {
+    color: white;
+  }
+}
+
 .con--returntolobby {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--bg4);
+  background-color: $bg4;
   & > * {
     font-size: large;
     text-transform: uppercase;
@@ -174,9 +190,8 @@ input.join-lobby-lobbyid-input {
 }
 
 .streaming-mode-btn {
-  border-radius: 50%;
   @include square(1.5rem);
-  @include three-d-btn($rose9, 15%, 15%, .15rem);
+  @include three-d-btn($redd8, 15%, 15%, .15rem);
   &.on {
     @include three-d-btn($ready, 15%, 15%, .15rem);
   }
@@ -188,7 +203,7 @@ input.join-lobby-lobbyid-input {
   display: block;
   padding: .15rem .25rem;
   text-transform: uppercase;
-  @include three-d-btn($cyan6);
+  @include three-d-btn();
 
   &:disabled {
     cursor: auto;
@@ -196,3 +211,4 @@ input.join-lobby-lobbyid-input {
     @include three-d-btn($bg3);
   }
 }
+

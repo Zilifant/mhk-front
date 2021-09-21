@@ -1,0 +1,85 @@
+// infomodals
+
+@import './colors.scss';
+@import './mixins.scss';
+
+.infomodal {
+  background-color: $bg5;
+  border-radius: $rad;
+  padding: .5rem .5rem .5rem 10rem;
+  margin: 1rem;
+  border: 2px solid $bg1;
+  position: absolute;
+  z-index: 99999999;
+  box-shadow: 0 1px 3px $bg5;
+  top: 0;
+}
+
+.infomodal-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: $bg3;
+  height: 100%;
+  width: max-content;
+}
+
+$def: $cyan6;
+$cur: $ambr6;
+$clo: $redd8;
+
+.infomodal-nav-btn {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: .15rem .25rem;
+  text-transform: uppercase;
+  background-color: $def;
+  &:hover {
+    background-color: lighten($def, 10%);
+  }
+  &.current {
+    background-color: $cur;
+    &:hover {
+      background-color: lighten($cur, 10%);
+    }
+  }
+  &.close-btn {
+    background-color: $clo;
+    &:hover {
+      background-color: lighten($clo, 10%);
+    }
+  }
+}
+
+// .infomodal-close-btn {
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   text-align: end;
+//   background-color: $bg3;
+//   color: $fg4;
+//   width: 100%;
+//   text-transform: uppercase;
+//   padding: .15rem .25rem;
+//   &:hover {
+//     color: $fg1;
+//     background-color: $redd8;
+//   }
+// }
+
+.infomodal span {
+  line-height: 1.5rem;
+  font-size: larger;
+}
+
+.infomodal .faded span {
+  color: $bg1;
+}
+
+.infomodal .line {
+  margin-bottom: .5rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

@@ -1,7 +1,6 @@
 // styled text
 
 import { GAME_OUTCOMES, name } from '../util/utils';
-// import { nanoid } from 'nanoid';
 
 export function parseAndRender({type, time, args}, meta = {}) {
   if (meta.parent === 'chatfeed') return renderStyledBlock(strings[type](time, ...args), meta);
@@ -20,8 +19,8 @@ function renderStyledString(elements, meta = {}) {
 };
 
 export function renderStyledLines(lines, meta = {}) {
-  return (
-    <div className={meta.wrapper || 'none'}>
+  if (meta.wrapper) return (
+    <div className={meta.wrapper}>
     {lines.map((li, i) => {
       return (
         <div key={i} className={li.style}>
@@ -37,6 +36,22 @@ export function renderStyledLines(lines, meta = {}) {
     })}
     </div>
   );
+
+  return (<>
+    {lines.map((li, i) => {
+      return (
+        <div key={i} className={li.style}>
+        {li.strings.map((str, i) => {
+          return (
+            <span key={i} className={str.style}>
+              {str.string}
+            </span>
+          );
+        })}
+        </div>
+      );
+    })}
+  </>)
 };
 
 function renderStyledBlock(elements, meta = {}) {

@@ -99,7 +99,6 @@ const NewLobby = () => {
             </span>
             <div className='streaming-mode ttip-parent'>
               <button
-                disabled={false}
                 className={`streaming-mode-btn ${isStreamer && 'on'}`}
                 onClick={() => setIsStreamer(!isStreamer)}
               />

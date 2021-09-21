@@ -17,11 +17,12 @@ const tooltips = {
 function renderTooltip(tip, side) {
   if (!tooltips[tip]) return null;
   const parsedTip = parseSMDLines({lines: tooltips[tip]});
-  return (<>
-    {renderStyledLines(parsedTip, {wrapper: `ttip ${side}`})}
-    <i className='arrow'></i>
-  </>);
-  // return renderStyledLines(parsedTip, {wrapper: `ttip ${side}`});
+  return (
+    <div className={`ttip ${side}`}>
+      {renderStyledLines(parsedTip)}
+      {/* <i className='arrow'></i> */}
+    </div>
+  );
 };
 
 const Tooltip = ({

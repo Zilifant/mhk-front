@@ -78,12 +78,14 @@ const Info = ({
 
   return (
     <Container className='info game'>
-      {showGameStage &&
-      <div className='info gamestage'>
-        {stage.display}
-      </div>}
-      <div className='info user-name'>
-        {userName}
+      <div className='gamestage-username'>
+        {showGameStage &&
+        <div className='info gamestage'>
+          {stage.display}
+        </div>}
+        <div className='info user-name'>
+          {userName}
+        </div>
       </div>
       {iAmLeader && <div className='game-control-buttons'>
         {showRoundBtn &&

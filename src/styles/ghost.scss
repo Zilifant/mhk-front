@@ -69,6 +69,7 @@ div.card-wrap--ghost {
   margin: 0 auto;
   width: 100%;
   color: $fg3;
+  text-transform: uppercase;
   @include three-d-btn($clue-btn-bg, 12%, 12%, $wd);
 
   &.selected {

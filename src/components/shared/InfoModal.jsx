@@ -1,13 +1,16 @@
 import React, {
   useState
 } from 'react';
-import { parseSMDLines, renderStyledLines } from '../../util/styled-text';
+import {
+  parseSMDLines,
+  renderStyledLines
+} from '../../util/styled-text';
 import '../../styles/infomodals.scss';
 
-const InfoModal = ({
+const Modal = ({
   info,
   className,
-  closeHandler
+  hideHandler
 }) => {
 
   const [currentSec, setCurrentSec] = useState(info[0]);
@@ -18,10 +21,10 @@ const InfoModal = ({
 
   return (
     <div className={`infomodal ${className}`}>
-      <div className={`infomodal-nav`}>
+      <div className='infomodal-nav'>
         <button
           className={`infomodal-nav-btn close-btn`}
-          onClick={() => closeHandler(false)}
+          onClick={() => hideHandler(false)}
         >
           close
         </button>
@@ -29,7 +32,7 @@ const InfoModal = ({
           return (
             <button
               key={i}
-              className={`infomodal-nav-btn sec-btn ${isCurrent(sec.id)} ${sec.id}`}
+              className={`infomodal-nav-btn sec-btn ${sec.id} ${isCurrent(sec.id)}`}
               onClick={() => setCurrentSec(info[i])}
             >
               {sec.title}
@@ -37,9 +40,33 @@ const InfoModal = ({
           )
         })}
       </div>
-      {renderStyledLines(parsedContent)}
+      <div className='infomodal-content'>{renderStyledLines(parsedContent)}</div>
     </div>
   );
+};
+
+const InfoModal = ({
+  info,
+  className,
+  buttonContent
+}) => {
+
+  const [showModal, setShowModal] = useState(false);
+
+  return (<>
+    <button
+      className={`show-infomodal-btn ${className}`}
+      onClick={() => setShowModal(true)}
+    >
+      {buttonContent}
+    </button>
+    {showModal && <Modal
+      info={info}
+      className={className}
+      hideHandler={setShowModal}
+    />}
+  </>);
+
 };
 
 export default InfoModal;

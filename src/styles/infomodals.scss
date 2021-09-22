@@ -3,16 +3,19 @@
 @import './colors.scss';
 @import './mixins.scss';
 
+$txt-mar: 1rem;
+
 .infomodal {
   background-color: $bg5;
   border-radius: $rad;
-  padding: .5rem .5rem .5rem 10rem;
+  // padding: $txt-mar $txt-mar $txt-mar 10rem;
   margin: 1rem;
   border: 2px solid $bg1;
   position: absolute;
   z-index: 99999999;
   box-shadow: 0 1px 3px $bg5;
   top: 0;
+  height: calc(100% - 2rem);
 }
 
 .infomodal-nav {
@@ -22,6 +25,22 @@
   background-color: $bg3;
   height: 100%;
   width: max-content;
+}
+
+.infomodal-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  margin: 0 $txt-mar 0 10.5rem;
+  min-height: 0;
+  height: 100%;
+  overflow: auto;
+  -ms-overflow-style: none;  /* IE and Edge */
+     scrollbar-width: none;  /* Firefox */
+}
+
+.infomodal-content::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari and Opera */
 }
 
 $def: $cyan6;
@@ -52,34 +71,21 @@ $clo: $redd8;
   }
 }
 
-// .infomodal-close-btn {
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   text-align: end;
-//   background-color: $bg3;
-//   color: $fg4;
-//   width: 100%;
-//   text-transform: uppercase;
-//   padding: .15rem .25rem;
-//   &:hover {
-//     color: $fg1;
-//     background-color: $redd8;
-//   }
-// }
-
-.infomodal span {
-  line-height: 1.5rem;
+.infomodal-content span {
+  line-height: 1.75rem;
   font-size: larger;
 }
 
-.infomodal .faded span {
+.infomodal-content .faded span {
   color: $bg1;
 }
 
-.infomodal .line {
+.infomodal-content .line {
   margin-bottom: .5rem;
   &:last-child {
-    margin-bottom: 0;
+    margin-bottom: $txt-mar;
+  }
+  &:first-child {
+    margin-top: $txt-mar;
   }
 }

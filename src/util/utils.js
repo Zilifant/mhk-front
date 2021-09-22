@@ -1,19 +1,8 @@
 // Utilities
 
-export const MIN_PLAYER_COUNT = 3,
-             MIN_PLAYER_COUNT_FOR_ADV_ROLES = 4,
-             MAX_NAME_LEN = 10;
-
-export const GAME_OUTCOMES = {
-  redwin: 'The Killer wins! The Hunters used their last accusation.',
-  redwin_accomplice: 'The Killer and the Accomplice win! The Hunters used their last accusation.',
-  redwintimeout: 'The Killer wins! The Hunters ran out of time.',
-  redwintimeout_accomplice: 'The Killer and the Accomplice win! The Hunters ran out of time.',
-  redwinwitnessdead: 'The Killer wins! The Witness is dead.',
-  redwinwitnessdead_accomplice: 'The Killer and the Accomplice win! The Witness is dead.',
-  bluewin: 'The Hunters and the Ghost win!',
-  bluewinwitnessalive: 'The Hunters and the Ghost win! The Witness survived.'
-};
+export const MIN_PLAYER_COUNT = 3;
+export const MIN_PLAYER_COUNT_FOR_ADV_ROLES = 4;
+export const MAX_NAME_LEN = 10;
 
 export const rules = [
   {

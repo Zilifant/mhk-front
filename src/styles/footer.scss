@@ -1,0 +1,19 @@
+// footer
+
+@import './colors.scss';
+@import './mixins.scss';
+
+.con--foot {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.con--foot div:not(:first-child) {
+  margin-left: .5rem;
+}
+
+.footer-text {
+  color: $bg1;
+}

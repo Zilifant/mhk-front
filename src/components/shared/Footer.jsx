@@ -1,41 +1,23 @@
-// import React, {
-//   // useState,
-//   // useContext,
-//   // useEffect
-// } from 'react';
-// import { useHttpClient } from './hooks/http-hook';
-// import Container from './Container';
-// import Button from '../ui-elements/Button';
+import React from 'react';
+import Container from './Container';
+import InfoModal from './InfoModal';
+import { rules } from '../../util/utils';
+import '../../styles/footer.scss';
 
-// const Footer = ({  }) => {
-//   const { sendRequest } = useHttpClient();
+const Footer = () => {
 
-//   const getDataHandler = async event => {
-//     event.preventDefault();
-//     try {
-//       const responseData = await sendRequest(
-//         `${process.env.REACT_APP_BACKEND_URL}/admin/data`
-//       );
-//       console.log(responseData);
-//     } catch (err) { console.log(`Err: ${err}`); };
-//   };
+  return (
+    <Container className="foot">
+      <InfoModal
+        className='rules footer'
+        buttonContent='rules'
+        info={rules}
+      />
+      <div className='footer-text'>
+        Copyright 2021 Scott Silsbe
+      </div>
+    </Container>
+  );
+};
 
-//   return (
-//     <Container className="foot">
-//       <Button
-//         type='button'
-//         onClick={getDataHandler}
-//       >
-//         data
-//       </Button>
-//       {/* <Button onClick={() => console.log(props.socket)}>
-//         SOCKET
-//       </Button>
-//       <Button onClick={() => console.table(props.onlineMembers)}>
-//         ONLINE
-//       </Button> */}
-//     </Container>
-//   );
-// };
-
-// export default Footer;
+export default Footer;

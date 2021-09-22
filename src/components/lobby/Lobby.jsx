@@ -12,7 +12,7 @@ import Loading from '../shared/Loading';
 import Grid from '../shared/Grid';
 import Main from './main/Main';
 import Chat from './chat/Chat';
-import Dev from '../shared/Dev';
+import Footer from '../shared/Footer';
 
 const Lobby = () => {
   console.log('%cLobby','color:#79f98e');
@@ -150,7 +150,7 @@ const Lobby = () => {
               minimizeChatHandler={minimizeChatHandler}
               minimized={chatMinimized}
             />
-            {lobby.id === 'z' && <Dev lobby={lobby} />}
+            <Footer />
           </Grid>
         }
       </React.Fragment>

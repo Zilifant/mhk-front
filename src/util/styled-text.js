@@ -1,6 +1,24 @@
 // styled text
 
-import { GAME_OUTCOMES, name } from '../util/utils';
+import { systemMessages } from "./system-messages";
+
+const SMDopts = {
+  splitStrOn: '^',
+  splitStrClsOn: '_',
+  splitLineOn: '<',
+  splitLineClsOn: '>',
+  defaultString: 'string',
+  defaultLine: 'line',
+  abbr: [
+    {abb: 'm', classname: 'string--usermessage'},
+    {abb: 't', classname: 'string--timestamp'},
+    {abb: 'u', classname: 'string--username'},
+    {abb: 'k', classname: 'string--keyword'},
+    {abb: 'p', classname: 'string--punctuation'},
+    {abb: 'f', classname: 'faded'},
+    {abb: 'e', classname: 'emphasize'},
+  ]
+};
 
 export function parseAndRender({type, time, args}, meta = {}) {
   const parsedStr = parseFromStrings({type: type, time: time, args: args});
@@ -8,25 +26,15 @@ export function parseAndRender({type, time, args}, meta = {}) {
   return renderStyledString(parsedStr, meta);
 };
 
-const makeString = (type, args) => strings[type](...args);
-
-const prependTime = (string, time) => `_t_${time} ^` + string;
-
-function parseFromStrings({type, time, args}) {
-  const str = makeString(type, args);
-  const strTime = prependTime(str, time);
-  return parseSMD({str: strTime, multiLine: false});
-}
-
-function renderStyledString(elements, meta = {}) {
-  return (
-    <div className={meta.wrapper || 'none'}>
-      {elements.map((el, i) => {
-        if (!meta.timestamp && i === 0) return null;
-        return <span key={i} className={el.style}>{el.string}</span>
-      })}
-    </div>
-  );
+export function parseSMDLines({lines}) {
+  const plines = parseSMD({str: lines, multiLine: true});
+  const splines = plines.map(line => {
+    return {
+      strings: parseSMD({str: line.string, multiLine: false}),
+      style: line.style
+    };
+  });
+  return splines;
 };
 
 export function renderStyledLines(lines, meta = {}) {
@@ -54,6 +62,27 @@ export function renderStyledLines(lines, meta = {}) {
       );
     });
   };
+};
+
+const makeString = (msg, args) => systemMessages[msg](...args);
+
+const prependTime = (string, time) => `_t_${time} ^` + string;
+
+function parseFromStrings({type, time, args}) {
+  const str = makeString(type, args);
+  const strTime = prependTime(str, time);
+  return parseSMD({str: strTime, multiLine: false});
+}
+
+function renderStyledString(elements, meta = {}) {
+  return (
+    <div className={meta.wrapper || 'none'}>
+      {elements.map((el, i) => {
+        if (!meta.timestamp && i === 0) return null;
+        return <span key={i} className={el.style}>{el.string}</span>
+      })}
+    </div>
+  );
 };
 
 function renderStyledBlock(elements, meta = {}) {
@@ -121,131 +150,3 @@ function parseSMD({str, opts = SMDopts, multiLine}) {
   });
   return result;
 };
-
-const SMDopts = {
-  splitStrOn: '^',
-  splitStrClsOn: '_',
-  splitLineOn: '<',
-  splitLineClsOn: '>',
-  defaultString: 'string',
-  defaultLine: 'line',
-  abbr: [
-    {abb: 'm', classname: 'string--usermessage'},
-    {abb: 't', classname: 'string--timestamp'},
-    {abb: 'u', classname: 'string--username'},
-    {abb: 'k', classname: 'string--keyword'},
-    {abb: 'p', classname: 'string--punctuation'},
-    {abb: 'f', classname: 'faded'},
-    {abb: 'e', classname: 'emphasize'},
-  ]
-};
-
-export function parseSMDLines({lines}) {
-  const plines = parseSMD({str: lines, multiLine: true});
-  const splines = plines.map(line => {
-    return {
-      strings: parseSMD({str: line.string, multiLine: false}),
-      style: line.style
-    };
-  });
-  return splines;
-};
-
-const strings = (() => {
-
-  const cls = 'string--username '
-
-  const waitingForJoin = () => `Waiting for more players...`;
-
-  const waitingForReady = () => `Waiting for everyone to be ready...`;
-
-  const welcome = () => `_m_Welcome to MHK.`;
-
-  const clearGame = () => `Game cleared.`;
-
-  const userMessage = ([id, col], text) => `_${cls+col}_${name(id)}^_p_: ^_m_${text}`;
-
-  const clueChosen = (clue) => `Clue chosen: ^_k_${clue}^.`;
-
-  const resolveGame = (result) => `_m_${GAME_OUTCOMES[result]}`;
-
-  const join = ([id, col]) => `_${cls+col}_${name(id)}^ joined.`;
-
-  const waitingForStart = (iAmLeader) => {
-    return iAmLeader ? `Ready to start...` : `Waiting for the leader to start the game...`
-  };
-
-  const ready = ([id, col], ready) => {
-    return `_${cls+col}_${name(id)}^ is ${ready ? 'ready' : 'not ready'}.`;
-  };
-
-  const newLeader = ([id, col]) => {
-    return `_${cls+col}_${name(id)}^ is the new leader.`;
-  };
-
-  const accusation = ({ accuser: [rId, rCol], accusee: [eId, eCol], evidence: [ev1, ev2] }) => {
-    return `_${cls+rCol}_${name(rId)}^ accuses ^_${cls+eCol}_${name(eId)}^ with evidence: ^_k_${ev1}^ and ^_k_${ev2}^.`;
-  };
-
-  const accusationWrong = ([id, col]) => {
-    return `_${cls+col}_${name(id)}'s^ accusation is wrong. The round continues...`;
-  };
-
-  const accusationRight = ([rId, rCol], [eId, eCol]) => {
-    return `_${cls+rCol}_${name(rId)}^ is correct! ^_${cls+eCol}_${name(eId)}^ is the Killer.`;
-  };
-
-  const ghostAssigned = ([id, col], unAssign) => {
-    return unAssign ? `Ghost unassigned.` : `_${cls+col}_${name(id)}^ is assigned to Ghost.`;
-  };
-
-  const leave = ([id, col], [leaderId, leaderCol]) => {
-    const leaderStr = !!leaderId ?  ` ^_${cls+leaderCol}_${name(leaderId)}^ is the new leader.` : '';
-    return `_${cls+col}_${name(id)}^ left.${leaderStr}`;
-  };
-
-  const advanceTo = (stage) => {
-    let str;
-    switch (stage.id) {
-      case 'setup':
-        str = `Game started. Waiting for the Killer to select key evidence...`;
-        break;
-      case 'round-1':
-        str = `Key evidence chosen. ^_k_${stage.display}^ started...`;
-        break;
-      case 'round-2-start':
-        str = `Starting ^_k_${stage.display}^. Waiting for the Ghost to choose a new scene...`;
-        break;
-      case 'round-2':
-        str = `New scene chosen. ^_k_${stage.display}^ started...`;
-        break;
-      case 'round-3-start':
-        str = `Starting ^_k_${stage.display}^. Waiting for the Ghost to choose a new scene...`;
-        break;
-      case 'round-3':
-        str = `The Ghost has selected a new scene. ^_k_${stage.display}^ started...`;
-        break;
-      case 'second-murder':
-        str = `The Killer has been identified. But they can still win if they identify the Witness...`;
-        break;
-      case 'game-over': // should never get called
-        str = `${stage.display}`
-        break;
-      default: break;
-    }
-    return str;
-  };
-
-  return {
-    waitingForJoin, waitingForReady, waitingForStart,
-    userMessage,
-    welcome,
-    join, leave, ready,
-    ghostAssigned,
-    newLeader,
-    advanceTo,
-    resolveGame, clearGame,
-    clueChosen,
-    accusation, accusationRight, accusationWrong
-  };
-})();

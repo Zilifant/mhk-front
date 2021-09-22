@@ -3,9 +3,20 @@
 import { GAME_OUTCOMES, name } from '../util/utils';
 
 export function parseAndRender({type, time, args}, meta = {}) {
-  if (meta.parent === 'chatfeed') return renderStyledBlock(strings[type](time, ...args), meta);
-  return renderStyledString(strings[type](time, ...args), meta);
+  const parsedStr = parseFromStrings({type: type, time: time, args: args});
+  if (meta.parent === 'chatfeed') return renderStyledBlock(parsedStr, meta);
+  return renderStyledString(parsedStr, meta);
 };
+
+const makeString = (type, args) => strings[type](...args);
+
+const prependTime = (string, time) => `_t_${time} ^` + string;
+
+function parseFromStrings({type, time, args}) {
+  const str = makeString(type, args);
+  const strTime = prependTime(str, time);
+  return parseSMD({str: strTime, multiLine: false});
+}
 
 function renderStyledString(elements, meta = {}) {
   return (
@@ -19,26 +30,17 @@ function renderStyledString(elements, meta = {}) {
 };
 
 export function renderStyledLines(lines, meta = {}) {
+
   if (meta.wrapper) return (
     <div className={meta.wrapper}>
-    {lines.map((li, i) => {
-      return (
-        <div key={i} className={li.style}>
-        {li.strings.map((str, i) => {
-          return (
-            <span key={i} className={str.style}>
-              {str.string}
-            </span>
-          );
-        })}
-        </div>
-      );
-    })}
+      {render(lines)}
     </div>
   );
 
-  return (<>
-    {lines.map((li, i) => {
+  return (<>{render(lines)}</>)
+
+  function render(lines) {
+    return lines.map((li, i) => {
       return (
         <div key={i} className={li.style}>
         {li.strings.map((str, i) => {
@@ -50,8 +52,8 @@ export function renderStyledLines(lines, meta = {}) {
         })}
         </div>
       );
-    })}
-  </>)
+    });
+  };
 };
 
 function renderStyledBlock(elements, meta = {}) {
@@ -153,121 +155,85 @@ const strings = (() => {
 
   const cls = 'string--username '
 
-  const waitingForJoin = (time) => {
-    const str = `_t_${time} ^Waiting for more players...`;
-    return parseSMD({str: str, multiLine: false});
+  const waitingForJoin = () => `Waiting for more players...`;
+
+  const waitingForReady = () => `Waiting for everyone to be ready...`;
+
+  const welcome = () => `_m_Welcome to MHK.`;
+
+  const clearGame = () => `Game cleared.`;
+
+  const userMessage = ([id, col], text) => `_${cls+col}_${name(id)}^_p_: ^_m_${text}`;
+
+  const clueChosen = (clue) => `Clue chosen: ^_k_${clue}^.`;
+
+  const resolveGame = (result) => `_m_${GAME_OUTCOMES[result]}`;
+
+  const join = ([id, col]) => `_${cls+col}_${name(id)}^ joined.`;
+
+  const waitingForStart = (iAmLeader) => {
+    return iAmLeader ? `Ready to start...` : `Waiting for the leader to start the game...`
   };
 
-  const waitingForReady = (time) => {
-    const str = `_t_${time} ^Waiting for everyone to be ready...`;
-    return parseSMD({str: str, multiLine: false});
+  const ready = ([id, col], ready) => {
+    return `_${cls+col}_${name(id)}^ is ${ready ? 'ready' : 'not ready'}.`;
   };
 
-  const waitingForStart = (time, iAmLeader) => {
-    let str;
-    iAmLeader ? str = `_t_${time} ^Ready to start...` : str = `_t_${time} ^Waiting for the leader to start the game...`
-    return parseSMD({str: str, multiLine: false});
+  const newLeader = ([id, col]) => {
+    return `_${cls+col}_${name(id)}^ is the new leader.`;
   };
 
-  const welcome = (time) => {
-    const str = `_t_${time} ^_m_Welcome to MHK.`;
-    return parseSMD({str: str, multiLine: false});
+  const accusation = ({ accuser: [rId, rCol], accusee: [eId, eCol], evidence: [ev1, ev2] }) => {
+    return `_${cls+rCol}_${name(rId)}^ accuses ^_${cls+eCol}_${name(eId)}^ with evidence: ^_k_${ev1}^ and ^_k_${ev2}^.`;
   };
 
-  const userMessage = (time, [id, col], text) => {
-    const str = `_t_${time} ^_${cls+col}_${name(id)}^_p_: ^_m_${text}`;
-    return parseSMD({str: str, multiLine: false});
+  const accusationWrong = ([id, col]) => {
+    return `_${cls+col}_${name(id)}'s^ accusation is wrong. The round continues...`;
   };
 
-  const join = (time, [id, col]) => {
-    const str = `_t_${time} ^_${cls+col}_${name(id)}^ joined.`;
-    return parseSMD({str: str, multiLine: false});
+  const accusationRight = ([rId, rCol], [eId, eCol]) => {
+    return `_${cls+rCol}_${name(rId)}^ is correct! ^_${cls+eCol}_${name(eId)}^ is the Killer.`;
   };
 
-  const leave = (time, [id, col], [leaderId, leaderCol]) => {
-    let str;
-    !!leaderId ? str = `_t_${time} ^_${cls+col}_${name(id)}^ left. ^_${cls+leaderCol}_${name(leaderId)}^ is the new leader.`
-                : str = `_t_${time} ^_${cls+col}_${name(id)}^ left.`;
-    return parseSMD({str: str, multiLine: false});
+  const ghostAssigned = ([id, col], unAssign) => {
+    return unAssign ? `Ghost unassigned.` : `_${cls+col}_${name(id)}^ is assigned to Ghost.`;
   };
 
-  const ready = (time, [id, col], ready) => {
-    const str = `_t_${time} ^_${cls+col}_${name(id)}^ is ${ready ? 'ready' : 'not ready'}.`;
-    return parseSMD({str: str, multiLine: false});
+  const leave = ([id, col], [leaderId, leaderCol]) => {
+    const leaderStr = !!leaderId ?  ` ^_${cls+leaderCol}_${name(leaderId)}^ is the new leader.` : '';
+    return `_${cls+col}_${name(id)}^ left.${leaderStr}`;
   };
 
-  const newLeader = (time, [id, col]) => {
-    const str = `_t_${time} ^_${cls+col}_${name(id)}^ is the new leader.`;
-    return parseSMD({str: str, multiLine: false});
-  };
-
-  const accusation = (time, { accuser: [rId, rCol], accusee: [eId, eCol], evidence: [ev1, ev2] }) => {
-    const str = `_t_${time} ^_${cls+rCol}_${name(rId)}^ accuses ^_${cls+eCol}_${name(eId)}^ with evidence: ^_k_${ev1}^ and ^_k_${ev2}^.`;
-    return parseSMD({str: str, multiLine: false});
-  };
-
-  const accusationWrong = (time, [id, col]) => {
-    const str = `_t_${time} ^_${cls+col}_${name(id)}'s^ accusation is wrong. The round continues...`;
-    return parseSMD({str: str, multiLine: false});
-  };
-
-  const accusationRight = (time, [rId, rCol], [eId, eCol]) => {
-    const str = `_t_${time} ^_${cls+rCol}_${name(rId)}^ is correct! ^_${cls+eCol}_${name(eId)}^ is the Killer.`;
-    return parseSMD({str: str, multiLine: false});
-  };
-
-  const advanceTo = (time, stage) => {
+  const advanceTo = (stage) => {
     let str;
     switch (stage.id) {
       case 'setup':
-        str = `_t_${time} ^Game started. Waiting for the Killer to select key evidence...`;
+        str = `Game started. Waiting for the Killer to select key evidence...`;
         break;
       case 'round-1':
-        str = `_t_${time} ^Key evidence chosen. ^_k_${stage.display}^ started...`;
+        str = `Key evidence chosen. ^_k_${stage.display}^ started...`;
         break;
       case 'round-2-start':
-        str = `_t_${time} ^Starting ^_k_${stage.display}^. Waiting for the Ghost to choose a new scene...`;
+        str = `Starting ^_k_${stage.display}^. Waiting for the Ghost to choose a new scene...`;
         break;
       case 'round-2':
-        str = `_t_${time} ^New scene chosen. ^_k_${stage.display}^ started...`;
+        str = `New scene chosen. ^_k_${stage.display}^ started...`;
         break;
       case 'round-3-start':
-        str = `_t_${time} ^Starting ^_k_${stage.display}^. Waiting for the Ghost to choose a new scene...`;
+        str = `Starting ^_k_${stage.display}^. Waiting for the Ghost to choose a new scene...`;
         break;
       case 'round-3':
-        str = `_t_${time} ^The Ghost has selected a new scene. ^_k_${stage.display}^ started.`;
+        str = `The Ghost has selected a new scene. ^_k_${stage.display}^ started...`;
         break;
       case 'second-murder':
-        str = `_t_${time} ^The Killer has been identified. But they can still win if they identify the Witness...`;
+        str = `The Killer has been identified. But they can still win if they identify the Witness...`;
         break;
       case 'game-over': // should never get called
         str = `${stage.display}`
         break;
       default: break;
     }
-    return parseSMD({str: str, multiLine: false});
-  };
-
-  const clearGame = (time) => {
-    const str = `_t_${time} ^Game cleared.`;
-    return parseSMD({str: str, multiLine: false});
-  };
-
-  const clueChosen = (time, clue) => {
-    const str = `_t_${time} ^Clue chosen: ^_k_${clue}^.`;
-    return parseSMD({str: str, multiLine: false});
-  };
-
-  const ghostAssigned = (time, [id, col], unAssign) => {
-    let str;
-    unAssign ? str = `_t_${time} ^Ghost unassigned.`
-             : str = `_t_${time} ^_${cls+col}_${name(id)}^ is assigned to Ghost.`;
-    return parseSMD({str: str, multiLine: false});
-  };
-
-  const resolveGame = (time, result) => {
-    const str = `_t_${time} ^_m_${GAME_OUTCOMES[result]}`;
-    return parseSMD({str: str, multiLine: false});
+    return str;
   };
 
   return {

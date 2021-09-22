@@ -6,26 +6,23 @@ import { useHistory } from 'react-router-dom';
 import { useForm } from '../../hooks/form-hook';
 import { useHttpClient } from '../../hooks/http-hook';
 import { UserContext } from '../../context/contexts';
+import { MAX_NAME_LEN, randomName } from '../../util/utils';
 import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MAXLENGTH,
   VALIDATOR_LETTERS_ONLY
 } from '../../util/validators';
-import { MAX_NAME_LEN, randomName } from '../../util/utils';
 import ErrorModal from '../modal/ErrorModal';
 import Grid from '../shared/Grid';
 import Container from '../shared/Container';
 import Input from '../ui-elements/Input';
 import Tooltip from '../shared/Tooltip';
 import Button from '../ui-elements/Button';
-// import SVGButton from '../ui-elements/SVGButton';
-import '../../styles/info.scss';
-import '../../styles/svgs.scss';
 
 const JoinLobby = ({ lobbyId }) => {
   const { updateUserCtx } = useContext(UserContext);
-  const history = useHistory();
   const { error, sendRequest, clearError } = useHttpClient('JoinLobby');
+  const history = useHistory();
   const [isStreamer, setIsStreamer] = useState(false);
 
   function joinLobbyData(dev) {
@@ -57,7 +54,7 @@ const JoinLobby = ({ lobbyId }) => {
 
   const [formState, inputHandler] = useForm(initFormState, false);
 
-  const joinLobbySubHandler = async (event, dev) => {
+  const joinLobbyHandler = async (event, dev) => {
     event.preventDefault();
 
     try {
@@ -77,37 +74,13 @@ const JoinLobby = ({ lobbyId }) => {
     } catch (err) { console.log(err); };
   };
 
-  // const [lobbyIdHidden, setLobbyIdHidden] = useState(true);
-
-  // const hideLobbyIdHandler = () => setLobbyIdHidden(!lobbyIdHidden);
-
-  // let lid;
-  // if (lobbyId) lid = lobbyId === 'z' ? 'SPLENDID-MONOLITH-8923' : lobbyId.toUpperCase()
-
-  // const HiddenURL = () => (
-  //   <div className='lobbyid-wrap'>
-  //     <div className='ttip-parent'>
-  //       <SVGButton
-  //         className='hidelobbyid'
-  //         icon={lobbyIdHidden ? 'show' : 'hide'}
-  //         onClick={hideLobbyIdHandler}
-  //         disabled={false}
-  //       />
-  //       <Tooltip tip='hideShowName' side='left' />
-  //     </div>
-  //     <div className={`info-lobbyid ${lobbyIdHidden ? 'obscured' : 'visible'}`}>
-  //       {lobbyIdHidden ? 'lobby name hidden' : lid}
-  //     </div>
-  //   </div>
-  // )
-
   if (lobbyId) return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />
       <Container className='foyerjoin'>
         <div className='landing-forms-wrapper'>
           {/* <HiddenURL /> */}
-          <form className="form join-this-lobby-form" onSubmit={joinLobbySubHandler}>
+          <form className="form join-this-lobby-form" onSubmit={joinLobbyHandler}>
             <Grid className='join-this-lobby-form'>
               <div className='join-this-lobby-title'>JOIN THIS LOBBY</div>
               <Input
@@ -154,7 +127,7 @@ const JoinLobby = ({ lobbyId }) => {
       <ErrorModal error={error} onClear={clearError} />
       <Container className='joinlobby'>
         <div className='landing-forms-wrapper'>
-          <form className='form join-lobby-form' onSubmit={joinLobbySubHandler}>
+          <form className='form join-lobby-form' onSubmit={joinLobbyHandler}>
             <Grid className='join-lobby-form'>
               <div className='join-lobby-title'>JOIN LOBBY</div>
               <Input
@@ -209,7 +182,7 @@ const JoinLobby = ({ lobbyId }) => {
       <Button
         disabled={false}
         className='join-devlobby'
-        onClick={(e) => joinLobbySubHandler(e, true)}
+        onClick={(e) => joinLobbyHandler(e, true)}
       >
         DEV
       </Button>
@@ -218,3 +191,27 @@ const JoinLobby = ({ lobbyId }) => {
 };
 
 export default JoinLobby;
+
+  // const [lobbyIdHidden, setLobbyIdHidden] = useState(true);
+
+  // const hideLobbyIdHandler = () => setLobbyIdHidden(!lobbyIdHidden);
+
+  // let lid;
+  // if (lobbyId) lid = lobbyId === 'z' ? 'SPLENDID-MONOLITH-8923' : lobbyId.toUpperCase()
+
+  // const HiddenURL = () => (
+  //   <div className='lobbyid-wrap'>
+  //     <div className='ttip-parent'>
+  //       <SVGButton
+  //         className='hidelobbyid'
+  //         icon={lobbyIdHidden ? 'show' : 'hide'}
+  //         onClick={hideLobbyIdHandler}
+  //         disabled={false}
+  //       />
+  //       <Tooltip tip='hideShowName' side='left' />
+  //     </div>
+  //     <div className={`info-lobbyid ${lobbyIdHidden ? 'obscured' : 'visible'}`}>
+  //       {lobbyIdHidden ? 'lobby name hidden' : lid}
+  //     </div>
+  //   </div>
+  // )

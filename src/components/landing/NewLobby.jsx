@@ -5,23 +5,23 @@ import React, {
 import { useHistory } from 'react-router-dom';
 import { useForm } from '../../hooks/form-hook';
 import { useHttpClient } from '../../hooks/http-hook';
+import { UserContext } from '../../context/contexts';
+import { MAX_NAME_LEN } from '../../util/utils';
 import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MAXLENGTH,
   VALIDATOR_LETTERS_ONLY
 } from '../../util/validators';
-import { MAX_NAME_LEN } from '../../util/utils';
-import { UserContext } from '../../context/contexts';
-import Input from '../ui-elements/Input';
-// import Button from '../ui-elements/Button';
-import Container from '../shared/Container';
 import ErrorModal from '../modal/ErrorModal';
-import Tooltip from '../shared/Tooltip';
 import Grid from '../shared/Grid';
+import Container from '../shared/Container';
+import Input from '../ui-elements/Input';
+import Tooltip from '../shared/Tooltip';
 
 const NewLobby = () => {
   const { updateUserCtx } = useContext(UserContext);
   const { error, sendRequest, clearError } = useHttpClient('NewLobby');
+  const history = useHistory();
   const [isStreamer, setIsStreamer] = useState(false);
 
   const [formState, inputHandler] = useForm(
@@ -30,15 +30,10 @@ const NewLobby = () => {
     }, false
   );
 
-  const history = useHistory();
-
-  const newLobbySubmitHandler = async event => {
+  const newLobbyHandler = async event => {
     event.preventDefault();
 
     try {
-      // TO DO: use FormData instead of JSON?
-      // const formData = new FormData();
-      // formData.append('userName', formState.inputs.userName.value);
       const responseData = await sendRequest(
         `${process.env.REACT_APP_BACKEND_URL}/lobby/new`,
         'POST',
@@ -52,8 +47,8 @@ const NewLobby = () => {
         userId: responseData.user.id,
         userName: responseData.user.userName,
         myLobby: responseData.user.myLobby,
-        isLeader: true,
         isStreamer: responseData.user.isStreamer,
+        isLeader: true,
         leaderOf: responseData.user.myLobby
       });
       history.push('/lobby'); // forward user to route of lobby
@@ -65,7 +60,7 @@ const NewLobby = () => {
       <ErrorModal error={error} onClear={clearError} />
       <Container className='newlobby'>
         <div className='landing-forms-wrapper'>
-          <form className='form new-lobby-form' onSubmit={newLobbySubmitHandler}>
+          <form className='form new-lobby-form' onSubmit={newLobbyHandler}>
             <Grid className='new-lobby-form'>
               <div className='new-lobby-title'>START NEW LOBBY</div>
               <Input
@@ -112,3 +107,7 @@ const NewLobby = () => {
 };
 
 export default NewLobby;
+
+// TO DO: use FormData instead of JSON?
+// const formData = new FormData();
+// formData.append('userName', formState.inputs.userName.value);

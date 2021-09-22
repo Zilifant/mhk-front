@@ -1,0 +1,129 @@
+// tooltips
+
+@import './colors.scss';
+@import './mixins.scss';
+
+.ttip-parent {
+  position:relative;
+  /* width: max-content; */
+}
+
+.ttip.full,
+.ttip-parent .ttip {
+  background-color: $bg5;
+  border-radius: $rad;
+  padding: .5rem;
+  border: 2px solid $bg1;
+  position: absolute;
+  z-index: 99999999;
+  box-shadow: 0 1px 3px $bg5;
+}
+
+.ttip-parent .ttip {
+  width: max-content;
+  max-width: 400px;
+  display: none;
+}
+
+.ttip.full {
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  padding: 1rem 1rem 1rem calc(50px + 1.25rem);
+  // padding: 2rem 1rem 1.7rem 1rem;
+  margin: 1rem;
+}
+
+.ttip-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: $bg3;
+  height: 100%;
+  width: 50px;
+}
+
+.ttip-close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: end;
+  background-color: $bg3;
+  color: $fg4;
+  width: 100%;
+  text-transform: uppercase;
+  padding: .15rem .25rem;
+  &:hover {
+    color: $fg1;
+    background-color: $redd8;
+  }
+}
+
+.ttip.left,
+.ttip.right {
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.ttip.left {
+  right: 100%;
+  margin-right: 1rem;
+}
+
+.ttip.right {
+  left: 100%;
+  margin-left: 1rem;
+}
+
+.ttip.top,
+.ttip.bottom {
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.ttip.top {
+  bottom: calc(100% + 1rem);
+}
+
+.ttip.bottom {
+  top: calc(100% + 1rem);
+}
+
+.ttip-parent:hover .ttip {
+  display: block;
+}
+
+.ttip span {
+  line-height: 1.5rem;
+  font-size: larger;
+}
+
+.ttip .faded span {
+  color: $bg1;
+}
+
+.ttip :not(:first-child) {
+  margin-top: .25rem;
+}
+
+/* i {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -12px;
+  width: 12px;
+  height: 24px;
+  overflow: hidden;
+}
+
+i::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: 0;
+  top: 50%;
+  transform: translate(-50%,-50%) rotate(-45deg);
+  background-color: $bg1;
+  box-shadow: 0 1px 3px $bg5;
+} */

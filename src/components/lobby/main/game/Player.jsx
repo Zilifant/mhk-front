@@ -75,8 +75,10 @@ const Player = ({
     );
   };
 
+  const canIInteract = myRole !== 'ghost';
+
   const interact = () => {
-    if (myRole !== 'ghost' && isRoundStage && canIAccuse) return accuseBtn();
+    if (canIInteract && isRoundStage && canIAccuse) return accuseBtn();
     if (canBeTargeted) return killBtn();
     return null;
   };
@@ -104,7 +106,7 @@ const Player = ({
   const getSelectedId = (type) => canIAccuse ? selTracker[type]?.id : null;
 
   return (
-    <Container className='player'>
+    <Container className={`player ${!canIInteract && 'never-interacts'}`}>
       <li className={`p-info badge ${badge(canTheyAccuse)}`}>
         *** o7 ***
       </li>
@@ -118,9 +120,9 @@ const Player = ({
           <div className={roleClass}>{roleDisplay.toUpperCase()}</div>
         </div>
       </li>
-      <li className={`p-info interact`}>
+      {canIInteract && <li className={`p-info interact`}>
         {interact()}
-      </li>
+      </li>}
       {types.map((type) => (
         <Cards
           myRole={myRole}

@@ -21,7 +21,7 @@ const BasicUI = ({
   const types = Object.keys(hand);
 
   return (
-    <Container className='self player'>
+    <Container className='self player never-interacts'>
       {/* <li className={`p-info username`}>
         {id.slice(0,-5)}
       </li> */}
@@ -33,8 +33,6 @@ const BasicUI = ({
           <div className='subtitle'>You are {article(role)}</div>
           <div className={role}>{role.toUpperCase()}</div>
         </div>
-      </li>
-      <li className={`p-info interact`}>
       </li>
       {types.map((type) => (
         <Cards

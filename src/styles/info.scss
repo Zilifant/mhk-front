@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: var(--bg4); */
+  /* background-color: $bg4; */
   /* padding: 0; */
 }
 
@@ -21,18 +21,19 @@
 }
 
 .lobbyid-wrap .info-lobbyid {
-  background-color: var(--bg5);
+  background-color: $bg5;
   justify-self: center;
   text-align: center;
   font-size: x-large;
+  text-transform: uppercase;
   width: 300px;
   padding: .15rem 0;
-  border-radius: var(--rad);
+  border-radius: $rad;
 }
 
 .info-lobbyid.obscured {
   font-style: italic;
-  color: var(--bg1);
+  color: $bg1;
 }
 
 .lobbyid-wrap {
@@ -49,7 +50,7 @@ button.btn--copyurl,
 button.btn--hidelobbyid {
   display: flex;
   justify-self: end;
-  border: var(--bdr2) solid var(--cyan6);
+  border: $bdr2 solid $cyan6;
   padding: 0;
 }
 
@@ -66,9 +67,9 @@ button.btn--hidelobbyid {
 
 button.btn--copyurl:hover,
 button.btn--hidelobbyid:hover {
-  --fgc: var(--cyan5);
-  border-color: var(--fgc);
-  color: var(--fgc);
+  $fgc: $cyan5;
+  border-color: $fgc;
+  color: $fgc;
 }
 
 // game
@@ -96,7 +97,7 @@ button.btn--hidelobbyid:hover {
       text-transform: uppercase;
       font-size: large;
       &.user-name {
-        color: var(--bg1);
+        color: $bg1;
         display: flex;
         flex-direction: row;
         flex-grow: 1;

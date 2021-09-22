@@ -6,7 +6,8 @@ $rad: 0;
 $mar: 0.5rem;
 $gap: 0.5rem;
 $bdr: 1px;
-$wd:  0.25rem;
+$bdr2: 0.2rem;
+$wd: 0.25rem;
 
 @mixin square($size: max-content) {
   height: $size;

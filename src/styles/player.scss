@@ -14,13 +14,20 @@
   background-color: $bg4;
   display: grid;
   gap: $mar;
-  grid-template-columns: 7rem 1fr;
+  grid-template-columns: 110px 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-areas:
     "badg evid"
     "role evid"
     "role mean"
     "intr mean";
+  &.never-interacts {
+    grid-template-areas:
+      "badg evid"
+      "role evid"
+      "role mean"
+      "role mean";
+  }
 }
 
 .p-info {
@@ -35,6 +42,10 @@
 .p-info:nth-child(2) {
   padding: .25rem;
   min-height: 68px;
+}
+
+.never-interacts > .p-info:nth-child(2) {
+  min-height: calc(68px + 30.5px + 0.5rem)
 }
 
 .p-info .wrapper {
@@ -76,9 +87,9 @@
   /* margin: 0 auto;
   text-align: center;
   width: 100%; */
-  font-weight: bold;
+  // font-weight: bold;
   font-size: 1.25rem;
-  letter-spacing: .1rem;
+  // letter-spacing: .1rem;
 }
 
 .p-info.role .wrapper > :not(:first-child) {
@@ -92,6 +103,8 @@
 
 .p-info.role .wrapper .accomplice {
   color: $accomp;
+  font-weight: normal;
+  letter-spacing: normal;
 }
 
 .p-info.role .wrapper .witness {

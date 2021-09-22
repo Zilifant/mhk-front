@@ -17,7 +17,7 @@ import Grid from '../shared/Grid';
 import Container from '../shared/Container';
 import Input from '../ui-elements/Input';
 import Tooltip from '../shared/Tooltip';
-import Button from '../ui-elements/Button';
+// import Button from '../ui-elements/Button';
 
 const JoinLobby = ({ lobbyId }) => {
   const { updateUserCtx } = useContext(UserContext);
@@ -179,13 +179,13 @@ const JoinLobby = ({ lobbyId }) => {
           </div>
         </div>
       </Container>
-      <Button
+      {/* <Button
         disabled={false}
         className='join-devlobby'
         onClick={(e) => joinLobbyHandler(e, true)}
       >
         DEV
-      </Button>
+      </Button> */}
     </React.Fragment>
   );
 };

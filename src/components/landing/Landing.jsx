@@ -7,6 +7,7 @@ import ReturnToLobby from './ReturnToLobby';
 import NewLobby from './NewLobby';
 import JoinLobby from './JoinLobby';
 import '../../styles/landing.scss';
+import Footer from '../shared/Footer';
 
 const Landing = () => {
   // console.log('%cLanding','color:#f579f9');
@@ -23,6 +24,7 @@ const Landing = () => {
       />}
       <NewLobby />
       <JoinLobby />
+      <Footer />
     </div>
   );
 };

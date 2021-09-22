@@ -14,7 +14,7 @@ const Footer = () => {
         info={rules}
       />
       <div className='footer-text'>
-        Copyright 2021 Scott Silsbe
+        Copyright 2021 Zilifant
       </div>
     </Container>
   );

@@ -8,9 +8,10 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
+  background-color: $bg4;
 }
 
-.con--foot div:not(:first-child) {
+.con--foot > :not(.infomodal-invis-wrap):not(:first-child) {
   margin-left: .5rem;
 }
 

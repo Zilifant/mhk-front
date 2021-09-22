@@ -20,27 +20,31 @@ const Modal = ({
   const parsedContent = parseSMDLines({lines: currentSec.content});
 
   return (
-    <div className={`infomodal ${className}`}>
-      <div className='infomodal-nav'>
-        <button
-          className={`infomodal-nav-btn close-btn`}
-          onClick={() => hideHandler(false)}
-        >
-          close
-        </button>
-        {info.map((sec, i) => {
-          return (
-            <button
-              key={i}
-              className={`infomodal-nav-btn sec-btn ${sec.id} ${isCurrent(sec.id)}`}
-              onClick={() => setCurrentSec(info[i])}
-            >
-              {sec.title}
-            </button>
-          )
-        })}
+    <div className='infomodal-invis-wrap'>
+      <div className={`infomodal-wrap ${className}`}>
+        <div className='infomodal-nav'>
+          <button
+            className={`infomodal-nav-btn close-btn`}
+            onClick={() => hideHandler(false)}
+          >
+            close
+          </button>
+          {info.map((sec, i) => {
+            return (
+              <button
+                key={i}
+                className={`infomodal-nav-btn sec-btn ${sec.id} ${isCurrent(sec.id)}`}
+                onClick={() => setCurrentSec(info[i])}
+              >
+                {sec.title}
+              </button>
+            )
+          })}
+        </div>
+        <div className='infomodal-content'>
+          {renderStyledLines(parsedContent)}
+        </div>
       </div>
-      <div className='infomodal-content'>{renderStyledLines(parsedContent)}</div>
     </div>
   );
 };

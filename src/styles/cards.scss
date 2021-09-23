@@ -10,8 +10,8 @@ button.card-wrap--player {
   display: inline-block;
   border-radius: var(--rad);
   padding: .25rem;
-  width: 6rem;
-  min-height: 65px;
+  width: 75px;
+  height: 1fr;
 
   &:disabled {
     cursor: auto;

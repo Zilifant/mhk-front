@@ -13,7 +13,6 @@ const BasicUI = ({
   thisPlayer: {
     hand,
     role,
-    id,
     canAccuse
   }
 }) => {
@@ -22,11 +21,8 @@ const BasicUI = ({
 
   return (
     <Container className='self player never-interacts'>
-      {/* <li className={`p-info username`}>
-        {id.slice(0,-5)}
-      </li> */}
       <li className={`p-info badge ${badge(canAccuse)}`}>
-        *** o7 ***
+        BADGE
       </li>
       <li className={`p-info role ${role}`}>
         <div className='wrapper'>
@@ -34,7 +30,8 @@ const BasicUI = ({
           <div className={role}>{role.toUpperCase()}</div>
         </div>
       </li>
-      {types.map((type) => (
+      {types.map((type) => (<>
+        <div className={`c-group-title ${type}`}>{type}</div>
         <Cards
           key={type}
           myRole={role}
@@ -42,7 +39,7 @@ const BasicUI = ({
           cardType={type}
           cards={hand[type]}
         />
-      ))}
+      </>))}
     </Container>
   );
 };

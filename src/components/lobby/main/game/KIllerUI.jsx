@@ -15,7 +15,6 @@ const KillerUI = ({
   thisPlayer: {
     hand,
     role,
-    id,
     canAccuse
   },
   stage,
@@ -56,11 +55,8 @@ const KillerUI = ({
 
   return (
     <Container className={`self player`}>
-      {/* <li className={`p-info username`}>
-        {id.slice(0,-5)}
-      </li> */}
       <li className={`p-info badge ${badge(canAccuse)}`}>
-        *** o7 ***
+        BADGE
       </li>
       <li className={`p-info role ${role}`}>
         <div className='wrapper'>
@@ -71,7 +67,8 @@ const KillerUI = ({
       <li className={`p-info interact`}>
         {interact()}
       </li>
-      {types.map((type) => (
+      {types.map((type) => (<>
+        <div className={`c-group-title ${type}`}><p>{type}</p></div>
         <Cards
           myRole={role}
           type={`${role}UI`}
@@ -84,7 +81,7 @@ const KillerUI = ({
           isMine={true}
           keyEv={keyEv}
         />
-      ))}
+      </>))}
     </Container>
   );
 };

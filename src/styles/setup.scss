@@ -62,8 +62,8 @@ button.startgame {
 
 .advrole {
   padding: .15rem .25rem;
-  background-color: var(--bg4);
   border: .2rem solid var(--bg3);
+  background-color: var(--bg4);
   border-radius: var(--rad);
   margin: 0;
   text-transform: uppercase;
@@ -71,6 +71,15 @@ button.startgame {
   width: 100px;
   text-align: center;
   cursor: default;
+  &.on {
+    color: var(--emer5);
+    border-color: var(--emer5);
+  }
+  
+  &.off {
+    color: var(--bg3);
+    border-color: var(--bg3);
+  }
 }
 
 .advrolebtn {
@@ -119,18 +128,6 @@ button.startgame {
 .btn--advrole.off:hover {
   background-color: var(--cyan5);
   border-color: var(--cyan5);
-}
-
-.advrole.on {
-  color: var(--emer5);
-  border-color: var(--emer5);
-  background-color: var(--bg4)
-}
-
-.advrole.off {
-  color: var(--bg3);
-  border-color: var(--bg3);
-  background-color: var(--bg4);
 }
 
 .timer.value {

@@ -6,16 +6,18 @@
 .p-info.badge     { grid-area: badg; }
 .p-info.role      { grid-area: role; }
 .p-info.interact  { grid-area: intr; }
+.c-group-title.evidence { grid-area: evti; }
 .c-group.evidence { grid-area: evid; }
+.c-group-title.means    { grid-area: meti; }
 .c-group.means    { grid-area: mean; }
 
-.con--self.player,
+// .con--self.player,
 .con--player {
   background-color: $bg4;
   display: grid;
   gap: $mar;
   grid-template-columns: 110px 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  // grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-areas:
     "badg evid"
     "role evid"
@@ -30,37 +32,91 @@
   }
 }
 
+.con--self.player {
+  background-color: $bg4;
+  display: grid;
+  gap: $mar;
+  grid-template-columns: 110px repeat(3, max-content);
+  // grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas:
+    "badg evti evid meti mean intr"
+    "role evti evid meti mean intr";
+  &.never-interacts {
+    grid-template-areas:
+      "badg evti evid meti mean"
+      "role evti evid meti mean"
+      "role evti evid meti mean";
+  }
+}
+
 .p-info {
   background-color: $bg3;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: bold;
+  // font-weight: bold;
   border-radius: $rad;
 }
 
-.p-info:nth-child(2) {
-  padding: .25rem;
-  min-height: 68px;
-}
+// .p-info:nth-child(2) {
+//   padding: .25rem;
+//   min-height: 68px;
+// }
 
-.never-interacts > .p-info:nth-child(2) {
-  min-height: calc(68px + 30.5px + 0.5rem)
-}
+// .never-interacts > .p-info:nth-child(2) {
+//   min-height: calc(68px + 30.5px + 0.5rem)
+// }
+
+// .con--self.player {
+//   & .p-info:nth-child(2) {
+//     padding: .25rem;
+//     min-height: 10px;
+//   }
+//   & .never-interacts > .p-info:nth-child(2) {
+//     min-height: calc(10px + 30.5px + 0.5rem)
+//   }
+// }
 
 .p-info .wrapper {
   text-align: center;
 }
 
-.badge {
-  padding: .15rem;
-  color: $ambr2;
-  background-color: $yell5;
+.p-info {
+  &.badge {
+    border: .2rem solid $badge;
+    height: 26px;
+    background-color: $bg4;
+    &.can-accuse {
+      color: $badge;
+      border-color: $badge;
+    }
+    &.accusal-spent {
+      color: $bg2;
+      border-color: $bg2;
+    }
+  }
+
+  &.role {
+    padding: .25rem 0;
+    // height: 100%;
+  }
+
+  &.interact {
+    height: 26px;
+  }
 }
 
-.badge.accusal-spent {
-  color: $ambr5;
-  background-color: $yell7;
+.c-group-title {
+  background-color: $bg3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: min-content;
+  width: min-content;
+  text-transform: uppercase;
+  & > p {
+    transform: rotate(-90deg);
+  }
 }
 
 .username {
@@ -118,17 +174,3 @@
 .p-info.role .wrapper .mystery {
   color: $mystry;
 }
-
-/* .player-info {
-  background-color: $bg5;
-  border-radius: $rad;
-  display: flex;
-  flex-flow: wrap;
-  align-content: flex-start;
-}
-
-.player-info * {
-  margin: 0 auto;
-  text-align: center;
-  width: 100%;
-} */

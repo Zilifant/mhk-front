@@ -108,7 +108,7 @@ const Player = ({
   return (
     <Container className={`player ${!canIInteract && 'never-interacts'}`}>
       <li className={`p-info badge ${badge(canTheyAccuse)}`}>
-        *** o7 ***
+        BADGE
       </li>
       <li className={`p-info role ${roleClass}`}>
         <div className='wrapper'>

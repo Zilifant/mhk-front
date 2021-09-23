@@ -228,12 +228,18 @@ $fg1: $gray1;
 $fg2: $gray2;
 $fg3: $gray3;
 $fg4: $gray4;
+
+$default-light: $colg2;
+$default:       $gray3;
+
 $bg1: $gray5;
 $bg2: $gray6;
 $bg3: $gray7;
 $bg4: $gray8;
 $bg5: $gray9;
-$bg6: black;
+$bg6: darken($gray9, 5%);
+
+$defbg: $bg6;
 
 $hiligt:  $redd4;
 
@@ -251,7 +257,7 @@ $locate:  $emer8;
 $cluold:  $colg7;
 $clunew:  $colg6;
 
-$badge:   $yell4;
+$badge:   $yell6;
 $mystry:  $viol4;
 $leader:  $yell5;
 

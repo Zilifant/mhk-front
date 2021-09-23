@@ -127,10 +127,9 @@ button.btn--gc {
 }
 
 .gc-back-icon {
-  height: 50px;
+  height: max-content;
   width: 50px;
-  display: block;
-  margin: .25rem auto;
+  margin: 0 auto;
 }
 
 .gc-back-text {

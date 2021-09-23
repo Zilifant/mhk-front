@@ -1,7 +1,6 @@
 import React from 'react';
 import Container from '../../../shared/Container';
 import GhostCard from './GhostCard';
-// import { GiDeathSkull } from 'react-icons/gi';
 import '../../../../styles/ghost.scss';
 import SVGIcon from '../../../ui-elements/SVGIcon';
 
@@ -20,8 +19,8 @@ const Ghost = ({
         <div className='gc-back-wrap'>
           <SVGIcon
             icon='skull'
+            className='gc-back-icon'
           />
-          {/* <GiDeathSkull className='gc-back-icon' /> */}
           <div className='gc-back-text'>MHK</div>
         </div>
       </div>

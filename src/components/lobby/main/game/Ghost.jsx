@@ -1,9 +1,9 @@
 import React from 'react';
 import Container from '../../../shared/Container';
 import GhostCard from './GhostCard';
-import { GiDeathSkull } from 'react-icons/gi';
+// import { GiDeathSkull } from 'react-icons/gi';
 import '../../../../styles/ghost.scss';
-// import SVGIcon from '../../../ui-elements/SVGIcon';
+import SVGIcon from '../../../ui-elements/SVGIcon';
 
 const Ghost = ({
   isGhostUI,
@@ -18,10 +18,10 @@ const Ghost = ({
     <div className='card-wrap--ghost back'>
       <div className='gc-back'>
         <div className='gc-back-wrap'>
-          {/* <SVGIcon
+          <SVGIcon
             icon='skull'
-          /> */}
-          <GiDeathSkull className='gc-back-icon' />
+          />
+          {/* <GiDeathSkull className='gc-back-icon' /> */}
           <div className='gc-back-text'>MHK</div>
         </div>
       </div>

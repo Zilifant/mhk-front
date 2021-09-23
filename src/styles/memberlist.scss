@@ -78,6 +78,17 @@ div.leader_icon {
   margin-bottom: 2px;
 }
 
+.member_grid {
+  & .svg-icon.ghost,
+  & .svg-btn.ghost {
+    display: flex;
+    justify-content: flex-end;
+    & svg {
+      max-height: 30px;
+    }
+  }
+}
+
 .svg-icon.crown.ml-leader svg {
   fill: var(--leader);
 }

@@ -125,12 +125,12 @@ div.app-root {
 }
 
 main.app {
-  margin: $mar;
+  margin: $mar $mar 0 $mar;
   display: flex;
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: auto;
-  max-height: calc(100% - (0.5rem * 2));
+  max-height: calc(100% - (0.5rem));
 }
 
 /* GRID */

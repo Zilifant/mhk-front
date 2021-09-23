@@ -3,16 +3,23 @@
 @import './colors.scss';
 @import './mixins.scss';
 
-.con--foot {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  background-color: $bg4;
-}
-
-.con--foot > :not(.infomodal-invis-wrap):not(:first-child) {
-  margin-left: .5rem;
+.container.con--foot {
+  padding: 0;
+  & .footer-wrap {
+    background-color: $bg4;
+    padding: .5rem;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    & > :not(.infomodal-invis-wrap):not(:first-child) {
+      margin-left: .5rem;
+    }
+  }
+  & .margin-hack {
+    height: $mar;
+    background-color: $bg5;
+  }
 }
 
 .footer-text {

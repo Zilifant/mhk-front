@@ -61,7 +61,7 @@ button.startgame {
 }
 
 .advrole {
-  padding: .15rem .25rem;
+  padding: .15rem 3px;
   border: .2rem solid $bg3;
   background-color: $bg4;
   border-radius: $rad;
@@ -165,12 +165,12 @@ button.startgame {
 }
 
 .svg-btn.timer.three-d {
-  padding: .25rem;
+  padding: 3px;
   border-radius: $rad;
-  @include three-d-btn($bdr-wid: .25rem);
+  @include three-d-btn($bdr-wid: 3px);
   &:disabled {
     cursor: default;
-    @include three-d-btn($col: $bg3, $bdr-wid: .25rem);
+    @include three-d-btn($col: $bg3, $bdr-wid: 3px);
   }
   &:disabled svg {
     fill: $bg1;

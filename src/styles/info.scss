@@ -17,7 +17,7 @@
 }
 
 .con--info.nogame > :not(:first-child) {
-  margin-top: .25rem;
+  margin-top: 3px;
 }
 
 .lobbyid-wrap .info-lobbyid {
@@ -115,7 +115,7 @@ button.btn--hidelobbyid:hover {
     }
     & > button {
       width: max-content;
-      padding: .15rem .25rem;
+      padding: .15rem 3px;
     }
     & > .nextround {
       @include three-d-btn();

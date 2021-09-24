@@ -200,7 +200,7 @@ input.join-lobby-lobbyid-input {
 .join-lobby-btn,
 .join-this-lobby-btn {
   display: block;
-  padding: .15rem .25rem;
+  padding: .15rem 3px;
   text-transform: uppercase;
   @include three-d-btn();
 
@@ -213,5 +213,5 @@ input.join-lobby-lobbyid-input {
 
 .join-devlobby {
   background-color: inherit;
-  margin-right: .25rem;
+  margin-right: 3px;
 }

@@ -46,7 +46,7 @@ div.member_grid {
   grid-template-rows: 30px;
   grid-template-areas:
     '. leader name . ghost';
-  padding: .25rem;
+  padding: 3px;
   border: .2rem solid;
   background-color: $bg5;
 }
@@ -160,7 +160,7 @@ div.member_grid:hover > .ghost_icon .svg-btn.assign-ghost.ml-notghost svg {
 button.ready-toggle-btn {
   display: block;
   text-transform: uppercase;
-  padding: .15rem .25rem;
+  padding: .15rem 3px;
   // height: 18px;
   // width: 18px;
   &.ml-ready {

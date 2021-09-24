@@ -35,8 +35,12 @@ div.card-wrap--ghost {
 .gc-back,
 .gc-title,
 .gc-clue-btn {
-  padding: .15rem .5rem;
   border-radius: $rad;
+}
+
+.gc-back,
+.gc-title {
+  padding: .15rem .5rem;
 }
 
 .gc-title {
@@ -61,30 +65,32 @@ div.card-wrap--ghost {
 }
 
 .gc-clue {
-  margin: .25rem 0 0;
+  margin: 3px 0 0;
   white-space: nowrap;
 }
 
 .gc-clue-btn {
   margin: 0 auto;
   width: 100%;
+  padding: 2px 0;
   color: $fg3;
-  text-transform: uppercase;
-  @include three-d-btn($clue-btn-bg, 12%, 12%, $wd);
+  // text-transform: uppercase;
+
+  @include three-d-btn($clue-btn-bg, 12%, 12%, $bdr2);
 
   &.selected {
     color: $fg1;
-    @include three-d-btn($clue-btn-sel-bg, 12%, 12%, $wd);
+    @include three-d-btn($clue-btn-sel-bg, 12%, 12%, $bdr2);
   }
 
   &:disabled {
     cursor: auto;
-    @include three-d-btn($clue-btn-dis-bg, 8%, 8%, $wd);
+    @include three-d-btn($clue-btn-dis-bg, 8%, 8%, $bdr2);
     &:not(.highlighted) {
       color: darken($fg3, 30%);
       &.locked {
         color: darken($fg3, 50%);
-        @include three-d-btn($clue-btn-lck-bg, 5%, 5%, $wd);
+        @include three-d-btn($clue-btn-lck-bg, 5%, 5%, $bdr2);
       }
     }
   }
@@ -92,25 +98,25 @@ div.card-wrap--ghost {
   // order matters: highlighted after disabled
   &.highlighted {
     color: $fg1;
-    @include three-d-btn($clue-btn-hil-bg, 20%, 20%, $wd);
+    @include three-d-btn($clue-btn-hil-bg, 20%, 20%, $bdr2);
   }
 }
 
 button.btn--gc {
-  margin-top: .25rem;
+  margin-top: 3px;
   width: 100%;
 
   &.confirm-clue {
-    @include three-d-btn($confirm-btn-bg, 8%, 8%, $wd);
+    @include three-d-btn($confirm-btn-bg, 8%, 8%, $bdr2);
     &:disabled {
       cursor: auto;
       color: darken($fg3, 30%);
-      @include three-d-btn($confirm-btn-dis-bg, 8%, 8%, $wd);
+      @include three-d-btn($confirm-btn-dis-bg, 8%, 8%, $bdr2);
     }
   }
 
   &.replace-card {
-    @include three-d-btn($replace-btn-bg, 20%, 20%, $wd);
+    @include three-d-btn($replace-btn-bg, 20%, 20%, $bdr2);
   }
 }
 
@@ -123,7 +129,8 @@ button.btn--gc {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: $bg3;
+  background-color: $bg5;
+  border: $bdr2 solid $bg6;
 }
 
 .gc-back-icon {
@@ -138,11 +145,11 @@ button.btn--gc {
 }
 
 .gc-conbtn-placeholder {
-  margin-top: .25rem;
+  margin-top: 3px;
   width: 100%;
   color: $clue-bg;
   background-color: $clue-bg;
-  border: $wd solid $clue-bg;
+  border: $bdr2 solid $clue-bg;
   padding: .15rem;
   cursor: default;
 }

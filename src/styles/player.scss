@@ -81,7 +81,7 @@ ul.c-group {
   }
 
   &.role {
-    padding: .25rem 0;
+    padding: 3px 0;
     // height: 100%;
   }
 
@@ -96,7 +96,7 @@ ul.c-group {
   align-items: center;
   height: 100%;
   width: min-content;
-  padding: 0 .25rem;
+  padding: 0 3px;
   text-transform: uppercase;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
@@ -170,21 +170,20 @@ $c-kill-bg: $redd8;
 }
 
 button.btn.three-d {
-  @include three-d-btn($c-def-bg, 8%, 8%, $wd);
+  @include three-d-btn($c-def-bg, 8%, 8%, $bdr2);
   &:disabled {
     cursor: auto;
     color: darken($fg3, 30%);
-    @include three-d-btn($c-dis-bg, 8%, 8%, $wd);
+    @include three-d-btn($c-dis-bg, 8%, 8%, $bdr2);
   }
   &.btn--confirm-kill {
-    @include three-d-btn($c-kill-bg, 8%, 8%, $wd);
+    @include three-d-btn($c-kill-bg, 8%, 8%, $bdr2);
   }
 }
 
 // means and evidence cards
 
 $pt: 8%;
-$wd: .25rem;
 $dpt: 5%;
 
 .con--player {
@@ -207,7 +206,7 @@ $dpt: 5%;
 button.card-wrap--player {
   display: inline-block;
   border-radius: $rad;
-  padding: .25rem;
+  padding: 3px;
   width: 75px;
   // height: 1fr;
 
@@ -222,38 +221,38 @@ button.card-wrap--player {
   }
 
   &.evidence {
-    @include three-d-btn($evc, $pt, $pt, $wd);
+    @include three-d-btn($evc, $pt, $pt, $bdr2);
     &.selected {
       color: $fg1;
-      @include three-d-btn($sel, $pt, $pt, $wd);
+      @include three-d-btn($sel, $pt, $pt, $bdr2);
     }
     &:disabled {
       cursor: auto;
-      @include three-d-btn(darken($evc, $dpt), $pt, $pt, $wd);
+      @include three-d-btn(darken($evc, $dpt), $pt, $pt, $bdr2);
       &:not(.highlighted) {
         color: $fg4;
       }
     }
     &.highlighted {
-      @include three-d-btn($hig, 15%, 15%, $wd);
+      @include three-d-btn($hig, 15%, 15%, $bdr2);
     }
   }
 
   &.means {
-    @include three-d-btn($mec, $pt, $pt, $wd);
+    @include three-d-btn($mec, $pt, $pt, $bdr2);
     &.selected {
       color: $fg1;
-      @include three-d-btn($sel, $pt, $pt, $wd);
+      @include three-d-btn($sel, $pt, $pt, $bdr2);
     }
     &:disabled {
       cursor: auto;
-      @include three-d-btn(darken($mec, $dpt), $pt, $pt, $wd);
+      @include three-d-btn(darken($mec, $dpt), $pt, $pt, $bdr2);
       &:not(.highlighted) {
         color: $fg4;
       }
     }
     &.highlighted {
-      @include three-d-btn($hig, 15%, 15%, $wd);
+      @include three-d-btn($hig, 15%, 15%, $bdr2);
     }
   }
 }
@@ -262,7 +261,7 @@ button.card-wrap--player {
   display: inline-block;
   vertical-align: middle;
   background-color: $emer3;
-  margin: .25rem;
+  margin: 3px;
   height: .5rem;
   width: .5rem;
   border-radius: 50%;

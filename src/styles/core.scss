@@ -2,43 +2,6 @@
 @import './colors.scss';
 @import './mixins.scss';
 
-:root {
-  --default-light: var(--colg2);
-  --default:       var(--gray3);
-
-  --bg1: var(--gray5);
-  --bg2: var(--gray6);
-  --bg3: var(--gray7);
-  --bg4: var(--gray8);
-  --bg5: var(--gray9);
-  --bg6: black;
-
-  --hiligt:  var(--redd4);
-  --killer:  var(--redd4);
-  --accomp:  var(--redd3);
-  --hunter:  var(--gree6);
-  --witnss:  var(--libl4);
-  --ghost:   var(--fuch5);
-  --ghostli: var(--fuch4);
-  --cause:   var(--fuch7);
-  --locate:  var(--emer8);
-  --cluold:  var(--colg7);
-  --clunew:  var(--colg6);
-  --badge:   var(--yell4);
-  --mystry:  var(--viol4);
-  --leader:  var(--yell5);
-  --ready:   var(--emer6);
-  --readyli: var(--emer5);
-}
-
-:root {
-  --rad:  0;
-  --mar:  0.5rem;
-  --gap:  0.5rem;
-  --bdr:  1px;
-  --bdr2: 0.2rem;
-}
-
 $rad:  0;
 $mar:  0.5rem;
 $gap:  0.5rem;
@@ -287,12 +250,6 @@ main.app {
 .form--invalid input,
 .form--invalid textarea {
   border-color: $oran4;
-}
-
-/* LISTS */
-
-ul.c-group {
-  display: flex;
 }
 
 /* MISC */

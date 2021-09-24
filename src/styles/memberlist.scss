@@ -11,11 +11,11 @@ $bdr-width: .33rem;
   flex-direction: column;
   /* padding: 0; */
   /* width: 100%; */
-  /* background-color: var(--bg4); */
+  /* background-color: $bg4; */
 }
 
 .container.con--memberlist * {
-  border-radius: var(--rad);
+  border-radius: $rad;
 }
 
 ul.memberlist > :not(:first-child) {
@@ -31,7 +31,7 @@ div.leader_icon  { grid-area: leader; }
 li.ready_grid {
   display: grid;
   /* width: 380px; */
-  gap: var(--gap);
+  gap: $gap;
   grid-template-columns: 42.59px max-content 42.59px;
   /* grid-template-rows: 30px; */
   grid-template-areas:
@@ -41,14 +41,14 @@ li.ready_grid {
 div.member_grid {
   display: grid;
   width: 300px;
-  gap: var(--gap);
+  gap: $gap;
   grid-template-columns: 1fr 30px max-content 1fr 30px;
   grid-template-rows: 30px;
   grid-template-areas:
     '. leader name . ghost';
   padding: .25rem;
   border: .2rem solid;
-  background-color: var(--bg5);
+  background-color: $bg5;
 }
 
 div.member_grid.ml-self > .member_name {
@@ -56,11 +56,11 @@ div.member_grid.ml-self > .member_name {
 }
 
 div.member_grid.ml-notready {
-  border-color: var(--bg2);
+  border-color: $bg2;
 }
 
 div.member_grid.ml-ready {
-  border-color: var(--ready);
+  border-color: $ready;
 }
 
 div.member_name {
@@ -90,17 +90,17 @@ div.leader_icon {
 }
 
 .svg-icon.crown.ml-leader svg {
-  fill: var(--leader);
+  fill: $leader;
 }
 
 .svg-btn.assign-ghost.ml-notghost svg,
 .svg-btn.transfer-leader svg {
-  fill: var(--bg4);
+  fill: $bg4;
 }
 
 .svg-icon.ghost.ml-ghost svg,
 .svg-btn.assign-ghost.ml-ghost svg {
-  fill: var(--ghost);
+  fill: $ghost;
 }
 
 .svg-icon.crown.ml-notleader,
@@ -109,43 +109,43 @@ div.leader_icon {
 }
 
 div.member_grid:hover > .leader_icon .svg-btn.transfer-leader svg {
-  fill: var(--leader);
+  fill: $leader;
 }
 
 div.member_grid:hover > .ghost_icon .svg-btn.assign-ghost.ml-notghost svg {
-  fill: var(--ghost);
+  fill: $ghost;
 }
 
 /* .svg-btn.assign-ghost.ml-notghost:active svg,
 .svg-btn.assign-ghost.ml-ghost:active svg {
-  fill: var(--ghostli);
+  fill: $ghostli;
 } */
 
 .svg-btn.ready-toggle {
-  border-radius: var(--rad);
+  border-radius: $rad;
   /* max-height: 100%;
   justify-self: center;
   align-self: center; */
 }
 
 .svg-btn.ready-toggle svg .letter {
-  fill: var(--default);
+  fill: $default;
 }
 
 .svg-btn.ready-toggle.ml-ready svg .background {
-  fill: var(--ready);
+  fill: $ready;
 }
 
 .svg-btn.ready-toggle.ml-notready svg .background {
-  fill: var(--bg2);
+  fill: $bg2;
 }
 
 .svg-btn.ready-toggle.ml-ready:hover svg .background {
-  fill: var(--readyli);
+  fill: $readyli;
 }
 
 .svg-btn.ready-toggle.ml-notready:hover svg .background {
-  fill: var(--bg1);
+  fill: $bg1;
 }
 
 .ready_toggle {

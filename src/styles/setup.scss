@@ -9,7 +9,7 @@ $bdr-width: .33rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color: var(--bg4); */
+  /* background-color: $bg4; */
   /* padding: 0; */
 }
 
@@ -18,12 +18,12 @@ $bdr-width: .33rem;
 }
 
 .setup-section {
-  border-radius: var(--rad);
+  border-radius: $rad;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--bg5);
-  border: var(--bdr2) solid var(--bg3);
+  background-color: $bg5;
+  border: $bdr2 solid $bg3;
   padding: .5rem 0;
   width: 180px;
 }
@@ -62,9 +62,9 @@ button.startgame {
 
 .advrole {
   padding: .15rem .25rem;
-  border: .2rem solid var(--bg3);
-  background-color: var(--bg4);
-  border-radius: var(--rad);
+  border: .2rem solid $bg3;
+  background-color: $bg4;
+  border-radius: $rad;
   margin: 0;
   text-transform: uppercase;
   font-weight: bold;
@@ -72,13 +72,13 @@ button.startgame {
   text-align: center;
   cursor: default;
   &.on {
-    color: var(--emer5);
-    border-color: var(--emer5);
+    color: $emer5;
+    border-color: $emer5;
   }
   
   &.off {
-    color: var(--bg3);
-    border-color: var(--bg3);
+    color: $bg3;
+    border-color: $bg3;
   }
 }
 
@@ -105,46 +105,46 @@ button.startgame {
 .advrole.ghost {
   width: max-content;
   display: inline-block;
-  border-color: var(--ghost);
-  color: var(--ghost);
+  border-color: $ghost;
+  color: $ghost;
 }
 
 .btn--advrole {
   display: block;
-  border: .2rem solid var(--cyan6);
+  border: .2rem solid $cyan6;
   width: 100px;
 }
 
 .btn--advrole.on {
-  background-color: var(--ready);
-  border-color: var(--ready);
+  background-color: $ready;
+  border-color: $ready;
 }
 
 .btn--advrole.on:hover {
-  background-color: var(--readyli);
-  border-color: var(--readyli);
+  background-color: $readyli;
+  border-color: $readyli;
 }
 
 .btn--advrole.off:hover {
-  background-color: var(--cyan5);
-  border-color: var(--cyan5);
+  background-color: $cyan5;
+  border-color: $cyan5;
 }
 
 .timer.value {
-  border-radius: var(--rad);
+  border-radius: $rad;
   display: flex;
   text-align: center;
   align-items: center;
   justify-content: center;
   font-size: x-large;
   padding: 0;
-  background-color: var(--bg4);
-  border: var(--bdr2) solid var(--bg1);
+  background-color: $bg4;
+  border: $bdr2 solid $bg1;
   cursor: default;
 }
 
 .timer.value.off {
-  color: var(--bg1);
+  color: $bg1;
 }
 
 .timer.value  { grid-area: va; }
@@ -152,7 +152,7 @@ button.startgame {
 .timer.inc    { grid-area: in; }
 
 .timer-wrap {
-  border-radius: var(--rad);
+  border-radius: $rad;
   display: grid;
   gap: .5rem;
   grid-template-columns: 33.59px 55px 33.59px;
@@ -161,7 +161,7 @@ button.startgame {
 }
 
 .timer-wrap.notleader .svg-btn svg {
-  fill: var(--bg2);
+  fill: $bg2;
 }
 
 .svg-btn.timer.three-d {
@@ -173,6 +173,6 @@ button.startgame {
     @include three-d-btn($col: $bg3, $bdr-wid: .25rem);
   }
   &:disabled svg {
-    fill: var(--bg1);
+    fill: $bg1;
   }
 }

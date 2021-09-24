@@ -10,6 +10,7 @@ import { badge, article } from '../../../../util/utils';
 import Container from '../../../shared/Container';
 import Button from '../../../ui-elements/Button';
 import Cards from './Cards';
+import '../../../../styles/player.scss';
 
 const KillerUI = ({
   thisPlayer: {
@@ -38,13 +39,15 @@ const KillerUI = ({
 
   const keyEvBtn = () => {
     return (
-      <Button
-        className='confirm-key-evidence three-d'
-        onClick={() => submitSelection({cb:[chooseKeyEvHandler], reset:true})}
-        disabled={!minSelected}
-      >
-        Confirm
-      </Button>
+      <li className={`p-info interact con-key-ev`}>
+        <Button
+          className='confirm-key-evidence three-d'
+          onClick={() => submitSelection({cb:[chooseKeyEvHandler], reset:true})}
+          disabled={!minSelected}
+        >
+          Confirm
+        </Button>
+      </li>
     );
   };
 
@@ -54,7 +57,7 @@ const KillerUI = ({
   };
 
   return (
-    <Container className={`self player`}>
+    <Container className={`self player ${stage.id !== 'setup' && 'never-interacts'}`}>
       <li className={`p-info badge ${badge(canAccuse)}`}>
         BADGE
       </li>
@@ -64,11 +67,9 @@ const KillerUI = ({
           <div className={role}>{role.toUpperCase()}</div>
         </div>
       </li>
-      <li className={`p-info interact`}>
-        {interact()}
-      </li>
+      {interact()}
       {types.map((type) => (<>
-        <div className={`c-group-title ${type}`}><p>{type}</p></div>
+        <div className={`c-group-title ${type}`}>{type}</div>
         <Cards
           myRole={role}
           type={`${role}UI`}

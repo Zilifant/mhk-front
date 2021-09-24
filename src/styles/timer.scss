@@ -1,10 +1,13 @@
-/* timer */
+// timer
+
+@import './colors.scss';
+@import './mixins.scss';
 
 .container.con--timer {
   width: 100%;
   padding: 0;
   margin: 0;
-  /* background-color: var(--bg4); */
+  /* background-color: $bg4; */
 }
 
 .time-wrap {
@@ -33,19 +36,19 @@
 }
 
 .time-digits.zero span {
-  color: var(--killer);
+  color: $killer;
 }
 
 .svg-icon.hourglass svg {
-  fill: var(--bg1);
+  fill: $bg1;
 }
 
 .svg-icon path.glass {
-  fill: var(--default);
+  fill: $default;
 }
 
 .svg-icon path.sand {
-  fill: var(--viol5);
+  fill: $viol5;
 }
 
 .svg-icon.hourglass {
@@ -60,14 +63,14 @@
 }
 
 .time-wrap-off {
-  border-radius: var(--rad);
-  background-color: var(--bg4);
+  border-radius: $rad;
+  background-color: $bg4;
   height: 100%;
   width: 100%;
 }
 
 .time-wrap * {
-  border-radius: var(--rad);
+  border-radius: $rad;
   display: flex;
   flex-grow: 1;
 }
@@ -77,20 +80,20 @@
 }
 
 .time-wrap.running .show {
-  background-color: var(--ready);
+  background-color: $ready;
 }
 
 .time-wrap.notrunning *,
 .time-wrap .hide {
-  background-color: var(--bg4);
+  background-color: $bg4;
   opacity: 100%;
 }
 
 .time-wrap.running .timebar-3.show,
 .time-wrap.running .timebar-2.show {
-  background-color: var(--badge);
+  background-color: $badge;
 }
 
 .time-wrap.running .timebar-1.show {
-  background-color: var(--killer);
+  background-color: $killer;
 }

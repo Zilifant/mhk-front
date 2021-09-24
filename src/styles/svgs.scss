@@ -1,4 +1,7 @@
-/* SVGS */
+// svgs
+
+@import './colors.scss';
+@import './mixins.scss';
 
 .svg-btn {
   display: flex;
@@ -25,7 +28,7 @@
   stroke-linejoin: round;
   stroke-miterlimit: 2;
   margin: 0;
-  fill: var(--default);
+  fill: $default;
 }
 
 .svg-icon rect,
@@ -39,7 +42,7 @@
   stroke-linejoin: round;
   stroke-miterlimit: 2;
   margin: 0;
-  fill: var(--default);
+  fill: $default;
 }
 
 .svg-btn svg.imported {
@@ -53,5 +56,5 @@
 }
 
 .svg-btn:hover svg {
-  fill: var(--white);
+  fill: $white;
 }

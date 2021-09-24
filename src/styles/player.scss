@@ -1,3 +1,4 @@
+// player
 
 @import './colors.scss';
 @import './mixins.scss';
@@ -11,13 +12,12 @@
 .c-group-title.means    { grid-area: meti; }
 .c-group.means    { grid-area: mean; }
 
-// .con--self.player,
 .con--player {
   background-color: $bg4;
   display: grid;
   gap: $mar;
   grid-template-columns: 110px 1fr;
-  // grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 26px 1fr 1fr 26px;
   grid-template-areas:
     "badg evid"
     "role evid"
@@ -36,12 +36,12 @@
   background-color: $bg4;
   display: grid;
   gap: $mar;
-  grid-template-columns: 110px repeat(3, max-content);
-  // grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 110px max-content repeat(2, max-content 1fr);
   grid-template-areas:
-    "badg evti evid meti mean intr"
-    "role evti evid meti mean intr";
+    "badg intr evti evid meti mean"
+    "role intr evti evid meti mean";
   &.never-interacts {
+    grid-template-columns: 110px repeat(2, max-content 1fr);
     grid-template-areas:
       "badg evti evid meti mean"
       "role evti evid meti mean"
@@ -54,28 +54,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  // font-weight: bold;
   border-radius: $rad;
 }
 
-// .p-info:nth-child(2) {
-//   padding: .25rem;
-//   min-height: 68px;
-// }
-
-// .never-interacts > .p-info:nth-child(2) {
-//   min-height: calc(68px + 30.5px + 0.5rem)
-// }
-
-// .con--self.player {
-//   & .p-info:nth-child(2) {
-//     padding: .25rem;
-//     min-height: 10px;
-//   }
-//   & .never-interacts > .p-info:nth-child(2) {
-//     min-height: calc(10px + 30.5px + 0.5rem)
-//   }
-// }
+ul.c-group {
+  display: flex;
+}
 
 .p-info .wrapper {
   text-align: center;
@@ -101,21 +85,26 @@
     // height: 100%;
   }
 
-  &.interact {
+  &.interact:not(.con-key-ev) {
     height: 26px;
   }
 }
 
 .c-group-title {
-  background-color: $bg3;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: min-content;
+  height: 100%;
   width: min-content;
+  padding: 0 .25rem;
   text-transform: uppercase;
-  & > p {
-    transform: rotate(-90deg);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  &.means {
+    background-color: $mec;
+  }
+  &.evidence {
+    background-color: $evc;
   }
 }
 
@@ -128,23 +117,10 @@
   color: $bg1;
 }
 
-/* .indicator {
-  display: inline-block;
-  vertical-align: middle;
-  background-color: $emer3;
-  margin: .25rem;
-  height: .5rem;
-  width: .5rem;
-  border-radius: 50%;
-} */
-
 .p-info.role .wrapper :nth-child(3),
 .con--self .p-info.role .wrapper :nth-child(2) {
-  /* margin: 0 auto;
-  text-align: center;
-  width: 100%; */
-  // font-weight: bold;
   font-size: 1.25rem;
+  // font-weight: bold;
   // letter-spacing: .1rem;
 }
 
@@ -174,3 +150,120 @@
 .p-info.role .wrapper .mystery {
   color: $mystry;
 }
+
+// confirm buttons
+
+$c-def-bg: $cyan6;
+$c-dis-bg: $bg3;
+$c-kill-bg: $redd8;
+
+.btn--confirm-kill,
+.btn--confirm-accusation {
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+}
+
+.btn--confirm-key-evidence {
+  margin: 0 auto;
+  height: 100%;
+}
+
+button.btn.three-d {
+  @include three-d-btn($c-def-bg, 8%, 8%, $wd);
+  &:disabled {
+    cursor: auto;
+    color: darken($fg3, 30%);
+    @include three-d-btn($c-dis-bg, 8%, 8%, $wd);
+  }
+  &.btn--confirm-kill {
+    @include three-d-btn($c-kill-bg, 8%, 8%, $wd);
+  }
+}
+
+// means and evidence cards
+
+$pt: 8%;
+$wd: .25rem;
+$dpt: 5%;
+
+.con--player {
+  height: 150px;
+}
+
+.con--self.player {
+  max-width: calc((452px * 2) + 0.5rem)
+}
+
+.con--self.player button.card-wrap--player {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-grow: 1;
+  flex-direction: row;
+}
+
+button.card-wrap--player {
+  display: inline-block;
+  border-radius: $rad;
+  padding: .25rem;
+  width: 75px;
+  // height: 1fr;
+
+  &:disabled {
+    cursor: auto;
+  }
+  &:not(:first-child) {
+    margin-left: .5rem;
+  }
+  &.highlighted {
+    color: $fg1;
+  }
+
+  &.evidence {
+    @include three-d-btn($evc, $pt, $pt, $wd);
+    &.selected {
+      color: $fg1;
+      @include three-d-btn($sel, $pt, $pt, $wd);
+    }
+    &:disabled {
+      cursor: auto;
+      @include three-d-btn(darken($evc, $dpt), $pt, $pt, $wd);
+      &:not(.highlighted) {
+        color: $fg4;
+      }
+    }
+    &.highlighted {
+      @include three-d-btn($hig, 15%, 15%, $wd);
+    }
+  }
+
+  &.means {
+    @include three-d-btn($mec, $pt, $pt, $wd);
+    &.selected {
+      color: $fg1;
+      @include three-d-btn($sel, $pt, $pt, $wd);
+    }
+    &:disabled {
+      cursor: auto;
+      @include three-d-btn(darken($mec, $dpt), $pt, $pt, $wd);
+      &:not(.highlighted) {
+        color: $fg4;
+      }
+    }
+    &.highlighted {
+      @include three-d-btn($hig, 15%, 15%, $wd);
+    }
+  }
+}
+
+/* .indicator {
+  display: inline-block;
+  vertical-align: middle;
+  background-color: $emer3;
+  margin: .25rem;
+  height: .5rem;
+  width: .5rem;
+  border-radius: 50%;
+} */

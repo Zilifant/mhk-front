@@ -1,26 +1,22 @@
 // buttons
 
-@import './colors.css';
+@import './colors.scss';
 @import './mixins.scss';
-
-$confirm-btn-bg: $cyan6;
-$confirm-btn-dis-bg: $bg3;
-$confirm-kill-bg: $redd8;
 
 .btn {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  background-color: var(--cyan6);
-  color: var(--default);
+  background-color: $cyan6;
+  color: $default;
   padding: .15rem .25rem;
-  border-radius: var(--rad);
+  border-radius: $rad;
   margin: 0;
   text-transform: uppercase;
 }
 
 .btn:hover {
-  background-color: var(--cyan5);
+  background-color: $cyan5;
 }
 
 .btn:active {
@@ -32,28 +28,8 @@ $confirm-kill-bg: $redd8;
 .btn:disabled,
 .btn:hover:disabled,
 .btn:active:disabled {
-  background: var(--colg5);
-  color: var(--colg4);
-  border-color: var(--colg5);
+  background: $colg5;
+  color: $colg4;
+  border-color: $colg5;
   cursor: default;
-}
-
-.btn--confirm-kill,
-.btn--confirm-accusation,
-.btn--confirm-key-evidence {
-  margin: 0 auto;
-  height: 100%;
-  width: 100%;
-}
-
-button.btn.three-d {
-  @include three-d-btn($confirm-btn-bg, 8%, 8%, $wd);
-  &:disabled {
-    cursor: auto;
-    color: darken($fg3, 30%);
-    @include three-d-btn($confirm-btn-dis-bg, 8%, 8%, $wd);
-  }
-  &.btn--confirm-kill {
-    @include three-d-btn($confirm-kill-bg, 8%, 8%, $wd);
-  }
 }

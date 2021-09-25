@@ -7,16 +7,18 @@ const SMDopts = {
   splitStrClsOn: '_',
   splitLineOn: '<',
   splitLineClsOn: '>',
-  defaultString: 'string',
-  defaultLine: 'line',
+  defaultString: 'smd--def',
+  defaultLine: 'smd-line--def',
   abbr: [
-    {abb: 'm', classname: 'string--usermessage'},
-    {abb: 't', classname: 'string--timestamp'},
-    {abb: 'u', classname: 'string--username'},
-    {abb: 'k', classname: 'string--keyword'},
-    {abb: 'p', classname: 'string--punctuation'},
-    {abb: 'f', classname: 'faded'},
-    {abb: 'e', classname: 'emphasize'},
+    {abb: 'm', classname: 'smd--usermessage'},
+    {abb: 't', classname: 'smd--timestamp'},
+    {abb: 'u', classname: 'smd--username'},
+    {abb: 'k', classname: 'smd--keyword'},
+    {abb: 'p', classname: 'smd--punctuation'},
+    {abb: 'f', classname: 'smd--faded'},
+    {abb: 'e', classname: 'smd--emphasize'},
+    {abb: 'i', classname: 'smd--italic'},
+    {abb: 'w', classname: 'smd--warn'},
   ]
 };
 

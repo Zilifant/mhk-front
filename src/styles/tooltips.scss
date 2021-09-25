@@ -17,11 +17,15 @@
   padding: .5rem;
   border: 2px solid $bg1;
   position: absolute;
-  z-index: 99999999;
+  z-index: 999;
   box-shadow:
     1px 2px 1px $bg5,
     1 1px 1px $bg5,
     0 2px 3px $bg5;
+
+  &.oneline {
+    max-width: 90vw;
+  }
 }
 
 .ttip.left,
@@ -59,12 +63,8 @@
 }
 
 .ttip span {
-  line-height: 1.75rem;
+  line-height: 1.5rem;
   font-size: larger;
-}
-
-.ttip .faded span {
-  color: $bg1;
 }
 
 .ttip :not(:first-child) {

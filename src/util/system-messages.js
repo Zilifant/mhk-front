@@ -15,7 +15,7 @@ export const systemMessages = (() => {
     bluewinwitnessalive: 'The ^_k_Hunters^ and the ^_k_Ghost^ win! The Witness survived.'
   };
 
-  const cls = 'string--username '
+  const cls = 'smd--username '
 
   const waitingForJoin = () => `Waiting for more players...`;
 

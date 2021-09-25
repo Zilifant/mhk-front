@@ -5,23 +5,50 @@
 
 .container.con--foot {
   padding: 0;
+
   & .footer-wrap {
-    background-color: $bg4;
-    padding: .5rem;
     display: flex;
-    width: 100%;
+    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    & > :not(.infomodal-invis-wrap):not(:first-child) {
+
+    & .footer-bar {
+      background-color: $bg4;
+      padding: .5rem;
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
+      align-items: center;
+
+      & .footer-text {
+        color: $bg1;
+      }
+    }
+
+    & > :not(:first-child) {
       margin-left: .5rem;
     }
   }
+
   & .margin-hack {
     height: $mar;
     background-color: $defbg;
   }
 }
 
-.footer-text {
-  color: $bg1;
+.svg-btn.cleargame.three-d {
+  padding: 4px;
+  border-radius: $rad;
+  @include square(35px);
+  & svg {
+    transform: rotate(45deg);
+    fill: $bg5;
+  }
+  @include three-d-btn($col: $rose8, $bdr-wid: 3px);
+  &:disabled {
+    cursor: default;
+    @include three-d-btn($col: $bg3, $bdr-wid: 3px);
+  }
+  &:disabled svg {
+    fill: $bg1;
+  }
 }

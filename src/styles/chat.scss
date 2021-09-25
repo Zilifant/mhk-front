@@ -52,43 +52,56 @@
   margin-bottom: 3px;
 }
 
-.string {
+.smd--def {
   color: $fg3;
 }
 
-.string--timestamp,
-.string--arrow {
+.smd--timestamp,
+.smd--arrow {
   text-align: end;
 }
 
-.string--usermessage {
+.smd--usermessage {
   font-style: normal;
 }
 
-.string--timestamp {
+.smd--timestamp {
   color: $bg2;
 }
 
-.string--arrow {
+.smd--arrow {
   color: $emer3;
   font-weight: normal;
 }
 
-.string--punctuation {
+.smd--punctuation {
   color: $fg3;
   font-weight: bold;
 }
 
-.string--username {
+.smd--username {
   font-weight: bold;
   letter-spacing: .025rem;
 }
 
-.string--keyword {
+.smd--keyword {
   color: $fg3;
   font-weight: bold;
   letter-spacing: .025rem;
   text-transform: capitalize;
+}
+
+.smd--faded {
+  color: $bg1;
+}
+
+.smd--italic {
+  font-style: italic;
+}
+
+.smd--warn {
+  text-transform: uppercase;
+  color: $yell5;
 }
 
 .new-message-wrapper {

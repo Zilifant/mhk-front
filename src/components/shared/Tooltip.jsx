@@ -11,14 +11,15 @@ const tooltips = {
   transferLeader: 'Transfer ^_k_leadership^ to this user.',
   copyUrl: 'Copy lobby URL',
   hideShowName: 'Hide/show lobby name',
-  streamingMode: 'When ^_k_Streaming Mode^ is active, the Lobby\'s ID and URL will be hidden by default.'
+  streamingMode: 'When ^_k_Streaming Mode^ is active, the Lobby\'s ID and URL will be hidden by default.',
+  clearGameWarn: '^_w_End the game^ early and return to the lobby. ^_i_Are you sure?'
 };
 
-function renderTooltip(tip, side) {
+function renderTooltip(tip, side, opts) {
   if (!tooltips[tip]) return null;
   const parsedTip = parseSMDLines({lines: tooltips[tip]});
   return (
-    <div className={`ttip ${side}`}>
+    <div className={(`ttip ${side} ${opts || ''}`).trim()}>
       {renderStyledLines(parsedTip)}
       {/* <i className='arrow'></i> */}
     </div>
@@ -27,7 +28,8 @@ function renderTooltip(tip, side) {
 
 const Tooltip = ({
   tip,
-  side
-}) => renderTooltip(tip, side);
+  side,
+  opts
+}) => renderTooltip(tip, side, opts);
 
 export default Tooltip;

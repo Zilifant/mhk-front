@@ -150,7 +150,9 @@ const Lobby = () => {
               minimizeChatHandler={minimizeChatHandler}
               minimized={chatMinimized}
             />
-            <Footer />
+            <Footer
+              showClearBtn={lobby.leader === userId && lobby.gameOn}
+            />
           </Grid>
         }
       </React.Fragment>

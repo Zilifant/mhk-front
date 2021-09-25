@@ -6,23 +6,20 @@
 .container.con--foot {
   padding: 0;
 
-  & .footer-wrap {
+  & .footer-bar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    background-color: $bg4;
+    padding: .5rem;
+    height: 35px;
+    width: 100%;
+    align-items: center;
 
-    & .footer-bar {
-      background-color: $bg4;
-      padding: .5rem;
-      display: flex;
-      width: 100%;
-      justify-content: flex-end;
-      align-items: center;
-
-      & .footer-text {
-        color: $bg1;
-      }
-    }
+    // & .footer-bar {
+    //   display: flex;
+    //   justify-content: flex-end;
+    // }
 
     & > :not(:first-child) {
       margin-left: .5rem;
@@ -36,19 +33,27 @@
 }
 
 .svg-btn.cleargame.three-d {
-  padding: 4px;
+  // padding: 4px;
   border-radius: $rad;
-  @include square(35px);
+  @include square(21px);
   & svg {
     transform: rotate(45deg);
     fill: $bg5;
   }
-  @include three-d-btn($col: $rose8, $bdr-wid: 3px);
+  @include three-d-btn($col: $rose8, $bdr-wid: 2px);
   &:disabled {
     cursor: default;
-    @include three-d-btn($col: $bg3, $bdr-wid: 3px);
+    @include three-d-btn($col: $bg3, $bdr-wid: 2px);
   }
   &:disabled svg {
     fill: $bg1;
   }
+}
+
+.footer-text {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-end;
+  color: $bg1;
 }

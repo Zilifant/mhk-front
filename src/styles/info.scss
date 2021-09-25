@@ -110,12 +110,11 @@ button.btn--hidelobbyid:hover {
     display: flex;
     flex-direction: row;
     height: 35px;
-    & > :not(:first-child) {
-      margin-left: .5rem;
-    }
+    background-color: $bg6;
     & > button {
       width: max-content;
       padding: .15rem 3px;
+      margin-left: .5rem;
     }
     & > .nextround {
       @include three-d-btn();

@@ -179,13 +179,12 @@ main.app {
   grid-template-columns: min-content min-content;
 }
 
-.con--info.game > :not(:nth-child(1)) {
-  margin-left: .5rem;
-}
+// .con--info.game > :not(:nth-child(1)) {
+//   margin-left: .5rem;
+// }
 
-.emphasize {
+.smd--emphasize {
   font-weight: bold;
-  /* font-style: italic; */
 }
 
 /* BUTTONS */

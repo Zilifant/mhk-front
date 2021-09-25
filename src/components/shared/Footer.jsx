@@ -17,25 +17,25 @@ const Footer = ({
 
   return (
     <Container className='foot'>
-      <div className='footer-wrap'>
-        {showClearBtn && <div className='ttip-parent'>
-          <SVGButton
-            className='cleargame three-d'
-            onClick={clearGameHandler}
-            icon='plus'
-          />
-          <Tooltip
-            tip='clearGameWarn'
-            side='right'
-            opts='oneline'
-          />
-        </div>}
+      {/* <div className='footer-wrap'> */}
         <div className='footer-bar'>
+          {showClearBtn && <div className='ttip-parent'>
+            <SVGButton
+              className='cleargame three-d'
+              onClick={clearGameHandler}
+              icon='plus'
+            />
+            <Tooltip
+              tip='clearGameWarn'
+              side='right'
+              opts='oneline'
+            />
+          </div>}
           <div className='footer-text'>
             Copyright 2021 Zilifant
           </div>
         </div>
-      </div>
+      {/* </div> */}
       <div className='margin-hack'></div>
     </Container>
   );

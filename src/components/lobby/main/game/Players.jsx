@@ -8,8 +8,9 @@ import Container from '../../../shared/Container';
 import Player from './Player';
 
 const Players = ({
-  canIAccuse,
-  myRole,
+  thisPlayer,
+  // canIAccuse,
+  // myRole,
   game: {
     currentStage,
     players,
@@ -25,13 +26,13 @@ const Players = ({
   const showAsRedTeam = (redTeam, playerId) => {
     const extractIds = (arr) => arr.map(obj => obj.id);
     const canSeeRedTeam = ['witness', 'killer', 'accomplice'];
-    const show = canSeeRedTeam.includes(myRole)
+    const show = canSeeRedTeam.includes(thisPlayer.role)
                  && redTeam
                  && extractIds(redTeam).includes(playerId);
     return show ? true : null;
   };
 
-  const canBeTargeted = myRole === 'killer' && currentStage.id === 'second-murder';
+  const canBeTargeted = thisPlayer.role === 'killer' && currentStage.id === 'second-murder';
 
   return (
     <Container className="players">
@@ -43,13 +44,14 @@ const Players = ({
           <Player
             key={player.id}
             player={player}
-            myRole={myRole}
+            // myRole={myRole}
             stage={currentStage}
             canBeTargeted={canBeTargeted && player.role !== 'accomplice'}
             isRedTeam={showAsRedTeam(redTeam, player.id)}
             keyEv={keyEvidence}
-            canIAccuse={canIAccuse}
+            // canIAccuse={canIAccuse}
             rolesRef={rolesRef}
+            thisPlayer={thisPlayer}
           />
         )})}
       </ul>

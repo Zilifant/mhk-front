@@ -13,13 +13,18 @@ import Cards from './Cards';
 import '../../../../styles/player.scss';
 
 const Player = ({
-  myRole,
+  // myRole,
   stage,
   isRedTeam,
   keyEv,
-  canIAccuse,
+  // canIAccuse,
   canBeTargeted,
   rolesRef,
+  thisPlayer: {
+    id: myId,
+    role: myRole,
+    canAccuse: canIAccuse,
+  },
   player: {
     id: playerId,
     canAccuse: canTheyAccuse,
@@ -33,7 +38,6 @@ const Player = ({
   const isRoundStage = stage.type === 'round';
   const types = Object.keys(hand);
   const connectionStatus = isOnline ? 'online' : 'offline';
-  console.log(hand);
   const {
     accusationHandler,
     killWitnessHandler
@@ -55,7 +59,10 @@ const Player = ({
     return (
       <Button
         className='confirm-accusation three-d'
-        onClick={() => submitSelection({cb:[accusationHandler, playerId], reset:true})}
+        onClick={() => submitSelection({
+          cb: [accusationHandler, myId, playerId],
+          reset: true
+        })}
         disabled={!minSelected}
       >
         ACCUSE

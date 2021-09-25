@@ -57,12 +57,8 @@ export const useGame = (socket) => {
     socket.current.emit('keyEvidenceChosen', keyEv);
   };
 
-  const accusationHandler = (accusalEv, accusedId) => {
-    const accusation = {
-      accuserSID: socket.current.id,
-      accusedId,
-      accusalEv
-    };
+  const accusationHandler = (accusalEv, accuserId, accusedId) => {
+    const accusation = { accusalEv, accuserId, accusedId };
     socket.current.emit('accusation', accusation);
   };
 

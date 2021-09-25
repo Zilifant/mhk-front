@@ -69,8 +69,9 @@ const Main = ({
 
           <Players
             game={game}
-            myRole={thisPlayer.role}
-            canIAccuse={thisPlayer.canAccuse}
+            thisPlayer={thisPlayer}
+            // myRole={thisPlayer.role}
+            // canIAccuse={thisPlayer.canAccuse}
           />
 
           {thisPlayer.role === 'ghost' &&

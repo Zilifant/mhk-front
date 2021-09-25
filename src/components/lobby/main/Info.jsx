@@ -45,7 +45,7 @@ const Info = ({
   const lobbyId = myLobby === 'z' ? 'Splendid-Monolith-7659' : myLobby;
 
   const showGameStage = stage && stage.id;
-  const showClearBtn = iAmLeader && stage.id === 'game-over';
+  const showClearBtn = iAmLeader && stage?.id === 'game-over';
   const showRoundBtn = iAmLeader
                     && stage
                     && (stage.id === 'round-1' || stage.id === 'round-2');

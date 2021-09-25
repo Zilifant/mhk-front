@@ -33,7 +33,7 @@ const Player = ({
   const isRoundStage = stage.type === 'round';
   const types = Object.keys(hand);
   const connectionStatus = isOnline ? 'online' : 'offline';
-
+  console.log(hand);
   const {
     accusationHandler,
     killWitnessHandler

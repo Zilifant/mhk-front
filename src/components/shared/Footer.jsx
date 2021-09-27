@@ -6,6 +6,8 @@ import { useGame } from '../../hooks/game-hook';
 import Container from '../shared/Container';
 import Tooltip from './Tooltip';
 import SVGButton from '../ui-elements/SVGButton';
+import InfoModal from './InfoModal';
+import { rules } from '../../util/utils';
 import '../../styles/footer.scss';
 
 const Footer = ({
@@ -31,6 +33,11 @@ const Footer = ({
               opts='oneline'
             />
           </div>}
+          {!showClearBtn && <InfoModal
+          className='rules footer'
+          buttonContent='game rules'
+          info={rules}
+        />}
           <div className='footer-text'>
             Copyright 2021 Zilifant
           </div>

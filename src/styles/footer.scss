@@ -21,7 +21,7 @@
     //   justify-content: flex-end;
     // }
 
-    & > :not(:first-child) {
+    & > :not(.infomodal-invis-wrap):not(:first-child) {
       margin-left: .5rem;
     }
   }
@@ -53,7 +53,7 @@
 .footer-text {
   display: flex;
   flex-direction: row;
-  width: 100%;
-  justify-content: flex-end;
+  // width: 100%;
+  // justify-content: flex-end;
   color: $bg1;
 }

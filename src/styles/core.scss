@@ -86,7 +86,7 @@ main.app {
 }
 
 .grid--lobby-nogame {
-  grid-template-columns: 600px max-content;
+  grid-template-columns: 650px max-content;
   grid-template-rows: repeat(3, max-content) 1fr max-content;
   &.chat {
     grid-template-areas:

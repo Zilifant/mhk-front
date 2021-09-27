@@ -105,6 +105,10 @@ ul.c-group {
   width: min-content;
   padding: 0;
   text-transform: uppercase;
+  font-size: larger;
+  line-height: 1rem;
+  // font-weight: bold;
+  // letter-spacing: .05rem;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   &.means {

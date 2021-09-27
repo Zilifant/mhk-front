@@ -25,18 +25,3 @@ const Card = ({
 };
 
 export default Card;
-
-// className
-// id
-// isMine
-// isHighlighted
-// isSelected
-// isEnabled
-// handleClick
-
-// DEF if (imGhost) EN = false
-// DEF if (imHunter && isMine) EN = false
-
-// if ((imGhost || imKiller) && isKeyEv) HI = true
-// if (stage === killerChoosing && imKiller && isMine) EN = true
-// if (stage === anyRound && (imKiller || imHunter) && !isMine) EN = true

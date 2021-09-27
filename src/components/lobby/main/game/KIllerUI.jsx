@@ -68,13 +68,13 @@ const KillerUI = ({
         </div>
       </li>
       {interact()}
-      {types.map((type) => (<>
+      {types.map((type) => (<React.Fragment key={type}>
         <div className={`c-group-title ${type}`}>{type}</div>
         <Cards
           myRole={role}
           type={`${role}UI`}
           cardType={type}
-          key={type}
+          // key={type}
           stage={stage}
           cards={hand[type]}
           selectedId={selTracker[type]?.id}
@@ -82,7 +82,7 @@ const KillerUI = ({
           isMine={true}
           keyEv={keyEv}
         />
-      </>))}
+      </React.Fragment>))}
     </Container>
   );
 };

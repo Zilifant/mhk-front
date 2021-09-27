@@ -30,16 +30,15 @@ const BasicUI = ({
           <div className={role}>{role.toUpperCase()}</div>
         </div>
       </li>
-      {types.map((type) => (<>
+      {types.map((type) => (<React.Fragment key={type}>
         <div className={`c-group-title ${type}`}>{type}</div>
         <Cards
-          key={type}
           myRole={role}
           type={`${role}UI`}
           cardType={type}
           cards={hand[type]}
         />
-      </>))}
+      </React.Fragment>))}
     </Container>
   );
 };

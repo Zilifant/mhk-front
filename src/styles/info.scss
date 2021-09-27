@@ -14,10 +14,9 @@
 
 .con--info.nogame {
   flex-direction: column;
-}
-
-.con--info.nogame > :not(:first-child) {
-  margin-top: 3px;
+  & .svg-btn {
+    @include nobg-btn-svg();
+  }
 }
 
 .lobbyid-wrap .info-lobbyid {
@@ -44,32 +43,6 @@
 
 .lobbyid-wrap * {
   align-self: center;
-}
-
-button.btn--copyurl,
-button.btn--hidelobbyid {
-  display: flex;
-  justify-self: end;
-  border: $bdr2 solid $cyan6;
-  padding: 0;
-}
-
-.btn--copyurl svg,
-.btn--hidelobbyid svg {
-  margin: 2.5px;
-  height: 20px;
-  width: 20px;
-}
-
-.con--info.nogame button.btn--copyurl {
-  justify-self: start;
-}
-
-button.btn--copyurl:hover,
-button.btn--hidelobbyid:hover {
-  $fgc: $cyan5;
-  border-color: $fgc;
-  color: $fgc;
 }
 
 // game

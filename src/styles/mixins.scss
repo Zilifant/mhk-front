@@ -13,6 +13,32 @@ $bdr2: 2px;
   width: $size;
 }
 
+@mixin nobg-btn-txt($col: $cyan5, $hov: $cyan4) {
+  background-color: inherit;
+  text-transform: uppercase;
+  font-size: large;
+  color: $col;
+  &:hover {
+    color: $hov;
+  }
+  &:active {
+    color: white;
+  }
+}
+
+@mixin nobg-btn-svg($col: $cyan5, $hov: $cyan4) {
+  background-color: inherit;
+  & svg {
+    fill: $col;
+    &:hover {
+      fill: $hov;
+    }
+    &:active {
+      fill: white;
+    }
+  }
+}
+
 @mixin three-d-btn($col: $cyan6, $li-by: 8%, $dk-by: 8%, $bdr-wid: 3px) {
   $col-li: lighten($col, $li-by);
   $col-dk: darken($col, $dk-by);

@@ -19,7 +19,7 @@
 .svg-btn.minimize-chat {
   width: 20px;
   height: 20px;
-  /* margin-bottom: .5rem; */
+  @include nobg-btn-svg();
 }
 
 .chatfeed {
@@ -50,58 +50,6 @@
 
 .chatfeed > :last-child {
   margin-bottom: 3px;
-}
-
-.smd--def {
-  color: $fg3;
-}
-
-.smd--timestamp,
-.smd--arrow {
-  text-align: end;
-}
-
-.smd--usermessage {
-  font-style: normal;
-}
-
-.smd--timestamp {
-  color: $bg2;
-}
-
-.smd--arrow {
-  color: $emer3;
-  font-weight: normal;
-}
-
-.smd--punctuation {
-  color: $fg3;
-  font-weight: bold;
-}
-
-.smd--username {
-  font-weight: bold;
-  letter-spacing: .025rem;
-}
-
-.smd--keyword {
-  color: $fg3;
-  font-weight: bold;
-  letter-spacing: .025rem;
-  text-transform: capitalize;
-}
-
-.smd--faded {
-  color: $bg1;
-}
-
-.smd--italic {
-  font-style: italic;
-}
-
-.smd--warn {
-  text-transform: uppercase;
-  color: $yell5;
 }
 
 .new-message-wrapper {
@@ -145,8 +93,4 @@ button.btn--new-message {
 
 .msg-in-chatfeed div {
   display: inline;
-}
-
-.styled-block-text:nth-child(2) {
-  margin-left: .5rem;
 }

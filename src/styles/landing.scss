@@ -132,16 +132,7 @@ input.join-lobby-lobbyid-input {
 }
 
 .show-infomodal-btn.rules {
-  background-color: inherit;
-  text-transform: uppercase;
-  font-size: large;
-  color: $cyan4;
-  &:hover {
-    color: $cyan3;
-  }
-  &:active {
-    color: white;
-  }
+  @include nobg-btn-txt();
 }
 
 .con--returntolobby {
@@ -156,13 +147,14 @@ input.join-lobby-lobbyid-input {
     text-decoration: none;
   }
   & > .return-link {
-    color: $cyan4;
-    &:hover {
-      color: $cyan3;
-    }
-    &:active {
-      color: white;
-    }
+    @include nobg-btn-txt();
+    // color: $cyan4;
+    // &:hover {
+    //   color: $cyan3;
+    // }
+    // &:active {
+    //   color: white;
+    // }
   }
 }
 

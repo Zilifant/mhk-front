@@ -1,0 +1,69 @@
+// Styled-Markdown Text Styles
+
+@import './colors.scss';
+@import './mixins.scss';
+
+.smd--def {
+  color: $fg3;
+}
+
+.smd--usermessage {
+  font-style: normal;
+}
+
+.smd--timestamp {
+  text-align: end;
+  color: $bg2;
+}
+
+.smd--punctuation {
+  color: $fg3;
+  font-weight: bold;
+}
+
+.smd--keyword {
+  color: $fg1;
+  font-weight: bold;
+  letter-spacing: .05rem;
+  text-transform: capitalize;
+}
+
+.smd--faded {
+  opacity: 50%;
+}
+
+.smd--italic {
+  font-style: italic;
+}
+
+.smd--emphasize {
+  font-weight: bold;
+}
+
+.smd--warn {
+  text-transform: uppercase;
+  color: $yell5;
+}
+
+.smd--username {
+  font-weight: bold;
+  letter-spacing: .05rem;
+
+  &.default { color: $colg4; };
+  &.red { color: $redd4; };
+  &.blue { color: $blue4; };
+  &.green { color: $lime4; };
+  &.yellow { color: $yell4; };
+  &.orange { color: $oran4; };
+  &.purple { color: $fuch4; };
+  &.pink { color: $pink4; };
+  &.cyan { color: $cyan4; };
+  &.emerald { color: $emer4; };
+  &.violet { color: $viol4; };
+  &.rose { color: $rose5; };
+  &.amber { color: $ambr5; };
+};
+
+.styled-block-text:nth-child(2) {
+  margin-left: .5rem;
+}

@@ -1,6 +1,7 @@
 
 @import './colors.scss';
 @import './mixins.scss';
+@import './smd.scss';
 
 /* RESET */
 
@@ -182,10 +183,6 @@ main.app {
 // .con--info.game > :not(:nth-child(1)) {
 //   margin-left: .5rem;
 // }
-
-.smd--emphasize {
-  font-weight: bold;
-}
 
 /* BUTTONS */
 
@@ -415,69 +412,4 @@ main.app {
    87% { content: '⠂'; }
    93% { content: '⠀'; }
   100% { content: '⠁'; }
-}
-
-/* .default.member.name, */
-.default.smd--username {
-  color: $colg4;
-}
-
-/* .red.member.name, */
-.red.smd--username {
-  color: $redd4;
-}
-
-/* .blue.member.name, */
-.blue.smd--username {
-  color: $blue4;
-}
-
-/* .green.member.name, */
-.green.smd--username {
-  color: $lime4;
-}
-
-/* .yellow.member.name, */
-.yellow.smd--username {
-  color: $yell4;
-}
-
-/* .orange.member.name, */
-.orange.smd--username {
-  color: $oran4;
-}
-
-/* .purple.member.name, */
-.purple.smd--username {
-  color: $fuch4;
-}
-
-/* .pink.member.name, */
-.pink.smd--username {
-  color: $pink4;
-}
-
-/* .cyan.member.name, */
-.cyan.smd--username {
-  color: $cyan4;
-}
-
-/* .emerald.member.name, */
-.emerald.smd--username {
-  color: $emer4;
-}
-
-/* .violet.member.name, */
-.violet.smd--username {
-  color: $viol4;
-}
-
-/* .rose.member.name, */
-.rose.smd--username {
-  color: $rose5;
-}
-
-/* .amber.member.name, */
-.amber.smd--username {
-  color: $ambr5;
 }

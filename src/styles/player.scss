@@ -73,6 +73,7 @@ ul.c-group {
 }
 
 .p-info {
+  cursor: default;
   &.badge {
     border: .2rem solid $badge;
     height: 26px;
@@ -104,6 +105,7 @@ ul.c-group {
   height: 100%;
   width: min-content;
   padding: 0;
+  cursor: default;
   text-transform: uppercase;
   font-size: larger;
   line-height: 1rem;

@@ -5,14 +5,14 @@ import { name } from '../util/utils';
 export const systemMessages = (() => {
 
   const GAME_OUTCOMES = {
-    redwin: 'The ^_k_Killer^ wins! The Hunters used their last accusation.',
-    redwin_accomplice: 'The ^_k_Killer^ and the ^_k_Accomplice^ win! The Hunters used their last accusation.',
-    redwintimeout: 'The ^_k_Killer^ wins! The Hunters ran out of time.',
-    redwintimeout_accomplice: 'The ^_k_Killer^ and the ^_k_Accomplice^ win! The Hunters ran out of time.',
-    redwinwitnessdead: 'The ^_k_Killer^ wins! The Witness is dead.',
-    redwinwitnessdead_accomplice: 'The ^_k_Killer^ and the ^_k_Accomplice^ win! The Witness is dead.',
-    bluewin: 'The ^_k_Hunters^ and the ^_k_Ghost^ win!',
-    bluewinwitnessalive: 'The ^_k_Hunters^ and the ^_k_Ghost^ win! The Witness survived.'
+    redwin: 'The ^_kk_Killer^ wins! The ^_kh_Hunters^ used their last accusation.',
+    redwin_accomplice: 'The ^_kk_Killer^ and the ^_ka_Accomplice^ win! The ^_kh_Hunters^ used their last accusation.',
+    redwintimeout: 'The ^_kk_Killer^ wins! The ^_kh_Hunters^ ran out of time.',
+    redwintimeout_accomplice: 'The ^_kk_Killer^ and the ^_ka_Accomplice^ win! The ^_kh_Hunters^ ran out of time.',
+    redwinwitnessdead: 'The ^_kk_Killer^ wins! The Witness is dead.',
+    redwinwitnessdead_accomplice: 'The ^_kk_Killer^ and the ^_ka_Accomplice^ win! The ^_kw_Witness^ is dead.',
+    bluewin: 'The ^_kh_Hunters^ and the ^_kg_Ghost^ win!',
+    bluewinwitnessalive: 'The ^_kh_Hunters^ and the ^_kg_Ghost^ win! The ^_kw_Witness^ survived.'
   };
 
   const cls = 'smd--username '
@@ -54,11 +54,11 @@ export const systemMessages = (() => {
   };
 
   const accusationRight = ([rId, rCol], [eId, eCol]) => {
-    return `_${cls+rCol}_${name(rId)}^ is correct! ^_${cls+eCol}_${name(eId)}^ is the Killer.`;
+    return `_${cls+rCol}_${name(rId)}^ is correct! ^_${cls+eCol}_${name(eId)}^ is the ^_kk_Killer^.`;
   };
 
   const ghostAssigned = ([id, col], unAssign) => {
-    return unAssign ? `Ghost unassigned.` : `_${cls+col}_${name(id)}^ is assigned to Ghost.`;
+    return unAssign ? `_kg_Ghost^ unassigned.` : `_${cls+col}_${name(id)}^ is assigned to ^_kg_Ghost^.`;
   };
 
   const leave = ([id, col], [leaderId, leaderCol]) => {
@@ -70,25 +70,25 @@ export const systemMessages = (() => {
     let str;
     switch (stage.id) {
       case 'setup':
-        str = `Game started. Waiting for the Killer to select key evidence...`;
+        str = `Game started. Waiting for the ^_kk_Killer^ to select key evidence...`;
         break;
       case 'round-1':
         str = `Key evidence chosen. ^_k_${stage.display}^ started...`;
         break;
       case 'round-2-start':
-        str = `Starting ^_k_${stage.display}^. Waiting for the Ghost to choose a new scene...`;
+        str = `Starting ^_k_${stage.display}^. Waiting for the ^_kg_Ghost^ to choose a new scene...`;
         break;
       case 'round-2':
         str = `New scene chosen. ^_k_${stage.display}^ started...`;
         break;
       case 'round-3-start':
-        str = `Starting ^_k_${stage.display}^. Waiting for the Ghost to choose a new scene...`;
+        str = `Starting ^_k_${stage.display}^. Waiting for the ^_kg_Ghost^ to choose a new scene...`;
         break;
       case 'round-3':
-        str = `The Ghost has selected a new scene. ^_k_${stage.display}^ started...`;
+        str = `The ^_kg_Ghost^ has selected a new scene. ^_k_${stage.display}^ started...`;
         break;
       case 'second-murder':
-        str = `The Killer has been identified. But they can still win if they identify the Witness...`;
+        str = `The ^_kk_Killer^ has been identified. But they can still win if they identify the ^_kw_Witness^...`;
         break;
       case 'game-over': // should never get called
         str = `${stage.display}`

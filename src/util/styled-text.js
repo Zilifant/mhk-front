@@ -8,12 +8,18 @@ const SMDopts = {
   splitLineOn: '<',
   splitLineClsOn: '>',
   defaultString: 'smd--def',
-  defaultLine: 'smd-line--def',
+  defaultLine: 'smd--def',
   abbr: [
     {abb: 'm', classname: 'smd--usermessage'},
     {abb: 't', classname: 'smd--timestamp'},
     {abb: 'u', classname: 'smd--username'},
     {abb: 'k', classname: 'smd--keyword'},
+    {abb: 'k', classname: 'smd--keyword'},
+    {abb: 'kg', classname: 'smd--keyword ghost'},
+    {abb: 'kh', classname: 'smd--keyword hunter'},
+    {abb: 'kw', classname: 'smd--keyword witness'},
+    {abb: 'ka', classname: 'smd--keyword accomplice'},
+    {abb: 'kk', classname: 'smd--keyword killer'},
     {abb: 'p', classname: 'smd--punctuation'},
     {abb: 'f', classname: 'smd--faded'},
     {abb: 'e', classname: 'smd--emphasize'},
@@ -33,7 +39,7 @@ export function parseSMDLines({lines}) {
   const splines = plines.map(line => {
     return {
       strings: parseSMD({str: line.string, multiLine: false}),
-      style: line.style
+      style: `line-${line.style}`
     };
   });
   return splines;
@@ -110,11 +116,11 @@ function parseSMD({str, opts = SMDopts, multiLine}) {
   let defStyle, sS, sC;
 
   if (multiLine) {
-    defStyle = opts.defaultLine || 'default';
+    defStyle = opts.defaultLine || 'smd-line--def';
     sS = opts.splitLineOn || '<';
     sC = opts.splitLineClsOn || '>';
   } else {
-    defStyle = opts.defaultString || 'default';
+    defStyle = opts.defaultString || 'smd-def';
     sS = opts.splitStrOn || '^';
     sC = opts.splitStrClsOn || '_';
   };
@@ -133,7 +139,7 @@ function parseSMD({str, opts = SMDopts, multiLine}) {
   const result = arr.map(str => {
 
     // if no unique style class is indicated
-    // and return string without unique class
+    // return string without unique class
     // (default style class will be applied)
     if (str.charAt(0) !== sC) return createStyleObj(str);
 

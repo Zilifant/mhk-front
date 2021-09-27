@@ -26,16 +26,34 @@
   font-weight: bold;
   letter-spacing: .05rem;
   text-transform: capitalize;
+  &.ghost {
+    color: $ghost;
+  };
+  &.hunter {
+    color: $hunter;
+  };
+  &.killer {
+    color: $killer;
+  };
+  &.witness {
+    color: $witnss;
+  };
+  &.accomplice {
+    color: $accomp;
+  };
 }
 
+.line-smd--faded > span,
 .smd--faded {
   opacity: 50%;
 }
 
+.line-smd--italic > span,
 .smd--italic {
   font-style: italic;
 }
 
+.line-smd--emphasize > span,
 .smd--emphasize {
   font-weight: bold;
 }

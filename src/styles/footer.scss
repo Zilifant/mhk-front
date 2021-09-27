@@ -16,6 +16,11 @@
     width: 100%;
     align-items: center;
 
+    & > .footer-placeholder {
+      color: $bg4;
+      cursor: default;
+    }
+
     // & .footer-bar {
     //   display: flex;
     //   justify-content: flex-end;

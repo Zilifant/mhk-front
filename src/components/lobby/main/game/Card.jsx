@@ -1,8 +1,4 @@
-import React, {
-  // useState
-} from 'react';
-import { capitalize } from '../../../../util/utils'
-// import { GiDeathSkull } from 'react-icons/gi';
+import React from 'react';
 
 const Card = ({
   card,
@@ -23,9 +19,7 @@ const Card = ({
       disabled={!isEnabled}
       onClick={() => handleClick(card)}
     >
-      {capitalize(id)}
-      {/* <GiDeathSkull className={`card-icon ${className}`} /> */}
-      {/* <div className={`card-title ${className}`}>{capitalize(id)}</div> */}
+      {id.split(' ')[0]}<br/>{id.split(' ')[1]}
     </button>
   );
 };

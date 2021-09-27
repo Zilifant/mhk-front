@@ -3,6 +3,13 @@
 @import './colors.scss';
 @import './mixins.scss';
 
+$c-def-bg: $cyan6;
+$c-dis-bg: $bg3;
+$c-kill-bg: $redd8;
+
+$pt: 8%;
+$dpt: 5%;
+
 .p-info.username  { grid-area: name; }
 .p-info.badge     { grid-area: badg; }
 .p-info.role      { grid-area: role; }
@@ -96,15 +103,15 @@ ul.c-group {
   align-items: center;
   height: 100%;
   width: min-content;
-  padding: 0 3px;
+  padding: 0;
   text-transform: uppercase;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   &.means {
-    background-color: $mec;
+    color: lighten($mec, $pt);
   }
   &.evidence {
-    background-color: $evc;
+    color: lighten($evc, $pt);
   }
 }
 
@@ -153,10 +160,6 @@ ul.c-group {
 
 // confirm buttons
 
-$c-def-bg: $cyan6;
-$c-dis-bg: $bg3;
-$c-kill-bg: $redd8;
-
 .btn--confirm-kill,
 .btn--confirm-accusation {
   margin: 0 auto;
@@ -183,9 +186,6 @@ button.btn.three-d {
 
 // means and evidence cards
 
-$pt: 8%;
-$dpt: 5%;
-
 .con--player {
   height: 150px;
 }
@@ -208,6 +208,7 @@ button.card-wrap--player {
   border-radius: $rad;
   padding: 3px;
   width: 75px;
+  text-transform: capitalize;
   // height: 1fr;
 
   &:disabled {

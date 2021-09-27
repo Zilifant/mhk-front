@@ -11,7 +11,8 @@ import { rules } from '../../util/utils';
 import '../../styles/footer.scss';
 
 const Footer = ({
-  showClearBtn
+  showClearBtn,
+  showRulesBtn
 }) => {
 
   const { socket } = useContext(SocketContext);
@@ -33,11 +34,12 @@ const Footer = ({
               opts='oneline'
             />
           </div>}
-          {!showClearBtn && <InfoModal
-          className='rules footer'
-          buttonContent='game rules'
-          info={rules}
-        />}
+          {showRulesBtn && <InfoModal
+            className='rules footer'
+            buttonContent='game rules'
+            info={rules}
+          />}
+          <div className='footer-placeholder'>-</div>
           <div className='footer-text'>
             Copyright 2021 Zilifant
           </div>

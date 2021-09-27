@@ -152,6 +152,7 @@ const Lobby = () => {
             />
             <Footer
               showClearBtn={lobby.leader === userId && lobby.gameOn}
+              showRulesBtn={!lobby.gameOn}
             />
           </Grid>
         }

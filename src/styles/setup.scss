@@ -61,8 +61,8 @@ button.startgame {
 }
 
 .advrole {
-  padding: .15rem 3px;
-  border: .2rem solid $bg3;
+  padding: 4px;
+  border: $bdr2 solid $bg3;
   background-color: $bg4;
   border-radius: $rad;
   margin: 0;
@@ -83,6 +83,7 @@ button.startgame {
 }
 
 .advrolebtn {
+  padding: 3px;
   display: block;
   width: 100px;
   text-transform: uppercase;
@@ -107,27 +108,6 @@ button.startgame {
   display: inline-block;
   border-color: $ghost;
   color: $ghost;
-}
-
-.btn--advrole {
-  display: block;
-  border: .2rem solid $cyan6;
-  width: 100px;
-}
-
-.btn--advrole.on {
-  background-color: $ready;
-  border-color: $ready;
-}
-
-.btn--advrole.on:hover {
-  background-color: $readyli;
-  border-color: $readyli;
-}
-
-.btn--advrole.off:hover {
-  background-color: $cyan5;
-  border-color: $cyan5;
 }
 
 .timer.value {
@@ -167,10 +147,10 @@ button.startgame {
 .svg-btn.timer.three-d {
   padding: 3px;
   border-radius: $rad;
-  @include three-d-btn($bdr-wid: 3px);
+  @include three-d-btn();
   &:disabled {
     cursor: default;
-    @include three-d-btn($col: $bg3, $bdr-wid: 3px);
+    @include three-d-btn($col: $bg3);
   }
   &:disabled svg {
     fill: $bg1;

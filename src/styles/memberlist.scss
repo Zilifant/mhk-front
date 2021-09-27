@@ -3,8 +3,6 @@
 @import './colors.scss';
 @import './mixins.scss';
 
-$bdr-width: .33rem;
-
 .container.con--memberlist {
   display: flex;
   align-items: center;
@@ -47,12 +45,15 @@ div.member_grid {
   grid-template-areas:
     '. leader name . ghost';
   padding: 3px;
-  border: .2rem solid;
+  border: 2px solid;
   background-color: $bg5;
 }
 
-div.member_grid.ml-self > .member_name {
-  font-style: italic;
+div.member_grid.ml-self {
+  background-color: $bg6;
+  & > .member_name {
+    font-style: italic;
+  }
 }
 
 div.member_grid.ml-notready {

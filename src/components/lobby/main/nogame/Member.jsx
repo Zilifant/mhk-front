@@ -40,7 +40,7 @@ const Member = ({
           onClick={() => giveLeaderHandler(member.id)}
           disabled={false}
         />
-        <Tooltip tip='transferLeader' side='left' />
+        <Tooltip tip='transferLeader' side='bottom' />
       </div>
     );
   }

@@ -3,6 +3,14 @@
   <head>
     <meta charset="utf-8" />
 
+    <script>
+      // if (process.env.REACT_APP_BACKEND_URL === 'http://localhost:5000/api') return;
+      const host = 'mhk-front.herokuapp.com';
+      if ((host === window.location.host) && (window.location.protocol !== "https:")){
+      window.location.protocol = "https";
+      }
+    </script>
+
     <link
       rel="preconnect"
       href="https://fonts.gstatic.com"

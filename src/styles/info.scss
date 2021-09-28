@@ -16,6 +16,9 @@
   flex-direction: column;
   & .svg-btn {
     @include nobg-btn-svg();
+    & svg {
+      max-width: 30px;
+    }
   }
 }
 

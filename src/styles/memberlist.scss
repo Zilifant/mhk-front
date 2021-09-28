@@ -44,7 +44,7 @@ div.member_grid {
   grid-template-rows: 30px;
   grid-template-areas:
     '. leader name . ghost';
-  padding: 3px;
+  padding: 6px;
   border: 2px solid;
   background-color: $bg5;
 }
@@ -85,7 +85,8 @@ div.leader_icon {
     display: flex;
     justify-content: flex-end;
     & svg {
-      max-height: 30px;
+      height: 30px;
+      width: 21px;
     }
   }
 }
@@ -161,14 +162,14 @@ div.member_grid:hover > .ghost_icon .svg-btn.assign-ghost.ml-notghost svg {
 button.ready-toggle-btn {
   display: block;
   text-transform: uppercase;
-  padding: .15rem 3px;
+  padding: 3px;
   // height: 18px;
   // width: 18px;
   &.ml-ready {
     @include three-d-btn($ready);
   }
   &.ml-notready {
-    @include three-d-btn($redd5);
+    @include three-d-btn($redd8);
   }
   // &::after {
   //   content: 'READY';

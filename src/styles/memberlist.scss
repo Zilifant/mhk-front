@@ -30,7 +30,7 @@ li.ready_grid {
   display: grid;
   /* width: 380px; */
   gap: $gap;
-  grid-template-columns: 42.59px max-content 42.59px;
+  grid-template-columns: 50px max-content 50px;
   /* grid-template-rows: 30px; */
   grid-template-areas:
     '. member ready';

@@ -28,10 +28,10 @@ const Lobby = () => {
   const minimizeChatHandler = () => setChatMinimized(!chatMinimized);
   const showChat = chatMinimized ? 'nochat' : 'chat';
 
-  console.log(`Connected: ${isConnected}, Loading: ${isLoading}, Fetched: ${isFetched}`);
+  // console.log(`Connected: ${isConnected}, Loading: ${isLoading}, Fetched: ${isFetched}`);
 
   useEffect(() => {
-    console.log('UE: fetchLobby');
+    // console.log('UE: fetchLobby');
     const fetchLobby = async () => {
       try {
         const resData = await sendRequest(
@@ -44,7 +44,7 @@ const Lobby = () => {
         );
         setLobby({...lobbyMethods, ...resData.lobby});
         setIsFetched(true);
-        console.log('lobby fetched');
+        // console.log('lobby fetched');
       } catch (err) { console.log(err); }
     };
     fetchLobby();
@@ -61,16 +61,16 @@ const Lobby = () => {
     const subToLobby = () => {
       socket.current.on('updateLobby', ({ lobby, data }) => {
         setLobby({...lobbyMethods, ...lobby});
-        console.log('lobby updated');
+        // console.log('lobby updated');
 
         if (data?.event === 'userConnected' && data?.user.id === userId) {
           setIsConnected(true);
-          console.log('connected');
+          // console.log('connected');
         };
 
       });
       setIsSubbed(true);
-      console.log('subbed');
+      // console.log('subbed');
     };
 
     if (socket && isFetched) subToLobby()

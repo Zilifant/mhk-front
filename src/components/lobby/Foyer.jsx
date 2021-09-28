@@ -12,7 +12,7 @@ import '../../styles/landing.scss';
 // If user has correct session data, Lobby is loaded, else JoinThisLobby is loaded
 
 const Foyer = () => {
-  console.log('Foyer');
+  // console.log('Foyer');
 
   const { checkMyLobby, myLobby, checked } = useContext(UserContext);
   const lobbyURL = useParams().lobbyURL;
@@ -27,34 +27,34 @@ const Foyer = () => {
 
   if (lobbyURL !== 'join') {
     url.current = lobbyURL;
-    console.log(`assigning: ${url.current}`);
+    // console.log(`assigning: ${url.current}`);
   }
 
   if (lobbyURL === 'join') {
-    console.log(`join: ${url.current}`);
+    // console.log(`join: ${url.current}`);
     return <JoinThisLobby />
   };
 
   const isGenericURL = lobbyURL === 'lobby';
 
   if (checked) {
-    console.log('checked');
+    // console.log('checked');
 
     if (isGenericURL && !myLobby) {
-      console.log('generic and not mylobby');
+      // console.log('generic and not mylobby');
       history.push('/');
       return null;
     };
 
     if (isGenericURL && myLobby) {
-      console.log('generic and mylobby');
+      // console.log('generic and mylobby');
       return <Lobby />;
     }
 
     if (!isGenericURL) {
 
       if (checkMyLobby(lobbyURL)) {
-        console.log('unique and mylobby');
+        // console.log('unique and mylobby');
         // return <Lobby />
         history.push('/lobby');
         return null;
@@ -64,7 +64,7 @@ const Foyer = () => {
 
   };
 
-  console.log('unique and not mylobby');
+  // console.log('unique and not mylobby');
 
   history.push('/join');
   return null

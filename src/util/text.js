@@ -42,7 +42,7 @@ export const about = [
   {
     id: 'beta',
     title: 'Work in Progress',
-    content: 'it\s a work in progress.'
+    content: 'it\'s a work in progress.'
   },
   {
     id: 'contact',

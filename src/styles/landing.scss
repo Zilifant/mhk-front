@@ -46,7 +46,7 @@
   display: grid;
   padding: 0;
   gap: .5rem;
-  grid-template-columns: 87px 175px max-content;
+  grid-template-columns: 90px 175px 90px;
 }
 
 .grid--new-lobby-form {
@@ -88,11 +88,6 @@
   display: inline-block;
 }
 
-button.btn--join-devlobby {
-  width: 50px;
-  margin-top: .5rem;
-}
-
 button.btn--streaming-mode.on {
   background-color: $ready;
 }
@@ -130,9 +125,9 @@ input.join-lobby-lobbyid-input {
 .landing-title {
   font-size: xx-large;
   color: $rose5;
-  background-color: $bg5;
+  // background-color: $bg5;
   padding: 0 2rem;
-  margin-bottom: .5rem;
+  // margin-bottom: .5rem;
   & span {
     font-size: large;
     color: $fg4;

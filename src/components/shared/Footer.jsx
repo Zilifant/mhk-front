@@ -35,7 +35,7 @@ const Footer = ({
           </div>}
           <InfoModal
             className='rules footer nobg'
-            buttonContent='game rules'
+            buttonContent='rulebook'
             info={rules}
           />
           {/* <div className='footer-placeholder'>-</div> */}

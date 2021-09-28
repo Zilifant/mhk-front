@@ -83,7 +83,7 @@ const Info = ({
       <div className='gamestage-username'>
         <InfoModal
           className='rules footer'
-          buttonContent='game rules'
+          buttonContent='rulebook'
           info={rules}
         />
         {showGameStage &&

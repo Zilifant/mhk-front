@@ -22,7 +22,7 @@ function App() {
   // const [isMyLobby, setIsMyLobby] = useState();
 
   useEffect(() => {
-    console.log('UE: checkCookie');
+    // console.log('UE: checkCookie');
     const checkCookie = async () => {
       try {
         const responseData = await sendRequest(

@@ -12,7 +12,7 @@ const ReturnToLobby = ({userName}) => {
   return (
     <Container className="returntolobby">
       <NavLink className='return-link' to='/lobby' exact>
-        return to your lobby
+        return to lobby
       </NavLink>
       <span className='return-username'>
         {userName}

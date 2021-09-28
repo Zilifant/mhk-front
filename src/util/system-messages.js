@@ -2,6 +2,16 @@
 
 import { name } from '../util/utils';
 
+export function buildSMDString(data, meta) {
+  const { type, time, args } = data
+  const { timestamp } = meta
+  const string = () => systemMessages[type](...args)
+
+  if (timestamp === 'block') return `>t>_t_${time} <>text-after-timestamp-block>` + string()
+  if (timestamp === 'inline') return `_t_${time} ^` + string()
+  return string()
+}
+
 export const systemMessages = (() => {
 
   const GAME_OUTCOMES = {

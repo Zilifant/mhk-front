@@ -4,8 +4,33 @@ import React, {
   useRef
 } from 'react';
 import { UserContext } from '../../../context/contexts';
-import ChatMessage from './ChatMessage';
+// import { parseAndRender } from '../../../util/styled-text';
+import { parse, render } from '../../../util/smd';
+import { buildSMDString } from '../../../util/system-messages';
 import { nanoid } from 'nanoid';
+
+const ChatMessage = ({
+  message,
+  isMine,
+}) => {
+
+  if (!message) return null;
+
+  const style = isMine ? 'self' : 'other';
+
+  const meta = {
+    wrapper: `msg-wrapper msg-in-chatfeed ${style}`,
+    parent: 'chatfeed',
+    timestamp: 'block'
+  };
+
+  const built = buildSMDString(message, meta);
+  const parsed = parse(built, meta);
+
+  return render.block(parsed, meta)
+
+  // return parseAndRender(message, meta);
+};
 
 const ChatFeed = ({ messages, users }) => {
   const { userId } = useContext(UserContext);
@@ -36,10 +61,8 @@ const ChatFeed = ({ messages, users }) => {
           ref={scrollRef}
           key={nanoid()}>
           <ChatMessage
-            parent='chatfeed'
             message={message}
             isMine={message.senderId === userId}
-            users={users}
           />
         </div>
       ))}

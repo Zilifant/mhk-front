@@ -1,10 +1,7 @@
 import React, {
   useState
 } from 'react';
-import {
-  parseSMDLines,
-  renderStyledLines
-} from '../../util/styled-text';
+import { parse, render } from '../../util/smd';
 import '../../styles/infomodals.scss';
 
 const Modal = ({
@@ -17,7 +14,7 @@ const Modal = ({
 
   const isCurrent = (id) => id === currentSec.id ? 'current' : 'notcurrent'
 
-  const parsedContent = parseSMDLines({lines: currentSec.content});
+  const parsedContent = parse(currentSec.content);
 
   return (
     <div className='infomodal-invis-wrap'>
@@ -42,7 +39,7 @@ const Modal = ({
           })}
         </div>
         <div className='infomodal-content'>
-          {renderStyledLines(parsedContent)}
+          {render.block(parsedContent)}
         </div>
       </div>
     </div>

@@ -29,7 +29,7 @@
   font-size: x-large;
   text-transform: uppercase;
   width: 300px;
-  padding: .15rem 0;
+  padding: 2px 0;
   border-radius: $rad;
 }
 
@@ -89,7 +89,7 @@
     background-color: $bg6;
     & > button {
       width: max-content;
-      padding: .15rem 3px;
+      padding: 2px 3px;
       margin-left: .5rem;
     }
     & > .nextround {

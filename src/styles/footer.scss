@@ -55,10 +55,16 @@
   }
 }
 
-.footer-text {
+.footer-content {
   display: flex;
   flex-direction: row;
   // width: 100%;
-  // justify-content: flex-end;
-  color: $bg1;
+  justify-content: flex-end;
+  align-items: center;
+  & > .footer-text {
+    color: $bg1;
+  }
+  & > :not(.infomodal-invis-wrap):not(:first-child) {
+    margin-left: .5rem;
+  }
 }

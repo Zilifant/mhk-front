@@ -40,7 +40,7 @@ $cur: $ambr6;
 
 .infomodal-nav-btn {
   width: 150px;
-  padding: .15rem 0;
+  padding: 2px 0;
   text-transform: uppercase;
   @include three-d-btn($def);
   &:not(:last-child) {

@@ -8,9 +8,9 @@ import { rules } from '../../util/utils';
 const Header = () => {
   return (
     <Container className='head'>
-      <div className='landing-title'>MHK</div>
+      <div className='landing-title'>MHK<span> BETA</span></div>
       <InfoModal
-        className='rules'
+        className='rules header nobg'
         buttonContent='how to play'
         info={rules}
       />

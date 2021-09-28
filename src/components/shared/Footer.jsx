@@ -7,12 +7,11 @@ import Container from '../shared/Container';
 import Tooltip from './Tooltip';
 import SVGButton from '../ui-elements/SVGButton';
 import InfoModal from './InfoModal';
-import { rules } from '../../util/utils';
+import { rules, about } from '../../util/text';
 import '../../styles/footer.scss';
 
 const Footer = ({
-  showClearBtn,
-  showRulesBtn
+  showClearBtn
 }) => {
 
   const { socket } = useContext(SocketContext);
@@ -34,15 +33,21 @@ const Footer = ({
               opts='oneline'
             />
           </div>}
-          {showRulesBtn && <InfoModal
-            className='rules footer'
+          <InfoModal
+            className='rules footer nobg'
             buttonContent='game rules'
             info={rules}
-          />}
-          <div className='footer-placeholder'>-</div>
-          <div className='footer-text'>
-            Copyright 2021 Zilifant
+          />
+          {/* <div className='footer-placeholder'>-</div> */}
+          <div className='footer-content'>
+            <div className='footer-text'>Copyright 2021 Zilifant</div>
+            <InfoModal
+            className='about footer nobg'
+            buttonContent='about'
+            info={about}
+          />
           </div>
+
         </div>
       {/* </div> */}
       <div className='margin-hack'></div>

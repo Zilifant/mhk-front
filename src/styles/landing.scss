@@ -129,9 +129,23 @@ input.join-lobby-lobbyid-input {
 
 .landing-title {
   font-size: xx-large;
+  color: $rose5;
+  background-color: $bg5;
+  padding: 0 2rem;
+  margin-bottom: .5rem;
+  & span {
+    font-size: large;
+    color: $fg4;
+  }
 }
 
-.show-infomodal-btn.rules {
+.landing-subtitle {
+  font-size: large;
+  text-transform: uppercase;
+}
+
+
+.show-infomodal-btn.nobg {
   @include nobg-btn-txt();
 }
 
@@ -182,9 +196,9 @@ input.join-lobby-lobbyid-input {
 
 .streaming-mode-btn {
   @include square(1.5rem);
-  @include three-d-btn($redd8, 15%, 15%, .15rem);
+  @include three-d-btn($redd8, 15%, 15%, 2px);
   &.on {
-    @include three-d-btn($ready, 15%, 15%, .15rem);
+    @include three-d-btn($ready, 15%, 15%, 2px);
   }
 }
 
@@ -192,7 +206,7 @@ input.join-lobby-lobbyid-input {
 .join-lobby-btn,
 .join-this-lobby-btn {
   display: block;
-  padding: .15rem 3px;
+  padding: 2px 3px;
   text-transform: uppercase;
   @include three-d-btn();
 

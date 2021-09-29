@@ -18,7 +18,7 @@ const Modal = ({
 
   return (
     <div className='infomodal-invis-wrap'>
-      <div className={`infomodal-wrap ${className}`}>
+      <div className={`infomodal-wrap text ${className}`}>
         <div className='infomodal-nav'>
           <button
             className={`infomodal-nav-btn close-btn`}

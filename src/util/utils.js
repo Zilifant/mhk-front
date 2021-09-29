@@ -64,6 +64,9 @@ export const lobbyMethods = {
     return !this.minPlayersOnline() ? ['waitingForJoin',[]]
          : !this.allPlayersReady() ? ['waitingForReady',[]]
          : ['waitingForStart',[iAmLeader]];
+  },
+  getUserColor(userId) {
+    return this.users.find(user => user.id === userId).color;
   }
 };
 

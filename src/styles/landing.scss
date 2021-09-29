@@ -208,7 +208,7 @@ input.join-lobby-lobbyid-input {
   &:disabled {
     cursor: auto;
     color: darken($fg3, 30%);
-    @include three-d-btn($bg3);
+    @include three-d-btn($bg2);
   }
 }
 

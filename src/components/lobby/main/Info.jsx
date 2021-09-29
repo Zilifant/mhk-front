@@ -82,7 +82,7 @@ const Info = ({
     <Container className='info game'>
       <div className='gamestage-username'>
         <InfoModal
-          className='rules footer'
+          className='rules info nobg'
           buttonContent='rulebook'
           info={rules}
         />

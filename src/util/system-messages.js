@@ -14,15 +14,30 @@ export function buildSMDString(data, meta) {
 
 export const systemMessages = (() => {
 
-  const GAME_OUTCOMES = {
-    redwin: 'The ^_kk_Killer^ wins! The ^_kh_Hunters^ used their last accusation.',
-    redwin_accomplice: 'The ^_kk_Killer^ and the ^_ka_Accomplice^ win! The ^_kh_Hunters^ used their last accusation.',
-    redwintimeout: 'The ^_kk_Killer^ wins! The ^_kh_Hunters^ ran out of time.',
-    redwintimeout_accomplice: 'The ^_kk_Killer^ and the ^_ka_Accomplice^ win! The ^_kh_Hunters^ ran out of time.',
-    redwinwitnessdead: 'The ^_kk_Killer^ wins! The Witness is dead.',
-    redwinwitnessdead_accomplice: 'The ^_kk_Killer^ and the ^_ka_Accomplice^ win! The ^_kw_Witness^ is dead.',
-    bluewin: 'The ^_kh_Hunters^ and the ^_kg_Ghost^ win!',
-    bluewinwitnessalive: 'The ^_kh_Hunters^ and the ^_kg_Ghost^ win! The ^_kw_Witness^ survived.'
+  const outcomes = {
+    redwin: ({accuser}) =>
+      `_${cls+accuser.color.id}_${accuser.userName}'s^ accusation is wrong. The ^_kh_Hunters^ used their last accusation. The ^_kk_Killer^ wins!`,
+
+    redwin_accomplice: ({accuser}) =>
+      `_${cls+accuser.color.id}_${accuser.userName}'s^ accusation is wrong. The ^_kh_Hunters^ used their last accusation. The ^_kk_Killer^ and the ^_ka_Accomplice^ win!`,
+
+    redwintimeout: () =>
+      `The ^_kk_Killer^ wins! The ^_kh_Hunters^ ran out of time.`,
+
+    redwintimeout_accomplice: () =>
+      `The ^_kk_Killer^ and the ^_ka_Accomplice^ win! The ^_kh_Hunters^ ran out of time.`,
+
+    redwinwitnessdead: ({killer}) =>
+      `_${cls+killer.color.id}_${killer.userName}^ chose correctly. The ^_kw_Witness^ is dead. The ^_kk_Killer^ wins!`,
+
+    redwinwitnessdead_accomplice: ({killer, accomplice}) =>
+      `_${cls+killer.color.id}_${killer.userName}^ and ^_${cls+accomplice.color.id}_${accomplice.userName}^ chose correctly. The ^_kw_Witness^ is dead. The ^_kk_Killer^ and the ^_ka_Accomplice^ win!`,
+
+    bluewin: ({accuser, killer}) =>
+      `_${cls+accuser.color.id}_${accuser.userName}^ is correct. ^_${cls+killer.color.id}_${killer.userName}^ is the ^_kk_Killer^. The ^_kh_Hunters^ and the ^_kg_Ghost^ win!`,
+
+    bluewinwitnessalive: ({target}) =>
+      `_${cls+target.color.id}_${target.userName}^ was not the ^_kw_Witness^. The ^_kh_Hunters^ and the ^_kg_Ghost^ win!`
   };
 
   const cls = 'smd--username '
@@ -31,7 +46,7 @@ export const systemMessages = (() => {
 
   const waitingForReady = () => `Waiting for everyone to be ready...`;
 
-  const welcome = () => `_m_Welcome to MHK.`;
+  const welcome = () => `Welcome to MHK.`;
 
   const clearGame = () => `Game cleared.`;
 
@@ -39,7 +54,7 @@ export const systemMessages = (() => {
 
   const clueChosen = (clue) => `Clue chosen: ^_k_${clue}^.`;
 
-  const resolveGame = (result) => `_m_${GAME_OUTCOMES[result]}`;
+  const resolveGame = (result, args) => outcomes[result](args);
 
   const join = ([id, col]) => `_${cls+col}_${name(id)}^ joined.`;
 

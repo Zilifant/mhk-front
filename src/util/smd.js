@@ -85,7 +85,6 @@ export const render = {
 }
 
 function parseSMD({str, isBlock}) {
-  // console.log(str);
   let defStyle, sS, sC;
 
   if (isBlock) {

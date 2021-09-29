@@ -60,11 +60,11 @@ $bdr2: 2px;
 }
 
 @mixin three-d-btn-down($col: $cyan6, $li-by: 8%, $dk-by: 8%, $bdr-wid: 3px) {
-  background-color: darken($col, 2%);
-  border-top: $bdr-wid solid darken($col, $dk-by);
-  border-left: $bdr-wid solid darken($col, $dk-by);
-  border-bottom: $bdr-wid solid lighten($col, $li-by);
-  border-right: $bdr-wid solid lighten($col, $li-by);
+  background-color: darken($col, 4%);
+  border-top: $bdr-wid solid lighten($col, 2%);
+  border-left: $bdr-wid solid lighten($col, 2%);
+  border-bottom: $bdr-wid solid darken($col, 8%);
+  border-right: $bdr-wid solid darken($col, 8%);
 }
 
 @mixin z($weight) {

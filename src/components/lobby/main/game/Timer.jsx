@@ -16,14 +16,14 @@ const Timer = ({
   },
   timerIsRunning
 }) => {
-  console.log('%cTimer','color:#f20ffe');
+  // console.log('%cTimer','color:#f20ffe');
 
   const { socket } = useContext(SocketContext);
 
   const [tenSec, setTenSec] = useState(duration * 6);
 
   useEffect(() => {
-    console.log('timer mounted');
+    // console.log('timer mounted');
     let mounted = true;
     const s = socket.current;
 
@@ -31,18 +31,18 @@ const Timer = ({
       if (mounted) {
         s.on('timerStarted', () => {
           setTenSec(duration * 6);
-          console.log('timer started');
+          // console.log('timer started');
         });
         s.on('tenSec', (tenSec) => {
           setTenSec(tenSec);
-          console.log(tenSec);
+          // console.log(tenSec);
         });
         s.on('timeUp', (tenSec) => {
           setTenSec(tenSec);
-          console.log('time is up');
+          // console.log('time is up');
         });
         s.on('clear', () => {
-          console.log('timer cleared')
+          // console.log('timer cleared')
           setTenSec(0);
         });
       }
@@ -56,7 +56,7 @@ const Timer = ({
       s.off('tenSec');
       s.off('timeUp');
       s.off('clear');
-      console.log('timer unmounted');
+      // console.log('timer unmounted');
     };
 
   }, [socket, setTenSec, duration]);

@@ -7,22 +7,39 @@ $mar: 0.5rem;
 $gap: 0.5rem;
 $bdr: 1px;
 $bdr2: 2px;
+$bdr3: 3px;
+
+@mixin shadow() {
+  // box-shadow:
+  // rgba(0, 0, 0, 0.07) 0px 1px 2px,
+  // rgba(0, 0, 0, 0.07) 0px 2px 4px,
+  // rgba(0, 0, 0, 0.07) 0px 4px 8px;
+  box-shadow:
+  rgba(0, 0, 0, 0.01) 0px 1px 2px 0px,
+  rgba(0, 0, 0, 0.01) 0px 2px 6px 2px,
+  rgba(0, 0, 0, 0.01) 0px -1px 2px 0px,
+  rgba(0, 0, 0, 0.01) 0px -2px 6px 2px;
+}
 
 @mixin square($size: max-content) {
   height: $size;
   width: $size;
 }
 
-@mixin nobg-btn-txt($col: $cyan5, $hov: $cyan4) {
-  background-color: inherit;
+@mixin flat-btn-txt($bg: $bg4, $fg: $cyan5) {
+  background-color: lighten($bg, 8%);
+  padding: 2px 6px;
+  border-radius: 3px;
   text-transform: uppercase;
-  font-size: large;
-  color: $col;
-  &:hover {
-    color: $hov;
+  color: $fg;
+  @include shadow();
+  &:not(:disabled):not(:active):hover {
+    color: lighten($fg, 20%);
+    background-color: lighten($bg, 12%);
   }
-  &:active {
+  &:not(:disabled):active {
     color: white;
+    background-color: lighten($bg, 15%)
   }
 }
 
@@ -39,7 +56,7 @@ $bdr2: 2px;
   }
 }
 
-@mixin three-d-btn($col: $cyan6, $li-by: 8%, $dk-by: 8%, $bdr-wid: 3px) {
+@mixin three-d-btn($col: $cyan6, $li-by: 8%, $dk-by: 8%, $bdr-wid: $bdr3) {
   $col-li: lighten($col, $li-by);
   $col-dk: darken($col, $dk-by);
   background-color: $col;
@@ -59,7 +76,7 @@ $bdr2: 2px;
   }
 }
 
-@mixin three-d-btn-down($col: $cyan6, $li-by: 8%, $dk-by: 8%, $bdr-wid: 3px) {
+@mixin three-d-btn-down($col: $cyan6, $li-by: 8%, $dk-by: 8%, $bdr-wid: $bdr3) {
   background-color: darken($col, 4%);
   border-top: $bdr-wid solid lighten($col, 2%);
   border-left: $bdr-wid solid lighten($col, 2%);

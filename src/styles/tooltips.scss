@@ -18,10 +18,7 @@
   border: 2px solid $bg1;
   position: absolute;
   z-index: 999;
-  box-shadow:
-    1px 2px 1px $bg6,
-    1 1px 1px $bg6,
-    0 2px 3px $bg6;
+  @include shadow();
 
   &.oneline {
     max-width: 90vw;

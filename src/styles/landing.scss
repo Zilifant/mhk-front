@@ -84,14 +84,6 @@
   margin-right: 0;
 }
 
-.btn--join-lobby {
-  display: inline-block;
-}
-
-button.btn--streaming-mode.on {
-  background-color: $ready;
-}
-
 .con--head,
 .con--foyerjoin,
 .con--returntolobby,
@@ -141,7 +133,8 @@ input.join-lobby-lobbyid-input {
 
 
 .show-infomodal-btn.nobg {
-  @include nobg-btn-txt();
+  @include flat-btn-txt();
+  font-size: larger;
 }
 
 .con--returntolobby {
@@ -156,7 +149,8 @@ input.join-lobby-lobbyid-input {
     text-decoration: none;
   }
   & > .return-link {
-    @include nobg-btn-txt();
+    @include flat-btn-txt();
+    font-size: larger;
     // color: $cyan4;
     // &:hover {
     //   color: $cyan3;
@@ -191,9 +185,9 @@ input.join-lobby-lobbyid-input {
 
 .streaming-mode-btn {
   @include square(1.5rem);
-  @include three-d-btn($redd8, 15%, 15%, 2px);
+  @include three-d-btn($redd8, 15%, 15%);
   &.on {
-    @include three-d-btn($ready, 15%, 15%, 2px);
+    @include three-d-btn($ready, 15%, 15%);
   }
 }
 
@@ -208,7 +202,7 @@ input.join-lobby-lobbyid-input {
   &:disabled {
     cursor: auto;
     color: darken($fg3, 30%);
-    @include three-d-btn($bg2);
+    @include three-d-btn($bg3);
   }
 }
 

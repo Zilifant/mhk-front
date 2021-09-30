@@ -82,7 +82,8 @@ const Info = ({
     <Container className='info game'>
       <div className='gamestage-username'>
         <InfoModal
-          className='rules info nobg'
+          className='rules info'
+          btnClassName='flat'
           buttonContent='rulebook'
           info={rules}
         />

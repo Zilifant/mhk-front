@@ -4,6 +4,7 @@ import React, {
 import '../../../../styles/setup.scss';
 import '../../../../styles/svgs.scss';
 import SVGButton from '../../../ui-elements/SVGButton';
+import SVGIcon from '../../../ui-elements/SVGIcon';
 
 const TimerSetup = ({
   iAmLeader,
@@ -18,26 +19,52 @@ const TimerSetup = ({
   const minReached = duration === minDuration;
   const maxReached = duration === maxDuration;
 
+  const timerVal = () => (<>
+    {duration !== 0 &&
+      <div className={`timer value on`}>
+        {`${duration}:00`}
+      </div>
+    }
+    {duration === 0 &&
+      <div className={`timer value off`}>
+        {'OFF'}
+      </div>
+    }
+  </>);
+
   const timerLeader = () => (
-    <div className={`timer-wrap ${iAmLeader ? 'leader' : 'notleader'}`}>
+    <div className={`timer-wrap leader`}>
       <SVGButton
-        className='timer dec three-d'
+        className='timer dec'
         onClick={() => chooseTimerHandler(--duration)}
         icon='minus'
-        disabled={!iAmLeader || minReached}
+        disabled={minReached}
       />
-      {duration !== 0 && <div className={`timer value on`}>{`${duration}:00`}</div>}
-      {duration === 0 && <div className={`timer value off`}>{'OFF'}</div>}
+        {timerVal()}
       <SVGButton
-        className='timer inc three-d'
+        className='timer inc'
         onClick={() => chooseTimerHandler(++duration)}
         icon='plus'
-        disabled={!iAmLeader || maxReached}
+        disabled={maxReached}
       />
     </div>
   );
 
-  return timerLeader();
+  const timerNotLeader = () => (
+    <div className={'timer-wrap notleader'}>
+      <SVGIcon
+        className='timer dec'
+        icon='minus'
+      />
+        {timerVal()}
+      <SVGIcon
+        className='timer inc'
+        icon='plus'
+      />
+    </div>
+  );
+
+  return iAmLeader ? timerLeader() : timerNotLeader();
 };
 
 export default TimerSetup;

@@ -6,7 +6,7 @@ import React, {
 
 const Modal = ({
   info: {
-    size = [560, 315],
+    // size = [560, 315],
     src,
     title
   },

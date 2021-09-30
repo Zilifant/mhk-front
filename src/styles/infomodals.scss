@@ -28,14 +28,27 @@ $cur: $teal7;
   border: 2px solid $bg1;
   @include shadow();
   z-index: 999;
-  height: calc(100% - 4rem);
   &.text {
-    max-width: 700px;
     display: inline-flex;
+    max-width: 700px;
+    height: calc(100% - 4rem);
   }
   &.vid {
     display: flex;
     flex-direction: column;
+    & > iframe {
+      width: 560px;
+      height: 315px;
+    }
+  }
+}
+
+.infomodal-vid-close-btn {
+  background-color: $bg5;
+  text-transform: uppercase;
+  padding: 2px;
+  &:hover {
+    background-color: $redd5;
   }
 }
 

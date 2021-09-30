@@ -99,7 +99,7 @@ const JoinLobby = ({ lobbyId }) => {
                 className="join-this-lobby"
               />
               <button type="submit" disabled={!formState.isValid} className='join-this-lobby-btn'>
-                SUBMIT
+                join
               </button>
             </Grid>
           </form>
@@ -159,7 +159,7 @@ const JoinLobby = ({ lobbyId }) => {
                 className='join-lobby-lobbyid'
               />
               <button type='submit' disabled={!formState.isValid} className='join-lobby-btn'>
-                SUBMIT
+                join
               </button>
             </Grid>
           </form>

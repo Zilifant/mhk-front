@@ -131,12 +131,6 @@ input.join-lobby-lobbyid-input {
   text-transform: uppercase;
 }
 
-
-.show-infomodal-btn.nobg {
-  @include flat-btn-txt();
-  font-size: larger;
-}
-
 .con--returntolobby {
   display: flex;
   flex-direction: row;
@@ -151,13 +145,6 @@ input.join-lobby-lobbyid-input {
   & > .return-link {
     @include flat-btn-txt();
     font-size: larger;
-    // color: $cyan4;
-    // &:hover {
-    //   color: $cyan3;
-    // }
-    // &:active {
-    //   color: white;
-    // }
   }
 }
 
@@ -184,25 +171,23 @@ input.join-lobby-lobbyid-input {
 }
 
 .streaming-mode-btn {
-  @include square(1.5rem);
-  @include three-d-btn($redd8, 15%, 15%);
-  &.on {
-    @include three-d-btn($ready, 15%, 15%);
-  }
+  padding: 4px;
+  @include float-btn-toggle($ready, $redd5, 1.5rem);
 }
 
 .new-lobby-btn,
 .join-lobby-btn,
 .join-this-lobby-btn {
   display: block;
-  padding: 2px 3px;
+  // padding: 2px 3px;
   text-transform: uppercase;
-  @include three-d-btn();
+  font-size: larger;
+  @include float-btn-txt($cyan6, $fg3);
 
   &:disabled {
     cursor: auto;
-    color: darken($fg3, 30%);
-    @include three-d-btn($bg3);
+    // color: darken($fg3, 30%);
+    @include float-btn-txt($bg2, darken($fg3, 30%));
   }
 }
 

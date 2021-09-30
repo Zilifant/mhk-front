@@ -76,21 +76,25 @@ div.card-wrap--ghost {
   color: $fg3;
   // text-transform: uppercase;
 
-  @include three-d-btn($clue-btn-bg, 12%, 12%, $bdr2);
+  // @include three-d-btn($clue-btn-bg, 12%, 12%, $bdr2);
+  @include flat-btn-txt($bg: $clue-btn-bg, $fg: $fg3);
 
   &.selected {
     color: $fg1;
-    @include three-d-btn($clue-btn-sel-bg, 12%, 12%, $bdr2);
+    // @include three-d-btn($clue-btn-sel-bg, 12%, 12%, $bdr2);
+    @include flat-btn-txt($bg: $clue-btn-sel-bg, $fg: $fg3);
   }
 
   &:disabled {
     cursor: auto;
-    @include three-d-btn($clue-btn-dis-bg, 8%, 8%, $bdr2);
+    // @include three-d-btn($clue-btn-dis-bg, 8%, 8%, $bdr2);
+    @include flat-btn-txt($bg: $clue-btn-dis-bg, $fg: $fg3);
     &:not(.highlighted) {
       color: darken($fg3, 30%);
       &.locked {
         color: darken($fg3, 50%);
-        @include three-d-btn($clue-btn-lck-bg, 5%, 5%, $bdr2);
+        // @include three-d-btn($clue-btn-lck-bg, 5%, 5%, $bdr2);
+        @include flat-btn-txt($bg: $clue-btn-lck-bg, $fg: $fg3);
       }
     }
   }
@@ -98,7 +102,8 @@ div.card-wrap--ghost {
   // order matters: highlighted after disabled
   &.highlighted {
     color: $fg1;
-    @include three-d-btn($clue-btn-hil-bg, 20%, 20%, $bdr2);
+    // @include three-d-btn($clue-btn-hil-bg, 20%, 20%, $bdr2);
+    @include flat-btn-txt($bg: $clue-btn-hil-bg, $fg: $fg3);
   }
 }
 
@@ -108,16 +113,19 @@ button.btn--gc {
   width: 100%;
 
   &.confirm-clue {
-    @include three-d-btn($confirm-btn-bg, 8%, 8%, $bdr2);
+    // @include three-d-btn($confirm-btn-bg, 8%, 8%, $bdr2);
+    @include flat-btn-txt($bg: $confirm-btn-bg, $fg: $fg3);
     &:disabled {
       cursor: auto;
       color: darken($fg3, 30%);
-      @include three-d-btn($confirm-btn-dis-bg, 8%, 8%, $bdr2);
+      // @include three-d-btn($confirm-btn-dis-bg, 8%, 8%, $bdr2);
+      @include flat-btn-txt($bg: $confirm-btn-dis-bg, $fg: darken($fg3, 30%));
     }
   }
 
   &.replace-card {
-    @include three-d-btn($replace-btn-bg, 20%, 20%, $bdr2);
+    // @include three-d-btn($replace-btn-bg, 20%, 20%, $bdr2);
+    @include flat-btn-txt($bg: $replace-btn-bg, $fg: $fg3);
   }
 }
 

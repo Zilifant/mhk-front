@@ -8,6 +8,7 @@ $gap: 0.5rem;
 $bdr: 1px;
 $bdr2: 2px;
 $bdr3: 3px;
+$time: 200ms;
 
 @mixin shadow() {
   // box-shadow:
@@ -15,10 +16,10 @@ $bdr3: 3px;
   // rgba(0, 0, 0, 0.07) 0px 2px 4px,
   // rgba(0, 0, 0, 0.07) 0px 4px 8px;
   box-shadow:
-  rgba(0, 0, 0, 0.01) 0px 1px 2px 0px,
-  rgba(0, 0, 0, 0.01) 0px 2px 6px 2px,
-  rgba(0, 0, 0, 0.01) 0px -1px 2px 0px,
-  rgba(0, 0, 0, 0.01) 0px -2px 6px 2px;
+  rgba(0, 0, 0, 0.03) 0px 1px 2px 0px,
+  rgba(0, 0, 0, 0.03) 0px 2px 6px 2px,
+  rgba(0, 0, 0, 0.03) 0px -1px 2px 0px,
+  rgba(0, 0, 0, 0.03) 0px -2px 6px 2px;
 }
 
 @mixin square($size: max-content) {
@@ -26,13 +27,56 @@ $bdr3: 3px;
   width: $size;
 }
 
-@mixin flat-btn-txt($bg: $bg4, $fg: $cyan5) {
-  background-color: lighten($bg, 8%);
+@mixin float-btn-txt($bg: $bg4, $fg: $cyan5) {
+  background-color: $bg;
   padding: 2px 6px;
+  border-radius: 3px;
+  // text-transform: uppercase;
+  color: $fg;
+  @include shadow();
+  transition: all $time;
+  &:not(:disabled):not(:active):hover {
+    color: lighten($fg, 20%);
+    background-color: lighten($bg, 4%);
+  }
+  &:not(:disabled):active {
+    color: white;
+    background-color: lighten($bg, 3%)
+  }
+}
+
+@mixin float-btn-toggle($c-on: $ready, $c-off: $redd5, $size: 1.5rem) {
+  background-color: $c-off;
+  border-radius: 50%;
+  @include square($size);
+  @include shadow();
+  transition: all $time;
+  &:not(:disabled):not(:active):hover {
+    background-color: lighten($c-off, 4%);
+  }
+  &:not(:disabled):active {
+    background-color: darken($c-off, 3%)
+  }
+  &.on {
+    background-color: $c-on;
+    &:not(:disabled):not(:active):hover {
+      background-color: lighten($c-on, 4%);
+    }
+    &:not(:disabled):active {
+      background-color: darken($c-on, 3%)
+    }
+  }
+}
+
+@mixin flat-btn-txt($bg: $bg4, $fg: $cyan5) {
+  // background-color: lighten($bg, 8%);
+  background-color: $bg;
+  padding: 1px 6px;
+  border: 1px solid $bg3;
   border-radius: 3px;
   text-transform: uppercase;
   color: $fg;
-  @include shadow();
+  transition: all $time;
   &:not(:disabled):not(:active):hover {
     color: lighten($fg, 20%);
     background-color: lighten($bg, 12%);
@@ -44,6 +88,7 @@ $bdr3: 3px;
 }
 
 @mixin nobg-btn-svg($col: $cyan5, $hov: $cyan4) {
+  transition: all $time;
   background-color: inherit;
   & svg {
     fill: $col;

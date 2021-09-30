@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import Container from '../shared/Container';
 // import InfoModal from '../shared/InfoModal';
-import Video from '../shared/Video';
+import VideoModal from '../shared/VideoModal';
 // import { rules } from '../../util/utils';
 
 const Header = () => {
@@ -16,8 +16,9 @@ const Header = () => {
   return (
     <Container className='head'>
       <div className='landing-title'>MHK<span> BETA</span></div>
-      <Video
-        className='rules header nobg'
+      <VideoModal
+        className='rules header'
+        btnClassName='flat'
         buttonContent='how to play'
         info={info}
       />

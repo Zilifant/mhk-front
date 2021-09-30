@@ -4,7 +4,7 @@ import React, {
   useState
 } from 'react';
 
-const VideoModal = ({
+const Modal = ({
   info: {
     size = [560, 315],
     src,
@@ -17,8 +17,8 @@ const VideoModal = ({
     <div className='infomodal-invis-wrap'>
       <div className={`infomodal-wrap vid ${className}`}>
         <iframe
-          width={size[0]}
-          height={size[1]}
+          // width={size[0]}
+          // height={size[1]}
           src={src}
           title={title}
           frameBorder="0"
@@ -35,8 +35,9 @@ const VideoModal = ({
   );
 }
 
-const Video = ({
+const VideoModal = ({
   className,
+  btnClassName,
   buttonContent,
   info
 }) => {
@@ -45,12 +46,12 @@ const Video = ({
 
   return (<>
     <button
-      className={`show-infomodal-btn ${className}`}
+      className={`show-infomodal-btn ${btnClassName}`}
       onClick={() => setShowModal(true)}
     >
       {buttonContent}
     </button>
-    {showModal && <VideoModal
+    {showModal && <Modal
       info={info}
       className={className}
       hideHandler={setShowModal}
@@ -58,4 +59,4 @@ const Video = ({
   </>);
 };
 
-export default Video
+export default VideoModal

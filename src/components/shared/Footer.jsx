@@ -34,7 +34,8 @@ const Footer = ({
             />
           </div>}
           <InfoModal
-            className='rules footer nobg'
+            className='rules footer'
+            btnClassName='flat'
             buttonContent='rulebook'
             info={rules}
           />
@@ -42,7 +43,8 @@ const Footer = ({
           <div className='footer-content'>
             <div className='footer-text'>Copyright 2021 Zilifant</div>
             <InfoModal
-            className='about footer nobg'
+            className='about footer'
+            btnClassName='flat'
             buttonContent='about'
             info={about}
           />

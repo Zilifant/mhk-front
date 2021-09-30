@@ -49,6 +49,7 @@ const Modal = ({
 const InfoModal = ({
   info,
   className,
+  btnClassName,
   buttonContent
 }) => {
 
@@ -56,7 +57,7 @@ const InfoModal = ({
 
   return (<>
     <button
-      className={`show-infomodal-btn ${className}`}
+      className={`show-infomodal-btn ${btnClassName}`}
       onClick={() => setShowModal(true)}
     >
       {buttonContent}

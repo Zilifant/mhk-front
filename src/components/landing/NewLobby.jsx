@@ -84,7 +84,7 @@ const NewLobby = () => {
                 disabled={!formState.isValid}
                 className='new-lobby-btn'
               >
-                SUBMIT
+                start
               </button>
             </Grid>
           </form>

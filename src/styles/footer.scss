@@ -37,24 +37,6 @@
   }
 }
 
-.svg-btn.cleargame.three-d {
-  // padding: 4px;
-  border-radius: $rad;
-  @include square(21px);
-  & svg {
-    transform: rotate(45deg);
-    fill: $bg5;
-  }
-  @include three-d-btn($col: $rose8, $bdr-wid: 2px);
-  &:disabled {
-    cursor: default;
-    @include three-d-btn($col: $bg3, $bdr-wid: 2px);
-  }
-  &:disabled svg {
-    fill: $bg1;
-  }
-}
-
 .footer-content {
   display: flex;
   flex-direction: row;

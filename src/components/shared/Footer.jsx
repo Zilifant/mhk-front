@@ -19,20 +19,8 @@ const Footer = ({
 
   return (
     <Container className='foot'>
-      {/* <div className='footer-wrap'> */}
+      <div className='footer-wrap'>
         <div className='footer-bar'>
-          {showClearBtn && <div className='ttip-parent'>
-            <SVGButton
-              className='cleargame three-d'
-              onClick={clearGameHandler}
-              icon='plus'
-            />
-            <Tooltip
-              tip='clearGameWarn'
-              side='right'
-              opts='oneline'
-            />
-          </div>}
           <InfoModal
             className='rules footer'
             btnClassName='flat'
@@ -43,15 +31,26 @@ const Footer = ({
           <div className='footer-content'>
             <div className='footer-text'>Copyright 2021 Zilifant</div>
             <InfoModal
-            className='about footer'
-            btnClassName='flat'
-            buttonContent='about'
-            info={about}
-          />
+              className='about footer'
+              btnClassName='flat'
+              buttonContent='about'
+              info={about}
+            />
+            {showClearBtn && <div className='ttip-parent'>
+              <SVGButton
+                className='cleargame'
+                onClick={clearGameHandler}
+                icon='plus'
+              />
+              <Tooltip
+                tip='clearGameWarn'
+                side='left'
+                opts='oneline'
+              />
+            </div>}
           </div>
-
         </div>
-      {/* </div> */}
+      </div>
       <div className='margin-hack'></div>
     </Container>
   );

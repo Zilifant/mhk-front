@@ -69,7 +69,7 @@
     & > :not(.infomodal-invis-wrap):not(:first-child) {
       margin-left: .5rem;
     }
-  
+
     & > .info {
       text-transform: uppercase;
       font-size: large;
@@ -84,20 +84,23 @@
   }
 
   & > .game-control-buttons {
-    display: flex;
-    flex-direction: row;
-    height: 35px;
+    // display: flex;
+    // flex-direction: row;
+
     background-color: $bg6;
     & > button {
-      width: max-content;
-      padding: 2px 3px;
+      width: min-content;
+      font-size: smaller;
+      // height: 100%;
+      height: 35px;
+      padding: 0 4px;
       margin-left: .5rem;
     }
     & > .nextround {
-      @include three-d-btn();
+      @include float-btn-txt($cyan6, $fg3);
     }
     & > .cleargame {
-      @include three-d-btn($col: $rose8);
+      @include float-btn-txt($redd8, $fg3);
     }
   }
 }

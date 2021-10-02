@@ -8,8 +8,8 @@ import Container from '../../shared/Container';
 import { useGame } from '../../../hooks/game-hook';
 import Tooltip from '../../shared/Tooltip';
 import SVGButton from '../../ui-elements/SVGButton';
-import InfoModal from '../../shared/InfoModal';
-import { rules } from '../../../util/utils';
+// import InfoModal from '../../shared/InfoModal';
+// import { rules } from '../../../util/utils';
 import '../../../styles/info.scss';
 import '../../../styles/svgs.scss';
 import '../../../styles/tooltips.scss';
@@ -81,15 +81,15 @@ const Info = ({
   return (
     <Container className='info game'>
       <div className='gamestage-username'>
-        <InfoModal
+        {/* <InfoModal
           className='rules info'
           btnClassName='flat'
           buttonContent='rulebook'
           info={rules}
-        />
+        /> */}
         {showGameStage &&
         <div className='info gamestage'>
-          {'///'} {stage.display}
+          {stage.display}
         </div>}
         <div className='info user-name'>
           {userName}

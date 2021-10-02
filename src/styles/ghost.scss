@@ -5,16 +5,16 @@
 
 $clue-bg: $bg4;
 
-$clue-btn-bg: $bg2;
-$clue-btn-sel-bg: $emer6;
-$clue-btn-dis-bg: $bg3;
-$clue-btn-lck-bg: $bg4;
-$clue-btn-hil-bg: $colg6;
+$cbbg: $bg2;
+$cbbg-s: $emer6;
+$cbbg-d: $bg3;
+$cbbg-l: lighten($bg4, 2%);
+$cbbg-h: $colg6;
 
-$confirm-btn-bg: $cyan6;
-$confirm-btn-dis-bg: $bg3;
+$cfbg: $cyan6;
+$cfbg-d: $bg3;
 
-$replace-btn-bg: $redd8;
+$rpbg: $redd8;
 
 .container.con--self.gh,
 .container.con--ghost {
@@ -35,7 +35,7 @@ div.card-wrap--ghost {
 .gc-back,
 .gc-title,
 .gc-clue-btn {
-  border-radius: $rad;
+  border-radius: $rad3;
 }
 
 .gc-back,
@@ -48,7 +48,7 @@ div.card-wrap--ghost {
   height: 3rem;
   text-align: center;
   text-transform: uppercase;
-  margin-bottom: .5rem;
+  // margin-bottom: .5rem;
   align-items: center;
   justify-content: center;
 }
@@ -73,37 +73,35 @@ div.card-wrap--ghost {
   margin: 0 auto;
   width: 100%;
   padding: 4px 0;
-  color: $fg3;
+  // color: $fg3;
   // text-transform: uppercase;
 
-  // @include three-d-btn($clue-btn-bg, 12%, 12%, $bdr2);
-  @include flat-btn-txt($bg: $clue-btn-bg, $fg: $fg3);
+  // @include three-d-btn($cbbg, 12%, 12%, $bdr2);
+  @include float-btn-txt($bg: $cbbg, $fg: $fg3);
 
   &.selected {
-    color: $fg1;
-    // @include three-d-btn($clue-btn-sel-bg, 12%, 12%, $bdr2);
-    @include flat-btn-txt($bg: $clue-btn-sel-bg, $fg: $fg3);
+    // color: $fg1;
+    // @include three-d-btn($cbbg-s, 12%, 12%, $bdr2);
+    @include float-btn-txt($bg: $cbbg-s, $fg: $fg1);
   }
 
   &:disabled {
     cursor: auto;
-    // @include three-d-btn($clue-btn-dis-bg, 8%, 8%, $bdr2);
-    @include flat-btn-txt($bg: $clue-btn-dis-bg, $fg: $fg3);
+    // @include three-d-btn($cbbg-d, 8%, 8%, $bdr2);
+    @include float-btn-txt($bg: $cbbg-d, $fg: darken($fg3, 30%));
     &:not(.highlighted) {
-      color: darken($fg3, 30%);
       &.locked {
-        color: darken($fg3, 50%);
-        // @include three-d-btn($clue-btn-lck-bg, 5%, 5%, $bdr2);
-        @include flat-btn-txt($bg: $clue-btn-lck-bg, $fg: $fg3);
+        // @include three-d-btn($cbbg-l, 5%, 5%, $bdr2);
+        @include float-btn-txt($bg: $cbbg-l, $fg: darken($fg3, 50%));
       }
     }
   }
 
   // order matters: highlighted after disabled
   &.highlighted {
-    color: $fg1;
-    // @include three-d-btn($clue-btn-hil-bg, 20%, 20%, $bdr2);
-    @include flat-btn-txt($bg: $clue-btn-hil-bg, $fg: $fg3);
+    // color: $fg1;
+    // @include three-d-btn($cbbg-h, 20%, 20%, $bdr2);
+    @include float-btn-txt($bg: $cbbg-h, $fg: $fg1);
   }
 }
 
@@ -113,19 +111,19 @@ button.btn--gc {
   width: 100%;
 
   &.confirm-clue {
-    // @include three-d-btn($confirm-btn-bg, 8%, 8%, $bdr2);
-    @include flat-btn-txt($bg: $confirm-btn-bg, $fg: $fg3);
+    // @include three-d-btn($cfbg, 8%, 8%, $bdr2);
+    @include float-btn-txt($bg: $cfbg, $fg: $fg3);
     &:disabled {
       cursor: auto;
-      color: darken($fg3, 30%);
-      // @include three-d-btn($confirm-btn-dis-bg, 8%, 8%, $bdr2);
-      @include flat-btn-txt($bg: $confirm-btn-dis-bg, $fg: darken($fg3, 30%));
+      // color: darken($fg3, 30%);
+      // @include three-d-btn($cfbg-d, 8%, 8%, $bdr2);
+      @include float-btn-txt($bg: $cfbg-d, $fg: darken($fg3, 30%));
     }
   }
 
   &.replace-card {
-    // @include three-d-btn($replace-btn-bg, 20%, 20%, $bdr2);
-    @include flat-btn-txt($bg: $replace-btn-bg, $fg: $fg3);
+    // @include three-d-btn($rpbg, 20%, 20%, $bdr2);
+    @include float-btn-txt($bg: $rpbg, $fg: $fg3);
   }
 }
 
@@ -158,7 +156,7 @@ button.btn--gc {
   width: 100%;
   color: $clue-bg;
   background-color: $clue-bg;
-  border: $bdr2 solid $clue-bg;
-  padding: 5px 0;
+  // border: $bdr2 solid $clue-bg;
+  padding: 4px 0;
   cursor: default;
 }

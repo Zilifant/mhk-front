@@ -6,6 +6,7 @@ import React, {
 // import Player from '../game/Player'
 import { badge, article } from '../../../../util/utils';
 import Container from '../../../shared/Container';
+import SVGIcon from '../../../ui-elements/SVGIcon';
 import Cards from './Cards';
 import '../../../../styles/player.scss';
 
@@ -21,13 +22,17 @@ const BasicUI = ({
 
   return (
     <Container className='self player never-interacts'>
-      <li className={`p-info badge ${badge(canAccuse)}`}>
+      {/* <li className={`p-info badge ${badge(canAccuse)}`}>
         BADGE
-      </li>
+      </li> */}
       <li className={`p-info role ${role}`}>
         <div className='wrapper'>
+          <SVGIcon
+            icon='crown'
+            className={`badge ${badge(canAccuse)}`}
+          />
           <div className='subtitle'>You are {article(role)}</div>
-          <div className={role}>{role.toUpperCase()}</div>
+          <div className={'role' + ' ' + role}>{role.toUpperCase()}</div>
         </div>
       </li>
       {types.map((type) => (<React.Fragment key={type}>

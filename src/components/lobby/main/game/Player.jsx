@@ -11,6 +11,7 @@ import Container from '../../../shared/Container';
 import Button from '../../../ui-elements/Button';
 import Cards from './Cards';
 import '../../../../styles/player.scss';
+import SVGIcon from '../../../ui-elements/SVGIcon';
 
 const Player = ({
   // myRole,
@@ -114,17 +115,18 @@ const Player = ({
 
   return (
     <Container className={`player ${!canIInteract && 'never-interacts'}`}>
-      <li className={`p-info badge ${badge(canTheyAccuse)}`}>
-        BADGE
-      </li>
       <li className={`p-info role ${roleClass}`}>
         <div className='wrapper'>
           <div>
             {/* <span className={`indicator ${connectionStatus}`}></span> */}
             <span className={`username ${connectionStatus}`}>{playerId.slice(0,-5)}</span>
           </div>
+          <SVGIcon
+            icon='crown'
+            className={`badge ${badge(canTheyAccuse)}`}
+          />
           <div className='subtitle'>Their role</div>
-          <div className={roleClass}>{roleDisplay.toUpperCase()}</div>
+          <div className={'role' + ' ' + roleClass}>{roleDisplay.toUpperCase()}</div>
         </div>
       </li>
       {canIInteract && <li className={`p-info interact`}>

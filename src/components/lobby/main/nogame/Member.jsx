@@ -73,29 +73,13 @@ const Member = ({
     if (!isSelf) return null;
 
     return (
-      // <button
-      //   className='ready-toggle-btn'
-      //   onClick={() => readyHandler(userId)}
-      //   disabled={false}
-      // >
-      //   <SVGIcon
-      //     icon='check'
-      //     className={`ready-toggle ${ready}`}
-      //   />
-      // </button>
       <button
         className={`ready-toggle-btn ${ready}`}
         onClick={() => readyHandler(userId)}
         disabled={false}
       >
-        ready
+        {member.isReady ? 'ready' : 'not ready'}
       </button>
-      // <SVGButton
-      //   // icon={member.isReady ? 'minus' : 'plus'}
-      //   icon='rSq'
-      //   className={`ready-toggle ${ready}`}
-      //   onClick={() => readyHandler(userId)}
-      // />
     );
 
   };

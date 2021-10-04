@@ -26,13 +26,13 @@ $dpt: 5%;
   grid-template-columns: 110px 1fr;
   grid-template-rows: 26px 1fr 1fr 26px;
   grid-template-areas:
-    "badg evid"
+    "role evid"
     "role evid"
     "role mean"
     "intr mean";
   &.never-interacts {
     grid-template-areas:
-      "badg evid"
+      "role evid"
       "role evid"
       "role mean"
       "role mean";
@@ -45,12 +45,12 @@ $dpt: 5%;
   gap: $mar;
   grid-template-columns: 110px max-content repeat(2, max-content 1fr);
   grid-template-areas:
-    "badg intr evti evid meti mean"
+    "role intr evti evid meti mean"
     "role intr evti evid meti mean";
   &.never-interacts {
     grid-template-columns: 110px repeat(2, max-content 1fr);
     grid-template-areas:
-      "badg evti evid meti mean"
+      "role evti evid meti mean"
       "role evti evid meti mean"
       "role evti evid meti mean";
   }
@@ -74,27 +74,31 @@ ul.c-group {
 
 .p-info {
   cursor: default;
-  &.badge {
-    border: .2rem solid $badge;
-    height: 26px;
-    background-color: $bg4;
-    &.can-accuse {
-      color: $badge;
-      border-color: $badge;
-    }
-    &.accusal-spent {
-      color: $bg2;
-      border-color: $bg2;
-    }
-  }
 
   &.role {
     padding: 3px 0;
-    // height: 100%;
+    background-color: $bg4;
+    & .svg-icon.badge {
+      height: 20px;
+      background-color: $bg4;
+      &.can-accuse {
+        & svg {
+          fill: $badge;
+        }
+      }
+      &.accusal-spent {
+        & svg {
+          fill: $bg2;
+        }
+      }
+    }
   }
 
-  &.interact:not(.con-key-ev) {
-    height: 26px;
+  &.interact {
+    border-radius: $rad3;
+    &:not(.con-key-ev) {
+      height: 26px;
+    }
   }
 }
 
@@ -130,15 +134,14 @@ ul.c-group {
   color: $bg1;
 }
 
-.p-info.role .wrapper :nth-child(3),
-.con--self .p-info.role .wrapper :nth-child(2) {
-  font-size: 1.25rem;
-  // font-weight: bold;
-  // letter-spacing: .1rem;
-}
 
-.p-info.role .wrapper > :not(:first-child) {
-  margin-top: 2px;
+.p-info.role .wrapper {
+  & :not(:first-child) {
+    margin-top: 2px;
+  }
+  & .role {
+    font-size: 1.25rem;
+  }
 }
 
 .p-info.role .wrapper .redteam,
@@ -148,8 +151,8 @@ ul.c-group {
 
 .p-info.role .wrapper .accomplice {
   color: $accomp;
-  font-weight: normal;
-  letter-spacing: normal;
+  // font-weight: normal;
+  // letter-spacing: normal;
 }
 
 .p-info.role .wrapper .witness {
@@ -179,14 +182,13 @@ ul.c-group {
 }
 
 button.btn.three-d {
-  @include three-d-btn($c-def-bg, 8%, 8%, $bdr2);
+  @include float-btn-txt($c-def-bg, $fg3);
   &:disabled {
     cursor: auto;
-    color: darken($fg3, 30%);
-    @include three-d-btn($c-dis-bg, 8%, 8%, $bdr2);
+    @include float-btn-txt($c-dis-bg, darken($fg3, 30%));
   }
   &.btn--confirm-kill {
-    @include three-d-btn($c-kill-bg, 8%, 8%, $bdr2);
+    @include float-btn-txt($c-kill-bg, $fg3);
   }
 }
 
@@ -223,43 +225,32 @@ button.card-wrap--player {
   &:not(:first-child) {
     margin-left: .5rem;
   }
-  &.highlighted {
-    color: $fg1;
-  }
 
   &.evidence {
-    @include three-d-btn($evc, $pt, $pt, $bdr2);
+    @include float-btn-txt($evc, $fg3);
     &.selected {
-      color: $fg1;
-      @include three-d-btn($sel, $pt, $pt, $bdr2);
+      @include float-btn-txt($sel, $fg1);
     }
     &:disabled {
       cursor: auto;
-      @include three-d-btn(darken($evc, $dpt), $pt, $pt, $bdr2);
-      &:not(.highlighted) {
-        color: $fg4;
-      }
+      @include float-btn-txt(darken($evc, $dpt), $fg4);
     }
     &.highlighted {
-      @include three-d-btn($hig, 15%, 15%, $bdr2);
+      @include float-btn-txt($hig, $fg1);
     }
   }
 
   &.means {
-    @include three-d-btn($mec, $pt, $pt, $bdr2);
+    @include float-btn-txt($mec, $fg3);
     &.selected {
-      color: $fg1;
-      @include three-d-btn($sel, $pt, $pt, $bdr2);
+      @include float-btn-txt($sel, $fg1);
     }
     &:disabled {
       cursor: auto;
-      @include three-d-btn(darken($mec, $dpt), $pt, $pt, $bdr2);
-      &:not(.highlighted) {
-        color: $fg4;
-      }
+      @include float-btn-txt(darken($mec, $dpt), $fg4);
     }
     &.highlighted {
-      @include three-d-btn($hig, 15%, 15%, $bdr2);
+      @include float-btn-txt($hig, $fg1);
     }
   }
 }

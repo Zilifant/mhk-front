@@ -75,8 +75,8 @@ button.startgame {
   text-align: center;
   cursor: default;
   &.on {
-    background-color: $emer6;
-    color: $fg1;
+    // background-color: $emer6;
+    color: $emer5;
     border-color: $emer5;
   }
   &.off {
@@ -126,12 +126,13 @@ button.startgame {
   font-size: x-large;
   padding: 0;
   background-color: $bg4;
-  // border: $bdr2 solid $bg3;
+  border: $bdr2 solid $bg1;
   cursor: default;
 }
 
 .timer.value.off {
   color: $bg2;
+  border: $bdr2 solid $bg2;
 }
 
 .timer.value  { grid-area: va; }
@@ -153,11 +154,11 @@ button.startgame {
 }
 
 .svg-btn.timer {
-  @include float-btn-txt($cyan6, $fg3, 50%);
+  @include float-btn-txt($cyan6, $fg3, $rad3);
   &:disabled {
     cursor: default;
     // @include three-d-btn($col: $bg3);
-    @include float-btn-txt($bg3, darken($fg3, 30%), 50%);
+    @include float-btn-txt($bg3, darken($fg3, 30%), $rad3);
   }
   &:disabled svg {
     fill: $bg1;

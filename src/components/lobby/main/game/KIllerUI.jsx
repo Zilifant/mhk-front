@@ -9,6 +9,7 @@ import { SocketContext } from '../../../../context/contexts';
 import { badge, article } from '../../../../util/utils';
 import Container from '../../../shared/Container';
 import Button from '../../../ui-elements/Button';
+import SVGIcon from '../../../ui-elements/SVGIcon';
 import Cards from './Cards';
 import '../../../../styles/player.scss';
 
@@ -58,13 +59,17 @@ const KillerUI = ({
 
   return (
     <Container className={`self player ${stage.id !== 'setup' && 'never-interacts'}`}>
-      <li className={`p-info badge ${badge(canAccuse)}`}>
+      {/* <li className={`p-info badge ${badge(canAccuse)}`}>
         BADGE
-      </li>
+      </li> */}
       <li className={`p-info role ${role}`}>
         <div className='wrapper'>
+          <SVGIcon
+            icon='crown'
+            className={`badge ${badge(canAccuse)}`}
+          />
           <div className='subtitle'>You are {article(role)}</div>
-          <div className={role}>{role.toUpperCase()}</div>
+          <div className={'role' + ' ' + role}>{role.toUpperCase()}</div>
         </div>
       </li>
       {interact()}

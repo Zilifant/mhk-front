@@ -45,7 +45,7 @@ div.member_grid {
   grid-template-areas:
     '. leader name . ghost';
   padding: 6px;
-  border: 2px solid;
+  border: $bdr2 solid;
   background-color: $bg5;
 }
 
@@ -57,7 +57,7 @@ div.member_grid.ml-self {
 }
 
 div.member_grid.ml-notready {
-  border-color: $bg2;
+  border-color: $bg3;
 }
 
 div.member_grid.ml-ready {
@@ -162,25 +162,28 @@ div.member_grid:hover > .ghost_icon .svg-btn.assign-ghost.ml-notghost svg {
 button.ready-toggle-btn {
   display: block;
   text-transform: uppercase;
+  font-size: larger;
   padding: 3px;
-  // height: 18px;
-  // width: 18px;
+  width: 100px;
   &.ml-ready {
-    @include three-d-btn($ready);
+    @include float-btn-txt($ready, $fg3);
   }
   &.ml-notready {
-    @include three-d-btn($redd8);
+    @include float-btn-txt($rose8, $fg2);
   }
-  // &::after {
-  //   content: 'READY';
-  //   font-size: x-large;
-  //   position: relative;
-  //   left: calc(100% + .83rem);
-  // }
 }
 
 .ready-toggle-label {
   margin-left: .5rem;
   font-size: x-large;
   text-transform: uppercase;
+}
+
+.svg-btn.ready-toggle {
+  padding: 7px;
+  @include float-btn-txt($cyan6, $fg3, $rad3);
+  @include square(46px);
+  &:disabled svg {
+    fill: $bg1;
+  }
 }

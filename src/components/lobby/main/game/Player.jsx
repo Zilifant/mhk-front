@@ -13,11 +13,9 @@ import '../../../../styles/player.scss';
 import SVGIcon from '../../../ui-elements/SVGIcon';
 
 const Player = ({
-  // myRole,
   stage,
   isRedTeam,
   keyEv,
-  // canIAccuse,
   canBeTargeted,
   rolesRef,
   thisPlayer: {

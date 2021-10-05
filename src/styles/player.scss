@@ -103,6 +103,7 @@ $dpt: 5%;
 
   &.interact {
     border-radius: $rad3;
+    background-color: $bg3;
     &:not(.con-key-ev) {
       height: 26px;
     }

@@ -49,8 +49,8 @@ $t: 0;
     background-color: lighten($bg, 4%);
   }
   &:not(:disabled):active {
-    color: white;
-    & > svg { fill: white; }
+    color: darken($fg, 20%);
+    & > svg { fill: darken($fg, 20%); }
     background-color: darken($bg, 10%);
   }
 }
@@ -99,16 +99,16 @@ $t: 0;
   }
 }
 
-@mixin nobg-btn-svg($col: $cyan5, $hov: $cyan4) {
+@mixin nobg-btn-svg($fg: $cyan5) {
   transition: all $t;
   background-color: inherit;
   & svg {
-    fill: $col;
+    fill: $fg;
     &:hover {
-      fill: $hov;
+      fill: lighten($fg, 20%);
     }
     &:active {
-      fill: white;
+      fill: darken($fg, 10%);
     }
   }
 }

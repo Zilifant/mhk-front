@@ -30,13 +30,10 @@ button.startgame {
   font-size: x-large;
   text-transform: uppercase;
   padding: .5rem 1rem;
-  // @include three-d-btn();
   @include float-btn-txt($cyan6, $fg3);
 
   &:disabled {
     cursor: auto;
-    // color: darken($fg3, 30%);
-    // @include three-d-btn($bg3);
     @include float-btn-txt($bg3, darken($fg3, 30%));
   }
 }
@@ -62,24 +59,19 @@ button.startgame {
 
 .advrole {
   padding: 3px;
-  // border: $bdr2 solid $bg3;
   background-color: $bg4;
   border-radius: $rad3;
   margin: 0;
   text-transform: uppercase;
   font-size: larger;
-  // font-weight: bold;
   width: 110px;
   text-align: center;
   cursor: default;
   &.on {
-    // background-color: $emer6;
     color: $emer5;
-    border-color: $emer5;
   }
   &.off {
     color: $bg2;
-    border-color: $bg3;
   }
 }
 
@@ -155,7 +147,6 @@ button.startgame {
   @include float-btn-txt($cyan6, $fg3, $rad3);
   &:disabled {
     cursor: default;
-    // @include three-d-btn($col: $bg3);
     @include float-btn-txt($bg3, darken($fg3, 30%), $rad3);
   }
   &:disabled svg {

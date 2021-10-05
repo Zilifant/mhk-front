@@ -33,11 +33,6 @@
   fill: $default;
 }
 
-.svg-icon rect,
-.svg-btn rect {
-  fill: none;
-}
-
 .svg-btn svg {
   height: 100%;
   width: 100%;
@@ -47,19 +42,13 @@
   stroke-miterlimit: 2;
   margin: 0;
   fill: $default;
-  // filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.1));
-}
-
-.svg-btn svg.imported {
-  height: 100%;
-  width: 100%;
-  min-height: 30.59px;
-}
-
-.svg-btn svg.imported.copy {
-  width: 90%;
 }
 
 .svg-btn:hover svg {
   fill: $white;
+}
+
+.svg-icon rect,
+.svg-btn rect {
+  fill: none;
 }

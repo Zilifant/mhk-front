@@ -11,20 +11,21 @@
     flex-direction: row;
 
     & .svg-btn.cleargame {
-      $col: $rose9;
+      $col: $redd5;
       padding: 4px;
       border-radius: 50%;
-      background-color: $col;
+      background-color: $bg2;
       @include square(20px);
       @include colorfade();
+      @include shadow();
 
       & svg {
         transform: rotate(45deg);
-        fill: $col;
+        fill: $bg4;
       }
 
       &:not(:disabled):not(:active):hover {
-        background-color: lighten($col, 4%);
+        background-color: $col;
         & svg {
           fill: $bg6;
         }

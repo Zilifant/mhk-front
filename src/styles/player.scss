@@ -47,7 +47,7 @@ $dpt: 5%;
   grid-template-areas:
     "info evti evid meti mean";
   &.killer-choosing {
-    grid-template-columns: 110px max-content repeat(2, max-content 1fr);
+    grid-template-columns: 70px max-content repeat(2, max-content 1fr);
     grid-template-areas:
       "info intr evti evid meti mean";
   }
@@ -158,7 +158,8 @@ $dpt: 5%;
   }
 
   &.key-evidence {
-    padding: 3px;
+    padding: 15px 7px;
+    height: 72px;
   }
 }
 

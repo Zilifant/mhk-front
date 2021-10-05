@@ -39,18 +39,18 @@ $t: 0;
   background-color: $bg;
   border-radius: $rd;
   color: $fg;
-  & > svg { fill: $fg; }
+  & svg { fill: $fg; }
   @include shadow();
   @include colorfade();
   // transition: all $time;
   &:not(:disabled):not(:active):hover {
     color: lighten($fg, 20%);
-    & > svg { fill: lighten($fg, 20%); }
+    & svg { fill: lighten($fg, 20%); }
     background-color: lighten($bg, 4%);
   }
   &:not(:disabled):active {
     color: darken($fg, 20%);
-    & > svg { fill: darken($fg, 20%); }
+    & svg { fill: darken($fg, 20%); }
     background-color: darken($bg, 10%);
   }
 }

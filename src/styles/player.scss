@@ -12,7 +12,7 @@ $dpt: 5%;
 
 .p-info.username  { grid-area: name; }
 .p-info.badge     { grid-area: badg; }
-.p-info.role      { grid-area: role; }
+.p-info      { grid-area: info; }
 .p-info.interact  { grid-area: intr; }
 .c-group-title.evidence { grid-area: evti; }
 .c-group.evidence { grid-area: evid; }
@@ -26,16 +26,16 @@ $dpt: 5%;
   grid-template-columns: 110px 1fr;
   grid-template-rows: 26px 1fr 1fr 26px;
   grid-template-areas:
-    "role evid"
-    "role evid"
-    "role mean"
+    "info evid"
+    "info evid"
+    "info mean"
     "intr mean";
-  &.never-interacts {
+  &.no-interact {
     grid-template-areas:
-      "role evid"
-      "role evid"
-      "role mean"
-      "role mean";
+      "info evid"
+      "info evid"
+      "info mean"
+      "info mean";
   }
 }
 
@@ -45,40 +45,42 @@ $dpt: 5%;
   gap: $mar;
   grid-template-columns: 110px repeat(2, max-content 1fr);
   grid-template-areas:
-    "role evti evid meti mean"
-    "role evti evid meti mean"
-    "role evti evid meti mean";
+    "info evti evid meti mean";
   &.killer-choosing {
     grid-template-columns: 110px max-content repeat(2, max-content 1fr);
     grid-template-areas:
-      "role intr evti evid meti mean"
-      "role intr evti evid meti mean";
+      "info intr evti evid meti mean";
   }
 }
 
 .p-info {
-  background-color: $bg3;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: $rad;
-}
-
-ul.c-group {
-  display: flex;
-}
-
-.p-info .wrapper {
-  text-align: center;
-}
-
-.p-info {
   cursor: default;
+  // background-color: $bg3;
 
-  &.role {
-    padding: 3px 0;
+  & .wrapper {
+    text-align: center;
     background-color: $bg4;
+    padding: 4px 0;
+
+    // & :not(:first-child) {
+    //   margin-top: 4px;
+    // }
+
+    & .username {
+      font-size: 1.25rem;
+      letter-spacing: .1rem;
+      text-transform: uppercase;
+      & .offline {
+        color: $bg2;
+      }
+    }
+
     & .svg-icon.badge {
+      margin: 4px 0;
       height: 20px;
       background-color: $bg4;
       &.can-accuse {
@@ -92,6 +94,15 @@ ul.c-group {
         }
       }
     }
+
+    & .role {
+      font-size: 1.25rem;
+    }
+    & .redteam, & .killer { color: $killer; }
+    & .accomplice { color: $accomp; }
+    & .witness { color: $witnss; }
+    & .hunter { color: $hunter; }
+    & .mystery { color: $mystry; }
   }
 
   &.interact {
@@ -100,6 +111,10 @@ ul.c-group {
       height: 26px;
     }
   }
+}
+
+.c-group {
+  display: flex;
 }
 
 .c-group-title {
@@ -113,8 +128,6 @@ ul.c-group {
   text-transform: uppercase;
   font-size: normal;
   line-height: .8rem;
-  // font-weight: bold;
-  // letter-spacing: .05rem;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   &.means {
@@ -123,48 +136,6 @@ ul.c-group {
   &.evidence {
     color: lighten($evc, $pt);
   }
-}
-
-.username {
-  font-size: 1.25rem;
-  letter-spacing: .1rem;
-}
-
-.username.offline {
-  color: $bg1;
-}
-
-
-.p-info.role .wrapper {
-  & :not(:first-child) {
-    margin-top: 2px;
-  }
-  & .role {
-    font-size: 1.25rem;
-  }
-}
-
-.p-info.role .wrapper .redteam,
-.p-info.role .wrapper .killer {
-  color: $killer;
-}
-
-.p-info.role .wrapper .accomplice {
-  color: $accomp;
-  // font-weight: normal;
-  // letter-spacing: normal;
-}
-
-.p-info.role .wrapper .witness {
-  color: $witnss;
-}
-
-.p-info.role .wrapper .hunter {
-  color: $hunter;
-}
-
-.p-info.role .wrapper .mystery {
-  color: $mystry;
 }
 
 // confirm buttons
@@ -197,7 +168,7 @@ ul.c-group {
 // means and evidence cards
 
 .con--player {
-  height: 150px;
+  height: 140px;
 }
 
 .con--self.player {

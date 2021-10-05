@@ -113,15 +113,15 @@ const Player = ({
   const getSelectedId = (type) => canIAccuse ? selTracker[type]?.id : null;
 
   return (
-    <Container className={`player ${!canIInteract && 'never-interacts'}`}>
-      <li className={`p-info role ${roleClass}`}>
+    <Container className={`player ${!canIInteract && 'no-interact'}`}>
+      <li className={`p-info ${roleClass}`}>
         <div className='wrapper'>
           <div>
             {/* <span className={`indicator ${connectionStatus}`}></span> */}
             <span className={`username ${connectionStatus}`}>{playerId.slice(0,-5)}</span>
           </div>
           <SVGIcon
-            icon='crown'
+            icon='badge'
             className={`badge ${badge(canTheyAccuse)}`}
           />
           <div className='subtitle'>Their role</div>

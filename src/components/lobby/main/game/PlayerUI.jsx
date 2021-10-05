@@ -24,7 +24,7 @@ const PlayerUI = ({
       <li className={`p-info role ${role}`}>
         <div className='wrapper'>
           <SVGIcon
-            icon='crown'
+            icon='badge'
             className={`badge ${badge(canAccuse)}`}
           />
           <div className='subtitle'>You are {article(role)}</div>

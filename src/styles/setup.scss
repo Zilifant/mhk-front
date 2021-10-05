@@ -3,8 +3,6 @@
 @import './colors.scss';
 @import './mixins.scss';
 
-$bdr-width: .33rem;
-
 .container.con--setup {
   display: flex;
   flex-direction: column;
@@ -167,7 +165,7 @@ button.startgame {
 
 .svg-icon.timer {
   display: flex;
-  border-radius: 50%;
+  border-radius: $rad3;
   background-color: $bg4;
   & svg {
     fill: $bg2;

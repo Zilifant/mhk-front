@@ -8,7 +8,6 @@ import { useGame } from '../../../../hooks/game-hook';
 import { SocketContext } from '../../../../context/contexts';
 import { badge } from '../../../../util/utils';
 import Container from '../../../shared/Container';
-import Button from '../../../ui-elements/Button';
 import Cards from './Cards';
 import '../../../../styles/player.scss';
 import SVGIcon from '../../../ui-elements/SVGIcon';
@@ -58,28 +57,28 @@ const Player = ({
 
   const accuseBtn = () => {
     return (
-      <Button
-        className='confirm-accusation three-d'
+      <button
+        className='confirm-btn accusation'
         onClick={() => submitSelection({
           cb: [accusationHandler, myId, playerId],
           reset: true
         })}
         disabled={!minSelected}
       >
-        ACCUSE
-      </Button>
+        accuse
+      </button>
     );
   };
 
   const killBtn = () => {
     return (
-      <Button
-        className='confirm-kill three-d'
+      <button
+        className='confirm-btn kill'
         onClick={() => killWitnessHandler(playerId)}
         disabled={false}
       >
-        KILL
-      </Button>
+        kill
+      </button>
     );
   };
 
@@ -126,7 +125,7 @@ const Player = ({
             className={`badge ${badge(canTheyAccuse)}`}
           />
           <div className='subtitle'>Their role</div>
-          <div className={'role' + ' ' + roleClass}>{roleDisplay.toUpperCase()}</div>
+          <div className={`role ${roleClass}`}>{roleDisplay.toUpperCase()}</div>
         </div>
       </li>
       {canIInteract && <li className={`p-info interact`}>

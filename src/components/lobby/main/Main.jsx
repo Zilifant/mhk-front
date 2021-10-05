@@ -8,10 +8,11 @@ import MemberList from './nogame/MemberList';
 import Setup from './nogame/Setup';
 import Ghost from './game/Ghost';
 import Players from './game/Players';
-import BasicUI from './game/BasicUI';
-import KillerUI from './game/KIllerUI';
+// import BasicUI from './game/BasicUI';
+// import KillerUI from './game/KIllerUI';
 import Announcer from './Announcer';
 import Timer from './game/Timer';
+import PlayerUI from './game/PlayerUI';
 
 const Main = ({
   lobby,
@@ -80,7 +81,14 @@ const Main = ({
             game={game}
           />}
 
-          {(thisPlayer.role === 'hunter' ||
+          {thisPlayer.role !== 'ghost' &&
+          <PlayerUI
+            thisPlayer={thisPlayer}
+            stage={game.currentStage}
+            keyEv={game?.keyEvidence}
+          />}
+
+          {/* {(thisPlayer.role === 'hunter' ||
             thisPlayer.role === 'witness' ||
             thisPlayer.role === 'accomplice') &&
           <BasicUI
@@ -92,7 +100,7 @@ const Main = ({
             thisPlayer={thisPlayer}
             stage={game.currentStage}
             keyEv={game.keyEvidence}
-          />}
+          />} */}
 
         </React.Fragment>
       }

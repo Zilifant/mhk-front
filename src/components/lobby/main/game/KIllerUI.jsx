@@ -39,7 +39,7 @@ const KillerUI = ({
   } = useGame(socket);
 
   const keyEvBtn = () => {
-    return (
+    if (stage.id === 'setup') return (
       <li className={`p-info interact con-key-ev`}>
         <Button
           className='confirm-key-evidence three-d'
@@ -50,18 +50,11 @@ const KillerUI = ({
         </Button>
       </li>
     );
-  };
-
-  const interact = () => {
-    if (stage.id === 'setup') return keyEvBtn();
     return null;
   };
 
   return (
     <Container className={`self player ${stage.id !== 'setup' && 'never-interacts'}`}>
-      {/* <li className={`p-info badge ${badge(canAccuse)}`}>
-        BADGE
-      </li> */}
       <li className={`p-info role ${role}`}>
         <div className='wrapper'>
           <SVGIcon
@@ -69,19 +62,19 @@ const KillerUI = ({
             className={`badge ${badge(canAccuse)}`}
           />
           <div className='subtitle'>You are {article(role)}</div>
-          <div className={'role' + ' ' + role}>{role.toUpperCase()}</div>
+          <div className={`role ${role}`}>{role.toUpperCase()}</div>
         </div>
       </li>
-      {interact()}
+      {keyEvBtn()}
       {types.map((type) => (<React.Fragment key={type}>
         <div className={`c-group-title ${type}`}>{type}</div>
         <Cards
           myRole={role}
           type={`${role}UI`}
           cardType={type}
-          // key={type}
-          stage={stage}
           cards={hand[type]}
+
+          stage={stage}
           selectedId={selTracker[type]?.id}
           selectCardHandler={selectHandler}
           isMine={true}
@@ -93,11 +86,3 @@ const KillerUI = ({
 };
 
 export default KillerUI;
-
-// {(stage.id === 'Setup') && <Button
-// className='confirm-key-evidence'
-// onClick={() => console.table(selTracker)}
-// disabled={false}
-// >
-// Confirm
-// </Button>}

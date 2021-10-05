@@ -1,6 +1,4 @@
-import React, {
-  // useState
-} from 'react';
+import React from 'react';
 import Card from './Card';
 
 const Cards = ({
@@ -16,7 +14,7 @@ const Cards = ({
 }) => {
 
   const rolesWithSimpleHand = ['hunter', 'witness', 'accomplice'];
-  const hasSimpleHand = rolesWithSimpleHand.includes(myRole) && (type === 'hunterUI');
+  const hasSimpleHand = rolesWithSimpleHand.includes(myRole) && (type === 'basicUI');
 
   if (hasSimpleHand) {
     return (
@@ -38,7 +36,7 @@ const Cards = ({
 
   const isEnabled = () => {
     switch (type) {
-      case `hunterUI`:
+      case `basicUI`:
         return false;
       case `killerUI`:
         if (stage.id !== `setup`) return false;

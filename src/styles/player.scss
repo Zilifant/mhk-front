@@ -43,16 +43,16 @@ $dpt: 5%;
   background-color: $bg4;
   display: grid;
   gap: $mar;
-  grid-template-columns: 110px max-content repeat(2, max-content 1fr);
+  grid-template-columns: 110px repeat(2, max-content 1fr);
   grid-template-areas:
-    "role intr evti evid meti mean"
-    "role intr evti evid meti mean";
-  &.never-interacts {
-    grid-template-columns: 110px repeat(2, max-content 1fr);
+    "role evti evid meti mean"
+    "role evti evid meti mean"
+    "role evti evid meti mean";
+  &.killer-choosing {
+    grid-template-columns: 110px max-content repeat(2, max-content 1fr);
     grid-template-areas:
-      "role evti evid meti mean"
-      "role evti evid meti mean"
-      "role evti evid meti mean";
+      "role intr evti evid meti mean"
+      "role intr evti evid meti mean";
   }
 }
 
@@ -111,8 +111,8 @@ ul.c-group {
   padding: 0;
   cursor: default;
   text-transform: uppercase;
-  font-size: larger;
-  line-height: 1rem;
+  font-size: normal;
+  line-height: .8rem;
   // font-weight: bold;
   // letter-spacing: .05rem;
   writing-mode: vertical-rl;
@@ -169,26 +169,28 @@ ul.c-group {
 
 // confirm buttons
 
-.btn--confirm-kill,
-.btn--confirm-accusation {
+.confirm-btn {
   margin: 0 auto;
   height: 100%;
-  width: 100%;
-}
-
-.btn--confirm-key-evidence {
-  margin: 0 auto;
-  height: 100%;
-}
-
-button.btn.three-d {
+  text-transform: uppercase;
   @include float-btn-txt($c-def-bg, $fg3);
+
   &:disabled {
     cursor: auto;
     @include float-btn-txt($c-dis-bg, darken($fg3, 30%));
   }
-  &.btn--confirm-kill {
+
+  &.kill,
+  &.accusation {
+    width: 100%;
+  }
+
+  &.kill {
     @include float-btn-txt($c-kill-bg, $fg3);
+  }
+
+  &.key-evidence {
+    padding: 3px;
   }
 }
 

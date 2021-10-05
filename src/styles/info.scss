@@ -97,6 +97,7 @@
     }
     & > .nextround {
       @include float-btn-txt($cyan6, $fg3);
+      // @include algo-btn();
     }
     & > .cleargame {
       @include float-btn-txt($rose9, $fg3);

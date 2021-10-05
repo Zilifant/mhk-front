@@ -4,8 +4,8 @@
 @import './mixins.scss';
 
 $ifm-mar: 1rem;
-$clo: $bg2;
-$def: $bg4;
+$clo: $wrmg6;
+$def: $colg6;
 $cur: $teal7;
 
 .infomodal-invis-wrap {
@@ -23,15 +23,18 @@ $cur: $teal7;
 
 .infomodal-wrap {
   background-color: $bg4;
-  border-radius: $rad;
+  border-radius: $rad6;
   margin: 2rem;
   border: 2px solid $bg1;
   @include shadow();
   z-index: 999;
   &.text {
     display: inline-flex;
-    max-width: 700px;
+    width: 700px;
     height: calc(100% - 4rem);
+    @media (max-width: 750px) {
+      width: calc(100% - 4rem);
+    }
   }
   &.vid {
     display: flex;
@@ -50,6 +53,9 @@ $cur: $teal7;
   &:hover {
     background-color: $redd5;
   }
+  &:active {
+    background-color: darken($redd5, 10%);
+  }
 }
 
 .infomodal-nav {
@@ -59,17 +65,17 @@ $cur: $teal7;
 
 .infomodal-nav-btn {
   width: 135px;
-  // padding: 2px 0;
-  // text-transform: uppercase;
-  @include flat-btn-txt($def, $fg3);
+  padding: 2px 6px;
+  text-transform: uppercase;
+  @include float-btn-txt($def, $fg3);
   &:not(:last-child) {
     margin-bottom: .5rem;
   }
   &.current {
-    @include flat-btn-txt($cur, $fg1);
+    @include float-btn-txt($cur, $fg1);
   }
   &.close-btn {
-    @include flat-btn-txt($clo, $fg3);
+    @include float-btn-txt($clo, $fg3);
   }
 }
 

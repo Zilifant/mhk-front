@@ -29,7 +29,7 @@ const Footer = ({
           />
           {/* <div className='footer-placeholder'>-</div> */}
           <div className='footer-content'>
-            <div className='footer-text'>Copyright 2021 Zilifant</div>
+            <div className='footer-text'>Zilifant</div>
             <InfoModal
               className='about footer'
               btnClassName='flat'

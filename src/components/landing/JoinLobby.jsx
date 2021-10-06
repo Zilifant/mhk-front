@@ -164,13 +164,13 @@ const JoinLobby = ({ lobbyId }) => {
             </Grid>
           </form>
           <div className='streaming-mode-wrapper'>
-            <button
+            {/* <button
               disabled={false}
               className='join-devlobby'
               onClick={(e) => joinLobbyHandler(e, true)}
             >
               DEV
-            </button>
+            </button> */}
             <span className='streaming-mode-label'>
               streaming mode
             </span>

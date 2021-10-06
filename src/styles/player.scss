@@ -62,6 +62,7 @@ $dpt: 5%;
   // background-color: $bg3;
 
   & .wrapper {
+    max-width: 100%;
     text-align: center;
     background-color: $bg4;
     padding: 4px 0;
@@ -69,14 +70,14 @@ $dpt: 5%;
     & .username {
       font-size: 1.25rem;
       letter-spacing: .1rem;
-      text-transform: uppercase;
+      // text-transform: uppercase;
       & .offline {
         color: $bg2;
       }
     }
 
     & .svg-icon.badge {
-      margin: 4px 0;
+      margin: 4px 0 6px 0;
       height: 20px;
       background-color: $bg4;
       &.can-accuse {

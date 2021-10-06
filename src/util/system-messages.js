@@ -58,8 +58,8 @@ export const systemMessages = (() => {
 
   const join = ([id, col]) => `_${cls+col}_${name(id)}^ joined.`;
 
-  const waitingForStart = (iAmLeader) => {
-    return iAmLeader ? `Ready to start...` : `Waiting for the leader to start the game...`
+  const waitingForStart = (iAmLeader, leader) => {
+    return iAmLeader ? `Ready to start...` : `Waiting for ^_${cls+leader.color.id}_${name(leader.id)}^ to start the game...`
   };
 
   const ready = ([id, col], ready) => {

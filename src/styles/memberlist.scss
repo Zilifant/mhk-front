@@ -12,10 +12,6 @@
   /* background-color: $bg4; */
 }
 
-.container.con--memberlist * {
-  border-radius: $rad;
-}
-
 ul.memberlist > :not(:first-child) {
   margin-top: .5rem;
 }
@@ -46,11 +42,12 @@ div.member_grid {
     '. leader name . ghost';
   padding: 6px;
   border: $bdr2 solid;
+  border-radius: $rad6;
   background-color: $bg5;
 }
 
 div.member_grid.ml-self {
-  background-color: $bg6;
+  // background-color: $bg6;
   & > .member_name {
     font-style: italic;
   }
@@ -89,6 +86,13 @@ div.leader_icon {
       width: 21px;
     }
   }
+  & .svg-btn.ghost:active svg {
+    fill: darken($ghost, 20%);
+  }
+
+  & .svg-btn.transfer-leader:active svg {
+    fill: darken($leader, 20%);
+  }
 }
 
 .svg-icon.crown.ml-leader svg {
@@ -110,11 +114,11 @@ div.leader_icon {
   visibility: hidden;
 }
 
-div.member_grid:hover > .leader_icon .svg-btn.transfer-leader svg {
+div.member_grid:hover > .leader_icon .svg-btn.transfer-leader:not(:active) svg {
   fill: $leader;
 }
 
-div.member_grid:hover > .ghost_icon .svg-btn.assign-ghost.ml-notghost svg {
+div.member_grid:hover > .ghost_icon .svg-btn.assign-ghost.ml-notghost:not(:active) svg {
   fill: $ghost;
 }
 

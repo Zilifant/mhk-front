@@ -21,7 +21,8 @@ const Ghost = ({
             icon='skull'
             className='gc-back-icon'
           />
-          <div className='gc-back-text'>MHK</div>
+          <div className='gc-back-text title'>MHK</div>
+          <div className='gc-back-text subtitle'>BETA</div>
         </div>
       </div>
       {isGhostUI && <div className='gc-conbtn-placeholder'>-</div>}

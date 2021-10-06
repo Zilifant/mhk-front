@@ -33,6 +33,13 @@ export const rules = [
 ];
 
 export const lobbyMethods = {
+  getUserBy(val, key='id') {
+    const user = this.users.find(u => u[key] === val);
+    if (!user) {
+      return console.log(`ERR! ${this.id}: no user with '${key}:${val}' found`);
+    };
+    return user;
+  },
   numOnline() {
     return this.users.filter(u => u.isOnline === true).length;
   },
@@ -63,7 +70,7 @@ export const lobbyMethods = {
   startGameText(iAmLeader) {
     return !this.minPlayersOnline() ? ['waitingForJoin',[]]
          : !this.allPlayersReady() ? ['waitingForReady',[]]
-         : ['waitingForStart',[iAmLeader]];
+         : ['waitingForStart',[iAmLeader, this.getUserBy(true, 'isLeader')]];
   },
   getUserColor(userId) {
     return this.users.find(user => user.id === userId).color;

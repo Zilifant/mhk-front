@@ -20,8 +20,7 @@
 }
 
 .svg-btn.minimize-chat {
-  width: 20px;
-  height: 20px;
+  @include square(24px);
   @include nobg-btn-svg();
 }
 
@@ -31,7 +30,7 @@
   flex: 1 1 auto;
   background-color: $bg5;
   margin: .5rem 0;
-  border-radius: $rad;
+  border-radius: $rad3;
   min-height: 0;
   height: calc(100% - 4rem);
   overflow: auto;
@@ -65,7 +64,7 @@
 }
 
 input.new-message-input {
-  /* margin-right: .5rem; */
+  border-radius: $rad3;
   width: 100%;
   border: 1px solid $bg5;
 }

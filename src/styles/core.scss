@@ -14,7 +14,7 @@ html, body {
 
 *, *:before, *:after {
   @include z(500);
-  font-family: 'Roboto Condensed', Impact, 'Franklin Gothic Bold', sans-serif;
+  font-family: 'Roboto Condensed', Arial, Helvetica, sans-serif;
   font-size: 14px;
   letter-spacing: .025rem;
   color: $default;

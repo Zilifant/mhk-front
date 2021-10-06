@@ -80,21 +80,6 @@ const Info = ({
 
   return (
     <Container className='info game'>
-      <div className='gamestage-username'>
-        {/* <InfoModal
-          className='rules info'
-          btnClassName='flat'
-          buttonContent='rulebook'
-          info={rules}
-        /> */}
-        {showGameStage &&
-        <div className='info gamestage'>
-          {stage.display}
-        </div>}
-        <div className='info user-name'>
-          {userName}
-        </div>
-      </div>
       {iAmLeader && <div className='game-control-buttons'>
         {showRoundBtn &&
           <button
@@ -113,6 +98,21 @@ const Info = ({
           </button>
         }
       </div>}
+      <div className='gamestage-username'>
+        {/* <InfoModal
+          className='rules info'
+          btnClassName='flat'
+          buttonContent='rulebook'
+          info={rules}
+        /> */}
+        {showGameStage &&
+        <div className='info gamestage'>
+          {stage.display}
+        </div>}
+        <div className='info user-name'>
+          {userName}
+        </div>
+      </div>
     </Container>
   );
 };

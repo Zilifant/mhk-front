@@ -36,10 +36,6 @@ $t: 0;
   width: $size;
 }
 
-@mixin cir-btn() {
-
-}
-
 @mixin float-btn-txt($bg: $bg4, $fg: $cyan5, $rd: $rad3) {
   background-color: $bg;
   border-radius: $rd;

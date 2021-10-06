@@ -38,6 +38,10 @@ div.card-wrap--ghost {
   border-radius: $rad3;
 }
 
+.gc-back {
+  border-radius: $rad6;
+}
+
 .gc-back,
 .gc-title {
   padding: 2px .5rem;
@@ -144,11 +148,23 @@ button.btn--gc {
   height: max-content;
   width: 50px;
   margin: 0 auto;
+  & svg {
+    fill: $fg4;
+  }
 }
 
 .gc-back-text {
-  font-size: large;
   text-align: center;
+  &.title {
+    margin-top: 5px;
+    line-height: 2rem;
+    font-size: xx-large;
+    color: $rose5;
+  }
+  &.subtitle {
+    font-size: large;
+    color: $fg4;
+  }
 }
 
 .gc-conbtn-placeholder {

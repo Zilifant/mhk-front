@@ -7,7 +7,7 @@ import Container from '../shared/Container';
 import Tooltip from './Tooltip';
 import SVGButton from '../ui-elements/SVGButton';
 import InfoModal from './InfoModal';
-import { rules, about } from '../../util/text';
+import { rulesTemp, about } from '../../util/text';
 import '../../styles/footer.scss';
 
 const Footer = ({
@@ -25,7 +25,7 @@ const Footer = ({
             className='rules footer'
             btnClassName='flat'
             buttonContent='rulebook'
-            info={rules}
+            info={rulesTemp}
           />
           {/* <div className='footer-placeholder'>-</div> */}
           <div className='footer-content'>

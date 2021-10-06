@@ -44,6 +44,15 @@ $cur: $teal7;
       height: 315px;
     }
   }
+  &.text-sp {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    height: calc(100% - 4rem);
+    @media (max-width: 750px) {
+      width: calc(100% - 4rem);
+    }
+  }
 }
 
 .infomodal-vid-close-btn {
@@ -55,6 +64,33 @@ $cur: $teal7;
   }
   &:active {
     background-color: darken($redd5, 10%);
+  }
+}
+
+.infomodal-titlebar {
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+  display: inline-flex;
+  & * {
+    font-size: larger;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 4px 0;
+  }
+  & .infomodal-titlebar-title {
+    background-color: $bg3;
+    text-indent: 66px;
+    width: 100%;
+  }
+  & .close-btn {
+    width: 66px;
+    background-color: $bg1;
+    &:hover {
+      background-color: $redd5;
+    }
+    &:active {
+      background-color: darken($redd5, 10%);
+    }
   }
 }
 
@@ -94,16 +130,21 @@ $cur: $teal7;
   }
 }
 
-.infomodal-content span {
-  line-height: 1.75rem;
-  font-size: larger;
+.infomodal-content {
+  & span {
+    line-height: 1.75rem;
+    font-size: larger;
+  }
+  & a {
+    font-size: 16.8px;
+  }
 }
 
 .infomodal-content .faded span {
   color: $bg1;
 }
 
-.infomodal-content .line-smd--def {
+.infomodal-content div {
   margin-bottom: .5rem;
   &:last-child {
     margin-bottom: $ifm-mar;

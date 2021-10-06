@@ -4,7 +4,35 @@ import React, {
 import { parse, render } from '../../util/smd';
 import '../../styles/infomodals.scss';
 
-const Modal = ({
+const ModalSP = ({
+  info,
+  className,
+  hideHandler,
+  buttonContent, //temp
+}) => {
+
+  return (
+    <div className='infomodal-invis-wrap'>
+      <div className={`infomodal-wrap text-sp ${className}`}>
+        <div className='infomodal-titlebar'>
+          <div className='infomodal-titlebar-title'>{info.title || 'game rules'}</div>
+          <button
+            className={`infomodal-titlebar-btn close-btn`}
+            onClick={() => hideHandler(false)}
+          >
+            close
+          </button>
+        </div>
+        <div className='infomodal-content'>
+          {(buttonContent === 'rulebook') ? info() : render.block(parse(info.content))}
+        </div>
+      </div>
+    </div>
+  );
+
+};
+
+const ModalMP = ({
   info,
   className,
   hideHandler
@@ -50,10 +78,12 @@ const InfoModal = ({
   info,
   className,
   btnClassName,
-  buttonContent
+  buttonContent,
 }) => {
 
   const [showModal, setShowModal] = useState(false);
+
+  const Modal = Array.isArray(info) ? ModalMP : ModalSP
 
   return (<>
     <button
@@ -66,6 +96,7 @@ const InfoModal = ({
       info={info}
       className={className}
       hideHandler={setShowModal}
+      buttonContent={buttonContent}
     />}
   </>);
 

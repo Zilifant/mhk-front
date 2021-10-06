@@ -7,6 +7,25 @@
   color: $fg3;
 }
 
+div.line-smd--listitem {
+  margin-bottom: 0;
+  &::before {
+    content: '>>>';
+    color: $bg1;
+    margin-right: .5rem;
+  }
+}
+
+.smd--link {
+  color: $cyan5;
+  &:hover {
+    color: $cyan4;
+  }
+  &:active {
+    color: $cyan6;
+  }
+}
+
 .smd--usermessage {
   font-style: normal;
 }
@@ -56,6 +75,7 @@
 .line-smd--emphasize > span,
 .smd--emphasize {
   font-weight: bold;
+  letter-spacing: .08rem;
 }
 
 .smd--warn {

@@ -29,6 +29,7 @@ const defaultOpts = {
     {abb: 'e', classname: 'smd--emphasize'},
     {abb: 'i', classname: 'smd--italic'},
     {abb: 'w', classname: 'smd--warn'},
+    {abb: 'li', classname: 'smd--listitem'},
   ],
 };
 

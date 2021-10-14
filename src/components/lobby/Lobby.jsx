@@ -60,7 +60,7 @@ const Lobby = () => {
     // console.log('UE: subToLobby');
     const subToLobby = () => {
       socket.current.on('updateLobby', ({ lobby, data }) => {
-        setLobby({...lobbyMethods, ...lobby});
+        setLobby(prev => ({...prev, ...lobby}));
         // console.log('lobby updated');
 
         if (data?.event === 'userConnected' && data?.user.id === userId) {

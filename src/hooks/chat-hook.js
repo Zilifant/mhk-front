@@ -58,9 +58,9 @@ export const useChat = (chat) => {
       socket.current.on('updateLobby', ({ msg }) => {
         if (msg) return setMessages((messages) => [...messages, msg]);
       });
-      socket.current.on('announcement', ({ msg }) => {
-        if (msg) return setMessages((messages) => [...messages, msg]);
-      });
+      // socket.current.on('announcement', ({ msg }) => {
+      //   if (msg) return setMessages((messages) => [...messages, msg]);
+      // });
     };
     sub2Announce();
 

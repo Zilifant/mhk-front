@@ -22,12 +22,9 @@ $cur: $teal7;
 }
 
 .infomodal-wrap {
-  background-color: $bg4;
-  border-radius: $rad6;
+  overflow: hidden;
   margin: 2rem;
-  border: 2px solid $bg1;
-  @include shadow();
-  z-index: 999;
+  @include infomodal();
   &.text {
     display: inline-flex;
     width: 700px;
@@ -67,29 +64,50 @@ $cur: $teal7;
   }
 }
 
+.infomodal-titlebar-title { grid-area: t; }
+.close-btn { grid-area: c; }
+
 .infomodal-titlebar {
-  border-radius: 3px 3px 0 0;
-  overflow: hidden;
-  display: inline-flex;
-  & * {
-    font-size: larger;
+  // border-radius: 3px 3px 0 0;
+  background-color: $bg4;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: '. t c';
+  align-items: center;
+  & .infomodal-titlebar-title {
+    font-size: xx-large;
     text-align: center;
     text-transform: uppercase;
-    padding: 4px 0;
+    padding: 4px;
   }
-  & .infomodal-titlebar-title {
-    background-color: $bg3;
-    text-indent: 66px;
-    width: 100%;
-  }
-  & .close-btn {
-    width: 66px;
-    background-color: $bg1;
-    &:hover {
-      background-color: $redd5;
+  & .svg-btn.close-btn {
+    justify-self: right;
+    margin-right: 12px;
+    $col: $redd5;
+    padding: 4px;
+    border-radius: 50%;
+    background-color: $col;
+    @include square(24px);
+    @include colorfade();
+    @include shadow();
+  
+    & svg {
+      transform: rotate(45deg);
+      fill: none
     }
-    &:active {
-      background-color: darken($redd5, 10%);
+  
+    &:not(:disabled):not(:active):hover {
+      & svg {
+        fill: $bg5;
+      }
+    }
+  
+    &:not(:disabled):active {
+      background-color: transparentize($col, .3);
+      & svg {
+        fill: $bg6;
+      }
     }
   }
 }

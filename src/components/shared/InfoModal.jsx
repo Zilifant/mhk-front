@@ -2,6 +2,7 @@ import React, {
   useState
 } from 'react';
 import { parse, render } from '../../util/smd';
+import SVGButton from '../ui-elements/SVGButton';
 import '../../styles/infomodals.scss';
 
 const ModalSP = ({
@@ -16,12 +17,17 @@ const ModalSP = ({
       <div className={`infomodal-wrap text-sp ${className}`}>
         <div className='infomodal-titlebar'>
           <div className='infomodal-titlebar-title'>{info.title || 'game rules'}</div>
-          <button
+          <SVGButton
+            className='close-btn'
+            onClick={() => hideHandler(false)}
+            icon='plus'
+          />
+          {/* <button
             className={`infomodal-titlebar-btn close-btn`}
             onClick={() => hideHandler(false)}
           >
             close
-          </button>
+          </button> */}
         </div>
         <div className='infomodal-content'>
           {(buttonContent === 'rulebook') ? info() : render.block(parse(info.content))}

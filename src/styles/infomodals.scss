@@ -53,6 +53,7 @@ $cur: $teal7;
 }
 
 .infomodal-vid-close-btn {
+  @include colorfade();
   background-color: $bg5;
   text-transform: uppercase;
   padding: 2px;
@@ -60,7 +61,7 @@ $cur: $teal7;
     background-color: $redd5;
   }
   &:active {
-    background-color: darken($redd5, 10%);
+    background-color: transparentize($redd5, .4);
   }
 }
 
@@ -68,7 +69,6 @@ $cur: $teal7;
 .close-btn { grid-area: c; }
 
 .infomodal-titlebar {
-  // border-radius: 3px 3px 0 0;
   background-color: $bg4;
   width: 100%;
   display: grid;
@@ -94,7 +94,7 @@ $cur: $teal7;
   
     & svg {
       transform: rotate(45deg);
-      fill: none
+      fill: $col;
     }
   
     &:not(:disabled):not(:active):hover {

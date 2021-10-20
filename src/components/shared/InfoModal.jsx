@@ -22,12 +22,6 @@ const ModalSP = ({
             onClick={() => hideHandler(false)}
             icon='plus'
           />
-          {/* <button
-            className={`infomodal-titlebar-btn close-btn`}
-            onClick={() => hideHandler(false)}
-          >
-            close
-          </button> */}
         </div>
         <div className='infomodal-content'>
           {(buttonContent === 'rulebook') ? info() : render.block(parse(info.content))}

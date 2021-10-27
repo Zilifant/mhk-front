@@ -17,6 +17,7 @@ import Grid from '../shared/Grid';
 import Container from '../shared/Container';
 import Input from '../ui-elements/Input';
 import Tooltip from '../shared/Tooltip';
+import Toggle from '../ui-elements/Toggle';
 
 const JoinLobby = ({ lobbyId }) => {
   const { updateUserCtx } = useContext(UserContext);
@@ -108,10 +109,9 @@ const JoinLobby = ({ lobbyId }) => {
               streaming mode
             </span>
             <div className='streaming-mode ttip-parent'>
-              <button
-                disabled={false}
-                className={`streaming-mode-btn ${isStreamer && 'on'}`}
-                onClick={() => setIsStreamer(!isStreamer)}
+              <Toggle
+                className='streaming-mode-btn'
+                onChange={() => setIsStreamer(!isStreamer)}
               />
               <Tooltip tip='streamingMode' side='bottom' />
             </div>
@@ -164,21 +164,13 @@ const JoinLobby = ({ lobbyId }) => {
             </Grid>
           </form>
           <div className='streaming-mode-wrapper'>
-            {/* <button
-              disabled={false}
-              className='join-devlobby'
-              onClick={(e) => joinLobbyHandler(e, true)}
-            >
-              DEV
-            </button> */}
             <span className='streaming-mode-label'>
               streaming mode
             </span>
             <div className='streaming-mode ttip-parent'>
-              <button
-                disabled={false}
-                className={`streaming-mode-btn ${isStreamer && 'on'}`}
-                onClick={() => setIsStreamer(!isStreamer)}
+              <Toggle
+                className='streaming-mode-btn'
+                onChange={() => setIsStreamer(!isStreamer)}
               />
               <Tooltip tip='streamingMode' side='bottom' />
             </div>

@@ -172,11 +172,6 @@ input.join-lobby-lobbyid-input {
   }
 }
 
-.streaming-mode-btn {
-  padding: 4px;
-  @include float-btn-toggle($ready, $redd5, 1.5rem);
-}
-
 .new-lobby-btn,
 .join-lobby-btn,
 .join-this-lobby-btn {

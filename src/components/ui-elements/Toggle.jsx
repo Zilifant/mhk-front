@@ -13,7 +13,9 @@ return (
       type='checkbox'
       onChange={onChange}
     />
-    <div className='toggle-fg preload'/>
+    <div className='toggle-fg toggle-rollunder'>
+      <div className='toggle-fg toggle-rollover'/>
+    </div>
   </label>
 );
 

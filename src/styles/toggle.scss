@@ -21,10 +21,10 @@
 .toggle-fg {
   cursor: pointer;
   position: relative;
-  -webkit-transition: all .5s;
-     -moz-transition: all .5s;
-       -o-transition: all .5s;
-          transition: all .5s;
+  -webkit-transition: all .3s;
+     -moz-transition: all .3s;
+       -o-transition: all .3s;
+          transition: all .3s;
 
   &.toggle-rollunder {
     overflow: hidden;

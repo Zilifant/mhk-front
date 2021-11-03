@@ -77,12 +77,12 @@ div.leader_icon {
 }
 
 .member_grid {
-  @include colorfade();
   & .svg-icon.ghost,
   & .svg-btn.ghost {
     display: flex;
     justify-content: flex-end;
     & svg {
+      @include colorfade();
       height: 30px;
       width: 21px;
     }
@@ -93,6 +93,12 @@ div.leader_icon {
 
   & .svg-btn.transfer-leader:active svg {
     fill: darken($leader, 20%);
+  }
+
+  & .svg-btn.crown {
+    & svg {
+      @include colorfade();
+    }
   }
 }
 

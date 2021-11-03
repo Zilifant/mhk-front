@@ -95,32 +95,8 @@ $out-mar: 28px; // 2rem
   & .svg-btn.close-btn {
     justify-self: right;
     margin-right: 12px;
-    $col: $redd5;
-    padding: 4px;
-    border-radius: 50%;
-    background-color: $col;
-    @include square(24px);
-    @include colorfade();
-    @include shadow();
-  
-    & svg {
-      transform: rotate(45deg);
-      fill: $col;
-    }
-  
-    &:not(:disabled):not(:active):hover {
-      & svg {
-        fill: $bg5;
-      }
-    }
-  
-    &:not(:disabled):active {
-      background-color: transparentize($col, .3);
-      & svg {
-        fill: $bg6;
-      }
-    }
-  }
+    @include close-btn($size: 24px);
+  };
 }
 
 .infomodal-nav {

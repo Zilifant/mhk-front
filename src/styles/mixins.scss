@@ -33,10 +33,14 @@ $t: .1s;
 }
 
 @mixin colorfade() {
-  transition: color $t, background-color $t, border-color $t, fill $t;
-  & * {
-    transition: color $t, background-color $t, border-color $t, fill $t;
-  }
+  transition:
+    color $t,
+    background-color $t,
+    border-color $t,
+    fill $t;
+  // & * {
+  //   transition: color $t, background-color $t, border-color $t, fill $t;
+  // }
 }
 
 @mixin square($size: max-content) {
@@ -54,20 +58,27 @@ $t: .1s;
   background-color: $bg;
   border-radius: $rd;
   color: $fg;
-  & svg { fill: $fg; }
+  & svg {
+    fill: $fg;
+    @include colorfade();
+  };
   @include shadow();
   @include colorfade();
   // transition: all $time;
   &:not(:disabled):not(:active):hover {
     color: lighten($fg, 20%);
-    & svg { fill: lighten($fg, 20%); }
+    & svg {
+      fill: lighten($fg, 20%);
+    };
     background-color: lighten($bg, 4%);
-  }
+  };
   &:not(:disabled):active {
     color: darken($fg, 20%);
-    & svg { fill: darken($fg, 20%); }
+    & svg {
+      fill: darken($fg, 20%);
+    };
     background-color: darken($bg, 10%);
-  }
+  };
 }
 
 @mixin float-btn-toggle($c-on: $ready, $c-off: $redd5, $size: 1.5rem) {
@@ -115,9 +126,9 @@ $t: .1s;
 }
 
 @mixin nobg-btn-svg($fg: $cyan5) {
-  @include colorfade();
   background-color: inherit;
   & svg {
+    @include colorfade();
     fill: $fg;
     &:hover {
       fill: lighten($fg, 20%);
@@ -127,6 +138,37 @@ $t: .1s;
     }
   }
 }
+
+@mixin close-btn($size: 20px) {
+  $col: $rose5;
+  background-color: $col;
+  border-radius: 50%;
+  padding: 4px;
+  @include square($size);
+  @include colorfade();
+  @include shadow();
+
+  & svg {
+    @include colorfade();
+    transform: rotate(45deg);
+    fill: $col;
+  };
+
+  &:not(:disabled):not(:active):hover {
+    & svg {
+      fill: $bg6;
+    };
+  };
+
+  &:not(:disabled):active {
+    background-color: transparentize($col, .3);
+    & svg {
+      fill: $bg6;
+    };
+  };
+}
+
+// ############ Unused ############
 
 @mixin three-d-btn($col: $cyan6, $li-by: 8%, $dk-by: 8%, $bdr-wid: $bdr3) {
   $col-li: lighten($col, $li-by);

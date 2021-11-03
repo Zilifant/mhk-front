@@ -7,6 +7,7 @@ import Container from '../shared/Container';
 import Tooltip from './Tooltip';
 import SVGButton from '../ui-elements/SVGButton';
 import InfoModal from './InfoModal';
+import { VERSION } from '../../util/utils';
 import { rulesTemp, about } from '../../util/text';
 import '../../styles/footer.scss';
 
@@ -29,7 +30,7 @@ const Footer = ({
           />
           {/* <div className='footer-placeholder'>-</div> */}
           <div className='footer-content'>
-            <div className='footer-text'>Zilifant</div>
+            <div className='footer-text'>v {VERSION}</div>
             <InfoModal
               className='about footer'
               btnClassName='flat'

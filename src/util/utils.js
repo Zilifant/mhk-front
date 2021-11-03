@@ -1,5 +1,6 @@
 // Utilities
 
+export const VERSION = '0.8.1';
 export const MAX_NAME_LEN = 10;
 
 export const lobbyMethods = {

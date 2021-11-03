@@ -17,8 +17,6 @@ const Modal = ({
     <div className='infomodal-invis-wrap'>
       <div className={`infomodal-wrap vid ${className}`}>
         <iframe
-          // width={size[0]}
-          // height={size[1]}
           src={src}
           title={title}
           frameBorder="0"

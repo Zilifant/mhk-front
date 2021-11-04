@@ -82,7 +82,7 @@ div.leader_icon {
     display: flex;
     justify-content: flex-end;
     & svg {
-      @include colorfade();
+      @include colorfade($t: 2s);
       height: 30px;
       width: 21px;
     }
@@ -111,8 +111,8 @@ div.leader_icon {
   fill: $bg4;
 }
 
-.svg-icon.ghost.ml-ghost svg,
-.svg-btn.assign-ghost.ml-ghost svg {
+.svg-icon.ghost svg,
+.svg-btn.assign-ghost svg {
   fill: $ghost;
 }
 

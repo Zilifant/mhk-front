@@ -101,16 +101,16 @@ export const systemMessages = (() => {
         str = `Key evidence chosen. ^_k_${stage.display}^ started...`;
         break;
       case 'round-2-start':
-        str = `Starting ^_k_${stage.display}^. Waiting for the ^_kg_Ghost^ to choose a new scene...`;
+        str = `Starting ^_k_${stage.display}^. Waiting for the ^_kg_Ghost^ to replace a card...`;
         break;
       case 'round-2':
-        str = `New scene chosen. ^_k_${stage.display}^ started...`;
+        str = `Clue card replaced. ^_k_${stage.display}^ started...`;
         break;
       case 'round-3-start':
-        str = `Starting ^_k_${stage.display}^. Waiting for the ^_kg_Ghost^ to choose a new scene...`;
+        str = `Starting ^_k_${stage.display}^. Waiting for the ^_kg_Ghost^ to replace a clue card...`;
         break;
       case 'round-3':
-        str = `The ^_kg_Ghost^ has selected a new scene. ^_k_${stage.display}^ started...`;
+        str = `Clue card replaced. ^_k_${stage.display}^ started...`;
         break;
       case 'second-murder':
         str = `The ^_kk_Killer^ has been identified. But they can still win if they identify the ^_kw_Witness^...`;

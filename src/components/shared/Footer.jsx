@@ -28,7 +28,6 @@ const Footer = ({
             buttonContent='rulebook'
             info={rulesTemp}
           />
-          {/* <div className='footer-placeholder'>-</div> */}
           <div className='footer-content'>
             <div className='footer-text'>v {VERSION}</div>
             <InfoModal

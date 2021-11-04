@@ -6,7 +6,7 @@ import React, {
 import { useHttpClient } from '../../hooks/http-hook';
 import { useIO } from '../../hooks/io-hook';
 import { SocketContext, UserContext } from '../../context/contexts';
-import { getThisPlayer, lobbyMethods } from '../../util/utils';
+import { getThisPlayer, lobbyMethods, DEV } from '../../util/utils';
 import ErrorModal from '../modal/ErrorModal';
 import Loading from '../shared/Loading';
 import Grid from '../shared/Grid';
@@ -15,7 +15,7 @@ import Chat from './chat/Chat';
 import Footer from '../shared/Footer';
 
 const Lobby = () => {
-  console.log('%cLobby','color:#79f98e');
+  if (DEV) console.log('%cLobby','color:#79f98e');
   const { myLobby, userId } = useContext(UserContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient('Lobby');
   const { socket } = useIO();

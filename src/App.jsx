@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 import { useUser } from './hooks/user-hook';
 import { useHttpClient } from './hooks/http-hook';
 import { UserContext } from './context/contexts';
+import { DEV } from './util/utils';
 import Foyer from './components/lobby/Foyer';
 import Landing from './components/landing/Landing';
 import './styles/mixins.scss';
@@ -15,7 +16,7 @@ import './styles/animations.scss';
 import './styles/svgs.scss';
 
 function App() {
-  console.log('%cApp','color:#79e6f9');
+  if (DEV) console.log('%cApp','color:#79e6f9');
   const { user, checkMyLobby, updateUserCtx } = useUser();
   const { isLoading, sendRequest } = useHttpClient('App');
   // const [lobbyId, setLobbyId] = useState();

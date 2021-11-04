@@ -1,6 +1,7 @@
 // Utilities
 
 export const VERSION = '0.8.1';
+export const DEV = process.env.NODE_ENV === 'development';
 export const MAX_NAME_LEN = 10;
 
 export const lobbyMethods = {

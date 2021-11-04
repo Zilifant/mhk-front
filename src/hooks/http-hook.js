@@ -1,7 +1,8 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
+import { DEV } from '../util/utils';
 
 export const useHttpClient = (caller) => {
-  console.log(`HOOK: useHttpClient (${caller || '?'})`);
+  if (DEV) console.log(`HOOK: useHttpClient (${caller || '?'})`);
   const [isLoading, setIsLoading] = useState(false); // loading state
   const [error, setError] = useState(undefined); // error state
 

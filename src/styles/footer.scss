@@ -13,7 +13,7 @@
     & .svg-btn.cleargame {
       @include close-btn($size: 20px);
     };
-  }
+  };
 
   & .footer-bar {
     display: flex;
@@ -25,21 +25,16 @@
     width: 100%;
     align-items: center;
 
-    // & > .footer-placeholder {
-    //   color: $bg4;
-    //   cursor: default;
-    // }
-
     & > :not(.infomodal-invis-wrap):not(:first-child) {
       margin-left: .5rem;
-    }
+    };
 
-  }
+  };
 
   & .margin-hack {
     height: $mar;
     background-color: $defbg;
-  }
+  };
 }
 
 .footer-content {
@@ -50,8 +45,12 @@
   align-items: center;
   & > .footer-text {
     color: $bg1;
-  }
+  };
   & > :not(.infomodal-invis-wrap):not(:first-child) {
     margin-left: .5rem;
-  }
+  };
+}
+
+.footer-content .ttip-parent {
+  border-radius: 50%;
 }

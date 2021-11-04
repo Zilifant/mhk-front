@@ -40,7 +40,7 @@ export const rulesTemp = () => (<>
 export const about = {
   id: 'about',
   title: 'about the app',
-  content: 'This app was built for personal use and demonstration purposes.<_e_Planned Features and Improvements<>li>Responsive interface for mobile and tablets<>li>Smoother interface (animated transitions)<>li>Interface scaling for high-resolution displays<>li>Dyslexic font option<>li>Light/dark mode<>li>Integrated rulebook<>li>Unique icons for all Evidence and Means cards'
+  content: 'This app was built for personal use and demonstration purposes.<_e_Planned Features and Improvements<>li>Interface scaling for high-resolution displays<>li>Responsive interface for mobile and tablets<>li>Smoother interface (animated transitions)<>li>Interface scaling for high-resolution displays<>li>Dyslexic font option<>li>Light/dark mode<>li>Integrated rulebook<>li>Unique icons for all Evidence and Means cards'
 }
 
 export const aboutMultiPage = [

@@ -24,7 +24,7 @@ const Lobby = () => {
   const [isSubbed, setIsSubbed] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
 
-  const [chatMinimized, setChatMinimized] = useState(true);
+  const [chatMinimized, setChatMinimized] = useState(!DEV);
   const minimizeChatHandler = () => setChatMinimized(!chatMinimized);
   const showChat = chatMinimized ? 'nochat' : 'chat';
 

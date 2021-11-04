@@ -10,7 +10,7 @@ $gap: 0.5rem;
 $bdr: 1px;
 $bdr2: 2px;
 $bdr3: 3px;
-$t: .2s;
+$time: .2s;
 
 @mixin infomodal() {
   z-index: 999;
@@ -32,7 +32,7 @@ $t: .2s;
   rgba(0, 0, 0, 0.03) 0px -2px 6px 2px;
 }
 
-@mixin colorfade() {
+@mixin colorfade($t: $time) {
   transition:
     color $t,
     background-color $t,
@@ -86,7 +86,7 @@ $t: .2s;
   border-radius: 50%;
   @include square($size);
   @include shadow();
-  transition: all $t;
+  transition: all $time;
   &:not(:disabled):not(:active):hover {
     background-color: lighten($c-off, 4%);
   }
@@ -112,7 +112,7 @@ $t: .2s;
   border-radius: $rad3;
   text-transform: uppercase;
   color: $fg;
-  transition: all $t;
+  transition: all $time;
   &:not(:disabled):not(:active):hover {
     color: lighten($fg, 20%);
     background-color: lighten($bg, 12%);

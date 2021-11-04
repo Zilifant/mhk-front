@@ -3,6 +3,7 @@ import React, {
   useContext,
   // useEffect
 } from 'react';
+import difference from 'lodash.difference';
 import { useParallelSelector } from '../../../../hooks/parallel-selector';
 import { useGame } from '../../../../hooks/game-hook';
 import { SocketContext } from '../../../../context/contexts';
@@ -61,9 +62,9 @@ const Player = ({
           cb: [accusationHandler, myId, playerId],
           reset: true
         })}
-        disabled={!minSelected}
+        disabled={!minSelected || isAccompliceThrowing()}
       >
-        accuse
+        {!isAccompliceThrowing() ? 'accuse' : 'madness!'}
       </button>
     );
   };
@@ -110,20 +111,35 @@ const Player = ({
   // ignoring contents of selTracker
   const getSelectedId = (type) => canIAccuse ? selTracker[type]?.id : null;
 
+  // prevent accomplice from accusing killer with correct evidence
+  const isAccompliceThrowing = () => {
+    if (myRole !== 'accomplice') return false;
+    if (!isRedTeam) return false;
+    const selIds = [selTracker.means?.id, selTracker.evidence?.id];
+    if (difference(keyEv, selIds).length === 0) return true;
+    return false;
+  };
+
   return (
     <Container className={`player ${!canIInteract && 'no-interact'}`}>
       <li className={`p-info ${roleClass}`}>
         <div className='wrapper'>
           <div>
             {/* <span className={`indicator ${connectionStatus}`}></span> */}
-            <span className={`username ${connectionStatus}`}>{playerId.slice(0,-5)}</span>
+            <span className={`username ${connectionStatus}`}>
+              {playerId.slice(0,-5)}
+            </span>
           </div>
           <SVGIcon
             icon='badge'
             className={`badge ${badge(canTheyAccuse)}`}
           />
-          <div className='subtitle'>Their role</div>
-          <div className={`role ${roleClass}`}>{roleDisplay.toUpperCase()}</div>
+          <div className='subtitle'>
+            Their role
+          </div>
+          <div className={`role ${roleClass}`}>
+            {roleDisplay.toUpperCase()}
+          </div>
         </div>
       </li>
       {canIInteract && <li className={`p-info interact`}>

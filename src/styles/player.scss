@@ -10,14 +10,14 @@ $c-kill-bg: $redd8;
 $pt: 8%;
 $dpt: 5%;
 
-.p-info.username  { grid-area: name; }
-.p-info.badge     { grid-area: badg; }
-.p-info      { grid-area: info; }
-.p-info.interact  { grid-area: intr; }
+.p-info.username        { grid-area: name; }
+.p-info.badge           { grid-area: badg; }
+.p-info                 { grid-area: info; }
+.p-info.interact        { grid-area: intr; }
 .c-group-title.evidence { grid-area: evti; }
-.c-group.evidence { grid-area: evid; }
+.c-group.evidence       { grid-area: evid; }
 .c-group-title.means    { grid-area: meti; }
-.c-group.means    { grid-area: mean; }
+.c-group.means          { grid-area: mean; }
 
 .con--player {
   background-color: $bg4;
@@ -53,13 +53,18 @@ $dpt: 5%;
   }
 }
 
+@keyframes blinking-linethrough {
+  0% { text-decoration: line-through; }
+  50% { text-decoration: none; }
+  100% { text-decoration: line-through; }
+}
+
 .p-info {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: $rad;
   cursor: default;
-  // background-color: $bg3;
 
   & .wrapper {
     max-width: 100%;
@@ -70,11 +75,12 @@ $dpt: 5%;
     & .username {
       font-size: 1.25rem;
       letter-spacing: .1rem;
-      // text-transform: uppercase;
-      & .offline {
+      &.offline {
         color: $bg2;
-      }
-    }
+        animation: blinking-linethrough 2s;
+        animation-iteration-count: infinite;
+      };
+    };
 
     & .svg-icon.badge {
       margin: 4px 0 6px 0;
@@ -83,32 +89,33 @@ $dpt: 5%;
       &.can-accuse {
         & svg {
           fill: $badge;
-        }
-      }
+        };
+      };
       &.accusal-spent {
         & svg {
           fill: $bg2;
-        }
-      }
-    }
+        };
+      };
+    };
 
     & .role {
       font-size: 1.25rem;
-    }
-    & .redteam, & .killer { color: $killer; }
+    };
+    & .redteam,
+    & .killer { color: $killer; }
     & .accomplice { color: $accomp; }
     & .witness { color: $witnss; }
     & .hunter { color: $hunter; }
     & .mystery { color: $mystry; }
-  }
+  };
 
   &.interact {
     border-radius: $rad3;
     background-color: $bg3;
     &:not(.con-key-ev) {
       height: 26px;
-    }
-  }
+    };
+  };
 }
 
 .c-group {
@@ -200,7 +207,8 @@ button.card-wrap--player {
 
   &.evidence {
     @include float-btn-txt($evc, $fg3);
-    &.selected {
+    &.selected,
+    &.selected.highlighted {
       @include float-btn-txt($sel, $fg1);
     }
     &:disabled {
@@ -214,7 +222,8 @@ button.card-wrap--player {
 
   &.means {
     @include float-btn-txt($mec, $fg3);
-    &.selected {
+    &.selected,
+    &.selected.highlighted {
       @include float-btn-txt($sel, $fg1);
     }
     &:disabled {

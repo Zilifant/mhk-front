@@ -34,7 +34,7 @@ li.ready_grid {
 
 div.member_grid {
   display: grid;
-  width: 300px;
+  width: 320px;
   gap: $gap;
   grid-template-columns: 1fr 30px max-content 1fr 30px;
   grid-template-rows: 30px;

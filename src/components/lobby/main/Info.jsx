@@ -69,7 +69,7 @@ const Info = ({
           <SVGButton
             className='copyurl'
             icon='copy'
-            onClick={() => textToClipboard(`https://mhk-front.herokuapp.com/${lobbyId}`)}
+            onClick={() => textToClipboard(`https://mhk.vercel.app/${lobbyId}`)}
             disabled={false}
           />
           <Tooltip tip='copyUrl' side='right' opts='singleline'/>

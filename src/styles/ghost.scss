@@ -52,7 +52,6 @@ div.card-wrap--ghost {
   height: 3rem;
   text-align: center;
   text-transform: uppercase;
-  // margin-bottom: .5rem;
   align-items: center;
   justify-content: center;
 }
@@ -77,25 +76,18 @@ div.card-wrap--ghost {
   margin: 0 auto;
   width: 100%;
   padding: 4px 0;
-  // color: $fg3;
   // text-transform: uppercase;
-
-  // @include three-d-btn($cbbg, 12%, 12%, $bdr2);
   @include float-btn-txt($bg: $cbbg, $fg: $fg3);
 
   &.selected {
-    // color: $fg1;
-    // @include three-d-btn($cbbg-s, 12%, 12%, $bdr2);
     @include float-btn-txt($bg: $cbbg-s, $fg: $fg1);
   }
 
   &:disabled {
     cursor: auto;
-    // @include three-d-btn($cbbg-d, 8%, 8%, $bdr2);
     @include float-btn-txt($bg: $cbbg-d, $fg: darken($fg3, 30%));
     &:not(.highlighted) {
       &.locked {
-        // @include three-d-btn($cbbg-l, 5%, 5%, $bdr2);
         @include float-btn-txt($bg: $cbbg-l, $fg: darken($fg3, 50%));
       }
     }
@@ -103,8 +95,6 @@ div.card-wrap--ghost {
 
   // order matters: highlighted after disabled
   &.highlighted {
-    // color: $fg1;
-    // @include three-d-btn($cbbg-h, 20%, 20%, $bdr2);
     @include float-btn-txt($bg: $cbbg-h, $fg: $fg1);
   }
 }
@@ -115,18 +105,14 @@ button.btn--gc {
   width: 100%;
 
   &.confirm-clue {
-    // @include three-d-btn($cfbg, 8%, 8%, $bdr2);
     @include float-btn-txt($bg: $cfbg, $fg: $fg3);
     &:disabled {
       cursor: auto;
-      // color: darken($fg3, 30%);
-      // @include three-d-btn($cfbg-d, 8%, 8%, $bdr2);
       @include float-btn-txt($bg: $cfbg-d, $fg: darken($fg3, 30%));
     }
   }
 
   &.replace-card {
-    // @include three-d-btn($rpbg, 20%, 20%, $bdr2);
     @include float-btn-txt($bg: $rpbg, $fg: $fg3);
   }
 }
@@ -172,7 +158,6 @@ button.btn--gc {
   width: 100%;
   color: $clue-bg;
   background-color: $clue-bg;
-  // border: $bdr2 solid $clue-bg;
   padding: 4px 0;
   cursor: default;
 }

@@ -60,7 +60,7 @@ const Info = ({
             onClick={hideLobbyIdHandler}
             disabled={false}
           />
-          <Tooltip tip='hideShowName' side='left' />
+          <Tooltip tip='hideShowName' side='left' opts='singleline'/>
         </div>
         <div className={`info-lobbyid ${lobbyIdHidden ? 'obscured' : 'visible'}`}>
           {lobbyIdHidden ? 'lobby name hidden' : lobbyId}
@@ -72,7 +72,7 @@ const Info = ({
             onClick={() => textToClipboard(`https://mhk-front.herokuapp.com/${lobbyId}`)}
             disabled={false}
           />
-          <Tooltip tip='copyUrl' side='right' />
+          <Tooltip tip='copyUrl' side='right' opts='singleline'/>
         </div>
       </div>
     </Container>

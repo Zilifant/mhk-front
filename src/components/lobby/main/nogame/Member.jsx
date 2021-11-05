@@ -40,7 +40,7 @@ const Member = ({
           onClick={() => giveLeaderHandler(member.id)}
           disabled={false}
         />
-        <Tooltip tip='transferLeader' side='bottom' />
+        <Tooltip tip='transferLeader' side='bottom' opts='singleline'/>
       </div>
     );
   }
@@ -62,7 +62,7 @@ const Member = ({
           onClick={() => assignGhostHandler(member.id)}
           disabled={false}
         />
-        <Tooltip tip='assignGhost' side='right' />
+        <Tooltip tip='assignGhost' side='right' opts='singleline'/>
       </div>
     );
 

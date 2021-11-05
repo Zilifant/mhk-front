@@ -45,7 +45,7 @@ const Footer = ({
               <Tooltip
                 tip='clearGameWarn'
                 side='left'
-                opts='oneline'
+                opts='singleline'
               />
             </div>}
           </div>

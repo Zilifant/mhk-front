@@ -15,8 +15,9 @@
   display: none;
   padding: 1rem;
   position: absolute;
-  &.oneline {
+  &.singleline {
     max-width: 90vw;
+    padding: .25rem 1rem;
   }
 }
 

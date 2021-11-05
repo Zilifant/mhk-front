@@ -29,6 +29,16 @@ const Info = ({
   } = useGame(socket);
 
   function textToClipboard(text) {
+    if (!navigator.clipboard) {
+      textToClipboardDeprecated(text);
+    } else {
+      navigator.clipboard.writeText(text)
+      .then(() => alert('Lobby URL copied!'))
+      .catch(() => alert('Error: Copying failed.'));
+    };
+  };
+
+  function textToClipboardDeprecated(text) {
     const dummy = document.createElement('textarea');
     document.body.appendChild(dummy);
     dummy.value = text;
@@ -36,7 +46,7 @@ const Info = ({
     document.execCommand('copy');
     document.body.removeChild(dummy);
     alert('Lobby URL copied.');
-  }
+  };
 
   const [lobbyIdHidden, setLobbyIdHidden] = useState(isStreamer);
 

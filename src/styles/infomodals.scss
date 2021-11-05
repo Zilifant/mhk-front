@@ -52,6 +52,7 @@ $out-mar: 28px; // 2rem
       };
     };
   }
+
   &.text-sp {
     display: flex;
     flex-direction: column;
@@ -83,14 +84,13 @@ $out-mar: 28px; // 2rem
   background-color: $bg4;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 2fr 1fr;
   grid-template-areas: '. t c';
   align-items: center;
   & .infomodal-titlebar-title {
     font-size: 2.5rem;
     text-align: center;
     text-transform: uppercase;
-    padding: 4px;
   }
   & .svg-btn.close-btn {
     justify-self: right;

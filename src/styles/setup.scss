@@ -27,7 +27,7 @@
 }
 
 button.startgame {
-  font-size: x-large;
+  font-size: 2rem;
   text-transform: uppercase;
   padding: .5rem 1rem;
   @include float-btn-txt($cyan6, $fg3);
@@ -48,7 +48,7 @@ button.startgame {
 }
 
 .settings-title {
-  font-size: large;
+  font-size: 1.5rem;
   text-transform: uppercase;
   margin-bottom: .5rem;
 }
@@ -113,7 +113,7 @@ button.startgame {
   text-align: center;
   align-items: center;
   justify-content: center;
-  font-size: x-large;
+  font-size: 2rem;
   padding: 0;
   background-color: $bg4;
   border: $bdr2 solid $bg1;
@@ -133,7 +133,7 @@ button.startgame {
   border-radius: $rad;
   display: grid;
   gap: .5rem;
-  grid-template-columns: 34px 55px 34px;
+  grid-template-columns: 34px 65px 34px; // scale
   // grid-template-rows: 34px;
   grid-template-areas:
     'de va in';

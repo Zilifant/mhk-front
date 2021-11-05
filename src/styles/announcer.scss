@@ -6,7 +6,7 @@
 .con--announcer {
   background-color: $bg4;
   width: 100%;
-  height: 38px;
+  height: 38px; // scale
 
   display: flex;
   align-items: center;
@@ -21,5 +21,5 @@
 }
 
 .msg-in-announcer span {
-  font-size: large;
+  font-size: 1.5rem;
 }

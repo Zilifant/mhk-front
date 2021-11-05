@@ -137,13 +137,13 @@ $out-mar: 28px; // 2rem
 }
 
 .infomodal-content {
-  & span {
-    line-height: 1.75rem;
-    font-size: larger;
+  & span, a {
+    line-height: 2rem;
+    font-size: 1.5rem;
   }
-  & a {
-    font-size: 16.8px;
-  }
+  // & a {
+  //   font-size: 1.5rem;
+  // }
 }
 
 .infomodal-content .faded span {

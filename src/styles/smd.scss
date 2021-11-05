@@ -9,8 +9,10 @@
 
 div.line-smd--listitem {
   margin-bottom: 0;
+  line-height: 2.5rem;
   &::before {
     content: '>>>';
+    font-size: 1.5rem;
     color: $bg1;
     margin-right: .5rem;
   }

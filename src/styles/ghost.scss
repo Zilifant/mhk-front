@@ -76,7 +76,7 @@ div.card-wrap--ghost {
   margin: 0 auto;
   width: 100%;
   padding: 4px 0;
-  // text-transform: uppercase;
+  text-transform:capitalize;
   @include float-btn-txt($bg: $cbbg, $fg: $fg3);
 
   &.selected {

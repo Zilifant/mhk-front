@@ -11,9 +11,9 @@
 .ttip-parent .ttip {
   @include infomodal();
   width: max-content;
-  max-width: 400px;
+  max-width: 500px;
   display: none;
-  padding: .5rem;
+  padding: 1rem;
   position: absolute;
   &.oneline {
     max-width: 90vw;
@@ -55,8 +55,8 @@
 }
 
 .ttip span {
-  line-height: 1.5rem;
-  font-size: larger;
+  line-height: 2rem;
+  font-size: 1.5rem;
 }
 
 .ttip :not(:first-child) {

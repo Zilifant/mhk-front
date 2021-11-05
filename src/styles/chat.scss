@@ -8,7 +8,7 @@
   overflow: hidden;
   flex-direction: column;
   height: 100%;
-  width: 300px;
+  width: 350px;
   background-color: $bg4;
 }
 
@@ -44,6 +44,10 @@
 
 .chatfeed .msg-wrapper {
   margin: 3px .5rem;
+}
+
+.chatfeed span {
+  font-size: 1.25rem;
 }
 
 .chatfeed > :first-child {

@@ -16,7 +16,7 @@ $out-mar: 28px; // 2rem
   align-items: center;
   height: 100%;
   width: 100%;
-  background: none;
+  background-color: transparentize($color: $defbg, $amount: .2);
   position: absolute;
   top: 0;
   left: 0;
@@ -88,9 +88,10 @@ $out-mar: 28px; // 2rem
   grid-template-areas: '. t c';
   align-items: center;
   & .infomodal-titlebar-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
     text-align: center;
     text-transform: uppercase;
+    padding: 4px;
   }
   & .svg-btn.close-btn {
     justify-self: right;

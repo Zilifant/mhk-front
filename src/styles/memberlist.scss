@@ -82,7 +82,7 @@ div.leader_icon {
     display: flex;
     justify-content: flex-end;
     & svg {
-      @include colorfade($t: 2s);
+      @include colorfade();
       height: 30px;
       width: 21px;
     }

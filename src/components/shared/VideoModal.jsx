@@ -1,20 +1,28 @@
 // Embedded Video
 
-import React, {
-  useState
-} from 'react';
+import { useState } from 'react';
 
 const Modal = ({
   info: {
-    // size = [560, 315],
     src,
     title
   },
   className,
   hideHandler,
 }) => {
+
+  // Check if the element the user clicked on (e.target) === the element that
+  // the event listener is attached to (e.currentTarget).
+  function clickOutsideToHide(e) {
+    if (e.target !== e.currentTarget) return;
+    hideHandler(false);
+  };
+
   return (
-    <div className='infomodal-invis-wrap'>
+    <div
+      className='infomodal-invis-wrap'
+      onClick={(e) => clickOutsideToHide(e)}
+    >
       <div className={`infomodal-wrap vid ${className}`}>
         <iframe
           src={src}

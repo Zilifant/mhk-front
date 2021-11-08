@@ -12,8 +12,18 @@ const ModalSP = ({
   buttonContent, //temp
 }) => {
 
+  // Check if the element the user clicked on (e.target) === the element that
+  // the event listener is attached to (e.currentTarget).
+  function clickOutsideToHide(e) {
+    if (e.target !== e.currentTarget) return;
+    hideHandler(false);
+  };
+
   return (
-    <div className='infomodal-invis-wrap'>
+    <div
+      className='infomodal-invis-wrap'
+      onClick={(e) => clickOutsideToHide(e)}
+    >
       <div className={`infomodal-wrap text-sp ${className}`}>
         <div className='infomodal-titlebar'>
           <div className='infomodal-titlebar-title'>{info.title || 'game rules'}</div>

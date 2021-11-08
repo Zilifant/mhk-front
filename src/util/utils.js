@@ -1,6 +1,6 @@
 // Utilities
 
-export const VERSION = '0.8.3';
+export const VERSION = '0.8.4';
 export const DEV = process.env.NODE_ENV === 'development';
 export const MAX_NAME_LEN = 10;
 

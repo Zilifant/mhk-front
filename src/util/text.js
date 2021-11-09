@@ -30,8 +30,7 @@ export const rulesMultiPage = [
 
 export const rulesTemp = () => (<>
   <div className='line-smd--def'><span className='smd--warn'>Rulebook coming soon...</span></div>
-  <div className='line-smd--def'><span className='smd--def'>In the meantime, check out this walkthrough at <a href='https://gamerules.com/rules/deception-murder-in-hong-kong/' target="_blank" rel="noopener noreferrer" className='smd--link'>GameRules.com</a></span></div>
-  <div className='line-smd--def'><span className='smd--def'>Note: in this app some roles have different names from those in the tabletop version.</span></div>
+  <div className='line-smd--def'><span className='smd--def'>In the meantime, check out this walkthrough at <a href='https://gamerules.com/rules/deception-murder-in-hong-kong/' target="_blank" rel="noopener noreferrer" className='smd--link'>GameRules.com</a>. </span><span className='smd--def'>Note: in this app some roles have different names than those in the tabletop version published by Grey Fox Games.</span></div>
   <div className='line-smd--listitem'><span className='smd--def'>Forensice Scientist: </span><span className='smd--keyword ghost'>Ghost</span></div>
   <div className='line-smd--listitem'><span className='smd--def'>Investigator: </span><span className='smd--keyword hunter'>Hunter</span></div>
   <div className='line-smd--listitem'><span className='smd--def'>Murderer: </span><span className='smd--keyword killer'>Killer</span></div>
@@ -47,7 +46,7 @@ export const aboutTemp = () => (<>
     </div>
 
     <div className='line-smd--def'>
-      <span className='smd--def'>Buy the physical version of the game directly from publisher <a href='https://greyfoxgames.com/deception-murder-in-hong-kong/' target="_blank" rel="noopener noreferrer" className='smd--link'>Grey Fox Games</a>.</span>
+      <span className='smd--def'>You can purchase the physical version of the game directly from publisher <a href='https://greyfoxgames.com/deception-murder-in-hong-kong/' target="_blank" rel="noopener noreferrer" className='smd--link'>Grey Fox Games</a>.</span>
     </div>
 
     <div className='line-smd--def'>

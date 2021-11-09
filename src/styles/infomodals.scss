@@ -3,7 +3,7 @@
 @import './colors.scss';
 @import './mixins.scss';
 
-$ifm-mar: 1rem;
+$ifm-mar: 1.5rem;
 $clo: $wrmg6;
 $def: $colg6;
 $cur: $teal7;
@@ -56,7 +56,7 @@ $out-mar: 28px; // 2rem
   &.text-sp {
     display: flex;
     flex-direction: column;
-    width: 700px;
+    width: 800px;
     height: calc(100% - 4rem);
     @media (max-width: 750px) {
       width: calc(100% - 4rem);
@@ -138,12 +138,9 @@ $out-mar: 28px; // 2rem
 
 .infomodal-content {
   & span, a {
-    line-height: 2rem;
+    line-height: 2.25rem;
     font-size: 1.5rem;
-  }
-  // & a {
-  //   font-size: 1.5rem;
-  // }
+  };
 }
 
 .infomodal-content .faded span {

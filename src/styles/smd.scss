@@ -4,21 +4,23 @@
 @import './mixins.scss';
 
 .smd--def {
-  color: $fg4;
+  color: darken($fg3, 10%);
 }
 
+li.line-smd--listitem,
 div.line-smd--listitem {
+  list-style: none;
   margin-bottom: 0;
   line-height: 2.5rem;
   &::before {
     content: '>>>';
     font-size: 1.5rem;
-    color: $bg1;
+    color: $rose5;
     margin-right: .5rem;
   }
 }
 
-.smd--link {
+a.smd--link {
   color: $cyan5;
   &:hover {
     color: $cyan4;
@@ -76,8 +78,10 @@ div.line-smd--listitem {
 
 .line-smd--emphasize > span,
 .smd--emphasize {
-  font-weight: bold;
-  letter-spacing: .08rem;
+  // text-transform: uppercase;
+  color: $fg2;
+  // font-weight: bold;
+  // letter-spacing: .08rem;
 }
 
 .smd--warn {
@@ -102,6 +106,13 @@ div.line-smd--listitem {
   &.violet { color: $viol4; };
   &.rose { color: $rose5; };
   &.amber { color: $ambr5; };
+}
+
+h2.smd--heading {
+  margin: 1rem 0;
+  & > span {
+    text-transform: uppercase;
+  }
 }
 
 .line-text-after-timestamp-block {

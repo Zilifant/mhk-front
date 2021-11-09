@@ -9,7 +9,7 @@ const ModalSP = ({
   info,
   className,
   hideHandler,
-  buttonContent, //temp
+  titlebarContent
 }) => {
 
   // Check if the element the user clicked on (e.target) === the element that
@@ -26,7 +26,7 @@ const ModalSP = ({
     >
       <div className={`infomodal-wrap text-sp ${className}`}>
         <div className='infomodal-titlebar'>
-          <div className='infomodal-titlebar-title'>{info.title || 'game rules'}</div>
+          <div className='infomodal-titlebar-title'>{info.title || titlebarContent}</div>
           <SVGButton
             className='close-btn'
             onClick={() => hideHandler(false)}
@@ -34,7 +34,7 @@ const ModalSP = ({
           />
         </div>
         <div className='infomodal-content'>
-          {(buttonContent === 'rulebook') ? info() : render.block(parse(info.content))}
+          {(typeof info === 'function') ? info() : render.block(parse(info.content))}
         </div>
       </div>
     </div>
@@ -89,6 +89,7 @@ const InfoModal = ({
   className,
   btnClassName,
   buttonContent,
+  titlebarContent
 }) => {
 
   const [showModal, setShowModal] = useState(false);
@@ -106,7 +107,7 @@ const InfoModal = ({
       info={info}
       className={className}
       hideHandler={setShowModal}
-      buttonContent={buttonContent}
+      titlebarContent={titlebarContent}
     />}
   </>);
 

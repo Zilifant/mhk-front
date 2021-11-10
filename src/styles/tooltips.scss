@@ -9,7 +9,11 @@
 }
 
 .ttip-parent .ttip {
-  @include infomodal();
+  z-index: 99;
+  background-color: $bg5;
+  border-radius: $rad6;
+  border: 2px solid $bg2;
+  @include shadow();
   width: max-content;
   max-width: 500px;
   display: none;

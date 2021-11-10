@@ -11,6 +11,7 @@ const ModalOverlay = props => {
     <div className={`modal ${props.className}`} style={props.style}>
       <header className={`modal__header ${props.headerClass}`}>
         <h2>{props.header}</h2>
+        <div>{props.footer}</div>
       </header>
       <form
         onSubmit={
@@ -20,9 +21,9 @@ const ModalOverlay = props => {
         <div className={`modal__content ${props.contentClass}`}>
           {props.children}
         </div>
-        <footer className={`modal__footer ${props.footerClass}`}>
+        {/* <footer className={`modal__footer ${props.footerClass}`}>
           {props.footer}
-        </footer>
+        </footer> */}
       </form>
     </div>
   );

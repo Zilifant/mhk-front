@@ -293,39 +293,47 @@ main.app {
 /* MODAL */
 
 .modal {
+  @include infomodal();
   z-index: 100;
   position: fixed;
   top: 22vh;
   left: 10%;
   width: 80%;
-  background: $bg3;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  border-radius: $rad;
+  overflow: hidden;
 }
 
 .modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  /* padding: 0.5rem 3px; */
-  background: $oran6;
-  color: white;
-}
-
-.modal__header h2 {
-  margin: 0.5rem;
+  padding: 1rem;
+  background: $bg3;
+  & h2 {
+    display: inline;
+    font-size: 2.5rem;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+    color: $bg1;
+  };
+  & .svg-btn.close-btn {
+    justify-self: right;
+    @include close-btn($size: 32px);
+  };
 }
 
 .modal__content {
-  padding: 1rem 0.5rem;
-}
-
-.modal__footer {
-  padding: 1rem 0.5rem;
+  padding: 1rem;
+  & p {
+    font-size: 2rem;
+  };
 }
 
 @media (min-width: 768px) {
   .modal {
-    left: calc(50% - 16rem);
-    width: 32rem;
+    left: calc(50% - 25rem);
+    width: 50rem;
   }
 }
 

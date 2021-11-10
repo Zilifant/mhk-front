@@ -41,6 +41,7 @@ $out-mar: 28px; // 2rem
   &.vid {
     display: flex;
     flex-direction: column;
+    position: relative;
     & iframe {
       width: 560px;
       height: 315px;
@@ -56,27 +57,19 @@ $out-mar: 28px; // 2rem
   }
 
   &.text-sp {
-    display: flex;
-    flex-direction: column;
     width: 800px;
     height: calc(100% - 4rem);
     @media (max-width: 750px) {
       width: calc(100% - 4rem);
-    }
-  }
+    };
+  };
 }
 
-.infomodal-vid-close-btn {
-  @include colorfade();
-  background-color: $bg5;
-  text-transform: uppercase;
-  padding: 2px;
-  &:hover {
-    background-color: $redd5;
-  }
-  &:active {
-    background-color: transparentize($redd5, .4);
-  }
+.svg-btn.infomodal-vid-close-btn {
+  @include close-btn();
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
 .infomodal-titlebar-title { grid-area: t; }

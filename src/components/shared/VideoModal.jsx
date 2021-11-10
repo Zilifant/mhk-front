@@ -1,6 +1,7 @@
 // Embedded Video
 
 import { useState } from 'react';
+import SVGButton from '../ui-elements/SVGButton';
 
 const Modal = ({
   info: {
@@ -30,12 +31,11 @@ const Modal = ({
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
           allowFullScreen/>
-        <button
-          className={`infomodal-vid-close-btn`}
+        <SVGButton
+          className='infomodal-vid-close-btn'
           onClick={() => hideHandler(false)}
-        >
-          close
-        </button>
+          icon='plus'
+        />
       </div>
     </div>
   );

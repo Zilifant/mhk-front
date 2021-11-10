@@ -10,6 +10,7 @@ $cur: $teal7;
 $out-mar: 28px; // 2rem
 
 .infomodal-invis-wrap {
+  z-index: 999;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -20,6 +21,7 @@ $out-mar: 28px; // 2rem
   position: absolute;
   top: 0;
   left: 0;
+
 }
 
 .infomodal-wrap {

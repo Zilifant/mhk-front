@@ -1,10 +1,6 @@
-import { GoEye, GoEyeClosed } from 'react-icons/go';
-import { ImLink } from 'react-icons/im';
+// svgs
 
 export const svg = {
-  showIm: () => <GoEye className='imported' />,
-  hideIm: () => <GoEyeClosed className='imported' />,
-  copyIm: () => <ImLink className='imported copy' />,
   show() {
     return (
       <svg

@@ -1,4 +1,4 @@
-// Tooltip text
+// tooltip text
 
 export const tooltipText = {
   waitMorePlayers: 'At least ^_k_4^ players are needed to start.<^_k_5^ or more players are recommended for the best experience.',

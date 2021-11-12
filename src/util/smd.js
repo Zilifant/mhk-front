@@ -1,6 +1,4 @@
-// Styled Markdown
-
-// Styled Markdown
+// styled markdown
 
 const userOpts = {
   active: false
@@ -36,15 +34,12 @@ const defaultOpts = {
 const opts = userOpts.active ? userOpts : defaultOpts;
 
 export function parse(str, meta = {}) {
-  // console.log(str);
   if (!!meta.inlineOnly) return parseInline({str, meta});
   return parseBlock({str, meta});
 }
 
 function parseBlock({str, meta}) {
-  // console.log(str);
   const lines = parseSMD({str, meta, isBlock: true});
-  // console.log(lines);
   const block = lines.map(line => {
     return {
       strings: parseSMD({str: line.string, isBlock: false}),

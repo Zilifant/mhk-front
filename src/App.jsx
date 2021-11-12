@@ -1,8 +1,4 @@
-import React, {
-  useEffect,
-  // useRef,
-  // useState
-} from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { useUser } from './hooks/user-hook';
 import { useHttpClient } from './hooks/http-hook';
@@ -19,11 +15,8 @@ function App() {
   if (DEV) console.log('%cApp','color:#79e6f9');
   const { user, checkMyLobby, updateUserCtx } = useUser();
   const { isLoading, sendRequest } = useHttpClient('App');
-  // const [lobbyId, setLobbyId] = useState();
-  // const [isMyLobby, setIsMyLobby] = useState();
 
   useEffect(() => {
-    // console.log('UE: checkCookie');
     const checkCookie = async () => {
       try {
         const responseData = await sendRequest(
@@ -35,11 +28,9 @@ function App() {
           myLobby: responseData.user?.myLobby,
           isStreamer: responseData.user?.isStreamer
         });
-        // setLobbyId(responseData.user?.myLobby);
       } catch (err) { console.log(err); };
     };
     checkCookie();
-    // setCc(true)
   }, [updateUserCtx, sendRequest]);
 
   let routes;

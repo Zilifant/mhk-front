@@ -1,8 +1,5 @@
-import React, {
-  useContext,
-  // useState,
-  useEffect,
-} from 'react';
+import {
+  useContext, useEffect } from 'react';
 import { UserContext } from '../../../context/contexts';
 import { useChat } from '../../../hooks/chat-hook';
 import Container from '../../shared/Container';
@@ -18,7 +15,6 @@ const Chat = ({
   minimized
 }) => {
 
-  // const minimized = true;
   const { myLobby } = useContext(UserContext);
 
   const {

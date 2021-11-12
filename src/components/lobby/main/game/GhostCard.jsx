@@ -1,7 +1,4 @@
-import React, {
-  // useState,
-  useContext
-} from 'react';
+import { useContext } from 'react';
 import { SocketContext } from '../../../../context/contexts';
 import { useMultiSelector } from '../../../../hooks/multi-selector';
 import { useGame } from '../../../../hooks/game-hook';

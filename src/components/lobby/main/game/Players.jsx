@@ -1,16 +1,10 @@
-import React, {
-  // useEffect,
-  // useState,
-  useContext
-} from 'react';
+import { useContext } from 'react';
 import { UserContext } from '../../../../context/contexts';
 import Container from '../../../shared/Container';
 import Player from './Player';
 
 const Players = ({
   thisPlayer,
-  // canIAccuse,
-  // myRole,
   game: {
     currentStage,
     players,
@@ -44,12 +38,10 @@ const Players = ({
           <Player
             key={player.id}
             player={player}
-            // myRole={myRole}
             stage={currentStage}
             canBeTargeted={canBeTargeted && player.role !== 'accomplice'}
             isRedTeam={showAsRedTeam(redTeam, player.id)}
             keyEv={keyEvidence}
-            // canIAccuse={canIAccuse}
             rolesRef={rolesRef}
             thisPlayer={thisPlayer}
           />

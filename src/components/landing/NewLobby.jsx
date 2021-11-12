@@ -61,7 +61,10 @@ const NewLobby = () => {
       <ErrorModal error={error} onClear={clearError} />
       <Container className='newlobby'>
         <div className='landing-forms-wrapper'>
-          <form className='form new-lobby-form' onSubmit={newLobbyHandler}>
+          <form
+            className='form new-lobby-form'
+            onSubmit={newLobbyHandler}
+          >
             <Grid className='new-lobby-form'>
               <div className='new-lobby-title'>START NEW LOBBY</div>
               <Input

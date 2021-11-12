@@ -1,7 +1,6 @@
-import {
-  useState,
-  // useCallback
-} from 'react';
+// parallel selector hook
+
+import { useState } from 'react';
 
 function areMinSelected(selTracker) {
   if (Object.values(selTracker).includes(null)) return false;

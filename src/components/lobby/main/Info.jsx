@@ -1,15 +1,9 @@
-import React, {
-  useState,
-  useContext,
-  // useEffect
-} from 'react';
+import { useState, useContext } from 'react';
 import { UserContext, SocketContext } from '../../../context/contexts';
-import Container from '../../shared/Container';
 import { useGame } from '../../../hooks/game-hook';
+import Container from '../../shared/Container';
 import Tooltip from '../../shared/Tooltip';
 import SVGButton from '../../ui-elements/SVGButton';
-// import InfoModal from '../../shared/InfoModal';
-// import { rules } from '../../../util/utils';
 import '../../../styles/info.scss';
 import '../../../styles/svgs.scss';
 import '../../../styles/tooltips.scss';
@@ -109,12 +103,6 @@ const Info = ({
         }
       </div>}
       <div className='gamestage-username'>
-        {/* <InfoModal
-          className='rules info'
-          btnClassName='flat'
-          buttonContent='rulebook'
-          info={rules}
-        /> */}
         {showGameStage &&
         <div className='info gamestage'>
           {stage.display}

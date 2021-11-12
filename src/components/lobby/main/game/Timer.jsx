@@ -1,14 +1,9 @@
-import React, {
-  useState,
-  useContext,
-  useEffect
-} from 'react';
+import { useState, useContext, useEffect } from 'react';
 import Container from '../../../shared/Container';
 import { SocketContext } from '../../../../context/contexts';
 import { DEV } from '../../../../util/utils';
 import '../../../../styles/timer.scss';
 import '../../../../styles/svgs.scss';
-// import SVGIcon from '../../../ui-elements/SVGIcon';
 
 const Timer = ({
   settings: {
@@ -17,14 +12,12 @@ const Timer = ({
   },
   timerIsRunning
 }) => {
-  // console.log('%cTimer','color:#f20ffe');
 
   const { socket } = useContext(SocketContext);
 
   const [tenSec, setTenSec] = useState(duration * 6);
 
   useEffect(() => {
-    if (DEV) console.log('timer mounted');
     let mounted = true;
     const s = socket.current;
 
@@ -32,18 +25,14 @@ const Timer = ({
       if (mounted) {
         s.on('timerStarted', () => {
           setTenSec(duration * 6);
-          if (DEV) console.log('timer started');
         });
         s.on('tenSec', (tenSec) => {
           setTenSec(tenSec);
-          if (DEV) console.log(tenSec);
         });
         s.on('timeUp', (tenSec) => {
           setTenSec(tenSec);
-          if (DEV) console.log('time is up');
         });
         s.on('clear', () => {
-          if (DEV) console.log('timer cleared')
           setTenSec(0);
         });
       }
@@ -94,6 +83,8 @@ const Timer = ({
 };
 
 export default Timer;
+
+// unused numeric timer:
 
 // const inactiveDisplay = 'XX:XX';
 // const [timer, setTimer] = useState(inactiveDisplay);

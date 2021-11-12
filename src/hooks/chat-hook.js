@@ -1,10 +1,4 @@
-import {
-  useState,
-  // useRef,
-  // useEffect,
-  useContext,
-  useCallback
-} from 'react';
+import { useState, useContext, useCallback } from 'react';
 import { UserContext, SocketContext } from '../context/contexts';
 import { DEV } from '../util/utils';
 
@@ -53,15 +47,13 @@ export const useChat = (chat) => {
     return null;
   };
 
+  // TO DO: useCB necessary?
   const subToAnnounce = useCallback(() => {
 
     const sub2Announce = () => {
       socket.current.on('updateLobby', ({ msg }) => {
         if (msg) return setMessages((messages) => [...messages, msg]);
       });
-      // socket.current.on('announcement', ({ msg }) => {
-      //   if (msg) return setMessages((messages) => [...messages, msg]);
-      // });
     };
     sub2Announce();
 

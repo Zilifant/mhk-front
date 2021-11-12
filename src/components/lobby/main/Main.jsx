@@ -1,15 +1,9 @@
-import React, {
-  // useState,
-  // useEffect,
-  // useContext
-} from 'react';
+import React from 'react';
 import Info from './Info';
 import MemberList from './nogame/MemberList';
 import Setup from './nogame/Setup';
 import Ghost from './game/Ghost';
 import Players from './game/Players';
-// import BasicUI from './game/BasicUI';
-// import KillerUI from './game/KIllerUI';
 import Announcer from './Announcer';
 import Timer from './game/Timer';
 import PlayerUI from './game/PlayerUI';
@@ -33,6 +27,7 @@ const Main = ({
         iAmLeader={iAmLeader}
         lobby={lobby}
       />
+
       <Info
         canStart={lobby.canStart()}
         gameOn={gameOn}
@@ -40,6 +35,7 @@ const Main = ({
         stage={game && game.currentStage}
         iAmLeader={iAmLeader}
       />
+
       {!gameOn && lobby &&
         <React.Fragment>
           <Setup
@@ -55,6 +51,7 @@ const Main = ({
           />
         </React.Fragment>
       }
+
       {gameOn && game && thisPlayer &&
         <React.Fragment>
 
@@ -71,8 +68,6 @@ const Main = ({
           <Players
             game={game}
             thisPlayer={thisPlayer}
-            // myRole={thisPlayer.role}
-            // canIAccuse={thisPlayer.canAccuse}
           />
 
           {thisPlayer.role === 'ghost' &&
@@ -87,21 +82,6 @@ const Main = ({
             stage={game.currentStage}
             keyEv={game?.keyEvidence}
           />}
-
-          {/* {(thisPlayer.role === 'hunter' ||
-            thisPlayer.role === 'witness' ||
-            thisPlayer.role === 'accomplice') &&
-          <BasicUI
-            thisPlayer={thisPlayer}
-          />}
-
-          {thisPlayer.role === 'killer' &&
-          <KillerUI
-            thisPlayer={thisPlayer}
-            stage={game.currentStage}
-            keyEv={game.keyEvidence}
-          />} */}
-
         </React.Fragment>
       }
     </>

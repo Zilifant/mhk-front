@@ -1,7 +1,6 @@
-import { useCallback, useReducer } from "react";
+import { useCallback, useReducer } from 'react';
 
 const formReducer = (state, action) => {
-  // console.log('FormHook: formReducer');
   switch (action.type) {
     case 'INPUT_CHANGE':
       let formIsValid = true;
@@ -40,10 +39,12 @@ export const useForm = (initialInputs, initialFormValidity) => {
     isValid: initialFormValidity
   });
 
-  // function is declared inside the component; to prevent it from being re-declared every time time the component is re-rendered (resulting in an infinite loop), use useCallback to wrap the function and in the [] define the dependencies under which the function should be re-declared. (In this case, none.)
+  // function is declared inside the component; to prevent it from being
+  // re-declared every time time the component is re-rendered (resulting in an
+  // infinite loop), use useCallback to wrap the function and in the [] define
+  // the dependencies under which the function should be re-declared.
+  // (In this case, none.)
   const inputHandler = useCallback((id, value, isValid) => {
-    // console.log('FormHook: inputHandler');
-    // console.log(id, value, isValid)
     dispatch({
       type: 'INPUT_CHANGE',
       value: value,
@@ -53,7 +54,6 @@ export const useForm = (initialInputs, initialFormValidity) => {
   }, []);
 
   const setFormData = useCallback((inputData, formValidity) => {
-    // console.log('FormHook: setFormData');
     dispatch({
       type: 'SET_DATA',
       inputs: inputData,

@@ -1,10 +1,5 @@
-import React, {
-  // useState
-} from 'react';
 import Container from '../shared/Container';
-// import InfoModal from '../shared/InfoModal';
 import VideoModal from '../shared/VideoModal';
-// import { rules } from '../../util/utils';
 
 const Header = () => {
 

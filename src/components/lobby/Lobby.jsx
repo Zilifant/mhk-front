@@ -1,8 +1,4 @@
-import React, {
-  useEffect,
-  useState,
-  useContext
-} from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useHttpClient } from '../../hooks/http-hook';
 import { useIO } from '../../hooks/io-hook';
 import { SocketContext, UserContext } from '../../context/contexts';
@@ -16,6 +12,7 @@ import Footer from '../shared/Footer';
 
 const Lobby = () => {
   if (DEV) console.log('%cLobby','color:#79f98e');
+
   const { myLobby, userId } = useContext(UserContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient('Lobby');
   const { socket } = useIO();
@@ -28,10 +25,7 @@ const Lobby = () => {
   const minimizeChatHandler = () => setChatMinimized(!chatMinimized);
   const showChat = chatMinimized ? 'nochat' : 'chat';
 
-  // console.log(`Connected: ${isConnected}, Loading: ${isLoading}, Fetched: ${isFetched}`);
-
   useEffect(() => {
-    // console.log('UE: fetchLobby');
     const fetchLobby = async () => {
       try {
         const resData = await sendRequest(
@@ -44,7 +38,6 @@ const Lobby = () => {
         );
         setLobby({...lobbyMethods, ...resData.lobby});
         setIsFetched(true);
-        // console.log('lobby fetched');
       } catch (err) { console.log(err); }
     };
     fetchLobby();
@@ -57,23 +50,19 @@ const Lobby = () => {
   ]);
 
   useEffect(() => {
-    // console.log('UE: subToLobby');
     const subToLobby = () => {
       socket.current.on('updateLobby', ({ lobby, data }) => {
         setLobby(prev => ({...prev, ...lobby}));
-        // console.log('lobby updated');
 
         if (data?.event === 'userConnected' && data?.user.id === userId) {
           setIsConnected(true);
-          // console.log('connected');
         };
 
       });
       setIsSubbed(true);
-      // console.log('subbed');
     };
 
-    if (socket && isFetched) subToLobby()
+    if (socket && isFetched) subToLobby();
 
   }, [
     socket,
@@ -86,7 +75,6 @@ const Lobby = () => {
   ]);
 
   useEffect(() => {
-    // console.log('UE: connectToLobby');
     const connectToLobby = () => {
       socket.current.emit('connectToLobby', {
         userId: userId,

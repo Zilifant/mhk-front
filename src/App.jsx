@@ -13,6 +13,7 @@ import './styles/svgs.scss';
 
 function App() {
   if (DEV) console.log('%cApp','color:#79e6f9');
+
   const { user, checkMyLobby, updateUserCtx } = useUser();
   const { isLoading, sendRequest } = useHttpClient('App');
 

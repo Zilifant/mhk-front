@@ -1,6 +1,4 @@
-import React, {
-  useContext
-} from 'react';
+import { useContext } from 'react';
 import { SocketContext } from '../../../../context/contexts';
 import { useGame } from '../../../../hooks/game-hook';
 import Container from '../../../shared/Container';

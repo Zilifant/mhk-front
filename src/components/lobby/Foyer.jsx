@@ -1,7 +1,6 @@
-import React, { useContext, useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { UserContext } from '../../context/contexts';
-// import {  } from '../../hooks/lobbyurl-hook';
 import JoinLobby from '../landing/JoinLobby';
 import Lobby from './Lobby';
 import Grid from '../shared/Grid';
@@ -12,7 +11,6 @@ import '../../styles/landing.scss';
 // If user has correct session data, Lobby is loaded, else JoinThisLobby is loaded
 
 const Foyer = () => {
-  // console.log('Foyer');
 
   const { checkMyLobby, myLobby, checked } = useContext(UserContext);
   const lobbyURL = useParams().lobbyURL;
@@ -28,7 +26,7 @@ const Foyer = () => {
   if (lobbyURL !== 'join') {
     url.current = lobbyURL;
     // console.log(`assigning: ${url.current}`);
-  }
+  };
 
   if (lobbyURL === 'join') {
     // console.log(`join: ${url.current}`);
@@ -49,18 +47,17 @@ const Foyer = () => {
     if (isGenericURL && myLobby) {
       // console.log('generic and mylobby');
       return <Lobby />;
-    }
+    };
 
     if (!isGenericURL) {
 
       if (checkMyLobby(lobbyURL)) {
         // console.log('unique and mylobby');
-        // return <Lobby />
         history.push('/lobby');
         return null;
-      }
+      };
 
-    }
+    };
 
   };
 

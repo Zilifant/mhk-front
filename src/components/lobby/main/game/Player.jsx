@@ -1,8 +1,4 @@
-import React, {
-  // useState,
-  useContext,
-  // useEffect
-} from 'react';
+import { useContext } from 'react';
 import difference from 'lodash.difference';
 import { useParallelSelector } from '../../../../hooks/parallel-selector';
 import { useGame } from '../../../../hooks/game-hook';
@@ -125,7 +121,6 @@ const Player = ({
       <li className={`p-info ${roleClass}`}>
         <div className='wrapper'>
           <div>
-            {/* <span className={`indicator ${connectionStatus}`}></span> */}
             <span className={`username ${connectionStatus}`}>
               {playerId.slice(0,-5)}
             </span>

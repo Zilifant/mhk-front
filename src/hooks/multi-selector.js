@@ -1,8 +1,6 @@
-import {
-  useState,
-  useCallback
-} from 'react';
-// const difference = require('lodash.difference');
+// multi-selector hook
+
+import { useState, useCallback } from 'react';
 
 const reduceToIds = (selTracker) => {
   return selTracker.reduce((acc, item) => {

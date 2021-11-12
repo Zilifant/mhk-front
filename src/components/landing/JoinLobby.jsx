@@ -79,8 +79,10 @@ const JoinLobby = ({ lobbyId }) => {
       <ErrorModal error={error} onClear={clearError} />
       <Container className='foyerjoin'>
         <div className='landing-forms-wrapper'>
-          {/* <HiddenURL /> */}
-          <form className="form join-this-lobby-form" onSubmit={joinLobbyHandler}>
+          <form
+            className="form join-this-lobby-form"
+            onSubmit={joinLobbyHandler}
+          >
             <Grid className='join-this-lobby-form'>
               <div className='join-this-lobby-title'>JOIN THIS LOBBY</div>
               <Input
@@ -99,7 +101,11 @@ const JoinLobby = ({ lobbyId }) => {
                 noInvalidStyle={true}
                 className="join-this-lobby"
               />
-              <button type="submit" disabled={!formState.isValid} className='join-this-lobby-btn'>
+              <button
+                type="submit"
+                disabled={!formState.isValid}
+                className='join-this-lobby-btn'
+              >
                 join
               </button>
             </Grid>
@@ -126,7 +132,10 @@ const JoinLobby = ({ lobbyId }) => {
       <ErrorModal error={error} onClear={clearError} />
       <Container className='joinlobby'>
         <div className='landing-forms-wrapper'>
-          <form className='form join-lobby-form' onSubmit={joinLobbyHandler}>
+          <form
+            className='form join-lobby-form'
+            onSubmit={joinLobbyHandler}
+          >
             <Grid className='join-lobby-form'>
               <div className='join-lobby-title'>JOIN LOBBY</div>
               <Input
@@ -158,7 +167,11 @@ const JoinLobby = ({ lobbyId }) => {
                 noInvalidStyle={true}
                 className='join-lobby-lobbyid'
               />
-              <button type='submit' disabled={!formState.isValid} className='join-lobby-btn'>
+              <button
+                type='submit'
+                disabled={!formState.isValid}
+                className='join-lobby-btn'
+              >
                 join
               </button>
             </Grid>
@@ -182,27 +195,3 @@ const JoinLobby = ({ lobbyId }) => {
 };
 
 export default JoinLobby;
-
-  // const [lobbyIdHidden, setLobbyIdHidden] = useState(true);
-
-  // const hideLobbyIdHandler = () => setLobbyIdHidden(!lobbyIdHidden);
-
-  // let lid;
-  // if (lobbyId) lid = lobbyId === 'z' ? 'SPLENDID-MONOLITH-8923' : lobbyId.toUpperCase()
-
-  // const HiddenURL = () => (
-  //   <div className='lobbyid-wrap'>
-  //     <div className='ttip-parent'>
-  //       <SVGButton
-  //         className='hidelobbyid'
-  //         icon={lobbyIdHidden ? 'show' : 'hide'}
-  //         onClick={hideLobbyIdHandler}
-  //         disabled={false}
-  //       />
-  //       <Tooltip tip='hideShowName' side='left' />
-  //     </div>
-  //     <div className={`info-lobbyid ${lobbyIdHidden ? 'obscured' : 'visible'}`}>
-  //       {lobbyIdHidden ? 'lobby name hidden' : lid}
-  //     </div>
-  //   </div>
-  // )

@@ -1,10 +1,5 @@
-import React, {
-  useContext,
-  useEffect,
-  useRef
-} from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { UserContext } from '../../../context/contexts';
-// import { parseAndRender } from '../../../util/styled-text';
 import { parse, render } from '../../../util/smd';
 import { buildSMDString } from '../../../util/system-messages';
 import { nanoid } from 'nanoid';
@@ -28,8 +23,6 @@ const ChatMessage = ({
   const parsed = parse(built, meta);
 
   return render.block(parsed, meta)
-
-  // return parseAndRender(message, meta);
 };
 
 const ChatFeed = ({ messages, users }) => {
@@ -37,7 +30,6 @@ const ChatFeed = ({ messages, users }) => {
   const scrollRef = useRef();
 
   useEffect(() => {
-    // scrollRef.current.scrollTo(0, scrollRef.current.scrollHeight)
     scrollRef.current?.scrollIntoView({
       behavior: "smooth",
       block: "nearest",

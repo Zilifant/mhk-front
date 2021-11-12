@@ -1,6 +1,4 @@
-import React, {
-  useContext
-} from 'react';
+import { useContext } from 'react';
 import Tooltip from '../../../shared/Tooltip';
 import SVGButton from '../../../ui-elements/SVGButton';
 import SVGIcon from '../../../ui-elements/SVGIcon';
@@ -98,5 +96,3 @@ const Member = ({
 };
 
 export default Member;
-
-// `${memberId.slice(0,-5)}-${memberId.slice(-4)}`

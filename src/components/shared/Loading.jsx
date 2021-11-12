@@ -1,4 +1,4 @@
-import React from 'react';
+// loading overlay
 
 const Loading = ({
   content,
@@ -7,7 +7,6 @@ const Loading = ({
   spinner,
   suspenseful,
 }) => {
-  // console.log(content);
 
   const spin = spinner || 'falling-dots'
 

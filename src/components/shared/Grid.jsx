@@ -1,4 +1,4 @@
-import React from 'react';
+// grid
 
 const Grid = props => {
   return (

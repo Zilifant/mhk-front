@@ -1,4 +1,4 @@
-import React from 'react';
+// container
 
 const Container = ({ className, children }) => {
   return (

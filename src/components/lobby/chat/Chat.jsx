@@ -1,5 +1,4 @@
-import {
-  useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { UserContext } from '../../../context/contexts';
 import { useChat } from '../../../hooks/chat-hook';
 import Container from '../../shared/Container';

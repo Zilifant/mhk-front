@@ -10,9 +10,7 @@ import RulesContent from '../content/RulesContent';
 import AboutContent from '../content/AboutContent';
 import '../../styles/footer.scss';
 
-const Footer = ({
-  showClearBtn
-}) => {
+const Footer = ({ showClearBtn }) => {
 
   const { socket } = useContext(SocketContext);
   const { clearGameHandler } = useGame(socket);

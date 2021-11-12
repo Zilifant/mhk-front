@@ -1,6 +1,4 @@
-import React, {
-  useState
-} from 'react';
+import { useState } from 'react';
 import { parse, render } from '../../util/smd';
 import SVGButton from '../ui-elements/SVGButton';
 import '../../styles/infomodals.scss';

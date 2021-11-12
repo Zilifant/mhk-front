@@ -1,24 +1,21 @@
-import React from 'react';
-
 import Modal from './Modal';
 import SVGButton from '../ui-elements/SVGButton';
 
-const ErrorModal = props => {
+const ErrorModal = ({ error, onClear }) => {
   return (
     <Modal
-      onCancel={props.onClear}
+      onCancel={onClear}
       header="Operation Failed Successfully"
-      show={!!props.error}
+      show={!!error}
       footer={
         <SVGButton
           className='close-btn'
-          onClick={props.onClear}
+          onClick={onClear}
           icon='plus'
         />
-        // <Button onClick={props.onClear}>Close</Button>
       }
     >
-      <p>{props.error}</p>
+      <p>{error}</p>
     </Modal>
   );
 };

@@ -1,3 +1,5 @@
+// Tooltip
+
 import { parse, render } from '../../util/smd';
 import { tooltipText } from '../../util/tooltip-text';
 import '../../styles/tooltips.scss';

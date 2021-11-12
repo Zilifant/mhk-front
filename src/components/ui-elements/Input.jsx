@@ -1,10 +1,13 @@
+// Input
+
 import React, { useReducer, useEffect } from 'react';
 
 import { validate } from '../../util/validators';
-// import '../styles/Input.scss';
 
-// `useReducer` to manage more complex state; we pass it an action, it modifies the state depending on the action passed (the reducer function is how it modifies it) and then returns the state and re-renders stuff
-// here defined outside the component because it does not depend on any component inputs
+// `useReducer` to manage more complex state; we pass it an action, it modifies
+// the state depending on the action passed (the reducer function is how it
+// modifies it) and then returns the state and re-renders stuff - here defined
+// outside the component because it does not depend on any component inputs
 const inputReducer = (state, action) => {
   // console.log('inputReducer');
   // console.log(state);
@@ -12,7 +15,9 @@ const inputReducer = (state, action) => {
   switch (action.type) {
     case 'CHANGE':
       return {
-        ...state, // create copy of old state to save it to this new object; then we can modify individual key/values
+        // create copy of old state to save it to this new object;
+        // then we can modify individual key/values
+        ...state,
         value: action.val,
         isValid: validate(action.val, action.validators)
       }
@@ -28,7 +33,8 @@ const inputReducer = (state, action) => {
 };
 
 const Input = props => {
-  // can use array destructuring; like useState, this returns an array of two elements
+  // can use array destructuring; like useState, this returns an
+  // array of two elements
   const [inputState, dispatch] = useReducer(inputReducer, {
     value: props.initialValue || '',
     isTouched: false,
@@ -108,6 +114,5 @@ const Input = props => {
 
 export default Input
 
-// htmlFor = `for` in standard html (like class\className)
-
+// TO DO: re-implement error text
 // {!inputState.isValid && inputState.isTouched && <p>{props.errorText}</p>}

@@ -1,4 +1,4 @@
-// loading overlay
+// Loading Overlay
 
 const Loading = ({
   content,

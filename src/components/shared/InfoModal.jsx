@@ -1,3 +1,5 @@
+// Modal Informational Window
+
 import { useState } from 'react';
 import { parse, render } from '../../util/smd';
 import SVGButton from '../ui-elements/SVGButton';

@@ -1,4 +1,4 @@
-// Embedded Video
+// Modal Video
 
 import { useState } from 'react';
 import SVGButton from '../ui-elements/SVGButton';

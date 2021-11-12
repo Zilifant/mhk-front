@@ -1,4 +1,5 @@
-import React from 'react';
+// SVG Button
+
 import { svg } from '../../util/svgs';
 import '../../styles/svgs.scss';
 

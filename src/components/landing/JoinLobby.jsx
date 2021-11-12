@@ -1,12 +1,9 @@
-import React, {
-  useContext,
-  useState
-} from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from '../../hooks/form-hook';
 import { useHttpClient } from '../../hooks/http-hook';
 import { UserContext } from '../../context/contexts';
-import { MAX_NAME_LEN, randomName } from '../../util/utils';
+import { MAX_NAME_LEN } from '../../util/utils';
 import {
   VALIDATOR_REQUIRE,
   VALIDATOR_MAXLENGTH,
@@ -25,20 +22,6 @@ const JoinLobby = ({ lobbyId }) => {
   const history = useHistory();
   const [isStreamer, setIsStreamer] = useState(false);
 
-  function joinLobbyData(dev) {
-    const prodData = {
-      userName: formState.inputs.userName.value,
-      lobbyURL: lobbyId || formState.inputs.lobbyURL.value,
-      isStreamer
-    };
-    const devData = {
-      userName: randomName(),
-      lobbyURL: 'z',
-      isStreamer
-    };
-    return JSON.stringify(dev ? devData : prodData); 
-  }
-
   const joinThisLobbyFormInitState = {
     userName: { value: '', isValid: false }
   };
@@ -54,14 +37,18 @@ const JoinLobby = ({ lobbyId }) => {
 
   const [formState, inputHandler] = useForm(initFormState, false);
 
-  const joinLobbyHandler = async (event, dev) => {
+  const joinLobbyHandler = async (event) => {
     event.preventDefault();
 
     try {
       const responseData = await sendRequest(
         `${process.env.REACT_APP_BACKEND_URL}/user/new`,
         'POST',
-        joinLobbyData(dev),
+        JSON.stringify({
+          userName: formState.inputs.userName.value,
+          lobbyURL: lobbyId || formState.inputs.lobbyURL.value,
+          isStreamer
+        }),
         { 'Content-Type': 'application/json' },
       );
       updateUserCtx({

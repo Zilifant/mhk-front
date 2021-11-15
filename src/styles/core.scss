@@ -4,7 +4,7 @@
 @import './mixins.scss';
 @import './smd.scss';
 
-/* RESET */
+// Reset
 
 html, body {
   margin: 0;
@@ -57,7 +57,7 @@ main.app {
   max-height: calc(100% - (0.5rem));
 }
 
-/* GRID */
+// App Grid
 
 .con--announcer    { grid-area: anno; }
 .con--info         { grid-area: info; }
@@ -147,7 +147,7 @@ main.app {
     "foot foot foot";
 }
 
-/* CONTAINERS */
+// Containers
 
 .container {
   padding: .5rem;
@@ -172,31 +172,7 @@ main.app {
   grid-template-columns: min-content min-content;
 }
 
-/* BUTTONS */
-
-.placeholder {
-  height: 1.3rem;
-  width: 100%;
-  margin: 0;
-}
-
-.rtw-unchecked {
-  background-color: $bg2;
-}
-
-.rtw-checked {
-  background-color: $emer5;
-}
-
-.hidden {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-/* FORMS */
+// Forms
 
 .label {
   margin-right: 0.5rem;
@@ -230,20 +206,7 @@ main.app {
   border-color: $oran4;
 }
 
-/* MISC */
-
-.gameresult {
-  width: 100%;
-  text-align: center;
-  text-justify: center;
-}
-
-.sessinfo {
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+// Misc
 
 .preload,
 .preload:before {
@@ -253,17 +216,7 @@ main.app {
           transition: none;
 }
 
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.75);
-  z-index: 10;
-}
-
-/* LOADING */
+// Loading Overlay
 
 .loading-content::before,
 .loading-content {

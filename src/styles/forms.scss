@@ -1,0 +1,33 @@
+// Forms
+
+.label {
+  margin-right: 0.5rem;
+  font-size: larger;
+}
+
+.input,
+.textarea {
+  border: none;
+  border-radius: $rad;
+  background: $bg5;
+  padding: 3px .5rem;
+  font-size: larger;
+}
+
+::placeholder {
+  color: $bg2;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+}
+
+.join-lobby-inputs-wrapper {
+  display: block;
+}
+
+.form--invalid input,
+.form--invalid textarea {
+  border-color: $oran4;
+}

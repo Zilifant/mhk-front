@@ -1,11 +1,12 @@
 import { useContext } from 'react';
 import { UserContext } from '../../context/contexts';
 import Header from './Header';
-import ReturnToLobby from './ReturnToLobby';
+import Footer from '../shared/Footer';
 import NewLobby from './NewLobby';
 import JoinLobby from './JoinLobby';
+import ReturnToLobby from './ReturnToLobby';
 import '../../styles/landing.scss';
-import Footer from '../shared/Footer';
+import '../../styles/forms.scss';
 
 const Landing = () => {
 

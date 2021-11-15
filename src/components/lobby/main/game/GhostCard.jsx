@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { SocketContext } from '../../../../context/contexts';
-import { useMultiSelector } from '../../../../hooks/multi-selector';
+import { useMultiSelector } from '../../../../hooks/multi-selector-hook';
 import { useGame } from '../../../../hooks/game-hook';
 import Button from '../../../ui-elements/Button';
 

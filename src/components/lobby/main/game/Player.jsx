@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import difference from 'lodash.difference';
-import { useParallelSelector } from '../../../../hooks/parallel-selector';
+import { useParallelSelector } from '../../../../hooks/parallel-selector-hook';
 import { useGame } from '../../../../hooks/game-hook';
 import { SocketContext } from '../../../../context/contexts';
 import { badge } from '../../../../util/utils';

@@ -1,4 +1,4 @@
-// multi-selector hook
+// Multi-Selector Hook
 
 import { useState, useCallback } from 'react';
 

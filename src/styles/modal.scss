@@ -1,0 +1,68 @@
+// Modal
+
+.modal {
+  @include infomodal();
+  z-index: 100;
+  position: fixed;
+  top: 22vh;
+  left: 10%;
+  width: 80%;
+  overflow: hidden;
+}
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem;
+  background: $bg3;
+  & h2 {
+    display: inline;
+    font-size: 2.5rem;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+    color: $bg1;
+  };
+  & .svg-btn.close-btn {
+    justify-self: right;
+    @include close-btn($size: 32px);
+  };
+}
+
+.modal__content {
+  padding: 1rem;
+  & p {
+    font-size: 2rem;
+  };
+}
+
+@media (min-width: 768px) {
+  .modal {
+    left: calc(50% - 25rem);
+    width: 50rem;
+  }
+}
+
+.modal-enter {
+  transform: translateY(-10rem);
+  opacity: 0;
+}
+
+.modal-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 200ms;
+}
+
+.modal-exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.modal-exit-active {
+  transform: translateY(-10rem);
+  opacity: 0;
+  transition: all 200ms;
+}

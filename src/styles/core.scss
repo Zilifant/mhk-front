@@ -1,3 +1,4 @@
+// Core
 
 @import './colors.scss';
 @import './mixins.scss';
@@ -39,14 +40,6 @@ button:focus { outline: none; }
 
 /* ////////////////////////////////////////// */
 
-// body { 
-//   background: url('../assets/images/alley-bg.jpg') no-repeat center center fixed;
-//   -webkit-background-size: cover;
-//      -moz-background-size: cover;
-//        -o-background-size: cover;
-//           background-size: cover;
-// }
-
 div.app-root {
   display: flex;
   flex-flow: column;
@@ -62,21 +55,6 @@ main.app {
   flex-shrink: 1;
   flex-basis: auto;
   max-height: calc(100% - (0.5rem));
-}
-
-/* ----------- Non-Retina Screens ----------- */
-@media screen
-  and (min-device-width: 1200px) 
-  and (max-device-width: 1600px) 
-  and (-webkit-min-device-pixel-ratio: 1) {
-}
-
-/* ----------- Retina Screens ----------- */
-@media screen
-  and (min-device-width: 1200px) 
-  and (max-device-width: 1600px) 
-  and (-webkit-min-device-pixel-ratio: 2)
-  and (min-resolution: 192dpi) {
 }
 
 /* GRID */
@@ -185,7 +163,6 @@ main.app {
 
 .con--players {
   padding: 0;
-  // background-color: $bg4;
 }
 
 .player-list {
@@ -194,10 +171,6 @@ main.app {
   gap: .5rem;
   grid-template-columns: min-content min-content;
 }
-
-// .con--info.game > :not(:nth-child(1)) {
-//   margin-left: .5rem;
-// }
 
 /* BUTTONS */
 
@@ -290,75 +263,6 @@ main.app {
   z-index: 10;
 }
 
-/* MODAL */
-
-.modal {
-  @include infomodal();
-  z-index: 100;
-  position: fixed;
-  top: 22vh;
-  left: 10%;
-  width: 80%;
-  overflow: hidden;
-}
-
-.modal__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 1rem;
-  background: $bg3;
-  & h2 {
-    display: inline;
-    font-size: 2.5rem;
-    width: 100%;
-    margin: 0 auto;
-    justify-content: center;
-    color: $bg1;
-  };
-  & .svg-btn.close-btn {
-    justify-self: right;
-    @include close-btn($size: 32px);
-  };
-}
-
-.modal__content {
-  padding: 1rem;
-  & p {
-    font-size: 2rem;
-  };
-}
-
-@media (min-width: 768px) {
-  .modal {
-    left: calc(50% - 25rem);
-    width: 50rem;
-  }
-}
-
-.modal-enter {
-  transform: translateY(-10rem);
-  opacity: 0;
-}
-
-.modal-enter-active {
-  transform: translateY(0);
-  opacity: 1;
-  transition: all 200ms;
-}
-
-.modal-exit {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.modal-exit-active {
-  transform: translateY(-10rem);
-  opacity: 0;
-  transition: all 200ms;
-}
-
 /* LOADING */
 
 .loading-content::before,
@@ -408,31 +312,4 @@ main.app {
   30% { opacity: 95%; }
   70% { opacity: 95%; }
   100% { opacity: 0%; }
-}
-
-.rotator:before {
-  animation-name: code-rotator;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-  content: '';
-}
-
-@keyframes code-rotator {
-    0% { content: '⠁'; }
-    6% { content: '⠉'; }
-   12% { content: '⠙'; }
-   18% { content: '⠹'; }
-   25% { content: '⢹'; }
-   31% { content: '⣹'; }
-   37% { content: '⣽'; }
-   43% { content: '⣿'; }
-   50% { content: '⣾'; }
-   56% { content: '⣶'; }
-   62% { content: '⣦'; }
-   68% { content: '⣆'; }
-   75% { content: '⡆'; }
-   81% { content: '⠆'; }
-   87% { content: '⠂'; }
-   93% { content: '⠀'; }
-  100% { content: '⠁'; }
 }

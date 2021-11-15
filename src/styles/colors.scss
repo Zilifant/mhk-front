@@ -224,16 +224,14 @@ $blug8 :rgba(30,41,59,1);
 $blug9 :rgba(15,23,42,1);
 $newg1 :rgba(240,243,245,1);
 
+// Foreground / Background
+
 $fg1: $gray1;
 $fg2: $gray2;
 $fg3: $gray3;
 $fg4: $gray4;
 
-$deffg:   $fg3;
-$deffgli: $colg2;
-
-$default-light: $deffg;
-$default:       $deffgli;
+$default: $colg2;
 
 $bg1: $gray5;
 $bg2: $gray6;
@@ -244,28 +242,16 @@ $bg6: darken($gray9, 5%);
 
 $defbg: $bg6;
 
-$hiligt:  $redd4;
+// Roles
 
 $killer:  $redd4;
 $accomp:  $redd3;
 $hunter:  $gree6;
 $witnss:  $libl4;
-
 $ghost:   $fuch5;
-$ghostli: $fuch4;
-
-$cause:   $fuch7;
-$locate:  $emer8;
-
-$cluold:  $colg7;
-$clunew:  $colg6;
-
-$badge:   $yell6;
 $mystry:  $viol4;
-$leader:  $yell5;
 
 $ready:   $emer6;
-$readyli: $emer5;
 
 $evc: $colg6;
 $mec: $wrmg6;

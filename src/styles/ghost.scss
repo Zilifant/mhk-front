@@ -44,10 +44,10 @@ div.card-wrap--ghost {
 }
 
 .card-wrap--ghost {
-  &.old .gc-title { background-color: transparentize($cluold, .5); }
-  &.new .gc-title { background-color: transparentize($clunew, .5); }
-  &.cause .gc-title { background-color: transparentize($cause, .5) }
-  &.location .gc-title { background-color: transparentize($locate, .5); }
+  &.old .gc-title { background-color: transparentize($colg7, .5); }
+  &.new .gc-title { background-color: transparentize($colg6, .5); }
+  &.cause .gc-title { background-color: transparentize($fuch7, .5) }
+  &.location .gc-title { background-color: transparentize($emer8, .5); }
   &.back {
     display: grid;
     grid-template-rows: 1fr max-content;

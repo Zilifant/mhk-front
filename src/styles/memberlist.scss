@@ -86,7 +86,7 @@ div.leader_icon {
   }
 
   & .svg-btn.transfer-leader:active svg {
-    fill: darken($leader, 20%);
+    fill: darken($yell5, 20%);
   }
 
   & .svg-btn.crown {
@@ -97,7 +97,7 @@ div.leader_icon {
 }
 
 .svg-icon.crown.ml-leader svg {
-  fill: $leader;
+  fill: $yell5;
 }
 
 .svg-btn.assign-ghost.ml-notghost svg,
@@ -116,35 +116,11 @@ div.leader_icon {
 }
 
 div.member_grid:hover > .leader_icon .svg-btn.transfer-leader:not(:active) svg {
-  fill: $leader;
+  fill: $yell5;
 }
 
 div.member_grid:hover > .ghost_icon .svg-btn.assign-ghost.ml-notghost:not(:active) svg {
   fill: $ghost;
-}
-
-.svg-btn.ready-toggle {
-  border-radius: $rad;
-}
-
-.svg-btn.ready-toggle svg .letter {
-  fill: $default;
-}
-
-.svg-btn.ready-toggle.ml-ready svg .background {
-  fill: $ready;
-}
-
-.svg-btn.ready-toggle.ml-notready svg .background {
-  fill: $bg2;
-}
-
-.svg-btn.ready-toggle.ml-ready:hover svg .background {
-  fill: $readyli;
-}
-
-.svg-btn.ready-toggle.ml-notready:hover svg .background {
-  fill: $bg1;
 }
 
 .ready_toggle {

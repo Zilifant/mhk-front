@@ -38,18 +38,6 @@
   color: $killer;
 }
 
-.svg-icon.hourglass svg {
-  fill: $bg1;
-}
-
-.svg-icon path.glass {
-  fill: $default;
-}
-
-.svg-icon path.sand {
-  fill: $viol5;
-}
-
 .time-wrap-off {
   border-radius: $rad;
   background-color: $bg4;
@@ -79,7 +67,7 @@
 
 .time-wrap.running .timebar-3.show,
 .time-wrap.running .timebar-2.show {
-  background-color: $badge;
+  background-color: $yell6;
 }
 
 .time-wrap.running .timebar-1.show {

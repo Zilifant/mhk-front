@@ -1,5 +1,8 @@
 // Loading Overlay
 
+@import './colors.scss';
+@import './mixins.scss';
+
 .loading-content::before,
 .loading-content {
   font-size: 30pt;

@@ -14,9 +14,9 @@ html, body {
 }
 
 *, *:before, *:after {
-  @include z(500);
   font-family: 'Roboto Condensed', Arial, Helvetica, sans-serif;
   font-size: 14px;
+  font-weight: 500;
   letter-spacing: .025rem;
   color: $default;
   margin: 0;

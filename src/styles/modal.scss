@@ -1,5 +1,8 @@
 // Modal
 
+@import './colors.scss';
+@import './mixins.scss';
+
 .modal {
   @include infomodal();
   z-index: 100;

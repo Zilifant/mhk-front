@@ -3,12 +3,6 @@
 @import './colors.scss';
 @import './mixins.scss';
 
-$ifm-mar: 1.5rem;
-$clo: $wrmg6;
-$def: $colg6;
-$cur: $teal7;
-$out-mar: 28px; // 2rem
-
 .infomodal-invis-wrap {
   z-index: 999;
   display: flex;

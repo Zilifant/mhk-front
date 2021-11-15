@@ -1,4 +1,4 @@
-// colors
+// Colors
 
 $black :rgba(0,0,0,1);
 $white :rgba(255,255,255,1);
@@ -272,3 +272,30 @@ $mec: $wrmg6;
 
 $sel: $teal6;
 $hig: $rose9;
+
+// Ghost
+
+$clue-bg: $bg4;
+
+$cbbg: $bg2;
+$cbbg-s: $emer6;
+$cbbg-d: $bg3;
+$cbbg-l: lighten($bg4, 2%);
+$cbbg-h: $colg6;
+
+$cfbg: $cyan6;
+$cfbg-d: $bg3;
+
+$rpbg: $redd8;
+
+// Infomodals
+
+$clo: $wrmg6;
+$def: $colg6;
+$cur: $teal7;
+
+// Player
+
+$c-def-bg: $cyan6;
+$c-dis-bg: $bg3;
+$c-kill-bg: $redd8;

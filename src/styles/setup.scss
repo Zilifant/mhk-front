@@ -1,4 +1,4 @@
-// setup
+// Setup
 
 @import './colors.scss';
 @import './mixins.scss';
@@ -7,8 +7,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color: $bg4; */
-  /* padding: 0; */
 }
 
 .settings > :not(:first-child) {
@@ -81,22 +79,15 @@ button.startgame {
   width: 110px;
   font-size: larger;
   text-transform: uppercase;
-  // @include three-d-btn($cyan6);
   @include float-btn-txt($cyan6, $fg3);
 
   &.selected {
-    // color: $fg2;
-    // @include three-d-btn($emer6);
     @include float-btn-txt($emer6, $fg2);
   }
 
   &:disabled {
     cursor: auto;
-    // @include three-d-btn($bg3);
     @include float-btn-txt($bg3, darken($fg3, 30%));
-    // &:not(.highlighted) {
-    //   color: darken($fg3, 30%);
-    // }
   }
 }
 
@@ -134,7 +125,6 @@ button.startgame {
   display: grid;
   gap: .5rem;
   grid-template-columns: 34px 65px 34px; // scale
-  // grid-template-rows: 34px;
   grid-template-areas:
     'de va in';
 }
@@ -145,8 +135,6 @@ button.startgame {
 }
 
 .svg-btn.timer {
-  // align-self: center;
-  // @include square(32px);
   @include float-btn-txt($cyan6, $fg3, $rad3);
   &:disabled {
     cursor: default;

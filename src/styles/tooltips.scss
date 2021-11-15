@@ -1,11 +1,10 @@
-// tooltips
+// Tooltips
 
 @import './colors.scss';
 @import './mixins.scss';
 
 .ttip-parent {
   position:relative;
-  /* width: max-content; */
 }
 
 .ttip-parent .ttip {
@@ -67,25 +66,3 @@
 .ttip :not(:first-child) {
   margin-top: 1rem;
 }
-
-// i {
-//   position: absolute;
-//   top: 50%;
-//   left: 100%;
-//   margin-top: -20px;
-//   width: 20px;
-//   height: 40px;
-//   overflow: hidden;
-// }
-
-// i::after {
-//   content: '';
-//   position: absolute;
-//   width: 20px;
-//   height: 20px;
-//   left: 0;
-//   top: 50%;
-//   transform: translate(-50%,-50%) rotate(-45deg);
-//   background-color: $bg1;
-//   // box-shadow: 0 1px 3px $bg5;
-// }

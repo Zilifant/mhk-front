@@ -1,4 +1,4 @@
-// landing
+// Landing
 
 @import './colors.scss';
 @import './mixins.scss';
@@ -50,7 +50,7 @@
   font-size: 14px;
 }
 
-  // hi-res displays
+// hi-res displays
 @media screen and (min-device-width: 1200px) {
   .grid--new-lobby-form,
   .grid--join-lobby-form,
@@ -129,7 +129,6 @@ input.join-this-lobby-input,
 input.join-lobby-username-input,
 input.join-lobby-lobbyid-input {
   border-radius: $rad3;
-  // border: 1px solid $bg2;
   background-color: $bg4;
   min-height: 30px;
 }
@@ -141,9 +140,7 @@ input.join-lobby-lobbyid-input {
 .landing-title {
   font-size: 2.5em;
   color: $rose5;
-  // background-color: $bg5;
   padding: 0 2rem;
-  // margin-bottom: .5rem;
   & span {
     font-size: 1.5rem;
     color: $fg4;
@@ -175,9 +172,6 @@ input.join-lobby-lobbyid-input {
 .landing-forms-wrapper {
   width: max-content;
   margin: 0 auto;
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: center;
   & > :not(:first-child) {
     margin-top: .5rem;
   }
@@ -188,7 +182,6 @@ input.join-lobby-lobbyid-input {
   justify-content: flex-end;
   align-items: center;
   & > .streaming-mode-label {
-    // font-size: 1.5rem;
     text-transform: uppercase;
     margin-right: .5rem;
   }
@@ -198,19 +191,12 @@ input.join-lobby-lobbyid-input {
 .join-lobby-btn,
 .join-this-lobby-btn {
   display: block;
-  // padding: 2px 3px;
   text-transform: uppercase;
   font-size: larger;
   @include float-btn-txt($cyan6, $fg3);
 
   &:disabled {
     cursor: auto;
-    // color: darken($fg3, 30%);
     @include float-btn-txt($bg2, darken($fg3, 30%));
   }
-}
-
-.join-devlobby {
-  background-color: inherit;
-  margin-right: 3px;
 }

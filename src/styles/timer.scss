@@ -1,4 +1,4 @@
-// timer
+// Timer
 
 @import './colors.scss';
 @import './mixins.scss';
@@ -7,7 +7,6 @@
   width: 100%;
   padding: 0;
   margin: 0;
-  /* background-color: $bg4; */
 }
 
 .time-wrap {
@@ -49,17 +48,6 @@
 
 .svg-icon path.sand {
   fill: $viol5;
-}
-
-.svg-icon.hourglass {
-  display: flex;
-  height: max-content;
-  /* max-height: none;
-  max-width: none; */
-  /* width: 150%; */
-  /* position: relative; */
-  /* left: -25%; */
-  background: none;
 }
 
 .time-wrap-off {

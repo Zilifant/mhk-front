@@ -1,3 +1,4 @@
+// Info
 
 @import './colors.scss';
 @import './mixins.scss';
@@ -6,8 +7,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: $bg4; */
-  /* padding: 0; */
 }
 
 // nogame
@@ -43,10 +42,6 @@
   gap: .5rem;
   grid-template-columns: 1fr max-content 1fr;
 }
-
-// .lobbyid-wrap * {
-//   align-self: center;
-// }
 
 // game
 
@@ -85,18 +80,14 @@
 
   & > .game-control-buttons {
     display: flex;
-    // flex-direction: row;
-    // background-color: $bg6;
     & > button {
       width: max-content;
-      // height: 100%;
       height: 24px;
       padding: 0 6px;
       margin-right: .5rem;
     }
     & > .nextround {
       @include float-btn-txt($cyan6, $fg3);
-      // @include algo-btn();
     }
     & > .cleargame {
       @include float-btn-txt($rose9, $fg3);

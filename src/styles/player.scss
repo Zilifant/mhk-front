@@ -3,9 +3,6 @@
 @import './colors.scss';
 @import './mixins.scss';
 
-$pt: 8%;
-$dpt: 5%;
-
 .p-info.username        { grid-area: name; }
 .p-info.badge           { grid-area: badg; }
 .p-info                 { grid-area: info; }
@@ -192,7 +189,6 @@ button.card-wrap--player {
   padding: 3px;
   width: 75px;
   text-transform: capitalize;
-  // height: 1fr;
 
   &:disabled {
     cursor: auto;
@@ -231,13 +227,3 @@ button.card-wrap--player {
     }
   }
 }
-
-/* .indicator {
-  display: inline-block;
-  vertical-align: middle;
-  background-color: $emer3;
-  margin: 3px;
-  height: .5rem;
-  width: .5rem;
-  border-radius: 50%;
-} */

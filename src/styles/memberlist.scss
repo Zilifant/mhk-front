@@ -1,4 +1,4 @@
-// memberlist & members
+// Memberlist & Members
 
 @import './colors.scss';
 @import './mixins.scss';
@@ -7,9 +7,6 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  /* padding: 0; */
-  /* width: 100%; */
-  /* background-color: $bg4; */
 }
 
 ul.memberlist > :not(:first-child) {
@@ -24,10 +21,8 @@ div.leader_icon  { grid-area: leader; }
 
 li.ready_grid {
   display: grid;
-  /* width: 380px; */
   gap: $gap;
   grid-template-columns: 50px max-content 50px;
-  /* grid-template-rows: 30px; */
   grid-template-areas:
     '. member ready';
 }
@@ -47,7 +42,6 @@ div.member_grid {
 }
 
 div.member_grid.ml-self {
-  // background-color: $bg6;
   & > .member_name {
     font-style: italic;
   }
@@ -129,16 +123,8 @@ div.member_grid:hover > .ghost_icon .svg-btn.assign-ghost.ml-notghost:not(:activ
   fill: $ghost;
 }
 
-/* .svg-btn.assign-ghost.ml-notghost:active svg,
-.svg-btn.assign-ghost.ml-ghost:active svg {
-  fill: $ghostli;
-} */
-
 .svg-btn.ready-toggle {
   border-radius: $rad;
-  /* max-height: 100%;
-  justify-self: center;
-  align-self: center; */
 }
 
 .svg-btn.ready-toggle svg .letter {

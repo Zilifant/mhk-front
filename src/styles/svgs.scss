@@ -1,4 +1,4 @@
-// svgs
+// SVGs
 
 @import './colors.scss';
 @import './mixins.scss';
@@ -16,8 +16,6 @@
 .svg-icon {
   height: 100%;
   width: 100%;
-  /* max-height: 50px;
-  max-width: 50px; */
   background-color: inherit;
   overflow: hidden;
 }

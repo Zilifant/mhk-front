@@ -1,5 +1,7 @@
 // Loading Overlay
 
+import '../../styles/loading.scss';
+
 const Loading = ({
   content,
   color,

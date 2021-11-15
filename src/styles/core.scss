@@ -38,7 +38,7 @@ button {
 
 button:focus { outline: none; }
 
-/* ////////////////////////////////////////// */
+/* App Container */
 
 div.app-root {
   display: flex;
@@ -147,7 +147,7 @@ main.app {
     "foot foot foot";
 }
 
-// Containers
+// Component Containers
 
 .container {
   padding: .5rem;

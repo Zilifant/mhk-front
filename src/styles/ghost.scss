@@ -1,20 +1,7 @@
-// ghost
+// Ghost
 
 @import './colors.scss';
 @import './mixins.scss';
-
-$clue-bg: $bg4;
-
-$cbbg: $bg2;
-$cbbg-s: $emer6;
-$cbbg-d: $bg3;
-$cbbg-l: lighten($bg4, 2%);
-$cbbg-h: $colg6;
-
-$cfbg: $cyan6;
-$cfbg-d: $bg3;
-
-$rpbg: $redd8;
 
 .container.con--self.gh,
 .container.con--ghost {

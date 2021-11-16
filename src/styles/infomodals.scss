@@ -15,13 +15,16 @@
   position: absolute;
   top: 0;
   left: 0;
-
 }
 
 .infomodal-wrap {
+  z-index: 999;
   overflow: hidden;
   margin: $out-mar;
-  @include infomodal();
+  background-color: $bg5;
+  border-radius: $rad6;
+  border: 2px solid $bg2;
+  @include shadow();
 
   &.text {
     display: inline-flex;

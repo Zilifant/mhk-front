@@ -4,8 +4,11 @@
 @import './mixins.scss';
 
 .modal {
-  @include infomodal();
   z-index: 100;
+  background-color: $bg5;
+  border-radius: $rad6;
+  border: 2px solid $bg2;
+  @include shadow();
   position: fixed;
   top: 22vh;
   left: 10%;

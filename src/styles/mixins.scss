@@ -22,14 +22,6 @@ $out-mar: 28px; // 2rem
 $pt: 8%;
 $dpt: 5%;
 
-@mixin infomodal() {
-  z-index: 999;
-  background-color: $bg5;
-  border-radius: $rad6;
-  border: 2px solid $bg2;
-  @include shadow();
-}
-
 @mixin shadow() {
   box-shadow:
   rgba(0, 0, 0, 0.03) 0px 1px 2px 0px,

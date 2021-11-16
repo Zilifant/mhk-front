@@ -62,8 +62,11 @@
 .svg-btn.infomodal-vid-close-btn {
   @include close-btn();
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 10px;
+  right: 10px;
+  .infomodal-wrap.vid:not(:hover) & {
+    display: none;
+  };
 }
 
 .infomodal-titlebar-title { grid-area: t; }

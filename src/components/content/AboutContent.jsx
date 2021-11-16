@@ -4,9 +4,11 @@ const AboutContent = () => (<>
   <div className='line-smd--def'>
     <span className='smd--def'>MHK is an online implementation of the social deduction game </span>
     <span className='smd--emphasize'>Deception: Murder in Hong Kong </span>
-    <span className='smd--def'>by designer Tobey Ho. </span>
-    <span className='smd--italic'>It is not affiliated with Tobey Ho, Grey Fox Games, or JollyThinkers in any way. </span>
-    <span className='smd--def'>Deception: Murder in Hong Kong is © Jolly Thinkers' Learning Centre Limited.</span>
+    <span className='smd--def'>by designer Tobey Ho. Deception: Murder in Hong Kong is © Jolly Thinkers' Learning Centre Limited.</span>
+  </div>
+
+  <div className='line-smd--def'>
+    <span className='smd--italic'>This app is not affiliated with Tobey Ho, Grey Fox Games, or Jolly Thinkers in any way. </span>
   </div>
 
   <div className='line-smd--def'>
@@ -33,7 +35,7 @@ const AboutContent = () => (<>
 
   <h2 className='smd--heading'><span>Contact</span></h2>
   <div className='line-smd--def'>
-    <span className='smd--def'>Find a bug? Have some feedback? Contact me at <a className='smd--link' href='mailto:zilifant.code@gmail.com'>zilifant.code@gmail.com</a>.</span>
+    <span className='smd--def'>Find a bug? Have feedback? Contact me at <a className='smd--link' href='mailto:zilifant.code@gmail.com'>zilifant.code@gmail.com</a>.</span>
   </div>
 </>);
 

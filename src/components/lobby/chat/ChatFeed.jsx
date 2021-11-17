@@ -41,7 +41,6 @@ const ChatFeed = ({ messages, users }) => {
     if (message.senderId === 'app') return 'default';
     const color = users.find(u => u.id === message.senderId).color;
     if (color) return color.id;
-    console.log('error null-color');
     return 'null-color';
   }
 

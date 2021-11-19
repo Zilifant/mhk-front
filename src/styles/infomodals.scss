@@ -4,7 +4,7 @@
 @import './mixins.scss';
 
 .infomodal-invis-wrap {
-  z-index: 999;
+  z-index: 2;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -18,7 +18,7 @@
 }
 
 .infomodal-wrap {
-  z-index: 999;
+  z-index: 3;
   overflow: hidden;
   margin: $out-mar;
   background-color: $bg5;

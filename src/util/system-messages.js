@@ -40,7 +40,9 @@ export const systemMessages = (() => {
       `_${cls+target.color.id}_${target.userName}^ was not the ^_kw_Witness^. The ^_kh_Hunters^ and the ^_kg_Ghost^ win!`
   };
 
-  const cls = 'smd--username '
+  const cls = 'smd--username ';
+
+  const duplicateConnection = () => `User connected in another window. This window will disconnect.`;
 
   const waitingForJoin = () => `Waiting for more players...`;
 
@@ -124,6 +126,7 @@ export const systemMessages = (() => {
   };
 
   return {
+    duplicateConnection,
     waitingForJoin,
     waitingForReady,
     waitingForStart,

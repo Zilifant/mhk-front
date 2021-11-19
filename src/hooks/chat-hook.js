@@ -50,12 +50,21 @@ export const useChat = (chat) => {
   // TO DO: useCB necessary?
   const subToAnnounce = useCallback(() => {
 
-    const sub2Announce = () => {
+    const subToPublicAnnounce = () => {
       socket.current.on('updateLobby', ({ msg }) => {
         if (msg) return setMessages((messages) => [...messages, msg]);
       });
     };
-    sub2Announce();
+
+    const SubToPrivateAnnounce = () => {
+      socket.current.on('privateAnnounce', msg => {
+        console.log(msg);
+        return setMessages((messages) => [...messages, msg]);
+      });
+    };
+
+    subToPublicAnnounce();
+    SubToPrivateAnnounce();
 
   }, [socket]);
 

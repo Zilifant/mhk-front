@@ -21,7 +21,7 @@ function App() {
     const checkCookie = async () => {
       try {
         const responseData = await sendRequest(
-          `${process.env.REACT_APP_BACKEND_URL}/user/session`
+          `${process.env.REACT_APP_BACKEND_URL}/user/cookie`
         );
         updateUserCtx({
           userId: responseData.user?.id,

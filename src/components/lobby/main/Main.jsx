@@ -20,6 +20,8 @@ const Main = ({
   }
 }) => {
 
+  const hidePlayerUI = thisPlayer?.role === 'ghost' || thisPlayer?.role === 'spectator'
+
   return (
     <>
       <Announcer
@@ -76,7 +78,7 @@ const Main = ({
             game={game}
           />}
 
-          {thisPlayer.role !== 'ghost' &&
+          {!hidePlayerUI &&
           <PlayerUI
             thisPlayer={thisPlayer}
             stage={game.currentStage}

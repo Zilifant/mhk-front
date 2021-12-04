@@ -46,6 +46,8 @@ const JoinLobby = ({ lobbyId }) => {
             lobbyURL = formState.inputs.lobbyURL.value,
             isAdminUser = userName === process.env.REACT_APP_ADMIN_USER,
             isAdminPass = lobbyURL === process.env.REACT_APP_ADMIN_PASS;
+      console.log(process.env.REACT_APP_ADMIN_USER);
+      console.log(process.env.REACT_APP_ADMIN_PASS);
       return (isAdminUser && isAdminPass);
     };
 

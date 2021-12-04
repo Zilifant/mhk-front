@@ -40,6 +40,25 @@ const JoinLobby = ({ lobbyId }) => {
   const joinLobbyHandler = async (event) => {
     event.preventDefault();
 
+    // Temporary way for admin to recieve all lobby data from live server.
+    function isAdminBackDoor() {
+      const userName = formState.inputs.userName.value,
+            lobbyURL = formState.inputs.lobbyURL.value,
+            isAdminUser = userName === process.env.REACT_APP_ADMIN_USER,
+            isAdminPass = lobbyURL === process.env.REACT_APP_ADMIN_PASS;
+      return (isAdminUser && isAdminPass);
+    };
+
+    if (isAdminBackDoor()) {
+      try {
+        const responseData = await sendRequest(
+          `${process.env.REACT_APP_BACKEND_URL}/admin/lobbies`
+        );
+        console.log(responseData.lobbies);
+      } catch (err) { console.log(err); };
+      return;
+    };
+
     try {
       const responseData = await sendRequest(
         `${process.env.REACT_APP_BACKEND_URL}/user/new`,

@@ -49,7 +49,7 @@ const JoinLobby = ({ lobbyId }) => {
       return (isAdminUser && isAdminPass);
     };
 
-    if (isAdminBackDoor()) {
+    if (!lobbyId && isAdminBackDoor()) {
       try {
         const responseData = await sendRequest(
           `${process.env.REACT_APP_BACKEND_URL}/admin/lobbies`

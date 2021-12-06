@@ -47,8 +47,6 @@ a.smd--link {
 
 .smd--keyword {
   color: $fg1;
-  font-weight: bold;
-  letter-spacing: .05rem;
   text-transform: capitalize;
   &.ghost {
     color: $ghost;

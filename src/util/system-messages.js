@@ -27,17 +27,17 @@ export const systemMessages = (() => {
     redwintimeout_accomplice: () =>
       `The ^_kk_Killer^ and the ^_ka_Accomplice^ win! The ^_kh_Hunters^ ran out of time.`,
 
-    redwinwitnessdead: ({killer}) =>
-      `_${cls+killer.color.id}_${killer.userName}^ chose correctly. The ^_kw_Witness^ is dead. The ^_kk_Killer^ wins!`,
+    redwinwitnessdead: ({killer, witness}) =>
+      `_${cls+killer.color.id}_${killer.userName}^ killed ^_${cls+witness.color.id}_${witness.userName}^. They were the ^_kw_Witness^! The ^_kk_Killer^ wins!`,
 
-    redwinwitnessdead_accomplice: ({killer, accomplice}) =>
-      `_${cls+killer.color.id}_${killer.userName}^ and ^_${cls+accomplice.color.id}_${accomplice.userName}^ chose correctly. The ^_kw_Witness^ is dead. The ^_kk_Killer^ and the ^_ka_Accomplice^ win!`,
+    redwinwitnessdead_accomplice: ({killer, witness, accomplice}) =>
+      `_${cls+killer.color.id}_${killer.userName}^ and ^_${cls+accomplice.color.id}_${accomplice.userName}^ killed ^_${cls+witness.color.id}_${witness.userName}^. They were the ^_kw_Witness^! The ^_kk_Killer^ and ^_ka_Accomplice^ win!`,
 
     bluewin: ({accuser, killer}) =>
       `_${cls+accuser.color.id}_${accuser.userName}^ is correct. ^_${cls+killer.color.id}_${killer.userName}^ is the ^_kk_Killer^. The ^_kh_Hunters^ and the ^_kg_Ghost^ win!`,
 
-    bluewinwitnessalive: ({target}) =>
-      `_${cls+target.color.id}_${target.userName}^ was not the ^_kw_Witness^. The ^_kh_Hunters^ and the ^_kg_Ghost^ win!`
+    bluewinwitnessalive: ({killer, witness, target}) =>
+      `_${cls+killer.color.id}_${killer.userName}^ killed ^_${cls+target.color.id}_${target.userName}^. But the ^_kw_Witness^ was ^_${cls+witness.color.id}_${witness.userName}^! The ^_kh_Hunters^ and the ^_kg_Ghost^ win!`
   };
 
   const cls = 'smd--username ';
@@ -115,7 +115,7 @@ export const systemMessages = (() => {
         str = `Clue card replaced. ^_k_${stage.display}^ started...`;
         break;
       case 'second-murder':
-        str = `The ^_kk_Killer^ has been identified. But they can still win if they identify the ^_kw_Witness^...`;
+        str = `The ^_kk_Killer^ has been identified. But they can still win if they can kill the ^_kw_Witness^...`;
         break;
       case 'game-over': // should never get called
         str = `${stage.display}`

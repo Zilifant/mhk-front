@@ -1,4 +1,5 @@
 // Contexts
+// Once assigned, these values all remain constant.
 
 import React from 'react';
 

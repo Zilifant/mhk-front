@@ -1,3 +1,5 @@
+// App
+
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { useUser } from './hooks/user-hook';
@@ -64,6 +66,8 @@ function App() {
       updateUserCtx: updateUserCtx,
       checked: user.checked
     }}>
+      {/* `user.checked` prevents routes from loading before `isLoading`
+      becomes true. */}
       {!isLoading && user.checked && <Router>
         <main className='app'>
           {routes}

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useHttpClient } from '../../hooks/http-hook';
 import { useIO } from '../../hooks/io-hook';
 import { SocketContext, UserContext } from '../../context/contexts';
-import { getThisPlayer, lobbyMethods, DEV } from '../../util/utils';
+import { getThisPlayer, lobbyMethods, isDevEnv } from '../../util/utils';
 import ErrorModal from '../modal/ErrorModal';
 import Loading from '../shared/Loading';
 import Grid from '../shared/Grid';
@@ -11,7 +11,7 @@ import Chat from './chat/Chat';
 import Footer from '../shared/Footer';
 
 const Lobby = () => {
-  if (DEV) console.log('%cLobby','color:#79f98e');
+  if (isDevEnv) console.log('%cLobby','color:#79f98e');
 
   const { myLobby, userId } = useContext(UserContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient('Lobby');
@@ -21,7 +21,7 @@ const Lobby = () => {
   const [isSubbed, setIsSubbed] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
 
-  const [chatMinimized, setChatMinimized] = useState(!DEV);
+  const [chatMinimized, setChatMinimized] = useState(!isDevEnv);
   const minimizeChatHandler = () => setChatMinimized(!chatMinimized);
   const showChat = chatMinimized ? 'nochat' : 'chat';
 

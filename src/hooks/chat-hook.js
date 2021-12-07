@@ -1,6 +1,6 @@
 import { useState, useContext, useCallback } from 'react';
 import { UserContext, SocketContext } from '../context/contexts';
-import { DEV } from '../util/utils';
+import { isDevEnv } from '../util/utils';
 
 export const useChat = (chat) => {
   const { userId } = useContext(UserContext);
@@ -43,7 +43,7 @@ export const useChat = (chat) => {
   const lastGameAnnouncement = () => {
     const lga = messages.filter(m => !!m.isInGame).slice(-1)[0];
     if (!!lga) return lga;
-    if (DEV) console.log('no last game anno');
+    if (isDevEnv) console.log('no last game anno');
     return null;
   };
 

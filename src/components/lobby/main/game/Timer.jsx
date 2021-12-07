@@ -3,7 +3,7 @@
 import { useState, useContext, useEffect } from 'react';
 import Container from '../../../shared/Container';
 import { SocketContext } from '../../../../context/contexts';
-import { DEV } from '../../../../util/utils';
+import { isDevEnv } from '../../../../util/utils';
 import '../../../../styles/timer.scss';
 import '../../../../styles/svgs.scss';
 
@@ -48,7 +48,7 @@ const Timer = ({
       s.off('tenSec');
       s.off('timeUp');
       s.off('clear');
-      if (DEV) console.log('timer unmounted');
+      if (isDevEnv) console.log('timer unmounted');
     };
 
   }, [socket, setTenSec, duration]);

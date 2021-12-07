@@ -48,9 +48,7 @@ const NewLobby = () => {
         userId: responseData.user.id,
         userName: responseData.user.userName,
         myLobby: responseData.user.myLobby,
-        isStreamer: responseData.user.isStreamer,
-        isLeader: true,
-        leaderOf: responseData.user.myLobby
+        isStreamer: responseData.user.isStreamer
       });
       history.push('/lobby'); // forward user to route of lobby
     } catch (err) { console.log(err); }

@@ -7,9 +7,7 @@ export const useUser = () => {
     userId: null,
     userName: null,
     myLobby: null,
-    isLeader: false,
     isStreamer: true,
-    leaderOf: null,
     checked: false
   });
 
@@ -17,17 +15,13 @@ export const useUser = () => {
     userId,
     userName,
     myLobby,
-    isLeader,
-    isStreamer,
-    leaderOf
+    isStreamer
   }) => {
     setUser({
       userId: userId,
       userName: userName,
       myLobby: myLobby,
-      isLeader: !!isLeader,
       isStreamer: isStreamer,
-      leaderOf: leaderOf,
       checked: true
     });
   }, []);

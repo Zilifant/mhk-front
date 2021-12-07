@@ -6,7 +6,6 @@ export const UserContext = React.createContext({
   userId: null,
   userName: null,
   myLobby: null,
-  isLeader: false,
   isStreamer: true, // Has the user turned on 'streaming mode'.
   checkMyLobby: () => {},
   updateUserCtx: () => {},

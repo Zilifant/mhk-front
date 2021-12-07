@@ -60,7 +60,6 @@ function App() {
       userId: user.userId,
       userName: user.userName,
       myLobby: user.myLobby,
-      isLeader: user.isLeader,
       isStreamer: user.isStreamer,
       checkMyLobby: checkMyLobby,
       updateUserCtx: updateUserCtx,

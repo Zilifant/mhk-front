@@ -1,58 +1,87 @@
+// Foyer
+// Janky logic that allows users to reach a lobby by entering a unique url/id,
+// while obscuring the id by immediately pushing the user to generic /join and
+// /lobby urls.
+
+// This component will recursively handle all combinations of urls and
+// userData, eventually funneling users to the lobby matching their userData
+// cookie, or to the landing page.
+
 import { useContext, useRef } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { UserContext } from '../../context/contexts';
 import JoinLobby from '../landing/JoinLobby';
 import Lobby from './Lobby';
 import Grid from '../shared/Grid';
-
 import '../../styles/landing.scss';
-
-// Handles cases where users arrive directly at a lobby's URL
-// If user has correct session data, Lobby is loaded, else JoinThisLobby is loaded
 
 const Foyer = () => {
 
   const { checkMyLobby, myLobby, checked } = useContext(UserContext);
   const lobbyURL = useParams().lobbyURL;
   const history = useHistory();
+  // This component may push the user to another url and re-render, and we may
+  // need to preserve the initial url.
   const url = useRef()
 
+  // Render JoinLobby without the 'Lobby Name' input field.
   const JoinThisLobby = () => (
     <Grid className='foyer'>
       <JoinLobby lobbyId={url.current} />
     </Grid>
   );
 
+  // If the url is anything other than 'join', remember it.
   if (lobbyURL !== 'join') {
     url.current = lobbyURL;
-    // console.log(`assigning: ${url.current}`);
   };
 
+  // If the url is 'join'...
   if (lobbyURL === 'join') {
-    // console.log(`join: ${url.current}`);
-    return <JoinThisLobby />
-  };
 
-  const isGenericURL = lobbyURL === 'lobby';
+    // ...and we have remembered another url, it means that this component
+    // pushed the user to /join, and the remembered url is a specific lobby.
+    // So, load JoinThisLobby with that url.
+    if (!!url.current) {
+      console.log(`join: ${url.current}`);
+      return <JoinThisLobby />
 
-  if (checked) {
-    // console.log('checked');
-
-    if (isGenericURL && !myLobby) {
-      // console.log('generic and not mylobby');
+      // If the ref is undefined, it means the user reached this url from
+      // outside of this component (e.g. reloading the page). So, push them to
+      // the landing.
+    } else {
       history.push('/');
       return null;
     };
 
+  };
+
+  // The url is not 'join'; check if it is the generic lobby url.
+  const isGenericURL = lobbyURL === 'lobby';
+
+  if (checked) {
+    console.log('checked');
+
+    // If user has arrived at /lobby but has no userData cookie, push them to
+    // the landing.
+    if (isGenericURL && !myLobby) {
+      console.log('generic and not mylobby');
+      history.push('/');
+      return null;
+    };
+
+    // If user has arrived at /lobby and has userData cookie, load their lobby.
     if (isGenericURL && myLobby) {
-      // console.log('generic and mylobby');
+      console.log('generic and mylobby');
       return <Lobby />;
     };
 
+    // If user has arrived at a lobby url...
     if (!isGenericURL) {
 
+      // If user matching userData cookie, load their lobby.
       if (checkMyLobby(lobbyURL)) {
-        // console.log('unique and mylobby');
+        console.log('unique and mylobby');
         history.push('/lobby');
         return null;
       };
@@ -61,8 +90,10 @@ const Foyer = () => {
 
   };
 
-  // console.log('unique and not mylobby');
+  console.log('unique and not mylobby');
 
+  // The url must be a unique lobby url. So, push the user to /join, triggering
+  // this component to re-render.
   history.push('/join');
   return null
 };

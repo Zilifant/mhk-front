@@ -1,7 +1,8 @@
-import React, {
-  useContext,
-  useState
-} from 'react';
+// NewLobby //
+// Form to create (and then join) a new lobby. Shown on landing page.
+// TO DO: Implement error text for invalid form states.
+
+import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from '../../hooks/form-hook';
 import { useHttpClient } from '../../hooks/http-hook';
@@ -22,13 +23,14 @@ import Toggle from '../ui-elements/Toggle';
 const NewLobby = () => {
   const { updateUserCtx } = useContext(UserContext);
   const { error, sendRequest, clearError } = useHttpClient('NewLobby');
-  const history = useHistory();
+
   const [isStreamer, setIsStreamer] = useState(false);
 
+  const history = useHistory();
+
   const [formState, inputHandler] = useForm(
-    {
-      userName: { value: '', isValid: false }
-    }, false
+    { userName: { value: '', isValid: false } },
+    false
   );
 
   const newLobbyHandler = async event => {
@@ -50,9 +52,11 @@ const NewLobby = () => {
         myLobby: responseData.user.myLobby,
         isStreamer: responseData.user.isStreamer
       });
-      history.push('/lobby'); // forward user to route of lobby
+      // Forwarding visitor will render Foyer, which will then render the
+      // lobby, since the user will have valid userContext data.
+      history.push('/lobby');
     } catch (err) { console.log(err); }
-  }
+  };
 
   return (
     <React.Fragment>
@@ -109,7 +113,3 @@ const NewLobby = () => {
 };
 
 export default NewLobby;
-
-// TO DO: use FormData instead of JSON?
-// const formData = new FormData();
-// formData.append('userName', formState.inputs.userName.value);

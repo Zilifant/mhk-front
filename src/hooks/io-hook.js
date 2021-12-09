@@ -1,4 +1,6 @@
-// io hook
+// SOCKET.IO Hook //
+// Initializes the socket.io client and connects to the socket.io server;
+// closes connection if the Lobby component closes.
 
 import { useRef, useEffect } from 'react';
 import { io } from 'socket.io-client';

@@ -1,3 +1,7 @@
+// Landing //
+// TO DO: consolidate NewLobby and JoinLobby into single component that renders
+// as New or Join depending on a prop.
+
 import { useContext } from 'react';
 import { UserContext } from '../../context/contexts';
 import Header from './Header';

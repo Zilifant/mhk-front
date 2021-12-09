@@ -1,3 +1,7 @@
+// ReturnToLobby //
+// Renders when visitor has valid  userData cookie (i.e. matching a lobby that
+// is still in server memory). Shows username and navlink to user's lobby.
+
 import { NavLink } from 'react-router-dom';
 import Container from '../shared/Container';
 

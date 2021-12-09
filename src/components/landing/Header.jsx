@@ -1,3 +1,6 @@
+// Header //
+// App title on landing page.
+
 import Container from '../shared/Container';
 import VideoModal from '../shared/VideoModal';
 

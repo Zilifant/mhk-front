@@ -1,3 +1,8 @@
+// JoinLobby //
+// Form to join an existing lobby. Shown on landing page and on /join page.
+// TO DO: Lots of duplicate code; DRY this out.
+// TO DO: Implement error text for invalid form states.
+
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from '../../hooks/form-hook';
@@ -19,8 +24,10 @@ import Toggle from '../ui-elements/Toggle';
 const JoinLobby = ({ lobbyId }) => {
   const { updateUserCtx } = useContext(UserContext);
   const { error, sendRequest, clearError } = useHttpClient('JoinLobby');
-  const history = useHistory();
+
   const [isStreamer, setIsStreamer] = useState(false);
+
+  const history = useHistory();
 
   const joinThisLobbyFormInitState = {
     userName: { value: '', isValid: false }
@@ -41,6 +48,7 @@ const JoinLobby = ({ lobbyId }) => {
     event.preventDefault();
 
     // Temporary way for admin to recieve all lobby data from live server.
+    // TO DO: Implement a secure admin UI to view/modify live app data.
     function isAdminBackDoor() {
       const userName = formState.inputs.userName.value,
             lobbyURL = formState.inputs.lobbyURL.value,
@@ -76,10 +84,14 @@ const JoinLobby = ({ lobbyId }) => {
         myLobby: responseData.user.myLobby,
         isStreamer: responseData.user.isStreamer
       });
-      history.push('/lobby'); // forward user to route of lobby
+      // Forwarding visitor will render Foyer, which will then render the
+      // lobby, since the user will have valid userContext data.
+      history.push('/lobby');
     } catch (err) { console.log(err); };
   };
 
+  // If lobbyId was passed, this component was called by Foyer after a visitor
+  // arrived at a lobby's unique url without matching userData.
   if (lobbyId) return (
     <React.Fragment>
       <ErrorModal error={error} onClear={clearError} />

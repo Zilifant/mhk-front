@@ -4,7 +4,6 @@
 
 import { useState, useContext, useCallback } from 'react';
 import { UserContext, SocketContext } from '../context/contexts';
-import { isDevEnv } from '../util/utils';
 
 // `chat` arg is the lobby's chat property, an array of message data.
 // It is used to initiate the `messages` state with any messages sent before

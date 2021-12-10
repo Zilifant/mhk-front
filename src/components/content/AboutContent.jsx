@@ -1,4 +1,6 @@
-// About InfoModal Content
+// About InfoModal Content //
+// Provides html content for 'About' Infomodal.
+// TO DO: Move to backend?
 
 const AboutContent = () => (<>
   <div className='line-smd--def'>

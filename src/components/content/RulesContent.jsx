@@ -1,4 +1,6 @@
-// Rules InfoModal Content
+// Rules InfoModal Content //
+// Provides html content for 'Rules' Infomodal.
+// TO DO: Move to backend?
 
 const RulesContent = () => (<>
   <div className='line-smd--def'><span className='smd--warn'>Rulebook coming soon...</span></div>

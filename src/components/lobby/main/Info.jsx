@@ -1,10 +1,11 @@
 // Info //
 // Shows general lobby and/or game info.
-// TO DO: Split into separate components for game and no-game state.
+// TO DO: Split into separate components for game and nogame state.
 
 import { useState, useContext } from 'react';
 import { UserContext, SocketContext } from '../../../context/contexts';
 import { useGame } from '../../../hooks/game-hook';
+import { isDevEnv } from '../../../util/utils';
 import textToClipboard from '../../../util/textToClipboard';
 import Container from '../../shared/Container';
 import Tooltip from '../../shared/Tooltip';
@@ -31,7 +32,8 @@ const Info = ({
 
   const hideLobbyIdHandler = () => setLobbyIdHidden(!lobbyIdHidden);
 
-  const lobbyId = myLobby === 'z' ? 'Splendid-Monolith-7659' : myLobby;
+  // Display placeholder text if in development environment.
+  const lobbyId = isDevEnv ? 'Splendid-Monolith-7659' : myLobby;
 
   const showGameStage = stage && stage.id;
   const showClearBtn = iAmLeader && stage?.id === 'game-over';

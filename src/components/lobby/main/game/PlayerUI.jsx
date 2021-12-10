@@ -25,6 +25,7 @@ const PlayerUI = ({
 
   return (
     <Container className={`self player ${isKillerChoosingKeyEv && 'killer-choosing'}`}>
+
       <li className={`p-info role ${role}`}>
         <div className='wrapper'>
           <SVGIcon
@@ -35,6 +36,7 @@ const PlayerUI = ({
           <div className={`role ${role}`}>{role.toUpperCase()}</div>
         </div>
       </li>
+
       {!isKillerChoosingKeyEv &&
       types.map((type) => (<React.Fragment key={type}>
         <div className={`c-group-title ${type}`}>{type}</div>
@@ -46,12 +48,14 @@ const PlayerUI = ({
           keyEv={keyEv}
         />
       </React.Fragment>))}
+
       {isKillerChoosingKeyEv &&
       <ChooseKeyEvUI
         hand={hand}
         stage={stage}
         keyEv={keyEv}
       />}
+
     </Container>
   );
 

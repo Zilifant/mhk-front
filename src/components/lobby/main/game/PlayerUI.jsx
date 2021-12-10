@@ -1,5 +1,6 @@
 // Player UI //
 // For players other than the Ghost.
+// TO DO: DRY out this and ChooseKeyEvUI.
 
 import React from 'react';
 import { badge, article } from '../../../../util/utils';

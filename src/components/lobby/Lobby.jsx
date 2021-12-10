@@ -38,8 +38,8 @@ const Lobby = () => {
   // joining the room and the general client socket connection.
   const [isConnected, setIsConnected] = useState(false);
 
-  // Track how chat component should be rendered.
-  const [chatMinimized, setChatMinimized] = useState(!isDevEnv);
+  // Track how Chat component should be rendered.
+  const [chatMinimized, setChatMinimized] = useState(false);
   const minimizeChatHandler = () => setChatMinimized(!chatMinimized);
   const showChat = chatMinimized ? 'nochat' : 'chat';
 
@@ -140,7 +140,8 @@ const Lobby = () => {
             content='Fetching lobby...'
           />
         }
-        {/* Show overlay while waiting for socket.io connection (only after HTTP request has resolved successfully). */}
+        {/* Show overlay while waiting for socket.io connection (only after
+            HTTP request has resolved successfully). */}
         {lobby && !isConnected &&
           <Loading
             overlay
@@ -149,7 +150,7 @@ const Lobby = () => {
           />
         }
         {/* Show overlay in game during suspensful delay on accusal.
-        TO DO: can this be moved? */}
+            TO DO: can this be moved? */}
         {!isLoading && lobby && lobby.game?.isResolvingAccusal &&
           <Loading
             overlay
@@ -158,7 +159,8 @@ const Lobby = () => {
             content='Investigating...'
           />
         }
-        {/* FIFTH: Render lobby after all HTTP and socket.io tasks have resolved successfully. */}
+        {/* FIFTH: Render lobby after all HTTP and socket.io tasks have
+            resolved successfully. */}
         {!isLoading && lobby && isConnected &&
           <Grid className={`lobby-${gridVariant()} ${showChat}`}>
             <Main

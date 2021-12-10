@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '../../ui-elements/Button';
 import {
   validate,
   VALIDATOR_REQUIRE,
@@ -44,13 +43,13 @@ const NewMessage = ({
               onChange={onChange}
               value={messageText}
             ></input>
-            <Button
+            <button
               disabled={!isValid}
               onClick={submitHandler}
-              className='new-message'
+              className='btn--new-message'
             >
               Send
-            </Button>
+            </button>
           </form>
         </div>
       }

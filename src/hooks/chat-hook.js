@@ -54,7 +54,6 @@ export const useChat = (chat) => {
   const lastGameAnnouncement = () => {
     const lga = messages.filter(m => !!m.isInGame).slice(-1)[0];
     if (!!lga) return lga;
-    if (isDevEnv) console.log('no last game anno');
     return null;
   };
 
@@ -69,7 +68,6 @@ export const useChat = (chat) => {
 
     const SubToPrivateAnnounce = () => {
       socket.current.on('privateAnnounce', msg => {
-        console.log(msg);
         return setMessages((messages) => [...messages, msg]);
       });
     };

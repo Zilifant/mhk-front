@@ -1,3 +1,7 @@
+// Main //
+// Wraps everything in the lobby except Chat.
+// TO DO: Remove redundant checks for lobby and game data.
+
 import React from 'react';
 import Info from './Info';
 import MemberList from './nogame/MemberList';
@@ -38,6 +42,7 @@ const Main = ({
         iAmLeader={iAmLeader}
       />
 
+      {/* If there is no game... */}
       {!gameOn && lobby &&
         <React.Fragment>
           <Setup
@@ -54,6 +59,7 @@ const Main = ({
         </React.Fragment>
       }
 
+      {/* If there is a game and player data is loaded... */}
       {gameOn && game && thisPlayer &&
         <React.Fragment>
 

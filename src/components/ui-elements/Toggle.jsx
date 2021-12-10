@@ -1,4 +1,4 @@
-// Toggle Switch
+// Toggle Switch //
 
 import '../../styles/toggle.scss';
 

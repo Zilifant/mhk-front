@@ -1,4 +1,5 @@
-// SVGs
+// SVGs //
+// Used with the SVGIcon and SVGButton components. Methods return static JSX.
 
 export const svg = {
   show() {

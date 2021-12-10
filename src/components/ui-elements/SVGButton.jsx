@@ -1,4 +1,6 @@
-// SVG Button
+// SVG Button //
+// Renders an SVG button with consistent css classes. SVGs are methods of the
+// `svg` object that return static JSX.
 
 import { svg } from '../../util/svgs';
 import '../../styles/svgs.scss';

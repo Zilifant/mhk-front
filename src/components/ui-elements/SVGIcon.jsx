@@ -1,4 +1,6 @@
-// SVG Icon
+// SVG Icon //
+// Renders an SVG with consistent css classes. SVGs are methods of the `svg`
+// object that return static JSX.
 
 import { svg } from '../../util/svgs'
 import '../../styles/svgs.scss'

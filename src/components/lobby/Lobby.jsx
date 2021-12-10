@@ -27,11 +27,15 @@ const Lobby = () => {
 
   // Initiate the socket.io client and connect to the socket.io server.
   const { socket } = useIO();
+
   const [lobby, setLobby] = useState();
+
   // Has the HTTP request successfully fetched lobby data from the server?
   const [isFetched, setIsFetched] = useState(false);
+
   // Has the client successfully subscribed to socket.io server?
   const [isSubbed, setIsSubbed] = useState(false);
+
   // Has this client broadcast their connection to the lobby's socket.io room
   // and recieved a response from the socket.io server?
   // TO DO: update naming around this event to better distinguish between

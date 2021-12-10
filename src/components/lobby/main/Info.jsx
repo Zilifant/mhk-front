@@ -36,11 +36,11 @@ const Info = ({
   // Display placeholder text if in development environment.
   const lobbyId = isDevEnv ? 'Splendid-Monolith-7659' : myLobby;
 
-  const showGameStage = stage && stage.id;
+  const isRoundOneOrTwo = stage?.id === 'round-1' || stage?.id === 'round-2';
+
+  const showGameStage = stage && stage.id; // Is stage loaded?
   const showClearBtn = iAmLeader && stage?.id === 'game-over';
-  const showRoundBtn = iAmLeader
-                    && stage
-                    && (stage.id === 'round-1' || stage.id === 'round-2');
+  const showRoundBtn = iAmLeader && stage && isRoundOneOrTwo;
 
   if (!gameOn) return (
     <Container className='info nogame'>

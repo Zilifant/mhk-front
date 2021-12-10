@@ -1,7 +1,14 @@
+// Chat Hook //
+// Provides functions used by Chat and Announcer components.
+// TO DO: Generalize naming in this hook or create separate hook for Announcer.
+
 import { useState, useContext, useCallback } from 'react';
 import { UserContext, SocketContext } from '../context/contexts';
 import { isDevEnv } from '../util/utils';
 
+// `chat` arg is the lobby's chat property, an array of message data.
+// It is used to initiate the `messages` state with any messages sent before
+// this client's Chat component first rendered.
 export const useChat = (chat) => {
   const { userId } = useContext(UserContext);
   const { socket } = useContext(SocketContext);
@@ -9,15 +16,17 @@ export const useChat = (chat) => {
   const [messages, setMessages] = useState(chat);
   const [messageText, setMessageText] = useState('');
 
+  // Used by Chat //
+
   const newMessage = () => {
     socket.current.emit('newMessage', {
       senderId: userId,
       text: messageText
     });
-    setMessageText('');
+    setMessageText(''); // Clear input field after message sent.
   };
 
-  // TO DO: useCB necessary?
+  // TO DO: Is useCallBack necessary here?
   const subToChat = useCallback(() => {
 
     const sub2Chat = () => {
@@ -28,6 +37,8 @@ export const useChat = (chat) => {
     sub2Chat();
 
   }, [socket]);
+
+  // Used by Chat and Announcer //
 
   const lastAnnouncement = () => {
     const last = messages.filter(m => m.type !== 'userMessage').slice(-1)[0];
@@ -47,7 +58,7 @@ export const useChat = (chat) => {
     return null;
   };
 
-  // TO DO: useCB necessary?
+  // TO DO: Is useCallBack necessary here?
   const subToAnnounce = useCallback(() => {
 
     const subToPublicAnnounce = () => {

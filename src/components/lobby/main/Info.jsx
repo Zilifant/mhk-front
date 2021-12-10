@@ -1,6 +1,7 @@
 // Info //
 // Shows general lobby and/or game info.
 // TO DO: Split into separate components for game and nogame state.
+// TO DO: remove redundant checks for stage.
 
 import { useState, useContext } from 'react';
 import { UserContext, SocketContext } from '../../../context/contexts';
@@ -28,8 +29,8 @@ const Info = ({
     nextRoundHandler,
   } = useGame(socket);
 
+  // Hide/show lobby id and track state.
   const [lobbyIdHidden, setLobbyIdHidden] = useState(isStreamer);
-
   const hideLobbyIdHandler = () => setLobbyIdHidden(!lobbyIdHidden);
 
   // Display placeholder text if in development environment.
@@ -71,33 +72,39 @@ const Info = ({
 
   return (
     <Container className='info game'>
-      {iAmLeader && <div className='game-control-buttons'>
-        {showRoundBtn &&
-          <button
-            className='game-control nextround'
-            onClick={nextRoundHandler}
-          >
-            NEXT ROUND
-          </button>
-        }
-        {showClearBtn &&
-          <button
-            className='game-control cleargame'
-            onClick={clearGameHandler}
-          >
-            CLEAR GAME
-          </button>
-        }
-      </div>}
+
+      {iAmLeader &&
+        <div className='game-control-buttons'>
+          {showRoundBtn &&
+            <button
+              className='game-control nextround'
+              onClick={nextRoundHandler}
+            >
+              NEXT ROUND
+            </button>
+          }
+          {showClearBtn &&
+            <button
+              className='game-control cleargame'
+              onClick={clearGameHandler}
+            >
+              CLEAR GAME
+            </button>
+          }
+        </div>
+      }
+
       <div className='gamestage-username'>
         {showGameStage &&
-        <div className='info gamestage'>
-          {stage.display}
-        </div>}
+          <div className='info gamestage'>
+            {stage.display}
+          </div>
+        }
         <div className='info user-name'>
           {userName}
         </div>
       </div>
+
     </Container>
   );
 };

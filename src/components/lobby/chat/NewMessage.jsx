@@ -33,10 +33,9 @@ const NewMessage = ({
 
   // Apply css classes to change input field style as user types.
   const inputStyle = () => {
-    const base = 'input new-message-input';
     const valid = isValid ? 'valid' : 'invalid';
     const banned = hasBannedValue ? 'notbanned' : 'banned';
-    return `${base} ${valid} ${banned}`;
+    return `input new-message-input ${valid} ${banned}`;
   };
 
   return (

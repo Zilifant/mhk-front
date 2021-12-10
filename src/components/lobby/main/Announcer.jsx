@@ -1,3 +1,5 @@
+// Announcer //
+
 import { useEffect } from 'react';
 import { useChat } from '../../../hooks/chat-hook';
 import { parse, render } from '../../../util/smd';

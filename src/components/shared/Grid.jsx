@@ -1,4 +1,5 @@
-// grid
+// Grid //
+// General grid wrapper with consistent css classes.
 
 const Grid = props => {
   return (

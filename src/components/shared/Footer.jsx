@@ -1,3 +1,5 @@
+// Footer //
+
 import { useContext } from 'react';
 import { SocketContext } from '../../context/contexts';
 import { useGame } from '../../hooks/game-hook';
@@ -10,7 +12,9 @@ import RulesContent from '../content/RulesContent';
 import AboutContent from '../content/AboutContent';
 import '../../styles/footer.scss';
 
-const Footer = ({ showClearBtn }) => {
+const Footer = ({
+  showClearBtn // `true` if user is the leader.
+}) => {
 
   const { socket } = useContext(SocketContext);
   const { clearGameHandler } = useGame(socket);

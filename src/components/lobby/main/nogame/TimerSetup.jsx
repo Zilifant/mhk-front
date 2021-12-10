@@ -1,3 +1,5 @@
+// Timer Setup //
+
 import SVGButton from '../../../ui-elements/SVGButton';
 import SVGIcon from '../../../ui-elements/SVGIcon';
 import '../../../../styles/setup.scss';
@@ -7,15 +9,17 @@ const TimerSetup = ({
   iAmLeader,
   chooseTimerHandler,
   settings: {
-    duration,
-    minDuration,
+    duration, // minutes
+    minDuration, // TO DO: remove minDuration, as it is always zero.
     maxDuration
   }
 }) => {
 
+  // Min/max duration are server presets.
   const minReached = duration === minDuration;
   const maxReached = duration === maxDuration;
 
+  // If leader reduces value to zero, timer is considered 'off'.
   const timerVal = () => (<>
     {duration !== 0 &&
       <div className={`timer value on`}>

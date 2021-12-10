@@ -1,3 +1,6 @@
+// Member //
+// TO DO: Rename `member` to `user`.
+
 import { useContext } from 'react';
 import Tooltip from '../../../shared/Tooltip';
 import SVGButton from '../../../ui-elements/SVGButton';
@@ -13,7 +16,11 @@ const Member = ({
   const { userId } = useContext(UserContext);
   const { socket } = useContext(SocketContext);
 
-  const { readyHandler, assignGhostHandler, giveLeaderHandler } = useGame(socket);
+  const {
+    readyHandler,
+    assignGhostHandler,
+    giveLeaderHandler
+  } = useGame(socket);
 
   const isSelf = userId === member.id;
   const self = isSelf ? 'ml-self' : 'ml-other';
@@ -21,6 +28,8 @@ const Member = ({
   const leader = member.isLeader ? 'ml-leader' : 'ml-notleader';
   const ghost = member.isAssignedToGhost ? 'ml-ghost' : 'ml-notghost';
 
+  // If viewing client is the leader, show the leader icon/button for all users
+  // except itself. (The leader can't transfer leadership to themselves.)
   const LeaderIcon = () => {
 
     if (!iAmLeader || (iAmLeader && isSelf)) return (
@@ -43,6 +52,8 @@ const Member = ({
     );
   }
 
+  // If viewing client is the leader, show ghost svg as button for all users,
+  // else show as icon. Icon hidden with CSS on users not assigned to ghost.
   const GhostIcon = () => {
 
     if (!iAmLeader) return (
@@ -68,7 +79,7 @@ const Member = ({
 
   const ReadyToggle = () => {
 
-    if (!isSelf) return null;
+    if (!isSelf) return null; // Skip for other users.
 
     return (
       <button

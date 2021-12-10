@@ -1,3 +1,6 @@
+// Setup //
+// Wraps components for setting and viewing game settings.
+
 import { useContext } from 'react';
 import { SocketContext } from '../../../../context/contexts';
 import { useGame } from '../../../../hooks/game-hook';
@@ -17,9 +20,11 @@ const Setup = ({
   const {
     startGameHandler,
     toggleHandler,
-    chooseTimerHandler,
+    chooseTimerHandler
   } = useGame(socket);
 
+  // Not tracked with useState, since this component completely re-renders
+  // each time new data is received from socket.io server.
   const advRoles = [
     {id: 'witness', active: gameSettings.hasWitness},
     {id: 'accomplice', active: gameSettings.hasAccomplice}

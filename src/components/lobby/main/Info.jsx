@@ -44,7 +44,9 @@ const Info = ({
 
   if (!gameOn) return (
     <Container className='info nogame'>
+
       <div className='lobbyid-wrap'>
+
         <div className='ttip-parent'>
           <SVGButton
             className='hidelobbyid'
@@ -54,9 +56,11 @@ const Info = ({
           />
           <Tooltip tip='hideShowName' side='left' opts='singleline'/>
         </div>
+
         <div className={`info-lobbyid ${lobbyIdHidden ? 'obscured' : 'visible'}`}>
           {lobbyIdHidden ? 'lobby name hidden' : lobbyId}
         </div>
+
         <div className='ttip-parent'>
           <SVGButton
             className='copyurl'
@@ -66,7 +70,9 @@ const Info = ({
           />
           <Tooltip tip='copyUrl' side='right' opts='singleline'/>
         </div>
+
       </div>
+
     </Container>
   );
 

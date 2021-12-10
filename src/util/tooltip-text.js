@@ -1,4 +1,6 @@
-// tooltip text
+// Tooltip Text //
+// Provides text data for Tooltip components. Includes markdown for SMD module.
+// TO DO: Move this to backend.
 
 export const tooltipText = {
   waitMorePlayers: 'At least ^_k_4^ players are needed to start.<^_k_5^ or more players are recommended for the best experience.',

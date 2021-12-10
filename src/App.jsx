@@ -12,6 +12,7 @@ import './styles/mixins.scss';
 import './styles/core.scss';
 import './styles/animations.scss';
 import './styles/svgs.scss';
+import './styles/buttons.scss';
 
 function App() {
   if (isDevEnv) console.log('%cApp','color:#79e6f9');

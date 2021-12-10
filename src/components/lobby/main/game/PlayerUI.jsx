@@ -1,3 +1,6 @@
+// PlayerUI //
+// For players other than the Ghost.
+
 import React from 'react';
 import { badge, article } from '../../../../util/utils';
 import Container from '../../../shared/Container';
@@ -17,6 +20,7 @@ const PlayerUI = ({
 
   const isKillerChoosingKeyEv = (role === 'killer') && (stage.id === 'setup');
 
+  // `hand` includes two types of card: `means` and `evidence`.
   const types = Object.keys(hand);
 
   return (

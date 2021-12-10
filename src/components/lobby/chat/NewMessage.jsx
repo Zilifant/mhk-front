@@ -14,6 +14,7 @@ const NewMessage = ({
 }) => {
 
   // Banned characters are used by the SMD module.
+  // TO DO: Not ideal solution; refactor SMD module to sanitize user input.
 
   const isValid = validate(messageText,
     [

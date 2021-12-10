@@ -38,7 +38,8 @@ const Lobby = () => {
   // joining the room and the general client socket connection.
   const [isConnected, setIsConnected] = useState(false);
 
-  // Track how Chat component should be rendered.
+  // Track how Chat component should be rendered. Must be tracked here as Grid
+  // variant partially depends on this state.
   const [chatMinimized, setChatMinimized] = useState(false);
   const minimizeChatHandler = () => setChatMinimized(!chatMinimized);
   const showChat = chatMinimized ? 'nochat' : 'chat';

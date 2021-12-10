@@ -1,3 +1,7 @@
+// Choose Key Evidence UI //
+// Alternative version of the cards section of PlayerUI; used by killer during
+// the setup game stage.
+
 import React, { useContext } from 'react';
 import { useParallelSelector } from '../../../../hooks/parallel-selector-hook';
 import { useGame } from '../../../../hooks/game-hook';
@@ -13,6 +17,7 @@ const ChooseKeyEvUI = ({
 
   const { socket } = useContext(SocketContext);
 
+  // `hand` includes two types of card: `means` and `evidence`.
   const types = Object.keys(hand);
 
   const {
@@ -45,12 +50,12 @@ const ChooseKeyEvUI = ({
         type='killerUI'
         cardType={type}
         cards={hand[type]}
+        keyEv={keyEv}
 
         stage={stage}
         selectedId={selTracker[type]?.id}
         selectCardHandler={selectHandler}
         isMine={true}
-        keyEv={keyEv}
       />
     </React.Fragment>))}
   </>);

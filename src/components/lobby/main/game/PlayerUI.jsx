@@ -1,4 +1,4 @@
-// PlayerUI //
+// Player UI //
 // For players other than the Ghost.
 
 import React from 'react';

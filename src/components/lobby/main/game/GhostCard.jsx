@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import { SocketContext } from '../../../../context/contexts';
 import { useMultiSelector } from '../../../../hooks/multi-selector-hook';
 import { useGame } from '../../../../hooks/game-hook';
-import Button from '../../../ui-elements/Button';
 
 const GhostCard = ({
   card,
@@ -53,25 +52,25 @@ const GhostCard = ({
 
   const confirmClueBtn = () => {
     return (
-      <Button
-        className='gc confirm-clue'
+      <button
+        className='btn btn--gc confirm-clue'
         onClick={() => confirmSelection({ cb:[chooseClueHandler], resetTracker: false })}
         disabled={!maxReached}
       >
         confirm
-      </Button>
+      </button>
     );
   };
 
   const replaceCardBtn = () => {
     return (
-      <Button
-        className='gc replace-card'
+      <button
+        className='btn btn--gc replace-card'
         onClick={() => replaceGhostCardHandler(card.id)}
         disabled={false}
       >
         replace
-      </Button>
+      </button>
     );
   };
 

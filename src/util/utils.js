@@ -1,4 +1,6 @@
-// Utilities
+// Utilities //
+// Provides general utility functions and constants.
+// TO DO: Break many of these out into their own modules.
 
 export const VERSION = '0.8.6';
 export const isDevEnv = process.env.NODE_ENV === 'development';

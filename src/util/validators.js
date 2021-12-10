@@ -1,3 +1,6 @@
+// Validators //
+// Provides functions and constants to validate user inputs.
+
 const VALIDATOR_TYPE_REQUIRE = 'REQUIRE';
 const VALIDATOR_TYPE_MINLENGTH = 'MINLENGTH';
 const VALIDATOR_TYPE_MAXLENGTH = 'MAXLENGTH';
@@ -22,7 +25,9 @@ export const VALIDATOR_MIN = val => ({ type: VALIDATOR_TYPE_MIN, val: val });
 export const VALIDATOR_MAX = val => ({ type: VALIDATOR_TYPE_MAX, val: val });
 export const VALIDATOR_EMAIL = () => ({ type: VALIDATOR_TYPE_EMAIL });
 
-export const VALIDATOR_LETTERS_ONLY = () => ({ type: VALIDATOR_TYPE_LETTERS_ONLY });
+export const VALIDATOR_LETTERS_ONLY = () => ({
+  type: VALIDATOR_TYPE_LETTERS_ONLY
+});
 
 export const VALIDATOR_BANNED_CHARS = val => ({
   type: VALIDATOR_TYPE_BANNED_CHARS,

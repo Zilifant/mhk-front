@@ -1,4 +1,5 @@
-import React from 'react';
+// NewMessage //
+
 import {
   validate,
   VALIDATOR_REQUIRE,
@@ -7,8 +8,12 @@ import {
 } from '../../../util/validators';
 
 const NewMessage = ({
-  myLobby, onChange, messageText, submitHandler
+  onChange,
+  messageText,
+  submitHandler
 }) => {
+
+  // Banned characters are used by the SMD module.
 
   const isValid = validate(messageText,
     [
@@ -25,6 +30,7 @@ const NewMessage = ({
     ]
   );
 
+  // Apply css classes to change input field style as user types.
   const inputStyle = () => {
     const base = 'input new-message-input';
     const valid = isValid ? 'valid' : 'invalid';
@@ -33,27 +39,23 @@ const NewMessage = ({
   };
 
   return (
-    <React.Fragment>
-      {myLobby &&
-        <div className='new-message-wrapper'>
-          <form className='form new-message-form'>
-            <input
-              className={inputStyle()}
-              placeholder='Message'
-              onChange={onChange}
-              value={messageText}
-            ></input>
-            <button
-              disabled={!isValid}
-              onClick={submitHandler}
-              className='btn--new-message'
-            >
-              Send
-            </button>
-          </form>
-        </div>
-      }
-    </React.Fragment>
+    <div className='new-message-wrapper'>
+      <form className='form new-message-form'>
+        <input
+          className={inputStyle()}
+          placeholder='Message'
+          onChange={onChange}
+          value={messageText}
+        ></input>
+        <button
+          disabled={!isValid}
+          onClick={submitHandler}
+          className='btn--new-message'
+        >
+          Send
+        </button>
+      </form>
+    </div>
   );
 };
 

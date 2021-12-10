@@ -5,6 +5,7 @@
 import { useState, useContext } from 'react';
 import { UserContext, SocketContext } from '../../../context/contexts';
 import { useGame } from '../../../hooks/game-hook';
+import textToClipboard from '../../../util/textToClipboard';
 import Container from '../../shared/Container';
 import Tooltip from '../../shared/Tooltip';
 import SVGButton from '../../ui-elements/SVGButton';
@@ -25,29 +26,6 @@ const Info = ({
     clearGameHandler,
     nextRoundHandler,
   } = useGame(socket);
-
-  // Copy given text to clipboard and then show a broswer alert to the user.
-
-  function textToClipboard(text) {
-    if (!navigator.clipboard) {
-      textToClipboardDeprecated(text);
-    } else {
-      navigator.clipboard.writeText(text)
-      .then(() => alert('Lobby URL copied!'))
-      .catch(() => alert('Error: Copying failed.'));
-    };
-  };
-
-  // Fallback in case browser does not support `navigator.clipboard`.
-  function textToClipboardDeprecated(text) {
-    const dummy = document.createElement('textarea');
-    document.body.appendChild(dummy);
-    dummy.value = text;
-    dummy.select();
-    document.execCommand('copy'); // Deprecated!
-    document.body.removeChild(dummy);
-    alert('Lobby URL copied.');
-  };
 
   const [lobbyIdHidden, setLobbyIdHidden] = useState(isStreamer);
 

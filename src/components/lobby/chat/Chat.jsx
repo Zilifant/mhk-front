@@ -1,3 +1,5 @@
+// Chat //
+
 import { useContext, useEffect } from 'react';
 import { UserContext } from '../../../context/contexts';
 import { useChat } from '../../../hooks/chat-hook';
@@ -30,6 +32,7 @@ const Chat = ({
     subToAnnounce();
   }, [subToChat, subToAnnounce]);
 
+  // TO DO: Update icon or add text to make purpose clearer to user.
   const MinimizeChatButton = () => (
     <SVGButton
       icon='chat'

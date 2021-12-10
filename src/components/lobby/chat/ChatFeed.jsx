@@ -1,3 +1,5 @@
+// ChatFeed //
+
 import { useContext, useEffect, useRef } from 'react';
 import { UserContext } from '../../../context/contexts';
 import { parse, render } from '../../../util/smd';
@@ -50,7 +52,7 @@ const ChatFeed = ({ messages, users }) => {
         <div
           className={getColorId(message)}
           ref={scrollRef}
-          key={nanoid()}>
+          key={nanoid()}> {/* TO DO: Is nanoid necessary here? */}
           <ChatMessage
             message={message}
             isMine={message.senderId === userId}

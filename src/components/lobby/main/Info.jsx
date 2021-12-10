@@ -1,3 +1,7 @@
+// Info //
+// Shows general lobby and/or game info.
+// TO DO: Split into separate components for game and no-game state.
+
 import { useState, useContext } from 'react';
 import { UserContext, SocketContext } from '../../../context/contexts';
 import { useGame } from '../../../hooks/game-hook';
@@ -22,6 +26,8 @@ const Info = ({
     nextRoundHandler,
   } = useGame(socket);
 
+  // Copy given text to clipboard and then show a broswer alert to the user.
+
   function textToClipboard(text) {
     if (!navigator.clipboard) {
       textToClipboardDeprecated(text);
@@ -32,12 +38,13 @@ const Info = ({
     };
   };
 
+  // Fallback in case browser does not support `navigator.clipboard`.
   function textToClipboardDeprecated(text) {
     const dummy = document.createElement('textarea');
     document.body.appendChild(dummy);
     dummy.value = text;
     dummy.select();
-    document.execCommand('copy');
+    document.execCommand('copy'); // Deprecated!
     document.body.removeChild(dummy);
     alert('Lobby URL copied.');
   };

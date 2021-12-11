@@ -1,11 +1,11 @@
 // Game Timer //
 // Currently only discussion rounds are timed.
 // TO DO: Add additional timers of different lengths for other game stages.
+// TO DO: Only call component if timer is on, so hooks aren't always called.
 
 import { useState, useContext, useEffect } from 'react';
 import Container from '../../../shared/Container';
 import { SocketContext } from '../../../../context/contexts';
-import { isDevEnv } from '../../../../util/utils';
 import '../../../../styles/timer.scss';
 import '../../../../styles/svgs.scss';
 
@@ -58,6 +58,8 @@ const Timer = ({
 
   }, [socket, setTenSec, duration]);
 
+  // Render a graphic bar for each 10 second interval. Use numbered CSS classes
+  // to hide bars one-by-one as `tenSec updates`.
   const barsTimer = () => {
     const num = duration * 6;
 
@@ -72,6 +74,7 @@ const Timer = ({
 
   };
 
+  // If timer is on, it may be running or not running.
   const displayOn = () => {
     const style = timerIsRunning ? 'running' : 'notrunning'
     return (

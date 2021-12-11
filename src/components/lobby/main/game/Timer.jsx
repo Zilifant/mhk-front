@@ -54,7 +54,6 @@ const Timer = ({
       s.off('tenSec');
       s.off('timeUp');
       s.off('clear');
-      if (isDevEnv) console.log('timer unmounted');
     };
 
   }, [socket, setTenSec, duration]);

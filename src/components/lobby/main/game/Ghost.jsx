@@ -3,9 +3,9 @@
 // with ghost role.
 
 import Container from '../../../shared/Container';
+import SVGIcon from '../../../ui-elements/SVGIcon';
 import GhostCard from './GhostCard';
 import '../../../../styles/ghost.scss';
-import SVGIcon from '../../../ui-elements/SVGIcon';
 
 const Ghost = ({
   isGhostUI,

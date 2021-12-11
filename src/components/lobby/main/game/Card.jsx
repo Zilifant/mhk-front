@@ -1,3 +1,5 @@
+// Means/Evidence Cards //
+
 const Card = ({
   card,
   className,
@@ -17,6 +19,8 @@ const Card = ({
       disabled={!isEnabled}
       onClick={() => handleClick(card)}
     >
+      {/* All ids are either one or two words.
+          TO DO: Not strictly necessary, but this could be more versatile. */}
       {id.split(' ')[0]}<br/>{id.split(' ')[1]}
     </button>
   );

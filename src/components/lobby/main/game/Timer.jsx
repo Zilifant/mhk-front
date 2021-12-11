@@ -1,4 +1,6 @@
-// In-Game Timer
+// Game Timer //
+// Currently only discussion rounds are timed.
+// TO DO: Add additional timers of different lengths for other game stages.
 
 import { useState, useContext, useEffect } from 'react';
 import Container from '../../../shared/Container';
@@ -10,16 +12,20 @@ import '../../../../styles/svgs.scss';
 const Timer = ({
   settings: {
     on,
-    duration
+    duration // minutes
   },
   timerIsRunning
 }) => {
 
   const { socket } = useContext(SocketContext);
 
+  // Track remaining number of ticks.
+  // Timer ticks every 10 seconds; duration unit is minutes.
+  // Note: Init value not strictly necessary.
   const [tenSec, setTenSec] = useState(duration * 6);
 
   useEffect(() => {
+    // Extra-careful tracking of component mounting.
     let mounted = true;
     const s = socket.current;
 
@@ -32,7 +38,7 @@ const Timer = ({
           setTenSec(tenSec);
         });
         s.on('timeUp', (tenSec) => {
-          setTenSec(tenSec);
+          setTenSec(tenSec); // TO DO: Add new behavior for last tick.
         });
         s.on('clear', () => {
           setTenSec(0);
@@ -72,7 +78,6 @@ const Timer = ({
     return (
       <div className={`time-wrap ${style}`}>
         {barsTimer()}
-        {/* {formattedTimer()} */}
       </div>
     );
   };
@@ -86,7 +91,7 @@ const Timer = ({
 
 export default Timer;
 
-// unused numeric timer:
+// Alternative Numeric Timer //
 
 // const inactiveDisplay = 'XX:XX';
 // const [timer, setTimer] = useState(inactiveDisplay);

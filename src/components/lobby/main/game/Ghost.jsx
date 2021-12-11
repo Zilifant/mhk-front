@@ -1,3 +1,7 @@
+// Ghost //
+// Renders Ghost for all players, including additional UI elements for client
+// with ghost role.
+
 import Container from '../../../shared/Container';
 import GhostCard from './GhostCard';
 import '../../../../styles/ghost.scss';

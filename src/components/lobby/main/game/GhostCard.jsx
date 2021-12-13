@@ -43,9 +43,14 @@ const GhostCard = ({
   }
 
   function checkEnabled(index) {
+    // If viewing client is not ghost, buttons are always disabled.
     if (!isMine) return false;
+    // Buttons are disabled during certain game stages.
     if (checkEnabledByStage()) return false;
+    // After an option has been selected and confirmed, card is locked and all
+    // buttons remain disabled.
     if (card.isLocked) return false;
+    // Finally, check if button is disabled by the multiselector hook.
     return amIEnabled(index);
   };
 

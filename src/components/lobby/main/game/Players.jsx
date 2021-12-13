@@ -19,8 +19,11 @@ const Players = ({
 
   const { userId } = useContext(UserContext);
 
+  console.log(redTeam);
+
+  const extractIds = (arr) => arr.map(obj => obj.id);
+
   function showAsRedTeam(playerId) {
-    const extractIds = (arr) => arr.map(obj => obj.id);
     const canSeeRedTeam = ['witness', 'killer', 'accomplice'];
     const show = canSeeRedTeam.includes(thisPlayer.role)
                  && redTeam
@@ -28,8 +31,13 @@ const Players = ({
     return show ? true : null;
   };
 
-  const canBeTargeted = thisPlayer.role === 'killer'
-                        && currentStage.id === 'second-murder';
+  function showAsMurderable(playerId) {
+    if (thisPlayer.role !== 'killer') return;
+    const stageIsSecondMurder = currentStage.id === 'second-murder';
+    const isAccomplice = extractIds(redTeam).includes(playerId);
+    if (stageIsSecondMurder && !isAccomplice) return true;
+    return false;
+  };
 
   return (
     <Container className="players">
@@ -42,7 +50,7 @@ const Players = ({
             key={player.id}
             player={player}
             stage={currentStage}
-            canBeTargeted={canBeTargeted && player.role !== 'accomplice'}
+            isMurderable={showAsMurderable(player.id)}
             isRedTeam={showAsRedTeam(player.id)}
             keyEv={keyEvidence}
             rolesRef={rolesRef}

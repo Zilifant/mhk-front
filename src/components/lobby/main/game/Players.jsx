@@ -1,3 +1,5 @@
+// Players //
+
 import { useContext } from 'react';
 import { UserContext } from '../../../../context/contexts';
 import Container from '../../../shared/Container';
@@ -26,14 +28,15 @@ const Players = ({
     return show ? true : null;
   };
 
-  const canBeTargeted = thisPlayer.role === 'killer' && currentStage.id === 'second-murder';
+  const canBeTargeted = thisPlayer.role === 'killer'
+                        && currentStage.id === 'second-murder';
 
   return (
     <Container className="players">
       <ul className="player-list">
         {players && players.map(player => {
-          if (player.id === ghost.id) return null;
-          if (player.id === userId) return null;
+          if (player.id === ghost.id) return null; // Don't render ghost.
+          if (player.id === userId) return null; // Don't render self.
           return (
           <Player
             key={player.id}

@@ -48,13 +48,8 @@ const Player = ({
     submitSelection
   } = useParallelSelector(types);
 
-  function allRoles() {
-    const role = rolesRef.find(entry => entry.user.id === playerId).role;
-    return [role, role];
-  };
-
   // Accuse a player of being the killer.
-  const accuseBtn = () => {
+  const AccuseBtn = () => {
     return (
       <button
         className='confirm-btn accusation'
@@ -69,9 +64,8 @@ const Player = ({
     );
   };
 
-  // Kill a player. Used by killer to attempt to kill the witness during
-  // 'second-murder' stage.
-  const killBtn = () => {
+  // Used by killer to attempt to kill the witness during 'second-murder' stage.
+  const KillBtn = () => {
     return (
       <button
         className='confirm-btn kill'
@@ -86,15 +80,8 @@ const Player = ({
   const canIInteract = myRole !== 'ghost';
 
   function interact() {
-    if (canIInteract && isRoundStage && canIAccuse) return accuseBtn();
-    if (isMurderable) return killBtn();
-    return null;
-  };
-
-  function showRedTeam(myRole) {
-    if (myRole === 'witness') return ['redteam', '!!!'];
-    if (myRole === 'killer') return ['accomplice', 'accomplice'];
-    if (myRole === 'accomplice') return ['killer', 'killer'];
+    if (canIInteract && isRoundStage && canIAccuse) return AccuseBtn();
+    if (isMurderable) return KillBtn();
     return null;
   };
 
@@ -105,6 +92,18 @@ const Player = ({
     if (isRedTeam) return showRedTeam(myRole);
     return ['hunter', 'hunter'];
   }
+
+  function allRoles() {
+    const role = rolesRef.find(entry => entry.user.id === playerId).role;
+    return [role, role];
+  };
+
+  function showRedTeam(myRole) {
+    if (myRole === 'witness') return ['redteam', '!!!'];
+    if (myRole === 'killer') return ['accomplice', 'accomplice'];
+    if (myRole === 'accomplice') return ['killer', 'killer'];
+    return null;
+  };
 
   const [roleClass, roleDisplay] = role(); // Destructure the array.
 

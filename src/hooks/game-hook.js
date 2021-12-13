@@ -1,4 +1,7 @@
-// game hook
+// Game Hook //
+// Provides socket.io emit functions.
+// TO DO: Break this out into separate files and/or rename, since this includes
+// functions used outside of games.
 
 export const useGame = (socket) => {
 

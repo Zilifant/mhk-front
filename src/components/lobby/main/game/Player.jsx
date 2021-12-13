@@ -1,3 +1,5 @@
+// Player //
+
 import { useContext } from 'react';
 import difference from 'lodash.difference';
 import { useParallelSelector } from '../../../../hooks/parallel-selector-hook';
@@ -12,8 +14,8 @@ import SVGIcon from '../../../ui-elements/SVGIcon';
 const Player = ({
   stage,
   isRedTeam,
+  isMurderable,
   keyEv,
-  canBeTargeted,
   rolesRef,
   thisPlayer: {
     id: myId,
@@ -81,7 +83,7 @@ const Player = ({
 
   const interact = () => {
     if (canIInteract && isRoundStage && canIAccuse) return accuseBtn();
-    if (canBeTargeted) return killBtn();
+    if (isMurderable) return killBtn();
     return null;
   };
 

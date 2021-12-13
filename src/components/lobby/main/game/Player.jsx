@@ -31,16 +31,12 @@ const Player = ({
 }) => {
 
   const { socket } = useContext(SocketContext);
-
-  const isRoundStage = stage.type === 'round';
-  const types = Object.keys(hand);
-  const connectionStatus = isOnline ? 'online' : 'offline';
-
   const {
     accusationHandler,
     killWitnessHandler
   } = useGame(socket);
 
+  const types = Object.keys(hand);
   const {
     selTracker,
     minSelected,
@@ -104,6 +100,7 @@ const Player = ({
   };
 
   const canIInteract = myRole !== 'ghost';
+  const isRoundStage = stage.type === 'round';
 
   function interact() {
     if (canIInteract && isRoundStage && canIAccuse) return AccuseBtn();
@@ -124,6 +121,8 @@ const Player = ({
     if (difference(keyEv, selIds).length === 0) return true;
     return false;
   };
+
+  const connectionStatus = isOnline ? 'online' : 'offline';
 
   return (
     <Container className={`player ${!canIInteract && 'no-interact'}`}>

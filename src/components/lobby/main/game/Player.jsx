@@ -1,15 +1,15 @@
 // Player //
 
-import { useContext } from 'react';
 import difference from 'lodash.difference';
+import { useContext } from 'react';
 import { useParallelSelector } from '../../../../hooks/parallel-selector-hook';
 import { useGame } from '../../../../hooks/game-hook';
 import { SocketContext } from '../../../../context/contexts';
 import { badge } from '../../../../util/utils';
 import Container from '../../../shared/Container';
 import Cards from './Cards';
-import '../../../../styles/player.scss';
 import SVGIcon from '../../../ui-elements/SVGIcon';
+import '../../../../styles/player.scss';
 
 const Player = ({
   stage,
@@ -35,6 +35,7 @@ const Player = ({
   const isRoundStage = stage.type === 'round';
   const types = Object.keys(hand);
   const connectionStatus = isOnline ? 'online' : 'offline';
+
   const {
     accusationHandler,
     killWitnessHandler

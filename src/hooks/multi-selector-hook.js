@@ -1,6 +1,13 @@
-// Multi-Selector Hook
+// Multi-Selector Hook //
+// Used for tracking selections of multiple items and also confirming the
+// selection, especially in cases where a min/max number of selections is
+// required/allowed.
+// TO DO: refactor error handling to use proper error objects instead of only
+// console.logs.
 
 import { useState, useCallback } from 'react';
+
+// Utility Functions //
 
 const reduceToIds = (selTracker) => {
   return selTracker.reduce((acc, item) => {
@@ -43,7 +50,9 @@ export const useMultiSelector = ({items, min=1, max=1}) => {
     setMaxReached(numSelected === max);
   },[selTracker, min, max]);
 
-  const selectItemHandler = (item, cbArray, instaConfirm, icCbArray, icResetTracker) => {
+  const selectItemHandler = (
+    item, cbArray, instaConfirm, icCbArray, icResetTracker
+  ) => {
     let callback, args, icCallback, icArgs;
     if (!!cbArray) {
       callback = cbArray[0];
@@ -129,9 +138,11 @@ export const useMultiSelector = ({items, min=1, max=1}) => {
     selectItem,
     selectItemHandler,
     confirmSelection,
-    amISelected, amIEnabled,
+    amISelected,
+    amIEnabled,
     updateTracker,
-    minReached, maxReached,
+    minReached,
+    maxReached,
     selTracker
   };
 };

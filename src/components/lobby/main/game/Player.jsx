@@ -48,6 +48,32 @@ const Player = ({
     submitSelection
   } = useParallelSelector(types);
 
+  // Display Role Text //
+
+  // Returns an array. First element: css class. Second element: display text.
+  function role() {
+    if (myRole === 'ghost' || myRole === 'spectator') return allRoles();
+    if (myRole === 'hunter') return ['mystery', '???'];
+    if (isRedTeam) return showRedTeam(myRole);
+    return ['hunter', 'hunter'];
+  }
+
+  function allRoles() {
+    const role = rolesRef.find(entry => entry.user.id === playerId).role;
+    return [role, role];
+  };
+
+  function showRedTeam(myRole) {
+    if (myRole === 'witness') return ['redteam', '!!!'];
+    if (myRole === 'killer') return ['accomplice', 'accomplice'];
+    if (myRole === 'accomplice') return ['killer', 'killer'];
+    return null;
+  };
+
+  const [roleClass, roleDisplay] = role(); // Destructure the array.
+
+  // Display Interaction Button //
+
   // Accuse a player of being the killer.
   const AccuseBtn = () => {
     return (
@@ -85,37 +111,13 @@ const Player = ({
     return null;
   };
 
-  // How to Display Roles //
-
-  // Returns an array. First element: css class. Second element: display text.
-  function role() {
-    if (myRole === 'ghost' || myRole === 'spectator') return allRoles();
-    if (myRole === 'hunter') return ['mystery', '???'];
-    if (isRedTeam) return showRedTeam(myRole);
-    return ['hunter', 'hunter'];
-  }
-
-  function allRoles() {
-    const role = rolesRef.find(entry => entry.user.id === playerId).role;
-    return [role, role];
-  };
-
-  function showRedTeam(myRole) {
-    if (myRole === 'witness') return ['redteam', '!!!'];
-    if (myRole === 'killer') return ['accomplice', 'accomplice'];
-    if (myRole === 'accomplice') return ['killer', 'killer'];
-    return null;
-  };
-
-  const [roleClass, roleDisplay] = role(); // Destructure the array.
-
   // For case where player had selected cards of a player other than the one
   // they accuse. If player has already used their accusation, show all cards
   // as unselected by ignoring contents of selTracker.
   const getSelectedId = (type) => canIAccuse ? selTracker[type]?.id : null;
 
   // Prevent accomplice from accusing killer with correct evidence.
-  const isAccompliceThrowing = () => {
+  function isAccompliceThrowing() {
     if (myRole !== 'accomplice') return false;
     if (!isRedTeam) return false;
     const selIds = [selTracker.means?.id, selTracker.evidence?.id];

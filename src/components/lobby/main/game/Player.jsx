@@ -53,6 +53,7 @@ const Player = ({
     return [role, role];
   };
 
+  // Accuse a player of being the killer.
   const accuseBtn = () => {
     return (
       <button
@@ -68,6 +69,8 @@ const Player = ({
     );
   };
 
+  // Kill a player. Used by killer to attempt to kill the witness during
+  // 'second-murder' stage.
   const killBtn = () => {
     return (
       <button
@@ -95,6 +98,7 @@ const Player = ({
     return null;
   };
 
+  // Returns an array. First element: css class. Second element: display text.
   const role = () => {
     if (myRole === 'ghost' || myRole === 'spectator') return allRoles();
     if (myRole === 'hunter') return ['mystery', '???'];
@@ -102,15 +106,14 @@ const Player = ({
     return ['hunter', 'hunter'];
   }
 
-  const [roleClass, roleDisplay] = role();
+  const [roleClass, roleDisplay] = role(); // Destructure the array.
 
-  // for case where player had selected cards of a player
-  // other than the one they accused; if player has already
-  // used their accusation, show all cards as unselected by
-  // ignoring contents of selTracker
+  // For case where player had selected cards of a player other than the one
+  // they accuse. If player has already used their accusation, show all cards
+  // as unselected by ignoring contents of selTracker.
   const getSelectedId = (type) => canIAccuse ? selTracker[type]?.id : null;
 
-  // prevent accomplice from accusing killer with correct evidence
+  // Prevent accomplice from accusing killer with correct evidence.
   const isAccompliceThrowing = () => {
     if (myRole !== 'accomplice') return false;
     if (!isRedTeam) return false;

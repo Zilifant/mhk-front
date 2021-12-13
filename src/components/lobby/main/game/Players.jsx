@@ -19,8 +19,6 @@ const Players = ({
 
   const { userId } = useContext(UserContext);
 
-  console.log(redTeam);
-
   const extractIds = (arr) => arr.map(obj => obj.id);
 
   function showAsRedTeam(playerId) {

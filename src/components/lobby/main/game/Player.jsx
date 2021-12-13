@@ -122,14 +122,12 @@ const Player = ({
     return false;
   };
 
-  const connectionStatus = isOnline ? 'online' : 'offline';
-
   return (
     <Container className={`player ${!canIInteract && 'no-interact'}`}>
       <li className={`p-info ${roleClass}`}>
         <div className='wrapper'>
           <div>
-            <span className={`username ${connectionStatus}`}>
+            <span className={`username ${isOnline ? 'online' : 'offline'}`}>
               {playerId.slice(0,-5)}
             </span>
           </div>

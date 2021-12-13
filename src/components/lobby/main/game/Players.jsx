@@ -1,4 +1,6 @@
 // Players //
+// TO DO: Consolidate logic for displaying role data and interaction buttons
+// from this and Player component into a separate hook.
 
 import { useContext } from 'react';
 import { UserContext } from '../../../../context/contexts';

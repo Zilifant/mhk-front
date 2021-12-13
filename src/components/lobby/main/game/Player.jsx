@@ -85,6 +85,8 @@ const Player = ({
     return null;
   };
 
+  // How to Display Roles //
+
   // Returns an array. First element: css class. Second element: display text.
   function role() {
     if (myRole === 'ghost' || myRole === 'spectator') return allRoles();

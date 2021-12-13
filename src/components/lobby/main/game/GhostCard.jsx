@@ -57,11 +57,14 @@ const GhostCard = ({
   const newCard = card.isNew ? 'new' : 'old';
   const lockedCard = card.isLocked ? 'locked' : 'unlocked';
 
-  const confirmClueBtn = () => {
+  const ConfirmClueBtn = () => {
     return (
       <button
         className='btn btn--gc confirm-clue'
-        onClick={() => confirmSelection({ cb:[chooseClueHandler], resetTracker: false })}
+        onClick={() => confirmSelection({
+          cb:[chooseClueHandler],
+          resetTracker: false
+        })}
         disabled={!maxReached}
       >
         confirm
@@ -69,7 +72,7 @@ const GhostCard = ({
     );
   };
 
-  const replaceCardBtn = () => {
+  const ReplaceCardBtn = () => {
     return (
       <button
         className='btn btn--gc replace-card'
@@ -81,9 +84,9 @@ const GhostCard = ({
     );
   };
 
-  const confirmBtns = () => {
-    if (stage.type !== 'liminal' && !card.isLocked) return confirmClueBtn();
-    if (stage.type === 'liminal' && card.type === 'clue' && !card.isNew) return replaceCardBtn();
+  const ConfirmBtns = () => {
+    if (stage.type !== 'liminal' && !card.isLocked) return ConfirmClueBtn();
+    if (stage.type === 'liminal' && card.type === 'clue' && !card.isNew) return ReplaceCardBtn();
     return <div className='gc-conbtn-placeholder'>-</div>
   };
 
@@ -108,7 +111,7 @@ const GhostCard = ({
           </li>
         ))}
       </ul>
-      {isMine && confirmBtns()}
+      {isMine && ConfirmBtns()}
     </div>
   );
 };

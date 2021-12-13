@@ -1,4 +1,8 @@
 // Ghost Card //
+// Ghost cards are 'clue cards', which also include a 'location card' and a
+// 'cause card'. This displayed ghost cards for all players, including the
+// ghost. For players other than the ghost, all buttons on clue cards are
+// permanently disabled and confirm/replace buttons are hidden.
 
 import { useContext } from 'react';
 import { SocketContext } from '../../../../context/contexts';
@@ -26,10 +30,12 @@ const GhostCard = ({
     maxReached
   } = useMultiSelector({items: card.opts});
 
+  // Confirmed clue selections are highlighted.
   function checkHighlight(clue) {
     if (confirmedClues.includes(clue.id)) return 'highlighted';
   };
 
+  // Clues that have been selected but not yet confirmed.
   function checkSelected(index) {
     if (amISelected(index)) return 'selected';
   };
@@ -57,6 +63,7 @@ const GhostCard = ({
   const newCard = card.isNew ? 'new' : 'old';
   const lockedCard = card.isLocked ? 'locked' : 'unlocked';
 
+  // Confirm clue selections on each clue card during rounds.
   const ConfirmClueBtn = () => {
     return (
       <button
@@ -72,6 +79,7 @@ const GhostCard = ({
     );
   };
 
+  // Select a clue card to replace at the start of rounds 2 and 3. 
   const ReplaceCardBtn = () => {
     return (
       <button
@@ -90,6 +98,7 @@ const GhostCard = ({
     return <div className='gc-conbtn-placeholder'>-</div>
   };
 
+  // Skip clue cards that have not yet been drawn or that have been replaced.
   if (!card.isDisplayed) return null;
 
   return (

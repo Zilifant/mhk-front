@@ -19,7 +19,7 @@ const Players = ({
 
   const { userId } = useContext(UserContext);
 
-  const showAsRedTeam = (redTeam, playerId) => {
+  function showAsRedTeam(playerId) {
     const extractIds = (arr) => arr.map(obj => obj.id);
     const canSeeRedTeam = ['witness', 'killer', 'accomplice'];
     const show = canSeeRedTeam.includes(thisPlayer.role)
@@ -43,7 +43,7 @@ const Players = ({
             player={player}
             stage={currentStage}
             canBeTargeted={canBeTargeted && player.role !== 'accomplice'}
-            isRedTeam={showAsRedTeam(redTeam, player.id)}
+            isRedTeam={showAsRedTeam(player.id)}
             keyEv={keyEvidence}
             rolesRef={rolesRef}
             thisPlayer={thisPlayer}

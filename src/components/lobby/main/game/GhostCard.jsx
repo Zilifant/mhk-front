@@ -1,3 +1,5 @@
+// Ghost Card //
+
 import { useContext } from 'react';
 import { SocketContext } from '../../../../context/contexts';
 import { useMultiSelector } from '../../../../hooks/multi-selector-hook';
@@ -24,15 +26,15 @@ const GhostCard = ({
     maxReached
   } = useMultiSelector({items: card.opts});
 
-  const checkHighlight = (clue) => {
+  function checkHighlight(clue) {
     if (confirmedClues.includes(clue.id)) return 'highlighted';
   };
 
-  const checkSelected = (index) => {
+  function checkSelected(index) {
     if (amISelected(index)) return 'selected';
   };
 
-  const checkEnabledByStage = () => {
+  function checkEnabledByStage() {
     const disabledStageTypes = ['liminal', 'setup', 'postgame'];
     const disabledStageIds = ['second-murder'];
     if (disabledStageTypes.includes(stage.type)) return true;
@@ -40,7 +42,7 @@ const GhostCard = ({
     return false;
   }
 
-  const checkEnabled = (index) => {
+  function checkEnabled(index) {
     if (!isMine) return false;
     if (checkEnabledByStage()) return false;
     if (card.isLocked) return false;

@@ -6,8 +6,8 @@
 // - Can handle objects with an `id` property or strings.
 // - Can set up to automatically confirm selections or wait for a separate
 //   'confirm' event.
-// - Can take an 'onConfirm' function that brings in outside args as well as
-//   selected items stored in the hook.
+// - Can take a callback function to use on confirming a selection that brings
+//   in outside args as well as selected items stored in the hook.
 
 // TO DO: refactor error handling to use proper error objects instead of only
 // console.logs.

@@ -48,9 +48,15 @@ const Player = ({
 
   // Returns an array. First element: css class. Second element: display text.
   function role() {
+    // Display role data without restrictions for ghost and spectators.
     if (myRole === 'ghost' || myRole === 'spectator') return allRoles();
+    // Obfuscate all role data for hunters.
     if (myRole === 'hunter') return ['mystery', '???'];
+    // Display limited role data for witness and red team players.
     if (isRedTeam) return showRedTeam(myRole);
+    // For witness, hunter, accomplice, display remaining roles as 'hunter'.
+    // (Hides witness role from red team; shows 'hunter' to witness, since they
+    // know who the red team members are.)
     return ['hunter', 'hunter'];
   }
 

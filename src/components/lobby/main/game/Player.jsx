@@ -48,7 +48,7 @@ const Player = ({
     submitSelection
   } = useParallelSelector(types);
 
-  const allRoles = () => {
+  function allRoles() {
     const role = rolesRef.find(entry => entry.user.id === playerId).role;
     return [role, role];
   };
@@ -85,13 +85,13 @@ const Player = ({
 
   const canIInteract = myRole !== 'ghost';
 
-  const interact = () => {
+  function interact() {
     if (canIInteract && isRoundStage && canIAccuse) return accuseBtn();
     if (isMurderable) return killBtn();
     return null;
   };
 
-  const showRedTeam = (myRole) => {
+  function showRedTeam(myRole) {
     if (myRole === 'witness') return ['redteam', '!!!'];
     if (myRole === 'killer') return ['accomplice', 'accomplice'];
     if (myRole === 'accomplice') return ['killer', 'killer'];
@@ -99,7 +99,7 @@ const Player = ({
   };
 
   // Returns an array. First element: css class. Second element: display text.
-  const role = () => {
+  function role() {
     if (myRole === 'ghost' || myRole === 'spectator') return allRoles();
     if (myRole === 'hunter') return ['mystery', '???'];
     if (isRedTeam) return showRedTeam(myRole);

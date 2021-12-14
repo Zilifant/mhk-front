@@ -1,4 +1,5 @@
 // System Messages //
+// Provides functions to create strings in 'styled markdown' (SMD) format.
 
 import { name } from '../util/utils';
 
@@ -14,7 +15,6 @@ export function buildSMDString(data, meta) {
 };
 
 // Functions called by `buildSMDString` to dynamically create system messages.
-// Each returns a string in 'styled markdown' (SMD) format.
 const systemMessages = (() => {
 
   const outcomes = {

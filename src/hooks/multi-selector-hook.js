@@ -62,20 +62,17 @@ export const useMultiSelector = ({items, min=1, max=1}) => {
   // Max items that can be selected.
   const [maxReached, setMaxReached] = useState(false);
 
-  // selectItemHandler args:
-  // - item: Selected/deselected item.
-  // - cbArray: Callback array, including callback function (first element) and
-  //   array of args (second element) (optional).
-  // - instaConfirm: Should selection be instantly confirmed (optional bool).
-  // - icCbArray: Callback array if instaConfirming (optional).
-  // - icResetTracker: Should tracker reset if instaConfirming (optonal bool).
-  // TO DO: Convert this to an object for named arguments.
+  // Select/Deselect Item //
+
   const selectItemHandler = (
-    item,
-    cbArray,
-    instaConfirm,
-    icCbArray,
-    icResetTracker
+    item, cbArray, instaConfirm, icCbArray, icResetTracker
+    // - item: Selected/deselected item.
+    // - cbArray: Callback array, including callback function (first element) and
+    //   array of args (second element) (optional).
+    // - instaConfirm: Should selection be instantly confirmed (optional bool).
+    // - icCbArray: Callback array if instaConfirming (optional).
+    // - icResetTracker: Should tracker reset if instaConfirming (optonal bool).
+    // TO DO: Convert this to an object for named arguments.
   ) => {
     let callback, args, icCallback, icArgs;
     if (!!cbArray) {

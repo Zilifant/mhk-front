@@ -20,10 +20,9 @@ const Announcement = ({
     wrapper: `msg-wrapper msg-in-announcer other`,
     parent: 'announcer',
     inlineOnly: true,
-    renderTimestamp: false,
   };
 
-  const built = buildSMDString(message, meta);
+  const built = buildSMDString(message);
   const parsed = parse(built, meta);
 
   return render.inline(parsed, meta);

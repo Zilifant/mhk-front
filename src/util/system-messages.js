@@ -3,16 +3,17 @@
 import { name } from '../util/utils';
 
 export function buildSMDString(data, meta) {
-  const { type, time, args } = data
-  const { renderTimestamp } = meta
-  const string = () => systemMessages[type](...args)
+  const { type, time, args } = data;
+  const { renderTimestamp } = meta;
+  const string = () => systemMessages[type](...args);
 
-  if (renderTimestamp === 'block') return `>t>_t_${time} <>text-after-timestamp-block>` + string()
-  if (renderTimestamp === 'inline') return `_t_${time} ^` + string()
-  return string()
+  if (renderTimestamp === 'block') return `>t>_t_${time} <>text-after-timestamp-block>` + string();
+  if (renderTimestamp === 'inline') return `_t_${time} ^` + string();
+  // If `renderTimestamp` is any other value, don't render it.
+  return string();
 }
 
-// Methods called by `buildSMDString` to dynamically create system messages.
+// Functions called by `buildSMDString` to dynamically create system messages.
 // Each returns a string in 'styled markdown' (SMD) format.
 export const systemMessages = (() => {
 

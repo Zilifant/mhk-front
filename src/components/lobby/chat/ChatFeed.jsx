@@ -35,9 +35,9 @@ const ChatFeed = ({ messages, users }) => {
   const scrollRef = useRef();
   useEffect(() => {
     scrollRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: "nearest"
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'nearest'
     });
   }, [messages]);
 

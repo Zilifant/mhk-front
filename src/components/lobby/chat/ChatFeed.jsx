@@ -17,7 +17,7 @@ const ChatMessage = ({
   const meta = {
     wrapper: `msg-wrapper msg-in-chatfeed ${isMine ? 'self' : 'other'}`,
     parent: 'chatfeed',
-    timestamp: 'block'
+    renderTimestamp: 'block'
   };
 
   const built = buildSMDString(message, meta);

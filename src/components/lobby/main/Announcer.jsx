@@ -28,7 +28,7 @@ const Announcement = ({
     wrapper: `msg-wrapper msg-in-announcer other`,
     parent: 'announcer',
     inlineOnly: true,
-    timestamp: false,
+    renderTimestamp: false,
   };
 
   const built = buildSMDString(message, meta);

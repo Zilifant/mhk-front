@@ -4,11 +4,11 @@ import { name } from '../util/utils';
 
 export function buildSMDString(data, meta) {
   const { type, time, args } = data
-  const { timestamp } = meta
+  const { renderTimestamp } = meta
   const string = () => systemMessages[type](...args)
 
-  if (timestamp === 'block') return `>t>_t_${time} <>text-after-timestamp-block>` + string()
-  if (timestamp === 'inline') return `_t_${time} ^` + string()
+  if (renderTimestamp === 'block') return `>t>_t_${time} <>text-after-timestamp-block>` + string()
+  if (renderTimestamp === 'inline') return `_t_${time} ^` + string()
   return string()
 }
 

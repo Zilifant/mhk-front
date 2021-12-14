@@ -62,23 +62,10 @@ export const useMultiSelector = ({items, min=1, max=1}) => {
   // Max items that can be selected.
   const [maxReached, setMaxReached] = useState(false);
 
-  const updateTracker = useCallback((newitems) => {
-    const updItems = initSelTracker(newitems);
-    const updTracker = updItems.map(item => {
-      const existingItem = selTracker.find(itm => itm.id === item.id);
-      if (!!existingItem) return existingItem;
-      return item;
-    });
-    setSelTracker(updTracker);
-    const numSelected = updTracker.filter(itm => itm.isSelected === true).length;
-    setMinReached(numSelected >= min);
-    setMaxReached(numSelected === max);
-  },[selTracker, min, max]);
-
   // selectItemHandler args:
   // - item: Selected/deselected item.
   // - cbArray: Callback array, including callback function (first element) and
-  //            array of args (second element) (optional).
+  //   array of args (second element) (optional).
   // - instaConfirm: Should selection be instantly confirmed (optional bool).
   // - icCbArray: Callback array if instaConfirming (optional).
   // - icResetTracker: Should tracker reset if instaConfirming (optonal bool).
@@ -148,6 +135,21 @@ export const useMultiSelector = ({items, min=1, max=1}) => {
 
     return callback(ids, ...args);
   };
+
+  // Add/remove items to the tracker.
+  // TO DO: This is overly complex; refactor.
+  const updateTracker = useCallback((newitems) => {
+    const updItems = initSelTracker(newitems);
+    const updTracker = updItems.map(item => {
+      const existingItem = selTracker.find(itm => itm.id === item.id);
+      if (!!existingItem) return existingItem;
+      return item;
+    });
+    setSelTracker(updTracker);
+    const numSelected = updTracker.filter(itm => itm.isSelected === true).length;
+    setMinReached(numSelected >= min);
+    setMaxReached(numSelected === max);
+  },[selTracker, min, max]);
 
   // Two checks for UI element appearance and functionality:
 

@@ -4,7 +4,7 @@
 
 export const VERSION = '0.8.7';
 export const isDevEnv = process.env.NODE_ENV === 'development';
-export const MAX_NAME_LEN = 10;
+export const MAX_NAME_LEN = 10; // Maximum username length.
 
 export const lobbyMethods = {
   getUserBy(val, key='id') {

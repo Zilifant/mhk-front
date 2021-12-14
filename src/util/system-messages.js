@@ -11,7 +11,7 @@ export function buildSMDString(data, meta) {
   if (renderTimestamp === 'inline') return `_t_${time} ^` + string();
   // If `renderTimestamp` is any other value, don't render it.
   return string();
-}
+};
 
 // Functions called by `buildSMDString` to dynamically create system messages.
 // Each returns a string in 'styled markdown' (SMD) format.

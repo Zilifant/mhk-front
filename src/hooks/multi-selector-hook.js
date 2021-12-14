@@ -6,9 +6,12 @@
 // Features:
 // - Can set up to automatically confirm selections or wait for a separate
 //   'confirm' event.
-// - Can take a callback function to use on confirming a selection that brings
-//   in outside args as well as selected items stored in the hook.
+// - Can take callback functions to execute whenever an item is selected and/or
+//   when a selection is confirmed. Callback functions take the selected item
+//   (if called on selection) or an array of all selected items (if called on
+//   confirm) as an arg in addition to any args passed in with the callback.
 
+// TO DO: Allow tracked items to be strings as well.
 // TO DO: Refactor error handling to use proper error objects instead of only
 // console.logs.
 
@@ -66,23 +69,29 @@ export const useMultiSelector = ({items, min=1, max=1}) => {
 
   const selectItemHandler = (
     item, cbArray, instaConfirm, icCbArray, icResetTracker
+    // Args; for optional values, if none, pass a falsy value, ideally `null`.
     // - item: Selected/deselected item.
-    // - cbArray: Callback array, including callback function (first element) and
-    //   array of args (second element) (optional).
+    // - cbArray: Callback array, includes function to be called on selection
+    //   (first element) and array of args (second element) (optional).
     // - instaConfirm: Should selection be instantly confirmed (optional bool).
-    // - icCbArray: Callback array if instaConfirming (optional).
+    // - icCbArray: Callback array, if instaConfirming with a callback function
+    //   (optional).
     // - icResetTracker: Should tracker reset if instaConfirming (optonal bool).
     // TO DO: Convert this to an object for named arguments.
+    // TO DO: Refactor to eliminate need for separate cb and icCb.
   ) => {
     let callback, args, icCallback, icArgs;
+
     if (!!cbArray) {
       callback = cbArray[0];
       args = cbArray[1];
     };
+
     if (!!instaConfirm) {
       icCallback = icCbArray[0];
       icArgs = icCbArray[1];
     };
+
     const obj = {
       item: item,
       cb:[callback, args],
@@ -90,12 +99,14 @@ export const useMultiSelector = ({items, min=1, max=1}) => {
       icCb:[icCallback, icArgs],
       icResetTracker: icResetTracker
     };
+
     return selectItem(obj);
   };
 
   // Only used internally, by `selectItemHandler`. Kept in hook for readability.
   function selectItem(obj) {
 
+    // Set a bunch of variables for readability.
     const item = obj.item;
     const callback = obj.cb[0];
     const args = obj.cb[1];
@@ -104,17 +115,22 @@ export const useMultiSelector = ({items, min=1, max=1}) => {
     const icArgs = obj.icCb[1];
     const icResetTracker = obj.icResetTracker;
 
+    // Get id of selected item.
     const id = extractId(item);
+
+    // Update the selection tracker state.
     const updSel = selTracker.map(itm => {
       if (itm.id !== id) return itm;
       return { id: itm.id, isSelected: !itm.isSelected };
     });
     setSelTracker(updSel);
 
+    // Update min/maxReached states if necessary.
     const numSelected = updSel.filter(itm => itm.isSelected === true).length;
     setMinReached(numSelected >= min);
     setMaxReached(numSelected === max);
 
+    // 
     if (!!callback) return callback(...args);
     if (!!instaConfirm) {
       return confirmSelection({cb:[icCallback, icArgs], icResetTracker})

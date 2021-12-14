@@ -9,7 +9,7 @@ export const MAX_NAME_LEN = 10; // Maximum username length.
 export const lobbyMethods = {
   getUserBy(val, key='id') {
     const user = this.users.find(u => u[key] === val);
-    if (!user) {
+    if (!user && isDevEnv) {
       return console.log(`ERR! ${this.id}: no user with '${key}:${val}' found`);
     };
     return user;

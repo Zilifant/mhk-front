@@ -152,7 +152,6 @@ export const useMultiSelector = ({items, min=1, max=1}) => {
   };
 
   return {
-    selectItem,
     selectItemHandler,
     confirmSelection,
     amISelected,

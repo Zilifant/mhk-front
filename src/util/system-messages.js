@@ -17,6 +17,8 @@ export function buildSMDString(data, meta) {
 // Functions called by `buildSMDString` to dynamically create system messages.
 const systemMessages = (() => {
 
+  const cls = 'smd--username '; // Frequently used string.
+
   const outcomes = {
     redwin: ({accuser}) =>
       `_${cls+accuser.color.id}_${accuser.userName}'s^ accusation is wrong. The ^_kh_Hunters^ used their last accusation. The ^_kk_Killer^ wins!`,
@@ -42,8 +44,6 @@ const systemMessages = (() => {
     bluewinwitnessalive: ({killer, witness, target}) =>
       `_${cls+killer.color.id}_${killer.userName}^ killed ^_${cls+target.color.id}_${target.userName}^. But the ^_kw_Witness^ was ^_${cls+witness.color.id}_${witness.userName}^! The ^_kh_Hunters^ and the ^_kg_Ghost^ win!`
   };
-
-  const cls = 'smd--username ';
 
   const duplicateConnection = () => `User connected in another window. This window will disconnect.`;
 

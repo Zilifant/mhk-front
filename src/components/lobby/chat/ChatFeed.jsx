@@ -50,6 +50,8 @@ const ChatFeed = ({ messages, users }) => {
     return 'null-color';
   }
 
+  // TO DO: Refactor to move div wrapper used to apply color into ChatMessage
+  // or remove need for it entirely.
   return (
     <div className='chatfeed'>
       {messages.map((message) => (

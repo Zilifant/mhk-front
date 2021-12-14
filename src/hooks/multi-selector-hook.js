@@ -54,9 +54,11 @@ function checkByIndex(selTracker, idx) {
 
 export const useMultiSelector = ({items, min=1, max=1}) => {
 
-  const [minReached, setMinReached] = useState(false);
-  const [maxReached, setMaxReached] = useState(false);
   const [selTracker, setSelTracker] = useState(initSelTracker(items));
+  // Min selected items needed to submit selection.
+  const [minReached, setMinReached] = useState(false);
+  // Max items that can be selected.
+  const [maxReached, setMaxReached] = useState(false);
 
   const updateTracker = useCallback((newitems) => {
     const updItems = initSelTracker(newitems);
@@ -132,6 +134,9 @@ export const useMultiSelector = ({items, min=1, max=1}) => {
     return callback(ids, ...args);
   };
 
+  // Two checks for UI element appearance and functionality:
+
+  // Check if an item is selected. Can lookup by item's id or index.
   const amISelected = (i) => {
     if (!i && i !== 0) return console.log(`Err! i is falsy`);
     if (selTracker.length === 0) return console.log(`Err! selTracker empty`);
@@ -139,6 +144,8 @@ export const useMultiSelector = ({items, min=1, max=1}) => {
                                     : checkByIndex(selTracker, i);
   };
 
+  // Check if an item can be selected or deselected, i.e. if the UI
+  // button/toggle associated with that item should be enabled.
   const amIEnabled = (i) => {
     if (maxReached && !amISelected(i)) return false;
     return true;

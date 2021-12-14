@@ -33,6 +33,8 @@ function reduceToIds(selTracker) {
   }, []);
 };
 
+// If item is string, return item. If item is an object that contains an `id`
+// property, return the id, else log error message and return `null`.
 function extractId(item) {
   if (typeof(item) === 'string') return item;
   if ((typeof(item) === 'object') && !!item.id) return item.id;
@@ -73,8 +75,20 @@ export const useMultiSelector = ({items, min=1, max=1}) => {
     setMaxReached(numSelected === max);
   },[selTracker, min, max]);
 
+  // selectItemHandler args:
+  // - item: Selected/deselected item.
+  // - cbArray: Callback array, including callback function (first element) and
+  //            array of args (second element) (optional).
+  // - instaConfirm: Should selection be instantly confirmed (optional bool).
+  // - icCbArray: Callback array if instaConfirming (optional).
+  // - icResetTracker: Should tracker reset if instaConfirming (optonal bool).
+  // TO DO: Convert this to an object for named arguments.
   const selectItemHandler = (
-    item, cbArray, instaConfirm, icCbArray, icResetTracker
+    item,
+    cbArray,
+    instaConfirm,
+    icCbArray,
+    icResetTracker
   ) => {
     let callback, args, icCallback, icArgs;
     if (!!cbArray) {
@@ -95,7 +109,8 @@ export const useMultiSelector = ({items, min=1, max=1}) => {
     return selectItem(obj);
   };
 
-  const selectItem = (obj) => {
+  // Only used internally, by `selectItemHandler`. Kept in hook for readability.
+  function selectItem(obj) {
 
     const item = obj.item;
     const callback = obj.cb[0];

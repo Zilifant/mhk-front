@@ -130,22 +130,29 @@ export const useMultiSelector = ({items, min=1, max=1}) => {
     setMinReached(numSelected >= min);
     setMaxReached(numSelected === max);
 
-    // 
+    // If callback given, call it with args array spread.
     if (!!callback) return callback(...args);
+    // If instaConfirming, confirm selection.
     if (!!instaConfirm) {
       return confirmSelection({cb:[icCallback, icArgs], icResetTracker})
     };
   };
 
+  // Expects an object with two properties:
+  // 1) `cb`: an array containing a function and (optionally) an array of args.
+  // 2) `resetTracker`: an optional boolean that defaults to `false`.
   const confirmSelection = ({cb:[callback, ...args], resetTracker}) => {
     const ids = reduceToIds(selTracker);
 
+    // Optionally reset the tracker.
     if (resetTracker) {
       setSelTracker(initSelTracker(items));
       setMinReached(false);
       setMaxReached(false);
     };
 
+    // Call the callback. First arg is an array of (the ids of) selected items,
+    // followed by any additional given args.
     return callback(ids, ...args);
   };
 

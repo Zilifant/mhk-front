@@ -9,16 +9,6 @@ import Container from '../../shared/Container';
 import '../../../styles/announcer.scss';
 import '../../../styles/chat.scss';
 
-function msg(type, args, isInGame, senderId = 'app') {
-  return {
-    time: new Date().toLocaleTimeString().slice(0,-6),
-    type,
-    isInGame,
-    args,
-    senderId,
-  };
-};
-
 // Only used in Announcer.
 const Announcement = ({
   message,
@@ -53,8 +43,22 @@ const Announcer = ({
 
   useEffect(() => { subToAnnounce(); }, [subToAnnounce]);
 
-  // TO DO: This is a confusing, temporary solution; refactor.
-  const [type, args] = lobby.startGameText(iAmLeader);
+  // Selects system message data to display before game starts.
+  // TO DO: This is a temporary solution; refactor.
+  function startGameMsgText() {
+    // Structure message data for `buildSMDString` module.
+    function msg(type, args, isInGame, senderId='app') {
+      return {
+        time: new Date().toLocaleTimeString().slice(0,-6),
+        type,
+        isInGame,
+        args,
+        senderId,
+      };
+    };
+    const [type, args] = lobby.startGameText(iAmLeader);
+    return msg(type, args, false);
+  };
 
   if (lobby.gameOn) return (
     <Container className='announcer game'>
@@ -67,7 +71,7 @@ const Announcer = ({
   return (
     <Container className='announcer nogame'>
       <Announcement
-        message={msg(type, args, false)}
+        message={startGameMsgText()}
       />
       <Announcement
         message={lastAnnouncement()}

@@ -1,5 +1,7 @@
 // System Messages //
 // Provides functions to create strings in 'styled markdown' (SMD) format.
+// These are (with the exception of `userMessage`) system messages displayed in
+// the ChatFeed and/or Announcer components.
 
 import { name } from '../util/utils';
 

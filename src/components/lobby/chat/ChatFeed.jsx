@@ -1,10 +1,10 @@
 // ChatFeed //
 
+import { nanoid } from 'nanoid';
 import { useContext, useEffect, useRef } from 'react';
 import { UserContext } from '../../../context/contexts';
 import { parse, render } from '../../../util/smd';
 import { buildSMDString } from '../../../util/system-messages';
-import { nanoid } from 'nanoid';
 
 // Only used in ChatFeed.
 const ChatMessage = ({

@@ -12,6 +12,8 @@ export function buildSMDString(data, meta) {
   return string()
 }
 
+// Methods called by `buildSMDString` to dynamically create system messages.
+// Each returns a string in 'styled markdown' (SMD) format.
 export const systemMessages = (() => {
 
   const outcomes = {
@@ -117,7 +119,7 @@ export const systemMessages = (() => {
       case 'second-murder':
         str = `The ^_kk_Killer^ has been identified. But they can still win if they can kill the ^_kw_Witness^...`;
         break;
-      case 'game-over': // should never get called
+      case 'game-over': // Should never be called.
         str = `${stage.display}`
         break;
       default: break;

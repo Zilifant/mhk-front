@@ -10,6 +10,9 @@
 // - Tracks exactly one selection from each list.
 // - Tracks whether or not a selection has been made from every associated list
 //   in the `minSelected` state.
+// - On confirmation, only provides an array of ids of selected items; data
+//   about what item came from what list is lost. (This works for current use
+//   but should be expanded for this hook to be more generally useful.)
 
 // TO DO: Refactor error handling to use proper error objects instead of only
 // console.logs.
@@ -24,7 +27,7 @@ function areMinSelected(selTracker) {
   return true;
 };
 
-// Recursively build the initial state by adding each type one by one.
+// Recursively build the initial state by adding each type as a key one-by-one.
 // (There is probably a better way to do this.)
 function initSelection(types) {
   if (!types) return console.log(`initParTrack Err: 'types' = ${types}`);
@@ -39,6 +42,7 @@ function initSelection(types) {
   return initState
 };
 
+// Reduce the selTracker to an array containing the ids of selected items.
 const reduceToIds = (sel) => {
   let arr = [];
   for (let p in sel) arr.push(sel[p].id);
@@ -57,7 +61,8 @@ export const useParallelSelector = (types) => {
     alreadySelected ? unselect(item) : select(item);
     setMinSelected(areMinSelected(selTracker));
 
-    // Store the entire item in the tracker for the matching type (list).
+    // Store the entire item in the tracker as the value of the property with
+    // the key matching its type.
     function select(item) {
       const newSel = selTracker;
       newSel[item.type] = item;
@@ -72,6 +77,9 @@ export const useParallelSelector = (types) => {
     };
   };
 
+  // Expects an object with two properties:
+  // 1) `cb`: an array containing a function and (optionally) an array of args.
+  // 2) `resetTracker`: an optional boolean that defaults to `false`.
   const submitSelection = ({cb:[callback, ...args], reset}) => {
     const ids = reduceToIds(selTracker);
 

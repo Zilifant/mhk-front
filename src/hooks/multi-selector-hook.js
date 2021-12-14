@@ -1,8 +1,11 @@
 // Multi-Selector Hook //
+
 // Used for tracking selections of multiple items and also confirming the
 // selection, especially in cases where a min/max number of selections is
 // required/allowed.
+
 // Expects tracked items to be objects with unique `id` properties.
+
 // Features:
 // - Can set up to automatically confirm selections or wait for a separate
 //   'confirm' event.

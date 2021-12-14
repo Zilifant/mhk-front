@@ -1,4 +1,5 @@
-// Foyer
+// Foyer //
+
 // Janky logic that allows users to reach a lobby by entering a unique url/id,
 // while obscuring the id by immediately pushing the user to generic /join and
 // /lobby urls.
@@ -43,7 +44,6 @@ const Foyer = () => {
     // pushed the user to /join, and the remembered url is a specific lobby.
     // So, load JoinThisLobby with that url.
     if (!!url.current) {
-      console.log(`join: ${url.current}`);
       return <JoinThisLobby />
 
       // If the ref is undefined, it means the user reached this url from
@@ -60,19 +60,16 @@ const Foyer = () => {
   const isGenericURL = lobbyURL === 'lobby';
 
   if (checked) {
-    console.log('checked');
 
     // If user has arrived at /lobby but has no userData cookie, push them to
     // the landing.
     if (isGenericURL && !myLobby) {
-      console.log('generic and not mylobby');
       history.push('/');
       return null;
     };
 
     // If user has arrived at /lobby and has userData cookie, load their lobby.
     if (isGenericURL && myLobby) {
-      console.log('generic and mylobby');
       return <Lobby />;
     };
 
@@ -81,7 +78,6 @@ const Foyer = () => {
 
       // If user matching userData cookie, load their lobby.
       if (checkMyLobby(lobbyURL)) {
-        console.log('unique and mylobby');
         history.push('/lobby');
         return null;
       };
@@ -89,8 +85,6 @@ const Foyer = () => {
     };
 
   };
-
-  console.log('unique and not mylobby');
 
   // The url must be a unique lobby url. So, push the user to /join, triggering
   // this component to re-render.

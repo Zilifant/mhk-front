@@ -1,7 +1,18 @@
-// parallel selector hook
+// Parallel-Selector Hook //
+// Used for tracking selections from associated ('parallel') lists of items,
+// where overall state depends on how many items from each list are selected.
+// Also handles 'confirming' the selection, taking a callback function to do
+// something with the list of selected items from all associated lists.
+// Current Limitations:
+// - Tracks exactly one selection from each list.
+// - Tracks whether or not a selection has been made from every associated list
+//   in the `minSelected` state.
 
 import { useState } from 'react';
 
+// Utility Functions //
+
+// Check if an item has been selected from each list.
 function areMinSelected(selTracker) {
   if (Object.values(selTracker).includes(null)) return false;
   return true;

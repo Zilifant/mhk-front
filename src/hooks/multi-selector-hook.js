@@ -2,28 +2,22 @@
 // Used for tracking selections of multiple items and also confirming the
 // selection, especially in cases where a min/max number of selections is
 // required/allowed.
+// Expects tracked items to be objects with unique `id` properties.
 // Features:
-// - Can handle objects with an `id` property or strings.
 // - Can set up to automatically confirm selections or wait for a separate
 //   'confirm' event.
 // - Can take a callback function to use on confirming a selection that brings
 //   in outside args as well as selected items stored in the hook.
 
-// TO DO: refactor error handling to use proper error objects instead of only
+// TO DO: Refactor error handling to use proper error objects instead of only
 // console.logs.
 
 import { useState, useCallback } from 'react';
 
 // Utility Functions //
 
-const reduceToIds = (selTracker) => {
-  return selTracker.reduce((acc, item) => {
-    if (item.isSelected) acc.push(item.id);
-    return acc;
-  }, []);
-};
-
-const initSelTracker = (items) => {
+// Create the object that tracks selected items.
+function initSelTracker(items) {
   if (!items) return console.log(`initSelTracker Error: 'items' = ${items}`)
   const initState = items.map(item => {
     return {id: item.id, isSelected: false };
@@ -31,11 +25,31 @@ const initSelTracker = (items) => {
   return initState
 };
 
-const extractId = (item) => {
+// Reduce selection tracker to array containing ids (strings) of selected items.
+function reduceToIds(selTracker) {
+  return selTracker.reduce((acc, item) => {
+    if (item.isSelected) acc.push(item.id);
+    return acc;
+  }, []);
+};
+
+function extractId(item) {
   if (typeof(item) === 'string') return item;
   if ((typeof(item) === 'object') && !!item.id) return item.id;
   console.log('extractId Error: returning null');
   return null;
+};
+
+function checkById(selTracker, id) {
+  const trackedItem = selTracker.find(item => item.id === id);
+  if (!trackedItem) return console.log(`Err! trackedItem falsy`);
+  return trackedItem.isSelected;
+};
+
+function checkByIndex(selTracker, idx) {
+  if ((selTracker.length-1) < idx) return console.log(`Err! selTracker too short`);
+  if (selTracker[idx] === undefined) return console.log(`Err! item at idx undefined`);
+  return selTracker[idx].isSelected;
 };
 
 export const useMultiSelector = ({items, min=1, max=1}) => {
@@ -118,22 +132,11 @@ export const useMultiSelector = ({items, min=1, max=1}) => {
     return callback(ids, ...args);
   };
 
-  function checkById(id) {
-    const trackedItem = selTracker.find(item => item.id === id);
-    if (!trackedItem) return console.log(`Err! trackedItem falsy`);
-    return trackedItem.isSelected;
-  };
-
-  function checkByIndex(idx) {
-    if ((selTracker.length-1) < idx) return console.log(`Err! selTracker too short`);
-    if (selTracker[idx] === undefined) return console.log(`Err! item at idx undefined`);
-    return selTracker[idx].isSelected;
-  };
-
   const amISelected = (i) => {
     if (!i && i !== 0) return console.log(`Err! i is falsy`);
     if (selTracker.length === 0) return console.log(`Err! selTracker empty`);
-    return (typeof(i) === 'string') ? checkById(i) : checkByIndex(i);
+    return (typeof(i) === 'string') ? checkById(selTracker, i)
+                                    : checkByIndex(selTracker, i);
   };
 
   const amIEnabled = (i) => {

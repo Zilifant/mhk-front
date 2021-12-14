@@ -5,8 +5,8 @@
 
 import { name } from '../util/utils';
 
-export function buildSMDString(data, meta) {
-  const { type, time, args } = data;
+export function buildSMDString(messageData, meta) {
+  const { type, time, args } = messageData;
   const { renderTimestamp } = meta;
   const string = () => systemMessages[type](...args);
 

@@ -12,12 +12,10 @@ const ChatMessage = ({
   isMine,
 }) => {
 
-  if (!message) return null;
-
-  const style = isMine ? 'self' : 'other';
+  if (!message) return null; // TO DO: Test and remove this check.
 
   const meta = {
-    wrapper: `msg-wrapper msg-in-chatfeed ${style}`,
+    wrapper: `msg-wrapper msg-in-chatfeed ${isMine ? 'self' : 'other'}`,
     parent: 'chatfeed',
     timestamp: 'block'
   };

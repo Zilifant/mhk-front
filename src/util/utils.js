@@ -6,6 +6,7 @@ export const VERSION = '0.8.7';
 export const isDevEnv = process.env.NODE_ENV === 'development';
 export const MAX_NAME_LEN = 10; // Maximum username length.
 
+// Methods mixin.
 export const lobbyMethods = {
   getUserBy(val, key='id') {
     const user = this.users.find(u => u[key] === val);
@@ -51,23 +52,33 @@ export const lobbyMethods = {
   }
 };
 
+// Return correct css class for badge icon.
 export const badge = (canAccuse) => canAccuse ? 'can-accuse' : 'accusal-spent';
 
+// Return correct article for player UI.
 export const article = (role) => role === 'hunter' ? 'a' : 'the';
 
+// Remove unique numbers from userId to display only username in UI.
 export const name = (userId) => userId.slice(0,-5);
 
+// Capitalize first letter of each word in a string.
 export const capitalize = (str) => {
   return str.replace(/\b([a-zÁ-ú])/g, (w) => w.charAt(0).toUpperCase() + w.slice(1));
 };
 
-// Dynamic, game-specific data added to user object is not provided
-// by userContext; this gets that data from the game object
+// Get data of the player who's client this is.
+// Game-specific data (most importantly, a player's role) is not stored on the
+// user object. This gets that data from the game object once the game has
+// started.
+// A unique version of the game object (with hidden player role data redacted)
+// is sent to each user's client based on their role. The game's `viewingAs`
+// property indicates the user's role.
 export function getThisPlayer(userId, game) {
-  if (!game) return;
+  if (!game) return; // If there is no game, do nothing.
 
   let thisPlayer;
 
+  // If this user is a spectator, return that data.
   if (game.spectators.some(sp => sp.id === userId)) {
     thisPlayer = game.spectators.find(sp => sp.id === userId);
     thisPlayer.role = 'spectator';

@@ -6,6 +6,7 @@ import { parse, render } from '../../../util/smd';
 import { buildSMDString } from '../../../util/system-messages';
 import { nanoid } from 'nanoid';
 
+// Only used in ChatFeed.
 const ChatMessage = ({
   message,
   isMine,
@@ -29,8 +30,9 @@ const ChatMessage = ({
 
 const ChatFeed = ({ messages, users }) => {
   const { userId } = useContext(UserContext);
-  const scrollRef = useRef();
 
+  // Automatically scroll to bottom of feed on new message.
+  const scrollRef = useRef();
   useEffect(() => {
     scrollRef.current?.scrollIntoView({
       behavior: "smooth",
@@ -39,6 +41,8 @@ const ChatFeed = ({ messages, users }) => {
     });
   }, [messages]);
 
+  // Get color from message's `senderId` property. (System messages have
+  // senderId of `app`.)
   function getColorId(message) {
     if (message.senderId === 'app') return 'default';
     const color = users.find(u => u.id === message.senderId).color;

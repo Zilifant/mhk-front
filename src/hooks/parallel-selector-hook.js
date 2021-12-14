@@ -24,6 +24,8 @@ function areMinSelected(selTracker) {
   return true;
 };
 
+// Recursively build the initial state by adding each type one by one.
+// (There is probably a better way to do this.)
 function initSelection(types) {
   if (!types) return console.log(`initParTrack Err: 'types' = ${types}`);
   if (types.length < 1) return console.log(`initParTrack Err: 'types' is empty`);
@@ -31,7 +33,7 @@ function initSelection(types) {
   types.forEach(type => {
     initState = {
       ...initState,
-      ...{[type]: null}
+      ...{[type]: null} // With nothing selected, initial value is `null`.
     };
   });
   return initState
@@ -43,22 +45,26 @@ const reduceToIds = (sel) => {
   return arr;
 };
 
+// Expects an array of strings.
 export const useParallelSelector = (types) => {
 
   const [selTracker, setSelTracker] = useState(initSelection(types));
   const [minSelected, setMinSelected] = useState(false);
 
+  // Expects an object with a unique `id` property.
   const selectHandler = (item) => {
     const alreadySelected = item.id === selTracker[item.type]?.id;
     alreadySelected ? unselect(item) : select(item);
     setMinSelected(areMinSelected(selTracker));
 
+    // Store the entire item in the tracker for the matching type (list).
     function select(item) {
       const newSel = selTracker;
       newSel[item.type] = item;
       setSelTracker({...newSel});
     };
 
+    // Set selection for matching type (list) to `null`.
     function unselect(item) {
       const newSel = selTracker;
       newSel[item.type] = null;
@@ -69,11 +75,14 @@ export const useParallelSelector = (types) => {
   const submitSelection = ({cb:[callback, ...args], reset}) => {
     const ids = reduceToIds(selTracker);
 
+    // Optionally reset the tracker.
     if (reset) {
       setSelTracker(initSelection(types));
       setMinSelected(false);
     };
 
+    // Call the callback. First arg is an array of (the ids of) selected items,
+    // followed by any additional given args.
     return callback(ids, ...args);
   };
 

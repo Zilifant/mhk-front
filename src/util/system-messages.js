@@ -5,9 +5,9 @@
 
 import { name } from '../util/utils';
 
-export function buildSMDString(messageData, meta) {
+export function buildSMDString(messageData, metaData) {
   const { type, time, args } = messageData;
-  const { renderTimestamp } = meta;
+  const { renderTimestamp } = metaData;
   const string = () => systemMessages[type](...args);
 
   if (renderTimestamp === 'block') return `>t>_t_${time} <>text-after-timestamp-block>` + string();

@@ -1,12 +1,18 @@
 // Parallel-Selector Hook //
-// Used for tracking selections from associated ('parallel') lists of items,
-// where overall state depends on how many items from each list are selected.
+
+// Used for tracking selections from parallel lists ('types') of items, where
+// overall state depends on how many items from each list are selected.
+
 // Also handles 'confirming' the selection, taking a callback function to do
 // something with the list of selected items from all associated lists.
+
 // Current Limitations:
 // - Tracks exactly one selection from each list.
 // - Tracks whether or not a selection has been made from every associated list
 //   in the `minSelected` state.
+
+// TO DO: Refactor error handling to use proper error objects instead of only
+// console.logs.
 
 import { useState } from 'react';
 

@@ -189,13 +189,13 @@ export const useMultiSelector = ({items, min=1, max=1}) => {
   };
 
   return {
-    selectItemHandler,
-    confirmSelection,
-    amISelected,
-    amIEnabled,
-    updateTracker,
+    selTracker,
     minReached,
     maxReached,
-    selTracker
+    selectItemHandler,
+    confirmSelection,
+    updateTracker,
+    amISelected,
+    amIEnabled,
   };
 };

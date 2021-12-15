@@ -10,18 +10,17 @@ const inputReducer = (state, action) => {
   switch (action.type) {
     case 'CHANGE':
       return {
-        // Create copy of old state to save it to this new object. Then modify
+        // Create copy of old state to save it to this new object, then modify
         // individual key/values.
         ...state,
         value: action.val,
         isValid: validate(action.val, action.validators)
       }
-    case 'TOUCH': {
+    case 'TOUCH':
       return {
         ...state,
         isTouched: true
       }
-    }
     default:
       return state; // Return the unchanged state.
   };

@@ -90,33 +90,6 @@ function parseInline({str, meta}) {
   return parseSMD({str, meta, isBlock: false});
 }
 
-export const render = {
-
-  block(lines, meta = {}) {
-
-    if (meta.wrapper) return <div className={meta.wrapper}>{render(lines)}</div>;
-
-    return <>{render(lines)}</>
-
-    function render(lines) {
-      return lines.map((li, i) => {
-        return <div key={i} className={li.style}>{li.strings.map((str, i) => {
-          return <span key={i} className={str.style}>{str.string}</span>
-        })}</div>
-      })
-    }
-
-  },
-
-  inline(elements, meta = {}) {
-    return <div className={meta?.wrapper}>{elements.map((el, i) => {
-      return <span key={i} className={el.style}>{el.string}</span>
-    })}</div>
-
-  },
-
-}
-
 function parseSMD({str, isBlock}) {
   let defStyle, sS, sC;
 
@@ -163,3 +136,32 @@ function parseSMD({str, isBlock}) {
   });
   return result;
 };
+
+// Render //
+
+export const render = {
+
+  block(lines, meta = {}) {
+
+    if (meta.wrapper) return <div className={meta.wrapper}>{render(lines)}</div>;
+
+    return <>{render(lines)}</>
+
+    function render(lines) {
+      return lines.map((li, i) => {
+        return <div key={i} className={li.style}>{li.strings.map((str, i) => {
+          return <span key={i} className={str.style}>{str.string}</span>
+        })}</div>
+      })
+    }
+
+  },
+
+  inline(elements, meta = {}) {
+    return <div className={meta?.wrapper}>{elements.map((el, i) => {
+      return <span key={i} className={el.style}>{el.string}</span>
+    })}</div>
+
+  },
+
+}

@@ -1,3 +1,7 @@
+// Error Modal //
+// Displays a floating error message when certain Errors are recieved from
+// the server.
+
 import Modal from './Modal';
 import SVGButton from '../ui-elements/SVGButton';
 
@@ -5,7 +9,7 @@ const ErrorModal = ({ error, onClear }) => {
   return (
     <Modal
       onCancel={onClear}
-      header="Operation Failed Successfully"
+      header='Operation Failed Successfully'
       show={!!error}
       footer={
         <SVGButton

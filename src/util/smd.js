@@ -66,6 +66,10 @@ function setStyledMarkdownOpts(customOpts) {
 
 const opts = setStyledMarkdownOpts(customOpts);
 
+// Parse //
+// Takes a string with SMD syntax and (optionally) a metadata object.
+// Returns an object containing the content and class names.
+
 export function parse(str, meta = {}) {
   if (!!meta.inlineOnly) return parseInline({str, meta});
   return parseBlock({str, meta});

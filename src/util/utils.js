@@ -52,6 +52,11 @@ export const lobbyMethods = {
   }
 };
 
+// Capitalize first letter of each word in a string.
+export const capitalize = (str) => {
+  return str.replace(/\b([a-zÁ-ú])/g, (w) => w.charAt(0).toUpperCase() + w.slice(1));
+};
+
 // Return correct css class for badge icon.
 export const badge = (canAccuse) => canAccuse ? 'can-accuse' : 'accusal-spent';
 
@@ -61,9 +66,32 @@ export const article = (role) => role === 'hunter' ? 'a' : 'the';
 // Remove unique numbers from userId to display only username in UI.
 export const name = (userId) => userId.slice(0,-5);
 
-// Capitalize first letter of each word in a string.
-export const capitalize = (str) => {
-  return str.replace(/\b([a-zÁ-ú])/g, (w) => w.charAt(0).toUpperCase() + w.slice(1));
+// Converts a UTC time string into the client's timezone.
+// Expects a string with format matching for example: '07:42:31 PM'.
+export function convertToClientTimezone(time) {
+
+  const offsetHours = new Date().getTimezoneOffset()/60;
+  const UTCHour = parseInt(time.slice(0,1));
+
+  let hour = UTCHour + offsetHours, periodShift, amPM;
+
+  if (hour > 12) {
+    hour = hour - 12;
+    periodShift = true;
+  };
+
+  if (hour < 1) {
+    hour = hour + 12;
+    periodShift = true;
+  };
+
+  if (periodShift) {
+    amPM = (time.slice(8) === 'AM') ? 'PM' : 'AM';
+  } else {
+    amPM = time.slice(8);
+  };
+
+  return hour.toString() + time.slice(1,8) + amPM;
 };
 
 // Get data of the player who's client this is.

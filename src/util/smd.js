@@ -110,7 +110,7 @@ function parseSMD({str, isBlock}) {
     return { string, style }
   };
 
-  function checkAbbr(cls) {
+  function checkShorthand(cls) {
     return opts.shorthandClassNames.find(e => e.shorthand === cls);
   };
 
@@ -131,7 +131,7 @@ function parseSMD({str, isBlock}) {
     let shorthandClassNames;
     // check for shorthandClassNames style class name in options object
     // if shorthandClassNames found, return string with full class name
-    if (!!opts) shorthandClassNames = checkAbbr(a[0]);
+    if (!!opts) shorthandClassNames = checkShorthand(a[0]);
     if (!!shorthandClassNames) return createStyleObj(a[1], shorthandClassNames.className);
 
     // return string with style class as given

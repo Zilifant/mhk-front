@@ -1,4 +1,5 @@
-// Modal Video
+// Modal Video Element //
+// A floating element containing an iframe that takes up most of the viewbox.
 
 import { useState } from 'react';
 import SVGButton from '../ui-elements/SVGButton';
@@ -12,8 +13,9 @@ const Modal = ({
   hideHandler,
 }) => {
 
-  // Check if the element the user clicked on (e.target) === the element that
-  // the event listener is attached to (e.currentTarget).
+  // Check if the element the user clicked on (e.target) is the element that
+  // the event listener is attached to (e.currentTarget). (Prevents backdrop
+  // element behind floating element from receiving the click event.)
   function clickOutsideToHide(e) {
     if (e.target !== e.currentTarget) return;
     hideHandler(false);
@@ -29,7 +31,7 @@ const Modal = ({
           src={src}
           title={title}
           frameBorder='0'
-          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' 
+          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
           allowFullScreen
         />
         <SVGButton

@@ -14,10 +14,6 @@
 
 // TO DO: Fully implement userOpts functionality.
 
-const userOpts = {
-  active: false
-};
-
 const defaultOpts = {
   splitStringOn: '^',
   splitStringClassOn: '_',
@@ -30,22 +26,45 @@ const defaultOpts = {
     {shorthand: 't', className: 'smd--timestamp'},
     {shorthand: 'u', className: 'smd--username'},
     {shorthand: 'k', className: 'smd--keyword'},
-    {shorthand: 'k', className: 'smd--keyword'},
-    {shorthand: 'kg', className: 'smd--keyword ghost'},
-    {shorthand: 'kh', className: 'smd--keyword hunter'},
-    {shorthand: 'kw', className: 'smd--keyword witness'},
-    {shorthand: 'ka', className: 'smd--keyword accomplice'},
-    {shorthand: 'kk', className: 'smd--keyword killer'},
     {shorthand: 'p', className: 'smd--punctuation'},
     {shorthand: 'f', className: 'smd--faded'},
     {shorthand: 'e', className: 'smd--emphasize'},
     {shorthand: 'i', className: 'smd--italic'},
     {shorthand: 'w', className: 'smd--warn'},
-    {shorthand: 'li', className: 'smd--listitem'},
   ],
 };
 
-const opts = userOpts.active ? userOpts : defaultOpts;
+// Custom User Options //
+// Temporary, incomplete implementation.
+
+const customOpts = {
+  mergeShorthandClassNames: true,
+  shorthandClassNames: [
+    {shorthand: 'kg', className: 'smd--keyword ghost'},
+    {shorthand: 'kh', className: 'smd--keyword hunter'},
+    {shorthand: 'kw', className: 'smd--keyword witness'},
+    {shorthand: 'ka', className: 'smd--keyword accomplice'},
+    {shorthand: 'kk', className: 'smd--keyword killer'},
+    {shorthand: 'li', className: 'smd--listitem'},
+  ]
+};
+
+function setStyledMarkdownOpts(customOpts) {
+  if (!customOpts) return defaultOpts;
+
+  let opts = defaultOpts;
+
+  if (customOpts.mergeShorthandClassNames) {
+    const merged = opts.shorthandClassNames.concat(customOpts.shorthandClassNames);
+    opts.shorthandClassNames = merged;
+  } else {
+    opts.shorthandClassNames = customOpts.shorthandClassNames;
+  };
+
+  return opts;
+};
+
+const opts = setStyledMarkdownOpts(customOpts);
 
 export function parse(str, meta = {}) {
   if (!!meta.inlineOnly) return parseInline({str, meta});

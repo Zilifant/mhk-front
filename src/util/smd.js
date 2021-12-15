@@ -78,7 +78,7 @@ const opts = setStyledMarkdownOpts(customOpts);
 export function parse(str, meta = {}) {
   if (!!meta.inlineOnly) return parseInline({str, meta});
   return parseBlock({str, meta});
-}
+};
 
 function parseBlock({str, meta}) {
   const lines = parseSMD({str, meta, isBlock: true});
@@ -89,11 +89,11 @@ function parseBlock({str, meta}) {
     };
   });
   return block;
-}
+};
 
 function parseInline({str, meta}) {
   return parseSMD({str, meta, isBlock: false});
-}
+};
 
 function parseSMD({str, isBlock}) {
 
@@ -147,6 +147,7 @@ function parseSMD({str, isBlock}) {
     // Else, create and return object with css class as given.
     return createStyleObj(textContent, cssClass);
   });
+
   return styleObjArray;
 };
 
@@ -177,4 +178,4 @@ export const render = {
 
   },
 
-}
+};

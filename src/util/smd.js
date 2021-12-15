@@ -19,7 +19,7 @@
 //   (recommended/intended usage) or named directly in the text content string.
 
 // TO DO: Fully implement userOpts functionality.
-// TO DO: Improve documentation.
+// TO DO: Improve/expand documentation.
 
 const defaultOpts = {
   splitStringOn: '^',

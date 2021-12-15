@@ -3,16 +3,23 @@
 // Uses a markdown-like syntax to convert strings to text into JSX. CSS classes
 // can be applied 'inline', in the same way that e.g. *italic*, **bold**, or
 // #header styles are applied using markdown.
+
+// Exports `parse` and `render`.
+
 // Features:
 // - CSS classes can be applied to both inline and block level text.
 // - Can render text as a series of block-level lines (i.e. paragraphs) or as
 //   inline text.
 // - Metadata can be passed in addition to text content to use additional
 //   settings and functionality.
+//   Current Metadata Options:
+//   - `inlineOnly`
+//   - `wrapper`
 // - Can apply css classes based on shorthand defined in an options object
 //   (recommended/intended usage) or named directly in the text content string.
 
 // TO DO: Fully implement userOpts functionality.
+// TO DO: Improve documentation.
 
 const defaultOpts = {
   splitStringOn: '^',
@@ -167,7 +174,7 @@ export const render = {
       </div>
     );
 
-    return <>{renderLines(lines)}</>
+    return <>{renderLines(lines)}</> // If no wrapper, return a React fragment.
 
     function renderLines(lines) {
       return lines.map((li, i) => {
@@ -175,7 +182,7 @@ export const render = {
           return <span key={i} className={str.style}>{str.string}</span>
         })}</div>
       })
-    }
+    };
 
   },
 

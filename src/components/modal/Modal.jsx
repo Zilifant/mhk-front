@@ -1,5 +1,6 @@
 // Modal //
 // Flexible component for floating messages and alerts.
+// TO DO: Currently not used for InfoModal or VideoModal; integrate these.
 
 import React from 'react';
 import ReactDOM from 'react-dom';

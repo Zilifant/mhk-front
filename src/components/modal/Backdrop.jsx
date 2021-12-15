@@ -1,5 +1,5 @@
 // Backdrop //
-// Used with ErrorModal. (Not InfoModal or VideoModal.)
+// Used with Modal/ErrorModal.
 
 import ReactDOM from 'react-dom';
 

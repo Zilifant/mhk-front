@@ -27,7 +27,7 @@ const inputReducer = (state, action) => {
 
 };
 
-const Input = props => {
+const Input = (props) => {
 
   const [inputState, dispatch] = useReducer(inputReducer, {
     value: props.initialValue || '',
@@ -76,7 +76,7 @@ const Input = props => {
       />
     ) : (
       <textarea
-        name="inputform"
+        name='inputform'
         id={props.id}
         rows={props.rows || 3}
         onChange={changeHandler}

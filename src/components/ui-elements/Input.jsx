@@ -58,6 +58,7 @@ const Input = (props) => {
     });
   };
 
+  // TO DO: Refactor this ternary.
   const element =
     props.element === 'input' ? (
       <input

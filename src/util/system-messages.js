@@ -13,10 +13,15 @@ export function buildSMDString(messageData, renderTimestamp) {
 
   const string = () => systemMessages[type](...args);
 
-  if (renderTimestamp === 'block') return `>t>_t_${clientTime} <>text-after-timestamp-block>` + string();
-  if (renderTimestamp === 'inline') return `_t_${clientTime} ^` + string();
-  // If `renderTimestamp` is any other value, don't render it.
-  return string();
+  if (renderTimestamp === 'block') {
+    return `>t>_t_${clientTime.slice(0,-3)} <>text-after-timestamp-block>` + string();
+  };
+
+  if (renderTimestamp === 'inline') {
+    return `_t_${clientTime.slice(0,-3)} ^` + string();
+  };
+
+  return string(); // If `renderTimestamp` is any other value, don't render it.
 };
 
 // Functions called by `buildSMDString` to dynamically create system messages.

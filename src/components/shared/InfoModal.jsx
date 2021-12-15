@@ -1,4 +1,4 @@
-// Modal Informational Window
+// Informational Modal Element //
 // A floating element that takes up most of the viewbox. Includes a single page
 // and multi page version.
 

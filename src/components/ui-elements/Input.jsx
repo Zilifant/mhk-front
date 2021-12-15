@@ -1,22 +1,17 @@
-// Input
+// Input //
+// TO DO: re-implement error text...
+// {!inputState.isValid && inputState.isTouched && <p>{props.errorText}</p>}
 
 import React, { useReducer, useEffect } from 'react';
-
 import { validate } from '../../util/validators';
 
-// `useReducer` to manage more complex state; we pass it an action, it modifies
-// the state depending on the action passed (the reducer function is how it
-// modifies it) and then returns the state and re-renders stuff - here defined
-// outside the component because it does not depend on any component inputs
 const inputReducer = (state, action) => {
-  // console.log('inputReducer');
-  // console.log(state);
-  // console.log(action);
+
   switch (action.type) {
     case 'CHANGE':
       return {
-        // create copy of old state to save it to this new object;
-        // then we can modify individual key/values
+        // Create copy of old state to save it to this new object. Then modify
+        // individual key/values.
         ...state,
         value: action.val,
         isValid: validate(action.val, action.validators)
@@ -28,13 +23,13 @@ const inputReducer = (state, action) => {
       }
     }
     default:
-      return state; // return the unchanged state
-  }
+      return state; // Return the unchanged state.
+  };
+
 };
 
 const Input = props => {
-  // can use array destructuring; like useState, this returns an
-  // array of two elements
+
   const [inputState, dispatch] = useReducer(inputReducer, {
     value: props.initialValue || '',
     isTouched: false,
@@ -48,23 +43,21 @@ const Input = props => {
     onInput(id, value, isValid)
   }, [id, value, isValid, onInput]);
 
+  // Send this object with data about the change to `useReducer`.
   const changeHandler = event => {
-    // console.log('changeHandler');
-    // console.log(event.target.value);
-    // send this object with data about the change to the userReducer
     dispatch({
       type: 'CHANGE',
       val: event.target.value,
       validators: props.validators
     });
-    // console.log(event.target.value);
+
   };
 
   const touchHandler = () => {
     dispatch({
       type: 'TOUCH'
     });
-  }
+  };
 
   const element =
     props.element === 'input' ? (
@@ -72,7 +65,7 @@ const Input = props => {
         id={props.id}
         type={props.type}
         placeholder={props.placeholder}
-        onChange={changeHandler} // triggers for every keystroke
+        onChange={changeHandler}
         onBlur={touchHandler}
         value={inputState.value}
         className={`input ${props.className}-input ${
@@ -113,6 +106,3 @@ const Input = props => {
 }
 
 export default Input
-
-// TO DO: re-implement error text
-// {!inputState.isValid && inputState.isTouched && <p>{props.errorText}</p>}

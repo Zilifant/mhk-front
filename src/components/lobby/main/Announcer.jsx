@@ -18,7 +18,6 @@ const Announcement = ({
 
   const meta = {
     wrapper: `msg-wrapper msg-in-announcer other`,
-    parent: 'announcer',
     inlineOnly: true,
   };
 

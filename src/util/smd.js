@@ -144,7 +144,7 @@ function parseSMD({str, isBlock}) {
       return createStyleObj(textContent, shorthand.className);
     };
 
-    // return string with style class as given
+    // Else, create and return object with css class as given.
     return createStyleObj(textContent, cssClass);
   });
   return result;

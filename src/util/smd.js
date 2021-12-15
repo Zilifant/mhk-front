@@ -161,11 +161,15 @@ export const render = {
 
   block(lines, meta = {}) {
 
-    if (meta.wrapper) return <div className={meta.wrapper}>{render(lines)}</div>;
+    if (meta.wrapper) return (
+      <div className={meta.wrapper}>
+        {renderLines(lines)}
+      </div>
+    );
 
-    return <>{render(lines)}</>
+    return <>{renderLines(lines)}</>
 
-    function render(lines) {
+    function renderLines(lines) {
       return lines.map((li, i) => {
         return <div key={i} className={li.style}>{li.strings.map((str, i) => {
           return <span key={i} className={str.style}>{str.string}</span>

@@ -139,9 +139,10 @@ function parseSMD({str, isBlock}) {
 
     // Check if given css class appears as a shorthand in the options object.
     // If so, create and return object with the full class name.
-    let shorthandClassNames;
-    if (!!opts) shorthandClassNames = checkShorthand(cssClass);
-    if (!!shorthandClassNames) return createStyleObj(textContent, shorthandClassNames.className);
+    const shorthand = checkShorthand(cssClass);
+    if (!!shorthand) {
+      return createStyleObj(textContent, shorthand.className);
+    };
 
     // return string with style class as given
     return createStyleObj(textContent, cssClass);

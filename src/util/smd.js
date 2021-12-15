@@ -125,7 +125,7 @@ function parseSMD({str, isBlock}) {
   const arr = str.split(sS).filter(e => !!e);
 
   // Split each string into text content and css class.
-  const result = arr.map(str => {
+  const styleObjArray = arr.map(str => {
 
     // If appropriate character is not found (i.e. no unique css class was
     // given) create and return object without a unique class. (Default css
@@ -147,7 +147,7 @@ function parseSMD({str, isBlock}) {
     // Else, create and return object with css class as given.
     return createStyleObj(textContent, cssClass);
   });
-  return result;
+  return styleObjArray;
 };
 
 // Render //

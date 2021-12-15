@@ -15,8 +15,7 @@ const ChatMessage = ({
   if (!message) return null; // TO DO: Test and remove this check.
 
   const meta = {
-    wrapper: `msg-wrapper msg-in-chatfeed ${isMine ? 'self' : 'other'}`,
-    parent: 'chatfeed',
+    wrapper: `msg-wrapper msg-in-chatfeed ${isMine ? 'self' : 'other'}`
   };
 
   const built = buildSMDString(message, 'block');

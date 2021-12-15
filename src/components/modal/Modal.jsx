@@ -1,33 +1,49 @@
+// Modal //
+// Flexible component for floating messages and alerts.
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 import Backdrop from './Backdrop';
 import '../../styles/modal.scss';
 
-const ModalOverlay = props => {
-  // style and some classnames given as props allows makes component
-  // more flexible/reusable
+const ModalOverlay = ({
+  className,
+  style,
+  header,
+  headerClass,
+  children,
+  contentClass,
+  footer,
+  onSubmit,
+}) => {
+
   const content = (
-    <div className={`modal ${props.className}`} style={props.style}>
-      <header className={`modal__header ${props.headerClass}`}>
-        <h2>{props.header}</h2>
-        <div>{props.footer}</div>
+    <div className={`modal ${className}`} style={style}>
+      <header className={`modal__header ${headerClass}`}>
+        <h2>{header}</h2>
+        <div>{footer}</div>
       </header>
       <form
         onSubmit={
-          props.onSubmit ? props.onSubmit : event => event.preventDefault()
+          onSubmit ? onSubmit : event => event.preventDefault()
         }
       >
-        <div className={`modal__content ${props.contentClass}`}>
-          {props.children}
+        <div className={`modal__content ${contentClass}`}>
+          {children}
         </div>
       </form>
     </div>
   );
-  return ReactDOM.createPortal(content, document.getElementById('modal-hook'));
+
+  return ReactDOM.createPortal(
+    content,
+    document.getElementById('modal-hook')
+  );
+
 };
 
-const Modal = props => {
+const Modal = (props) => {
   return (
     <React.Fragment>
       {props.show && <Backdrop onClick={props.onCancel} />}
@@ -36,7 +52,7 @@ const Modal = props => {
         mountOnEnter
         unmountOnExit
         timeout={200}
-        classNames="modal"
+        classNames='modal'
       >
         <ModalOverlay {...props} />
       </CSSTransition>

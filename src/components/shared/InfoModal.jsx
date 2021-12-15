@@ -1,9 +1,13 @@
 // Modal Informational Window
+// A floating element that takes up most of the viewbox. Includes a single page
+// and multi page version.
 
 import { useState } from 'react';
 import { parse, render } from '../../util/smd';
 import SVGButton from '../ui-elements/SVGButton';
 import '../../styles/infomodals.scss';
+
+// Single Page //
 
 const ModalSP = ({
   info,
@@ -12,8 +16,9 @@ const ModalSP = ({
   titlebarContent
 }) => {
 
-  // Check if the element the user clicked on (e.target) === the element that
-  // the event listener is attached to (e.currentTarget).
+  // Check if the element the user clicked on (e.target) is the element that
+  // the event listener is attached to (e.currentTarget). (Prevents backdrop
+  // element behind floating element from receiving the click event.)
   function clickOutsideToHide(e) {
     if (e.target !== e.currentTarget) return;
     hideHandler(false);
@@ -42,6 +47,9 @@ const ModalSP = ({
 
 };
 
+// Multi Page //
+// Not fully implemented/updated; this is not currently used in the MHK app.
+
 const ModalMP = ({
   info,
   className,
@@ -49,14 +57,12 @@ const ModalMP = ({
 }) => {
 
   const [currentSec, setCurrentSec] = useState(info[0]);
-
   const isCurrent = (id) => id === currentSec.id ? 'current' : 'notcurrent'
-
-  const parsedContent = parse(currentSec.content);
 
   return (
     <div className='infomodal-invis-wrap'>
       <div className={`infomodal-wrap text ${className}`}>
+
         <div className='infomodal-nav'>
           <button
             className={`infomodal-nav-btn close-btn`}
@@ -76,9 +82,11 @@ const ModalMP = ({
             )
           })}
         </div>
+
         <div className='infomodal-content'>
-          {render.block(parsedContent)}
+          {render.block(parse(currentSec.content))}
         </div>
+
       </div>
     </div>
   );
@@ -94,6 +102,7 @@ const InfoModal = ({
 
   const [showModal, setShowModal] = useState(false);
 
+  // If `info` prop is an array, render multi page modal.
   const Modal = Array.isArray(info) ? ModalMP : ModalSP
 
   return (<>

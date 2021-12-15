@@ -1,33 +1,47 @@
-// styled markdown
+// Styled Markdown (SMD) //
+
+// Uses a markdown-like syntax to convert strings to text into JSX. CSS classes
+// can be applied 'inline', in the same way that e.g. *italic*, **bold**, or
+// #header styles are applied using markdown.
+// Features:
+// - CSS classes can be applied to both inline and block level text.
+// - Can render text as a series of block-level lines (i.e. paragraphs) or as
+//   inline text.
+// - Metadata can be passed in addition to text content to use additional
+//   settings and functionality.
+// - Can apply css classes based on shorthand defined in an options object
+//   (recommended/intended usage) or named directly in the text content string.
+
+// TO DO: Fully implement userOpts functionality.
 
 const userOpts = {
   active: false
 };
 
 const defaultOpts = {
-  splitStrOn: '^',
-  splitStrClsOn: '_',
+  splitStringOn: '^',
+  splitStringClassOn: '_',
   splitLineOn: '<',
-  splitLineClsOn: '>',
-  defaultString: 'smd--def',
-  defaultLine: 'smd--def',
-  abbr: [
-    {abb: 'm', classname: 'smd--usermessage'},
-    {abb: 't', classname: 'smd--timestamp'},
-    {abb: 'u', classname: 'smd--username'},
-    {abb: 'k', classname: 'smd--keyword'},
-    {abb: 'k', classname: 'smd--keyword'},
-    {abb: 'kg', classname: 'smd--keyword ghost'},
-    {abb: 'kh', classname: 'smd--keyword hunter'},
-    {abb: 'kw', classname: 'smd--keyword witness'},
-    {abb: 'ka', classname: 'smd--keyword accomplice'},
-    {abb: 'kk', classname: 'smd--keyword killer'},
-    {abb: 'p', classname: 'smd--punctuation'},
-    {abb: 'f', classname: 'smd--faded'},
-    {abb: 'e', classname: 'smd--emphasize'},
-    {abb: 'i', classname: 'smd--italic'},
-    {abb: 'w', classname: 'smd--warn'},
-    {abb: 'li', classname: 'smd--listitem'},
+  splitLineClassOn: '>',
+  defaultStringClass: 'smd--def',
+  defaultLineClass: 'smd--def',
+  shorthandClassNames: [
+    {shorthand: 'm', className: 'smd--usermessage'},
+    {shorthand: 't', className: 'smd--timestamp'},
+    {shorthand: 'u', className: 'smd--username'},
+    {shorthand: 'k', className: 'smd--keyword'},
+    {shorthand: 'k', className: 'smd--keyword'},
+    {shorthand: 'kg', className: 'smd--keyword ghost'},
+    {shorthand: 'kh', className: 'smd--keyword hunter'},
+    {shorthand: 'kw', className: 'smd--keyword witness'},
+    {shorthand: 'ka', className: 'smd--keyword accomplice'},
+    {shorthand: 'kk', className: 'smd--keyword killer'},
+    {shorthand: 'p', className: 'smd--punctuation'},
+    {shorthand: 'f', className: 'smd--faded'},
+    {shorthand: 'e', className: 'smd--emphasize'},
+    {shorthand: 'i', className: 'smd--italic'},
+    {shorthand: 'w', className: 'smd--warn'},
+    {shorthand: 'li', className: 'smd--listitem'},
   ],
 };
 
@@ -84,13 +98,13 @@ function parseSMD({str, isBlock}) {
   let defStyle, sS, sC;
 
   if (isBlock) {
-    defStyle = opts.defaultLine;
+    defStyle = opts.defaultLineClass;
     sS = opts.splitLineOn;
-    sC = opts.splitLineClsOn;
+    sC = opts.splitLineClassOn;
   } else {
-    defStyle = opts.defaultString;
-    sS = opts.splitStrOn;
-    sC = opts.splitStrClsOn;
+    defStyle = opts.defaultStringClass;
+    sS = opts.splitStringOn;
+    sC = opts.splitStringClassOn;
   };
 
   function createStyleObj(string, style = defStyle) {
@@ -98,7 +112,7 @@ function parseSMD({str, isBlock}) {
   };
 
   function checkAbbr(cls) {
-    return opts.abbr.find(e => e.abb === cls);
+    return opts.shorthandClassNames.find(e => e.shorthand === cls);
   };
 
   // split into substrings and filter out empty strings
@@ -115,11 +129,11 @@ function parseSMD({str, isBlock}) {
     // and filter out empty strings
     const a = str.split(sC).filter(e => !!e);
 
-    let abbr;
-    // check for abbr style class name in options object
-    // if abbr found, return string with full class name
-    if (!!opts) abbr = checkAbbr(a[0]);
-    if (!!abbr) return createStyleObj(a[1], abbr.classname);
+    let shorthandClassNames;
+    // check for shorthandClassNames style class name in options object
+    // if shorthandClassNames found, return string with full class name
+    if (!!opts) shorthandClassNames = checkAbbr(a[0]);
+    if (!!shorthandClassNames) return createStyleObj(a[1], shorthandClassNames.className);
 
     // return string with style class as given
     return createStyleObj(a[1], a[0]);

@@ -24,6 +24,13 @@ const ModalSP = ({
     hideHandler(false);
   };
 
+  // Handle `info` that is a function (e.g. a React component) or a string
+  // that uses Styled Markdown syntax.
+  function renderContent() {
+    if (typeof info === 'function') return info();
+    return render.block(parse(info.content));
+  };
+
   return (
     <div
       className='infomodal-invis-wrap'
@@ -31,7 +38,9 @@ const ModalSP = ({
     >
       <div className={`infomodal-wrap text-sp ${className}`}>
         <div className='infomodal-titlebar'>
-          <div className='infomodal-titlebar-title'>{info.title || titlebarContent}</div>
+          <div className='infomodal-titlebar-title'>
+            {info.title || titlebarContent}
+          </div>
           <SVGButton
             className='close-btn'
             onClick={() => hideHandler(false)}
@@ -39,7 +48,7 @@ const ModalSP = ({
           />
         </div>
         <div className='infomodal-content'>
-          {(typeof info === 'function') ? info() : render.block(parse(info.content))}
+          {renderContent()}
         </div>
       </div>
     </div>

@@ -67,8 +67,10 @@ function setStyledMarkdownOpts(customOpts) {
 const opts = setStyledMarkdownOpts(customOpts);
 
 // Parse //
+
 // Takes a string with SMD syntax and (optionally) a metadata object.
-// Returns an array of objects each containing a `string` and `style` property.
+// Returns array of 'style objects' that each contain a `string` and `style`
+// property.
 // - Each object is a section of the string that should be rendered as an
 //   element with a specific css class.
 // - Order of objects in array is the order in which they will be displayed.
@@ -94,8 +96,21 @@ function parseInline({str, meta}) {
 }
 
 function parseSMD({str, isBlock}) {
-  let defStyle, sS, sC;
 
+  // Utility Functions //
+
+  function createStyleObj(string, style = defStyle) {
+    return { string, style }
+  };
+
+  function checkShorthand(cls) {
+    return opts.shorthandClassNames.find(e => e.shorthand === cls);
+  };
+
+  // Parsing Logic //
+
+  // Set variables to correct characters to parse at block or inline level.
+  let defStyle, sS, sC;
   if (isBlock) {
     defStyle = opts.defaultLineClass;
     sS = opts.splitLineOn;
@@ -106,36 +121,30 @@ function parseSMD({str, isBlock}) {
     sC = opts.splitStringClassOn;
   };
 
-  function createStyleObj(string, style = defStyle) {
-    return { string, style }
-  };
-
-  function checkShorthand(cls) {
-    return opts.shorthandClassNames.find(e => e.shorthand === cls);
-  };
-
-  // split into substrings and filter out empty strings
+  // Split into array of strings and filter out empty strings.
   const arr = str.split(sS).filter(e => !!e);
 
+  // Split each string into text content and css class.
   const result = arr.map(str => {
 
-    // if no unique style class is indicated
-    // and return string without unique class
-    // (default style class will be applied)
+    // If appropriate character is not found (i.e. no unique css class was
+    // given) create and return object without a unique class. (Default css
+    // class will be applied by `createStyleObj`.)
     if (str.charAt(0) !== sC) return createStyleObj(str);
 
-    // split string into style class and text content
-    // and filter out empty strings
+    // Else, split into css class and text content and filter empty strings.
     const a = str.split(sC).filter(e => !!e);
+    const textContent = a[1];
+    const cssClass = a[0];
 
+    // Check if given css class appears as a shorthand in the options object.
+    // If so, create and return object with the full class name.
     let shorthandClassNames;
-    // check for shorthandClassNames style class name in options object
-    // if shorthandClassNames found, return string with full class name
-    if (!!opts) shorthandClassNames = checkShorthand(a[0]);
-    if (!!shorthandClassNames) return createStyleObj(a[1], shorthandClassNames.className);
+    if (!!opts) shorthandClassNames = checkShorthand(cssClass);
+    if (!!shorthandClassNames) return createStyleObj(textContent, shorthandClassNames.className);
 
     // return string with style class as given
-    return createStyleObj(a[1], a[0]);
+    return createStyleObj(textContent, cssClass);
   });
   return result;
 };

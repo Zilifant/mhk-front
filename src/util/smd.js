@@ -68,7 +68,10 @@ const opts = setStyledMarkdownOpts(customOpts);
 
 // Parse //
 // Takes a string with SMD syntax and (optionally) a metadata object.
-// Returns an object containing the content and class names.
+// Returns an array of objects each containing a `string` and `style` property.
+// - Each object is a section of the string that should be rendered as an
+//   element with a specific css class.
+// - Order of objects in array is the order in which they will be displayed.
 
 export function parse(str, meta = {}) {
   if (!!meta.inlineOnly) return parseInline({str, meta});

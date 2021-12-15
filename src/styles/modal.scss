@@ -16,7 +16,7 @@
   overflow: hidden;
 }
 
-.modal__header {
+.modal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -37,7 +37,7 @@
   };
 }
 
-.modal__content {
+.modal-content {
   padding: 1rem;
   & p {
     font-size: 2rem;

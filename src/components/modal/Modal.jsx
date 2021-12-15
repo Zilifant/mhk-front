@@ -20,7 +20,7 @@ const ModalOverlay = ({
 
   const content = (
     <div className={`modal ${className}`} style={style}>
-      <header className={`modal__header ${headerClass}`}>
+      <header className={`modal-header ${headerClass}`}>
         <h2>{header}</h2>
         <div>{footer}</div>
       </header>
@@ -29,7 +29,7 @@ const ModalOverlay = ({
           onSubmit ? onSubmit : event => event.preventDefault()
         }
       >
-        <div className={`modal__content ${contentClass}`}>
+        <div className={`modal-content ${contentClass}`}>
           {children}
         </div>
       </form>

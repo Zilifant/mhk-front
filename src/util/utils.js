@@ -67,31 +67,19 @@ export const article = (role) => role === 'hunter' ? 'a' : 'the';
 export const name = (userId) => userId.slice(0,-5);
 
 // Converts a UTC time string into the client's timezone.
-// Expects a string with format matching for example: '07:42:31 PM'.
+// Expects a local time string in `en-GB` format, e.g.: '07:42:31'.
 export function convertToClientTimezone(time) {
 
   const offsetHours = new Date().getTimezoneOffset()/60;
-  const UTCHour = parseInt(time.slice(0,1));
+  const UTCHour = parseInt(time.slice(0,2)); // Also removes leading zero.
 
-  let hour = UTCHour + offsetHours, periodShift, amPM;
+  let hour = UTCHour + offsetHours;
+  if (hour > 12) hour = hour - 12;
+  if (hour <  1) hour = hour + 12;
 
-  if (hour > 12) {
-    hour = hour - 12;
-    periodShift = true;
-  };
-
-  if (hour < 1) {
-    hour = hour + 12;
-    periodShift = true;
-  };
-
-  if (periodShift) {
-    amPM = (time.slice(8) === 'AM') ? 'PM' : 'AM';
-  } else {
-    amPM = time.slice(8);
-  };
-
-  return hour.toString() + time.slice(1,8) + amPM;
+  // Absolute UI accuracy is not needed for this use. We convert to 12-hour
+  // format, but for brevity don't append AM/PM.
+  return hour.toString() + time.slice(2,8);
 };
 
 // Get data of the player who's client this is.

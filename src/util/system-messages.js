@@ -14,7 +14,7 @@ export function buildSMDString(messageData, renderTimestamp) {
   const string = () => systemMessages[type](...args);
 
   if (renderTimestamp === 'block') {
-    return `>t>_t_${clientTime.slice(0,-3)} <>text-after-timestamp-block>` + string();
+    return `>t>_t_${clientTime.slice(0,-3)} <>chatfeed-text>` + string();
   };
 
   if (renderTimestamp === 'inline') {

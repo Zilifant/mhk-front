@@ -69,18 +69,14 @@ export const name = (userId) => userId.slice(0,-5);
 // Converts a UTC time string into the client's timezone.
 // Expects a local time string in `en-GB` format, e.g.: '07:42:31'.
 export function convertToClientTimezone(time) {
-  console.log(time);
-
   const offsetHours = new Date().getTimezoneOffset()/60;
-  console.log(offsetHours);
-  let UTCHour = parseInt(time.slice(0,2)); // Also removes leading zero.
-  console.log(UTCHour);
 
+  let UTCHour = parseInt(time.slice(0,2)); // Also removes leading zero.
   let hour = UTCHour - offsetHours;
+
   // Convert to 12-hour format.
   if (hour > 12) hour = hour - 12;
   if (hour <  1) hour = hour + 12;
-  console.log(hour);
 
   // Absolute UI accuracy is not needed for this use. We convert to 12-hour
   // format, but for brevity don't append AM/PM.

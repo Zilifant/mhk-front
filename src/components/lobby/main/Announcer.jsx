@@ -47,7 +47,6 @@ const Announcer = ({
     // Structure message data for `buildSMDString` module.
     function msg(type, args, isInGame, senderId='app') {
       return {
-        time: new Date().toLocaleTimeString().slice(0,-6),
         type,
         isInGame,
         args,

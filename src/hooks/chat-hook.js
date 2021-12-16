@@ -47,7 +47,6 @@ export const useChat = (chat) => {
     // Structure welcome message data for `buildSMDString` module.
     // TO DO: Move this elsewhere.
     const welcome = {
-      time: new Date().toLocaleTimeString().slice(0,-6),
       type: 'welcome',
       args: [],
       senderId: 'app'

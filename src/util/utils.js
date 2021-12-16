@@ -2,7 +2,7 @@
 // Provides general utility functions and constants.
 // TO DO: Break many of these out into their own modules.
 
-export const VERSION = '0.8.8';
+export const VERSION = '0.8.9';
 export const isDevEnv = process.env.NODE_ENV === 'development';
 export const MAX_NAME_LEN = 10; // Maximum username length.
 

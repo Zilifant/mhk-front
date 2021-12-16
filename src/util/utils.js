@@ -73,10 +73,11 @@ export function convertToClientTimezone(time) {
 
   const offsetHours = new Date().getTimezoneOffset()/60;
   console.log(offsetHours);
-  const UTCHour = parseInt(time.slice(0,2)); // Also removes leading zero.
+  let UTCHour = parseInt(time.slice(0,2)); // Also removes leading zero.
   console.log(UTCHour);
 
-  let hour = UTCHour + offsetHours;
+  let hour = UTCHour - offsetHours;
+  // Convert to 12-hour format.
   if (hour > 12) hour = hour - 12;
   if (hour <  1) hour = hour + 12;
   console.log(hour);

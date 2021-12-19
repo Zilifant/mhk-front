@@ -55,7 +55,7 @@ const VideoModal = ({
 
   return (<>
     <button
-      className={`show-infomodal-btn ${btnClassName}`}
+      className={btnClassName}
       onClick={() => setShowModal(true)}
     >
       {buttonContent}

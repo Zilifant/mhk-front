@@ -118,6 +118,25 @@ $dpt: 5%;
   }
 }
 
+@mixin gradient-btn-txt($col: $cyan5) {
+  background: linear-gradient(
+    0deg,
+    darken($col, 25%) 0%,
+    darken($col, 35%) 100%
+  );
+  padding: 1px 6px;
+  border: 1px solid $col;
+  border-radius: $rad3;
+  text-transform: uppercase;
+  color: lighten($col, 50%);
+  transition: all $time;
+  &:not(:disabled):not(:active):hover {
+    // color: lighten($fg3, 20%);
+    color: lighten($col, 55%);
+    border-color: lighten($col, 12%);
+  };
+}
+
 @mixin nobg-btn-svg($fg: $cyan5) {
   background-color: inherit;
   & svg {

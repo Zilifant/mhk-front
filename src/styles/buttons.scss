@@ -8,6 +8,11 @@
   font-size: larger;
 }
 
+.gradient {
+  @include gradient-btn-txt();
+  font-size: larger;
+}
+
 .btn {
   -webkit-appearance: none;
      -moz-appearance: none;

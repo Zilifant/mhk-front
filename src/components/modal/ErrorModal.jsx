@@ -3,7 +3,7 @@
 // the server.
 
 import Modal from './Modal';
-import SVGButton from '../ui-elements/SVGButton';
+import SVGButton from '../shared/SVGButton';
 
 const ErrorModal = ({ error, onClear }) => {
   return (

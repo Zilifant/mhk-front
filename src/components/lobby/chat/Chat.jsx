@@ -6,7 +6,7 @@ import { useChat } from '../../../hooks/chat-hook';
 import Container from '../../shared/Container';
 import ChatFeed from './ChatFeed';
 import NewMessage from './NewMessage';
-import SVGButton from '../../ui-elements/SVGButton';
+import SVGButton from '../../shared/SVGButton';
 import '../../../styles/chat.scss';
 
 const Chat = ({

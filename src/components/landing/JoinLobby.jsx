@@ -17,9 +17,9 @@ import {
 import ErrorModal from '../modal/ErrorModal';
 import Grid from '../shared/Grid';
 import Container from '../shared/Container';
-import Input from '../ui-elements/Input';
+import Input from '../shared/Input';
 import Tooltip from '../shared/Tooltip';
-import Toggle from '../ui-elements/Toggle';
+import Toggle from '../shared/Toggle';
 
 const JoinLobby = ({ lobbyId }) => {
   const { updateUserCtx } = useContext(UserContext);

@@ -6,7 +6,7 @@ import React, { useContext } from 'react';
 import { useParallelSelector } from '../../../../hooks/parallel-selector-hook';
 import { useGame } from '../../../../hooks/game-hook';
 import { SocketContext } from '../../../../context/contexts';
-import SVGIcon from '../../../ui-elements/SVGIcon';
+import SVGIcon from '../../../shared/SVGIcon';
 import Cards from './Cards';
 
 const ChooseKeyEvUI = ({

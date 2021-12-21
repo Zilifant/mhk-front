@@ -1,7 +1,7 @@
 // Timer Setup //
 
-import SVGButton from '../../../ui-elements/SVGButton';
-import SVGIcon from '../../../ui-elements/SVGIcon';
+import SVGButton from '../../../shared/SVGButton';
+import SVGIcon from '../../../shared/SVGIcon';
 import '../../../../styles/setup.scss';
 import '../../../../styles/svgs.scss';
 

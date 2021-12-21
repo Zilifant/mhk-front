@@ -3,8 +3,8 @@
 
 import { useContext } from 'react';
 import Tooltip from '../../../shared/Tooltip';
-import SVGButton from '../../../ui-elements/SVGButton';
-import SVGIcon from '../../../ui-elements/SVGIcon';
+import SVGButton from '../../../shared/SVGButton';
+import SVGIcon from '../../../shared/SVGIcon';
 import { UserContext, SocketContext } from '../../../../context/contexts';
 import { useGame } from '../../../../hooks/game-hook';
 

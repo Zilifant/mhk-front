@@ -10,7 +10,7 @@ import { isDevEnv } from '../../../util/utils';
 import textToClipboard from '../../../util/textToClipboard';
 import Container from '../../shared/Container';
 import Tooltip from '../../shared/Tooltip';
-import SVGButton from '../../ui-elements/SVGButton';
+import SVGButton from '../../shared/SVGButton';
 import '../../../styles/info.scss';
 import '../../../styles/svgs.scss';
 import '../../../styles/tooltips.scss';

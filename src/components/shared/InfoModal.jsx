@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { parse, render } from '../../util/styled-markdown';
-import SVGButton from '../ui-elements/SVGButton';
+import SVGButton from '../shared/SVGButton';
 import '../../styles/infomodals.scss';
 
 // Single Page //

@@ -2,7 +2,7 @@
 // A floating element containing an iframe that takes up most of the viewbox.
 
 import { useState } from 'react';
-import SVGButton from '../ui-elements/SVGButton';
+import SVGButton from '../shared/SVGButton';
 
 const Modal = ({
   info: {

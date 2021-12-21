@@ -3,7 +3,7 @@
 // with ghost role.
 
 import Container from '../../../shared/Container';
-import SVGIcon from '../../../ui-elements/SVGIcon';
+import SVGIcon from '../../../shared/SVGIcon';
 import GhostCard from './GhostCard';
 import '../../../../styles/ghost.scss';
 

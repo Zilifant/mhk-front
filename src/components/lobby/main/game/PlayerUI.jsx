@@ -5,7 +5,7 @@
 import React from 'react';
 import { badge, article } from '../../../../util/utils';
 import Container from '../../../shared/Container';
-import SVGIcon from '../../../ui-elements/SVGIcon';
+import SVGIcon from '../../../shared/SVGIcon';
 import ChooseKeyEvUI from './ChooseKeyEvUI';
 import Cards from './Cards';
 

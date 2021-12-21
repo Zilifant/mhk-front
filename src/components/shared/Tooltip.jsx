@@ -9,12 +9,12 @@
 // (`singleline` for short tips; defaults to wrapping text.)
 
 import { parse, render } from '../../util/styled-markdown';
-import { tooltipText } from '../../util/static-content/tooltip-text';
+import { tooltipStrings } from '../../util/static-content/tooltip-strings';
 import '../../styles/tooltips.scss';
 
 function renderTooltip(tip, side, opts) {
-  if (!tooltipText[tip]) return null;
-  const parsedTip = parse(tooltipText[tip]);
+  if (!tooltipStrings[tip]) return null;
+  const parsedTip = parse(tooltipStrings[tip]);
   return (
     <div className={(`ttip ${side || 'bottom'} ${opts || 'wrap'}`).trim()}>
       {render.block(parsedTip)}

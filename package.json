@@ -1,6 +1,6 @@
 {
   "name": "mhk-front",
-  "version": "0.8.6",
+  "version": "0.8.9",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",

@@ -8,7 +8,7 @@
 // `opts` prop defines whether text should wrap.
 // (`singleline` for short tips; defaults to wrapping text.)
 
-import { parse, render } from '../../util/smd';
+import { parse, render } from '../../util/styled-markdown';
 import { tooltipText } from '../../util/tooltip-text';
 import '../../styles/tooltips.scss';
 

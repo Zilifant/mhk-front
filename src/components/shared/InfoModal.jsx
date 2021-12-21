@@ -3,7 +3,7 @@
 // and multi page version.
 
 import { useState } from 'react';
-import { parse, render } from '../../util/smd';
+import { parse, render } from '../../util/styled-markdown';
 import SVGButton from '../ui-elements/SVGButton';
 import '../../styles/infomodals.scss';
 

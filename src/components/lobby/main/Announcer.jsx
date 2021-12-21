@@ -3,7 +3,7 @@
 
 import { useEffect } from 'react';
 import { useChat } from '../../../hooks/chat-hook';
-import { parse, render } from '../../../util/smd';
+import { parse, render } from '../../../util/styled-markdown';
 import { buildSMDString } from '../../../util/system-messages';
 import Container from '../../shared/Container';
 import '../../../styles/announcer.scss';

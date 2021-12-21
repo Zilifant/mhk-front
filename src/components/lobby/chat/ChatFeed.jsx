@@ -3,7 +3,7 @@
 import { nanoid } from 'nanoid';
 import { useContext, useEffect, useRef } from 'react';
 import { UserContext } from '../../../context/contexts';
-import { parse, render } from '../../../util/smd';
+import { parse, render } from '../../../util/styled-markdown';
 import { buildSMDString } from '../../../util/system-messages';
 
 // Only used in ChatFeed.

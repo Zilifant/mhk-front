@@ -2,7 +2,7 @@
 // App title on landing page.
 
 import Container from '../shared/Container';
-import VideoModal from '../shared/VideoModal';
+import VideoModal from '../modal/VideoModal';
 
 const Header = () => {
 

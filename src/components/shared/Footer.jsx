@@ -7,7 +7,7 @@ import { VERSION } from '../../util/utils';
 import Container from '../shared/Container';
 import Tooltip from './Tooltip';
 import SVGButton from '../shared/SVGButton';
-import InfoModal from './InfoModal';
+import InfoModal from '../modal/InfoModal';
 import RulesContent from '../content/RulesContent';
 import AboutContent from '../content/AboutContent';
 import '../../styles/footer.scss';

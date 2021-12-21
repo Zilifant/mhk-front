@@ -8,8 +8,8 @@ import Container from '../shared/Container';
 import Tooltip from './Tooltip';
 import SVGButton from '../shared/SVGButton';
 import InfoModal from '../modal/InfoModal';
-import RulesContent from '../content/RulesContent';
-import AboutContent from '../content/AboutContent';
+import RulesContent from '../modal/content/RulesContent';
+import AboutContent from '../modal/content/AboutContent';
 import '../../styles/footer.scss';
 
 const Footer = ({

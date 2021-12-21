@@ -4,8 +4,8 @@
 
 import React from 'react';
 import Info from './Info';
-import MemberList from './nogame/MemberList';
-import Setup from './nogame/Setup';
+import MemberList from './no-game/MemberList';
+import Setup from './no-game/Setup';
 import Ghost from './game/Ghost';
 import Players from './game/Players';
 import Announcer from './Announcer';

@@ -10,7 +10,6 @@ import Foyer from './components/lobby/Foyer';
 import Landing from './components/landing/Landing';
 import './styles/mixins.scss';
 import './styles/core.scss';
-import './styles/animations.scss';
 import './styles/svgs.scss';
 import './styles/buttons.scss';
 

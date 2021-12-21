@@ -2,7 +2,7 @@
 // Renders an SVG with consistent css classes. SVGs are methods of the `svg`
 // object that return static JSX.
 
-import { svg } from '../../util/svgs'
+import { svg } from '../../util/static-content/svgs-html'
 import '../../styles/svgs.scss'
 
 const SVGIcon = ({

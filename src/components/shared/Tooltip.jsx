@@ -9,7 +9,7 @@
 // (`singleline` for short tips; defaults to wrapping text.)
 
 import { parse, render } from '../../util/styled-markdown';
-import { tooltipText } from '../../util/tooltip-text';
+import { tooltipText } from '../../util/static-content/tooltip-text';
 import '../../styles/tooltips.scss';
 
 function renderTooltip(tip, side, opts) {

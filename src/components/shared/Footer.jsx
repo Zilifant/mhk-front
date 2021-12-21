@@ -8,8 +8,8 @@ import Container from '../shared/Container';
 import Tooltip from './Tooltip';
 import SVGButton from '../shared/SVGButton';
 import InfoModal from '../modal/InfoModal';
-import RulesContent from '../modal/content/RulesContent';
-import AboutContent from '../modal/content/AboutContent';
+import { rules } from '../../util/static-content/rules-html';
+import { about } from '../../util/static-content/about-html';
 import '../../styles/footer.scss';
 
 const Footer = ({
@@ -28,7 +28,7 @@ const Footer = ({
             btnClassName='flat'
             buttonContent='rulebook'
             titlebarContent='game rules'
-            info={RulesContent}
+            info={rules}
           />
           <div className='footer-content'>
             <div className='footer-text'>v {VERSION}</div>
@@ -37,7 +37,7 @@ const Footer = ({
               btnClassName='flat'
               buttonContent='about'
               titlebarContent='about the app'
-              info={AboutContent}
+              info={about}
             />
             {showClearBtn && <div className='ttip-parent'>
               <SVGButton

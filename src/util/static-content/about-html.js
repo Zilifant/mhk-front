@@ -2,7 +2,7 @@
 // Provides html content for 'About' Infomodal.
 // TO DO: Move to backend?
 
-const AboutContent = () => (<>
+export const about = () => (<>
   <div className='line-smd--def'>
     <span className='smd--def'>MHK is an online implementation of the social deduction game </span>
     <span className='smd--emphasize'>Deception: Murder in Hong Kong </span>
@@ -40,5 +40,3 @@ const AboutContent = () => (<>
     <span className='smd--def'>Find a bug? Have feedback? Contact me at <a className='smd--link' href='mailto:zilifant.code@gmail.com'>zilifant.code@gmail.com</a>.</span>
   </div>
 </>);
-
-export default AboutContent;

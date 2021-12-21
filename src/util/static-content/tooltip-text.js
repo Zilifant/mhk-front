@@ -1,5 +1,5 @@
 // Tooltip Text //
-// Provides text data for Tooltip components. Includes markdown for SMD module.
+// Provides text data for Tooltip components. Includes markdown for styled-markdown module.
 // TO DO: Move this to backend.
 
 export const tooltipText = {

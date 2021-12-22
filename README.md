@@ -73,7 +73,7 @@ Structure and content of `src` directory.
   * [multi-selector-hook.js](./src/hooks/multi-selector-hook.js)
   * [parallel-selector-hook.js](./src/hooks/parallel-selector-hook.js)
   * [user-hook.js](./src/hooks/user-hook.js)
-* [styles](./src/styles) - Pages and certain larger components have dedicated files (not listed here). A few notable utility files:
+* [styles](./src/styles) - Pages and certain larger components have dedicated files (not listed here). Notable utility files:
   * [core.scss](./src/styles/core.scss) - Reset, top-level grids, and other general styles
   * [colors.scss](./src/styles/colors.scss) - My color 'library' as well as variable assignments for colors used throughout the UI.
   * [mixins.scss](./src/styles/mixins.scss) - Mixins used throughout the UI.

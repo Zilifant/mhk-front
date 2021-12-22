@@ -21,20 +21,11 @@ export const lobbyMethods = {
   numReady() {
     return this.users.filter(u => u.isReady === true).length;
   },
-  usersOnline() {
-    return this.users.filter(u => u.isOnline === true);
-  },
-  usersReady() {
-    return this.users.filter(u => u.isReady === true);
-  },
   canUseAdvRoles() {
     return this.numOnline() >= this.minPlayerAdvRoles;
   },
   minPlayersOnline() {
     return this.numOnline() >= this.minPlayer;
-  },
-  minPlayersReady() {
-    return this.numReady() >= this.minPlayer;
   },
   allPlayersReady() {
     return this.numReady() === this.numOnline();
@@ -50,11 +41,6 @@ export const lobbyMethods = {
   getUserColor(userId) {
     return this.users.find(user => user.id === userId).color;
   }
-};
-
-// Capitalize first letter of each word in a string.
-export const capitalize = (str) => {
-  return str.replace(/\b([a-zÁ-ú])/g, (w) => w.charAt(0).toUpperCase() + w.slice(1));
 };
 
 // Return correct css class for badge icon.

@@ -9,6 +9,9 @@
 
 .gradient {
   @include gradient-btn-txt();
+  &.green {
+    @include gradient-btn-txt($col: $emer5);
+  }
 }
 
 .larger {

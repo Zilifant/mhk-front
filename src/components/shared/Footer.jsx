@@ -25,7 +25,7 @@ const Footer = ({
         <div className='footer-bar'>
           <InfoModal
             className='rules footer'
-            btnClassName='flat larger'
+            btnClassName='gradient larger'
             buttonContent='rulebook'
             titlebarContent='game rules'
             info={rules}
@@ -34,7 +34,7 @@ const Footer = ({
             <div className='footer-text'>v {VERSION}</div>
             <InfoModal
               className='about footer'
-              btnClassName='flat larger'
+              btnClassName='gradient larger'
               buttonContent='about'
               titlebarContent='about the app'
               info={about}

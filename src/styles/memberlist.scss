@@ -139,10 +139,12 @@ button.ready-toggle-btn {
   padding: 3px;
   width: 100px;
   &.ml-ready {
-    @include float-btn-txt($ready, $fg3);
+    // @include float-btn-txt($ready, $fg3);
+    @include gradient-btn-txt($emer5);
   }
   &.ml-notready {
-    @include float-btn-txt($rose8, $fg2);
+    // @include float-btn-txt($rose8, $fg2);
+    @include gradient-btn-txt($rose6);
   }
 }
 

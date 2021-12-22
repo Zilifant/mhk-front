@@ -56,10 +56,11 @@ const Lobby = () => {
         const resData = await sendRequest(
           // TO DO: Backend route no longer needs to be unique per lobby; send
           // myLobby in JSON instead.
-          `${process.env.REACT_APP_BACKEND_URL}/lobby/${myLobby}`,
+          `${process.env.REACT_APP_BACKEND_URL}/lobby/get`,
           'POST',
           JSON.stringify({
-            userId: userId
+            userId: userId,
+            lobbyId: myLobby
           }),
           { 'Content-Type': 'application/json' },
         );

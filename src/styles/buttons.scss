@@ -5,11 +5,13 @@
 
 .flat {
   @include flat-btn-txt();
-  font-size: larger;
 }
 
 .gradient {
   @include gradient-btn-txt();
+}
+
+.larger {
   font-size: larger;
 }
 

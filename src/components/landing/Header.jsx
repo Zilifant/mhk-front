@@ -16,7 +16,7 @@ const Header = () => {
       <div className='landing-title'>MHK<span> BETA</span></div>
       <VideoModal
         className='rules header'
-        btnClassName='gradient'
+        btnClassName='gradient larger'
         buttonContent='how to play'
         info={info}
       />

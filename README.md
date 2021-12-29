@@ -77,10 +77,10 @@ Structure and content of `src` directory.
   * [core.scss](./src/styles/core.scss) - Reset, top-level grids, and other general styles
   * [colors.scss](./src/styles/colors.scss) - My color 'library' as well as variable assignments for colors used throughout the UI.
   * [mixins.scss](./src/styles/mixins.scss) - Mixins used throughout the UI.
-  * [styled-markdown.scss](./src/styles/smd.scss) - Used by the `styled-markdown` module.
+  * [styled-markdown.scss](./src/styles/styled-markdown.scss) - Used by the `styled-markdown` module.
   * [svgs.scss](./src/styles/svgs.scss) - Used by `SVGIcon` and `SVGButton`.
 * [util](./src/util) - Utility functions that aren't React components or hooks.
-  * [styled-markdown.js](./src/util/smd.js)
+  * [styled-markdown.js](./src/util/styled-markdown.js)
   * [system-messages.js](./src/util/system-messages.js) - Dynamically creates strings from data.
   * [textToClipboard.js](./src/util/textToClipboard.js)
   * [utils.js](./src/util/utils.js) - Miscellaneous functions and constants (*that should be broken into multiple files*).

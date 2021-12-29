@@ -9,9 +9,34 @@ This app is not affiliated with Tobey Ho, Grey Fox Games, or Jolly Thinkers in a
 
 You can (and should) purchase a physical copy of *Deception* directly from publisher [Grey Fox Games](https://greyfoxgames.com/deception-murder-in-hong-kong/). Learn more about the game on [BoardGameGeek](https://boardgamegeek.com/boardgame/156129/deception-murder-hong-kong).
 
-## Project Overview
-Structure and content of `src` directory.
+## Contents
+- [Overview](#overview)
+- [Navigating the Project](#navigating-the-project---react-app)
+- [What Could Be Improved](#what-could-be-improved)
+- [Planned Features](#planned-features)
+- [Setup and Commands](#setup-and-commands---react-app)
 
+## Overview
+MHK is a React front-end connected to a Node.js REST API via [Socket.IO](https://socket.io/) and the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). It uses Fetch to initially load user and lobby data. Once users are verified and have loaded their lobby, Socket.IO connects and handles all further communicaton.
+
+MHK is my first full-stack application. I built it as a learning exercise and portfolio piece. As of January 2022 MHK remains a work in progress. There is no doubt much that can be improved; I welcome suggestions and constructive criticism.
+
+### Notable Tools and Tech
+React • Node.js • Socket.IO • Express.js • CORS • SCSS • nodemon • React Router • Create React App • VSCode • Postman • Vercel • Heroku 
+
+### Notable Features
+- **Text Chat:** Handles both user messages and system announcements. Includes unique, non-duplicating user colors.
+- **Private Lobbies:** Unique, procedurally generated lobby IDs. Joinable by entering the lobby ID or visiting it directly as a URL.
+- **Live-Stream Friendly:** Lobby IDs hidden in URL bar, even if user connected via the URL. *Streamer Mode* option available to automatically hide lobby ID in the UI.
+- **Lobby Leadership:** 'Leadership' allows one user to handle game set up. Leadership automatically passes to another user if the Leader disconnects; it can also be transferred manually.
+- **Sensitive Data Handling:** Players cannot use basic client-side tools/scripts to cheat; hidden role data is never sent to clients that should not have it.
+- **Visual Timer:** Server-side timer uses dynamic styling to sync a graphical UI timer for all players.
+- **Cookies:** User data is saved in a browser cookie, allowing them to seamlessly rejoin a lobby/game if they disconnect. Also checks for and prevents same user from connecting twice.
+- **Styled-Markdown Module:** A more generally useful module that turns a basic markdown language into HTML/JSX with classes for complex styling.
+- **SVG React Components:** General components for rendering icons and buttons from a library of SVG data.
+- **Tooltip Component:** General component for rendering tooltips when hovering elements; includes settings for tooltip content, size, and relative position.
+
+## Navigating the Project - React App
 * [App.jsx](./src/App.jsx)
 * [components](./src/components)
   * [landing](./src/components/landing)
@@ -85,13 +110,29 @@ Structure and content of `src` directory.
   * [textToClipboard.js](./src/util/textToClipboard.js)
   * [utils.js](./src/util/utils.js) - Miscellaneous functions and constants (*that should be broken into multiple files*).
   * [validators.js](./src/util/validators.js) - Functions and constants used to validate user text inputs.
-  * [static-content](./src/util/static-content) - Return static text strings and html (JSX) markup.
+  * [static-content](./src/util/static-content) - Return static text strings and HTML (JSX) markup.
     * [about-html.js](./src/util/static-content/about-html.jsx)
     * [rules-html.js](./src/util/static-content/rules-html.jsx)
     * [svgs-html.js](./src/util/static-content/svgs-html.js) - Used by `SVGIcon` and `SVGButton`.
     * [tooltip-strings.js](./src/util/static-content/tooltip-strings.js) - Used by `Tooltip`.
 
-## Setup and Commands
+## What Could Be Improved: React App
+* **TO DOs:** Specific improvements appear throughout the code as `TO DO:` comments. Most of these involve 1) refactoring overly complex or specific code in light of the app's overall structure, and 2) refactors based on new techniques and best practices I've picked up.
+* **Stylesheets:** My naming conventions and use of nested selectors are not as consistent as I'd like. Unused selectors also need to be pruned, and the overall code minified.
+* **Tests:** If I could go back and do anything differently, it would be to implement tests from the start.
+
+## Planned Features
+In addition to the above improvements, I'd like to implement (back-end included):
+1. A database to protect data from server restarts and outages ⭐️ *Top Priority*
+2. Responsive interface for mobile and tablets ⭐️ *Top Priority*
+3. Interface scaling for high-resolution displays
+4. Animated UI changes
+5. Dyslexic font option
+6. In-app rules reference
+7. Emoji Mode, showing emojis instead of text on player cards
+8. Unique images for all player cards
+
+## Setup and Commands - React App
 
 **Note:** For the app to function properly you will need to have the back-end API set up and running as well. By default, the development server will run on port 5555. If you change the port, you will of course need to change the environmental variables below.
 

@@ -35,7 +35,7 @@ React • Node.js • Socket.IO • Express.js • CORS • SCSS • nodemon •
 - [**Cookies:**](https://github.com/Zilifant/mhk-back/blob/main/controllers/user-ctrl.js) User data is saved in a browser cookie, allowing them to seamlessly rejoin a lobby/game if they disconnect. Also checks for and prevents same user from connecting twice.
 - [**Styled-Markdown Module:**](https://github.com/Zilifant/mhk-front/blob/main/src/util/styled-markdown.js) A more generally useful module that turns a basic markdown language into HTML/JSX with classes for complex styling.
 - [**SVG React Components:**](https://github.com/Zilifant/mhk-front/tree/main/src/components/shared) General components for rendering icons and buttons from a [library](https://github.com/Zilifant/mhk-front/blob/main/src/util/static-content/svgs-html.js) of SVG data.
-- [**Tooltip Component:**](https://github.com/Zilifant/mhk-front/tree/main/src/components/shared) General component for rendering tooltips when hovering elements; includes settings for tooltip content, size, and relative position.
+- [**Tooltip React Component:**](https://github.com/Zilifant/mhk-front/tree/main/src/components/shared) General component for rendering tooltips when hovering elements; includes settings for tooltip content, size, and relative position.
 
 ## Navigating the Project - React App
 * [App.jsx](./src/App.jsx)

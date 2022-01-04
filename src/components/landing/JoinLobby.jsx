@@ -35,7 +35,7 @@ const JoinLobby = ({ lobbyId }) => {
 
   const joinLobbyFormInitState = {
     userName: { value: '', isValid: false },
-    lobbyURL: { value: '', isValid: false }
+    lobbyId: { value: '', isValid: false }
   };
 
   const initFormState = !lobbyId
@@ -51,9 +51,9 @@ const JoinLobby = ({ lobbyId }) => {
     // TO DO: Implement a secure admin UI to view/modify live app data.
     function isAdminBackDoor() {
       const userName = formState.inputs.userName.value,
-            lobbyURL = formState.inputs.lobbyURL.value,
+            lobbyId = formState.inputs.lobbyId.value,
             isAdminUser = userName === process.env.REACT_APP_ADMIN_USER,
-            isAdminPass = lobbyURL === process.env.REACT_APP_ADMIN_PASS;
+            isAdminPass = lobbyId === process.env.REACT_APP_ADMIN_PASS;
       return (isAdminUser && isAdminPass);
     };
 
@@ -73,7 +73,7 @@ const JoinLobby = ({ lobbyId }) => {
         'POST',
         JSON.stringify({
           userName: formState.inputs.userName.value,
-          lobbyURL: lobbyId || formState.inputs.lobbyURL.value,
+          lobbyId: lobbyId || formState.inputs.lobbyId.value,
           isStreamer
         }),
         { 'Content-Type': 'application/json' },
@@ -173,7 +173,7 @@ const JoinLobby = ({ lobbyId }) => {
                 className='join-lobby-username'
               />
               <Input
-                id='lobbyURL'
+                id='lobbyId'
                 element='input'
                 type='text'
                 label='Lobby Name'

@@ -38,6 +38,10 @@ button {
 
 button:focus { outline: none; }
 
+a {
+  cursor: pointer;
+}
+
 /* App Container */
 
 div.app-root {

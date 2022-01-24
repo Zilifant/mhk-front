@@ -45,12 +45,12 @@ function App() {
       <Route path='/:lobbyURL'>
         <Foyer />
       </Route>
-      <Route path='/lobby' exact>
+      <Route path={`/${/(lobby|join)/}`} exact>
         <Foyer />
       </Route>
-      <Route path='/join' exact>
+      {/* <Route path='/join' exact>
         <Foyer />
-      </Route>
+      </Route> */}
       <Redirect to='/' />
     </Switch>
   );

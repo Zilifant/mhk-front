@@ -9,21 +9,24 @@ export const useUser = () => {
     userName: null,
     myLobby: null,
     isStreamer: true,
-    checked: false
+    isDemo: false,
+    checked: false,
   });
 
   const updateUserCtx = useCallback(({
     userId,
     userName,
     myLobby,
-    isStreamer
+    isStreamer,
+    isDemo,
   }) => {
     setUser({
       userId: userId,
       userName: userName,
       myLobby: myLobby,
       isStreamer: isStreamer,
-      checked: true
+      isDemo: isDemo,
+      checked: true,
     });
   }, []);
 

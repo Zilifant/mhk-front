@@ -82,7 +82,8 @@ const JoinLobby = ({ lobbyId }) => {
         userId: responseData.user.id,
         userName: responseData.user.userName,
         myLobby: responseData.user.myLobby,
-        isStreamer: responseData.user.isStreamer
+        isStreamer: responseData.user.isStreamer,
+        isDemo: responseData.user.isDemo,
       });
       // Forwarding visitor will render Foyer, which will then render the
       // lobby, since the user will have valid userContext data.

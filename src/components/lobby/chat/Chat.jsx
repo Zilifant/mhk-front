@@ -10,6 +10,7 @@ import SVGButton from '../../shared/SVGButton';
 import '../../../styles/chat.scss';
 
 const Chat = ({
+  isDemo,
   chat,
   users,
   minimizeChatHandler,
@@ -28,9 +29,10 @@ const Chat = ({
   } = useChat(chat);
 
   useEffect(() => {
+    if (isDemo) return;
     subToChat();
     subToAnnounce();
-  }, [subToChat, subToAnnounce]);
+  }, [subToChat, subToAnnounce, isDemo]);
 
   // TO DO: Update icon or add text to make purpose clearer to user.
   const MinimizeChatButton = () => (

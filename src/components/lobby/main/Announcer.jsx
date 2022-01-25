@@ -28,6 +28,7 @@ const Announcement = ({
 };
 
 const Announcer = ({
+  isDemo,
   chat,
   iAmLeader,
   lobby
@@ -39,7 +40,10 @@ const Announcer = ({
     lastGameAnnouncement
   } = useChat(chat);
 
-  useEffect(() => { subToAnnounce(); }, [subToAnnounce]);
+  useEffect(() => {
+    if (isDemo) return;
+    subToAnnounce();
+  }, [subToAnnounce, isDemo]);
 
   // Selects system message data to display before game starts.
   // TO DO: This is a temporary solution; refactor.

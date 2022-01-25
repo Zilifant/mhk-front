@@ -17,6 +17,7 @@ const Main = ({
   thisPlayer,
   iAmLeader,
   lobby: {
+    isDemo,
     gameSettings,
     gameOn,
     game,
@@ -29,6 +30,7 @@ const Main = ({
   return (
     <>
       <Announcer
+        isDemo={isDemo}
         chat={chat}
         iAmLeader={iAmLeader}
         lobby={lobby}

@@ -1,0 +1,133 @@
+// Demo Page/Components
+
+@import './colors.scss';
+@import './mixins.scss';
+
+@mixin transit($t) {
+  transition:
+    color $t,
+    background-color $t,
+    border-color $t,
+    transform $t,
+    margin $t,
+    padding $t,
+    height $t,
+    width $t;
+}
+
+$cell-size: 860px; // 859-1171
+$tbar-size: 36px;
+$ifrm-heig: calc(860px - 36px);
+$ifrm-widt: $cell-size;
+$half-size: calc($cell-size / 2);
+$half-ifrm-heig: calc($ifrm-heig / 2);
+$half-ifrm-widt: calc($ifrm-widt / 2);
+
+@mixin ifrBig() {
+  height: $ifrm-heig;
+  width:  $ifrm-widt;
+}
+
+@mixin ifrSmall() {
+  height: $half-ifrm-heig;
+  width:  $half-ifrm-widt;
+}
+
+.views-grid {
+  display: grid;
+  grid-template-columns: 430px 430px 430px;
+  grid-template-rows:    430px 430px;
+  gap: 10px;
+  width: max-content;
+  background-color: $gray6;
+  padding: 10px;
+
+  & > :nth-child(1) {
+    margin: 0 0 0 0;
+    transform-origin: top left;
+  };
+
+  & > :nth-child(2) {
+    margin: 0 0 0 -50%;
+    transform-origin: top;
+  };
+
+  & > :nth-child(3) {
+    margin: 0 0 0 -100%;
+    transform-origin: top right;
+  };
+
+  & > :nth-child(4) {
+    margin: -100% 0 0 0;
+    transform-origin: bottom left;
+  };
+
+  & > :nth-child(5) {
+    margin: -100% 0 0 -50%;
+    transform-origin: bottom;
+  };
+
+  & > :nth-child(6) {
+    margin: -100% 0 0 -100%;
+    transform-origin: bottom right;
+  };
+}
+
+.embed-wrap {
+  @include square($cell-size);
+  @include transit(.3s);
+  background-color: $gray8;
+  // border: 5px solid $gray5;
+  border-radius: 5px;
+
+  & iframe {
+    @include ifrBig();
+    border: none;
+  };
+
+  &[data-size='small'] {
+    z-index: 2;
+    transform: scale(.5);
+  };
+
+  &[data-size='shrinking'] {
+    z-index: 9;
+    transform: scale(.5);
+  };
+
+  &[data-size='big'] {
+    z-index: 9;
+    transform: none;
+  };
+}
+
+div.titlebar {
+  background-color: $gray5;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-areas: '. t c';
+  align-items: center;
+
+  & div.title {
+    grid-area: t;
+    font-size: 24px;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 4px;
+  };
+
+  & button.resize {
+    grid-area: c;
+    justify-self: right;
+    margin-right: 12px;
+    @include circle(24px);
+    border: none;
+    background-color: $gree5;
+  };
+
+}
+
+.demo-head {
+  width: 100%;
+}

@@ -8,6 +8,7 @@ export const UserContext = React.createContext({
   userName: null,
   myLobby: null,
   isStreamer: true, // Has the user turned on 'streaming mode'.
+  isDemo: false, // Is the user using the Demo app.
   checkMyLobby: () => {},
   updateUserCtx: () => {},
   checked: false // Has the app checked for the userData cookie.

@@ -3,7 +3,11 @@
 // TO DO: Break this out into separate files and/or rename, since this includes
 // functions used outside of games.
 
-export const useGame = (socket) => {
+import { useContext } from 'react';
+import { SocketContext } from '../context/contexts';
+
+export const useGame = () => {
+  const { socket } = useContext(SocketContext);
 
   const startGameHandler = () => {
     return socket.current.emit('startGame', {settings: 'placeholder'});

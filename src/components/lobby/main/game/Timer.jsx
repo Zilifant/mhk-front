@@ -27,6 +27,7 @@ const Timer = ({
   useEffect(() => {
     // Extra-careful tracking of component mounting.
     let mounted = true;
+    // Set to variable inside useEffect due to linting warning.
     const s = socket.current;
 
     const subToTimer = (mounted) => {

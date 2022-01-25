@@ -7,6 +7,7 @@ import { useHttpClient } from './hooks/http-hook';
 import { UserContext } from './context/contexts';
 import { isDevEnv } from './util/utils';
 import Demo from './components/demo/Demo';
+import DemoLobby from './components/lobby/DemoLobby';
 import Foyer from './components/lobby/Foyer';
 import Landing from './components/landing/Landing';
 import './styles/mixins.scss';
@@ -30,7 +31,8 @@ function App() {
           userId: responseData.user?.id,
           userName: responseData.user?.userName,
           myLobby: responseData.user?.myLobby,
-          isStreamer: responseData.user?.isStreamer
+          isStreamer: responseData.user?.isStreamer,
+          isDemo: responseData.user?.isDemo
         });
       } catch (err) { console.log(err); };
     };
@@ -45,6 +47,9 @@ function App() {
       </Route>
       <Route path='/demo' exact>
         <Demo />
+      </Route>
+      <Route path='/demo/lobby' exact>
+        <DemoLobby />
       </Route>
       <Route path='/:lobbyURL'>
         <Foyer />
@@ -65,6 +70,7 @@ function App() {
       userName: user.userName,
       myLobby: user.myLobby,
       isStreamer: user.isStreamer,
+      isDemo: user.isDemo,
       checkMyLobby: checkMyLobby,
       updateUserCtx: updateUserCtx,
       checked: user.checked

@@ -45,12 +45,6 @@ function App() {
       <Route path='/' exact>
         <Landing />
       </Route>
-      <Route path='/demo' exact>
-        <Demo />
-      </Route>
-      <Route path='/demo/lobby' exact>
-        <DemoLobby />
-      </Route>
       <Route path='/:lobbyURL'>
         <Foyer />
       </Route>

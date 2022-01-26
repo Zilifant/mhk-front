@@ -6,7 +6,6 @@
 import { useState, useContext } from 'react';
 import { UserContext, SocketContext } from '../../../context/contexts';
 import { useGame } from '../../../hooks/game-hook';
-import { isDevEnv } from '../../../util/utils';
 import textToClipboard from '../../../util/textToClipboard';
 import Container from '../../shared/Container';
 import Tooltip from '../../shared/Tooltip';
@@ -33,9 +32,6 @@ const Info = ({
   const [lobbyIdHidden, setLobbyIdHidden] = useState(isStreamer);
   const hideLobbyIdHandler = () => setLobbyIdHidden(!lobbyIdHidden);
 
-  // Display placeholder text if in development environment.
-  const lobbyId = isDevEnv ? 'Splendid-Monolith-7659' : myLobby;
-
   const isRoundOneOrTwo = stage?.id === 'round-1' || stage?.id === 'round-2';
 
   const showGameStage = stage && stage.id; // Is stage loaded?
@@ -58,14 +54,14 @@ const Info = ({
         </div>
 
         <div className={`info-lobbyid ${lobbyIdHidden ? 'obscured' : 'visible'}`}>
-          {lobbyIdHidden ? 'lobby name hidden' : lobbyId}
+          {lobbyIdHidden ? 'lobby name hidden' : myLobby}
         </div>
 
         <div className='ttip-parent'>
           <SVGButton
             className='copyurl'
             icon='copy'
-            onClick={() => textToClipboard(`https://mhk.vercel.app/${lobbyId}`)}
+            onClick={() => textToClipboard(`https://mhk.vercel.app/${myLobby}`)}
             disabled={false}
           />
           <Tooltip tip='copyUrl' side='right' opts='singleline'/>

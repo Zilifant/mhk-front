@@ -1,6 +1,8 @@
 // Header //
 // App title on landing page.
 
+// TODO: Move video modal info out of this component.
+
 import Container from '../shared/Container';
 import VideoModal from '../modal/VideoModal';
 

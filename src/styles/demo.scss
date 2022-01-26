@@ -39,7 +39,7 @@ $half-ifrm-widt: calc($ifrm-widt / 2);
   grid-template-rows:    430px 430px;
   gap: 10px;
   width: max-content;
-  background-color: $gray6;
+  background-color: $bg4;
   padding: 10px;
 
   & > :nth-child(1) {
@@ -102,19 +102,22 @@ $half-ifrm-widt: calc($ifrm-widt / 2);
 }
 
 div.titlebar {
-  background-color: $gray5;
+  background-color: $bg6;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-areas: '. t c';
   align-items: center;
 
+  & > .title, .resize {
+    margin-top: .5rem;
+  };
+
   & div.title {
     grid-area: t;
     font-size: 24px;
     text-align: center;
     text-transform: uppercase;
-    padding: 4px;
   };
 
   & button.resize {

@@ -6,8 +6,6 @@ import { useUser } from './hooks/user-hook';
 import { useHttpClient } from './hooks/http-hook';
 import { UserContext } from './context/contexts';
 import { isDevEnv } from './util/utils';
-import Demo from './components/demo/Demo';
-import DemoLobby from './components/lobby/DemoLobby';
 import Foyer from './components/lobby/Foyer';
 import Landing from './components/landing/Landing';
 import './styles/mixins.scss';

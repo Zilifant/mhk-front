@@ -74,7 +74,8 @@ const JoinLobby = ({ lobbyId }) => {
         JSON.stringify({
           userName: formState.inputs.userName.value,
           lobbyId: lobbyId || formState.inputs.lobbyId.value,
-          isStreamer
+          isStreamer,
+          isDemo: false,
         }),
         { 'Content-Type': 'application/json' },
       );

@@ -15,13 +15,13 @@
 .new-lobby-title { grid-area: newtitl; }
 .new-lobby-label { grid-area: newlabel; }
 .new-lobby-input { grid-area: newinput; }
-.new-lobby-btn  { grid-area: newbtn; }
+.new-lobby-btn   { grid-area: newbtn; }
 
 .join-this-lobby-title    { grid-area: jtltitl; }
 .join-this-lobby-subtitle { grid-area: jtlsubt; }
 .join-this-lobby-label    { grid-area: jtllabel; }
 .join-this-lobby-input    { grid-area: jtlinput; }
-.join-this-lobby-btn     { grid-area: jtlbtn; }
+.join-this-lobby-btn      { grid-area: jtlbtn; }
 
 .join-lobby-title          { grid-area: jnltitl; }
 .join-lobby-username-label { grid-area: jnlabel; }
@@ -29,7 +29,7 @@
 
 .join-lobby-lobbyid-label { grid-area: jllabel; }
 .join-lobby-lobbyid-input { grid-area: jlinput; }
-.join-lobby-btn          { grid-area: jlbtn; }
+.join-lobby-btn           { grid-area: jlbtn; }
 .btn--join-devlobby       { grid-area: jdbtn; }
 
 .new-lobby-title,
@@ -38,6 +38,7 @@
 .join-this-lobby-subtitle {
   justify-content: center;
   font-size: 1.5rem;
+  text-transform: uppercase;
 }
 
 .grid--new-lobby-form,
@@ -61,10 +62,10 @@
     grid-template-columns: 110px 200px 110px;
   }
   .con--head,
-  .con--foyerjoin,
+  .con--join-this-lobby,
   .con--returntolobby,
-  .con--joinlobby,
-  .con--newlobby {
+  .con--join-lobby,
+  .con--new-lobby {
     background-color: $bg3;
     width: 100%;
     font-size: 20px;
@@ -107,10 +108,10 @@
 }
 
 .con--head,
-.con--foyerjoin,
+.con--join-this-lobby,
 .con--returntolobby,
-.con--joinlobby,
-.con--newlobby {
+.con--join-lobby,
+.con--new-lobby {
   background-color: $bg3;
   width: 100%;
 }
@@ -124,8 +125,8 @@
   background-color: $bg4;
 }
 
-input.new-lobby-input,
-input.join-this-lobby-input,
+input.new-lobby-username-input,
+input.join-this-lobby-username-input,
 input.join-lobby-username-input,
 input.join-lobby-lobbyid-input {
   border-radius: $rad3;

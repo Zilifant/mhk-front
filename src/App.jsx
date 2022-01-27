@@ -8,7 +8,6 @@ import { UserContext } from './context/contexts';
 import { isDevEnv } from './util/utils';
 import Foyer from './components/lobby/Foyer';
 import Landing from './components/landing/Landing';
-import './styles/mixins.scss';
 import './styles/core.scss';
 import './styles/svgs.scss';
 import './styles/buttons.scss';
@@ -70,7 +69,7 @@ function App() {
       {/* `user.checked` prevents routes from loading before `isLoading`
       becomes true. */}
       {!isLoading && user.checked && <Router>
-        <main className='app'>
+        <main>
           {routes}
         </main>
       </Router>}

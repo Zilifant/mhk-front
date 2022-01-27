@@ -34,9 +34,11 @@ button {
   cursor: pointer;
   border: none;
   border-radius: 0;
-}
 
-button:focus { outline: none; }
+  &:focus {
+    outline: none;
+  };
+}
 
 a {
   cursor: pointer;
@@ -45,21 +47,21 @@ a {
 
 /* App Container */
 
-div.app-root {
+div#root {
   display: flex;
   flex-flow: column;
   margin: 0 auto;
   width: max-content;
   height: 100%;
-}
 
-main.app {
-  margin: $mar $mar 0 $mar;
-  display: flex;
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: auto;
-  max-height: calc(100% - (0.5rem));
+  & > main {
+    margin: $mar $mar 0 $mar;
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+    max-height: calc(100% - (0.5rem));
+  }
 }
 
 // App Grid

@@ -11,7 +11,6 @@ import { SocketContext, UserContext } from '../../context/contexts';
 import { getThisPlayer, lobbyMethods, isDevEnv } from '../../util/utils';
 import ErrorModal from '../modal/ErrorModal';
 import Loading from '../shared/Loading';
-import Grid from '../shared/Grid';
 import Main from './main/Main';
 import Chat from './chat/Chat';
 import Footer from '../shared/Footer';
@@ -168,7 +167,7 @@ const Lobby = () => {
         {/* FIFTH: Render lobby after all HTTP and socket.io tasks have
             resolved successfully. */}
         {!isLoading && lobby && isConnected &&
-          <Grid className={`lobby-${gridVariant()} ${showChat}`}>
+          <div className={`grid grid--lobby-${gridVariant()} ${showChat}`}>
             <Main
               lobby={lobby}
               thisPlayer={getThisPlayer(userId, lobby.game)}
@@ -183,7 +182,7 @@ const Lobby = () => {
             <Footer
               showClearBtn={lobby.leader === userId && lobby.gameOn}
             />
-          </Grid>
+          </div>
         }
       </React.Fragment>
     </SocketContext.Provider>

@@ -4,7 +4,7 @@
 
 export const about = () => (<>
   <div className='line-smd--def'>
-    <span className='smd--def'>MHK is an online implementation of the social deduction game </span>
+    <span className='smd--def'>Deception is an online implementation of the social deduction game </span>
     <span className='smd--emphasize'>Deception: Murder in Hong Kong </span>
     <span className='smd--def'>by designer Tobey Ho. Deception: Murder in Hong Kong is © Jolly Thinkers' Learning Centre Limited.</span>
   </div>

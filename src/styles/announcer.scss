@@ -4,22 +4,21 @@
 @import './mixins.scss';
 
 .con--announcer {
-  background-color: $bg4;
   width: 100%;
   height: 38px; // scale
-
   display: flex;
   align-items: center;
-}
+  background-color: $darker;
 
-.con--announcer.nogame {
-  justify-content: space-between;
-}
+  &.nogame {
+    justify-content: space-between;
+  };
 
-.con--announcer.game {
-  justify-content: center;
-}
+  &.game {
+    justify-content: center;
+  };
 
-.msg-in-announcer span {
-  font-size: 1.5rem;
+  & .msg-in-announcer span {
+    font-size: 1.5rem;
+  };
 }

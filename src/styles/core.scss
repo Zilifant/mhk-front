@@ -9,8 +9,11 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: $defbg;
   height: 100%;
+  background: $darkest;
+  background-image: url('../assets/bg-tp.png');
+  background-repeat: repeat;
+  background-size: calc(2240px/2) calc(1400px/2);
 }
 
 *, *:before, *:after {
@@ -18,7 +21,7 @@ html, body {
   font-size: 14px;
   font-weight: 500;
   letter-spacing: .025rem;
-  color: $default;
+  color: $light;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -51,7 +54,7 @@ div#root {
   display: flex;
   flex-flow: column;
   margin: 0 auto;
-  width: max-content;
+  // width: max-content;
   height: 100%;
 
   & > main {
@@ -60,6 +63,7 @@ div#root {
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: auto;
+    justify-content: center;
     max-height: calc(100% - (0.5rem));
   }
 }
@@ -70,6 +74,7 @@ div#root {
 .con--info         { grid-area: info; }
 .con--memberlist   { grid-area: list; }
 .con--lobbychat    { grid-area: chat; }
+.con--chatbutton   { grid-area: cbtn; }
 .con--setup        { grid-area: setu; }
 .con--foot         { grid-area: foot; }
 
@@ -82,101 +87,102 @@ div#root {
 .grid--lobby-game-ghost,
 .grid--lobby-game {
   display: grid;
-  gap: $gap;
+  row-gap: $gap;
   height: 100%;
+  width: 100%;
 }
 
 .grid--lobby-nogame {
-  grid-template-columns: 800px max-content;
+  grid-template-columns: 1fr 800px repeat(2, max-content) 1fr;
   grid-template-rows: repeat(3, max-content) 1fr max-content;
+
   &.chat {
     grid-template-areas:
-      "anno chat"
-      "info chat"
-      "setu chat"
-      "list chat"
-      "foot foot";
-  }
+      ".    anno anno cbtn .   "
+      ".    info chat chat .   "
+      ".    setu chat chat .   "
+      ".    list chat chat .   "
+      "foot foot foot foot foot";
+  };
+
   &.nochat {
     grid-template-areas:
-      "anno chat"
-      "info info"
-      "setu setu"
-      "list list"
-      "foot foot";
-  }
+      ".    anno anno cbtn .   "
+      ".    info info info .   "
+      ".    setu setu setu .   "
+      ".    list list list .   "
+      "foot foot foot foot foot";
+  };
 }
 
-.grid--lobby-game-ghost,
-.grid--lobby-game {
-  grid-template-columns: max-content 1fr max-content;
+.grid--lobby-game,
+.grid--lobby-game-ghost {
+  grid-template-columns: 1fr repeat(4, max-content) 1fr;
 }
 
 .grid--lobby-game.chat {
   grid-template-rows: repeat(3, max-content) 1fr repeat(2, max-content);
   grid-template-areas:
-    "anno anno chat"
-    "info info chat"
-    "ghst time chat"
-    "play play chat"
-    "self self chat"
-    "foot foot foot";
+    ".    anno anno anno cbtn .   "
+    ".    info info chat chat .   "
+    ".    ghst time chat chat .   "
+    ".    play play chat chat .   "
+    ".    self self chat chat .   "
+    "foot foot foot foot foot foot";
 }
 
 .grid--lobby-game-ghost.chat {
   grid-template-rows: repeat(3, max-content) 1fr max-content;
   grid-template-areas:
-    "anno anno chat"
-    "info info chat"
-    "self time chat"
-    "play play chat"
-    "foot foot foot";
+    ".    anno anno anno cbtn .   "
+    ".    info info chat chat .   "
+    ".    self time chat chat .   "
+    ".    play play chat chat .   "
+    "foot foot foot foot foot foot";
 }
 
 .grid--lobby-game.nochat {
   grid-template-rows: repeat(3, max-content) 1fr repeat(2, max-content);
   grid-template-areas:
-    "anno anno chat"
-    "info info info"
-    "ghst time time"
-    "play play play"
-    "self self self"
-    "foot foot foot";
+    ".    anno anno anno cbtn .   "
+    ".    info info info info .   "
+    ".    ghst time time time .   "
+    ".    play play play play .   "
+    ".    self self self self .   "
+    "foot foot foot foot foot foot";
 }
 
 .grid--lobby-game-ghost.nochat {
   grid-template-rows: repeat(3, max-content) 1fr max-content;
   grid-template-areas:
-    "anno anno chat"
-    "info info info"
-    "self time time"
-    "play play play"
-    "foot foot foot";
+    ".    anno anno anno cbtn .   "
+    ".    info info info info .   "
+    ".    self time time time .   "
+    ".    play play play play .   "
+    "foot foot foot foot foot foot";
 }
 
 // Component Containers
 
 .container {
   padding: .5rem;
-  border-radius: $rad;
+  border-radius: $rad6;
 }
 
 .con--setup,
 .con--info,
 .con--memberlist {
-  background-color: $bg4;
   padding: 1rem;
 }
 
-.con--players {
-  padding: 0;
-}
-
-.player-list {
-  width: 100%;
-  display: grid;
-  gap: .5rem;
-  grid-template-columns: min-content min-content;
+// .con--lobbychat,
+.con--announcer,
+.con--setup,
+.con--info,
+.con--memberlist {
+  // background-color: transparentize($darker, .75);
+  // border: 2px solid $dark;
+  background-color: none;
 }
 
 // Misc

@@ -9,37 +9,46 @@
   flex-direction: column;
   height: 100%;
   width: 350px;
-  background-color: $bg4;
+  margin-left: $gap;
+  background-color: $darker;
 }
 
-.con--lobbychat.min {
-  width: max-content;
+.con--chatbutton {
   display: flex;
   align-content: center;
   justify-content: center;
-}
+  margin-left: $gap;
+  background-color: $darker;
 
-.svg-btn.minimize-chat {
-  @include square(24px);
-  @include nobg-btn-svg();
+  & > .svg-btn.chat {
+    @include square(24px);
+
+    &.minimize {
+      @include svg-nobg-btn($red, $red);
+    };
+
+    &.maximize {
+      @include svg-nobg-btn($cyan-alt, $cyan-alt);
+    };
+  };
 }
 
 .chatfeed {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
-  background-color: $bg5;
+  background-color: $darkest;
   margin: .5rem 0;
   border-radius: $rad3;
   min-height: 0;
   height: calc(100% - 4rem);
   overflow: auto;
-  -ms-overflow-style: none;  /* IE and Edge */
-     scrollbar-width: none;  /* Firefox */
-}
+  -ms-overflow-style: none;  // IE and Edge
+     scrollbar-width: none;  // Firefox
 
-.chatfeed::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    display: none; // Hide scrollbar for Chrome, Safari and Opera.
+  };
 }
 
 .chatfeed .msg-wrapper {
@@ -68,22 +77,18 @@
 }
 
 input.new-message-input {
-  border-radius: $rad3;
+  font-size: 1.25rem;
   width: 100%;
-  border: 1px solid $bg5;
-}
+  padding: 3px .5rem;
+  background-color: $darkest;
+  border: 2px solid $darkest;
+  border-radius: $rad3;
 
-input.new-message-input:focus {
-  border: 1px solid $cyan5;
-}
+  &::placeholder { color: $dark; };
 
-input.new-message-input.banned,
-input.new-message-input.banned:focus {
-  border: 1px solid $killer;
-}
-
-input.new-message-input.valid:focus {
-  border: 1px solid $emer5;
+  &:focus { border-color: $cyan-alt; };
+  &.banned, &.banned:focus { border-color: $red; };
+  &.valid, &.valid:focus { border-color: $green; };
 }
 
 button.btn--new-message {

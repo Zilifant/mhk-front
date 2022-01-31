@@ -12,6 +12,17 @@
 .c-group-title.means    { grid-area: meti; }
 .c-group.means          { grid-area: mean; }
 
+.container.con--players {
+  padding: 0;
+}
+
+.player-list {
+  // width: 100%;
+  display: grid;
+  gap: .5rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .con--player {
   background-color: $bg4;
   display: grid;
@@ -23,13 +34,14 @@
     "info evid"
     "info mean"
     "intr mean";
+
   &.no-interact {
     grid-template-areas:
       "info evid"
       "info evid"
       "info mean"
       "info mean";
-  }
+  };
 }
 
 .con--self.player {
@@ -37,13 +49,12 @@
   display: grid;
   gap: $mar;
   grid-template-columns: 110px repeat(2, max-content 1fr);
-  grid-template-areas:
-    "info evti evid meti mean";
+  grid-template-areas: "info evti evid meti mean";
+
   &.killer-choosing {
     grid-template-columns: 70px 56px repeat(2, max-content 1fr);
-    grid-template-areas:
-      "info intr evti evid meti mean";
-  }
+    grid-template-areas: "info intr evti evid meti mean";
+  };
 }
 
 @keyframes blinking-linethrough {
@@ -56,7 +67,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: $rad;
   cursor: default;
 
   & .wrapper {
@@ -81,12 +91,12 @@
       background-color: $bg4;
       &.can-accuse {
         & svg {
-          fill: $yell6;
+          fill: $yellow-alt;
         };
       };
       &.accusal-spent {
         & svg {
-          fill: $bg2;
+          fill: $dark;
         };
       };
     };
@@ -94,12 +104,13 @@
     & .role {
       font-size: 1.25rem;
     };
+
     & .redteam,
-    & .killer { color: $killer; }
+    & .killer     { color: $killer; }
     & .accomplice { color: $accomp; }
-    & .witness { color: $witnss; }
-    & .hunter { color: $hunter; }
-    & .mystery { color: $mystry; }
+    & .witness    { color: $witnss; }
+    & .hunter     { color: $hunter; }
+    & .mystery    { color: $mystry; }
   };
 
   &.interact {
@@ -128,12 +139,8 @@
   line-height: .8rem;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
-  &.means {
-    color: lighten($mec, $pt);
-  }
-  &.evidence {
-    color: lighten($evc, $pt);
-  }
+  &.means { color: $mec; };
+  &.evidence { color: $evc; };
 }
 
 // confirm buttons
@@ -142,25 +149,20 @@
   margin: 0 auto;
   height: 100%;
   text-transform: uppercase;
-  @include float-btn-txt($c-def-bg, $fg3);
-
-  &:disabled {
-    cursor: auto;
-    @include float-btn-txt($c-dis-bg, darken($fg3, 30%));
-  }
+  @include flat-btn-solid($darkest, $cyan-alt, $darker, $dark);
 
   &.kill,
   &.accusation {
     width: 100%;
-  }
+  };
 
   &.kill {
-    @include float-btn-txt($c-kill-bg, $fg3);
-  }
+    @include flat-btn-solid($light, $red, $darker, $dark);
+  };
 
   &.key-evidence {
     padding: 15px 7px;
-  }
+  };
 }
 
 // means and evidence cards
@@ -170,59 +172,26 @@
 }
 
 .con--self.player {
-  max-width: calc((452px * 2) + 0.5rem)
+  width: 100%;
 }
 
 .con--self.player button.card-wrap--player {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  flex-grow: 1;
-  flex-direction: row;
+  // width: 100%;
+  // flex-grow: 1;
+  // flex-direction: row;
 }
 
 button.card-wrap--player {
-  display: inline-block;
-  border-radius: $rad;
-  padding: 3px;
-  width: 75px;
-  text-transform: capitalize;
+  // Order matters for precedence; selected > highlighted > means/evidence.
+  &.means       { @include player-card-btn($fg: $mec); };
+  &.evidence    { @include player-card-btn($fg: $evc); };
+  &.highlighted { @include player-card-btn($fg: $red); };
+  &.selected    { @include player-card-btn($fg: $green, $fg-hov-dark: 'true'); };
 
-  &:disabled {
-    cursor: auto;
-  }
   &:not(:first-child) {
     margin-left: .5rem;
-  }
-
-  &.evidence {
-    @include float-btn-txt($evc, $fg3);
-    &.selected,
-    &.selected.highlighted {
-      @include float-btn-txt($sel, $fg1);
-    }
-    &:disabled {
-      cursor: auto;
-      @include float-btn-txt(darken($evc, $dpt), $fg4);
-    }
-    &.highlighted {
-      @include float-btn-txt($hig, $fg1);
-    }
-  }
-
-  &.means {
-    @include float-btn-txt($mec, $fg3);
-    &.selected,
-    &.selected.highlighted {
-      @include float-btn-txt($sel, $fg1);
-    }
-    &:disabled {
-      cursor: auto;
-      @include float-btn-txt(darken($mec, $dpt), $fg4);
-    }
-    &.highlighted {
-      @include float-btn-txt($hig, $fg1);
-    }
-  }
+  };
 }

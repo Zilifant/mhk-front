@@ -14,15 +14,13 @@
 .con--info.nogame {
   flex-direction: column;
   & .svg-btn {
-    @include nobg-btn-svg();
-    & svg {
-      width: 30px;
-    };
+    width: 30px;
+    @include svg-nobg-btn($cyan, $cyan);
   };
 }
 
 .lobbyid-wrap .info-lobbyid {
-  background-color: $bg5;
+  background-color: $darker;
   justify-self: center;
   text-align: center;
   font-size: 2rem;
@@ -34,7 +32,7 @@
 
 .info-lobbyid.obscured {
   font-style: italic;
-  color: $bg1;
+  color: $dark;
 }
 
 .lobbyid-wrap {
@@ -90,7 +88,8 @@
       @include float-btn-txt($cyan6, $fg3);
     }
     & > .cleargame {
-      @include float-btn-txt($rose9, $fg3);
+      @include flat-btn-outline($fg: $red, $bg: $darker, $bd: $red);
+      // @include float-btn-txt($red, $darkest);
     }
   }
 }

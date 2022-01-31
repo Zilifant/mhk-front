@@ -4,9 +4,9 @@
 @import './mixins.scss';
 
 .container.con--timer {
-  background-color: $clue-bg;
-  width: 100%;
-  margin: 0;
+  background-color: $darker;
+  width: 112px;
+  margin: 0 0 0 $gap;
 }
 
 .time-wrap {
@@ -35,7 +35,7 @@
 }
 
 .time-digits.zero span {
-  color: $killer;
+  color: $red;
 }
 
 .time-wrap-off {
@@ -56,7 +56,7 @@
 }
 
 .time-wrap.running .show {
-  background-color: $ready;
+  background-color: $green;
 }
 
 .time-wrap.notrunning *,
@@ -67,9 +67,9 @@
 
 .time-wrap.running .timebar-3.show,
 .time-wrap.running .timebar-2.show {
-  background-color: $yell6;
+  background-color: $yellow;
 }
 
 .time-wrap.running .timebar-1.show {
-  background-color: $killer;
+  background-color: $red;
 }

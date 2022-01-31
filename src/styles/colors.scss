@@ -224,50 +224,63 @@ $blug8 :rgba(30,41,59,1);
 $blug9 :rgba(15,23,42,1);
 $newg1 :rgba(240,243,245,1);
 
+// New Colors
+
+$darkest: #1D1E26;
+$darker: #282A36;
+$dark: #44475A;
+$gray: #8E8F92;
+$light: #F8F8F2;
+$blue: #6272A4;
+$blue-dark: #383A57;
+$green: #50FA7B;
+$red: #FF5555;
+$yellow: #F1FA8C;
+$yellow-alt: #F7CC8B;
+$orange: #FFB86C;
+$pink: #FF79C6;
+$purple: #BD93F9;
+$purple-alt: #9281F7;
+$cyan: $cyan4;
+$cyan-alt: $cyan4;
+$cyan-light: #8BE9FD;
+
 // Foreground / Background
 
-$fg1: $gray1;
-$fg2: $gray2;
+$fg1: $light;
+$fg2: $light;
 $fg3: $gray3;
 $fg4: $gray4;
 
-$default: $colg2;
+$default: $light;
 
 $bg1: $gray5;
-$bg2: $gray6;
-$bg3: $gray7;
-$bg4: $gray8;
-$bg5: $gray9;
-$bg6: darken($gray9, 5%);
+$bg2: $dark;
+$bg3: $dark;
+$bg4: $darker;
+$bg5: $darkest;
+$bg6: darken($darkest, 5%);
 
 $defbg: $bg6;
 
 // Roles
 
-$killer:  $redd4;
-$accomp:  $redd3;
-$hunter:  $gree6;
-$witnss:  $libl4;
-$ghost:   $fuch5;
-$mystry:  $viol4;
+$killer:  $red;
+$accomp:  $orange;
+$hunter:  $green;
+$witnss:  $cyan;
+$ghost:   $pink;
+$mystry:  $purple-alt;
 
-$ready:   $emer6;
+$ready: $green;
 
-$evc: $colg6;
-$mec: $wrmg6;
+$evc: $orange;
+$mec: $cyan;
 
-$sel: $teal6;
-$hig: $rose9;
+$sel: $yellow;
+$hig: $red;
 
 // Ghost
-
-$clue-bg: $bg4;
-
-$cbbg: $bg2;
-$cbbg-s: $emer6;
-$cbbg-d: $bg3;
-$cbbg-l: lighten($bg4, 2%);
-$cbbg-h: $colg6;
 
 $cfbg: $cyan6;
 $cfbg-d: $bg3;
@@ -282,6 +295,6 @@ $cur: $teal7;
 
 // Player
 
-$c-def-bg: $cyan6;
+$c-def-bg: $cyan-alt;
 $c-dis-bg: $bg3;
-$c-kill-bg: $redd8;
+$c-kill-bg: $red;

@@ -5,18 +5,17 @@
 
 .container.con--self.gh,
 .container.con--ghost {
-  background-color: $clue-bg;
+  background-color: $darker;
   width: max-content;
 }
 
 div.card-wrap--ghost {
   display: inline-block;
-  background-color: $clue-bg;
-  border-radius: $rad;
+  background-color: $darker;
   width: 8rem;
   &:not(:first-child) {
     margin-left: .5rem;
-  }
+  };
 }
 
 .gc-back,
@@ -44,14 +43,17 @@ div.card-wrap--ghost {
 }
 
 .card-wrap--ghost {
-  &.old .gc-title { background-color: transparentize($colg7, .5); }
-  &.new .gc-title { background-color: transparentize($colg6, .5); }
-  &.cause .gc-title { background-color: transparentize($fuch7, .5) }
-  &.location .gc-title { background-color: transparentize($emer8, .5); }
+
+  // Order matters.
+  &.new .gc-title      { background-color: $dark; };
+  &.old .gc-title      { background-color: transparentize($blue, .5); };
+  &.cause .gc-title    { background-color: transparentize($purple-alt, .33); };
+  &.location .gc-title { background-color: transparentize($green, .5); };
+
   &.back {
     display: grid;
     grid-template-rows: 1fr max-content;
-  }
+  };
 }
 
 .gc-clue {
@@ -64,26 +66,26 @@ div.card-wrap--ghost {
   width: 100%;
   padding: 4px 0;
   text-transform:capitalize;
-  @include float-btn-txt($bg: $cbbg, $fg: $fg3);
+
+  @include float-btn-txt($bg: $dark, $fg: $fg3);
 
   &.selected {
-    @include float-btn-txt($bg: $cbbg-s, $fg: $fg1);
-  }
+    @include float-btn-txt($bg: $pink, $fg: $light);
+  };
 
   &:disabled {
     cursor: auto;
-    @include float-btn-txt($bg: $cbbg-d, $fg: darken($fg3, 30%));
-    &:not(.highlighted) {
-      &.locked {
-        @include float-btn-txt($bg: $cbbg-l, $fg: darken($fg3, 50%));
-      }
-    }
-  }
+    @include float-btn-txt($bg: $dark, $fg: darken($fg3, 30%));
+
+    &:not(.highlighted).locked {
+      @include float-btn-txt($bg: lighten($darker, 2%), $fg: $dark);
+    };
+  };
 
   // order matters: highlighted after disabled
   &.highlighted {
-    @include float-btn-txt($bg: $cbbg-h, $fg: $fg1);
-  }
+    @include float-btn-txt($bg: $red, $fg: $light);
+  };
 }
 
 button.btn--gc {
@@ -92,16 +94,17 @@ button.btn--gc {
   width: 100%;
 
   &.confirm-clue {
-    @include float-btn-txt($bg: $cfbg, $fg: $fg3);
-    &:disabled {
-      cursor: auto;
-      @include float-btn-txt($bg: $cfbg-d, $fg: darken($fg3, 30%));
-    }
+    // @include float-btn-txt($bg: $cyan, $fg: $darkest);
+    @include flat-btn-solid($fg: $darkest, $bg: $cyan, $fg-dis: darken($fg3, 30%), $bg-dis: $dark);
   }
 
   &.replace-card {
-    @include float-btn-txt($bg: $rpbg, $fg: $fg3);
-  }
+    @include float-btn-txt($bg: $purple-alt, $fg: $light);
+    &:disabled {
+      cursor: auto;
+      @include float-btn-txt($bg: $cfbg-d, $fg: darken($fg3, 30%));
+    };
+  };
 }
 
 .gc-back,
@@ -113,8 +116,8 @@ button.btn--gc {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: $bg5;
-  border: $bdr2 solid $bg3;
+  background-color: $darkest;
+  border: $bdr2 solid $dark;
 }
 
 .gc-back-icon {
@@ -122,29 +125,29 @@ button.btn--gc {
   width: 50px;
   margin: 0 auto;
   & svg {
-    fill: $fg4;
+    fill: $purple-alt;
   }
 }
 
 .gc-back-text {
   text-align: center;
+  text-transform: uppercase;
   &.title {
-    margin-top: 5px;
-    line-height: 2rem;
-    font-size: 2.5rem;
-    color: $rose5;
+    margin: 5px 0 2px 0;
+    font-size: 1.25rem;
+    color: $red;
   }
   &.subtitle {
-    font-size: 1.5rem;
-    color: $fg4;
+    font-size: 1rem;
+    color: $blue;
   }
 }
 
 .gc-conbtn-placeholder {
   margin-top: 3px;
   width: 100%;
-  color: $clue-bg;
-  background-color: $clue-bg;
+  color: $darker;
+  background-color: $darker;
   padding: 4px 0;
   cursor: default;
 }

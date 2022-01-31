@@ -35,10 +35,10 @@ const Chat = ({
   }, [subToChat, subToAnnounce, isDemo]);
 
   // TO DO: Update icon or add text to make purpose clearer to user.
-  const MinimizeChatButton = () => (
+  const MinimizeChatButton = ({ className, icon }) => (
     <SVGButton
-      icon='chat'
-      className='minimize-chat'
+      icon={icon}
+      className={className}
       onClick={minimizeChatHandler}
     />
   );
@@ -49,14 +49,23 @@ const Chat = ({
   };
 
   if (minimized) return (
-    <Container className={`lobbychat min`}>
-      <MinimizeChatButton />
+    <Container className='chatbutton'>
+      <MinimizeChatButton
+        className='maximize'
+        icon='chat'
+      />
     </Container>
   );
 
-  return (
+  return (<>
+    <Container className='chatbutton'>
+      <MinimizeChatButton
+        className='minimize'
+        icon='chat'
+      />
+    </Container>
+
     <Container className={`lobbychat`}>
-      <MinimizeChatButton />
       <ChatFeed messages={messages} users={users} />
       <NewMessage
         onChange={(e) => setMessageText(e.target.value)}
@@ -66,7 +75,7 @@ const Chat = ({
         submitHandler={newMessageSubmitHandler}
       />
     </Container>
-  );
+  </>);
 
 };
 

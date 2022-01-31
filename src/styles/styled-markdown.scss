@@ -4,7 +4,7 @@
 @import './mixins.scss';
 
 .smd--def {
-  color: darken($fg3, 10%);
+  color: $light;
 }
 
 li.line-smd--listitem,
@@ -15,20 +15,17 @@ div.line-smd--listitem {
   &::before {
     content: '>>>';
     font-size: 1.5rem;
-    color: $rose5;
+    color: $red;
     margin-right: .5rem;
   }
 }
 
 a.smd--link {
-  color: $cyan5;
+  color: $cyan-alt;
   @include colorfade();
-  &:hover {
-    color: $cyan4;
-  }
-  &:active {
-    color: $cyan6;
-  }
+  &:active, &:hover {
+    color: $cyan;
+  };
 }
 
 .smd--usermessage {
@@ -37,31 +34,31 @@ a.smd--link {
 
 .smd--timestamp {
   text-align: end;
-  color: $bg2;
+  color: $dark;
 }
 
 .smd--punctuation {
-  color: $fg3;
+  color: $light;
   font-weight: bold;
 }
 
 .smd--keyword {
-  color: $fg1;
+  color: $light;
   text-transform: capitalize;
   &.ghost {
-    color: $ghost;
+    color: $pink;
   };
   &.hunter {
-    color: $hunter;
+    color: $green;
   };
   &.killer {
-    color: $killer;
+    color: $red;
   };
   &.witness {
-    color: $witnss;
+    color: $cyan;
   };
   &.accomplice {
-    color: $accomp;
+    color: $orange;
   };
 }
 
@@ -77,12 +74,12 @@ a.smd--link {
 
 .line-smd--emphasize > span,
 .smd--emphasize {
-  color: $fg2;
+  color: $light;
 }
 
 .smd--warn {
   text-transform: uppercase;
-  color: $yell5;
+  color: $yellow;
 }
 
 .smd--username {

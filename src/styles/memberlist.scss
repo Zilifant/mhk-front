@@ -12,6 +12,7 @@
 ul.memberlist > :not(:first-child) {
   margin-top: .5rem;
 }
+
 div.member_grid  { grid-area: member; }
 div.ready_toggle { grid-area: ready; }
 
@@ -38,21 +39,21 @@ div.member_grid {
   padding: 6px;
   border: $bdr2 solid;
   border-radius: $rad6;
-  background-color: $bg5;
+  background-color: $darkest;
 }
 
 div.member_grid.ml-self {
   & > .member_name {
     font-style: italic;
-  }
+  };
 }
 
 div.member_grid.ml-notready {
-  border-color: $bg3;
+  border-color: $dark;
 }
 
 div.member_grid.ml-ready {
-  border-color: $ready;
+  border-color: $green;
 }
 
 div.member_name {
@@ -75,34 +76,26 @@ div.leader_icon {
   & .svg-btn.ghost {
     display: flex;
     justify-content: flex-end;
+
     & svg {
       @include colorfade();
       height: 30px;
       width: 21px;
-    }
-  }
-  & .svg-btn.ghost:active svg {
-    fill: darken($ghost, 20%);
-  }
+    };
+  };
 
-  & .svg-btn.transfer-leader:active svg {
-    fill: darken($yell5, 20%);
-  }
-
-  & .svg-btn.crown {
-    & svg {
-      @include colorfade();
-    }
-  }
+  & .svg-btn.crown svg {
+    @include colorfade();
+  };
 }
 
 .svg-icon.crown.ml-leader svg {
-  fill: $yell5;
+  fill: $yellow;
 }
 
 .svg-btn.assign-ghost.ml-notghost svg,
 .svg-btn.transfer-leader svg {
-  fill: $bg4;
+  fill: $dark;
 }
 
 .svg-icon.ghost svg,
@@ -115,12 +108,15 @@ div.leader_icon {
   visibility: hidden;
 }
 
-div.member_grid:hover > .leader_icon .svg-btn.transfer-leader:not(:active) svg {
-  fill: $yell5;
-}
+div.member_grid:hover {
 
-div.member_grid:hover > .ghost_icon .svg-btn.assign-ghost.ml-notghost:not(:active) svg {
-  fill: $ghost;
+  & > .leader_icon .svg-btn.transfer-leader svg {
+    fill: $yellow;
+  };
+
+  & > .ghost_icon .svg-btn.assign-ghost.ml-notghost svg {
+    fill: $ghost;
+  };
 }
 
 .ready_toggle {
@@ -138,27 +134,27 @@ button.ready-toggle-btn {
   font-size: larger;
   padding: 3px;
   width: 100px;
+
   &.ml-ready {
-    // @include float-btn-txt($ready, $fg3);
-    @include gradient-btn-txt($emer5);
-  }
+    @include flat-btn-solid($darkest, $green);
+  };
+
   &.ml-notready {
-    // @include float-btn-txt($rose8, $fg2);
-    @include gradient-btn-txt($rose6);
+    @include flat-btn-solid($darkest, $red);
   }
 }
 
-.ready-toggle-label {
-  margin-left: .5rem;
-  font-size: 2rem;
-  text-transform: uppercase;
-}
+// .ready-toggle-label {
+//   margin-left: .5rem;
+//   font-size: 2rem;
+//   text-transform: uppercase;
+// }
 
-.svg-btn.ready-toggle {
-  padding: 7px;
-  @include float-btn-txt($cyan6, $fg3, $rad3);
-  @include square(46px);
-  &:disabled svg {
-    fill: $bg1;
-  }
-}
+// .svg-btn.ready-toggle {
+//   padding: 7px;
+//   @include float-btn-txt($cyan6, $fg3, $rad3);
+//   @include square(46px);
+//   &:disabled svg {
+//     fill: $bg1;
+//   }
+// }

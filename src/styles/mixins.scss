@@ -53,6 +53,9 @@ $dpt: 5%;
   background-color: $bg;
   border-radius: $rd;
   color: $fg;
+  & p {
+    color: $fg;
+  };
   & svg {
     fill: $fg;
     @include colorfade();
@@ -151,11 +154,11 @@ $dpt: 5%;
   }
 }
 
-@mixin close-btn($size: 20px) {
-  $col: $rose5;
+@mixin close-btn($size: 20px, $pad: 4px) {
+  $col: $red;
   background-color: $col;
   border-radius: 50%;
-  padding: 4px;
+  padding: $pad;
   @include square($size);
   @include colorfade();
   @include shadow();
@@ -168,14 +171,145 @@ $dpt: 5%;
 
   &:not(:disabled):not(:active):hover {
     & svg {
-      fill: $bg6;
+      fill: $darkest;
     };
   };
 
   &:not(:disabled):active {
     background-color: transparentize($col, .3);
     & svg {
-      fill: $bg6;
+      fill: $darkest;
     };
+  };
+}
+
+// new button styles
+
+@mixin flat-btn-solid(
+  $fg,
+  $bg,
+  $fg-dis: $dark,
+  $bg-dis: $darker,
+  $fg-sel: $white,
+  $bg-sel: $pink
+) {
+  color: $fg;
+  background-color: $bg;
+
+  border: none;
+  border-radius: $rad3;
+
+  @include shadow();
+  @include colorfade();
+  // transition: all $time;
+
+  & > p, & > svg {
+    fill: $fg;
+    color: $fg;
+    @include colorfade();
+  };
+
+  &:disabled {
+    cursor: auto;
+    color: $fg-dis;
+    background-color: $bg-dis;
+
+    & > p, & > svg {
+      fill: $fg-dis;
+      color: $fg-dis;
+    };
+  };
+
+  &.selected {
+    color: $fg-sel;
+    background-color: $bg-sel;
+
+    & > p, & > svg {
+      fill: $fg-sel;
+      color: $fg-sel;
+    };
+  };
+
+  // &:not(:disabled):not(:active):hover {
+
+  // };
+
+  // &:not(:disabled):active {
+
+  // };
+}
+
+@mixin flat-btn-outline($fg, $bg, $bd, $fg-dis: $darker, $bg-dis: $darkest, $bd-dis: $dark) {
+  color: $fg;
+  & > p { color: $fg; transition: all $time; };
+  background-color: $bg;
+  border: $bdr2 solid $bd;
+  border-radius: $rad3;
+  padding: 1px 6px;
+  transition: all $time;
+
+  &:disabled {
+    cursor: auto;
+    color: $fg-dis;
+    & > p { color: $fg-dis; };
+    background-color: $bg-dis;
+    border-color: $bd-dis;
+  };
+
+  &:not(:disabled):not(:active):hover {
+    color: $light;
+    & > p { color: $light; transition: all $time; };
+    background-color: $bd;
+    border-color: $bd;
+  };
+}
+
+@mixin svg-nobg-btn($fg: $cyan-alt, $hv: $pink) {
+  background-color: inherit;
+  @include colorfade();
+
+  & svg {
+    fill: $fg;
+    @include colorfade();
+
+    &:hover {
+      fill: $hv;
+    };
+  };
+}
+
+@mixin player-card-btn(
+  $fg,
+  $bg: $darker,
+  $fg-hov-dark: 'false',
+) {
+
+  $fg-hov: $light;
+  @if $fg-hov-dark == 'true' {
+    $fg-hov: $darkest;
+  };
+
+  display: flex;
+  flex: 1 1 0;
+  justify-content: center;
+  align-items: center;
+
+  border: $bdr2 solid $fg;
+  border-radius: $rad6;
+  padding: 3px;
+
+  color: $fg;
+  background-color: $bg;
+
+  text-transform: capitalize;
+  transition: all $time;
+
+  &:disabled {
+    cursor: auto;
+  };
+
+  &:not(:disabled):hover {
+    color: $fg-hov;
+    background-color: $fg;
   };
 }

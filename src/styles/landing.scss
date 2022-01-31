@@ -3,201 +3,202 @@
 @import './colors.scss';
 @import './mixins.scss';
 
-.new-lobby-form,
-.join-lobby-form,
-.join-this-lobby-form {
-  display: flex;
-  justify-content: center;
-}
+// 40px subtitle
+// 167x52 buttons
 
-.btn--streaming-mode { grid-area: stream }
+.lobby-form-title     { grid-area: title; }
+.input-username       { grid-area: nym; }
+.input-lobbyid        { grid-area: id; }
+.input-username-label { grid-area: namelabel; }
+.input-lobbyid-label  { grid-area: idlabel; }
+.lobby-form-btn       { grid-area: btn; }
+.empty-cell           { grid-area: empty; }
 
-.new-lobby-title { grid-area: newtitl; }
-.new-lobby-label { grid-area: newlabel; }
-.new-lobby-input { grid-area: newinput; }
-.new-lobby-btn   { grid-area: newbtn; }
+.con--head            { grid-area: head; }
+.con--intro           { grid-area: intro; }
+.con--return-to-lobby { grid-area: return; }
+.con--lobby-forms     { grid-area: forms; }
+.con--foot            { grid-area: foot; }
 
-.join-this-lobby-title    { grid-area: jtltitl; }
-.join-this-lobby-subtitle { grid-area: jtlsubt; }
-.join-this-lobby-label    { grid-area: jtllabel; }
-.join-this-lobby-input    { grid-area: jtlinput; }
-.join-this-lobby-btn      { grid-area: jtlbtn; }
+.grid--landing {
+  $midColwidth: 300px;
+  $sideColwidth: 140px;
+  $rowHeight: 40px;
 
-.join-lobby-title          { grid-area: jnltitl; }
-.join-lobby-username-label { grid-area: jnlabel; }
-.join-lobby-username-input { grid-area: jninput; }
-
-.join-lobby-lobbyid-label { grid-area: jllabel; }
-.join-lobby-lobbyid-input { grid-area: jlinput; }
-.join-lobby-btn           { grid-area: jlbtn; }
-.btn--join-devlobby       { grid-area: jdbtn; }
-
-.new-lobby-title,
-.join-lobby-title,
-.join-this-lobby-title,
-.join-this-lobby-subtitle {
-  justify-content: center;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-}
-
-.grid--new-lobby-form,
-.grid--join-lobby-form,
-.grid--join-this-lobby-form {
   display: grid;
-  padding: 0;
-  gap: .5rem;
-  grid-template-columns: 90px 175px 90px;
-  font-size: 14px;
+  gap: 2rem 0;
+  grid-template-columns: 1fr minmax(min-content, 800px) 1fr;
+  grid-template-rows: minmax(min-content, 1fr) max-content 2fr max-content;
+  grid-template-areas:
+    '. head .'
+    '. intro .'
+    '. forms .'
+    'foot foot foot';
+
+  height: 100%;
+  width: 100%;
+
+  & > div.con--head {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    & > svg {
+      fill-rule:evenodd;
+      clip-rule:evenodd;
+      stroke-linejoin:round;
+      stroke-miterlimit:2;
+
+      width: 500px;
+
+      & path {
+        fill-rule: nonzero;
+        &.subtitle { fill: $blue; };
+        &.title    { fill: $red; };
+        &.skulls   { fill: $purple-alt; };
+      };
+    };
+  };
+
+  & > div.con--intro {
+    text-align: center;
+
+    & span {
+      font-size: 1.75rem;
+      line-height: 2.5rem;
+    };
+  };
+
+  & > div.con--lobby-forms {
+
+    & > div.return-to-lobby-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // background-color: $bg4;
+    
+      & > .return-greet {
+        font-size: 1.75rem;
+        font-style: italic;
+      };
+    
+      & > .return-link {
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-transform: uppercase;
+        text-decoration: none;
+        margin: 0 .5rem;
+        padding: .5rem;
+        height: $rowHeight;
+        // @include float-btn-txt($bg: $green, $fg: $darkest);
+        @include flat-btn-outline($purple-alt, $darker, $purple-alt);
+        & > p { font-size: 1.25em; };
+      };
+    };
+
+    & > div.lobby-form-wrapper {
+      width: max-content;
+      margin: 0 auto;
+
+      &:not(:first-child) { margin-top: 2rem; };
+
+      & > .lobby-form {
+        display: flex;
+        justify-content: center;
+
+        & > .lobby-form-grid {
+          font-size: 1.5rem;
+          display: grid;
+          padding: 0;
+          gap: .75rem;
+          grid-template-columns: $sideColwidth $midColwidth $sideColwidth;
+
+          &.grid--join-this-lobby,
+          &.grid--new-lobby {
+            grid-template-areas:
+              "title title title"
+              "namelabel nym btn";
+          };
+
+          &.grid--join-lobby {
+            grid-template-areas:
+              "title title title"
+              "namelabel nym empty" // `.` does not work here.
+              "idlabel id btn";
+          };
+
+          & * {
+            margin: 0;
+            display: flex;
+            align-items: center;
+          };
+
+          & > .lobby-form-title {
+            justify-content: center;
+            font-size: 1.5em;
+            text-transform: uppercase;
+          };
+
+          & > input.lobby-form-input {
+            font-size: 1.25em;
+            height: $rowHeight;
+            padding: 3px .5rem;
+            background-color: $darker;
+            border: 2px solid $dark;
+            border-radius: $rad3;
+
+            &::placeholder {
+              color: $dark;
+            };
+          };
+
+          & > label {
+            flex-direction: row-reverse;
+            justify-items: center;
+            margin-right: 0;
+            font-size: 1.25em;
+          };
+
+          & > .lobby-form-btn {
+            display: block;
+            text-transform: uppercase;
+            font-size: 1.25em;
+            @include flat-btn-solid($darkest, $green, $darker, $dark);
+          };
+        };
+      };
+
+      & > .streaming-mode-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: .75em;
+
+        & > .streaming-mode-label {
+          text-transform: uppercase;
+          font-size: 1.5rem;
+          margin-right: .75rem;
+        };
+      };
+    };
+  };
 }
 
 // hi-res displays
-@media screen and (min-device-width: 1200px) {
-  .grid--new-lobby-form,
-  .grid--join-lobby-form,
-  .grid--join-this-lobby-form {
-    display: grid;
-    padding: 0;
-    gap: .5rem;
-    grid-template-columns: 110px 200px 110px;
-  }
-  .con--head,
-  .con--join-this-lobby,
-  .con--returntolobby,
-  .con--join-lobby,
-  .con--new-lobby {
-    background-color: $bg3;
-    width: 100%;
-    font-size: 20px;
-  }
-}
-
-.grid--new-lobby-form {
-  grid-template-areas:
-    "newtitl newtitl newtitl"
-    "newlabel newinput newbtn";
-}
-
-.grid--join-this-lobby-form {
-  grid-template-areas:
-    "jtltitl jtltitl jtltitl"
-    "jtllabel jtlinput jtlbtn";
-}
-
-.grid--join-lobby-form {
-  grid-template-areas:
-    "jnltitl jnltitl jnltitl"
-    "jnlabel jninput jdbtn"
-    "jllabel jlinput jlbtn";
-}
-
-.grid--new-lobby-form *,
-.grid--join-lobby-form *,
-.grid--join-this-lobby-form * {
-  margin: 0;
-  display: flex;
-  align-items: center;
-}
-
-.grid--new-lobby-form label,
-.grid--join-lobby-form label,
-.grid--join-this-lobby-form label {
-  flex-direction: row-reverse;
-  justify-items: center;
-  margin-right: 0;
-}
-
-.con--head,
-.con--join-this-lobby,
-.con--returntolobby,
-.con--join-lobby,
-.con--new-lobby {
-  background-color: $bg3;
-  width: 100%;
-}
-
-.con--head {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  height: min-content;
-  background-color: $bg4;
-}
-
-input.new-lobby-username-input,
-input.join-this-lobby-username-input,
-input.join-lobby-username-input,
-input.join-lobby-lobbyid-input {
-  border-radius: $rad3;
-  background-color: $bg4;
-  min-height: 30px;
-}
-
-.landing > :not(:first-child) {
-  margin-top: .5rem;
-}
-
-.landing-title {
-  font-size: 2.5em;
-  color: $rose5;
-  padding: 0 2rem;
-  & span {
-    font-size: 1.5rem;
-    color: $fg4;
-  }
-}
-
-.landing-subtitle {
-  font-size: 1.5rem;
-  text-transform: uppercase;
-}
-
-.con--returntolobby {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  background-color: $bg4;
-  & > * {
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    text-decoration: none;
-  }
-  & > .return-link {
-    @include flat-btn-txt();
-    font-size: larger;
-  }
-}
-
-.landing-forms-wrapper {
-  width: max-content;
-  margin: 0 auto;
-  & > :not(:first-child) {
-    margin-top: .5rem;
-  }
-}
-
-.streaming-mode-wrapper {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  & > .streaming-mode-label {
-    text-transform: uppercase;
-    margin-right: .5rem;
-  }
-}
-
-.new-lobby-btn,
-.join-lobby-btn,
-.join-this-lobby-btn {
-  display: block;
-  text-transform: uppercase;
-  font-size: larger;
-  @include float-btn-txt($cyan6, $fg3);
-
-  &:disabled {
-    cursor: auto;
-    @include float-btn-txt($bg2, darken($fg3, 30%));
-  }
-}
+// @media screen and (min-device-width: 1200px) {
+//   .grid--new-lobby-form,
+//   .grid--join-lobby-form,
+//   .grid--join-this-lobby-form {
+//     display: grid;
+//     padding: 0;
+//     gap: .5rem;
+//     grid-template-columns: 110px 200px 110px;
+//   }
+//   .con--returntolobby {
+//     background-color: $bg3;
+//     width: 100%;
+//     font-size: 20px;
+//   }
+// }

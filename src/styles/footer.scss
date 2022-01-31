@@ -5,13 +5,16 @@
 
 .container.con--foot {
   padding: 0;
+  width: 100%;
 
   & .footer-wrap {
     display: flex;
     flex-direction: row;
 
     & .svg-btn.cleargame {
-      @include close-btn($size: 20px);
+      // margin-left: 10px;
+      // @include flat-btn-outline($fg: $red, $bg: $darker, $bd: $red);
+      @include close-btn($size: 30px, $pad: 5px);
     };
   };
 
@@ -19,37 +22,52 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: $bg4;
-    padding: .5rem;
+    align-items: center;
     height: max-content;
     width: 100%;
-    align-items: center;
+    padding: 1rem;
+    border-radius: $rad6;
+    background-color: $darker;
 
     & > :not(.infomodal-invis-wrap):not(:first-child) {
       margin-left: .5rem;
     };
 
+    & .footer-content {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+
+      & > .footer-text {
+        color: $gray;
+        font-size: 1.25rem;
+      };
+
+      & > .ttip-parent {
+        border-radius: 50%;
+      };
+
+      & > :not(.infomodal-invis-wrap):not(:first-child) {
+        margin-left: .5rem;
+      };
+    };
+
+    & .footer-btn {
+      font-size: 1.25rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: .5rem;
+      height: 40px;
+      @include flat-btn-outline($purple-alt, $darker, $purple-alt);
+    };
   };
 
   & .margin-hack {
     height: $mar;
-    background-color: $defbg;
+    opacity: 0;
   };
-}
-
-.footer-content {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  & > .footer-text {
-    color: $bg1;
-  };
-  & > :not(.infomodal-invis-wrap):not(:first-child) {
-    margin-left: .5rem;
-  };
-}
-
-.footer-content .ttip-parent {
-  border-radius: 50%;
 }

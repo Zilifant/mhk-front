@@ -28,12 +28,7 @@ button.startgame {
   font-size: 2rem;
   text-transform: uppercase;
   padding: .5rem 1rem;
-  @include float-btn-txt($cyan6, $fg3);
-
-  &:disabled {
-    cursor: auto;
-    @include float-btn-txt($bg3, darken($fg3, 30%));
-  }
+  @include flat-btn-solid($darkest, $green, $darker, $dark);
 }
 
 .ttip-parent.startgame {
@@ -57,7 +52,7 @@ button.startgame {
 
 .advrole {
   padding: 3px;
-  background-color: $bg4;
+  background-color: $darker;
   border-radius: $rad3;
   margin: 0;
   text-transform: uppercase;
@@ -66,29 +61,23 @@ button.startgame {
   text-align: center;
   cursor: default;
   &.on {
-    color: $emer5;
+    color: $pink;
+    @include colorfade();
   }
   &.off {
-    color: $bg2;
+    color: $darkest;
+    @include colorfade();
   }
 }
 
 .advrolebtn {
+  @include colorfade();
   padding: 3px;
   display: block;
   width: 110px;
   font-size: larger;
   text-transform: uppercase;
-  @include float-btn-txt($cyan6, $fg3);
-
-  &.selected {
-    @include float-btn-txt($emer6, $fg2);
-  }
-
-  &:disabled {
-    cursor: auto;
-    @include float-btn-txt($bg3, darken($fg3, 30%));
-  }
+  @include flat-btn-solid($darkest, $green, $darker, $dark, $darkest, $pink);
 }
 
 .advrole.ghost {
@@ -106,14 +95,14 @@ button.startgame {
   justify-content: center;
   font-size: 2rem;
   padding: 0;
-  background-color: $bg4;
-  border: $bdr2 solid $bg1;
+  background-color: $darkest;
+  border: $bdr2 solid $dark;
   cursor: default;
 }
 
 .timer.value.off {
-  color: $bg2;
-  border: $bdr2 solid $bg2;
+  color: $dark;
+  border: $bdr2 solid $dark;
 }
 
 .timer.value  { grid-area: va; }
@@ -135,21 +124,14 @@ button.startgame {
 }
 
 .svg-btn.timer {
-  @include float-btn-txt($cyan6, $fg3, $rad3);
-  &:disabled {
-    cursor: default;
-    @include float-btn-txt($bg3, darken($fg3, 30%), $rad3);
-  }
-  &:disabled svg {
-    fill: $bg1;
-  }
+  @include flat-btn-solid($darkest, $cyan-alt, $dark, $darker);
 }
 
 .svg-icon.timer {
   display: flex;
   border-radius: $rad3;
-  background-color: $bg4;
+  background-color: $darker;
   & svg {
-    fill: $bg2;
-  }
+    fill: $darkest;
+  };
 }

@@ -2,10 +2,12 @@
 
 import { useContext } from 'react';
 import { UserContext } from '../../context/contexts';
+import Container from '../shared/Container';
 import Header from './Header';
-import Footer from '../shared/Footer';
-import LobbyForm from './LobbyForm';
+import Intro from './Intro';
 import ReturnToLobby from './ReturnToLobby';
+import LobbyForm from './LobbyForm';
+import Footer from '../shared/Footer';
 import '../../styles/landing.scss';
 import '../../styles/forms.scss';
 
@@ -14,15 +16,18 @@ const Landing = () => {
   const { userId, userName, myLobby } = useContext(UserContext);
 
   return (
-    <div className='landing'>
+    <div className='grid--landing'>
       <Header />
-      {userId && <ReturnToLobby
-        userId={userId}
-        userName={userName}
-        myLobby={myLobby}
-      />}
-      <LobbyForm formType={'newLobby'} />
-      <LobbyForm formType={'joinLobby'} />
+      <Intro />
+      <Container className='lobby-forms'>
+        {userId && <ReturnToLobby
+          userId={userId}
+          userName={userName}
+          myLobby={myLobby}
+        />}
+        <LobbyForm formType={'newLobby'} />
+        <LobbyForm formType={'joinLobby'} />
+      </Container>
       <Footer />
     </div>
   );

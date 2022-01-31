@@ -3,19 +3,15 @@
 // is still in server memory). Shows username and navlink to user's lobby.
 
 import { NavLink } from 'react-router-dom';
-import Container from '../shared/Container';
 
 const ReturnToLobby = ({userName}) => {
 
   return (
-    <Container className="returntolobby">
-      <NavLink className='return-link' to='/lobby' exact>
-        return to lobby
-      </NavLink>
-      <span className='return-username'>
-        {userName}
-      </span>
-    </Container>
+    <div className='return-to-lobby-wrapper'>
+      <span className='return-greet'>Welcome back, {userName}.</span>
+      <NavLink className='return-link' to='/lobby' exact><p>return</p></NavLink>
+      <span className='return-greet'>to your last lobby?</span>
+    </div>
   );
 };
 

@@ -12,7 +12,6 @@ import {
   VALIDATOR_LETTERS_ONLY
 } from '../../util/validators';
 import ErrorModal from '../modal/ErrorModal';
-import Container from '../shared/Container';
 import Input from '../shared/Input';
 import Tooltip from '../shared/Tooltip';
 import Toggle from '../shared/Toggle';
@@ -96,74 +95,72 @@ const LobbyForm = ({ formType, lobbyId = null }) => {
 
     <ErrorModal error={error} onClear={clearError} />
 
-    <Container className={form.cssClass}>
-      <div className='landing-forms-wrapper'>
+    <div className='lobby-form-wrapper'>
 
-        <form
-          className={`form ${form.cssClass}-form`}
-          onSubmit={enterLobbyHandler}
-        >
-          <div className={`grid grid--${form.cssClass}-form`}>
+      <form
+        className={`lobby-form`}
+        onSubmit={enterLobbyHandler}
+      >
+        <div className={`lobby-form-grid grid--${form.cssClass}`}>
 
-            <div className={`lobby-form ${form.cssClass}-title`}>{form.title}</div>
+          <div className={`lobby-form-title`}>{form.title}</div>
 
-            <Input
-              id='userName'
-              element='input'
-              type='text'
-              label='Your Name'
-              placeholder='Name'
-              validators={[
-                VALIDATOR_REQUIRE(),
-                VALIDATOR_MAXLENGTH(MAX_NAME_LEN),
-                VALIDATOR_LETTERS_ONLY()
-              ]}
-              errorText='Please enter a name.'
-              onInput={inputHandler}
-              noInvalidStyle={true}
-              className={`${form.cssClass}-username`}
-            />
+          <Input
+            id='userName'
+            element='input'
+            type='text'
+            label='Your Name'
+            placeholder='Name'
+            validators={[
+              VALIDATOR_REQUIRE(),
+              VALIDATOR_MAXLENGTH(MAX_NAME_LEN),
+              VALIDATOR_LETTERS_ONLY()
+            ]}
+            errorText='Please enter a name.'
+            onInput={inputHandler}
+            noInvalidStyle={true}
+            className={`lobby-form-input input-username`}
+          />
 
-            {form.hasLobbyIdInput && <Input
-              id='lobbyId'
-              element='input'
-              type='text'
-              label='Lobby Name'
-              placeholder='Dark-Tower-0000'
-              initialValue=''
-              validators={[VALIDATOR_REQUIRE()]}
-              errorText='Please enter a valid lobby ID.'
-              onInput={inputHandler}
-              noInvalidStyle={true}
-              className={`${form.cssClass}-lobbyid`}
-            />}
+          {form.hasLobbyIdInput && <><Input
+            id='lobbyId'
+            element='input'
+            type='text'
+            label='Lobby Name'
+            placeholder='Dark-Tower-0000'
+            initialValue=''
+            validators={[VALIDATOR_REQUIRE()]}
+            errorText='Please enter a valid lobby ID.'
+            onInput={inputHandler}
+            noInvalidStyle={true}
+            className={`lobby-form-input input-lobbyid`}
+          /><div className='empty-cell'></div></>}
 
-            <button
-              type='submit'
-              disabled={!formState.isValid}
-              className={`${form.cssClass}-btn`}
-            >
-              {form.btnText}
-            </button>
+          <button
+            type='submit'
+            disabled={!formState.isValid}
+            className={`lobby-form-btn`}
+          >
+            {form.btnText}
+          </button>
 
-          </div>
-        </form>
-
-        <div className='streaming-mode-wrapper'>
-          <span className='streaming-mode-label'>
-            streaming mode
-          </span>
-          <div className='streaming-mode ttip-parent'>
-            <Toggle
-              className='streaming-mode-btn'
-              onChange={() => setIsStreamer(!isStreamer)}
-            />
-            <Tooltip tip='streamingMode' side='bottom' />
-          </div>
         </div>
+      </form>
 
+      <div className='streaming-mode-wrapper'>
+        <span className='streaming-mode-label'>
+          streaming mode
+        </span>
+        <div className='streaming-mode ttip-parent'>
+          <Toggle
+            className='streaming-mode-btn'
+            onChange={() => setIsStreamer(!isStreamer)}
+          />
+          <Tooltip tip='streamingMode' side='bottom' />
+        </div>
       </div>
-    </Container>
+
+    </div>
 
   </>);
 };

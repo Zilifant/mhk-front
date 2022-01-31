@@ -11,9 +11,8 @@
 import { useContext, useRef } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { UserContext } from '../../context/contexts';
-import LobbyForm from '../landing/LobbyForm';
+import Landing from '../landing/Landing';
 import Lobby from './Lobby';
-import '../../styles/landing.scss';
 
 const Foyer = () => {
 
@@ -34,13 +33,9 @@ const Foyer = () => {
 
     // ...and we have remembered another url, it means that this component
     // pushed the user to /join, and the remembered url is a specific lobby.
-    // So, load JoinThis version of LobbyForm with that url.
+    // So, load JoinThis version of Landing page with that url.
     if (!!url.current) {
-      return (
-        <div className='grid grid--foyer'>
-          <LobbyForm formType={'joinThis'} lobbyId={url.current} />
-        </div>
-      );
+      return <Landing lobbyId={url.current}/>;
 
       // If the ref is undefined, it means the user reached this url from
       // outside of this component (e.g. reloading the page). So, push them to

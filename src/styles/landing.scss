@@ -51,12 +51,12 @@
 
       width: 500px;
 
-      & path {
-        fill-rule: nonzero;
-        &.subtitle { fill: $blue; };
-        &.title    { fill: $red; };
-        &.skulls   { fill: $purple-alt; };
-      };
+      & linearGradient#titleGrad > stop:first-child    { stop-color: $pink; };
+      & linearGradient#titleGrad > stop:last-child     { stop-color: $red; };
+      & linearGradient#subtitleGrad > stop:first-child { stop-color: $purple; };
+      & linearGradient#subtitleGrad > stop:last-child  { stop-color: $purple-alt; };
+
+      & path { fill-rule: nonzero; };
     };
   };
 
@@ -92,7 +92,6 @@
         margin: 0 .5rem;
         padding: .5rem;
         height: $rowHeight;
-        // @include float-btn-txt($bg: $green, $fg: $darkest);
         @include flat-btn-outline($purple-alt, $darker, $purple-alt);
         & > p { font-size: 1.25em; };
       };

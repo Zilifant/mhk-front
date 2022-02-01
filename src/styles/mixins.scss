@@ -239,7 +239,14 @@ $dpt: 5%;
   // };
 }
 
-@mixin flat-btn-outline($fg, $bg, $bd, $fg-dis: $darker, $bg-dis: $darkest, $bd-dis: $dark) {
+@mixin flat-btn-outline(
+  $fg,
+  $bg,
+  $bd,
+  $fg-dis: $darker,
+  $bg-dis: $darkest,
+  $bd-dis: $dark
+) {
   color: $fg;
   & > p { color: $fg; transition: all $time; };
   background-color: $bg;
@@ -281,7 +288,7 @@ $dpt: 5%;
 @mixin player-card-btn(
   $fg,
   $bg: $darker,
-  $fg-hov-dark: 'false',
+  $fg-hov-dark: 'true',
 ) {
 
   $fg-hov: $light;

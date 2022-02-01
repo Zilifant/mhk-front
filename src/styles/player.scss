@@ -89,16 +89,8 @@
       margin: 4px 0 6px 0;
       height: 20px;
       background-color: $bg4;
-      &.can-accuse {
-        & svg {
-          fill: $yellow-alt;
-        };
-      };
-      &.accusal-spent {
-        & svg {
-          fill: $dark;
-        };
-      };
+      &.can-accuse svg { fill: $yellow-alt; };
+      &.accusal-spent svg { fill: $dark; };
     };
 
     & .role {
@@ -162,6 +154,9 @@
 
   &.key-evidence {
     padding: 15px 7px;
+    & svg {
+      fill: $darkest;
+    };
   };
 }
 
@@ -189,7 +184,7 @@ button.card-wrap--player {
   &.means       { @include player-card-btn($fg: $mec); };
   &.evidence    { @include player-card-btn($fg: $evc); };
   &.highlighted { @include player-card-btn($fg: $red); };
-  &.selected    { @include player-card-btn($fg: $green, $fg-hov-dark: 'true'); };
+  &.selected    { @include player-card-btn($fg: $green); };
 
   &:not(:first-child) {
     margin-left: .5rem;

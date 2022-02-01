@@ -51,7 +51,6 @@
   padding: .5rem;
 
   & > .gamestage-username {
-    background-color: $bg4;
     padding: 0;
     display: flex;
     flex-direction: row;
@@ -67,7 +66,7 @@
       text-transform: uppercase;
       font-size: 1.5rem;
       &.user-name {
-        color: $bg1;
+        color: $gray;
         display: flex;
         flex-direction: row;
         flex-grow: 1;
@@ -78,18 +77,15 @@
 
   & > .game-control-buttons {
     display: flex;
+
     & > button {
       width: max-content;
       height: 24px;
       padding: 0 6px;
       margin-right: .5rem;
-    }
-    & > .nextround {
-      @include float-btn-txt($cyan6, $fg3);
-    }
-    & > .cleargame {
-      @include flat-btn-outline($fg: $red, $bg: $darker, $bd: $red);
-      // @include float-btn-txt($red, $darkest);
-    }
-  }
+    };
+
+    & > .nextround { @include flat-btn-outline($fg: $cyan, $bg: $darker, $bd: $cyan); };
+    & > .cleargame { @include flat-btn-outline($fg: $red, $bg: $darker, $bd: $red); };
+  };
 }

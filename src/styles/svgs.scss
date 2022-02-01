@@ -5,48 +5,29 @@
 
 .svg-btn {
   display: flex;
-  height: 100%;
-  width: 100%;
   max-height: 50px;
   max-width: 50px;
-  background-color: inherit;
-  overflow: hidden;
 }
 
-.svg-icon {
+.svg-icon,
+.svg-btn {
   height: 100%;
   width: 100%;
   background-color: inherit;
   overflow: hidden;
-}
 
-.svg-icon svg {
-  height: 100%;
-  width: 100%;
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-  stroke-linejoin: round;
-  stroke-miterlimit: 2;
-  margin: 0;
-  fill: $default;
-}
+  & svg {
+    height: 100%;
+    width: 100%;
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    stroke-linejoin: round;
+    stroke-miterlimit: 2;
+    margin: 0;
+    fill: $light;
+  };
 
-.svg-btn svg {
-  height: 100%;
-  width: 100%;
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-  stroke-linejoin: round;
-  stroke-miterlimit: 2;
-  margin: 0;
-  fill: $default;
-}
-
-.svg-btn:hover svg {
-  fill: $white;
-}
-
-.svg-icon rect,
-.svg-btn rect {
-  fill: none;
+  & rect {
+    fill: none;
+  };
 }

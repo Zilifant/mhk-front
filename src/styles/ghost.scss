@@ -18,17 +18,11 @@ div.card-wrap--ghost {
   };
 }
 
-.gc-back,
 .gc-title,
 .gc-clue-btn {
   border-radius: $rad3;
 }
 
-.gc-back {
-  border-radius: $rad6;
-}
-
-.gc-back,
 .gc-title {
   padding: 2px .5rem;
 }
@@ -43,17 +37,11 @@ div.card-wrap--ghost {
 }
 
 .card-wrap--ghost {
-
   // Order matters.
   &.new .gc-title      { background-color: $dark; };
   &.old .gc-title      { background-color: transparentize($blue, .5); };
   &.cause .gc-title    { background-color: transparentize($purple-alt, .33); };
   &.location .gc-title { background-color: transparentize($green, .5); };
-
-  &.back {
-    display: grid;
-    grid-template-rows: 1fr max-content;
-  };
 }
 
 .gc-clue {
@@ -107,40 +95,31 @@ button.btn--gc {
   };
 }
 
+.card-wrap--ghost.back {
+  display: grid;
+  grid-template-rows: 1fr max-content;
+
+  & > .gc-back {
+    border: $bdr2 solid $dark;
+    border-radius: $rad6;
+    background: $darkest;
+    background-image: url('../assets/cardback-tp.png');
+    background-position: center;
+    background-size: cover;
+  };
+}
+
 .gc-back,
 .gc-title {
   cursor: default;
 }
 
 .gc-back {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: $darkest;
-  border: $bdr2 solid $dark;
-}
-
-.gc-back-icon {
-  height: max-content;
-  width: 50px;
-  margin: 0 auto;
-  & svg {
-    fill: $purple-alt;
-  }
-}
-
-.gc-back-text {
-  text-align: center;
-  text-transform: uppercase;
-  &.title {
-    margin: 5px 0 2px 0;
-    font-size: 1.25rem;
-    color: $red;
-  }
-  &.subtitle {
-    font-size: 1rem;
-    color: $blue;
-  }
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // background-color: $darkest;
+  // border: $bdr2 solid $dark;
 }
 
 .gc-conbtn-placeholder {

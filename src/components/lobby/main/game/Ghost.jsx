@@ -18,16 +18,7 @@ const Ghost = ({
 
   const ghostCardBack = () => (
     <div className='card-wrap--ghost back'>
-      <div className='gc-back'>
-        <div className='gc-back-wrap'>
-          <SVGIcon
-            icon='skull'
-            className='gc-back-icon'
-          />
-          <div className='gc-back-text title'>deception</div>
-          <div className='gc-back-text subtitle'>beta</div>
-        </div>
-      </div>
+      <div className='gc-back'/>
       {isGhostUI && <div className='gc-conbtn-placeholder'>-</div>}
     </div>
   )

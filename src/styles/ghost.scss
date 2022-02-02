@@ -3,127 +3,115 @@
 @import './colors.scss';
 @import './mixins.scss';
 
-.container.con--self.gh,
+.container.con--self.self-ghost,
 .container.con--ghost {
   background-color: $darker;
   width: max-content;
+
+  & > .ghost-cards-wrapper { display: flex; };
 }
 
-div.card-wrap--ghost {
+.ghost-card-wrapper {
   display: inline-block;
   background-color: $darker;
-  width: 8rem;
-  &:not(:first-child) {
-    margin-left: .5rem;
+  min-width: 8rem;
+  &:not(:first-child) { margin-left: .5rem; };
+
+  & > .gc-title {
+    display: flex;
+    height: 3rem;
+    padding: 2px .5rem;
+    border-radius: $rad3;
+    text-align: center;
+    text-transform: uppercase;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
   };
-}
 
-.gc-title,
-.gc-clue-btn {
-  border-radius: $rad3;
-}
+  &.new > .gc-title      { background-color: $dark; }; // Order matters.
+  &.old > .gc-title      { background-color: transparentize($blue, .5); };
+  &.cause > .gc-title    { background-color: transparentize($purple-alt, .33); };
+  &.location > .gc-title { background-color: transparentize($green, .5); };
 
-.gc-title {
-  padding: 2px .5rem;
-}
+  &.cardback {
+    display: grid;
+    grid-template-rows: 1fr max-content;
+    cursor: default;
 
-.gc-title {
-  display: flex;
-  height: 3rem;
-  text-align: center;
-  text-transform: uppercase;
-  align-items: center;
-  justify-content: center;
-}
+    & > .gc-cardback {
+      border: $bdr2 solid $dark;
+      border-radius: $rad6;
+      background: $darkest;
+      background-image: url('../assets/cardback-tp.png');
+      background-position: center;
+      background-size: cover;
+    };
+  };
 
-.card-wrap--ghost {
-  // Order matters.
-  &.new .gc-title      { background-color: $dark; };
-  &.old .gc-title      { background-color: transparentize($blue, .5); };
-  &.cause .gc-title    { background-color: transparentize($purple-alt, .33); };
-  &.location .gc-title { background-color: transparentize($green, .5); };
+  & > .gc-confirm-btn {
+    margin-top: 3px;
+    padding: 4px 0;
+    width: 100%;
+
+    &.select-clue {
+      @include flat-btn-solid(
+        $fg: $darkest,
+        $bg: $cyan,
+        $fg-dis: darken($fg3, 30%),
+        $bg-dis: $dark
+      );
+    };
+
+    &.replace-card {
+      @include float-btn-txt($bg: $purple-alt, $fg: $light);
+
+      &:disabled {
+        cursor: auto;
+        @include float-btn-txt($bg: $cfbg-d, $fg: darken($fg3, 30%));
+      };
+    };
+  };
+
+  & > .gc-confirm-btn-placeholder {
+    margin-top: 3px;
+    width: 100%;
+    color: $darker;
+    background-color: $darker;
+    padding: 4px 0;
+    cursor: default;
+  };
 }
 
 .gc-clue {
   margin: 3px 0 0;
   white-space: nowrap;
-}
 
-.gc-clue-btn {
-  margin: 0 auto;
-  width: 100%;
-  padding: 4px 0;
-  text-transform:capitalize;
+  & > .gc-clue-btn {
+    margin: 0 auto;
+    width: 100%;
+    padding: 4px 0;
+    border-radius: $rad3;
+    text-transform:capitalize;
 
-  @include float-btn-txt($bg: $dark, $fg: $fg3);
+    @include float-btn-txt($bg: $dark, $fg: $fg3);
 
-  &.selected {
-    @include float-btn-txt($bg: $pink, $fg: $light);
-  };
-
-  &:disabled {
-    cursor: auto;
-    @include float-btn-txt($bg: $dark, $fg: darken($fg3, 30%));
-
-    &:not(.highlighted).locked {
-      @include float-btn-txt($bg: lighten($darker, 2%), $fg: $dark);
+    &.selected {
+      @include float-btn-txt($bg: $pink, $fg: $light);
     };
-  };
 
-  // order matters: highlighted after disabled
-  &.highlighted {
-    @include float-btn-txt($bg: $red, $fg: $light);
-  };
-}
-
-button.gc-confirm-btn {
-  margin-top: 3px;
-  padding: 4px 0;
-  width: 100%;
-
-  &.select-clue {
-    @include flat-btn-solid(
-      $fg: $darkest,
-      $bg: $cyan,
-      $fg-dis: darken($fg3, 30%),
-      $bg-dis: $dark
-    );
-  }
-
-  &.replace-card {
-    @include float-btn-txt($bg: $purple-alt, $fg: $light);
     &:disabled {
       cursor: auto;
-      @include float-btn-txt($bg: $cfbg-d, $fg: darken($fg3, 30%));
+      @include float-btn-txt($bg: $dark, $fg: darken($fg3, 30%));
+
+      &:not(.highlighted).locked {
+        @include float-btn-txt($bg: lighten($darker, 2%), $fg: $dark);
+      };
+    };
+
+    // Order matters: highlighted after disabled.
+    &.highlighted {
+      @include float-btn-txt($bg: $red, $fg: $light);
     };
   };
-}
-
-.card-wrap--ghost.back {
-  display: grid;
-  grid-template-rows: 1fr max-content;
-
-  & > .gc-back {
-    border: $bdr2 solid $dark;
-    border-radius: $rad6;
-    background: $darkest;
-    background-image: url('../assets/cardback-tp.png');
-    background-position: center;
-    background-size: cover;
-  };
-}
-
-.gc-back,
-.gc-title {
-  cursor: default;
-}
-
-.gc-confirm-btn-placeholder,
-.gc-conbtn-placeholder {
-  margin-top: 3px;
-  width: 100%;
-  color: $darker;
-  background-color: $darker;
-  padding: 4px 0;
-  cursor: default;
 }

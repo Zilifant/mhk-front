@@ -78,6 +78,11 @@ const Player = ({
 
   // Accuse a player of being the killer.
   const AccuseBtn = () => {
+
+    function isAccuseBtnDisabled() {
+      return !isRoundStage || !canIAccuse || !minSelected || isAccompliceThrowing();
+    };
+
     return (
       <button
         className='confirm-btn accusation'
@@ -85,7 +90,7 @@ const Player = ({
           cb: [accusationHandler, myId, playerId],
           reset: true
         })}
-        disabled={!minSelected || isAccompliceThrowing()}
+        disabled={isAccuseBtnDisabled()}
       >
         {!isAccompliceThrowing() ? 'accuse' : 'madness!'}
       </button>
@@ -105,12 +110,12 @@ const Player = ({
     );
   };
 
-  const canIInteract = myRole !== 'ghost';
+  const iAmGhost = myRole === 'ghost';
   const isRoundStage = stage.type === 'round';
 
-  function interact() {
-    if (canIInteract && isRoundStage && canIAccuse) return AccuseBtn();
+  const InteractBtn = () => {
     if (isMurderable) return KillBtn();
+    if (!iAmGhost) return AccuseBtn();
     return null;
   };
 
@@ -129,8 +134,8 @@ const Player = ({
   };
 
   return (
-    <Container className={`player ${!canIInteract && 'no-interact'}`}>
-      <li className={`p-info ${roleClass}`}>
+    <Container className={`player ${iAmGhost && 'no-interact'}`}>
+      <div className={`p-info ${roleClass}`}>
         <div className='wrapper'>
           <div>
             <span className={`username ${isOnline ? 'online' : 'offline'}`}>
@@ -148,14 +153,14 @@ const Player = ({
             {roleDisplay.toUpperCase()}
           </div>
         </div>
-      </li>
-      {canIInteract && <li className={`p-info interact`}>
-        {interact()}
-      </li>}
+      </div>
+      {!iAmGhost && <div className={`p-info interact`}>
+        {<InteractBtn/>}
+      </div>}
       {types.map((type) => (
         <Cards
           myRole={myRole}
-          type={`otherPlayer`}
+          type='otherPlayer'
           cardType={type}
           key={type}
           stage={stage}

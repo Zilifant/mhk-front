@@ -3,6 +3,14 @@
 @import './colors.scss';
 @import './mixins.scss';
 
+$player-info-width: 110px;
+
+@keyframes blinking-linethrough {
+  0%   { text-decoration: line-through; }
+  50%  { text-decoration: none; }
+  100% { text-decoration: line-through; }
+}
+
 .p-info.username        { grid-area: name; }
 .p-info.badge           { grid-area: badg; }
 .p-info                 { grid-area: info; }
@@ -14,20 +22,19 @@
 
 .container.con--players {
   padding: 0;
-}
 
-.player-list {
-  // width: 100%;
-  display: grid;
-  gap: .5rem;
-  grid-template-columns: repeat(2, 1fr);
+  & > .player-list {
+    display: grid;
+    gap: .5rem;
+    grid-template-columns: repeat(2, 1fr);
+  };
 }
 
 .con--player {
-  background-color: $bg4;
+  background-color: $darker;
   display: grid;
   gap: $mar;
-  grid-template-columns: 110px 1fr;
+  grid-template-columns: $player-info-width 1fr;
   grid-template-rows: 26px 1fr 1fr 26px;
   grid-template-areas:
     "info evid"
@@ -45,23 +52,38 @@
 }
 
 .con--self.player {
-  background-color: $bg4;
+  background-color: $darker;
+  width: 100%;
   display: grid;
   gap: $mar;
-  grid-template-columns: 110px repeat(2, max-content 1fr);
+  grid-template-columns: $player-info-width repeat(2, max-content 1fr);
   grid-template-areas: "info evti evid meti mean";
 
   &.killer-choosing {
     grid-template-columns: 70px 56px repeat(2, max-content 1fr);
     grid-template-areas: "info intr evti evid meti mean";
   };
+
+  & > .c-group-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: min-content;
+    padding: 0;
+    cursor: default;
+    text-transform: uppercase;
+    font-size: normal;
+    line-height: .8rem;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+
+    &.means { color: $mec; };
+    &.evidence { color: $evc; };
+  };
 }
 
-@keyframes blinking-linethrough {
-  0% { text-decoration: line-through; }
-  50% { text-decoration: none; }
-  100% { text-decoration: line-through; }
-}
+// player info
 
 .p-info {
   display: flex;
@@ -69,70 +91,54 @@
   align-items: center;
   cursor: default;
 
-  & .wrapper {
+  & > .wrapper {
     max-width: 100%;
     text-align: center;
-    background-color: $bg4;
+    background-color: $darker;
     padding: 4px 0;
 
     & .username {
       font-size: 1.25rem;
       letter-spacing: .1rem;
+
       &.offline {
-        color: $bg2;
+        color: $gray;
         animation: blinking-linethrough 2s;
         animation-iteration-count: infinite;
       };
     };
 
-    & .svg-icon.badge {
+    & > .svg-icon.badge {
       margin: 4px 0 6px 0;
       height: 20px;
-      background-color: $bg4;
+      background-color: $darker;
+
       &.can-accuse svg { fill: $yellow-alt; };
       &.accusal-spent svg { fill: $dark; };
     };
 
-    & .role {
+    & > .role {
       font-size: 1.25rem;
     };
 
-    & .redteam,
-    & .killer     { color: $killer; }
-    & .accomplice { color: $accomp; }
-    & .witness    { color: $witnss; }
-    & .hunter     { color: $hunter; }
-    & .mystery    { color: $mystry; }
+    & > .redteam,
+    & > .killer     { color: $killer; }
+    & > .accomplice { color: $accomp; }
+    & > .witness    { color: $witnss; }
+    & > .hunter     { color: $hunter; }
+    & > .mystery    { color: $mystry; }
   };
 
   &.interact {
     border-radius: $rad3;
     background-color: $bg3;
-    &:not(.con-key-ev) {
-      height: 26px;
-    };
+
+    &:not(.con-key-ev) { height: 26px; };
   };
 }
 
 .c-group {
   display: flex;
-}
-
-.c-group-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: min-content;
-  padding: 0;
-  cursor: default;
-  text-transform: uppercase;
-  font-size: normal;
-  line-height: .8rem;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  &.means { color: $mec; };
-  &.evidence { color: $evc; };
 }
 
 // confirm buttons
@@ -162,31 +168,58 @@
 
 // means and evidence cards
 
-.con--player {
-  height: 140px;
-}
+@mixin player-card-btn(
+  $fg,
+  $bg: $darker,
+  $fg-hov-dark: 'true',
+) {
 
-.con--self.player {
-  width: 100%;
-}
+  $fg-hov: $light;
+  @if $fg-hov-dark == 'true' {
+    $fg-hov: $darkest;
+  };
 
-.con--self.player button.card-wrap--player {
   display: flex;
+  flex: 1 1 0;
   justify-content: center;
   align-items: center;
-  // width: 100%;
-  // flex-grow: 1;
-  // flex-direction: row;
+
+  border: $bdr2 solid $fg;
+  border-radius: $rad6;
+  padding: 12px;
+  min-width: 100px;
+  // min-height: 70px;
+
+  color: $fg;
+  background-color: $bg;
+
+  text-transform: capitalize;
+  transition: all $time;
+
+  &:disabled {
+    cursor: auto;
+  };
+
+  &:not(:disabled):hover {
+    color: $fg-hov;
+    background-color: $fg;
+  };
 }
 
 button.card-wrap--player {
+  font-size: 20px;
+
   // Order matters for precedence; selected > highlighted > means/evidence.
   &.means       { @include player-card-btn($fg: $mec); };
   &.evidence    { @include player-card-btn($fg: $evc); };
   &.highlighted { @include player-card-btn($fg: $red); };
   &.selected    { @include player-card-btn($fg: $green); };
 
-  &:not(:first-child) {
-    margin-left: .5rem;
-  };
+  &:not(:first-child) { margin-left: .5rem; };
 }
+
+// .con--self.player button.card-wrap--player {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }

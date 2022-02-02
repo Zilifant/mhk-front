@@ -76,14 +76,18 @@ div.card-wrap--ghost {
   };
 }
 
-button.btn--gc {
+button.gc-confirm-btn {
   margin-top: 3px;
   padding: 4px 0;
   width: 100%;
 
-  &.confirm-clue {
-    // @include float-btn-txt($bg: $cyan, $fg: $darkest);
-    @include flat-btn-solid($fg: $darkest, $bg: $cyan, $fg-dis: darken($fg3, 30%), $bg-dis: $dark);
+  &.select-clue {
+    @include flat-btn-solid(
+      $fg: $darkest,
+      $bg: $cyan,
+      $fg-dis: darken($fg3, 30%),
+      $bg-dis: $dark
+    );
   }
 
   &.replace-card {
@@ -114,6 +118,7 @@ button.btn--gc {
   cursor: default;
 }
 
+.gc-confirm-btn-placeholder,
 .gc-conbtn-placeholder {
   margin-top: 3px;
   width: 100%;

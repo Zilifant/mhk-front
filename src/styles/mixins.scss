@@ -284,39 +284,3 @@ $dpt: 5%;
     };
   };
 }
-
-@mixin player-card-btn(
-  $fg,
-  $bg: $darker,
-  $fg-hov-dark: 'true',
-) {
-
-  $fg-hov: $light;
-  @if $fg-hov-dark == 'true' {
-    $fg-hov: $darkest;
-  };
-
-  display: flex;
-  flex: 1 1 0;
-  justify-content: center;
-  align-items: center;
-
-  border: $bdr2 solid $fg;
-  border-radius: $rad6;
-  padding: 3px;
-
-  color: $fg;
-  background-color: $bg;
-
-  text-transform: capitalize;
-  transition: all $time;
-
-  &:disabled {
-    cursor: auto;
-  };
-
-  &:not(:disabled):hover {
-    color: $fg-hov;
-    background-color: $fg;
-  };
-}

@@ -16,15 +16,15 @@ const Ghost = ({
 }) => {
 
   const ghostCardBack = () => (
-    <div className='card-wrap--ghost back'>
-      <div className='gc-back'/>
-      {isGhostUI && <div className='gc-conbtn-placeholder'>-</div>}
+    <div className='ghost-card-wrapper cardback'>
+      <div className='gc-cardback'/>
+      {isGhostUI && <div className='gc-confirm-btn-placeholder'>-</div>}
     </div>
   )
 
   return (
-    <Container className={isGhostUI ? 'self gh' : 'ghost'}>
-      <ul className='c-group'>
+    <Container className={isGhostUI ? 'self self-ghost' : 'ghost'}>
+      <div className='ghost-cards-wrapper'>
         {cluesDeck.map((card) => (
         <GhostCard
           key={card.id}
@@ -34,7 +34,7 @@ const Ghost = ({
           confirmedClues={confirmedClues}
         />))}
         {currentStage.type !== 'liminal' && ghostCardBack()}
-      </ul>
+      </div>
     </Container>
   );
 };

@@ -67,7 +67,7 @@ const GhostCard = ({
   const ConfirmClueBtn = () => {
     return (
       <button
-        className='btn btn--gc confirm-clue'
+        className='btn gc-confirm-btn select-clue'
         onClick={() => confirmSelection({
           cb:[chooseClueHandler],
           resetTracker: false
@@ -83,7 +83,7 @@ const GhostCard = ({
   const ReplaceCardBtn = () => {
     return (
       <button
-        className='btn btn--gc replace-card'
+        className='btn gc-confirm-btn replace-card'
         onClick={() => replaceGhostCardHandler(card.id)}
         disabled={false}
       >
@@ -95,15 +95,15 @@ const GhostCard = ({
   const ConfirmBtns = () => {
     if (stage.type !== 'liminal' && !card.isLocked) return ConfirmClueBtn();
     if (stage.type === 'liminal' && card.type === 'clue' && !card.isNew) return ReplaceCardBtn();
-    return <div className='gc-conbtn-placeholder'>-</div>
+    return <div className='gc-confirm-btn-placeholder'>-</div>
   };
 
   // Skip clue cards that have not yet been drawn or that have been replaced.
   if (!card.isDisplayed) return null;
 
   return (
-    <div className={`card-wrap--ghost ${card.type} ${newCard}`}>
-      <div className={'gc-title'}><h3>{card.id}</h3></div>
+    <div className={`ghost-card-wrapper ${card.type} ${newCard}`}>
+      <div className='gc-title'>{card.id}</div>
       <ul>
         {card.opts.map((opt, index) => (
           <li

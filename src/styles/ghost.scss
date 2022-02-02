@@ -12,20 +12,18 @@
 }
 
 .ghost-card-wrapper {
-  display: inline-block;
   background-color: $darker;
   min-width: 8rem;
   &:not(:first-child) { margin-left: .5rem; };
 
   & > .gc-title {
     display: flex;
+    align-items: center;
+    justify-content: center;
     height: 3rem;
     padding: 2px .5rem;
     border-radius: $rad3;
-    text-align: center;
     text-transform: uppercase;
-    align-items: center;
-    justify-content: center;
     cursor: default;
   };
 

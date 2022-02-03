@@ -12,8 +12,8 @@ const TitleSVGNarrow = () => (
         gradientUnits="userSpaceOnUse"
         gradientTransform="matrix(640.562,0,0,137.535,1.13687e-13,68.7673)"
       >
-        <stop offset="0" stop-opacity="1"/>
-        <stop offset="1" stop-opacity="1"/>
+        <stop offset="0" stopOpacity="1"/>
+        <stop offset="1" stopOpacity="1"/>
       </linearGradient>
       <linearGradient
         id="subtitleGrad"
@@ -21,8 +21,8 @@ const TitleSVGNarrow = () => (
         gradientUnits="userSpaceOnUse"
         gradientTransform="matrix(640.562,0,0,137.535,1.13687e-13,68.7673)"
       >
-        <stop offset="0" stop-opacity="1"/>
-        <stop offset="1" stop-opacity="1"/>
+        <stop offset="0" stopOpacity="1"/>
+        <stop offset="1" stopOpacity="1"/>
       </linearGradient>
     </defs>
     <path

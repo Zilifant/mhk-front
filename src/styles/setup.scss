@@ -60,24 +60,19 @@ button.startgame {
   width: 110px;
   text-align: center;
   cursor: default;
-  &.on {
-    color: $pink;
-    @include colorfade();
-  }
-  &.off {
-    color: $darkest;
-    @include colorfade();
-  }
+  @include colorfade();
+  &.on { color: $pink; };
+  &.off { color: $darkest; };
 }
 
-.advrolebtn {
-  @include colorfade();
-  padding: 3px;
+button.advrolebtn {
   display: block;
-  width: 110px;
-  font-size: larger;
   text-transform: uppercase;
-  @include flat-btn-solid($darkest, $green, $darker, $dark, $darkest, $pink);
+  font-size: larger;
+  padding: 3px;
+  width: 110px;
+  &.on { @include flat-btn-solid($darkest, $pink); };
+  &.off { @include flat-btn-solid($darkest, $green); };
 }
 
 .advrole.ghost {

@@ -133,15 +133,9 @@ button.ready-toggle-btn {
   text-transform: uppercase;
   font-size: larger;
   padding: 3px;
-  width: 100px;
-
-  &.ml-ready {
-    @include flat-btn-solid($darkest, $green);
-  };
-
-  &.ml-notready {
-    @include flat-btn-solid($darkest, $red);
-  }
+  width: 110px;
+  &.ml-ready { @include flat-btn-solid($darkest, $green); };
+  &.ml-notready { @include flat-btn-solid($darkest, $red); }
 }
 
 // .ready-toggle-label {

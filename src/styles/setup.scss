@@ -90,27 +90,26 @@ button.advrolebtn {
   justify-content: center;
   font-size: 2rem;
   padding: 0;
-  background-color: $darkest;
-  border: $bdr2 solid $dark;
+  background-color: $darker;
+  border: $bdr2 solid $darker;
   cursor: default;
+
+  &.off {
+    color: $darkest;
+    border: $bdr2 solid $darker;
+  };
 }
 
-.timer.value.off {
-  color: $dark;
-  border: $bdr2 solid $dark;
-}
-
-.timer.value  { grid-area: va; }
-.timer.dec    { grid-area: de; }
-.timer.inc    { grid-area: in; }
+.timer.value { grid-area: va; }
+.timer.dec   { grid-area: de; }
+.timer.inc   { grid-area: in; }
 
 .timer-wrap {
   border-radius: $rad;
   display: grid;
   gap: .5rem;
-  grid-template-columns: 34px 65px 34px; // scale
-  grid-template-areas:
-    'de va in';
+  grid-template-columns: 34px 65px 34px; // TO DO: scale
+  grid-template-areas: 'de va in';
 }
 
 .svg-btn.timer,
@@ -119,7 +118,7 @@ button.advrolebtn {
 }
 
 .svg-btn.timer {
-  @include flat-btn-solid($darkest, $cyan-alt, $dark, $darker);
+  @include flat-btn-solid($darkest, $cyan, $darkest, $darker);
 }
 
 .svg-icon.timer {

@@ -9,6 +9,52 @@ import TimerSetup from './TimerSetup';
 import Tooltip from '../../../shared/Tooltip';
 import '../../../../styles/setup.scss';
 
+// Only used internally.
+const AdvRoles = ({
+  iAmLeader,
+  toggleHandler,
+  advRolesDisabled,
+  hasWitness,
+  hasAccomplice,
+}) => {
+
+  // Not tracked with useState, since this component completely re-renders
+  // each time new data is received from socket.io server.
+  const advRoles = [
+    {id: 'witness', active: hasWitness},
+    {id: 'accomplice', active: hasAccomplice}
+  ];
+
+  if (iAmLeader) return (
+    <div className='advrole-wrapper'>
+      {advRoles.map((role, i) => (
+        <button
+          key={i}
+          className={`advrolebtn ${role.active ? 'on' : 'off'}`}
+          onClick={() => toggleHandler(role.id)}
+          disabled={advRolesDisabled}
+        >
+          {role.id}
+        </button>
+      ))}
+    </div>
+  );
+
+  return (
+    <div className='advrole-wrapper'>
+      {advRoles.map((role, i) => (
+        <div
+          key={i}
+          className={`advrole ${role.active ? 'on' : 'off'}`}
+        >
+          {role.id}
+        </div>
+      ))}
+    </div>
+  );
+
+};
+
 const Setup = ({
   lobby,
   iAmLeader,
@@ -22,41 +68,6 @@ const Setup = ({
     toggleHandler,
     chooseTimerHandler
   } = useGame(socket);
-
-  // Not tracked with useState, since this component completely re-renders
-  // each time new data is received from socket.io server.
-  const advRoles = [
-    {id: 'witness', active: gameSettings.hasWitness},
-    {id: 'accomplice', active: gameSettings.hasAccomplice}
-  ];
-
-  const AdvRolesLeader = () => (
-    <div className='advrole-wrapper'>
-      {advRoles.map((role, i) => (
-        <button
-          key={i}
-          className={`advrolebtn ${role.active && 'selected'}`}
-          onClick={() => toggleHandler(role.id)}
-          disabled={!lobby.canUseAdvRoles()}
-        >
-          {role.id}
-        </button>
-      ))}
-    </div>
-  );
-
-  const AdvRolesBasic = () => (
-    <div className='advrole-wrapper'>
-      {advRoles.map((role, i) => (
-        <div
-          key={i}
-          className={`advrole ${role.active ? 'on' : 'off'}`}
-        >
-          {role.id}
-        </div>
-      ))}
-    </div>
-  );
 
   return (
     <Container className={`setup ${iAmLeader ? 'leader' : 'notleader'}`}>
@@ -75,7 +86,13 @@ const Setup = ({
         <div className='setup-section'>
           <div className='settings-title'>Advanced Roles</div>
           <div className='settings-content roles ttip-parent'>
-            {iAmLeader ? <AdvRolesLeader /> : <AdvRolesBasic />}
+            <AdvRoles
+              iAmLeader={iAmLeader}
+              toggleHandler={toggleHandler}
+              advRolesDisabled={!lobby.canUseAdvRoles()}
+              hasWitness={gameSettings.hasWitness}
+              hasAccomplice={gameSettings.hasAccomplice}
+            />
             <Tooltip tip='advRoles' side='bottom' />
           </div>
         </div>

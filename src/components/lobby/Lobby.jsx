@@ -18,7 +18,7 @@ import Footer from '../shared/Footer';
 const Lobby = () => {
   if (isDevEnv) console.log('%cLobby','color:#79f98e');
 
-  const { myLobby, userId } = useContext(UserContext);
+  const { myLobby, userId, isStreamer } = useContext(UserContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient('Lobby');
 
   // Track initial HTTP requests and socket.io connections, ensuring that they
@@ -43,7 +43,7 @@ const Lobby = () => {
 
   // Track how Chat component should be rendered. Must be tracked here as Grid
   // variant partially depends on this state.
-  const [chatMinimized, setChatMinimized] = useState(false);
+  const [chatMinimized, setChatMinimized] = useState(isStreamer);
   const minimizeChatHandler = () => setChatMinimized(!chatMinimized);
   const showChat = chatMinimized ? 'nochat' : 'chat';
 

@@ -48,24 +48,15 @@ const Chat = ({
     newMessage();
   };
 
-  if (minimized) return (
-    <Container className='chatbutton'>
-      <MinimizeChatButton
-        className='maximize'
-        icon='chat'
-      />
-    </Container>
-  );
-
   return (<>
     <Container className='chatbutton'>
       <MinimizeChatButton
-        className='minimize'
+        className={minimized ? 'maximize' : 'minimize'}
         icon='chat'
       />
     </Container>
 
-    <Container className={`lobbychat`}>
+    {!minimized && <Container className='lobbychat'>
       <ChatFeed messages={messages} users={users} />
       <NewMessage
         onChange={(e) => setMessageText(e.target.value)}
@@ -74,7 +65,7 @@ const Chat = ({
         myLobby={myLobby}
         submitHandler={newMessageSubmitHandler}
       />
-    </Container>
+    </Container>}
   </>);
 
 };

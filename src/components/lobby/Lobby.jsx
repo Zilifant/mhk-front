@@ -131,60 +131,61 @@ const Lobby = () => {
          : 'nogame'
   };
 
-  return (
-    <SocketContext.Provider value={{ socket: socket }}>
-      <React.Fragment>
-        <ErrorModal error={error} onClear={clearError} />
-        {/* Show overlay while waiting for HTTP request. */}
-        {isLoading &&
-          <Loading
-            overlay
-            color='orange'
-            content='Fetching lobby...'
-          />
-        }
-        {/* Show overlay while waiting for socket.io connection (only after
-            HTTP request has resolved successfully). */}
-        {lobby && !isConnected &&
-          <Loading
-            overlay
-            color='blue'
-            content='Connecting to IO...'
-          />
-        }
-        {/* Show overlay in game during suspensful delay on accusal.
-            TO DO: can this be moved? */}
-        {!isLoading && lobby && lobby.game?.isResolvingAccusal &&
-          <Loading
-            overlay
-            suspenseful
-            color='purple'
-            content='Investigating...'
-          />
-        }
-        {/* FIFTH: Render lobby after all HTTP and socket.io tasks have
-            resolved successfully. */}
-        {!isLoading && lobby && isConnected &&
-          <div className={`grid grid--lobby-${gridVariant()} ${showChat}`}>
-            <Main
-              lobby={lobby}
-              thisPlayer={getThisPlayer(userId, lobby.game)}
-              iAmLeader={lobby.leader === userId}
-            />
-            <Chat
-              chat={lobby.chat}
-              users={lobby.users}
-              minimizeChatHandler={minimizeChatHandler}
-              minimized={chatMinimized}
-            />
-            <Footer
-              showClearBtn={lobby.leader === userId && lobby.gameOn}
-            />
-          </div>
-        }
-      </React.Fragment>
-    </SocketContext.Provider>
-  );
+  return (<SocketContext.Provider value={{ socket: socket }}><>
+    <ErrorModal error={error} onClear={clearError} />
+
+    {/* Show overlay while waiting for HTTP request. */}
+    {isLoading &&
+      <Loading
+        overlay
+        color='orange'
+        content='Fetching lobby...'
+      />
+    }
+
+    {/* Show overlay while waiting for socket.io connection (only after
+        HTTP request has resolved successfully). */}
+    {lobby && !isConnected &&
+      <Loading
+        overlay
+        color='blue'
+        content='Connecting to IO...'
+      />
+    }
+
+    {/* Show overlay in game during suspensful delay on accusal.
+        TO DO: can this be moved?
+        FIX ME: this does not work in production */}
+    {!isLoading && lobby && lobby.game?.isResolvingAccusal &&
+      <Loading
+        overlay
+        suspenseful
+        color='purple'
+        content='Investigating...'
+      />
+    }
+
+    {/* FIFTH: Render lobby after all HTTP and socket.io tasks have
+        resolved successfully. */}
+    {!isLoading && lobby && isConnected &&
+      <div className={`grid grid--lobby-${gridVariant()} ${showChat}`}>
+        <Main
+          lobby={lobby}
+          thisPlayer={getThisPlayer(userId, lobby.game)}
+          iAmLeader={lobby.leader === userId}
+        />
+        <Chat
+          chat={lobby.chat}
+          users={lobby.users}
+          minimizeChatHandler={minimizeChatHandler}
+          minimized={chatMinimized}
+        />
+        <Footer
+          showClearBtn={lobby.leader === userId && lobby.gameOn}
+        />
+      </div>
+    }
+  </></SocketContext.Provider>);
 };
 
 export default Lobby;

@@ -30,6 +30,7 @@
     display: inline-flex;
     width: 700px;
     height: calc(100% - 4rem);
+
     @media (max-width: 750px) {
       width: calc(100% - 4rem);
     };
@@ -42,10 +43,12 @@
     & iframe {
       width: 560px;
       height: 315px;
+
       @media (min-width: 1000px) {
         width: calc(1000px - 56px);
         height: calc((1000px - 56px) * (9/16));
       };
+
       @media (min-width: 1600px) {
         width: calc(1600px - 56px);
         height: calc((1600px - 56px) * (9/16));
@@ -56,6 +59,7 @@
   &.text-sp {
     width: 800px;
     height: calc(100% - 4rem);
+
     @media (max-width: 750px) {
       width: calc(100% - 4rem);
     };
@@ -67,6 +71,7 @@
   position: absolute;
   top: 10px;
   right: 10px;
+
   .infomodal-wrap.vid:not(:hover) & {
     display: none;
   };
@@ -82,12 +87,14 @@
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-areas: '. t c';
   align-items: center;
+
   & .infomodal-titlebar-title {
     font-size: 2rem;
     text-align: center;
     text-transform: uppercase;
     padding: 4px;
-  }
+  };
+
   & .svg-btn.close-btn {
     justify-self: right;
     margin-right: 12px;
@@ -105,15 +112,18 @@
   padding: 2px 6px;
   text-transform: uppercase;
   @include float-btn-txt($def, $fg3);
+
   &:not(:last-child) {
     margin-bottom: .5rem;
-  }
+  };
+
   &.current {
     @include float-btn-txt($cur, $fg1);
-  }
+  };
+
   &.close-btn {
     @include float-btn-txt($clo, $fg3);
-  }
+  };
 }
 
 .infomodal-content {
@@ -128,7 +138,7 @@
      scrollbar-width: none;  /* Firefox */
   &::-webkit-scrollbar {
     display: none; /* Hide scrollbar for Chrome, Safari and Opera */
-  }
+  };
 }
 
 .infomodal-content {
@@ -144,10 +154,6 @@
 
 .infomodal-content div {
   margin-bottom: .5rem;
-  &:last-child {
-    margin-bottom: $ifm-mar;
-  }
-  &:first-child {
-    margin-top: $ifm-mar;
-  }
+  &:first-child { margin-top: $ifm-mar; };
+  &:last-child { margin-bottom: 4.5rem; };
 }

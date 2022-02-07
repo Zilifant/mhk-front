@@ -53,8 +53,6 @@ const Lobby = () => {
     const fetchLobby = async () => {
       try {
         const resData = await sendRequest(
-          // TO DO: Backend route no longer needs to be unique per lobby; send
-          // myLobby in JSON instead.
           `${process.env.REACT_APP_BACKEND_URL}/lobby/get`,
           'POST',
           JSON.stringify({

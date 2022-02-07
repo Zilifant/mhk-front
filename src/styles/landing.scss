@@ -38,6 +38,11 @@
   height: 100%;
   width: 100%;
 
+  & .slide-in {
+    position: relative;
+    top: -100vh;
+  };
+
   & > div.con--head {
     display: flex;
     justify-content: center;

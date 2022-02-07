@@ -1,5 +1,6 @@
 // Landing Page Intro //
 
+import { forwardRef } from 'react';
 import Container from '../shared/Container';
 // import VideoModal from '../modal/VideoModal';
 
@@ -8,13 +9,12 @@ import Container from '../shared/Container';
 //   title: 'How To Play'
 // }
 
-const Intro = () => {
+const Intro = forwardRef((props, ref) => {
 
   return (
     <Container className='intro'>
-      <div className='intro-text'>
+      <div ref={ref} className='intro-text slide-in'>
         <span className='smd--def'>An online implementation of the social deduction game<br/>Deception: Murder in Hong Kong</span>
-        <span className='smd--emphasize'></span>
       </div>
       {/* <VideoModal
         className='rules header'
@@ -24,6 +24,6 @@ const Intro = () => {
       /> */}
     </Container>
   );
-};
+});
 
 export default Intro;

@@ -1,6 +1,6 @@
 // New Lobby / Join Lobby
 
-import { useContext, useState } from 'react';
+import { useContext, useState, forwardRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from '../../hooks/form-hook';
 import { useHttpClient } from '../../hooks/http-hook';
@@ -43,7 +43,7 @@ const formTypes = [
   },
 ];
 
-const LobbyForm = ({ formType, lobbyId = null }) => {
+const LobbyForm = forwardRef(({ formType, lobbyId = null }, ref) => {
   const form = formTypes.find(type => type.id === formType);
 
   const { updateUserCtx } = useContext(UserContext);
@@ -95,7 +95,7 @@ const LobbyForm = ({ formType, lobbyId = null }) => {
 
     <ErrorModal error={error} onClear={clearError} />
 
-    <div className='lobby-form-wrapper'>
+    <div ref={ref} className='lobby-form-wrapper slide-in'>
 
       <form
         className={`lobby-form`}
@@ -163,6 +163,6 @@ const LobbyForm = ({ formType, lobbyId = null }) => {
     </div>
 
   </>);
-};
+});
 
 export default LobbyForm;

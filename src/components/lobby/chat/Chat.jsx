@@ -1,6 +1,6 @@
 // Chat //
 
-import { useContext, useEffect } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../../../context/contexts';
 import { useChat } from '../../../hooks/chat-hook';
 import Container from '../../shared/Container';
@@ -13,11 +13,21 @@ const Chat = ({
   isDemo,
   chat,
   users,
-  minimizeChatHandler,
-  minimized
+  isStreamer,
 }) => {
 
   const { myLobby } = useContext(UserContext);
+
+  const [firstRender, setFirstRender] = useState(true);
+  const [minimized, setMinimized] = useState(isStreamer);
+  const [css, setCss] = useState(`first-render-${minimized ? 'min' : 'max'}`);
+
+  function resizeChat() {
+    if (firstRender) setFirstRender(false);
+    setMinimized(!minimized);
+    if (minimized) return setCss('max')
+    return setCss('min');
+  };
 
   const {
     newMessage,
@@ -39,7 +49,7 @@ const Chat = ({
     <SVGButton
       icon={icon}
       className={className}
-      onClick={minimizeChatHandler}
+      onClick={resizeChat}
     />
   );
 
@@ -48,26 +58,42 @@ const Chat = ({
     newMessage();
   };
 
+  // const cssClass = minimized ? 'min' : 'max'
+
   return (<>
-    <Container className='chatbutton'>
+    <Container className={`chatbutton ${css}`}>
       <MinimizeChatButton
-        className={minimized ? 'maximize' : 'minimize'}
+        className={css}
         icon='chat'
       />
     </Container>
-
-    {!minimized && <Container className='lobbychat'>
-      <ChatFeed messages={messages} users={users} />
-      <NewMessage
-        onChange={(e) => setMessageText(e.target.value)}
-        messages={messages}
-        messageText={messageText}
-        myLobby={myLobby}
-        submitHandler={newMessageSubmitHandler}
-      />
-    </Container>}
+    <Container className={`chat ${css}`}>
+      {!minimized && <>
+        <ChatFeed messages={messages} users={users} />
+        <NewMessage
+          onChange={(e) => setMessageText(e.target.value)}
+          messages={messages}
+          messageText={messageText}
+          myLobby={myLobby}
+          submitHandler={newMessageSubmitHandler}
+        />
+      </>}
+    </Container>
   </>);
 
 };
 
 export default Chat;
+
+{/* <Container className='chat min'/>
+
+{!minimized && <Container className='chat max'>
+  <ChatFeed messages={messages} users={users} />
+  <NewMessage
+    onChange={(e) => setMessageText(e.target.value)}
+    messages={messages}
+    messageText={messageText}
+    myLobby={myLobby}
+    submitHandler={newMessageSubmitHandler}
+  />
+</Container>} */}

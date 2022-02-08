@@ -41,12 +41,6 @@ const Lobby = () => {
   // joining the room and the general client socket connection.
   const [isConnected, setIsConnected] = useState(false);
 
-  // Track how Chat component should be rendered. Must be tracked here as Grid
-  // variant partially depends on this state.
-  const [chatMinimized, setChatMinimized] = useState(isStreamer);
-  const minimizeChatHandler = () => setChatMinimized(!chatMinimized);
-  const showChat = chatMinimized ? 'nochat' : 'chat';
-
   // FIRST: Fetch the lobby data via HTTP.
   // (useIO will also have created the socket.)
   useEffect(() => {
@@ -168,7 +162,7 @@ const Lobby = () => {
     {/* FIFTH: Render lobby after all HTTP and socket.io tasks have
         resolved successfully. */}
     {!isLoading && lobby && isConnected &&
-      <div className={`grid grid--lobby-${gridVariant()} ${showChat}`}>
+      <div className={`grid grid--lobby-${gridVariant()}`}>
         <Main
           lobby={lobby}
           thisPlayer={getThisPlayer(userId, lobby.game)}
@@ -177,8 +171,7 @@ const Lobby = () => {
         <Chat
           chat={lobby.chat}
           users={lobby.users}
-          minimizeChatHandler={minimizeChatHandler}
-          minimized={chatMinimized}
+          isStreamer={isStreamer}
         />
         <Footer
           showClearBtn={lobby.leader === userId && lobby.gameOn}

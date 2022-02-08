@@ -73,7 +73,7 @@ div#root {
 .con--announcer    { grid-area: anno; }
 .con--info         { grid-area: info; }
 .con--memberlist   { grid-area: list; }
-.con--lobbychat    { grid-area: chat; }
+.con--chat         { grid-area: chat; }
 .con--chatbutton   { grid-area: cbtn; }
 .con--setup        { grid-area: setu; }
 .con--foot         { grid-area: foot; }
@@ -95,24 +95,12 @@ div#root {
 .grid--lobby-nogame {
   grid-template-columns: 1fr 800px repeat(2, max-content) 1fr;
   grid-template-rows: repeat(3, max-content) 1fr max-content;
-
-  &.chat {
-    grid-template-areas:
-      ".    anno anno cbtn .   "
-      ".    info chat chat .   "
-      ".    setu chat chat .   "
-      ".    list chat chat .   "
-      "foot foot foot foot foot";
-  };
-
-  &.nochat {
-    grid-template-areas:
-      ".    anno anno cbtn .   "
-      ".    info info info .   "
-      ".    setu setu setu .   "
-      ".    list list list .   "
-      "foot foot foot foot foot";
-  };
+  grid-template-areas:
+    ".    anno anno cbtn .   "
+    ".    info chat chat .   "
+    ".    setu chat chat .   "
+    ".    list chat chat .   "
+    "foot foot foot foot foot";
 }
 
 .grid--lobby-game,
@@ -120,7 +108,7 @@ div#root {
   grid-template-columns: 1fr repeat(4, max-content) 1fr;
 }
 
-.grid--lobby-game.chat {
+.grid--lobby-game {
   grid-template-rows: repeat(3, max-content) 1fr repeat(2, max-content);
   grid-template-areas:
     ".    anno anno anno cbtn .   "
@@ -131,34 +119,13 @@ div#root {
     "foot foot foot foot foot foot";
 }
 
-.grid--lobby-game-ghost.chat {
+.grid--lobby-game-ghost {
   grid-template-rows: repeat(3, max-content) 1fr max-content;
   grid-template-areas:
     ".    anno anno anno cbtn .   "
     ".    info info chat chat .   "
     ".    self time chat chat .   "
     ".    play play chat chat .   "
-    "foot foot foot foot foot foot";
-}
-
-.grid--lobby-game.nochat {
-  grid-template-rows: repeat(3, max-content) 1fr repeat(2, max-content);
-  grid-template-areas:
-    ".    anno anno anno cbtn .   "
-    ".    info info info info .   "
-    ".    ghst time time time .   "
-    ".    play play play play .   "
-    ".    self self self self .   "
-    "foot foot foot foot foot foot";
-}
-
-.grid--lobby-game-ghost.nochat {
-  grid-template-rows: repeat(3, max-content) 1fr max-content;
-  grid-template-areas:
-    ".    anno anno anno cbtn .   "
-    ".    info info info info .   "
-    ".    self time time time .   "
-    ".    play play play play .   "
     "foot foot foot foot foot foot";
 }
 
@@ -175,7 +142,6 @@ div#root {
   padding: 1rem;
 }
 
-// .con--lobbychat,
 .con--announcer,
 .con--setup,
 .con--info,

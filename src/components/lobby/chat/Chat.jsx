@@ -58,8 +58,6 @@ const Chat = ({
     newMessage();
   };
 
-  // const cssClass = minimized ? 'min' : 'max'
-
   return (<>
     <Container className={`chatbutton ${css}`}>
       <MinimizeChatButton
@@ -84,16 +82,3 @@ const Chat = ({
 };
 
 export default Chat;
-
-{/* <Container className='chat min'/>
-
-{!minimized && <Container className='chat max'>
-  <ChatFeed messages={messages} users={users} />
-  <NewMessage
-    onChange={(e) => setMessageText(e.target.value)}
-    messages={messages}
-    messageText={messageText}
-    myLobby={myLobby}
-    submitHandler={newMessageSubmitHandler}
-  />
-</Container>} */}

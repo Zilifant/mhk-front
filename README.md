@@ -41,10 +41,10 @@ React • Node.js • Socket.IO • Express.js • CORS • SCSS • nodemon •
 * [App.jsx](./src/App.jsx)
 * [components](./src/components)
   * [landing](./src/components/landing)
-    * [Header.jsx](./src/components/landing/Header.jsx)
-    * [JoinLobby.jsx](./src/components/landing/JoinLobby.jsx)
     * [Landing.jsx](./src/components/landing/Landing.jsx) - Page-level wrapper.
-    * [NewLobby.jsx](./src/components/landing/NewLobby.jsx)
+    * [Header.jsx](./src/components/landing/Header.jsx)
+    * [Intro.jsx](./src/components/landing/Intro.jsx)
+    * [LobbyForm.jsx](./src/components/landing/LobbyForm.jsx)
     * [ReturnToLobby.jsx](./src/components/landing/ReturnToLobby.jsx)
   * [lobby](./src/components/lobby)
     * [Foyer.jsx](./src/components/lobby/Foyer.jsx) - Routes visitors based on `userContext` and url data.
@@ -99,7 +99,7 @@ React • Node.js • Socket.IO • Express.js • CORS • SCSS • nodemon •
   * [multi-selector-hook.js](./src/hooks/multi-selector-hook.js)
   * [parallel-selector-hook.js](./src/hooks/parallel-selector-hook.js)
   * [user-hook.js](./src/hooks/user-hook.js)
-* [styles](./src/styles) - Pages and certain larger components have dedicated files (not listed here). Notable utility files:
+* [styles](./src/styles) - WIP. Pages and certain larger components have dedicated files (not listed here). Notable utility files:
   * [core.scss](./src/styles/core.scss) - Reset, top-level grids, and other general styles
   * [colors.scss](./src/styles/colors.scss) - My color 'library' as well as variable assignments for colors used throughout the UI.
   * [mixins.scss](./src/styles/mixins.scss) - Mixins used throughout the UI.
@@ -119,7 +119,7 @@ React • Node.js • Socket.IO • Express.js • CORS • SCSS • nodemon •
 
 ## What Could Be Improved: React App
 * **TO DOs:** Specific improvements appear throughout the code as `TO DO:` comments. Most of these involve 1) refactoring overly complex or specific code in light of the app's overall structure, and 2) refactors based on new techniques and best practices I've picked up.
-* **Stylesheets:** My naming conventions and use of nested selectors are not as consistent as I'd like. Unused selectors also need to be pruned, and the overall code minified.
+* **Stylesheets:** Styling is a WIP. My naming conventions and use of nested selectors are not as consistent as I'd like. Unused selectors also need to be pruned, and the overall code minified. If I could go back, I would likely use BEM.
 * **Tests:** If I could go back and do anything differently, it would be to implement tests from the start.
 
 ## Planned Features

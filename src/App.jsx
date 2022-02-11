@@ -6,8 +6,11 @@ import { useUser } from './hooks/user-hook';
 import { useHttpClient } from './hooks/http-hook';
 import { UserContext } from './context/contexts';
 import { isDevEnv } from './util/utils';
+import Container from './components/shared/Container';
 import Foyer from './components/lobby/Foyer';
 import Landing from './components/landing/Landing';
+import Carousel from './components/carousel/Carousel';
+import { cards } from './components/carousel/cards';
 import './styles/core.scss';
 import './styles/svgs.scss';
 import './styles/buttons.scss';
@@ -42,15 +45,19 @@ function App() {
       <Route path='/' exact>
         <Landing />
       </Route>
+      <Route path='/carousel' exact>
+        <div className='page--carousel'>
+          <Container className='carousel'>
+            <Carousel items={cards} />
+          </Container>
+        </div>
+      </Route>
       <Route path='/:lobbyURL'>
         <Foyer />
       </Route>
       <Route path={`/${/(lobby|join)/}`} exact>
         <Foyer />
       </Route>
-      {/* <Route path='/join' exact>
-        <Foyer />
-      </Route> */}
       <Redirect to='/' />
     </Switch>
   );

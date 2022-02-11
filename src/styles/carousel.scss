@@ -1,0 +1,252 @@
+// Carousel
+
+@import './colors.scss';
+@import './mixins.scss';
+
+// Still experimenting with styles. Not all variables/mixins/etc used.
+
+$shadow: rgba(0, 0, 0, 0.08);
+$shadow2: rgba(0, 0, 0, 0.1);
+
+$bg0: white;
+$text: black;
+$bg1: $colg1;
+$btn: $cyan5;
+
+@mixin shadow-ps() {
+  box-shadow: #cccccc 0 0 10px 0;
+}
+
+@mixin shadow() {
+  box-shadow:
+    $shadow 0px -1px 2px 0px,
+    $shadow 0px -2px 6px 2px;
+}
+
+@mixin shadow-dark() {
+  box-shadow:
+    $shadow2 0px 1px 2px 0px,
+    $shadow2 0px 2px 6px 2px,
+    $shadow2 0px -1px 2px 0px,
+    $shadow2 0px -2px 6px 2px;
+}
+
+@mixin shadow-dark-inset-only() {
+  box-shadow:
+    $shadow2 0px 1px 2px 0px inset,
+    $shadow2 0px 2px 6px 2px inset,
+    $shadow2 0px -1px 2px 0px inset,
+    $shadow2 0px -2px 6px 2px inset;
+}
+
+@mixin circle($size) {
+  border-radius: $size;
+  height: $size;
+  width: $size;
+}
+
+.page--carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  background-color: $bg1;
+}
+
+// Basing all measurements off of x; so changing that one variable should make the thing scale
+// without changing the look.
+// Not that this is the best way to do it; but I just wanted to try it out.
+
+.container.con--carousel {
+  --t:  200ms;
+  --x:  200px;
+  --margin:  calc(var(--x) * .1 );
+  --conBdrRadius: calc(var(--x) * .05);
+  --itemWidth: calc(var(--x) * 1.5 );
+  --carBtnWidth: calc(var(--x) * .25);
+  --carBtnPadding: calc(var(--x) * .04);
+  --itemBdrRadius: calc(var(--x) * .075);
+  --itemPaddingVert: calc(var(--x) * .1);
+  --carListWidth: calc((var(--itemWidth) * 3) + (var(--margin) * 4) + (var(--x) * .5));
+  --carBdrSize: calc(var(--x) * .02);
+  --mapBtnPadding: calc(var(--x) * .05);
+  --mapHeight: calc(var(--x) * .12);
+  --mapPadding: calc(var(--x) * .05);
+  --mapBtnExpandedWidth: calc(var(--x) * .7); 
+
+  // grid not doing much; but keeping it for now as I'm still playing with it.
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  grid-template-areas:
+    'main main main'
+    'mmap mmap mmap';
+
+  @include shadow-ps();
+  padding: 0;
+  border-radius: var(--conBdrRadius);
+  overflow: hidden;
+}
+
+div.carousel-main           { grid-area: main; };
+button.carousel-btn.forward { grid-area: next; };
+button.carousel-btn.back    { grid-area: back; };
+ul.carousel-list            { grid-area: caro; };
+div.carousel-minimap        { grid-area: mmap; };
+
+div.carousel-main {
+  display: flex;
+}
+
+button.carousel-btn {
+  width: var(--carBtnWidth);
+  height: 100%;
+  padding: var(--carBtnPadding);
+  background-color: $bg0;
+  transition: all var(--t) ease-out;
+
+  // enlarges/shifts the chevron on hover, to keep it looking centered when the button (but not
+  // the border to the side) changes colors.
+  // FIX ME: this animation looks quite bad on Firefox.
+  &.forward:not(:hover) {
+    padding-right: calc(var(--carBtnPadding) + var(--carBdrSize));
+  };
+
+  &.back {
+    &:not(:hover) {
+      padding-left: calc(var(--carBtnPadding) + var(--carBdrSize));
+    };
+
+    & > .svg-icon {
+      transform: rotate(180deg);
+    };
+  };
+
+  & svg {
+    fill: $btn;
+    transition: all var(--t) ease-out;
+  };
+
+  &:hover {
+    background-color: $btn;
+    & svg {
+      fill: $bg0;
+    };
+  };
+
+  &:active {
+    padding: calc(var(--carBtnPadding) * 1.25);
+  };
+
+  &:disabled {
+    background-color: $gray;
+  };
+}
+
+ul.carousel-list {
+  display: grid;
+  overflow-x: hidden;
+
+  width: var(--carListWidth);
+  padding: var(--itemPaddingVert) 0;
+  border: solid $bg0 var(--carBdrSize);
+
+  background-color: $colg2;
+  background-image: linear-gradient($colg1 0%, $colg2 100%);
+
+  @include shadow-dark-inset-only();
+
+  & > li {
+    // Get all of the items stacked in the center
+    grid-row: 1;
+    grid-column: 1;
+    place-self: center;
+    position: relative;
+
+    transition: left var(--t) ease-in-out;
+
+    overflow: hidden;
+    border-radius: var(--itemBdrRadius);
+    @include shadow();
+
+    & > .carousel-card {
+      display: flex;
+
+      & > img {
+        width: var(--itemWidth);
+        object-fit: fill;
+      };
+    };
+  };
+
+  // I am sure there is a much better way to do this...
+  // move each item to the left (or using a negative number, to the right) the correct amount of
+  // space, based on the total number of items we expect to be in the list.
+
+  --move1: calc(var(--itemWidth) + var(--margin));
+  --move2: calc(var(--move1) * 2);
+  --move3: calc(var(--move1) * 3);
+
+  // If we change numFlanking, we need to change this as well. Not ideal. A WIP.
+  // I tried to move it into React, but I am still figuring out how to style psuedo classes in
+  // React. (Using the procedurally applied class names instead of nth-child() doesn't work.)
+  $items:
+    (1, var(--move3)),
+    (2, var(--move2)),
+    (3, var(--move1)),
+    (4, 0),
+    (5, var(--move1)),
+    (6, var(--move2)),
+    (7, var(--move3));
+
+  @each $i, $moveBy in $items {
+    & > li:nth-child(#{$i}) {
+      @if $i < 4 {
+        left: calc(0px - #{$moveBy}); // don't remove unit
+      } @else if $i >= 4 {
+        left: $moveBy;
+      }
+    }
+  }
+}
+
+div.carousel-minimap {
+  --height: var(--mapHeight);
+  display: flex;
+  justify-content: center;
+  padding: var(--mapPadding);
+  background-color: $gray8;
+  background-image: linear-gradient($gray8 0%, $colg6 100%);
+
+  & > button.carousel-minimap-btn {
+    @include circle(var(--height));
+    @include shadow-dark();
+    color: $bg1;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 0;
+    transition:
+      width var(--t) ease-in-out,
+      color calc(var(--t) * 2) ease-in-out;
+
+    &:not(:first-child) {
+      margin-left: var(--margin);
+    };
+
+    // TO DO: Class names tied to data; move these into React.
+    &.c  { background-color: $orange; };
+    &.rr { background-color: $purple; };
+    &.ys { background-color: $green; };
+
+    &:disabled {
+      color: $text;
+      background-color: $bg1;
+      width: var(--mapBtnExpandedWidth);
+      padding: 0 var(--mapBtnPadding);
+
+      font-size: 1rem;
+      font-style: italic;
+      cursor: default;
+    };
+  };
+}

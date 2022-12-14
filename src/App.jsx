@@ -1,25 +1,30 @@
 // App
 
-import { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
-import { useUser } from './hooks/user-hook';
-import { useHttpClient } from './hooks/http-hook';
-import { UserContext } from './context/contexts';
-import { isDevEnv } from './util/utils';
-import Container from './components/shared/Container';
-import Foyer from './components/lobby/Foyer';
-import Landing from './components/landing/Landing';
-import Carousel from './components/carousel/Carousel';
-import { cards } from './components/carousel/cards';
-import './styles/core.scss';
-import './styles/svgs.scss';
-import './styles/buttons.scss';
+import { useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+} from "react-router-dom";
+import { useUser } from "./hooks/user-hook";
+import { useHttpClient } from "./hooks/http-hook";
+import { UserContext } from "./context/contexts";
+import { isDevEnv } from "./util/utils";
+import Container from "./components/shared/Container";
+import Foyer from "./components/lobby/Foyer";
+import Landing from "./components/landing/Landing";
+import Carousel from "./components/carousel/Carousel";
+import { cards } from "./components/carousel/cards";
+import "./styles/core.scss";
+import "./styles/svgs.scss";
+import "./styles/buttons.scss";
 
 function App() {
-  if (isDevEnv) console.log('%cApp','color:#79e6f9');
+  if (isDevEnv) console.log("%cApp", "color:#79e6f9");
 
   const { user, checkMyLobby, updateUserCtx } = useUser();
-  const { isLoading, sendRequest } = useHttpClient('App');
+  const { isLoading, sendRequest } = useHttpClient("App");
 
   useEffect(() => {
     const checkCookie = async () => {
@@ -32,9 +37,11 @@ function App() {
           userName: responseData.user?.userName,
           myLobby: responseData.user?.myLobby,
           isStreamer: responseData.user?.isStreamer,
-          isDemo: responseData.user?.isDemo
+          isDemo: responseData.user?.isDemo,
         });
-      } catch (err) { console.log(err); };
+      } catch (err) {
+        console.log(err);
+      }
     };
     checkCookie();
   }, [updateUserCtx, sendRequest]);
@@ -42,46 +49,48 @@ function App() {
   let routes;
   routes = (
     <Switch>
-      <Route path='/' exact>
+      <Route path="/" exact>
         <Landing />
       </Route>
-      <Route path='/carousel' exact>
-        <div className='page--carousel'>
-          <Container className='carousel'>
+      <Route path="/carousel" exact>
+        <div className="page--carousel">
+          <Container className="carousel">
             <Carousel items={cards} />
           </Container>
         </div>
       </Route>
-      <Route path='/:lobbyURL'>
+      <Route path="/:lobbyURL">
         <Foyer />
       </Route>
       <Route path={`/${/(lobby|join)/}`} exact>
         <Foyer />
       </Route>
-      <Redirect to='/' />
+      <Redirect to="/" />
     </Switch>
   );
 
   return (
-    <UserContext.Provider value={{
-      userId: user.userId,
-      userName: user.userName,
-      myLobby: user.myLobby,
-      isStreamer: user.isStreamer,
-      isDemo: user.isDemo,
-      checkMyLobby: checkMyLobby,
-      updateUserCtx: updateUserCtx,
-      checked: user.checked
-    }}>
+    <UserContext.Provider
+      value={{
+        userId: user.userId,
+        userName: user.userName,
+        myLobby: user.myLobby,
+        isStreamer: user.isStreamer,
+        isDemo: user.isDemo,
+        checkMyLobby: checkMyLobby,
+        updateUserCtx: updateUserCtx,
+        checked: user.checked,
+      }}
+    >
       {/* `user.checked` prevents routes from loading before `isLoading`
       becomes true. */}
-      {!isLoading && user.checked && <Router>
-        <main>
-          {routes}
-        </main>
-      </Router>}
+      {!isLoading && user.checked && (
+        <Router>
+          <main>{routes}</main>
+        </Router>
+      )}
     </UserContext.Provider>
   );
-};
+}
 
 export default App;

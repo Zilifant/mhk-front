@@ -43,7 +43,7 @@ const formTypes = [
   },
 ];
 
-const LobbyForm = forwardRef(({ formType, lobbyId = null }, ref) => {
+const LobbyForm = forwardRef(({ formType, lobbyId = null, departHandler }, ref) => {
   const form = formTypes.find(type => type.id === formType);
 
   const { updateUserCtx } = useContext(UserContext);
@@ -88,6 +88,7 @@ const LobbyForm = forwardRef(({ formType, lobbyId = null }, ref) => {
       // Forwarding visitor will render Foyer, which will then render the
       // lobby, since the user will have valid userContext data.
       history.push('/lobby');
+      // departHandler();
     } catch (err) { console.log(err); }
   };
 

@@ -59,9 +59,9 @@ $btn: $cyan5;
 // Not that this is the best way to do it; but I just wanted to try it out.
 
 .container.con--carousel {
-  --t:  200ms;
-  --x:  200px;
-  --margin:  calc(var(--x) * .1 );
+  --t: 200ms;
+  --x: 200px;
+  --margin: calc(var(--x) * .1 );
   --conBdrRadius: calc(var(--x) * .05);
   --itemWidth: calc(var(--x) * 1.5 );
   --carBtnWidth: calc(var(--x) * .25);

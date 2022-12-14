@@ -5,11 +5,17 @@
 import { forwardRef } from "react";
 import { NavLink } from 'react-router-dom';
 
-const ReturnToLobby = forwardRef(({userName}, ref) => {
+const ReturnToLobby = forwardRef(({ userName, departHandler }, ref) => {
 
   return (
     <div ref={ref} className='return-to-lobby-wrapper slide-in'>
       <span className='return-greet'>Welcome back, {userName}.</span>
+      {/* <button
+        className='return-link'
+        onClick={departHandler}
+      >
+        <p>return</p>
+      </button> */}
       <NavLink className='return-link' to='/lobby' exact><p>return</p></NavLink>
       <span className='return-greet'>to your last lobby?</span>
     </div>

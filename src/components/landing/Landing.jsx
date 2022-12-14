@@ -1,6 +1,7 @@
 // Landing //
 
-import { useContext, useRef, useEffect } from 'react';
+import { useContext, useEffect, useRef } from 'react';
+// import { useHistory } from 'react-router-dom';
 import { UserContext } from '../../context/contexts';
 import { gsap } from 'gsap';
 import Container from '../shared/Container';
@@ -17,6 +18,15 @@ const Landing = ({ lobbyId }) => {
 
   const { userId, userName, myLobby } = useContext(UserContext);
 
+  // const [isDeparting, setIsDeparting] = useState(false);
+
+  // const history = useHistory();
+
+  // function departHandler() {
+  //   setIsDeparting(true);
+  //   setTimeout(() => history.push('/lobby'), 1000);
+  // }
+
   const delays = userId ? [.1, .3, .4, .5, .6] : [.1, .2, null, .3, .4];
 
   const headerRef = useRef();
@@ -32,25 +42,39 @@ const Landing = ({ lobbyId }) => {
     gsap.to(newLobbyRef.current,           { y: '100vh', delay: delays[1], 'z-index': 2 })
     gsap.to(joinLobbyRef.current,          { y: '100vh', delay: delays[0], 'z-index': 1 })
   });
-
+  // ${isDeparting ? 'departing' : ''}
   return (
-    <div className='grid--landing'>
+    <div className={`grid--landing`}>
       <Header ref={headerRef} />
-      <Intro ref={introRef} />
 
+      <Intro ref={introRef} />
       {!lobbyId && <Container className='lobby-forms'>
         {userId && <ReturnToLobby
           ref={returnRef}
           userId={userId}
           userName={userName}
           myLobby={myLobby}
+          // departHandler={departHandler}
         />}
-        <LobbyForm ref={newLobbyRef} formType={'newLobby'} />
-        <LobbyForm ref={joinLobbyRef} formType={'joinLobby'} />
+        <LobbyForm
+          ref={newLobbyRef}
+          formType={'newLobby'}
+          // departHandler={departHandler}
+        />
+        <LobbyForm
+          ref={joinLobbyRef}
+          formType={'joinLobby'}
+          // departHandler={departHandler}
+        />
       </Container>}
 
       {lobbyId && <Container className='lobby-forms'>
-        <LobbyForm ref={joinLobbyRef} formType={'joinThis'} lobbyId={lobbyId} />
+        <LobbyForm
+          ref={joinLobbyRef}
+          formType={'joinThis'}
+          lobbyId={lobbyId}
+          // departHandler={departHandler}
+        />
       </Container>}
 
       <Footer />

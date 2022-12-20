@@ -16,16 +16,10 @@ const Main = ({
   lobby,
   thisPlayer,
   iAmLeader,
-  lobby: {
-    isDemo,
-    gameSettings,
-    gameOn,
-    game,
-    chat,
-  }
+  lobby: { isDemo, gameSettings, gameOn, game, chat },
 }) => {
-
-  const hidePlayerUI = thisPlayer?.role === 'ghost' || thisPlayer?.role === 'spectator'
+  const hidePlayerUI =
+    thisPlayer?.role === 'ghost' || thisPlayer?.role === 'spectator';
 
   return (
     <>
@@ -45,7 +39,7 @@ const Main = ({
       />
 
       {/* If there is no game... */}
-      {!gameOn && lobby &&
+      {!gameOn && lobby && (
         <React.Fragment>
           <Setup
             iAmLeader={iAmLeader}
@@ -54,46 +48,35 @@ const Main = ({
             canStart={lobby.canStart()}
             startGameText={lobby.startGameText(iAmLeader)}
           />
-          <MemberList
-            users={lobby.users}
-            iAmLeader={iAmLeader}
-          />
+          <MemberList users={lobby.users} iAmLeader={iAmLeader} />
         </React.Fragment>
-      }
+      )}
 
       {/* If there is a game and player data is loaded... */}
-      {gameOn && game && thisPlayer &&
+      {gameOn && game && thisPlayer && (
         <React.Fragment>
-
-          {thisPlayer.role !== 'ghost' &&
-          <Ghost
-            game={game}
-          />}
+          {thisPlayer.role !== 'ghost' && <Ghost game={game} />}
 
           <Timer
-            settings={game.settings.timer}
+            timerSettings={gameSettings.timer}
             timerIsRunning={game.timerIsRunning}
           />
 
-          <Players
-            game={game}
-            thisPlayer={thisPlayer}
-          />
+          <Players game={game} thisPlayer={thisPlayer} />
 
-          {thisPlayer.role === 'ghost' &&
-          <Ghost
-            isGhostUI={true}
-            game={game}
-          />}
+          {thisPlayer.role === 'ghost' && (
+            <Ghost isGhostUI={true} game={game} />
+          )}
 
-          {!hidePlayerUI &&
-          <PlayerUI
-            thisPlayer={thisPlayer}
-            stage={game.currentStage}
-            keyEv={game?.keyEvidence}
-          />}
+          {!hidePlayerUI && (
+            <PlayerUI
+              thisPlayer={thisPlayer}
+              stage={game.currentStage}
+              keyEv={game?.keyEvidence}
+            />
+          )}
         </React.Fragment>
-      }
+      )}
     </>
   );
 };

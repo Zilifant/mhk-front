@@ -9,13 +9,8 @@ import { SocketContext } from '../../../../context/contexts';
 import '../../../../styles/timer.scss';
 import '../../../../styles/svgs.scss';
 
-const Timer = ({
-  settings: {
-    on,
-    duration // minutes
-  },
-  timerIsRunning
-}) => {
+const Timer = ({ timerSettings, timerIsRunning }) => {
+  const { on, duration } = timerSettings;
 
   const { socket } = useContext(SocketContext);
 
@@ -56,7 +51,6 @@ const Timer = ({
       s.off('timeUp');
       s.off('clear');
     };
-
   }, [socket, setTenSec, duration]);
 
   // Render a graphic bar for each 10 second interval. Use numbered CSS classes
@@ -66,28 +60,20 @@ const Timer = ({
 
     return [...Array(num)].map((v, i) => {
       const ind = num - i;
-      const style = ind > tenSec ? 'hide' : 'show'
-      return <div
-        className={`timebar-${ind} ${style}`}
-        key={i}
-      ></div>
+      const style = ind > tenSec ? 'hide' : 'show';
+      return <div className={`timebar-${ind} ${style}`} key={i}></div>;
     });
-
   };
 
   // If timer is on, it may be running or not running.
   const displayOn = () => {
-    const style = timerIsRunning ? 'running' : 'notrunning'
-    return (
-      <div className={`time-wrap ${style}`}>
-        {barsTimer()}
-      </div>
-    );
+    const style = timerIsRunning ? 'running' : 'notrunning';
+    return <div className={`time-wrap ${style}`}>{barsTimer()}</div>;
   };
 
   return (
-    <Container className='timer'>
-      {on ? displayOn() : <div className='time-wrap-off'/>}
+    <Container className="timer">
+      {on ? displayOn() : <div className="time-wrap-off" />}
     </Container>
   );
 };

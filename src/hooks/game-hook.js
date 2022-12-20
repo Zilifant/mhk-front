@@ -10,7 +10,7 @@ export const useGame = () => {
   const { socket } = useContext(SocketContext);
 
   const startGameHandler = () => {
-    return socket.current.emit('startGame', {settings: 'placeholder'});
+    return socket.current.emit('startGame');
   };
 
   const clearGameHandler = () => {
@@ -31,7 +31,7 @@ export const useGame = () => {
 
   const chooseTimerHandler = (duration) => {
     socket.current.emit('chooseTimer', duration);
-  }
+  };
 
   const assignGhostHandler = (userId) => {
     socket.current.emit('ghostAssigned', userId);
@@ -75,6 +75,6 @@ export const useGame = () => {
     killWitnessHandler,
     chooseClueHandler,
     replaceGhostCardHandler,
-    giveLeaderHandler
+    giveLeaderHandler,
   };
 };

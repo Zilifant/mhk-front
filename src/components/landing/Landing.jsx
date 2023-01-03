@@ -27,7 +27,9 @@ const Landing = ({ lobbyId }) => {
   //   setTimeout(() => history.push('/lobby'), 1000);
   // }
 
-  const delays = userId ? [.1, .3, .4, .5, .6] : [.1, .2, null, .3, .4];
+  const delays = userId
+    ? [0.1, 0.3, 0.4, 0.5, 0.6]
+    : [0.1, 0.2, null, 0.3, 0.4];
 
   const headerRef = useRef();
   const introRef = useRef();
@@ -36,11 +38,19 @@ const Landing = ({ lobbyId }) => {
   const joinLobbyRef = useRef();
 
   useEffect(() => {
-    gsap.to(headerRef.current,             { y: '100vh', delay: delays[4] })
-    gsap.to(introRef.current,              { y: '100vh', delay: delays[3] })
-    if (userId) gsap.to(returnRef.current, { y: '100vh', delay: delays[2] })
-    gsap.to(newLobbyRef.current,           { y: '100vh', delay: delays[1], 'z-index': 2 })
-    gsap.to(joinLobbyRef.current,          { y: '100vh', delay: delays[0], 'z-index': 1 })
+    gsap.to(headerRef.current, { y: '100vh', delay: delays[4] });
+    gsap.to(introRef.current, { y: '100vh', delay: delays[3] });
+    if (userId) gsap.to(returnRef.current, { y: '100vh', delay: delays[2] });
+    gsap.to(newLobbyRef.current, {
+      y: '100vh',
+      delay: delays[1],
+      'z-index': 2,
+    });
+    gsap.to(joinLobbyRef.current, {
+      y: '100vh',
+      delay: delays[0],
+      'z-index': 1,
+    });
   });
   // ${isDeparting ? 'departing' : ''}
   return (
@@ -48,34 +58,40 @@ const Landing = ({ lobbyId }) => {
       <Header ref={headerRef} />
 
       <Intro ref={introRef} />
-      {!lobbyId && <Container className='lobby-forms'>
-        {userId && <ReturnToLobby
-          ref={returnRef}
-          userId={userId}
-          userName={userName}
-          myLobby={myLobby}
-          // departHandler={departHandler}
-        />}
-        <LobbyForm
-          ref={newLobbyRef}
-          formType={'newLobby'}
-          // departHandler={departHandler}
-        />
-        <LobbyForm
-          ref={joinLobbyRef}
-          formType={'joinLobby'}
-          // departHandler={departHandler}
-        />
-      </Container>}
+      {!lobbyId && (
+        <Container className="lobby-forms">
+          {userId && (
+            <ReturnToLobby
+              ref={returnRef}
+              userId={userId}
+              userName={userName}
+              myLobby={myLobby}
+              // departHandler={departHandler}
+            />
+          )}
+          <LobbyForm
+            ref={newLobbyRef}
+            formType={'newLobby'}
+            // departHandler={departHandler}
+          />
+          <LobbyForm
+            ref={joinLobbyRef}
+            formType={'joinLobby'}
+            // departHandler={departHandler}
+          />
+        </Container>
+      )}
 
-      {lobbyId && <Container className='lobby-forms'>
-        <LobbyForm
-          ref={joinLobbyRef}
-          formType={'joinThis'}
-          lobbyId={lobbyId}
-          // departHandler={departHandler}
-        />
-      </Container>}
+      {lobbyId && (
+        <Container className="lobby-forms">
+          <LobbyForm
+            ref={joinLobbyRef}
+            formType={'joinThis'}
+            lobbyId={lobbyId}
+            // departHandler={departHandler}
+          />
+        </Container>
+      )}
 
       <Footer />
     </div>
